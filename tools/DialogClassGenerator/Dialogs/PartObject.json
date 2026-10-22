@@ -1,0 +1,3735 @@
+{
+  "page": "PartObject",
+  "viewPrefix": "vp.",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gratViewAttributes",
+  "aidPanel": "PanelPart",
+  "treeCheckBoxKey": {
+    "key": "part_en",
+    "in": "top level of the .vi",
+    "confidence": "legacy-dialog",
+    "note": "gratViewAttributes fills its tree (TWOSTATE check boxes) at run time; the key comes from gr_view_attrib, where this check box precedes the button that opens the page dialog"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": "out_file",
+  "saveAsNote": "not in gratViewAttributes; the older dialogs have it as the \"Save as\" text field (text gr_*_saveas_file, MEMBER out_file)",
+  "tabs": [
+    {
+      "label": "Content",
+      "aidName": "Container_251",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Representation",
+          "aidName": "Container_1631",
+          "controls": [
+            {
+              "label": "Representation",
+              "labelSource": "group",
+              "key": "draw_as",
+              "enableKey": "draw_as_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Outline",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "gr_vp_solid",
+                  "apiName": "Outline"
+                },
+                {
+                  "label": "Exact",
+                  "labelSource": "aid",
+                  "value": 8,
+                  "aidName": "gr_vp_exact_solid",
+                  "apiName": "Exact"
+                },
+                {
+                  "label": "Symbol",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "gr_vp_symbol",
+                  "apiName": "Symbol"
+                },
+                {
+                  "label": "Symbol with partial profile",
+                  "labelSource": "aid",
+                  "value": 64,
+                  "aidName": "optionbutton_6216",
+                  "apiName": "SolidWithPartialProfile"
+                },
+                {
+                  "label": "Workshop form",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "optionbutton_6219",
+                  "apiName": "WorkshopForm"
+                },
+                {
+                  "label": "Bounding box",
+                  "labelSource": "aid",
+                  "value": 16,
+                  "aidName": "optionbutton_3892",
+                  "apiName": "BoundingBox"
+                },
+                {
+                  "label": "Base box",
+                  "labelSource": "aid",
+                  "value": 32,
+                  "aidName": "optionbutton_3910",
+                  "apiName": "BaseBox"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_draw_as",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 2,
+              "apiEnum": "Tekla.Structures.Drawing.Part.Representation",
+              "samples": {
+                "files": 292,
+                "inMenu": {
+                  "1": 262,
+                  "8": 26,
+                  "4": 2,
+                  "16": 1,
+                  "2": 1
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Symbol offset",
+              "labelSource": "enableCheckBox",
+              "key": "offset",
+              "enableKey": "offset_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_vp_offset",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 6,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "10.000000": 173,
+                  "0.000000": 100,
+                  "50.000000": 8,
+                  "11.000000": 4,
+                  "2.000000": 3
+                }
+              }
+            },
+            {
+              "label": "Inner contours",
+              "labelSource": "enableCheckBox",
+              "key": "inner_contours",
+              "enableKey": "inner_contours_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 1,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_inner_contours",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 7,
+              "samples": {
+                "files": 287,
+                "top": {
+                  "1": 282,
+                  "0": 5
+                }
+              }
+            }
+          ],
+          "groups": [
+            {
+              "label": "Partial profile",
+              "aidName": "Container_Partial_Profile",
+              "controls": [
+                {
+                  "label": "Length",
+                  "labelSource": "enableCheckBox",
+                  "key": "PartialProfileLength",
+                  "enableKey": "PartialProfileLength_en",
+                  "type": "number",
+                  "format": "%2.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "gr_vp_partial_profile_length",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 4,
+                  "samples": {
+                    "files": 180,
+                    "top": {
+                      "1000.000000": 180
+                    }
+                  }
+                },
+                {
+                  "label": "Offset from middle point",
+                  "labelSource": "enableCheckBox",
+                  "key": "PartialProfileOffset",
+                  "enableKey": "PartialProfileOffset_en",
+                  "type": "number",
+                  "format": "%2.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "gr_vp_partial_profile_offset",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 5,
+                  "samples": {
+                    "files": 180,
+                    "top": {
+                      "0.000000": 180
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 3
+            }
+          ],
+          "position": 1
+        },
+        {
+          "label": "Hidden lines",
+          "aidName": "Container_1961",
+          "controls": [
+            {
+              "label": "Hidden lines",
+              "labelSource": "enableCheckBox",
+              "key": "draw_hidden",
+              "enableKey": "draw_hidden_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_draw_hidden",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 9,
+              "samples": {
+                "files": 292,
+                "top": {
+                  "1": 235,
+                  "0": 57
+                }
+              }
+            },
+            {
+              "label": "Own hidden lines",
+              "labelSource": "enableCheckBox",
+              "key": "draw_own",
+              "enableKey": "draw_own_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_draw_own_hidden",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 10,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "1": 229,
+                  "0": 61
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 8
+        },
+        {
+          "label": "Center line",
+          "aidName": "Container_319",
+          "controls": [
+            {
+              "label": "Main part / Beam",
+              "labelSource": "grid",
+              "key": "cl_main_beam",
+              "enableKey": "cl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_cl_main_beam",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 12,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 213,
+                  "1": 77
+                }
+              }
+            },
+            {
+              "label": "Main part / Plate",
+              "labelSource": "grid",
+              "key": "cl_main_plate",
+              "enableKey": "cl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_cl_main_plate",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 13,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 290
+                }
+              }
+            },
+            {
+              "label": "Main part / Polygon",
+              "labelSource": "grid",
+              "key": "cl_main_polygon",
+              "enableKey": "cl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_cl_main_polygon",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 14,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 290
+                }
+              }
+            },
+            {
+              "label": "Sec part / Beam",
+              "labelSource": "grid",
+              "key": "cl_second_beam",
+              "enableKey": "cl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_cl_second_beam",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 15,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 260,
+                  "1": 30
+                }
+              }
+            },
+            {
+              "label": "Sec part / Plate",
+              "labelSource": "grid",
+              "key": "cl_second_plate",
+              "enableKey": "cl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_cl_second_plate",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 16,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 290
+                }
+              }
+            },
+            {
+              "label": "Sec part / Polygon",
+              "labelSource": "grid",
+              "key": "cl_second_polygon",
+              "enableKey": "cl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_cl_second_polygon",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 17,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 290
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 11
+        },
+        {
+          "label": "Reference lines",
+          "aidName": "Container_1692",
+          "controls": [
+            {
+              "label": "Main part / Beam",
+              "labelSource": "grid",
+              "key": "rl_main_beam",
+              "enableKey": "rl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_rl_main_beam",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 19,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 254,
+                  "1": 36
+                }
+              }
+            },
+            {
+              "label": "Main part / Plate",
+              "labelSource": "grid",
+              "key": "rl_main_plate",
+              "enableKey": "rl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_rl_main_plate",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 20,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 290
+                }
+              }
+            },
+            {
+              "label": "Main part / Polygon",
+              "labelSource": "grid",
+              "key": "rl_main_polygon",
+              "enableKey": "rl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_rl_main_polygon",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 21,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 290
+                }
+              }
+            },
+            {
+              "label": "Sec part / Beam",
+              "labelSource": "grid",
+              "key": "rl_second_beam",
+              "enableKey": "rl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_rl_second_beam",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 22,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 290
+                }
+              }
+            },
+            {
+              "label": "Sec part / Plate",
+              "labelSource": "grid",
+              "key": "rl_second_plate",
+              "enableKey": "rl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_rl_second_plate",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 23,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 290
+                }
+              }
+            },
+            {
+              "label": "Sec part / Polygon",
+              "labelSource": "grid",
+              "key": "rl_second_polygon",
+              "enableKey": "rl_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_rl_second_polygon",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 24,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 290
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 18
+        },
+        {
+          "label": "Additional marks",
+          "aidName": "Container_1640",
+          "controls": [
+            {
+              "label": "Orientation marks",
+              "labelSource": "enableCheckBox",
+              "key": "draw_north_mark",
+              "enableKey": "draw_north_mark_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_north_mark",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 26,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 271,
+                  "1": 19
+                }
+              }
+            },
+            {
+              "label": "Connecting side marks",
+              "labelSource": "enableCheckBox",
+              "key": "connecting_side_mark",
+              "enableKey": "connecting_side_mark_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_vp_connecting_side_mark",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 27,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0": 235,
+                  "1": 55
+                }
+              }
+            },
+            {
+              "label": "Pop-marks",
+              "labelSource": "enableCheckBox",
+              "key": "AddPopMarks",
+              "enableKey": "AddPopMarks_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "chkButAddPopMarks",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 28,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "0": 280
+                }
+              }
+            },
+            {
+              "label": "Edge chamfers",
+              "labelSource": "enableCheckBox",
+              "key": "AddChamfers",
+              "enableKey": "AddChamfers_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "chkButAddChamfers",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 29,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "0": 259,
+                  "1": 21
+                }
+              }
+            },
+            {
+              "label": "Fillet edges",
+              "labelSource": "enableCheckBox",
+              "key": "FilletEdges",
+              "enableKey": "FilletEdges_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "chkButFilletEdges",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 30,
+              "samples": {
+                "files": 201,
+                "top": {
+                  "1": 157,
+                  "0": 44
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 25
+        }
+      ],
+      "position": 31
+    },
+    {
+      "label": "Appearance",
+      "aidName": null,
+      "controls": [],
+      "groups": [
+        {
+          "label": "Visible lines",
+          "aidName": "Container_255",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "visible_colour",
+              "enableKey": "visible_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_vp_pb_new_line_2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 33,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 291,
+                "inMenu": {
+                  "164": 116,
+                  "153": 77,
+                  "158": 65,
+                  "161": 23,
+                  "152": 3,
+                  "160": 1
+                },
+                "outsideMenu": {
+                  "6": 6
+                }
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "visible_linetype",
+              "enableKey": "visible_linetype_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "gr_vp_pb_solid",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_linetype",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 34,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "1": 290
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 32
+        },
+        {
+          "label": "Section lines",
+          "aidName": "sectionContainer",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "section_colour",
+              "enableKey": "section_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_section_white_line",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_section_black_line",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_section_red_line",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_section_green_line",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_section_blue_line",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_section_cyan_line",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_section_yellow_line",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_section_magenta_line",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_section_new_line_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_section_new_line_2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_section_new_line_3",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_section_new_line_4",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_section_new_line_5",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_section_new_line_6",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_section_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 36,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 70,
+                "inMenu": {
+                  "158": 65,
+                  "164": 1,
+                  "152": 1
+                },
+                "outsideMenu": {
+                  "6": 3
+                }
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "section_linetype",
+              "enableKey": "section_linetype_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "gr_pb_section_empty",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "gr_pb_section_solid",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "gr_pb_section_dashed1",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "gr_pb_section_dashed2",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "gr_pb_section_dot_dash",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "gr_pb_section_dotted",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "gr_pb_section_dashed3",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "gr_pb_section_dashed4",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_section_linetype",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 37,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 70,
+                "inMenu": {
+                  "1": 70
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 35
+        },
+        {
+          "label": "Hidden lines",
+          "aidName": "Container_259",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "hidden_colour",
+              "enableKey": "hidden_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_vp_pb_new_line_2_1",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_hidden_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 39,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "153": 207,
+                  "154": 42,
+                  "164": 23,
+                  "161": 9,
+                  "152": 3
+                },
+                "outsideMenu": {
+                  "1": 6
+                }
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "hidden_linetype",
+              "enableKey": "hidden_linetype_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "gr_vp_pb_solid_1",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_hidden_linetype",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 40,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "2": 139,
+                  "3": 113,
+                  "5": 38
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 38
+        },
+        {
+          "label": "Own hidden lines",
+          "aidName": "ownHiddenLineContainer",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "own_hidden_colour",
+              "enableKey": "own_hidden_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_own_hidden_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 42,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 70,
+                "inMenu": {
+                  "153": 64,
+                  "164": 2,
+                  "152": 1
+                },
+                "outsideMenu": {
+                  "1": 3
+                }
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "own_hidden_linetype",
+              "enableKey": "own_hidden_linetype_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "gr_vp_pb_solid_4",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_own_hidden_linetype",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 43,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 70,
+                "inMenu": {
+                  "2": 64,
+                  "5": 4,
+                  "3": 2
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 41
+        },
+        {
+          "label": "Reference lines",
+          "aidName": null,
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "reference_colour",
+              "enableKey": "reference_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_vp_pb_new_line_2_2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_reference_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 45,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "160": 118,
+                  "154": 95,
+                  "159": 39,
+                  "164": 25,
+                  "152": 6,
+                  "163": 1
+                },
+                "outsideMenu": {
+                  "2": 6
+                }
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "reference_linetype",
+              "enableKey": "reference_linetype_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "gr_vp_pb_solid_2",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_reference_linetype",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 46,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "3": 151,
+                  "4": 137,
+                  "0": 2
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 44
+        },
+        {
+          "label": "Center line",
+          "aidName": null,
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "center_colour",
+              "enableKey": "center_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_vp_pb_new_line_2_3",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_center_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 48,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 70,
+                "inMenu": {
+                  "153": 64,
+                  "164": 2,
+                  "152": 1
+                },
+                "outsideMenu": {
+                  "1": 3
+                }
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "center_linetype",
+              "enableKey": "center_linetype_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "gr_vp_pb_solid_3",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vp_center_linetype",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 49,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 70,
+                "inMenu": {
+                  "4": 70
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 47
+        }
+      ],
+      "position": 50
+    },
+    {
+      "label": "Fill",
+      "aidName": "tabFill",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Part faces",
+          "aidName": "contFillHatchType",
+          "controls": [
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "PartHatch.hatch_name",
+              "enableKey": "PartHatch.hatch_name_en",
+              "type": "hatch",
+              "optionsFilledAtRuntime": true,
+              "aidWidget": "optionmenu",
+              "aidName": "PartHatchType",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 52,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "\"None\"": 278,
+                  "\"0\"": 2
+                }
+              }
+            },
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "PartHatch.hatch_color",
+              "enableKey": "PartHatch.hatch_color_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_invisible",
+                  "value": 152,
+                  "aidName": "optButInvisible",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_black",
+                  "value": 153,
+                  "aidName": "optButBlack",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_red",
+                  "value": 160,
+                  "aidName": "optButRed",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_green",
+                  "value": 161,
+                  "aidName": "optButGreen",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_blue",
+                  "value": 162,
+                  "aidName": "optButBlue",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_cyan",
+                  "value": 163,
+                  "aidName": "optButCyan",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_yellow",
+                  "value": 164,
+                  "aidName": "optButYellow",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_magenta",
+                  "value": 165,
+                  "aidName": "optButMagenta",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_1",
+                  "value": 154,
+                  "aidName": "optButNew_12",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_2",
+                  "value": 155,
+                  "aidName": "optButNew_13",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_3",
+                  "value": 156,
+                  "aidName": "optButNew_14",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_4",
+                  "value": 157,
+                  "aidName": "optButNew_15",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_5",
+                  "value": 158,
+                  "aidName": "optButNew_16",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_6",
+                  "value": 159,
+                  "aidName": "optButNew_17",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray30",
+                  "value": 130,
+                  "aidName": "optButGray30",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray50",
+                  "value": 131,
+                  "aidName": "optButGray50",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray70",
+                  "value": 132,
+                  "aidName": "optButGray70",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray90",
+                  "value": 133,
+                  "aidName": "optButGray90",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "PartHatchColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 53,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "155": 276,
+                  "133": 2
+                },
+                "outsideMenu": {
+                  "0": 2
+                }
+              }
+            },
+            {
+              "label": "Background",
+              "labelSource": "enableCheckBox",
+              "key": "PartHatch.HatchBackgroundColor",
+              "enableKey": "PartHatch.HatchBackgroundColor_enable",
+              "type": "color",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButNone"
+                },
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_invisible",
+                  "value": 152,
+                  "aidName": "optButInvisible_BG",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_black",
+                  "value": 153,
+                  "aidName": "optButBlack_BG",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_red",
+                  "value": 160,
+                  "aidName": "optButRed_BG",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_green",
+                  "value": 161,
+                  "aidName": "optButGreen_BG",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_blue",
+                  "value": 162,
+                  "aidName": "optButBlue_BG",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_cyan",
+                  "value": 163,
+                  "aidName": "optButCyan_BG",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_yellow",
+                  "value": 164,
+                  "aidName": "optButYellow_BG",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_magenta",
+                  "value": 165,
+                  "aidName": "optButMagenta_BG",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_1",
+                  "value": 154,
+                  "aidName": "optButNew_12_BG",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_2",
+                  "value": 155,
+                  "aidName": "optButNew_13_BG",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_3",
+                  "value": 156,
+                  "aidName": "optButNew_14_BG",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_4",
+                  "value": 157,
+                  "aidName": "optButNew_15_BG",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_5",
+                  "value": 158,
+                  "aidName": "optButNew_16_BG",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_6",
+                  "value": 159,
+                  "aidName": "optButNew_17_BG",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray30",
+                  "value": 130,
+                  "aidName": "optButGray30_BG",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray50",
+                  "value": 131,
+                  "aidName": "optButGray50_BG",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray70",
+                  "value": 132,
+                  "aidName": "optButGray70_BG",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray90",
+                  "value": 133,
+                  "aidName": "optButGray90_BG",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "PartHatchBackgroundColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 54,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "0": 280
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Scale",
+              "labelSource": "enableCheckBox",
+              "key": "PartHatch.HatchAutomaticOrCustom",
+              "enableKey": "PartHatch.HatchAutomaticOrCustom_enable",
+              "type": "option",
+              "note": "one item has no VALUEINT; assumed 0 (2 shipped files hold 0, the rest the explicit value)",
+              "options": [
+                {
+                  "label": "Automatic",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "radioButAutomaticHatching_2"
+                },
+                {
+                  "label": "Custom",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "indexInMenu": 1,
+                  "aidName": "radioButCustomHatching_2",
+                  "valueSource": "assumed 0 (no VALUEINT in .aid)"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "PartHatchScale",
+              "aidType": "int",
+              "confidence": "order",
+              "position": 55,
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "1": 278,
+                  "0": 2
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Scaling in direction x",
+              "labelSource": "enableCheckBox",
+              "key": "PartHatch.hatch_scale_x",
+              "enableKey": "PartHatch.hatch_scale_x_en",
+              "type": "number",
+              "format": "%.2f",
+              "aidWidget": "text",
+              "aidName": "PartHatchScale_X",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 56,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "2.000000": 278,
+                  "0.000000": 2
+                }
+              }
+            },
+            {
+              "label": "Scaling in direction y",
+              "labelSource": "enableCheckBox",
+              "key": "PartHatch.hatch_scale_y",
+              "enableKey": "PartHatch.hatch_scale_y_en",
+              "type": "number",
+              "format": "%.2f",
+              "aidWidget": "text",
+              "aidName": "PartHatchScale_Y",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 57,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "1.000000": 278,
+                  "0.000000": 2
+                }
+              }
+            },
+            {
+              "label": "Keep ratio of x and y",
+              "labelSource": "textlabel",
+              "key": "PartHatch.hatch_factor_type",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "PartHatchKeepRatio",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 58,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "1": 278,
+                  "0": 2
+                }
+              }
+            },
+            {
+              "label": "Angle",
+              "labelSource": "enableCheckBox",
+              "key": "PartHatch.hatch_angle",
+              "enableKey": "PartHatch.hatch_angle_en",
+              "type": "number",
+              "format": "%.2f",
+              "aidWidget": "text",
+              "aidName": "PartHatchAngle",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 59,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "0.000000": 280
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 51
+        },
+        {
+          "label": "Sections",
+          "aidName": "contFillHatchType_3",
+          "controls": [
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "SectionHatch.hatch_name",
+              "enableKey": "SectionHatch.hatch_name_en",
+              "type": "hatch",
+              "optionsFilledAtRuntime": true,
+              "aidWidget": "optionmenu",
+              "aidName": "SectionHatchType",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 61,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "\"Automatic\"": 229,
+                  "\"None\"": 45,
+                  "\"hardware_SOLID\"": 4,
+                  "\"\"": 2
+                }
+              }
+            },
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "SectionHatch.hatch_color",
+              "enableKey": "SectionHatch.hatch_color_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_invisible",
+                  "value": 152,
+                  "aidName": "optButInvisible_3",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_black",
+                  "value": 153,
+                  "aidName": "optButBlack_3",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_red",
+                  "value": 160,
+                  "aidName": "optButRed_3",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_green",
+                  "value": 161,
+                  "aidName": "optButGreen_3",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_blue",
+                  "value": 162,
+                  "aidName": "optButBlue_3",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_cyan",
+                  "value": 163,
+                  "aidName": "optButCyan_3",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_yellow",
+                  "value": 164,
+                  "aidName": "optButYellow_3",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_magenta",
+                  "value": 165,
+                  "aidName": "optButMagenta_3",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_1",
+                  "value": 154,
+                  "aidName": "optButNew_18",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_2",
+                  "value": 155,
+                  "aidName": "optButNew_19",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_3",
+                  "value": 156,
+                  "aidName": "optButNew_20",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_4",
+                  "value": 157,
+                  "aidName": "optButNew_21",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_5",
+                  "value": 158,
+                  "aidName": "optButNew_22",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_6",
+                  "value": 159,
+                  "aidName": "optButNew_23",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray30",
+                  "value": 130,
+                  "aidName": "optButGray30_3",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray50",
+                  "value": 131,
+                  "aidName": "optButGray50_3",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray70",
+                  "value": 132,
+                  "aidName": "optButGray70_3",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray90",
+                  "value": 133,
+                  "aidName": "optButGray90_3",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "SectionHatchColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 62,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "155": 267,
+                  "159": 11
+                },
+                "outsideMenu": {
+                  "0": 2
+                }
+              }
+            },
+            {
+              "label": "Background",
+              "labelSource": "enableCheckBox",
+              "key": "SectionHatch.HatchBackgroundColor",
+              "enableKey": "SectionHatch.HatchBackgroundColor_enable",
+              "type": "color",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButNone_2"
+                },
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_invisible",
+                  "value": 152,
+                  "aidName": "optButInvisible_3_BG",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_black",
+                  "value": 153,
+                  "aidName": "optButBlack_3_BG",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_red",
+                  "value": 160,
+                  "aidName": "optButRed_3_BG",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_green",
+                  "value": 161,
+                  "aidName": "optButGreen_3_BG",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_blue",
+                  "value": 162,
+                  "aidName": "optButBlue_3_BG",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_cyan",
+                  "value": 163,
+                  "aidName": "optButCyan_3_BG",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_yellow",
+                  "value": 164,
+                  "aidName": "optButYellow_3_BG",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_magenta",
+                  "value": 165,
+                  "aidName": "optButMagenta_3_BG",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_1",
+                  "value": 154,
+                  "aidName": "optButNew_18_BG",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_2",
+                  "value": 155,
+                  "aidName": "optButNew_19_BG",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_3",
+                  "value": 156,
+                  "aidName": "optButNew_20_BG",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_4",
+                  "value": 157,
+                  "aidName": "optButNew_21_BG",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_5",
+                  "value": 158,
+                  "aidName": "optButNew_22_BG",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_new_6",
+                  "value": 159,
+                  "aidName": "optButNew_23_BG",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray30",
+                  "value": 130,
+                  "aidName": "optButGray30_3_BG",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray50",
+                  "value": 131,
+                  "aidName": "optButGray50_3_BG",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray70",
+                  "value": 132,
+                  "aidName": "optButGray70_3_BG",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "fill_gray90",
+                  "value": 133,
+                  "aidName": "optButGray90_3_BG",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "SectionHatchBackgroundColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 63,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "0": 280
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Scale",
+              "labelSource": "enableCheckBox",
+              "key": "SectionHatch.HatchAutomaticOrCustom",
+              "enableKey": "SectionHatch.HatchAutomaticOrCustom_enable",
+              "type": "option",
+              "note": "one item has no VALUEINT; assumed 0 (2 shipped files hold 0, the rest the explicit value)",
+              "options": [
+                {
+                  "label": "Automatic",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "radioButAutomaticHatching_3"
+                },
+                {
+                  "label": "Custom",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "indexInMenu": 1,
+                  "aidName": "radioButCustomHatching_3",
+                  "valueSource": "assumed 0 (no VALUEINT in .aid)"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "SectionHatchScale",
+              "aidType": "int",
+              "confidence": "order",
+              "position": 64,
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "1": 278,
+                  "0": 2
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Scaling in direction x",
+              "labelSource": "enableCheckBox",
+              "key": "SectionHatch.hatch_scale_x",
+              "enableKey": "SectionHatch.hatch_scale_x_en",
+              "type": "number",
+              "format": "%.2f",
+              "aidWidget": "text",
+              "aidName": "SectionHatchScale_X",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 65,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "2.000000": 278,
+                  "0.000000": 2
+                }
+              }
+            },
+            {
+              "label": "Scaling in direction y",
+              "labelSource": "enableCheckBox",
+              "key": "SectionHatch.hatch_scale_y",
+              "enableKey": "SectionHatch.hatch_scale_y_en",
+              "type": "number",
+              "format": "%.2f",
+              "aidWidget": "text",
+              "aidName": "SectionHatchScale_Y",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 66,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "1.000000": 278,
+                  "0.000000": 2
+                }
+              }
+            },
+            {
+              "label": "Keep ratio of x and y",
+              "labelSource": "textlabel",
+              "key": "SectionHatch.hatch_factor_type",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "SectionHatchKeepRatio",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 67,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "1": 278,
+                  "0": 2
+                }
+              }
+            },
+            {
+              "label": "Angle",
+              "labelSource": "enableCheckBox",
+              "key": "SectionHatch.hatch_angle",
+              "enableKey": "SectionHatch.hatch_angle_en",
+              "type": "number",
+              "format": "%.2f",
+              "aidWidget": "text",
+              "aidName": "SectionHatchAngle",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 68,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "0.000000": 280
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 60
+        }
+      ],
+      "position": 69
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [],
+  "siblingPageControls": [
+    {
+      "label": "Neighbor parts",
+      "labelSource": "enableCheckBox",
+      "key": "np_collect_by",
+      "enableKey": "np_collect_by_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "None",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "gr_vnp_none"
+        },
+        {
+          "label": "Connected parts",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "gr_vnp_connected"
+        },
+        {
+          "label": "Connecting parts",
+          "labelSource": "aid",
+          "value": 2,
+          "aidName": "gr_vnp_connecting"
+        },
+        {
+          "label": "All components",
+          "labelSource": "aid",
+          "value": 3,
+          "aidName": "gr_vnp_all_connections"
+        },
+        {
+          "label": "By extreme",
+          "labelSource": "aid",
+          "value": 4,
+          "aidName": "gr_vnp_extreme"
+        }
+      ],
+      "dialogDefault": 0,
+      "aidWidget": "optionmenu",
+      "aidName": "gr_vnp_collect_by",
+      "aidType": "int",
+      "confidence": "sibling-page",
+      "position": 1,
+      "shownOnPage": "NeighborPartObject",
+      "dialogPath": [
+        "Visibility"
+      ],
+      "samples": {
+        "files": 290,
+        "inMenu": {
+          "0": 175,
+          "1": 115
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Main/Secondary parts",
+      "labelSource": "enableCheckBox",
+      "key": "np_which",
+      "enableKey": "np_which_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "Main parts",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "gr_vnp_main"
+        },
+        {
+          "label": "Secondary parts",
+          "labelSource": "aid",
+          "value": 2,
+          "aidName": "gr_vnp_secondary"
+        },
+        {
+          "label": "Both",
+          "labelSource": "aid",
+          "value": 3,
+          "aidName": "gr_vnp_both"
+        }
+      ],
+      "dialogDefault": 1,
+      "aidWidget": "optionmenu",
+      "aidName": "gr_vnp_which",
+      "aidType": "int",
+      "confidence": "sibling-page",
+      "position": 2,
+      "shownOnPage": "NeighborPartObject",
+      "dialogPath": [
+        "Visibility"
+      ],
+      "samples": {
+        "files": 290,
+        "inMenu": {
+          "1": 2
+        },
+        "outsideMenu": {
+          "0": 288
+        }
+      }
+    },
+    {
+      "label": "Skew parts",
+      "labelSource": "enableCheckBox",
+      "key": "np_use_skew",
+      "enableKey": "np_use_skew_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "No",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "gr_vnp_no"
+        },
+        {
+          "label": "Yes",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "gr_vnp_yes"
+        }
+      ],
+      "dialogDefault": 0,
+      "aidWidget": "optionmenu",
+      "aidName": "gr_vnp_take_skew",
+      "aidType": "int",
+      "confidence": "sibling-page",
+      "position": 3,
+      "shownOnPage": "NeighborPartObject",
+      "dialogPath": [
+        "Visibility"
+      ],
+      "samples": {
+        "files": 290,
+        "inMenu": {
+          "0": 290
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Bolts",
+      "labelSource": "enableCheckBox",
+      "key": "np_use_bolts",
+      "enableKey": "np_use_bolts_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "Yes",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "BoltVisibilityYes"
+        },
+        {
+          "label": "No",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "BoltVisibilityNo"
+        }
+      ],
+      "dialogDefault": 0,
+      "aidWidget": "optionmenu",
+      "aidName": "optBoltVisibility",
+      "aidType": "int",
+      "confidence": "sibling-page",
+      "position": 4,
+      "shownOnPage": "NeighborPartObject",
+      "dialogPath": [
+        "Visibility"
+      ],
+      "samples": {
+        "files": 273,
+        "inMenu": {
+          "0": 273
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Bolt representation",
+      "labelSource": "enableCheckBox",
+      "key": "BoltDrawAs",
+      "enableKey": "BoltDrawAs_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "solid",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "",
+          "apiName": "Solid"
+        },
+        {
+          "label": "exact solid",
+          "labelSource": "aid",
+          "value": 9,
+          "aidName": "",
+          "apiName": "ExactSolid"
+        },
+        {
+          "label": "Symbol",
+          "labelSource": "aid",
+          "value": 2,
+          "aidName": "",
+          "apiName": "Symbol"
+        },
+        {
+          "label": "Symbol2",
+          "labelSource": "aid",
+          "value": 4,
+          "aidName": "",
+          "apiName": "Symbol2"
+        },
+        {
+          "label": "Symbol3",
+          "labelSource": "aid",
+          "value": 5,
+          "aidName": "",
+          "apiName": "Symbol3"
+        },
+        {
+          "label": "DIN symbol",
+          "labelSource": "aid",
+          "value": 7,
+          "aidName": "",
+          "apiName": "DINSymbol"
+        },
+        {
+          "label": "User-defined symbol",
+          "labelSource": "aid",
+          "value": 8,
+          "aidName": "",
+          "apiName": "UserDefined"
+        }
+      ],
+      "aidWidget": "optionmenu",
+      "aidName": "optionmenu_551",
+      "aidType": "int",
+      "confidence": "sibling-page",
+      "position": 34,
+      "shownOnPage": "NeighborPartObject",
+      "dialogPath": [
+        "Content",
+        "Bolts"
+      ],
+      "apiEnum": "Tekla.Structures.Drawing.Bolt.Representation",
+      "samples": {
+        "files": 273,
+        "inMenu": {},
+        "outsideMenu": {
+          "0": 273
+        }
+      }
+    },
+    {
+      "label": "hole",
+      "labelSource": "own",
+      "key": "bolt_hole",
+      "enableKey": "BoltSymbol_en",
+      "enableLabel": "Symbol content",
+      "type": "toggle",
+      "valueOn": 1,
+      "valueOff": 0,
+      "aidWidget": "checkbutton",
+      "aidName": "gr_vnp_bolt_hole",
+      "aidType": "int",
+      "confidence": "sibling-page",
+      "position": 35,
+      "shownOnPage": "NeighborPartObject",
+      "dialogPath": [
+        "Content",
+        "Bolts"
+      ],
+      "samples": {
+        "files": 273,
+        "top": {
+          "0": 273
+        }
+      }
+    },
+    {
+      "label": "axis",
+      "labelSource": "own",
+      "key": "bolt_axis",
+      "enableKey": "BoltSymbol_en",
+      "enableLabel": "Symbol content",
+      "type": "toggle",
+      "valueOn": 1,
+      "valueOff": 0,
+      "aidWidget": "checkbutton",
+      "aidName": "gr_vnp_bolt_axis",
+      "aidType": "int",
+      "confidence": "sibling-page",
+      "position": 36,
+      "shownOnPage": "NeighborPartObject",
+      "dialogPath": [
+        "Content",
+        "Bolts"
+      ],
+      "samples": {
+        "files": 273,
+        "top": {
+          "0": 273
+        }
+      }
+    },
+    {
+      "label": "Color",
+      "labelSource": "enableCheckBox",
+      "key": "bolt_colour",
+      "enableKey": "bolt_colour_en",
+      "type": "color",
+      "options": [
+        {
+          "label": "Invisible",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_invisible_line",
+          "value": 152,
+          "aidName": "",
+          "apiName": "Invisible"
+        },
+        {
+          "label": "Black",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_black_line",
+          "value": 153,
+          "aidName": "",
+          "apiName": "Black"
+        },
+        {
+          "label": "Red",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_red_line",
+          "value": 160,
+          "aidName": "",
+          "apiName": "Red"
+        },
+        {
+          "label": "Green",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_green_line",
+          "value": 161,
+          "aidName": "",
+          "apiName": "Green"
+        },
+        {
+          "label": "Blue",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_blue_line",
+          "value": 162,
+          "aidName": "",
+          "apiName": "Blue"
+        },
+        {
+          "label": "Cyan",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_cyan_line",
+          "value": 163,
+          "aidName": "",
+          "apiName": "Cyan"
+        },
+        {
+          "label": "Yellow",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_yellow_line",
+          "value": 164,
+          "aidName": "",
+          "apiName": "Yellow"
+        },
+        {
+          "label": "Magenta",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_magenta_line",
+          "value": 165,
+          "aidName": "",
+          "apiName": "Magenta"
+        },
+        {
+          "label": "NewLine1",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_1",
+          "value": 154,
+          "aidName": "",
+          "apiName": "NewLine1"
+        },
+        {
+          "label": "NewLine2",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_2",
+          "value": 155,
+          "aidName": "",
+          "apiName": "NewLine2"
+        },
+        {
+          "label": "NewLine3",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_3",
+          "value": 156,
+          "aidName": "",
+          "apiName": "NewLine3"
+        },
+        {
+          "label": "NewLine4",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_4",
+          "value": 157,
+          "aidName": "",
+          "apiName": "NewLine4"
+        },
+        {
+          "label": "NewLine5",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_5",
+          "value": 158,
+          "aidName": "",
+          "apiName": "NewLine5"
+        },
+        {
+          "label": "NewLine6",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_6",
+          "value": 159,
+          "aidName": "",
+          "apiName": "NewLine6"
+        },
+        {
+          "label": "Gray30",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_gray30_line",
+          "value": 130,
+          "aidName": "",
+          "apiName": "Gray30"
+        },
+        {
+          "label": "Gray50",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_gray50_line",
+          "value": 131,
+          "aidName": "",
+          "apiName": "Gray50"
+        },
+        {
+          "label": "Gray70",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_gray70_line",
+          "value": 132,
+          "aidName": "",
+          "apiName": "Gray70"
+        },
+        {
+          "label": "Gray90",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_gray90_line",
+          "value": 133,
+          "aidName": "",
+          "apiName": "Gray90"
+        }
+      ],
+      "aidWidget": "optionmenu",
+      "aidName": "gr_dnp_bolt_colour",
+      "aidType": "int",
+      "confidence": "sibling-page",
+      "position": 57,
+      "shownOnPage": "NeighborPartObject",
+      "dialogPath": [
+        "Appearance",
+        "Bolts"
+      ],
+      "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+      "samples": {
+        "files": 273,
+        "inMenu": {
+          "154": 195
+        },
+        "outsideMenu": {
+          "0": 78
+        }
+      }
+    }
+  ],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "DotNETScriptNames",
+    "CustomPresentation_en",
+    "aCustomPresentation",
+    "PartHatch.hatch_type",
+    "PartHatch.hatch_factor_type_en",
+    "SectionHatch.hatch_type",
+    "SectionHatch.hatch_factor_type_en"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

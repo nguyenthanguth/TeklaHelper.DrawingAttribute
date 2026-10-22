@@ -1,0 +1,2295 @@
+{
+  "page": "ReinforcementObject",
+  "viewPrefix": "vrebar.",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gratViewAttributes",
+  "aidPanel": "PanelReinforcement",
+  "treeCheckBoxKey": {
+    "key": "rebars_en",
+    "in": "top level of the .vi",
+    "confidence": "legacy-dialog",
+    "note": "gratViewAttributes fills its tree (TWOSTATE check boxes) at run time; the key comes from gr_view_attrib, where this check box precedes the button that opens the page dialog"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": "out_file",
+  "saveAsNote": "not in gratViewAttributes; the older dialogs have it as the \"Save as\" text field (text gr_*_saveas_file, MEMBER out_file)",
+  "tabs": [
+    {
+      "label": "Bar content",
+      "aidName": "tabBarContent",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Reinforcing bar representation",
+          "aidName": "container_6339",
+          "controls": [
+            {
+              "label": "Visibility of all reinforcing bars",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.visibility",
+              "enableKey": "BarAttr.visibility_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Visible",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "vrebar_visible"
+                },
+                {
+                  "label": "Not visible",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "vrebar_notvisible"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vrebar_visibility",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 2,
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "0": 237,
+                  "1": 50
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Representation",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.representation",
+              "enableKey": "BarAttr.representation_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "single line",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "vrebar_rep_singleline",
+                  "apiName": "SingleLine"
+                },
+                {
+                  "label": "single line with filled ends",
+                  "labelSource": "aid",
+                  "value": 6,
+                  "aidName": "optButRebarSingleLineFilledEnd",
+                  "apiName": "SingleLineFilledEnds"
+                },
+                {
+                  "label": "double lines",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "vrebar_rep_doublelines",
+                  "apiName": "DoubleLine"
+                },
+                {
+                  "label": "double lines with filled ends",
+                  "labelSource": "aid",
+                  "value": 5,
+                  "aidName": "optButRebarDoubleLinesFilledEnd",
+                  "apiName": "DoubleLineFilledEnds"
+                },
+                {
+                  "label": "filled line",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "vrebar_rep_filledline",
+                  "apiName": "Filled"
+                },
+                {
+                  "label": "stick",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "vrebar_rep_stick",
+                  "apiName": "Stick"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuRebarDrawAs",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 3,
+              "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.ReinforcementRepresentationTypes",
+              "apiEnumOffset": 1,
+              "apiEnumNote": "API value = stored value + 1 (checked on every item)",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "0": 232,
+                  "1": 32,
+                  "5": 14,
+                  "6": 9
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Visibility of reinforcing bars in group",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.visibility_in_groups",
+              "enableKey": "BarAttr.visibility_in_groups_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "all",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "vrebar_group_all",
+                  "apiName": "All"
+                },
+                {
+                  "label": "first bar",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "vrebar_group_first",
+                  "apiName": "First"
+                },
+                {
+                  "label": "last bar",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "vrebar_group_lastbar",
+                  "apiName": "Last"
+                },
+                {
+                  "label": "first and last",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "vrebar_group_firstlast",
+                  "apiName": "FirstAndLast"
+                },
+                {
+                  "label": "bar in the middle of group",
+                  "labelSource": "aid",
+                  "value": 5,
+                  "aidName": "vrebar_group_midbar",
+                  "apiName": "OneInTheMiddle"
+                },
+                {
+                  "label": "two bars in the middle of group",
+                  "labelSource": "aid",
+                  "value": 6,
+                  "aidName": "vrebar_group_two_midbars",
+                  "apiName": "TwoInTheMiddle"
+                },
+                {
+                  "label": "customized",
+                  "labelSource": "aid",
+                  "value": 7,
+                  "aidName": "vrebar_group_customized",
+                  "apiName": "Customized"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vsm_all_views_4",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 4,
+              "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.ReinforcementVisibilityTypes",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "1": 227,
+                  "5": 14,
+                  "4": 8,
+                  "2": 6
+                },
+                "outsideMenu": {
+                  "0": 32
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 1
+        },
+        {
+          "label": "Lines",
+          "aidName": "conBarHiddenLineSettings",
+          "controls": [
+            {
+              "label": "Hide lines behind parts",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.DrawHiddenLinesHiddenByPart",
+              "enableKey": "BarAttr.DrawHiddenLinesHiddenByPart_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "bDrawHiddenLinesHiddenByPart",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 6,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "0": 274,
+                  "1": 6
+                }
+              }
+            },
+            {
+              "label": "Hide lines behind other rebars",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.DrawHiddenLinesHiddenByRebar",
+              "enableKey": "BarAttr.DrawHiddenLinesHiddenByRebar_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "bDrawHiddenLinesHiddenByRebar",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 7,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "0": 265,
+                  "1": 15
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 5
+        },
+        {
+          "label": "Symbols",
+          "aidName": "conBarSymbols",
+          "controls": [
+            {
+              "label": "Symbol at straight end",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.straight_symbol",
+              "enableKey": "BarAttr.straight_symbol_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "gr_rebar_none",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_rebar_none",
+                  "value": 1,
+                  "aidName": "optButRebarHookNone",
+                  "apiName": "NoSymbol"
+                },
+                {
+                  "label": "gr_rebar_ends_up",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_rebar_ends_up",
+                  "value": 2,
+                  "aidName": "optButRebarEndsUp",
+                  "apiName": "HooksOnInnerSide"
+                },
+                {
+                  "label": "gr_rebar_ends_down",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_rebar_ends_down",
+                  "value": 6,
+                  "aidName": "optButRebarEndsDown",
+                  "apiName": "FullHooks"
+                },
+                {
+                  "label": "gr_rebar_ends_down_up",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_rebar_ends_down_up",
+                  "value": 5,
+                  "aidName": "optButRebarEndsDownUp",
+                  "apiName": "HookOnReinforcementStartInnerSide"
+                },
+                {
+                  "label": "gr_rebar_ends_up_down",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_rebar_ends_up_down",
+                  "value": 4,
+                  "aidName": "optButRebarEndsUpDown",
+                  "apiName": "HookOnReinforcementStartOuterSide"
+                },
+                {
+                  "label": "gr_rebar_arrow",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_rebar_arrow",
+                  "value": 3,
+                  "aidName": "optButRebarArrow",
+                  "apiName": "HooksOnOuterSide"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vrebar_straight_symb",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 9,
+              "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.StraightEndSymbolTypes",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "1": 221,
+                  "2": 34
+                },
+                "outsideMenu": {
+                  "0": 32
+                }
+              }
+            },
+            {
+              "label": "Symbol at hooked end",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.hooked_symbol",
+              "enableKey": "BarAttr.hooked_symbol_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "gr_rebar_hook_no_mark",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_rebar_hook_no_mark",
+                  "value": 1,
+                  "aidName": "vrebar_hooked_symb_none",
+                  "apiName": "NoHook"
+                },
+                {
+                  "label": "gr_rebar_hook_one_arrow",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_rebar_hook_one_arrow",
+                  "value": 2,
+                  "aidName": "vrebar_hooked_symb_onearw",
+                  "apiName": "HalfHook"
+                },
+                {
+                  "label": "gr_rebar_hook_arrow",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_rebar_hook_arrow",
+                  "value": 3,
+                  "aidName": "vrebar_hooked_symb_arw",
+                  "apiName": "FullHook"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vrebar_hooked_symb",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 10,
+              "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.HookedEndSymbolTypes",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "1": 216,
+                  "2": 39
+                },
+                "outsideMenu": {
+                  "0": 32
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 8
+        }
+      ],
+      "position": 11
+    },
+    {
+      "label": "Bar appearance",
+      "aidName": "tabBarAppearance",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Visible lines",
+          "aidName": "container_6408",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.line_colour",
+              "enableKey": "BarAttr.line_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_rebar_pb_new_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vrebar_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 13,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "152": 162,
+                  "154": 49,
+                  "163": 27,
+                  "160": 18,
+                  "165": 16,
+                  "159": 12,
+                  "132": 2,
+                  "157": 1
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.line_type",
+              "enableKey": "BarAttr.line_type_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "om_pb_frame_none",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "om_pb_frame_underline",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "om_pb_frame_rectangular",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "om_pb_frame_sharpened",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "om_pb_frame_round",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vrebar_type",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 14,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "0": 179,
+                  "1": 102
+                },
+                "outsideMenu": {
+                  "1006": 6
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 12
+        },
+        {
+          "label": "Hidden lines",
+          "aidName": "conBarHiddenLinePen",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.HiddenLineColour",
+              "enableKey": "BarAttr.HiddenLineColour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_white_1",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_black_1",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_red_1",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_green_1",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_blue_1",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_cyan_1",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_yellow_1",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_magenta_1",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_new",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_new_7",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_new_8",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_new_9",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_new_10",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_new_11",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                },
+                {
+                  "label": null,
+                  "labelSource": "bitmap",
+                  "value": 0,
+                  "aidName": "gr_pb_legacy_undefined"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "barHiddenLineColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 16,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "0": 179,
+                  "152": 91,
+                  "160": 8,
+                  "165": 2
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.HiddenLineType",
+              "enableKey": "BarAttr.HiddenLineType_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "om_pb_frame_none_1",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "om_pb_frame_underline_1",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "om_pb_frame_rectangular_1",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "om_pb_frame_rounded_1",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "om_pb_frame_sharpened_1",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "om_pb_frame_round_1",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "gr_pb_dashed",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "gr_pb_dashed_1",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "barHiddenLineType",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 17,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "0": 241,
+                  "1": 32,
+                  "3": 4,
+                  "2": 3
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 15
+        }
+      ],
+      "position": 18
+    },
+    {
+      "label": "Mesh content",
+      "aidName": "tabMeshContent",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Reinforcing bar representation",
+          "aidName": "container_6645",
+          "controls": [
+            {
+              "label": "Visibility of all meshes",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.visibility",
+              "enableKey": "MeshAttr.visibility_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Visible",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "vmesh_visible"
+                },
+                {
+                  "label": "Not visible",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optionbutton_3718"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vmesh_visibility",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 20,
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "0": 230,
+                  "1": 57
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Representation",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.representation",
+              "enableKey": "MeshAttr.representation_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "single line",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optionbutton_3722",
+                  "apiName": "SingleLine"
+                },
+                {
+                  "label": "single line with filled ends",
+                  "labelSource": "aid",
+                  "value": 6,
+                  "aidName": "optButMeshSingleLineFilledEnd",
+                  "apiName": "SingleLineFilledEnds"
+                },
+                {
+                  "label": "double lines",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optionbutton_3723",
+                  "apiName": "DoubleLine"
+                },
+                {
+                  "label": "double lines with filled ends",
+                  "labelSource": "aid",
+                  "value": 5,
+                  "aidName": "optButMeshDoubleLinesFilledEnd",
+                  "apiName": "DoubleLineFilledEnds"
+                },
+                {
+                  "label": "filled line",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optionbutton_3724",
+                  "apiName": "Filled"
+                },
+                {
+                  "label": "stick",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "optionbutton_3725",
+                  "apiName": "Stick"
+                },
+                {
+                  "label": "outline",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "",
+                  "apiName": "OutLine"
+                },
+                {
+                  "label": "outline (ignore holes)",
+                  "labelSource": "aid",
+                  "value": 7,
+                  "aidName": "optButMeshOutlineIgnoreHoles",
+                  "apiName": "OutlineIgnoreHoles"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_rebar_mesh_draw_as",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 21,
+              "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.ReinforcementRepresentationTypes",
+              "apiEnumOffset": 1,
+              "apiEnumNote": "API value = stored value + 1 (checked on every item)",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "0": 225,
+                  "4": 59,
+                  "1": 3
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Visibility of longitudinal wires",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.visibility_longitudinal",
+              "enableKey": "MeshAttr.visibility_longitudinal_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "all",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "vmesh_long_all",
+                  "apiName": "All"
+                },
+                {
+                  "label": "first bar",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optionbutton_3730",
+                  "apiName": "First"
+                },
+                {
+                  "label": "last bar",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "optionbutton_3731",
+                  "apiName": "Last"
+                },
+                {
+                  "label": "first and last",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "optionbutton_3732",
+                  "apiName": "FirstAndLast"
+                },
+                {
+                  "label": "bar in the middle of group",
+                  "labelSource": "aid",
+                  "value": 5,
+                  "aidName": "optionbutton_3733",
+                  "apiName": "OneInTheMiddle"
+                },
+                {
+                  "label": "two bars in the middle of group",
+                  "labelSource": "aid",
+                  "value": 6,
+                  "aidName": "optionbutton_3734",
+                  "apiName": "TwoInTheMiddle"
+                },
+                {
+                  "label": "customized",
+                  "labelSource": "aid",
+                  "value": 7,
+                  "aidName": "optionbutton_3735",
+                  "apiName": "Customized"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_mesh_longitudinal",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 22,
+              "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.ReinforcementVisibilityTypes",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "1": 255
+                },
+                "outsideMenu": {
+                  "0": 32
+                }
+              }
+            },
+            {
+              "label": "Visibility of crossing bars",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.visibility_crossing",
+              "enableKey": "MeshAttr.visibility_crossing_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "all",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "vmesh_cross_all",
+                  "apiName": "All"
+                },
+                {
+                  "label": "first bar",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optionbutton_3742",
+                  "apiName": "First"
+                },
+                {
+                  "label": "last bar",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "optionbutton_3743",
+                  "apiName": "Last"
+                },
+                {
+                  "label": "first and last",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "optionbutton_3744",
+                  "apiName": "FirstAndLast"
+                },
+                {
+                  "label": "bar in the middle of group",
+                  "labelSource": "aid",
+                  "value": 5,
+                  "aidName": "optionbutton_3745",
+                  "apiName": "OneInTheMiddle"
+                },
+                {
+                  "label": "two bars in the middle of group",
+                  "labelSource": "aid",
+                  "value": 6,
+                  "aidName": "optionbutton_3746",
+                  "apiName": "TwoInTheMiddle"
+                },
+                {
+                  "label": "customized",
+                  "labelSource": "aid",
+                  "value": 7,
+                  "aidName": "optionbutton_3747",
+                  "apiName": "Customized"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_mesh_crossing",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 23,
+              "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.ReinforcementVisibilityTypes",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "1": 255
+                },
+                "outsideMenu": {
+                  "0": 32
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 19
+        },
+        {
+          "label": "Lines",
+          "aidName": "conMeshHiddenLineSettings",
+          "controls": [
+            {
+              "label": "Hide lines behind parts",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.DrawHiddenLinesHiddenByPart",
+              "enableKey": "MeshAttr.DrawHiddenLinesHiddenByPart_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "mDrawHiddenLinesHiddenByPart",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 25,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "0": 280
+                }
+              }
+            },
+            {
+              "label": "Hide lines behind other rebars",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.DrawHiddenLinesHiddenByRebar",
+              "enableKey": "MeshAttr.DrawHiddenLinesHiddenByRebar_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "mDrawHiddenLinesHiddenByRebar",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 26,
+              "samples": {
+                "files": 280,
+                "top": {
+                  "0": 280
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 24
+        },
+        {
+          "label": "Symbols",
+          "aidName": "conMeshSymbols",
+          "controls": [
+            {
+              "label": "Mesh symbol",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.symbol_number",
+              "enableKey": "MeshAttr.symbol_number_en",
+              "type": "number",
+              "aidWidget": "text",
+              "aidName": "gr_mesh_symbol_num",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 28,
+              "samples": {
+                "files": 287,
+                "top": {
+                  "0": 238,
+                  "1": 49
+                }
+              }
+            },
+            {
+              "label": "Mesh symbol size",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.symbol_size",
+              "enableKey": "MeshAttr.symbol_size_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_mesh_symbol_size",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 29,
+              "samples": {
+                "files": 287,
+                "top": {
+                  "0.000000": 238,
+                  "1.000000": 49
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 27
+        }
+      ],
+      "position": 30
+    },
+    {
+      "label": "Mesh appearance",
+      "aidName": "tabMeshAppearance",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Visible lines",
+          "aidName": "container_6412",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.line_colour",
+              "enableKey": "MeshAttr.line_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "optionbutton_3771",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "optionbutton_3770",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "optionbutton_3772",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "optionbutton_3773",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "optionbutton_3774",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "optionbutton_3775",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "optionbutton_3776",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "optionbutton_3777",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "optionbutton_78021",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "optionbutton_78020",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "optionbutton_78019",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "optionbutton_78018",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "optionbutton_78017",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "optionbutton_78016",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optionmenu_3769",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 32,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "152": 152,
+                  "165": 88,
+                  "154": 16,
+                  "155": 13,
+                  "160": 8,
+                  "163": 6,
+                  "161": 3,
+                  "132": 1
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.line_type",
+              "enableKey": "MeshAttr.line_type_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "optionbutton_3781",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "optionbutton_3782",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "optionbutton_3783",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "optionbutton_3784",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "optionbutton_3785",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "optionbutton_3786",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "gr_pb_dashed3_1",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "gr_pb_dashed4_1",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vmesh_type",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 33,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "0": 169,
+                  "1": 118
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 31
+        },
+        {
+          "label": "Hidden lines",
+          "aidName": "conMeshHiddenLinePen",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.HiddenLineColour",
+              "enableKey": "MeshAttr.HiddenLineColour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_white_2",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_black_2",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_red_2",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_green_2",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_blue_2",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_cyan_2",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_yellow_2",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_magenta_2",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_new_12",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_new_13",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_new_14",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_new_15",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_new_16",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_new_17",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                },
+                {
+                  "label": null,
+                  "labelSource": "bitmap",
+                  "value": 0,
+                  "aidName": "gr_pb_legacy_undefined_2"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "meshHiddenLineColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 35,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "0": 179,
+                  "152": 98,
+                  "160": 3
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.HiddenLineType",
+              "enableKey": "MeshAttr.HiddenLineType_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "om_pb_frame_none_2",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "om_pb_frame_underline_2",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "om_pb_frame_rectangular_2",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "om_pb_frame_rounded_2",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "om_pb_frame_sharpened_2",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "om_pb_frame_round_2",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "gr_pb_dashed_2",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "gr_pb_dashed_3",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "meshHiddenLineType",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 36,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "0": 246,
+                  "1": 30,
+                  "2": 3,
+                  "3": 1
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 34
+        }
+      ],
+      "position": 37
+    },
+    {
+      "label": "Rebar assembly",
+      "aidName": "tabRebarAssembly",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Reinforcing bar representation",
+          "aidName": "conRebarAssembly2",
+          "controls": [
+            {
+              "label": "Visibility of rebar assemblies",
+              "labelSource": "enableCheckBox",
+              "key": "AssAttr.Visibility",
+              "enableKey": "AssAttr.Visibility_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Visible",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optVisible"
+                },
+                {
+                  "label": "Not visible",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optNotVisible"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optRebarAssemblyVisibility",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 39,
+              "samples": {
+                "files": 135,
+                "inMenu": {
+                  "0": 135
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Representation",
+              "labelSource": "enableCheckBox",
+              "key": "AssAttr.Representation",
+              "enableKey": "AssAttr.Representation_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "As individual rebar objects",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optIndividual"
+                },
+                {
+                  "label": "Outline",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optOutline"
+                },
+                {
+                  "label": "Sub-assemblies as outline, highest level as individual rebar objects",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optOutlineForSubAssemblies"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optRebarAssemblyRepresentation",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 40,
+              "samples": {
+                "files": 135,
+                "inMenu": {
+                  "2": 74,
+                  "0": 61
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 38
+        },
+        {
+          "label": "Visible lines",
+          "aidName": "conRebarAssembly5",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "AssAttr.LineColor",
+              "enableKey": "AssAttr.LineColor_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "optRebarAssemblyDefaultLineColor",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optRebarAssemblyLineColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 42,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 135,
+                "inMenu": {
+                  "165": 128
+                },
+                "outsideMenu": {
+                  "0": 7
+                }
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "AssAttr.LineType",
+              "enableKey": "AssAttr.LineType_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Undefined",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_empty",
+                  "value": 0,
+                  "aidName": "",
+                  "apiName": "UndefinedLine"
+                },
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "optRebarAssemblyDefaultLineType",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "optRebarAssemblyLineType",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 43,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 135,
+                "inMenu": {
+                  "1": 74,
+                  "0": 61
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 41
+        },
+        {
+          "label": "Symbols",
+          "aidName": "conRebarAssembly8",
+          "controls": [
+            {
+              "label": "Mesh symbol",
+              "labelSource": "enableCheckBox",
+              "key": "AssAttr.SymbolNumber",
+              "enableKey": "AssAttr.SymbolNumber_en",
+              "type": "number",
+              "aidWidget": "text",
+              "aidName": "txtRebarAssemblySymbolNumber",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 45,
+              "samples": {
+                "files": 126,
+                "top": {
+                  "0": 126
+                }
+              }
+            },
+            {
+              "label": "Mesh symbol size",
+              "labelSource": "enableCheckBox",
+              "key": "AssAttr.SymbolSize",
+              "enableKey": "AssAttr.SymbolSize_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtRebarAssemblySymbolSize",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 46,
+              "samples": {
+                "files": 126,
+                "top": {
+                  "0.000000": 126
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 44
+        }
+      ],
+      "position": 47
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "BarAttr.in_file",
+    "BarAttr.out_file",
+    "BarAttr.CustomPresentation_en",
+    "BarAttr.aCustomPresentation",
+    "MeshAttr.in_file",
+    "MeshAttr.out_file",
+    "MeshAttr.CustomPresentation_en",
+    "MeshAttr.aCustomPresentation"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

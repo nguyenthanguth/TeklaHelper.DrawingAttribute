@@ -1,0 +1,1454 @@
+{
+  "page": "WeldMark",
+  "viewPrefix": "vwel.",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gratViewAttributes",
+  "aidPanel": "PanelWeldMark",
+  "treeCheckBoxKey": {
+    "key": "weld_en",
+    "in": "top level of the .vi",
+    "confidence": "legacy-dialog",
+    "note": "gratViewAttributes fills its tree (TWOSTATE check boxes) at run time; the key comes from gr_view_attrib, where this check box precedes the button that opens the page dialog"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": "out_file",
+  "saveAsNote": "not in gratViewAttributes; the older dialogs have it as the \"Save as\" text field (text gr_*_saveas_file, MEMBER out_file)",
+  "tabs": [
+    {
+      "label": "Content",
+      "aidName": null,
+      "controls": [
+        {
+          "label": "Weld number",
+          "labelSource": "enableCheckBox",
+          "key": "number",
+          "enableKey": "number_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "No",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "gr_vweld_number_no"
+            },
+            {
+              "label": "Yes",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": ""
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "gr_vweld_number",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 1,
+          "samples": {
+            "files": 290,
+            "inMenu": {
+              "0": 275,
+              "1": 15
+            },
+            "outsideMenu": {}
+          }
+        }
+      ],
+      "groups": [
+        {
+          "label": "Visibility",
+          "aidName": "gr_vwel_ContainerVisibility",
+          "controls": [
+            {
+              "label": "Welds",
+              "labelSource": "enableCheckBox",
+              "key": "create",
+              "enableKey": "create_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "gr_vwel_weld_none"
+                },
+                {
+                  "label": "Site",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": ""
+                },
+                {
+                  "label": "Workshop",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": ""
+                },
+                {
+                  "label": "Both",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": ""
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vwel_create",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 3,
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "0": 233,
+                  "2": 28,
+                  "3": 19,
+                  "1": 10
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Welds in sub-assemblies",
+              "labelSource": "enableCheckBox",
+              "key": "Subassembly",
+              "enableKey": "Subassembly_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "gr_vwel_optSubassembly_none"
+                },
+                {
+                  "label": "Site",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": ""
+                },
+                {
+                  "label": "Workshop",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": ""
+                },
+                {
+                  "label": "Both",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": ""
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vwel_chkButSubassembly",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 4,
+              "samples": {
+                "files": 282,
+                "inMenu": {
+                  "0": 280,
+                  "2": 2
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Welds in hidden parts",
+              "labelSource": "enableCheckBox",
+              "key": "InHiddenParts",
+              "enableKey": "InHiddenParts_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optInHiddenParts_none"
+                },
+                {
+                  "label": "Site",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optInHiddenParts_site"
+                },
+                {
+                  "label": "Workshop",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optInHiddenParts_wshop"
+                },
+                {
+                  "label": "Both",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "optInHiddenParts_both"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuInHiddenParts",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 5,
+              "samples": {
+                "files": 177,
+                "inMenu": {
+                  "3": 149,
+                  "2": 26,
+                  "0": 2
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Weld size limit",
+              "labelSource": "enableCheckBox",
+              "key": "min_filter",
+              "enableKey": "min_filter_en",
+              "type": "number",
+              "format": "%6.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_vwel_default_size",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 6,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "6.000000": 81,
+                  "0.000000": 81,
+                  "6.500000": 55,
+                  "1.000000": 39,
+                  "4.000000": 34
+                }
+              }
+            }
+          ],
+          "groups": [
+            {
+              "label": "Above line",
+              "aidName": "gr_vwel_contAboveLine",
+              "controls": [
+                {
+                  "label": "Prefix",
+                  "labelSource": "enableCheckBox",
+                  "key": "PrefixAboveLine",
+                  "enableKey": "PrefixAboveLine_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutPrefixAboveLine",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 8,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Size",
+                  "labelSource": "enableCheckBox",
+                  "key": "SizeAbove",
+                  "enableKey": "SizeAbove_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutSizeAbove",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 9,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Type",
+                  "labelSource": "enableCheckBox",
+                  "key": "TypeAbove",
+                  "enableKey": "TypeAbove_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutTypeAbove",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 10,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Angle",
+                  "labelSource": "enableCheckBox",
+                  "key": "AngleAbove",
+                  "enableKey": "AngleAbove_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutAngleAbove",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 11,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Contour",
+                  "labelSource": "enableCheckBox",
+                  "key": "ContourAbove",
+                  "enableKey": "ContourAbove_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutContourAbove",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 12,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Finish",
+                  "labelSource": "enableCheckBox",
+                  "key": "FinishAbove",
+                  "enableKey": "FinishAbove_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutFinishAbove",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 13,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Length",
+                  "labelSource": "enableCheckBox",
+                  "key": "LengthAbove",
+                  "enableKey": "LengthAbove_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutLengthAbove",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 14,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Pitch",
+                  "labelSource": "enableCheckBox",
+                  "key": "PitchAbove",
+                  "enableKey": "PitchAbove_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutPitchAbove",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 15,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Effective throat",
+                  "labelSource": "enableCheckBox",
+                  "key": "EffectiveThroatAbove",
+                  "enableKey": "EffectiveThroatAbove_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutEffectiveThroatAbove",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 16,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Root opening",
+                  "labelSource": "enableCheckBox",
+                  "key": "RootOpeningAbove",
+                  "enableKey": "RootOpeningAbove_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutRootOpeningAbove",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 17,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 7
+            },
+            {
+              "label": "Below line",
+              "aidName": "gr_vwel_contBelowLine",
+              "controls": [
+                {
+                  "label": "Prefix",
+                  "labelSource": "enableCheckBox",
+                  "key": "PrefixBelowLine",
+                  "enableKey": "PrefixBelowLine_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutPrefixBelowLine",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 19,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Size",
+                  "labelSource": "enableCheckBox",
+                  "key": "SizeBelow",
+                  "enableKey": "SizeBelow_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutSizeBelow",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 20,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Type",
+                  "labelSource": "enableCheckBox",
+                  "key": "TypeBelow",
+                  "enableKey": "TypeBelow_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutTypeBelow",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 21,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Angle",
+                  "labelSource": "enableCheckBox",
+                  "key": "AngleBelow",
+                  "enableKey": "AngleBelow_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutAngleBelow",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 22,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Contour",
+                  "labelSource": "enableCheckBox",
+                  "key": "ContourBelow",
+                  "enableKey": "ContourBelow_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutContourBelow",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 23,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Finish",
+                  "labelSource": "enableCheckBox",
+                  "key": "FinishBelow",
+                  "enableKey": "FinishBelow_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutFinishBelow",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 24,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Length",
+                  "labelSource": "enableCheckBox",
+                  "key": "LengthBelow",
+                  "enableKey": "LengthBelow_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutLengthBelow",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 25,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Pitch",
+                  "labelSource": "enableCheckBox",
+                  "key": "PitchBelow",
+                  "enableKey": "PitchBelow_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutPitchBelow",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 26,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Effective throat",
+                  "labelSource": "enableCheckBox",
+                  "key": "EffectiveThroatBelow",
+                  "enableKey": "EffectiveThroatBelow_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutEffectiveThroatBelow",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 27,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Root opening",
+                  "labelSource": "enableCheckBox",
+                  "key": "RootOpeningBelow",
+                  "enableKey": "RootOpeningBelow_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutRootOpeningBelow",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 28,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 18
+            },
+            {
+              "label": "Other",
+              "aidName": null,
+              "controls": [
+                {
+                  "label": "Reference text",
+                  "labelSource": "enableCheckBox",
+                  "key": "Weld",
+                  "enableKey": "Weld_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutWeld",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 30,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Edge/Around",
+                  "labelSource": "enableCheckBox",
+                  "key": "EdgeAround",
+                  "enableKey": "EdgeAround_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutEdgeAround",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 31,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                },
+                {
+                  "label": "Workshop/Site",
+                  "labelSource": "enableCheckBox",
+                  "key": "WorkshopSite",
+                  "enableKey": "WorkshopSite_en",
+                  "type": "toggle",
+                  "valueOn": 1,
+                  "valueOff": 0,
+                  "aidWidget": "checkbutton",
+                  "aidName": "gr_vwel_chkbutWorkshopSite",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 32,
+                  "samples": {
+                    "files": 273,
+                    "top": {
+                      "1": 273
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 29
+            }
+          ],
+          "position": 2
+        },
+        {
+          "label": "Placing",
+          "aidName": null,
+          "controls": [
+            {
+              "label": "Place...",
+              "type": "button",
+              "aidName": "gr_vwel_place",
+              "callback": "grShowWeldMarkPlacingDialogCB",
+              "callbackParameter": "gr_wldpl_attrib",
+              "position": 34,
+              "opensDialog": "gr_wldpl_attrib"
+            }
+          ],
+          "groups": [],
+          "position": 33
+        }
+      ],
+      "position": 35
+    },
+    {
+      "label": "Appearance",
+      "aidName": null,
+      "controls": [],
+      "groups": [
+        {
+          "label": "Text",
+          "aidName": null,
+          "groupSource": "heading-textlabel+separator",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "text_colour",
+              "enableKey": "text_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_vwel_pwhite",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_vwel_pb_black",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_vwel_pb_red",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_vwel_pb_green",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_vwel_pb_blue",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_vwel_pb_cyan",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_vwel_pb_yellow",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_vwel_pb_magenta",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_vwel_pb_new_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_vwel_pb_new_2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_vwel_pb_new_3",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_vwel_pb_new_4",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_vwel_pb_new_5",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_vwel_pb_new_6",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vwel_text_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 37,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "164": 106,
+                  "161": 65,
+                  "158": 61,
+                  "160": 19,
+                  "153": 15,
+                  "155": 12,
+                  "165": 4,
+                  "163": 1,
+                  "154": 1
+                },
+                "outsideMenu": {
+                  "6": 6
+                }
+              }
+            },
+            {
+              "label": "Height",
+              "labelSource": "enableCheckBox",
+              "key": "text_height",
+              "enableKey": "text_height_en",
+              "type": "number",
+              "format": "%6.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_vwel_text_height",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 38,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "2.000000": 141,
+                  "2.500000": 93,
+                  "3.000000": 46,
+                  "3.500000": 10
+                }
+              }
+            },
+            {
+              "label": "Font",
+              "labelSource": "enableCheckBox",
+              "key": "FontName",
+              "enableKey": "FontName_en",
+              "type": "font",
+              "maxLength": 43,
+              "aidWidget": "text",
+              "aidName": "gr_vwel_font_name",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 39,
+              "samples": {
+                "files": 287,
+                "top": {
+                  "\"Arial\"": 76,
+                  "\"romsim\"": 74,
+                  "\"lr SVbN\"": 63,
+                  "\"Arial Narrow\"": 39,
+                  "\"Comic Sans MS\"": 35
+                }
+              }
+            },
+            {
+              "label": "Select...",
+              "type": "button",
+              "aidName": "gr_vwel_button_font_name",
+              "callback": "dia_select_font_cb",
+              "callbackParameter": "gr_vwel_font_name",
+              "position": 40
+            }
+          ],
+          "groups": [],
+          "position": 36
+        },
+        {
+          "label": "Line",
+          "aidName": null,
+          "groupSource": "heading-textlabel+separator",
+          "controls": [
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "line_shape",
+              "enableKey": "line_shape_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "weld_single_line",
+                  "labelSource": "bitmap",
+                  "bitmap": "weld_single_line",
+                  "value": 0,
+                  "aidName": "gr_vwel_weld_single_line"
+                },
+                {
+                  "label": "weld_double_line",
+                  "labelSource": "bitmap",
+                  "bitmap": "weld_double_line",
+                  "value": 1,
+                  "aidName": "gr_vwel_weld_double_line"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vwel_line_shape",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 42,
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "0": 290
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "line_colour",
+              "enableKey": "line_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_vwel_pb_white_line",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_vwel_pb_black_line",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_vwel_pb_red_line",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_vwel_pb_green_line",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_vwel_pb_blue_line",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_vwel_pb_cyan_line",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_vwel_pb_yellow_line",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_vwel_pb_magenta_line",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_vwel_pb_new_line_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_vwel_pb_new_line_2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_vwel_pb_new_line_3",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_vwel_pb_new_line_4",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_vwel_pb_new_line_5",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_vwel_pb_new_line_6",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vwel_line_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 43,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "153": 214,
+                  "161": 33,
+                  "160": 19,
+                  "155": 12,
+                  "159": 4,
+                  "163": 1,
+                  "154": 1
+                },
+                "outsideMenu": {
+                  "1": 6
+                }
+              }
+            },
+            {
+              "label": "Background mask",
+              "labelSource": "enableCheckBox",
+              "key": "background_mask",
+              "enableKey": "background_mask_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Opaque",
+                  "labelSource": "aid",
+                  "value": 150,
+                  "aidName": "Optionbutton_Opaque_w"
+                },
+                {
+                  "label": "Transparent",
+                  "labelSource": "aid",
+                  "value": -1,
+                  "aidName": "Optionbutton_Transparent_w"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vwel_background_mask",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 44,
+              "samples": {
+                "files": 180,
+                "inMenu": {
+                  "150": 180
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 41
+        }
+      ],
+      "position": 45
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [
+    {
+      "dialog": "gr_wldpl_attrib",
+      "openedBy": "Place...",
+      "keyPrefix": "weldpl.",
+      "tabs": [],
+      "groups": [
+        {
+          "label": "Quarter",
+          "aidName": "Container_1112",
+          "controls": [
+            {
+              "label": "Quarter 4",
+              "labelSource": "group+key",
+              "key": "weldpl.quarter_4",
+              "enableKey": "weldpl.weld_quarter_en",
+              "type": "toggle",
+              "valueOn": 8,
+              "valueOff": 0,
+              "dialogDefault": 8,
+              "aidWidget": "checkbutton",
+              "aidName": "wld_quart_4",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 5,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 290,
+                "top": {
+                  "8": 263,
+                  "0": 27
+                }
+              }
+            },
+            {
+              "label": "Quarter 1",
+              "labelSource": "group+key",
+              "key": "weldpl.quarter_1",
+              "enableKey": "weldpl.weld_quarter_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 1,
+              "aidWidget": "checkbutton",
+              "aidName": "wld_quart_1",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 6,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 290,
+                "top": {
+                  "1": 263,
+                  "0": 27
+                }
+              }
+            },
+            {
+              "label": "Quarter 3",
+              "labelSource": "group+key",
+              "key": "weldpl.quarter_3",
+              "enableKey": "weldpl.weld_quarter_en",
+              "type": "toggle",
+              "valueOn": 4,
+              "valueOff": 0,
+              "dialogDefault": 4,
+              "aidWidget": "checkbutton",
+              "aidName": "wld_quart_3",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 7,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 290,
+                "top": {
+                  "4": 263,
+                  "0": 27
+                }
+              }
+            },
+            {
+              "label": "Quarter 2",
+              "labelSource": "group+key",
+              "key": "weldpl.quarter_2",
+              "enableKey": "weldpl.weld_quarter_en",
+              "type": "toggle",
+              "valueOn": 2,
+              "valueOff": 0,
+              "dialogDefault": 2,
+              "aidWidget": "checkbutton",
+              "aidName": "wld_quart_2",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 8,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 290,
+                "top": {
+                  "2": 263,
+                  "0": 27
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 4
+        }
+      ],
+      "controls": [
+        {
+          "label": "Placing",
+          "labelSource": "enableCheckBox",
+          "key": "weldpl.weld_placing_mode",
+          "enableKey": "weldpl.weld_place_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "free",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "wld_free"
+            },
+            {
+              "label": "fixed",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "wld_fixed"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "wld_placing_mode",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 1,
+          "samples": {
+            "files": 290,
+            "inMenu": {
+              "0": 290
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Search margin",
+          "labelSource": "enableCheckBox",
+          "key": "weldpl.weld_freepl_margin",
+          "enableKey": "weldpl.weld_freepl_margin_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "wld_freepl_margin",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 2,
+          "samples": {
+            "files": 290,
+            "top": {
+              "2.000000": 155,
+              "3.000000": 56,
+              "5.000000": 34,
+              "1.000000": 32,
+              "10.000000": 13
+            }
+          }
+        },
+        {
+          "label": "Minimum distance",
+          "labelSource": "enableCheckBox",
+          "key": "weldpl.weld_freepl_min",
+          "enableKey": "weldpl.weld_freepl_min_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "wld_freepl_min",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 3,
+          "samples": {
+            "files": 290,
+            "top": {
+              "5.000000": 209,
+              "10.000000": 36,
+              "2.000000": 32,
+              "1.000000": 13
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "visible_in_views",
+    "in_all_views",
+    "arrow_type",
+    "arrow_height",
+    "arrow_width",
+    "aCustomPresentation",
+    "visible_in_views_en",
+    "in_all_views_en",
+    "arrow_type_en",
+    "arrow_height_en",
+    "arrow_width_en",
+    "CustomPresentation_en",
+    "weldpl.WeldFreeplaceMaxSearchDistance",
+    "weldpl.WeldFreeplaceMaxSearchDistance_en"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

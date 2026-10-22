@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Generates the page classes of the library (src/TeklaHelper.DrawingAttribute/Pages/Generated) from the decoded Tekla
+    dialog definitions in Dialogs/*.json and real attribute files. Not part of the solution, because it needs the sample
+    files saved from Tekla. The command line is in CLAUDE.md.
+
+    It compiles only the file format classes of the library, not the library itself: the library contains the generated
+    pages, so it may not build until they are generated again.
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\src\TeklaHelper.DrawingAttribute\AttributeCollection.cs" Link="Library\AttributeCollection.cs" />
+    <Compile Include="..\..\src\TeklaHelper.DrawingAttribute\AttributeFileFormat.cs" Link="Library\AttributeFileFormat.cs" />
+    <Compile Include="..\..\src\TeklaHelper.DrawingAttribute\AttributeValue.cs" Link="Library\AttributeValue.cs" />
+    <Compile Include="..\..\src\TeklaHelper.DrawingAttribute\TextEncodings.cs" Link="Library\TextEncodings.cs" />
+  </ItemGroup>
+
+</Project>

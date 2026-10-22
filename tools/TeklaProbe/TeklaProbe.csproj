@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Finds which attribute-file key drives which property of the drawing objects in a view, in a running Tekla
+    Structures 2025 with a drawing open. Not part of the solution, because it needs Tekla. Usage is in CLAUDE.md.
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TeklaBinDirectory)' == '' And '$(OS)' == 'Windows_NT'">
+    <TeklaMainDirectory>$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Trimble\Tekla Structures\2025.0\setup', 'MainDir', null, RegistryView.Registry64))</TeklaMainDirectory>
+    <TeklaBinDirectory Condition="'$(TeklaMainDirectory)' != ''">$([System.IO.Path]::Combine($(TeklaMainDirectory), '2025.0', 'bin'))</TeklaBinDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Tekla.Structures"><HintPath>$(TeklaBinDirectory)\Tekla.Structures.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Tekla.Structures.Drawing"><HintPath>$(TeklaBinDirectory)\Tekla.Structures.Drawing.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Tekla.Structures.Datatype"><HintPath>$(TeklaBinDirectory)\Tekla.Structures.Datatype.dll</HintPath><Private>false</Private></Reference>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>TeklaBinDirectory</_Parameter1>
+      <_Parameter2>$(TeklaBinDirectory)</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TeklaHelper.DrawingAttribute\TeklaHelper.DrawingAttribute.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Examples of TeklaHelper.DrawingAttribute. A console application with a menu of numbered examples:
+    the offline ones write attribute files and need nothing else, the online ones talk to a running Tekla Structures
+    2025 (a model open, and for some a drawing open).
+
+    The Tekla Open API comes from the official NuGet packages for compiling only (ExcludeAssets=runtime): at run time
+    TeklaHelper.AssemblyResolver loads the DLLs of the Tekla Structures installed on the machine, so no Tekla DLL is
+    copied next to the executable. Tekla Structures 2025 needs an x64 .NET Framework 4.8 application.
+  -->
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>TeklaHelper.DrawingAttribute.Samples</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="TeklaHelper.AssemblyResolver" Version="1.1.0" />
+    <PackageReference Include="Tekla.Structures.Drawing" Version="2025.0.0">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="Tekla.Structures.Model" Version="2025.0.0">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\TeklaHelper.DrawingAttribute\TeklaHelper.DrawingAttribute.csproj" />
+  </ItemGroup>
+
+</Project>

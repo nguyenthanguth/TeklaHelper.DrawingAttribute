@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>TeklaHelper.DrawingAttribute</RootNamespace>
+    <AssemblyName>TeklaHelper.DrawingAttribute</AssemblyName>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>TeklaHelper.DrawingAttribute</PackageId>
+    <Version>0.1.0</Version>
+    <Description>Object-oriented model of Tekla Structures drawing attribute files (.gd, .gd.more, .vi, .vi.more, ...). Build drawing and view settings in C# and save them as attribute files that GADrawing, View and other Tekla Open API objects can load by name.</Description>
+    <PackageTags>tekla;tekla-structures;open-api;drawing;attributes</PackageTags>
+    <Authors>nguyenthanguth</Authors>
+    <Copyright>Copyright (c) 2026 nguyenthanguth</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/nguyenthanguth/TeklaHelper.DrawingAttribute</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/nguyenthanguth/TeklaHelper.DrawingAttribute.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Attribute files are written in the ANSI code page named on their "encoding" line (1252, 932, 949, ...) -->
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="TeklaHelper.DrawingAttribute.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" Link="README.md" />
+  </ItemGroup>
+
+</Project>

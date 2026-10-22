@@ -1,0 +1,58 @@
+{
+  "page": "ViewDimensioning",
+  "viewPrefix": "ViewDimensioning.",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gratViewAttributes",
+  "aidPanel": "PanelDimensioning",
+  "treeCheckBoxKey": {
+    "key": "ViewDimensioning_en",
+    "in": "top level of the .vi",
+    "confidence": "legacy-dialog",
+    "note": "gratViewAttributes fills its tree (TWOSTATE check boxes) at run time; the key comes from gr_view_attrib, where this check box precedes the button that opens the page dialog"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": "out_file",
+  "saveAsNote": "not in gratViewAttributes; the older dialogs have it as the \"Save as\" text field (text gr_*_saveas_file, MEMBER out_file)",
+  "tabs": [],
+  "groups": [
+    {
+      "label": "Dimensioning rules",
+      "aidName": null,
+      "controls": [
+        {
+          "label": null,
+          "type": "table",
+          "aidName": "table_RuleTable",
+          "aidStruct": "grat_dimensioning_rule_at_t",
+          "columns": [
+            {
+              "member": "aFilter",
+              "title": "Filter"
+            },
+            {
+              "member": "OperationIndex",
+              "title": "Dimensioning type"
+            },
+            {
+              "member": "aDimensioningParameter",
+              "title": "Properties"
+            }
+          ],
+          "note": "runtime table: its rows are kept in the dialog structure, not under a single key of this page",
+          "position": 2
+        }
+      ],
+      "groups": [],
+      "position": 1
+    }
+  ],
+  "controls": [],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "aDimensioningPlugins"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

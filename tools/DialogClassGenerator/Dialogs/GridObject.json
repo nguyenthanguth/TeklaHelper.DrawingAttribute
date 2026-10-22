@@ -1,0 +1,954 @@
+{
+  "page": "GridObject",
+  "viewPrefix": "vg.",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gratViewAttributes",
+  "aidPanel": "PanelGrid",
+  "treeCheckBoxKey": {
+    "key": "grid_en",
+    "in": "top level of the .vi",
+    "confidence": "legacy-dialog",
+    "note": "gratViewAttributes fills its tree (TWOSTATE check boxes) at run time; the key comes from gr_view_attrib, where this check box precedes the button that opens the page dialog"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": "out_file",
+  "saveAsNote": "not in gratViewAttributes; the older dialogs have it as the \"Save as\" text field (text gr_*_saveas_file, MEMBER out_file)",
+  "tabs": [],
+  "groups": [
+    {
+      "label": "Text placing",
+      "aidName": "Container_180",
+      "controls": [
+        {
+          "label": "Text placing top",
+          "labelSource": "group+key",
+          "key": "text_place_top",
+          "enableKey": "text_place_en",
+          "type": "toggle",
+          "valueOn": 1,
+          "valueOff": 0,
+          "dialogDefault": 0,
+          "aidWidget": "checkbutton",
+          "aidName": "gr_top_middle",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 3,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 287,
+            "top": {
+              "1": 273,
+              "0": 14
+            }
+          }
+        },
+        {
+          "label": "Text placing left",
+          "labelSource": "group+key",
+          "key": "text_place_left",
+          "enableKey": "text_place_en",
+          "type": "toggle",
+          "valueOn": 1,
+          "valueOff": 0,
+          "dialogDefault": 0,
+          "aidWidget": "checkbutton",
+          "aidName": "gr_middle_left",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 4,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 287,
+            "top": {
+              "1": 283,
+              "0": 4
+            }
+          }
+        },
+        {
+          "label": "Text placing right",
+          "labelSource": "group+key",
+          "key": "text_place_right",
+          "enableKey": "text_place_en",
+          "type": "toggle",
+          "valueOn": 1,
+          "valueOff": 0,
+          "dialogDefault": 0,
+          "aidWidget": "checkbutton",
+          "aidName": "gr_middle_right",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 5,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 287,
+            "top": {
+              "0": 285,
+              "1": 2
+            }
+          }
+        },
+        {
+          "label": "Text placing bottom",
+          "labelSource": "group+key",
+          "key": "text_place_bottom",
+          "enableKey": "text_place_en",
+          "type": "toggle",
+          "valueOn": 1,
+          "valueOff": 0,
+          "dialogDefault": 0,
+          "aidWidget": "checkbutton",
+          "aidName": "gr_bottom_middle",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 6,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 287,
+            "top": {
+              "0": 271,
+              "1": 16
+            }
+          }
+        },
+        {
+          "label": "Text placing radial line start",
+          "labelSource": "group+key",
+          "key": "text_place_radial_line_start",
+          "aidNote": "CALLBACKPARAMETER names gr_text_place_en_radial, which is not a widget of this dialog (no enable check box)",
+          "type": "toggle",
+          "valueOn": 1,
+          "valueOff": 0,
+          "dialogDefault": 0,
+          "aidWidget": "checkbutton",
+          "aidName": "gr_radial_line_start",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 7,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 171,
+            "top": {
+              "0": 171
+            }
+          }
+        },
+        {
+          "label": "Text placing radial arc end",
+          "labelSource": "group+key",
+          "key": "text_place_radial_arc_end",
+          "aidNote": "CALLBACKPARAMETER names gr_text_place_en_radial, which is not a widget of this dialog (no enable check box)",
+          "type": "toggle",
+          "valueOn": 1,
+          "valueOff": 0,
+          "dialogDefault": 0,
+          "aidWidget": "checkbutton",
+          "aidName": "gr_radial_arc_end",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 8,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 171,
+            "top": {
+              "0": 171
+            }
+          }
+        },
+        {
+          "label": "Text placing radial line end",
+          "labelSource": "group+key",
+          "key": "text_place_radial_line_end",
+          "aidNote": "CALLBACKPARAMETER names gr_text_place_en_radial, which is not a widget of this dialog (no enable check box)",
+          "type": "toggle",
+          "valueOn": 1,
+          "valueOff": 0,
+          "dialogDefault": 0,
+          "aidWidget": "checkbutton",
+          "aidName": "gr_radial_line_end",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 9,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 171,
+            "top": {
+              "1": 171
+            }
+          }
+        },
+        {
+          "label": "Text placing radial arc start",
+          "labelSource": "group+key",
+          "key": "text_place_radial_arc_start",
+          "aidNote": "CALLBACKPARAMETER names gr_text_place_en_radial, which is not a widget of this dialog (no enable check box)",
+          "type": "toggle",
+          "valueOn": 1,
+          "valueOff": 0,
+          "dialogDefault": 0,
+          "aidWidget": "checkbutton",
+          "aidName": "gr_radial_arc_start",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 10,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 171,
+            "top": {
+              "1": 171
+            }
+          }
+        },
+        {
+          "label": "Text placing offset",
+          "labelSource": "group+key",
+          "key": "offset",
+          "enableKey": "offset_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "gr_grid_offset",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 11,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 290,
+            "top": {
+              "10.000000": 188,
+              "20.000000": 49,
+              "15.000000": 27,
+              "5.000000": 11,
+              "30.000000": 8
+            }
+          }
+        }
+      ],
+      "groups": [],
+      "position": 2
+    },
+    {
+      "label": "Grid line",
+      "aidName": "Container_181",
+      "controls": [
+        {
+          "label": "Color",
+          "labelSource": "enableCheckBox",
+          "key": "line_colour",
+          "enableKey": "line_colour_en",
+          "type": "color",
+          "options": [
+            {
+              "label": "Invisible",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_invisible_line",
+              "value": 152,
+              "aidName": "gr_pb_white_line",
+              "apiName": "Invisible"
+            },
+            {
+              "label": "Black",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_black_line",
+              "value": 153,
+              "aidName": "gr_pb_black_line",
+              "apiName": "Black"
+            },
+            {
+              "label": "Red",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_red_line",
+              "value": 160,
+              "aidName": "gr_pb_red_line",
+              "apiName": "Red"
+            },
+            {
+              "label": "Green",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_green_line",
+              "value": 161,
+              "aidName": "gr_pb_green_line",
+              "apiName": "Green"
+            },
+            {
+              "label": "Blue",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_blue_line",
+              "value": 162,
+              "aidName": "gr_pb_blue_line",
+              "apiName": "Blue"
+            },
+            {
+              "label": "Cyan",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_cyan_line",
+              "value": 163,
+              "aidName": "gr_pb_cyan_line",
+              "apiName": "Cyan"
+            },
+            {
+              "label": "Yellow",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_yellow_line",
+              "value": 164,
+              "aidName": "gr_pb_yellow_line",
+              "apiName": "Yellow"
+            },
+            {
+              "label": "Magenta",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_magenta_line",
+              "value": 165,
+              "aidName": "gr_pb_magenta_line",
+              "apiName": "Magenta"
+            },
+            {
+              "label": "NewLine1",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_1",
+              "value": 154,
+              "aidName": "gr_pb_new_line_1",
+              "apiName": "NewLine1"
+            },
+            {
+              "label": "NewLine2",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_2",
+              "value": 155,
+              "aidName": "gr_pb_new_line_2",
+              "apiName": "NewLine2"
+            },
+            {
+              "label": "NewLine3",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_3",
+              "value": 156,
+              "aidName": "gr_pb_new_line_3",
+              "apiName": "NewLine3"
+            },
+            {
+              "label": "NewLine4",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_4",
+              "value": 157,
+              "aidName": "gr_pb_new_line_4",
+              "apiName": "NewLine4"
+            },
+            {
+              "label": "NewLine5",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_5",
+              "value": 158,
+              "aidName": "gr_pb_new_line_5",
+              "apiName": "NewLine5"
+            },
+            {
+              "label": "NewLine6",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_6",
+              "value": 159,
+              "aidName": "gr_pb_new_line_6",
+              "apiName": "NewLine6"
+            },
+            {
+              "label": "Gray30",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray30_line",
+              "value": 130,
+              "aidName": "",
+              "apiName": "Gray30"
+            },
+            {
+              "label": "Gray50",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray50_line",
+              "value": 131,
+              "aidName": "",
+              "apiName": "Gray50"
+            },
+            {
+              "label": "Gray70",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray70_line",
+              "value": 132,
+              "aidName": "",
+              "apiName": "Gray70"
+            },
+            {
+              "label": "Gray90",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray90_line",
+              "value": 133,
+              "aidName": "",
+              "apiName": "Gray90"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "gr_grid_line_colour",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 13,
+          "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+          "samples": {
+            "files": 291,
+            "inMenu": {
+              "160": 100,
+              "157": 90,
+              "163": 54,
+              "153": 27,
+              "159": 11,
+              "162": 2,
+              "165": 1,
+              "154": 1
+            },
+            "outsideMenu": {
+              "2": 5
+            }
+          }
+        },
+        {
+          "label": "Type",
+          "labelSource": "enableCheckBox",
+          "key": "line_type",
+          "enableKey": "line_type_en",
+          "type": "linetype",
+          "options": [
+            {
+              "label": "Solid",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_solid",
+              "value": 1,
+              "aidName": "gr_pb_solid",
+              "apiName": "SolidLine"
+            },
+            {
+              "label": "Dashed",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed1",
+              "value": 2,
+              "aidName": "gr_pb_dashed18",
+              "apiName": "DashedLine"
+            },
+            {
+              "label": "Slashed",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed2",
+              "value": 3,
+              "aidName": "gr_pb_dashed28",
+              "apiName": "SlashedLine"
+            },
+            {
+              "label": "DashDot",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dot_dash",
+              "value": 4,
+              "aidName": "gr_pb_dot_dash8",
+              "apiName": "DashDot"
+            },
+            {
+              "label": "Dotted",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dotted",
+              "value": 5,
+              "aidName": "gr_pb_dotted8",
+              "apiName": "DottedLine"
+            },
+            {
+              "label": "DashDoubleDot",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed3",
+              "value": 6,
+              "aidName": "gr_pb_dashed38",
+              "apiName": "DashDoubleDot"
+            },
+            {
+              "label": "SlashDash",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed4",
+              "value": 7,
+              "aidName": "gr_pb_dashed48",
+              "apiName": "SlashDash"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "gr_grid_line_type",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 14,
+          "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+          "samples": {
+            "files": 290,
+            "inMenu": {
+              "4": 226,
+              "2": 64
+            },
+            "outsideMenu": {}
+          }
+        }
+      ],
+      "groups": [],
+      "position": 12
+    },
+    {
+      "label": "Text",
+      "aidName": "Container_194",
+      "controls": [
+        {
+          "label": "Color",
+          "labelSource": "enableCheckBox",
+          "key": "text_colour",
+          "enableKey": "text_colour_en",
+          "type": "color",
+          "options": [
+            {
+              "label": "Invisible",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_invisible_line",
+              "value": 152,
+              "aidName": "gr_pb_white",
+              "apiName": "Invisible"
+            },
+            {
+              "label": "Black",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_black_line",
+              "value": 153,
+              "aidName": "gr_pb_black",
+              "apiName": "Black"
+            },
+            {
+              "label": "Red",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_red_line",
+              "value": 160,
+              "aidName": "gr_pb_red",
+              "apiName": "Red"
+            },
+            {
+              "label": "Green",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_green_line",
+              "value": 161,
+              "aidName": "gr_pb_green",
+              "apiName": "Green"
+            },
+            {
+              "label": "Blue",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_blue_line",
+              "value": 162,
+              "aidName": "gr_pb_blue",
+              "apiName": "Blue"
+            },
+            {
+              "label": "Cyan",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_cyan_line",
+              "value": 163,
+              "aidName": "gr_pb_cyan",
+              "apiName": "Cyan"
+            },
+            {
+              "label": "Yellow",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_yellow_line",
+              "value": 164,
+              "aidName": "gr_pb_yellow",
+              "apiName": "Yellow"
+            },
+            {
+              "label": "Magenta",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_magenta_line",
+              "value": 165,
+              "aidName": "gr_pb_magenta",
+              "apiName": "Magenta"
+            },
+            {
+              "label": "NewLine1",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_1",
+              "value": 154,
+              "aidName": "gr_pb_new_1",
+              "apiName": "NewLine1"
+            },
+            {
+              "label": "NewLine2",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_2",
+              "value": 155,
+              "aidName": "gr_pb_new_2",
+              "apiName": "NewLine2"
+            },
+            {
+              "label": "NewLine3",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_3",
+              "value": 156,
+              "aidName": "gr_pb_new_3",
+              "apiName": "NewLine3"
+            },
+            {
+              "label": "NewLine4",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_4",
+              "value": 157,
+              "aidName": "optionbutton_318697",
+              "apiName": "NewLine4"
+            },
+            {
+              "label": "NewLine5",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_5",
+              "value": 158,
+              "aidName": "gr_pb_new_5",
+              "apiName": "NewLine5"
+            },
+            {
+              "label": "NewLine6",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_6",
+              "value": 159,
+              "aidName": "gr_pb_new_6",
+              "apiName": "NewLine6"
+            },
+            {
+              "label": "Gray30",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray30_line",
+              "value": 130,
+              "aidName": "",
+              "apiName": "Gray30"
+            },
+            {
+              "label": "Gray50",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray50_line",
+              "value": 131,
+              "aidName": "",
+              "apiName": "Gray50"
+            },
+            {
+              "label": "Gray70",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray70_line",
+              "value": 132,
+              "aidName": "",
+              "apiName": "Gray70"
+            },
+            {
+              "label": "Gray90",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray90_line",
+              "value": 133,
+              "aidName": "",
+              "apiName": "Gray90"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "gr_grid_text_colour",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 16,
+          "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+          "samples": {
+            "files": 291,
+            "inMenu": {
+              "157": 90,
+              "163": 79,
+              "161": 56,
+              "165": 27,
+              "160": 19,
+              "162": 14,
+              "154": 1
+            },
+            "outsideMenu": {
+              "3": 5
+            }
+          }
+        },
+        {
+          "label": "Height",
+          "labelSource": "enableCheckBox",
+          "key": "text_height",
+          "enableKey": "text_height_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "gr_grid_text_height",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 17,
+          "samples": {
+            "files": 290,
+            "top": {
+              "3.000000": 113,
+              "4.000000": 84,
+              "2.000000": 51,
+              "5.000000": 38,
+              "3.500000": 3
+            }
+          }
+        },
+        {
+          "label": "Font",
+          "labelSource": "enableCheckBox",
+          "key": "FontName",
+          "enableKey": "FontName_en",
+          "type": "font",
+          "maxLength": 44,
+          "aidWidget": "text",
+          "aidName": "gr_grid_font_name",
+          "aidType": "char",
+          "confidence": "decoded",
+          "position": 18,
+          "samples": {
+            "files": 287,
+            "top": {
+              "\"romsim\"": 86,
+              "\"Arial\"": 65,
+              "\"lr SVbN\"": 63,
+              "\"Comic Sans MS\"": 52,
+              "\"Arial Narrow\"": 19
+            }
+          }
+        },
+        {
+          "label": "Frame",
+          "labelSource": "enableCheckBox",
+          "key": "text_frame",
+          "enableKey": "text_frame_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "bitmap",
+              "bitmap": "om_pb_frame_none",
+              "value": 0,
+              "aidName": "",
+              "apiName": "None"
+            },
+            {
+              "label": "Underline",
+              "labelSource": "bitmap",
+              "bitmap": "om_pb_frame_underline",
+              "value": 2,
+              "aidName": "",
+              "apiName": "Line"
+            },
+            {
+              "label": "Rectangular",
+              "labelSource": "bitmap",
+              "bitmap": "om_pb_frame_rectangular",
+              "value": 1,
+              "aidName": "",
+              "apiName": "Rectangular"
+            },
+            {
+              "label": "Rounded",
+              "labelSource": "bitmap",
+              "bitmap": "om_pb_frame_rounded",
+              "value": 3,
+              "aidName": "",
+              "apiName": "Round"
+            },
+            {
+              "label": "Sharpened",
+              "labelSource": "bitmap",
+              "bitmap": "om_pb_frame_sharpened",
+              "value": 8,
+              "aidName": "",
+              "apiName": "Sharpened"
+            },
+            {
+              "label": "Round",
+              "labelSource": "bitmap",
+              "bitmap": "om_pb_frame_round",
+              "value": 4,
+              "aidName": "",
+              "apiName": "Circle"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "gr_grid_text_frame",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 19,
+          "apiEnum": "Tekla.Structures.Drawing.FrameTypes",
+          "samples": {
+            "files": 290,
+            "inMenu": {
+              "3": 159,
+              "0": 111,
+              "4": 20
+            },
+            "outsideMenu": {}
+          }
+        }
+      ],
+      "groups": [],
+      "position": 15
+    }
+  ],
+  "controls": [
+    {
+      "label": "Grid",
+      "labelSource": "enableCheckBox",
+      "key": "grid_on",
+      "enableKey": "grid_on_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "Not visible",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "gr_vgrid_not_visible"
+        },
+        {
+          "label": "Visible",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "gr_vgrid_visible"
+        },
+        {
+          "label": "Only grid labels visible",
+          "labelSource": "aid",
+          "value": 3,
+          "aidName": "gr_vgrid_line_marks_visible"
+        }
+      ],
+      "dialogDefault": 0,
+      "aidWidget": "optionmenu",
+      "aidName": "gr_view_grid_on",
+      "aidType": "int",
+      "confidence": "decoded",
+      "position": 1,
+      "samples": {
+        "files": 292,
+        "inMenu": {
+          "0": 200,
+          "1": 91,
+          "3": 1
+        },
+        "outsideMenu": {}
+      }
+    }
+  ],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [
+    {
+      "label": "Grid",
+      "labelSource": "enableCheckBox",
+      "key": "drawing_grid_on",
+      "enableKey": "drawing_grid_on_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "Not visible",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "gr_dgrid_not_visible"
+        },
+        {
+          "label": "Visible",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "gr_dgrid_visible"
+        },
+        {
+          "label": "Visible in all views",
+          "labelSource": "aid",
+          "value": 2,
+          "aidName": "gr_dgrid_visible_in_all"
+        }
+      ],
+      "dialogDefault": 0,
+      "aidWidget": "optionmenu",
+      "aidName": "gr_drawing_grid_on",
+      "aidType": "int",
+      "confidence": "legacy-dialog",
+      "position": 2,
+      "aidDialog": "gr_grid_attrib",
+      "dialogPath": [],
+      "samples": {
+        "files": 251,
+        "inMenu": {
+          "0": 251
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Grid",
+      "labelSource": "enableCheckBox",
+      "key": "GridObjectGridOn",
+      "enableKey": "GridObjectGridOnEn",
+      "type": "option",
+      "options": [
+        {
+          "label": "Visible",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "grGridObjectVisible"
+        },
+        {
+          "label": "Only grid labels visible",
+          "labelSource": "aid",
+          "value": 3,
+          "aidName": "grGridObjectGridLineMarksOnly"
+        }
+      ],
+      "dialogDefault": 1,
+      "aidWidget": "optionmenu",
+      "aidName": "grGridObjectGridOn",
+      "aidType": "int",
+      "confidence": "legacy-dialog",
+      "position": 3,
+      "aidDialog": "gr_grid_attrib",
+      "dialogPath": [],
+      "samples": {
+        "files": 287,
+        "inMenu": {
+          "1": 118
+        },
+        "outsideMenu": {
+          "0": 169
+        }
+      }
+    },
+    {
+      "label": "Text placing offset2",
+      "labelSource": "group+key",
+      "key": "offset2",
+      "enableKey": "offset2_en",
+      "type": "number",
+      "format": "%2.1f",
+      "unit": "length",
+      "aidWidget": "text",
+      "aidName": "gr_grid_offset2",
+      "aidType": "double",
+      "confidence": "legacy-dialog",
+      "position": 14,
+      "labelConfidence": "key-name",
+      "aidDialog": "gr_grid_attrib",
+      "dialogPath": [
+        "Text placing"
+      ],
+      "samples": {
+        "files": 287,
+        "top": {
+          "10.000000": 287
+        }
+      }
+    }
+  ],
+  "unmappedKeys": [
+    "CustomPresentation_en",
+    "aCustomPresentation"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

@@ -1,0 +1,1626 @@
+{
+  "page": "Attributes",
+  "viewPrefix": "",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gratViewAttributes",
+  "aidPanel": "PanelAttributes",
+  "fileMenuKey": "in_file",
+  "fileMenuNote": "file menu gr_view_get_menu at the top of gratViewAttributes (loads the whole .vi)",
+  "saveAsKey": "out_file",
+  "saveAsNote": "not in gratViewAttributes; the older dialogs have it as the \"Save as\" text field (text gr_*_saveas_file, MEMBER out_file)",
+  "pageEnableKeys": [
+    {
+      "key": "filter_en",
+      "page": "Filter"
+    },
+    {
+      "key": "np_filter_en",
+      "page": "NeighborPartFilter"
+    },
+    {
+      "key": "Protection_en",
+      "page": "Protection"
+    },
+    {
+      "key": "pmark_en",
+      "page": "PartMark"
+    },
+    {
+      "key": "smark_en",
+      "page": "BoltMark"
+    },
+    {
+      "key": "npmark_en",
+      "page": "NeighborPartMark"
+    },
+    {
+      "key": "surf_mark_en",
+      "page": "SurfaceTreatmentMark"
+    },
+    {
+      "key": "jmark_en",
+      "page": "ConnectionMark"
+    },
+    {
+      "key": "weld_en",
+      "page": "WeldMark"
+    },
+    {
+      "key": "rebar_mark_en",
+      "page": "ReinforcementMark"
+    },
+    {
+      "key": "NeighborRebarMark_en",
+      "page": "NeighborReinforcementMark"
+    },
+    {
+      "key": "PourMark_en",
+      "page": "PourMark"
+    },
+    {
+      "key": "part_en",
+      "page": "PartObject"
+    },
+    {
+      "key": "screw_en",
+      "page": "BoltObject"
+    },
+    {
+      "key": "npart_en",
+      "page": "NeighborPartObject"
+    },
+    {
+      "key": "ViewWeld_en",
+      "page": "WeldObject"
+    },
+    {
+      "key": "surf_en",
+      "page": "SurfaceTreatmentObject"
+    },
+    {
+      "key": "rebars_en",
+      "page": "ReinforcementObject"
+    },
+    {
+      "key": "NeighborRebar_en",
+      "page": "NeighborReinforcementObject"
+    },
+    {
+      "key": "PourObjects_en",
+      "page": "PourObject"
+    },
+    {
+      "key": "PourBreaks_en",
+      "page": "PourBreakObject"
+    },
+    {
+      "key": "ref_en",
+      "page": "ReferenceObject"
+    },
+    {
+      "key": "grid_en",
+      "page": "GridObject"
+    },
+    {
+      "key": "ViewDimensioning_en",
+      "page": "ViewDimensioning"
+    }
+  ],
+  "pageEnableKeysEvidence": "gr_view_attrib (older View properties dialog in the same .aid): each key is the MEMBER of the check box placed before the button that opens the page dialog; in gratViewAttributes they are the tree check boxes",
+  "tabs": [
+    {
+      "label": "Attributes 1",
+      "aidName": "tabAttributes1",
+      "controls": [],
+      "groups": [
+        {
+          "label": "View",
+          "aidName": "contView",
+          "controls": [
+            {
+              "caption": "1/",
+              "label": "Scale",
+              "labelSource": "enableCheckBox",
+              "key": "view_scale",
+              "enableKey": "scale_en",
+              "type": "number",
+              "format": "%5.4f",
+              "aidWidget": "text",
+              "aidName": "gr_view_scale",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 2,
+              "samples": {
+                "files": 293,
+                "top": {
+                  "10.000000": 89,
+                  "30.000000": 54,
+                  "20.000000": 38,
+                  "50.000000": 27,
+                  "8.000000": 18
+                }
+              }
+            },
+            {
+              "label": "Y",
+              "labelSource": "enableCheckBox",
+              "key": "Rotation3dY",
+              "enableKey": "Rotation3dY_en",
+              "type": "number",
+              "format": "%2.1f",
+              "aidWidget": "text",
+              "aidName": "txtFldRotation3dY",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 3,
+              "samples": {
+                "files": 283,
+                "top": {
+                  "0.000000": 267,
+                  "-60.000000": 11,
+                  "30.000000": 3,
+                  "-40.000000": 2
+                }
+              }
+            },
+            {
+              "label": "Reflected view",
+              "labelSource": "enableCheckBox",
+              "key": "Reflected",
+              "enableKey": "Reflected_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "gr_view_reflected_no"
+                },
+                {
+                  "label": "Yes",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "gr_view_reflected_yes"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_view_reflected",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 4,
+              "samples": {
+                "files": 287,
+                "inMenu": {
+                  "0": 284,
+                  "1": 3
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "X",
+              "labelSource": "enableCheckBox",
+              "key": "Rotation3dX",
+              "enableKey": "Rotation3dX_en",
+              "type": "number",
+              "format": "%2.1f",
+              "aidWidget": "text",
+              "aidName": "txtFldRotation3dX",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 5,
+              "samples": {
+                "files": 283,
+                "top": {
+                  "0.000000": 267,
+                  "20.000000": 13,
+                  "30.000000": 2,
+                  "37.500000": 1
+                }
+              }
+            },
+            {
+              "label": "Size",
+              "labelSource": "enableCheckBox",
+              "key": "size_mode",
+              "enableKey": "size_mode_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Fit by parts",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "size_fitted"
+                },
+                {
+                  "label": "Define as distances",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "size_by_extreme"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "radiobox",
+              "aidName": "gr_view_size_mode",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 6,
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "0": 168,
+                  "1": 122
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "X min",
+              "labelSource": "textlabel",
+              "key": "xmin",
+              "enableKey": "size_mode_en",
+              "enableLabel": "Size",
+              "type": "number",
+              "format": "%3.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_view_x_min",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 7,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "-515.660000": 61,
+                  "0.000000": 53,
+                  "31563.050000": 42,
+                  "-3189.620000": 35,
+                  "-100.660000": 8
+                }
+              }
+            },
+            {
+              "label": "X max",
+              "labelSource": "textlabel",
+              "key": "xmax",
+              "enableKey": "size_mode_en",
+              "enableLabel": "Size",
+              "type": "number",
+              "format": "%3.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_view_x_max",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 8,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "515.660000": 61,
+                  "32687.330000": 42,
+                  "9232.900000": 42,
+                  "26820.450000": 35,
+                  "12000.000000": 7
+                }
+              }
+            },
+            {
+              "label": "Y min",
+              "labelSource": "textlabel",
+              "key": "ymin",
+              "enableKey": "size_mode_en",
+              "enableLabel": "Size",
+              "type": "number",
+              "format": "%3.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_view_y_min",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 9,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "-0.660000": 64,
+                  "-3000.000000": 42,
+                  "-101.600000": 42,
+                  "-5191.300000": 35,
+                  "-500.000000": 8
+                }
+              }
+            },
+            {
+              "label": "Y max",
+              "labelSource": "textlabel",
+              "key": "ymax",
+              "enableKey": "size_mode_en",
+              "enableLabel": "Size",
+              "type": "number",
+              "format": "%3.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_view_y_max",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 10,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "3222.660000": 61,
+                  "7200.000000": 42,
+                  "9194.800000": 42,
+                  "33010.000000": 35,
+                  "350.000000": 7
+                }
+              }
+            },
+            {
+              "label": "Depth down",
+              "labelSource": "textlabel",
+              "key": "depth_neg",
+              "enableKey": "size_mode_en",
+              "enableLabel": "Size",
+              "type": "number",
+              "format": "%3.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_view_depth_neg",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 11,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "1030.670000": 61,
+                  "500.000000": 55,
+                  "1000.000000": 48,
+                  "679.910000": 42,
+                  "50.660000": 10
+                }
+              }
+            },
+            {
+              "label": "Depth up",
+              "labelSource": "textlabel",
+              "key": "depth_pos",
+              "enableKey": "size_mode_en",
+              "enableLabel": "Size",
+              "type": "number",
+              "format": "%3.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_view_depth_pos",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 12,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "1030.670000": 61,
+                  "500.000000": 55,
+                  "333.360000": 42,
+                  "12010.000000": 35,
+                  "50.660000": 10
+                }
+              }
+            },
+            {
+              "label": "View extension for neighbor parts",
+              "labelSource": "enableCheckBox",
+              "key": "np_extrema_size",
+              "enableKey": "np_extrema_size_en",
+              "type": "number",
+              "format": "%4.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "gr_view_np_extrema_size",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 13,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "0.000000": 155,
+                  "100.000000": 67,
+                  "50.000000": 26,
+                  "1000.000000": 20,
+                  "250.000000": 20
+                }
+              }
+            },
+            {
+              "label": "Place",
+              "labelSource": "enableCheckBox",
+              "key": "ViewPlace",
+              "enableKey": "ViewPlace_en",
+              "type": "option",
+              "note": "no item has VALUEINT; values taken as the 0-based menu position (consistent with shipped files)",
+              "options": [
+                {
+                  "label": "Free",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "indexInMenu": 0,
+                  "aidName": "opt_free",
+                  "valueSource": "menu index (no VALUEINT in .aid)"
+                },
+                {
+                  "label": "Fixed",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "indexInMenu": 1,
+                  "aidName": "opt_fixed",
+                  "valueSource": "menu index (no VALUEINT in .aid)"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_view_place",
+              "aidType": "int",
+              "confidence": "order",
+              "position": 14,
+              "samples": {
+                "files": 280,
+                "inMenu": {
+                  "0": 252,
+                  "1": 28
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 1
+        },
+        {
+          "label": "Settings",
+          "aidName": "conSubdialogs",
+          "controls": [
+            {
+              "label": "Use detailed object level settings",
+              "labelSource": "textlabel",
+              "key": "UseDetailedObjectLevelSettings",
+              "enableKey": "UseDetailedObjectLevelSettings_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "radioNo"
+                },
+                {
+                  "label": "Yes",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "radioYes"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "radiobox",
+              "aidName": "radioboxYesNo",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 16,
+              "samples": {
+                "files": 275,
+                "inMenu": {
+                  "0": 198,
+                  "1": 77
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Edit settings...",
+              "type": "button",
+              "aidName": "btnEditSettings",
+              "callback": "gr_display_attr_dialog_cb",
+              "callbackParameter": "grObjectLevelSettingsForDrawings",
+              "position": 17,
+              "opensDialog": "grObjectLevelSettingsForDrawings",
+              "note": "members of this dialog are not stored under the page prefix (separate settings)"
+            }
+          ],
+          "groups": [],
+          "position": 15
+        }
+      ],
+      "position": 18
+    },
+    {
+      "label": "Attributes 2",
+      "aidName": "tabAttributes2",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Cut parts",
+          "aidName": "contAttributes2",
+          "controls": [],
+          "groups": [
+            {
+              "label": "Representation of deformed objects",
+              "aidName": "contDeformedObjects",
+              "controls": [
+                {
+                  "label": "Unfolded",
+                  "labelSource": "enableCheckBox",
+                  "key": "Unfolded",
+                  "enableKey": "Unfolded_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "No",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "gr_view_unfolded_no"
+                    },
+                    {
+                      "label": "Yes",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "gr_view_unfolded_yes"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "gr_view_unfolded",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 21,
+                  "samples": {
+                    "files": 287,
+                    "inMenu": {
+                      "0": 282,
+                      "1": 5
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Undeformed",
+                  "labelSource": "enableCheckBox",
+                  "key": "Unwarped",
+                  "enableKey": "Unwarped_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "No",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "gr_view_unwarped_no"
+                    },
+                    {
+                      "label": "Yes",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "gr_view_unwarped_yes"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "gr_view_unwarped",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 22,
+                  "samples": {
+                    "files": 287,
+                    "inMenu": {
+                      "0": 287
+                    },
+                    "outsideMenu": {}
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 20
+            },
+            {
+              "label": "Shortening",
+              "aidName": "contShortening",
+              "controls": [
+                {
+                  "label": "Cut parts",
+                  "labelSource": "enableCheckBox",
+                  "key": "cut_on",
+                  "enableKey": "cut_param_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "No",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "gr_view_cut_no"
+                    },
+                    {
+                      "label": "Yes",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "gr_view_cut_yes",
+                      "apiName": "BothDirections"
+                    },
+                    {
+                      "label": "Only in x direction",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "gr_view_cut_in_x",
+                      "apiName": "X_Direction"
+                    },
+                    {
+                      "label": "Only in y direction",
+                      "labelSource": "aid",
+                      "value": 3,
+                      "aidName": "gr_view_cut_in_y",
+                      "apiName": "Y_Direction"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "gr_view_cut_on",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 24,
+                  "apiEnum": "Tekla.Structures.Drawing.View.ShorteningCutPartType",
+                  "samples": {
+                    "files": 290,
+                    "inMenu": {
+                      "1": 194,
+                      "0": 96
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Cut skew parts",
+                  "labelSource": "textlabel",
+                  "key": "cut_skew_parts",
+                  "enableKey": "cut_param_en",
+                  "enableLabel": "Cut parts",
+                  "type": "option",
+                  "note": "no item has VALUEINT; values taken as the 0-based menu position (consistent with shipped files)",
+                  "options": [
+                    {
+                      "label": "No",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "indexInMenu": 0,
+                      "aidName": "gr_view_cut_skew_parts_off",
+                      "valueSource": "menu index (no VALUEINT in .aid)"
+                    },
+                    {
+                      "label": "Yes",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "indexInMenu": 1,
+                      "aidName": "gr_view_cut_skew_parts_on",
+                      "valueSource": "menu index (no VALUEINT in .aid)"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "gr_view_cut_skew_parts",
+                  "aidType": "int",
+                  "confidence": "order",
+                  "position": 25,
+                  "samples": {
+                    "files": 290,
+                    "inMenu": {
+                      "0": 281,
+                      "1": 9
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Minimum cut part length",
+                  "labelSource": "textlabel",
+                  "key": "cut_min_dist",
+                  "enableKey": "cut_param_en",
+                  "enableLabel": "Cut parts",
+                  "type": "number",
+                  "format": "%3.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "gr_view_cut_min_dist",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 26,
+                  "samples": {
+                    "files": 290,
+                    "top": {
+                      "10000.000000": 69,
+                      "40000.000000": 52,
+                      "200.000000": 52,
+                      "400.000000": 33,
+                      "1000000.000000": 26
+                    }
+                  }
+                },
+                {
+                  "label": "Space between cut parts",
+                  "labelSource": "textlabel",
+                  "key": "cut_length",
+                  "enableKey": "cut_param_en",
+                  "enableLabel": "Cut parts",
+                  "type": "number",
+                  "format": "%3.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "gr_view_cut_length",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 27,
+                  "samples": {
+                    "files": 290,
+                    "top": {
+                      "1.000000": 122,
+                      "3.000000": 102,
+                      "0.100000": 47,
+                      "2.000000": 16,
+                      "10.000000": 3
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 23
+            },
+            {
+              "label": "Other",
+              "aidName": "contOther",
+              "controls": [
+                {
+                  "label": "Show openings/recess symbol",
+                  "labelSource": "enableCheckBox",
+                  "key": "HoleSymbol",
+                  "enableKey": "HoleSymbol_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "No",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "gr_view_openings_no"
+                    },
+                    {
+                      "label": "Yes",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "gr_view_openings_yes"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optViewOpenings",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 29,
+                  "samples": {
+                    "files": 287,
+                    "inMenu": {
+                      "0": 211,
+                      "1": 76
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Location by",
+                  "labelSource": "enableCheckBox",
+                  "key": "LocationBy",
+                  "enableKey": "LocationBy_en",
+                  "type": "text",
+                  "aidWidget": "optionmenu",
+                  "aidName": "optLocationBy",
+                  "aidType": "char",
+                  "confidence": "decoded",
+                  "position": 30,
+                  "samples": {
+                    "files": 180,
+                    "top": {
+                      "\"ProjectBasePoint\"": 178,
+                      "\"\"": 1,
+                      "\"ModelOrigin\"": 1
+                    }
+                  }
+                },
+                {
+                  "label": "Datum point for elevations",
+                  "labelSource": "enableCheckBox",
+                  "key": "ElevationDatumSwitch",
+                  "enableKey": "ElevationDatumSwitch_en",
+                  "type": "option",
+                  "note": "no item has VALUEINT; values taken as the 0-based menu position (consistent with shipped files)",
+                  "options": [
+                    {
+                      "label": "View plane",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "indexInMenu": 0,
+                      "aidName": "optElevationDatumSwitchView",
+                      "valueSource": "menu index (no VALUEINT in .aid)"
+                    },
+                    {
+                      "label": "Specified",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "indexInMenu": 1,
+                      "aidName": "optElevationDatumSwitchSpecif",
+                      "valueSource": "menu index (no VALUEINT in .aid)"
+                    }
+                  ],
+                  "dialogDefault": 1,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optElevationDatumSwitch",
+                  "aidType": "int",
+                  "confidence": "order",
+                  "position": 31,
+                  "samples": {
+                    "files": 282,
+                    "inMenu": {
+                      "1": 276,
+                      "0": 6
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Datum level",
+                  "labelSource": "enableCheckBox",
+                  "key": "Elevation_datum_point",
+                  "enableKey": "Elevation_datum_point_en",
+                  "type": "number",
+                  "format": "%4.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "txtElevationDatum",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 32,
+                  "samples": {
+                    "files": 287,
+                    "top": {
+                      "0.000000": 285,
+                      "-450.000000": 1,
+                      "7064.240000": 1
+                    }
+                  }
+                },
+                {
+                  "label": "Dimension creation method in this view",
+                  "labelSource": "enableCheckBox",
+                  "key": "DimensionCreationMethod",
+                  "enableKey": "DimensionCreationMethod_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Automatically",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optCreateAutomaticDimensionsYes"
+                    },
+                    {
+                      "label": "Do not create",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optCreateAutomaticDimensionsNo"
+                    },
+                    {
+                      "label": "Clone",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "optCloneDimensions"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optMnuDimensionCreationMethod",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 33,
+                  "samples": {
+                    "files": 280,
+                    "inMenu": {
+                      "0": 280
+                    },
+                    "outsideMenu": {}
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 28
+            }
+          ],
+          "position": 19
+        }
+      ],
+      "position": 34
+    },
+    {
+      "label": "Label",
+      "aidName": "tabViewLabel",
+      "controls": [],
+      "groups": [
+        {
+          "label": "View label",
+          "aidName": "conViewLabel",
+          "controls": [],
+          "groups": [
+            {
+              "label": "Text",
+              "aidName": "conViewLabelMarkLabelSettings",
+              "controls": [
+                {
+                  "label": "A1",
+                  "labelSource": "enableCheckBox",
+                  "key": "aViewLabelMarkA1",
+                  "enableKey": "ViewLabelMarkA1_en",
+                  "type": "text",
+                  "maxLength": 52,
+                  "aidWidget": "text",
+                  "aidName": "ViewMarkA1TextContent",
+                  "aidType": "char",
+                  "confidence": "decoded",
+                  "position": 37,
+                  "samples": {
+                    "files": 282,
+                    "top": {
+                      "\"<< Mark >>\"": 178,
+                      "\"<< }[N >>\"": 66,
+                      "\"<< ¸¶Å© >>\"": 24,
+                      "\"\"": 13,
+                      "\"<< \"": 1
+                    }
+                  }
+                },
+                {
+                  "label": "...",
+                  "type": "button",
+                  "aidName": "butViewLabelA1",
+                  "callback": "grViewReferenceMarkContentCB",
+                  "callbackParameter": "DetailMarkA1",
+                  "position": 38
+                },
+                {
+                  "label": "A2",
+                  "labelSource": "enableCheckBox",
+                  "key": "aViewLabelMarkA2",
+                  "enableKey": "ViewLabelMarkA2_en",
+                  "type": "text",
+                  "maxLength": 52,
+                  "aidWidget": "text",
+                  "aidName": "ViewMarkA2TextContent",
+                  "aidType": "char",
+                  "confidence": "decoded",
+                  "position": 39,
+                  "samples": {
+                    "files": 282,
+                    "top": {
+                      "\"<< Mark >>\"": 144,
+                      "\"\"": 120,
+                      "\"<< ¸¶Å© >>\"": 16,
+                      "\"<< }[N >>\"": 2
+                    }
+                  }
+                },
+                {
+                  "label": "...",
+                  "type": "button",
+                  "aidName": "butViewLabelA2",
+                  "callback": "grViewReferenceMarkContentCB",
+                  "position": 40
+                },
+                {
+                  "label": "A3",
+                  "labelSource": "enableCheckBox",
+                  "key": "aViewLabelMarkA3",
+                  "enableKey": "ViewLabelMarkA3_en",
+                  "type": "text",
+                  "maxLength": 52,
+                  "aidWidget": "text",
+                  "aidName": "ViewMarkA3TextContent",
+                  "aidType": "char",
+                  "confidence": "decoded",
+                  "position": 41,
+                  "samples": {
+                    "files": 282,
+                    "top": {
+                      "\"\"": 272,
+                      "\"<< Mark >>\"": 10
+                    }
+                  }
+                },
+                {
+                  "label": "...",
+                  "type": "button",
+                  "aidName": "butViewLabelA3",
+                  "callback": "grViewReferenceMarkContentCB",
+                  "position": 42
+                },
+                {
+                  "label": "A4",
+                  "labelSource": "enableCheckBox",
+                  "key": "aViewLabelMarkA4",
+                  "enableKey": "ViewLabelMarkA4_en",
+                  "type": "text",
+                  "maxLength": 52,
+                  "aidWidget": "text",
+                  "aidName": "ViewMarkA4TextContent",
+                  "aidType": "char",
+                  "confidence": "decoded",
+                  "position": 43,
+                  "samples": {
+                    "files": 282,
+                    "top": {
+                      "\"\"": 276,
+                      "\"<< Mark >>\"": 6
+                    }
+                  }
+                },
+                {
+                  "label": "...",
+                  "type": "button",
+                  "aidName": "butViewLabelA4",
+                  "callback": "grViewReferenceMarkContentCB",
+                  "position": 44
+                },
+                {
+                  "label": "A5",
+                  "labelSource": "enableCheckBox",
+                  "key": "aViewLabelMarkA5",
+                  "enableKey": "ViewLabelMarkA5_en",
+                  "type": "text",
+                  "maxLength": 52,
+                  "aidWidget": "text",
+                  "aidName": "ViewMarkA5TextContent",
+                  "aidType": "char",
+                  "confidence": "decoded",
+                  "position": 45,
+                  "samples": {
+                    "files": 282,
+                    "top": {
+                      "\"\"": 278,
+                      "\"<< Mark >>\"": 4
+                    }
+                  }
+                },
+                {
+                  "label": "...",
+                  "type": "button",
+                  "aidName": "butViewLabelA5",
+                  "callback": "grViewReferenceMarkContentCB",
+                  "position": 46
+                }
+              ],
+              "groups": [],
+              "position": 36
+            },
+            {
+              "label": "Symbol",
+              "aidName": "conViewLabelMarkSymbolSettings",
+              "controls": [
+                {
+                  "label": "Symbol",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelMarkSymbolIndex",
+                  "enableKey": "ViewLabelMarkSymbolIndex_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "None",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optBtnNone"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_144",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_144",
+                      "value": 145,
+                      "aidName": "optionbutton_5663"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_145",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_145",
+                      "value": 146,
+                      "aidName": "optionbutton_5664"
+                    },
+                    {
+                      "label": "Custom",
+                      "labelSource": "aid",
+                      "value": 1000,
+                      "aidName": "optionbutton_5754"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optionmenu",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 48,
+                  "samples": {
+                    "files": 282,
+                    "inMenu": {
+                      "0": 276,
+                      "146": 6
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Color",
+                  "labelSource": "enableCheckBox",
+                  "key": "label_colour",
+                  "enableKey": "label_colour_en",
+                  "type": "color",
+                  "options": [
+                    {
+                      "label": "Invisible",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_invisible_line",
+                      "value": 152,
+                      "aidName": "optButSymbol_invisible_1",
+                      "apiName": "Invisible"
+                    },
+                    {
+                      "label": "Black",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_black_line",
+                      "value": 153,
+                      "aidName": "optButSymbol_black_1",
+                      "apiName": "Black"
+                    },
+                    {
+                      "label": "Red",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_red_line",
+                      "value": 160,
+                      "aidName": "optButSymbol_red_1",
+                      "apiName": "Red"
+                    },
+                    {
+                      "label": "Green",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_green_line",
+                      "value": 161,
+                      "aidName": "optButSymbol_green_1",
+                      "apiName": "Green"
+                    },
+                    {
+                      "label": "Blue",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_blue_line",
+                      "value": 162,
+                      "aidName": "optButSymbol_blue_1",
+                      "apiName": "Blue"
+                    },
+                    {
+                      "label": "Cyan",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_cyan_line",
+                      "value": 163,
+                      "aidName": "optButSymbol_cyan_1",
+                      "apiName": "Cyan"
+                    },
+                    {
+                      "label": "Yellow",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_yellow_line",
+                      "value": 164,
+                      "aidName": "optButSymbol_yellow_1",
+                      "apiName": "Yellow"
+                    },
+                    {
+                      "label": "Magenta",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_magenta_line",
+                      "value": 165,
+                      "aidName": "optButSymbol_magenta_1",
+                      "apiName": "Magenta"
+                    },
+                    {
+                      "label": "NewLine1",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_1",
+                      "value": 154,
+                      "aidName": "optButSymbol_new",
+                      "apiName": "NewLine1"
+                    },
+                    {
+                      "label": "NewLine2",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_2",
+                      "value": 155,
+                      "aidName": "optButSymbol_new_12",
+                      "apiName": "NewLine2"
+                    },
+                    {
+                      "label": "NewLine3",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_3",
+                      "value": 156,
+                      "aidName": "optButSymbol_new_13",
+                      "apiName": "NewLine3"
+                    },
+                    {
+                      "label": "NewLine4",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_4",
+                      "value": 157,
+                      "aidName": "optButSymbol_new_14",
+                      "apiName": "NewLine4"
+                    },
+                    {
+                      "label": "NewLine5",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_5",
+                      "value": 158,
+                      "aidName": "optButSymbol_new_15",
+                      "apiName": "NewLine5"
+                    },
+                    {
+                      "label": "NewLine6",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_6",
+                      "value": 159,
+                      "aidName": "optButSymbol_new_16",
+                      "apiName": "NewLine6"
+                    },
+                    {
+                      "label": "Gray30",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray30_line",
+                      "value": 130,
+                      "aidName": "",
+                      "apiName": "Gray30"
+                    },
+                    {
+                      "label": "Gray50",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray50_line",
+                      "value": 131,
+                      "aidName": "",
+                      "apiName": "Gray50"
+                    },
+                    {
+                      "label": "Gray70",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray70_line",
+                      "value": 132,
+                      "aidName": "",
+                      "apiName": "Gray70"
+                    },
+                    {
+                      "label": "Gray90",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray90_line",
+                      "value": 133,
+                      "aidName": "",
+                      "apiName": "Gray90"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "optMnuDetailSymbolColor_1",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 49,
+                  "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+                  "samples": {
+                    "files": 290,
+                    "inMenu": {
+                      "152": 79,
+                      "159": 63,
+                      "161": 40,
+                      "158": 35,
+                      "165": 23,
+                      "155": 23,
+                      "153": 11,
+                      "164": 4,
+                      "154": 3,
+                      "163": 2
+                    },
+                    "outsideMenu": {
+                      "7": 5,
+                      "0xFFFFFFFF": 2
+                    }
+                  }
+                },
+                {
+                  "label": "Size",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelMarkSymbolSize",
+                  "enableKey": "ViewLabelMarkSymbolSize_en",
+                  "type": "number",
+                  "format": "%3.1f",
+                  "maxLength": 31,
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "text_16724",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 50,
+                  "samples": {
+                    "files": 282,
+                    "top": {
+                      "5.000000": 248,
+                      "1.000000": 20,
+                      "15.000000": 10,
+                      "0.000000": 4
+                    }
+                  }
+                },
+                {
+                  "label": "Line length",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelLineLengthType",
+                  "enableKey": "ViewLabelLineLength_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Minimum",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optionbutton_6270",
+                      "apiName": "Minimal"
+                    },
+                    {
+                      "label": "Custom",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optionbutton_6273",
+                      "apiName": "Custom"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "optViewLabelLineLengthType",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 51,
+                  "apiEnum": "Tekla.Structures.Drawing.View.LabelLineLengthType",
+                  "apiEnumOffset": 1,
+                  "apiEnumNote": "API value = stored value + 1 (checked on every item)",
+                  "samples": {
+                    "files": 280,
+                    "inMenu": {
+                      "0": 280
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Line length ViewLabelCustomLength",
+                  "labelSource": "enableCheckBox(shared)+key",
+                  "key": "ViewLabelCustomLength",
+                  "enableKey": "ViewLabelLineLength_en",
+                  "enableLabel": "Line length",
+                  "type": "number",
+                  "format": "%3.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "fldViewLabelCustomLength",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 52,
+                  "labelConfidence": "key-name",
+                  "samples": {
+                    "files": 280,
+                    "top": {
+                      "0.000000": 280
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 47
+            },
+            {
+              "label": "Label position",
+              "aidName": "conViewLabelMarkLabelPosition",
+              "controls": [
+                {
+                  "label": "Vertical",
+                  "labelSource": "enableCheckBox",
+                  "key": "label_position",
+                  "enableKey": "label_position_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Above",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optBtnAbove"
+                    },
+                    {
+                      "label": "Below",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optBtnBelow"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optionmenu_2",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 54,
+                  "samples": {
+                    "files": 290,
+                    "inMenu": {
+                      "1": 169,
+                      "0": 121
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Horizontal",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelHorizontalPosition",
+                  "enableKey": "ViewLabelHorizontalPosition_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Left aligned to view frame",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "optBtn_vapa_LeftAlignedToViewFrame"
+                    },
+                    {
+                      "label": "Center aligned to view frame",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optBtn_vapa_CenterAlignedToViewFrame"
+                    },
+                    {
+                      "label": "Right aligned to view frame",
+                      "labelSource": "aid",
+                      "value": 3,
+                      "aidName": "optBtn_vapa_RightAlignedToViewFrame"
+                    },
+                    {
+                      "label": "Left aligned to view restriction box",
+                      "labelSource": "aid",
+                      "value": 4,
+                      "aidName": "optBtn_vapa_LeftAlignedToViewRestBox"
+                    },
+                    {
+                      "label": "Center aligned to view restriction box",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optBtn_vapa_CenterAlignedToViewRestBox"
+                    },
+                    {
+                      "label": "Right aligned to view restriction box",
+                      "labelSource": "aid",
+                      "value": 5,
+                      "aidName": "optBtn_vapa_RightAlignedToViewRestBox"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optionmenu_1",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 55,
+                  "samples": {
+                    "files": 280,
+                    "inMenu": {
+                      "0": 265,
+                      "1": 15
+                    },
+                    "outsideMenu": {}
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 53
+            },
+            {
+              "label": "View direction marks",
+              "aidName": "conViewDirectionMarks",
+              "controls": [
+                {
+                  "label": "Show marks",
+                  "labelSource": "enableCheckBox",
+                  "key": "DirectionMarks",
+                  "enableKey": "DirectionMarks_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "None",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optShowMarksNone"
+                    },
+                    {
+                      "label": "Symbol only",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optShowMarksSymbol"
+                    },
+                    {
+                      "label": "Label only",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "optShowMarksLabel"
+                    },
+                    {
+                      "label": "Symbol and label",
+                      "labelSource": "aid",
+                      "value": 3,
+                      "aidName": "optShowMarksSymbolLabel"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optShowMarks",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 57,
+                  "samples": {
+                    "files": 283,
+                    "inMenu": {
+                      "0": 279,
+                      "3": 4
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Height",
+                  "labelSource": "enableCheckBox",
+                  "key": "DirectionMarkHeight",
+                  "enableKey": "DirectionMarkHeight_en",
+                  "type": "number",
+                  "format": "%2.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "txtDirMarkHeight",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 58,
+                  "samples": {
+                    "files": 283,
+                    "top": {
+                      "0.000000": 276,
+                      "2.500000": 7
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 56
+            }
+          ],
+          "position": 35
+        }
+      ],
+      "position": 59
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "label_height",
+    "StyleName",
+    "ViewLabelMarkSymbolPositionX",
+    "ViewLabelMarkSymbolPositionY",
+    "extreme_en",
+    "label_height_en",
+    "StyleName_en",
+    "ViewLabelMarkSymbolPosition_en",
+    "PourView_en",
+    "PourView",
+    "PartialProfileLength_en",
+    "PartialProfileLength",
+    "PartialProfileOffset_en",
+    "PartialProfileOffset"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

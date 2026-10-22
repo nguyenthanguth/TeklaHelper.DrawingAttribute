@@ -1,0 +1,462 @@
+{
+  "page": "BoltObject",
+  "viewPrefix": "vs.",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gratViewAttributes",
+  "aidPanel": "PanelBolt",
+  "treeCheckBoxKey": {
+    "key": "screw_en",
+    "in": "top level of the .vi",
+    "confidence": "legacy-dialog",
+    "note": "gratViewAttributes fills its tree (TWOSTATE check boxes) at run time; the key comes from gr_view_attrib, where this check box precedes the button that opens the page dialog"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": "out_file",
+  "saveAsNote": "not in gratViewAttributes; the older dialogs have it as the \"Save as\" text field (text gr_*_saveas_file, MEMBER out_file)",
+  "tabs": [
+    {
+      "label": "Content",
+      "aidName": "tabContent",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Bolt representation",
+          "aidName": "cntContent",
+          "controls": [
+            {
+              "label": "Solid/Symbol",
+              "labelSource": "enableCheckBox",
+              "key": "draw_as",
+              "enableKey": "draw_as_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "solid",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "gr_ds_solid",
+                  "apiName": "Solid"
+                },
+                {
+                  "label": "exact solid",
+                  "labelSource": "aid",
+                  "value": 9,
+                  "aidName": "gr_ds_exact_solid",
+                  "apiName": "ExactSolid"
+                },
+                {
+                  "label": "Symbol",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "gr_ds_symbol",
+                  "apiName": "Symbol"
+                },
+                {
+                  "label": "Symbol2",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "gr_ds_symbol2",
+                  "apiName": "Symbol2"
+                },
+                {
+                  "label": "Symbol3",
+                  "labelSource": "aid",
+                  "value": 5,
+                  "aidName": "gr_ds_symbol3",
+                  "apiName": "Symbol3"
+                },
+                {
+                  "label": "DIN symbol",
+                  "labelSource": "aid",
+                  "value": 7,
+                  "aidName": "gr_screw_DIN",
+                  "apiName": "DINSymbol"
+                },
+                {
+                  "label": "User-defined symbol",
+                  "labelSource": "aid",
+                  "value": 8,
+                  "aidName": "gr_ds_user",
+                  "apiName": "UserDefined"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_ds_mode",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 2,
+              "apiEnum": "Tekla.Structures.Drawing.Bolt.Representation",
+              "samples": {
+                "files": 290,
+                "inMenu": {
+                  "5": 91,
+                  "1": 62,
+                  "4": 54,
+                  "2": 51,
+                  "8": 32
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Hole",
+              "labelSource": "own",
+              "key": "sym_hole",
+              "enableKey": "sym_en",
+              "enableLabel": "Symbol content",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_ds_symbol_hole",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 3,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "1": 269,
+                  "0": 21
+                }
+              }
+            },
+            {
+              "label": "Axis",
+              "labelSource": "own",
+              "key": "sym_axis",
+              "enableKey": "sym_en",
+              "enableLabel": "Symbol content",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "gr_ds_symbol_axis",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 4,
+              "samples": {
+                "files": 290,
+                "top": {
+                  "1": 255,
+                  "0": 35
+                }
+              }
+            }
+          ],
+          "groups": [
+            {
+              "label": "Visibility of bolts",
+              "aidName": "cntVisibilityOfBolts",
+              "groupSource": "heading-textlabel+separator",
+              "controls": [
+                {
+                  "label": "In main parts",
+                  "labelSource": "enableCheckBox",
+                  "key": "main",
+                  "enableKey": "main_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Not visible",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "gr_ds_main_not_vis"
+                    },
+                    {
+                      "label": "Visible",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "gr_ds_main_vis"
+                    }
+                  ],
+                  "dialogDefault": 1,
+                  "aidWidget": "optionmenu",
+                  "aidName": "gr_ds_main",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 6,
+                  "samples": {
+                    "files": 290,
+                    "inMenu": {
+                      "1": 286,
+                      "0": 4
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "In secondary parts",
+                  "labelSource": "enableCheckBox",
+                  "key": "sec",
+                  "enableKey": "sec_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Not visible",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "gr_ds_sec_not_vis"
+                    },
+                    {
+                      "label": "Visible",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "gr_ds_sec_vis"
+                    }
+                  ],
+                  "dialogDefault": 1,
+                  "aidWidget": "optionmenu",
+                  "aidName": "gr_ds_sec",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 7,
+                  "samples": {
+                    "files": 290,
+                    "inMenu": {
+                      "1": 288,
+                      "0": 2
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "In sub-assemblies",
+                  "labelSource": "enableCheckBox",
+                  "key": "Subassembly",
+                  "enableKey": "Subassembly_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Not visible",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optSubassembly_not_vis"
+                    },
+                    {
+                      "label": "Visible",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optSubassembly_vis"
+                    }
+                  ],
+                  "dialogDefault": 1,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optMnuSubassembly",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 8,
+                  "samples": {
+                    "files": 282,
+                    "inMenu": {
+                      "1": 271,
+                      "0": 11
+                    },
+                    "outsideMenu": {}
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 5
+            }
+          ],
+          "position": 1
+        }
+      ],
+      "position": 9
+    },
+    {
+      "label": "Appearance",
+      "aidName": "tabAppearance",
+      "controls": [
+        {
+          "label": "Color",
+          "labelSource": "enableCheckBox",
+          "key": "line_colour",
+          "enableKey": "line_colour_en",
+          "type": "color",
+          "options": [
+            {
+              "label": "Invisible",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_invisible_line",
+              "value": 152,
+              "aidName": "gr_ds_pb_white_line",
+              "apiName": "Invisible"
+            },
+            {
+              "label": "Black",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_black_line",
+              "value": 153,
+              "aidName": "gr_ds_pb_black_line",
+              "apiName": "Black"
+            },
+            {
+              "label": "Red",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_red_line",
+              "value": 160,
+              "aidName": "gr_ds_pb_red_line",
+              "apiName": "Red"
+            },
+            {
+              "label": "Green",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_green_line",
+              "value": 161,
+              "aidName": "gr_ds_pb_green_line",
+              "apiName": "Green"
+            },
+            {
+              "label": "Blue",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_blue_line",
+              "value": 162,
+              "aidName": "gr_ds_pb_blue_line",
+              "apiName": "Blue"
+            },
+            {
+              "label": "Cyan",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_cyan_line",
+              "value": 163,
+              "aidName": "gr_ds_pb_cyan_line",
+              "apiName": "Cyan"
+            },
+            {
+              "label": "Yellow",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_yellow_line",
+              "value": 164,
+              "aidName": "gr_ds_pb_yellow_line",
+              "apiName": "Yellow"
+            },
+            {
+              "label": "Magenta",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_magenta_line",
+              "value": 165,
+              "aidName": "gr_ds_pb_magenta_line",
+              "apiName": "Magenta"
+            },
+            {
+              "label": "NewLine1",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_1",
+              "value": 154,
+              "aidName": "gr_ds_pb_new_line_1",
+              "apiName": "NewLine1"
+            },
+            {
+              "label": "NewLine2",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_2",
+              "value": 155,
+              "aidName": "gr_ds_pb_new_line_2",
+              "apiName": "NewLine2"
+            },
+            {
+              "label": "NewLine3",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_3",
+              "value": 156,
+              "aidName": "gr_ds_pb_new_line_3",
+              "apiName": "NewLine3"
+            },
+            {
+              "label": "NewLine4",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_4",
+              "value": 157,
+              "aidName": "gr_ds_pb_new_line_4",
+              "apiName": "NewLine4"
+            },
+            {
+              "label": "NewLine5",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_5",
+              "value": 158,
+              "aidName": "gr_ds_pb_new_line_5",
+              "apiName": "NewLine5"
+            },
+            {
+              "label": "NewLine6",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_6",
+              "value": 159,
+              "aidName": "gr_ds_pb_new_line_6",
+              "apiName": "NewLine6"
+            },
+            {
+              "label": "Gray30",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray30_line",
+              "value": 130,
+              "aidName": "",
+              "apiName": "Gray30"
+            },
+            {
+              "label": "Gray50",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray50_line",
+              "value": 131,
+              "aidName": "",
+              "apiName": "Gray50"
+            },
+            {
+              "label": "Gray70",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray70_line",
+              "value": 132,
+              "aidName": "",
+              "apiName": "Gray70"
+            },
+            {
+              "label": "Gray90",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray90_line",
+              "value": 133,
+              "aidName": "",
+              "apiName": "Gray90"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "gr_ds_colour",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 10,
+          "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+          "samples": {
+            "files": 290,
+            "inMenu": {
+              "155": 91,
+              "161": 66,
+              "153": 48,
+              "158": 44,
+              "160": 21,
+              "156": 13
+            },
+            "outsideMenu": {
+              "1": 7
+            }
+          }
+        }
+      ],
+      "groups": [],
+      "position": 11
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "CustomPresentation_en",
+    "aCustomPresentation"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

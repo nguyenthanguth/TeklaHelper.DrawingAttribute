@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TeklaHelper.DrawingAttribute/TeklaHelper.DrawingAttribute.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/TeklaHelper.DrawingAttribute.Samples/TeklaHelper.DrawingAttribute.Samples.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TeklaHelper.DrawingAttribute.Tests/TeklaHelper.DrawingAttribute.Tests.csproj" />
+  </Folder>
+</Solution>
