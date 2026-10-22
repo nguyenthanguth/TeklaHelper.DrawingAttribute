@@ -87,9 +87,9 @@
               "position": 2,
               "apiEnum": "Tekla.Structures.Drawing.Bolt.Representation",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
-                  "5": 91,
+                  "5": 89,
                   "1": 62,
                   "4": 54,
                   "2": 51,
@@ -114,9 +114,9 @@
               "confidence": "decoded",
               "position": 3,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "1": 269,
+                  "1": 267,
                   "0": 21
                 }
               }
@@ -137,9 +137,9 @@
               "confidence": "decoded",
               "position": 4,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "1": 255,
+                  "1": 253,
                   "0": 35
                 }
               }
@@ -178,9 +178,9 @@
                   "confidence": "decoded",
                   "position": 6,
                   "samples": {
-                    "files": 290,
+                    "files": 288,
                     "inMenu": {
-                      "1": 286,
+                      "1": 284,
                       "0": 4
                     },
                     "outsideMenu": {}
@@ -213,9 +213,9 @@
                   "confidence": "decoded",
                   "position": 7,
                   "samples": {
-                    "files": 290,
+                    "files": 288,
                     "inMenu": {
-                      "1": 288,
+                      "1": 286,
                       "0": 2
                     },
                     "outsideMenu": {}
@@ -429,7 +429,7 @@
           "position": 10,
           "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
           "samples": {
-            "files": 290,
+            "files": 288,
             "inMenu": {
               "155": 91,
               "161": 66,
@@ -439,7 +439,7 @@
               "156": 13
             },
             "outsideMenu": {
-              "1": 7
+              "1": 5
             }
           }
         }
@@ -458,5 +458,5 @@
     "aCustomPresentation"
   ],
   "dialogKeysNotInSamples": [],
-  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+  "samplesSource": "289 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
 }

@@ -635,7 +635,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Type (<c>text_type</c>). The dialog shows it on another page with the same keys, not on this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.LeaderLineType Type
+            public global::TeklaHelper.DrawingAttribute.Pages.LeaderLineType TextType
             {
                 get => GetEnum("text_type", (global::TeklaHelper.DrawingAttribute.Pages.LeaderLineType)1);
                 set => SetEnum("text_type", value);
@@ -734,7 +734,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Placing (<c>txpl.text_placing_mode</c>). Shown in an older Tekla dialog, not in the current View
             /// properties.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode Placing
+            public global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode TxplTextPlacingMode
             {
                 get => GetEnum("txpl.text_placing_mode", (global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode)0);
                 set => SetEnum("txpl.text_placing_mode", value);

@@ -214,9 +214,9 @@
           "position": 11,
           "labelConfidence": "key-name",
           "samples": {
-            "files": 290,
+            "files": 288,
             "top": {
-              "10.000000": 188,
+              "10.000000": 186,
               "20.000000": 49,
               "15.000000": 27,
               "5.000000": 11,
@@ -391,7 +391,7 @@
           "position": 13,
           "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
           "samples": {
-            "files": 291,
+            "files": 289,
             "inMenu": {
               "160": 100,
               "157": 90,
@@ -403,7 +403,7 @@
               "154": 1
             },
             "outsideMenu": {
-              "2": 5
+              "2": 3
             }
           }
         },
@@ -478,10 +478,10 @@
           "position": 14,
           "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
           "samples": {
-            "files": 290,
+            "files": 288,
             "inMenu": {
               "4": 226,
-              "2": 64
+              "2": 62
             },
             "outsideMenu": {}
           }
@@ -653,7 +653,7 @@
           "position": 16,
           "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
           "samples": {
-            "files": 291,
+            "files": 289,
             "inMenu": {
               "157": 90,
               "163": 79,
@@ -664,7 +664,7 @@
               "154": 1
             },
             "outsideMenu": {
-              "3": 5
+              "3": 3
             }
           }
         },
@@ -682,9 +682,9 @@
           "confidence": "decoded",
           "position": 17,
           "samples": {
-            "files": 290,
+            "files": 288,
             "top": {
-              "3.000000": 113,
+              "3.000000": 111,
               "4.000000": 84,
               "2.000000": 51,
               "5.000000": 38,
@@ -778,9 +778,9 @@
           "position": 19,
           "apiEnum": "Tekla.Structures.Drawing.FrameTypes",
           "samples": {
-            "files": 290,
+            "files": 288,
             "inMenu": {
-              "3": 159,
+              "3": 157,
               "0": 111,
               "4": 20
             },
@@ -826,10 +826,10 @@
       "confidence": "decoded",
       "position": 1,
       "samples": {
-        "files": 292,
+        "files": 288,
         "inMenu": {
           "0": 200,
-          "1": 91,
+          "1": 87,
           "3": 1
         },
         "outsideMenu": {}
@@ -950,5 +950,5 @@
     "aCustomPresentation"
   ],
   "dialogKeysNotInSamples": [],
-  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+  "samplesSource": "289 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
 }

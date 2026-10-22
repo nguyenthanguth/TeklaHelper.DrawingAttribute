@@ -820,9 +820,9 @@
               "position": 16,
               "apiEnum": "Tekla.Structures.Drawing.FrameTypes",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
-                  "1": 169,
+                  "1": 167,
                   "0": 99,
                   "8": 22
                 },
@@ -988,7 +988,7 @@
               "position": 17,
               "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "161": 163,
                   "154": 62,
@@ -996,7 +996,7 @@
                   "153": 24
                 },
                 "outsideMenu": {
-                  "3": 6
+                  "3": 4
                 }
               }
             },
@@ -1161,9 +1161,9 @@
               "confidence": "decoded",
               "position": 21,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
-                  "1": 200,
+                  "1": 198,
                   "7": 54,
                   "2": 36
                 },
@@ -1341,9 +1341,9 @@
               "position": 5,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "8": 290
+                  "8": 288
                 }
               }
             },
@@ -1363,9 +1363,9 @@
               "position": 6,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "1": 290
+                  "1": 288
                 }
               }
             },
@@ -1385,9 +1385,9 @@
               "position": 7,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "4": 290
+                  "4": 288
                 }
               }
             },
@@ -1407,9 +1407,9 @@
               "position": 8,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "2": 290
+                  "2": 288
                 }
               }
             }
@@ -1433,9 +1433,9 @@
           "confidence": "decoded",
           "position": 1,
           "samples": {
-            "files": 290,
+            "files": 288,
             "top": {
-              "1.000000": 231,
+              "1.000000": 229,
               "2.500000": 59
             }
           }
@@ -1454,9 +1454,9 @@
           "confidence": "decoded",
           "position": 2,
           "samples": {
-            "files": 290,
+            "files": 288,
             "top": {
-              "2.000000": 229,
+              "2.000000": 227,
               "1.000000": 61
             }
           }
@@ -1529,9 +1529,9 @@
         "Visibility of mark"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 290
+          "0": 288
         },
         "outsideMenu": {}
       }
@@ -1688,10 +1688,10 @@
         "Visibility of bolt marks"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {},
         "outsideMenu": {
-          "1": 290
+          "1": 288
         }
       }
     },
@@ -1767,9 +1767,9 @@
         "Visibility of bolt marks"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "1": 290
+          "1": 288
         },
         "outsideMenu": {}
       }
@@ -1833,9 +1833,9 @@
         "Visibility of bolt marks"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "top": {
-          "0.000000": 290
+          "0.000000": 288
         }
       }
     },
@@ -1871,9 +1871,9 @@
         "Visibility of mark"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 290
+          "0": 288
         },
         "outsideMenu": {}
       }
@@ -2020,9 +2020,9 @@
       "aidDialog": "gr_textpl_attrib",
       "dialogPath": [],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 290
+          "0": 288
         },
         "outsideMenu": {}
       }
@@ -2083,5 +2083,5 @@
     "RebarGroupMarkAttributes.Type_en"
   ],
   "dialogKeysNotInSamples": [],
-  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+  "samplesSource": "289 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
 }

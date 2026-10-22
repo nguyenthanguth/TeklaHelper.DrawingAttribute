@@ -72,6 +72,16 @@ namespace DialogClassGenerator
             "Text", "Lines", "Direction", "Alignment", "Mode", "Line length",
         };
 
+        /// <summary>
+        /// Keys that the dialog of an earlier Tekla version does not have (found by decoding older TeklaStructures.aid files
+        /// with tools/DialogDecoder/compare.py): key → first version that has it.
+        /// </summary>
+        private static readonly Dictionary<string, string> KeysAddedIn = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["BarAttr.fill_color"] = "2026",
+            ["MeshAttr.fill_color"] = "2026",
+        };
+
         /// <summary>Check boxes (page class, key) found in the files saved from the dialog.</summary>
         private static readonly List<(string Page, string Key)> FileEnableKeys = new List<(string Page, string Key)>();
 
@@ -571,7 +581,11 @@ namespace DialogClassGenerator
                 if (item is Control control)
                 {
                     string name = Pascal(TrimLabel(control.Label));
-                    if (name.Length < 2 || control.Origin == "file")
+
+                    // In the Advanced group a generic label ("Color") does not say which setting it is, and which control
+                    // gets it would depend on the order of the dialog: the key says it for good (ReferenceColour)
+                    bool generic = control.Origin != null && GenericLabels.Contains(TrimLabel(control.Label));
+                    if (name.Length < 2 || control.Origin == "file" || generic)
                     {
                         name = KeyPascal(control.Key);
                     }
@@ -844,6 +858,11 @@ namespace DialogClassGenerator
             var text = new StringBuilder();
             text.Append(control.Origin == "file" ? "Key" : Xml(TrimLabel(control.Label)));
             text.Append($" (<c>{Xml(control.Key)}</c>).");
+            if (KeysAddedIn.TryGetValue(control.Key, out string version))
+            {
+                text.Append($" New in Tekla Structures {version}: the dialogs of earlier versions do not have it.");
+            }
+
             if (control.ClrType == "bool" && (control.BoolOn != 1 || control.BoolOff != 0))
             {
                 text.Append($" Stored as {control.BoolOn} (true) and {control.BoolOff} (false).");

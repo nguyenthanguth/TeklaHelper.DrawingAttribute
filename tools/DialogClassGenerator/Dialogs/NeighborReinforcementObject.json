@@ -653,6 +653,165 @@
                 },
                 "outsideMenu": {}
               }
+            },
+            {
+              "label": "Fill color",
+              "labelSource": "enableCheckBox",
+              "key": "BarAttr.fill_color",
+              "enableKey": "BarAttr.fill_color_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_vnr_white_fill_color",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_vnr_black_fill_color",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_vnr_red_fill_color",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_vnr_green_fill_color",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_vnr_blue_fill_color",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_vnr_cyan_fill_color",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_vnr_yellow_fill_color",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_vnr_magenta_fill_color",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_vnr_new_1_fill_color",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_vnr_new_2_fill_color",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_vnr_new_3_fill_color",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_vnr_new_4_fill_color",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_vnr_new_5_fill_color",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_vnr_new_6_fill_color",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vnrebar_fill_color",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 15,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors"
             }
           ],
           "groups": [],
@@ -824,7 +983,7 @@
               "aidName": "nbarHiddenLineColor",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 16,
+              "position": 17,
               "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
               "samples": {
                 "files": 273,
@@ -912,7 +1071,7 @@
               "aidName": "nbarHiddenLineType",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 17,
+              "position": 18,
               "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
               "samples": {
                 "files": 273,
@@ -925,10 +1084,10 @@
             }
           ],
           "groups": [],
-          "position": 15
+          "position": 16
         }
       ],
-      "position": 18
+      "position": 19
     },
     {
       "label": "Mesh content",
@@ -964,7 +1123,7 @@
               "aidName": "gr_vnmesh_visibility",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 20,
+              "position": 21,
               "samples": {
                 "files": 273,
                 "inMenu": {
@@ -1043,7 +1202,7 @@
               "aidName": "gr_rebar_nmesh_draw_as",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 21,
+              "position": 22,
               "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.ReinforcementRepresentationTypes",
               "apiEnumOffset": 1,
               "apiEnumNote": "API value = stored value + 1 (checked on every item)",
@@ -1118,7 +1277,7 @@
               "aidName": "gr_nmesh_longitudinal",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 22,
+              "position": 23,
               "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.ReinforcementVisibilityTypes",
               "samples": {
                 "files": 273,
@@ -1192,7 +1351,7 @@
               "aidName": "gr_nmesh_crossing",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 23,
+              "position": 24,
               "apiEnum": "Tekla.Structures.Drawing.ReinforcementBase.ReinforcementVisibilityTypes",
               "samples": {
                 "files": 273,
@@ -1206,7 +1365,7 @@
             }
           ],
           "groups": [],
-          "position": 19
+          "position": 20
         },
         {
           "label": "Lines",
@@ -1224,7 +1383,7 @@
               "aidName": "nmDrawHiddenLinesHiddenByPart",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 25,
+              "position": 26,
               "samples": {
                 "files": 273,
                 "top": {
@@ -1244,7 +1403,7 @@
               "aidName": "nmDrawHiddenLinesHiddenByRebar",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 26,
+              "position": 27,
               "samples": {
                 "files": 273,
                 "top": {
@@ -1254,7 +1413,7 @@
             }
           ],
           "groups": [],
-          "position": 24
+          "position": 25
         },
         {
           "label": "Symbols",
@@ -1270,7 +1429,7 @@
               "aidName": "gr_nmesh_symbol_num",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 28,
+              "position": 29,
               "samples": {
                 "files": 273,
                 "top": {
@@ -1291,7 +1450,7 @@
               "aidName": "gr_nmesh_symbol_size",
               "aidType": "double",
               "confidence": "decoded",
-              "position": 29,
+              "position": 30,
               "samples": {
                 "files": 273,
                 "top": {
@@ -1302,10 +1461,10 @@
             }
           ],
           "groups": [],
-          "position": 27
+          "position": 28
         }
       ],
-      "position": 30
+      "position": 31
     },
     {
       "label": "Mesh appearance",
@@ -1472,7 +1631,7 @@
               "aidName": "gr_vnmesh_colour",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 32,
+              "position": 33,
               "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
               "samples": {
                 "files": 273,
@@ -1563,7 +1722,7 @@
               "aidName": "gr_vnmesh_type",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 33,
+              "position": 34,
               "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
               "samples": {
                 "files": 273,
@@ -1573,10 +1732,169 @@
                 },
                 "outsideMenu": {}
               }
+            },
+            {
+              "label": "Fill color",
+              "labelSource": "enableCheckBox",
+              "key": "MeshAttr.fill_color",
+              "enableKey": "MeshAttr.fill_color_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_vnm_magenta_line_mesh_fill_color",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "",
+                  "apiName": "NewLine6"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "gr_vnmesh_fill_color",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 35,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors"
             }
           ],
           "groups": [],
-          "position": 31
+          "position": 32
         },
         {
           "label": "Hidden lines",
@@ -1744,7 +2062,7 @@
               "aidName": "nmeshHiddenLineColor",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 35,
+              "position": 37,
               "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
               "samples": {
                 "files": 273,
@@ -1832,7 +2150,7 @@
               "aidName": "nmeshHiddenLineType",
               "aidType": "int",
               "confidence": "decoded",
-              "position": 36,
+              "position": 38,
               "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
               "samples": {
                 "files": 273,
@@ -1845,10 +2163,10 @@
             }
           ],
           "groups": [],
-          "position": 34
+          "position": 36
         }
       ],
-      "position": 37
+      "position": 39
     }
   ],
   "groups": [],
@@ -1880,7 +2198,7 @@
       "aidName": "optRebarAssemblyVisibility",
       "aidType": "int",
       "confidence": "sibling-page",
-      "position": 39,
+      "position": 41,
       "shownOnPage": "ReinforcementObject",
       "dialogPath": [
         "Rebar assembly",
@@ -1925,7 +2243,7 @@
       "aidName": "optRebarAssemblyRepresentation",
       "aidType": "int",
       "confidence": "sibling-page",
-      "position": 40,
+      "position": 42,
       "shownOnPage": "ReinforcementObject",
       "dialogPath": [
         "Rebar assembly",
@@ -2095,7 +2413,7 @@
       "aidName": "optRebarAssemblyLineColor",
       "aidType": "int",
       "confidence": "sibling-page",
-      "position": 42,
+      "position": 44,
       "shownOnPage": "ReinforcementObject",
       "dialogPath": [
         "Rebar assembly",
@@ -2187,7 +2505,7 @@
       "aidName": "optRebarAssemblyLineType",
       "aidType": "int",
       "confidence": "sibling-page",
-      "position": 43,
+      "position": 45,
       "shownOnPage": "ReinforcementObject",
       "dialogPath": [
         "Rebar assembly",
@@ -2212,7 +2530,7 @@
       "aidName": "txtRebarAssemblySymbolNumber",
       "aidType": "int",
       "confidence": "sibling-page",
-      "position": 45,
+      "position": 47,
       "shownOnPage": "ReinforcementObject",
       "dialogPath": [
         "Rebar assembly",
@@ -2237,7 +2555,7 @@
       "aidName": "txtRebarAssemblySymbolSize",
       "aidType": "double",
       "confidence": "sibling-page",
-      "position": 46,
+      "position": 48,
       "shownOnPage": "ReinforcementObject",
       "dialogPath": [
         "Rebar assembly",
@@ -2262,6 +2580,11 @@
     "MeshAttr.CustomPresentation_en",
     "MeshAttr.aCustomPresentation"
   ],
-  "dialogKeysNotInSamples": [],
-  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+  "dialogKeysNotInSamples": [
+    "BarAttr.fill_color",
+    "BarAttr.fill_color_en",
+    "MeshAttr.fill_color",
+    "MeshAttr.fill_color_en"
+  ],
+  "samplesSource": "289 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
 }

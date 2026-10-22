@@ -53,6 +53,12 @@ namespace TeklaHelper.DrawingAttribute.Filters
         /// <summary>UTF-8, the code page <c>Tekla.Structures.Filtering</c> writes.</summary>
         public const int Utf8CodePage = TextEncodings.Utf8CodePage;
 
+        /// <summary>
+        /// Most rows a filter Tekla uses can have. Tekla.Structures.Filtering writes more without error (checked with
+        /// 1500), so the limit is Tekla's own; <see cref="SetExpression"/> and <see cref="ToBytes"/> throw beyond it.
+        /// </summary>
+        public const int MaxRows = 1000;
+
         private const char SpaceMarker = '\u0002';
         private const string TitleToken = "TITLE_OBJECT_GROUP";
         private const string SectionToken = "SECTION_OBJECT_GROUP";
@@ -340,6 +346,11 @@ namespace TeklaHelper.DrawingAttribute.Filters
         /// <exception cref="EncoderFallbackException">A token has a character <see cref="CodePage"/> cannot represent.</exception>
         public byte[] ToBytes()
         {
+            if (Rows.Count > MaxRows)
+            {
+                throw new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, "A filter can have at most {0} rows; this one has {1}.", MaxRows, Rows.Count));
+            }
+
             Encoding encoding = TextEncodings.GetForWriting(CodePage);
             using (var stream = new MemoryStream())
             {
@@ -371,8 +382,9 @@ namespace TeklaHelper.DrawingAttribute.Filters
                     WriteText("    " + CountToken + " " + Rows.Count.ToString(CultureInfo.InvariantCulture) + " ");
                 }
 
-                foreach (FilterRow row in Rows)
+                for (int rowIndex = 0; rowIndex < Rows.Count; rowIndex++)
                 {
+                    FilterRow row = Rows[rowIndex];
                     WriteText("    " + SectionToken + " ");
                     WriteText("    {");
                     string[] tokens = row.GetTokens();
@@ -385,7 +397,19 @@ namespace TeklaHelper.DrawingAttribute.Filters
                         }
                         else
                         {
-                            WriteText("        " + tokens[i].Replace(' ', SpaceMarker) + " ");
+                            string token = tokens[i].Replace(' ', SpaceMarker);
+                            if (i == FilterRow.ValueTokenIndex && encoding.GetByteCount(token) > FilterRow.MaxValueLength)
+                            {
+                                throw new InvalidOperationException(string.Format(
+                                    CultureInfo.InvariantCulture,
+                                    "The value of row {0} takes {1} bytes in code page {2}; Tekla accepts at most {3}.",
+                                    rowIndex + 1,
+                                    encoding.GetByteCount(token),
+                                    CodePage,
+                                    FilterRow.MaxValueLength));
+                            }
+
+                            WriteText("        " + token + " ");
                         }
                     }
 
@@ -423,6 +447,11 @@ namespace TeklaHelper.DrawingAttribute.Filters
             else
             {
                 rows = Flatten((FilterGroup)expression);
+                if (rows.Count > MaxRows)
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "The expression makes {0} rows; a filter can have at most {1}.", rows.Count, MaxRows), nameof(expression));
+                }
+
                 if (rows.Count > 0)
                 {
                     rows[0].OpenParentheses++;

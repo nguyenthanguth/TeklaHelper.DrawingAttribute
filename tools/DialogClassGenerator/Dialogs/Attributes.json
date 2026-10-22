@@ -131,7 +131,7 @@
               "confidence": "decoded",
               "position": 2,
               "samples": {
-                "files": 293,
+                "files": 289,
                 "top": {
                   "10.000000": 89,
                   "30.000000": 54,
@@ -247,10 +247,10 @@
               "confidence": "decoded",
               "position": 6,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "0": 168,
-                  "1": 122
+                  "1": 120
                 },
                 "outsideMenu": {}
               }
@@ -270,10 +270,10 @@
               "confidence": "decoded",
               "position": 7,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
                   "-515.660000": 61,
-                  "0.000000": 53,
+                  "0.000000": 51,
                   "31563.050000": 42,
                   "-3189.620000": 35,
                   "-100.660000": 8
@@ -295,11 +295,11 @@
               "confidence": "decoded",
               "position": 8,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
                   "515.660000": 61,
                   "32687.330000": 42,
-                  "9232.900000": 42,
+                  "9232.900000": 40,
                   "26820.450000": 35,
                   "12000.000000": 7
                 }
@@ -320,11 +320,11 @@
               "confidence": "decoded",
               "position": 9,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
                   "-0.660000": 64,
                   "-3000.000000": 42,
-                  "-101.600000": 42,
+                  "-101.600000": 40,
                   "-5191.300000": 35,
                   "-500.000000": 8
                 }
@@ -345,11 +345,11 @@
               "confidence": "decoded",
               "position": 10,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
                   "3222.660000": 61,
                   "7200.000000": 42,
-                  "9194.800000": 42,
+                  "9194.800000": 40,
                   "33010.000000": 35,
                   "350.000000": 7
                 }
@@ -370,10 +370,10 @@
               "confidence": "decoded",
               "position": 11,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
                   "1030.670000": 61,
-                  "500.000000": 55,
+                  "500.000000": 53,
                   "1000.000000": 48,
                   "679.910000": 42,
                   "50.660000": 10
@@ -395,10 +395,10 @@
               "confidence": "decoded",
               "position": 12,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
                   "1030.670000": 61,
-                  "500.000000": 55,
+                  "500.000000": 53,
                   "333.360000": 42,
                   "12010.000000": 35,
                   "50.660000": 10
@@ -419,9 +419,9 @@
               "confidence": "decoded",
               "position": 13,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0.000000": 155,
+                  "0.000000": 153,
                   "100.000000": 67,
                   "50.000000": 26,
                   "1000.000000": 20,
@@ -663,10 +663,10 @@
                   "position": 24,
                   "apiEnum": "Tekla.Structures.Drawing.View.ShorteningCutPartType",
                   "samples": {
-                    "files": 290,
+                    "files": 288,
                     "inMenu": {
                       "1": 194,
-                      "0": 96
+                      "0": 94
                     },
                     "outsideMenu": {}
                   }
@@ -704,9 +704,9 @@
                   "confidence": "order",
                   "position": 25,
                   "samples": {
-                    "files": 290,
+                    "files": 288,
                     "inMenu": {
-                      "0": 281,
+                      "0": 279,
                       "1": 9
                     },
                     "outsideMenu": {}
@@ -727,11 +727,11 @@
                   "confidence": "decoded",
                   "position": 26,
                   "samples": {
-                    "files": 290,
+                    "files": 288,
                     "top": {
                       "10000.000000": 69,
-                      "40000.000000": 52,
                       "200.000000": 52,
+                      "40000.000000": 50,
                       "400.000000": 33,
                       "1000000.000000": 26
                     }
@@ -752,10 +752,10 @@
                   "confidence": "decoded",
                   "position": 27,
                   "samples": {
-                    "files": 290,
+                    "files": 288,
                     "top": {
                       "1.000000": 122,
-                      "3.000000": 102,
+                      "3.000000": 100,
                       "0.100000": 47,
                       "2.000000": 16,
                       "10.000000": 3
@@ -1308,7 +1308,7 @@
                   "position": 49,
                   "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
                   "samples": {
-                    "files": 290,
+                    "files": 288,
                     "inMenu": {
                       "152": 79,
                       "159": 63,
@@ -1322,7 +1322,7 @@
                       "163": 2
                     },
                     "outsideMenu": {
-                      "7": 5,
+                      "7": 3,
                       "0xFFFFFFFF": 2
                     }
                   }
@@ -1446,9 +1446,9 @@
                   "confidence": "decoded",
                   "position": 54,
                   "samples": {
-                    "files": 290,
+                    "files": 288,
                     "inMenu": {
-                      "1": 169,
+                      "1": 167,
                       "0": 121
                     },
                     "outsideMenu": {}
@@ -1622,5 +1622,5 @@
     "PartialProfileOffset"
   ],
   "dialogKeysNotInSamples": [],
-  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+  "samplesSource": "289 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
 }

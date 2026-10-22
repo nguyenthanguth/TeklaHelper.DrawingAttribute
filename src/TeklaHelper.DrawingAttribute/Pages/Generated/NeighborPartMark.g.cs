@@ -716,7 +716,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Placing (<c>txpl.text_placing_mode</c>). Shown in an older Tekla dialog, not in the current View
             /// properties.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode Placing
+            public global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode TxplTextPlacingMode
             {
                 get => GetEnum("txpl.text_placing_mode", (global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode)0);
                 set => SetEnum("txpl.text_placing_mode", value);

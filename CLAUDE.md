@@ -5,6 +5,9 @@ files, sub-dialog files such as `.vg` / `.vpm`) and filter files (`.vf`, `.vi.fi
 objects, so settings the Drawing Open API does not expose can be written to a file and loaded by name
 (`new GADrawing(name, "file")`, `view.Attributes.LoadAttributes("file")`).
 
+`docs/how-it-was-built.md` records how the formats and the dialog structure were found and checked; keep it in step
+when a finding changes.
+
 The maintainer writes in Vietnamese: reply in Vietnamese. Code, XML comments, README and commit messages are in English.
 
 ## Commands
@@ -38,6 +41,11 @@ definitions decoded from Tekla's `.aid` files (`tools/DialogClassGenerator/Dialo
 `tools/DialogDecoder`; its README explains the `.aid` format and how to decode another Tekla version, and `compare.py`
 diffs two decodings) and two files saved from the dialogs, for value types and keys the dialog does not show. Fix
 decoding errors in `extract.py`, never by hand in the JSON files:
+
+The JSON files are decoded from the **latest** Tekla dialog (decision: follow the newest version; older versions are
+expected to cope). Currently Tekla 2026 (`TEKLA_AID=C:/Users/InuYasha/Downloads/test/2026/TeklaStructures.aid`, Tekla
+2026 is not installed here) with the 2025 dialog files as samples. Keys an older dialog lacks are listed in
+`KeysAddedIn` (generator), which notes the version in the XML comment.
 
 ```shell
 dotnet run --project tools/DialogClassGenerator -c Release -- tools/DialogClassGenerator/Dialogs "D:/Tekla/Models/New model/attributes/VIEW-TEST.vi" "D:/Tekla/Models/New model/attributes/DRAWING-TEST.gd" src/TeklaHelper.DrawingAttribute/Pages/Generated
@@ -263,6 +271,13 @@ TITLE_OBJECT_GROUP
   parenthesis for an empty group (the library skips empty groups) and ignores `IsEnable` of collections. Dialog files do
   not wrap the root.
 - Tekla's reader (`new Filter(path, provider)`) cannot read `Custom*` (UDA) rows, not even its own.
+- Limits of Tekla, not of Tekla.Structures.Filtering (which writes and reads back 5000-character values and 1500 rows
+  without error): a value holds at most 1023 bytes in the file's encoding (the `Value` column of the dialog table
+  `RuleTable` in TeklaStructures.aid is `char LENGTH=1023`, a 1024-byte buffer), and a filter at most 1000 rows (tested by
+  the maintainer in Tekla). `FilterRow.MaxValueLength` / `FilterFile.MaxRows`: setting a longer value or an expression with more
+  rows throws, saving checks the bytes; rows read from a file are not checked, so existing files still round-trip. The
+  same table has `Category` / `Property` 127, `Condition` / `AndOr` 19 bytes and parentheses 0–3 per row (not enforced:
+  shipped files hold translated labels, and the API writes deeper nesting).
 - `.copt` / `TITLE_CLASSIFIER` (object level settings) is another block format, not supported yet.
 
 ## Conventions

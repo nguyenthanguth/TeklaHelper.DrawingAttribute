@@ -88,9 +88,9 @@
               "position": 2,
               "apiEnum": "Tekla.Structures.Drawing.Part.Representation",
               "samples": {
-                "files": 292,
+                "files": 288,
                 "inMenu": {
-                  "1": 262,
+                  "1": 258,
                   "8": 26,
                   "4": 2,
                   "16": 1,
@@ -113,9 +113,9 @@
               "confidence": "decoded",
               "position": 6,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "10.000000": 173,
+                  "10.000000": 171,
                   "0.000000": 100,
                   "50.000000": 8,
                   "11.000000": 4,
@@ -217,10 +217,10 @@
               "confidence": "decoded",
               "position": 9,
               "samples": {
-                "files": 292,
+                "files": 288,
                 "top": {
-                  "1": 235,
-                  "0": 57
+                  "1": 232,
+                  "0": 56
                 }
               }
             },
@@ -239,10 +239,10 @@
               "confidence": "decoded",
               "position": 10,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
                   "1": 229,
-                  "0": 61
+                  "0": 59
                 }
               }
             }
@@ -269,9 +269,9 @@
               "confidence": "decoded",
               "position": 12,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 213,
+                  "0": 211,
                   "1": 77
                 }
               }
@@ -291,9 +291,9 @@
               "confidence": "decoded",
               "position": 13,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 290
+                  "0": 288
                 }
               }
             },
@@ -312,9 +312,9 @@
               "confidence": "decoded",
               "position": 14,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 290
+                  "0": 288
                 }
               }
             },
@@ -333,9 +333,9 @@
               "confidence": "decoded",
               "position": 15,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 260,
+                  "0": 258,
                   "1": 30
                 }
               }
@@ -355,9 +355,9 @@
               "confidence": "decoded",
               "position": 16,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 290
+                  "0": 288
                 }
               }
             },
@@ -376,9 +376,9 @@
               "confidence": "decoded",
               "position": 17,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 290
+                  "0": 288
                 }
               }
             }
@@ -405,9 +405,9 @@
               "confidence": "decoded",
               "position": 19,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 254,
+                  "0": 252,
                   "1": 36
                 }
               }
@@ -427,9 +427,9 @@
               "confidence": "decoded",
               "position": 20,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 290
+                  "0": 288
                 }
               }
             },
@@ -448,9 +448,9 @@
               "confidence": "decoded",
               "position": 21,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 290
+                  "0": 288
                 }
               }
             },
@@ -469,9 +469,9 @@
               "confidence": "decoded",
               "position": 22,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 290
+                  "0": 288
                 }
               }
             },
@@ -490,9 +490,9 @@
               "confidence": "decoded",
               "position": 23,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 290
+                  "0": 288
                 }
               }
             },
@@ -511,9 +511,9 @@
               "confidence": "decoded",
               "position": 24,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 290
+                  "0": 288
                 }
               }
             }
@@ -540,9 +540,9 @@
               "confidence": "decoded",
               "position": 26,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0": 271,
+                  "0": 269,
                   "1": 19
                 }
               }
@@ -562,10 +562,10 @@
               "confidence": "decoded",
               "position": 27,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
                   "0": 235,
-                  "1": 55
+                  "1": 53
                 }
               }
             },
@@ -809,17 +809,16 @@
               "position": 33,
               "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
               "samples": {
-                "files": 291,
+                "files": 288,
                 "inMenu": {
                   "164": 116,
                   "153": 77,
                   "158": 65,
                   "161": 23,
-                  "152": 3,
-                  "160": 1
+                  "152": 3
                 },
                 "outsideMenu": {
-                  "6": 6
+                  "6": 4
                 }
               }
             },
@@ -903,9 +902,9 @@
               "position": 34,
               "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
-                  "1": 290
+                  "1": 288
                 },
                 "outsideMenu": {}
               }
@@ -1341,7 +1340,7 @@
               "position": 39,
               "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "153": 207,
                   "154": 42,
@@ -1350,7 +1349,7 @@
                   "152": 3
                 },
                 "outsideMenu": {
-                  "1": 6
+                  "1": 4
                 }
               }
             },
@@ -1434,9 +1433,9 @@
               "position": 40,
               "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
-                  "2": 139,
+                  "2": 137,
                   "3": 113,
                   "5": 38
                 },
@@ -1877,7 +1876,7 @@
               "position": 45,
               "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "160": 118,
                   "154": 95,
@@ -1887,7 +1886,7 @@
                   "163": 1
                 },
                 "outsideMenu": {
-                  "2": 6
+                  "2": 4
                 }
               }
             },
@@ -1971,10 +1970,10 @@
               "position": 46,
               "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "3": 151,
-                  "4": 137,
+                  "4": 135,
                   "0": 2
                 },
                 "outsideMenu": {}
@@ -3288,10 +3287,10 @@
         "Visibility"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
           "0": 175,
-          "1": 115
+          "1": 113
         },
         "outsideMenu": {}
       }
@@ -3333,12 +3332,12 @@
         "Visibility"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
           "1": 2
         },
         "outsideMenu": {
-          "0": 288
+          "0": 286
         }
       }
     },
@@ -3373,9 +3372,9 @@
         "Visibility"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 290
+          "0": 288
         },
         "outsideMenu": {}
       }
@@ -3731,5 +3730,5 @@
     "SectionHatch.hatch_factor_type_en"
   ],
   "dialogKeysNotInSamples": [],
-  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+  "samplesSource": "289 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
 }

@@ -247,6 +247,67 @@ namespace TeklaHelper.DrawingAttribute.Tests
             Assert.Empty(loaded.NeighborPartFilter.Rows);
         }
 
+        [Fact]
+        public void Value_LongerThanTheDialogBuffer_IsRejected()
+        {
+            var row = new FilterRow(Name(new string('A', FilterRow.MaxValueLength)));
+
+            Assert.Equal(1023, row.Value.Length);
+            Assert.Throws<ArgumentException>(() => row.Value = new string('A', FilterRow.MaxValueLength + 1));
+            Assert.Throws<ArgumentException>(() => Name(new string('A', FilterRow.MaxValueLength + 1)));
+        }
+
+        [Fact]
+        public void Value_IsCheckedInBytesOfTheFileEncodingOnSave()
+        {
+            // 400 characters, but 1200 bytes in UTF-8 and 800 in code page 932
+            var filter = FilterFile.FromExpression(FilterFileExtensions.ViewFilter, Name(new string('鋼', 400)));
+
+            Assert.Throws<InvalidOperationException>(() => filter.ToBytes());
+
+            filter.CodePage = 932;
+            Assert.NotEmpty(filter.ToBytes());
+        }
+
+        [Fact]
+        public void Rows_MoreThanTeklaAccepts_AreRejected()
+        {
+            FilterGroup Group(int count)
+            {
+                var group = new FilterGroup();
+                for (int i = 0; i < count; i++)
+                {
+                    group.Add(Name("P" + i), i < count - 1 ? FilterLogic.Or : FilterLogic.None);
+                }
+
+                return group;
+            }
+
+            var filter = FilterFile.FromExpression(FilterFileExtensions.ViewFilter, Group(FilterFile.MaxRows));
+            Assert.Equal(1000, filter.Rows.Count);
+            Assert.NotEmpty(filter.ToBytes());
+
+            Assert.Throws<ArgumentException>(() => filter.SetExpression(Group(FilterFile.MaxRows + 1)));
+            Assert.Equal(1000, filter.Rows.Count);
+
+            filter.Rows.Add(new FilterRow(Name("ONE MORE")));
+            Assert.Throws<InvalidOperationException>(() => filter.ToBytes());
+        }
+
+        [Fact]
+        public void File_WithALongerValue_IsStillReadAndWrittenBackUnchanged()
+        {
+            Directory.CreateDirectory(_directory);
+            string path = Path.Combine(_directory, "long.vf");
+            byte[] bytes = Encoding.UTF8.GetBytes(File(Row(0, 1, "co_part", "proNAME", "albl_Name", "==", "albl_Equals", new string('A', 1500), 0, "Empty")));
+            System.IO.File.WriteAllBytes(path, bytes);
+
+            FilterFile filter = FilterFile.FromFile(path);
+
+            Assert.Equal(1500, filter.Rows[0].Value.Length);
+            Assert.Equal(bytes, filter.ToBytes());
+        }
+
         private static FilterCondition Name(string value) => FilterProperties.Part.Name.IsEqual(value);
 
         private static string Describe(FilterCondition condition) => condition.Operator.Symbol + " " + condition.Operator.Label;

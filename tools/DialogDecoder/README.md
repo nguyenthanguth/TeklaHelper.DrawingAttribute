@@ -75,6 +75,9 @@ is recorded per control (`labelSource`, `confidence`), and the generator keeps t
    `annotate.py` checks the option lists against the `ENUMS` of Tekla 2025; if the Open API enums changed, update
    `ENUMS` from the new `Tekla.Structures.Drawing.dll` (reflection, e.g. with a throw-away net48 console).
 
+The files in `tools/DialogClassGenerator/Dialogs` follow the newest Tekla version (currently 2026, decoded with the 2025
+dialog files as samples); see CLAUDE.md for the exact command.
+
 Running the decoder on the current files reproduces them except the value statistics, which change whenever the sample
 folders do (`compare.py` ignores them unless `--samples` is given).
 

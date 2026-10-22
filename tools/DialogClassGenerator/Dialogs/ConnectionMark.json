@@ -751,9 +751,9 @@
               "confidence": "decoded",
               "position": 15,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
-                  "0": 287,
+                  "0": 285,
                   "3": 2,
                   "1": 1
                 },
@@ -857,11 +857,11 @@
               "position": 17,
               "apiEnum": "Tekla.Structures.Drawing.FrameTypes",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "0": 134,
                   "1": 130,
-                  "6": 24,
+                  "6": 22,
                   "2": 1,
                   "3": 1
                 },
@@ -1027,7 +1027,7 @@
               "position": 18,
               "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "161": 103,
                   "152": 102,
@@ -1035,7 +1035,7 @@
                   "153": 27
                 },
                 "outsideMenu": {
-                  "1": 6,
+                  "1": 4,
                   "0": 2
                 }
               }
@@ -1254,9 +1254,9 @@
               "position": 5,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "8": 253,
+                  "8": 251,
                   "0": 37
                 }
               }
@@ -1277,9 +1277,9 @@
               "position": 6,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "1": 253,
+                  "1": 251,
                   "0": 37
                 }
               }
@@ -1300,9 +1300,9 @@
               "position": 7,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "4": 253,
+                  "4": 251,
                   "0": 37
                 }
               }
@@ -1323,9 +1323,9 @@
               "position": 8,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "2": 254,
+                  "2": 252,
                   "0": 36
                 }
               }
@@ -1350,9 +1350,9 @@
           "confidence": "decoded",
           "position": 1,
           "samples": {
-            "files": 290,
+            "files": 288,
             "top": {
-              "5.000000": 154,
+              "5.000000": 152,
               "2.500000": 59,
               "1.000000": 48,
               "0.000000": 28,
@@ -1374,9 +1374,9 @@
           "confidence": "decoded",
           "position": 2,
           "samples": {
-            "files": 290,
+            "files": 288,
             "top": {
-              "10.000000": 146,
+              "10.000000": 144,
               "1.000000": 61,
               "2.000000": 46,
               "0.000000": 36,
@@ -1618,9 +1618,9 @@
         "Leader line"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "1": 239
+          "1": 237
         },
         "outsideMenu": {
           "0": 51
@@ -1700,9 +1700,9 @@
         "Visibility of bolt marks"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 286
+          "0": 284
         },
         "outsideMenu": {
           "1": 4
@@ -1781,9 +1781,9 @@
         "Visibility of bolt marks"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 286,
+          "0": 284,
           "1": 4
         },
         "outsideMenu": {}
@@ -1848,9 +1848,9 @@
         "Visibility of bolt marks"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "top": {
-          "0.000000": 290
+          "0.000000": 288
         }
       }
     },
@@ -1886,9 +1886,9 @@
         "Visibility of mark"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 290
+          "0": 288
         },
         "outsideMenu": {}
       }
@@ -2035,9 +2035,9 @@
       "aidDialog": "gr_textpl_attrib",
       "dialogPath": [],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 290
+          "0": 288
         },
         "outsideMenu": {}
       }
@@ -2098,5 +2098,5 @@
     "RebarGroupMarkAttributes.Type_en"
   ],
   "dialogKeysNotInSamples": [],
-  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+  "samplesSource": "289 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
 }

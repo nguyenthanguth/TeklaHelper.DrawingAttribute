@@ -1061,7 +1061,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Color (<c>bolt_colour</c>). The dialog shows it on another page with the same keys, not on this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public global::TeklaHelper.DrawingAttribute.DrawingColor BoltColour
             {
                 get => GetEnum("bolt_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
                 set => SetEnum("bolt_colour", value);

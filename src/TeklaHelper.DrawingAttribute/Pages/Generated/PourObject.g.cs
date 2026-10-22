@@ -109,8 +109,12 @@ namespace TeklaHelper.DrawingAttribute.Pages
             "FilletEdges",
             "visible_colour",
             "visible_linetype",
+            "section_colour",
+            "section_linetype",
             "hidden_colour",
             "hidden_linetype",
+            "own_hidden_colour",
+            "own_hidden_linetype",
             "PartHatch.hatch_name",
             "PartHatch.hatch_color",
             "PartHatch.HatchBackgroundColor",
@@ -147,10 +151,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
             "draw_north_mark",
             "connecting_side_mark",
             "AddPopMarks",
-            "section_colour",
-            "section_linetype",
-            "own_hidden_colour",
-            "own_hidden_linetype",
             "reference_colour",
             "reference_linetype",
             "center_colour",
@@ -180,8 +180,12 @@ namespace TeklaHelper.DrawingAttribute.Pages
             "FilletEdges_en",
             "visible_colour_en",
             "visible_linetype_en",
+            "section_colour_en",
+            "section_linetype_en",
             "hidden_colour_en",
             "hidden_linetype_en",
+            "own_hidden_colour_en",
+            "own_hidden_linetype_en",
             "PartHatch.hatch_name_en",
             "PartHatch.hatch_color_en",
             "PartHatch.HatchBackgroundColor_enable",
@@ -199,13 +203,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             "draw_as_en",
             "BoltDrawAs_en",
             "BoltSymbol_en",
-            "section_colour_en",
-            "own_hidden_colour_en",
             "reference_colour_en",
             "center_colour_en",
             "bolt_colour_en",
-            "section_linetype_en",
-            "own_hidden_linetype_en",
             "reference_linetype_en",
             "center_linetype_en",
             "offset_en",
@@ -326,12 +326,26 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// </summary>
             public VisibleLinesGroup VisibleLines => _visibleLines ?? (_visibleLines = new VisibleLinesGroup(Values, Prefix));
 
+            private SectionLinesGroup _sectionLines;
+
+            /// <summary>
+            /// The "Section lines" group.
+            /// </summary>
+            public SectionLinesGroup SectionLines => _sectionLines ?? (_sectionLines = new SectionLinesGroup(Values, Prefix));
+
             private HiddenLinesGroup _hiddenLines;
 
             /// <summary>
             /// The "Hidden lines" group.
             /// </summary>
             public HiddenLinesGroup HiddenLines => _hiddenLines ?? (_hiddenLines = new HiddenLinesGroup(Values, Prefix));
+
+            private OwnHiddenLinesGroup _ownHiddenLines;
+
+            /// <summary>
+            /// The "Own hidden lines" group.
+            /// </summary>
+            public OwnHiddenLinesGroup OwnHiddenLines => _ownHiddenLines ?? (_ownHiddenLines = new OwnHiddenLinesGroup(Values, Prefix));
 
             /// <summary>
             /// The "Visible lines" group.
@@ -363,6 +377,35 @@ namespace TeklaHelper.DrawingAttribute.Pages
             }
 
             /// <summary>
+            /// The "Section lines" group.
+            /// </summary>
+            public sealed class SectionLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            {
+                internal SectionLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    : base(values, prefix)
+                {
+                }
+
+                /// <summary>
+                /// Color (<c>section_colour</c>).
+                /// </summary>
+                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                {
+                    get => GetEnum("section_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                    set => SetEnum("section_colour", value);
+                }
+
+                /// <summary>
+                /// Type (<c>section_linetype</c>).
+                /// </summary>
+                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                {
+                    get => GetEnum("section_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                    set => SetEnum("section_linetype", value);
+                }
+            }
+
+            /// <summary>
             /// The "Hidden lines" group.
             /// </summary>
             public sealed class HiddenLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
@@ -388,6 +431,35 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 {
                     get => GetEnum("hidden_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
                     set => SetEnum("hidden_linetype", value);
+                }
+            }
+
+            /// <summary>
+            /// The "Own hidden lines" group.
+            /// </summary>
+            public sealed class OwnHiddenLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            {
+                internal OwnHiddenLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    : base(values, prefix)
+                {
+                }
+
+                /// <summary>
+                /// Color (<c>own_hidden_colour</c>).
+                /// </summary>
+                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                {
+                    get => GetEnum("own_hidden_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                    set => SetEnum("own_hidden_colour", value);
+                }
+
+                /// <summary>
+                /// Type (<c>own_hidden_linetype</c>).
+                /// </summary>
+                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                {
+                    get => GetEnum("own_hidden_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                    set => SetEnum("own_hidden_linetype", value);
                 }
             }
         }
@@ -599,7 +671,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Representation (<c>draw_as</c>). The dialog shows it on another page with the same keys, not on this
             /// one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.Representation Representation
+            public global::TeklaHelper.DrawingAttribute.Pages.Representation DrawAs
             {
                 get => GetEnum("draw_as", (global::TeklaHelper.DrawingAttribute.Pages.Representation)1);
                 set => SetEnum("draw_as", value);
@@ -791,44 +863,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
             {
                 get => GetBoolean("AddPopMarks");
                 set => SetBooleanUnlessSame("AddPopMarks", value, 1, 0);
-            }
-
-            /// <summary>
-            /// Color (<c>section_colour</c>). The dialog shows it on another page with the same keys, not on this one.
-            /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
-            {
-                get => GetEnum("section_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
-                set => SetEnum("section_colour", value);
-            }
-
-            /// <summary>
-            /// Type (<c>section_linetype</c>). The dialog shows it on another page with the same keys, not on this one.
-            /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
-            {
-                get => GetEnum("section_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
-                set => SetEnum("section_linetype", value);
-            }
-
-            /// <summary>
-            /// Color (<c>own_hidden_colour</c>). The dialog shows it on another page with the same keys, not on this
-            /// one.
-            /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor OwnHiddenColour
-            {
-                get => GetEnum("own_hidden_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
-                set => SetEnum("own_hidden_colour", value);
-            }
-
-            /// <summary>
-            /// Type (<c>own_hidden_linetype</c>). The dialog shows it on another page with the same keys, not on this
-            /// one.
-            /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingLineType OwnHiddenLinetype
-            {
-                get => GetEnum("own_hidden_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
-                set => SetEnum("own_hidden_linetype", value);
             }
 
             /// <summary>

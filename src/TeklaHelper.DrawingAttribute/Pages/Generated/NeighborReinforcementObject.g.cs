@@ -119,6 +119,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             "BarAttr.hooked_symbol",
             "BarAttr.line_colour",
             "BarAttr.line_type",
+            "BarAttr.fill_color",
             "BarAttr.HiddenLineColour",
             "BarAttr.HiddenLineType",
             "MeshAttr.visibility",
@@ -131,6 +132,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             "MeshAttr.symbol_size",
             "MeshAttr.line_colour",
             "MeshAttr.line_type",
+            "MeshAttr.fill_color",
             "MeshAttr.HiddenLineColour",
             "MeshAttr.HiddenLineType",
             "AssAttr.Visibility",
@@ -157,6 +159,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             "BarAttr.hooked_symbol_en",
             "BarAttr.line_colour_en",
             "BarAttr.line_type_en",
+            "BarAttr.fill_color_en",
             "BarAttr.HiddenLineColour_en",
             "BarAttr.HiddenLineType_en",
             "MeshAttr.visibility_en",
@@ -169,6 +172,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             "MeshAttr.symbol_size_en",
             "MeshAttr.line_colour_en",
             "MeshAttr.line_type_en",
+            "MeshAttr.fill_color_en",
             "MeshAttr.HiddenLineColour_en",
             "MeshAttr.HiddenLineType_en",
             "BarAttr.CustomPresentation_en",
@@ -359,6 +363,16 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 {
                     get => GetEnum("BarAttr.line_type", (global::TeklaHelper.DrawingAttribute.DrawingLineType)0);
                     set => SetEnum("BarAttr.line_type", value);
+                }
+
+                /// <summary>
+                /// Fill color (<c>BarAttr.fill_color</c>). New in Tekla Structures 2026: the dialogs of earlier
+                /// versions do not have it.
+                /// </summary>
+                public global::TeklaHelper.DrawingAttribute.DrawingColor FillColor
+                {
+                    get => GetEnum("BarAttr.fill_color", (global::TeklaHelper.DrawingAttribute.DrawingColor)153);
+                    set => SetEnum("BarAttr.fill_color", value);
                 }
             }
 
@@ -580,6 +594,16 @@ namespace TeklaHelper.DrawingAttribute.Pages
                     get => GetEnum("MeshAttr.line_type", (global::TeklaHelper.DrawingAttribute.DrawingLineType)0);
                     set => SetEnum("MeshAttr.line_type", value);
                 }
+
+                /// <summary>
+                /// Fill color (<c>MeshAttr.fill_color</c>). New in Tekla Structures 2026: the dialogs of earlier
+                /// versions do not have it.
+                /// </summary>
+                public global::TeklaHelper.DrawingAttribute.DrawingColor FillColor
+                {
+                    get => GetEnum("MeshAttr.fill_color", (global::TeklaHelper.DrawingAttribute.DrawingColor)153);
+                    set => SetEnum("MeshAttr.fill_color", value);
+                }
             }
 
             /// <summary>
@@ -636,7 +660,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Representation (<c>AssAttr.Representation</c>). The dialog shows it on another page with the same keys,
             /// not on this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.RebarAssemblyRepresentation Representation
+            public global::TeklaHelper.DrawingAttribute.Pages.RebarAssemblyRepresentation AssAttrRepresentation
             {
                 get => GetEnum("AssAttr.Representation", (global::TeklaHelper.DrawingAttribute.Pages.RebarAssemblyRepresentation)0);
                 set => SetEnum("AssAttr.Representation", value);
@@ -646,7 +670,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Color (<c>AssAttr.LineColor</c>). The dialog shows it on another page with the same keys, not on this
             /// one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public global::TeklaHelper.DrawingAttribute.DrawingColor AssAttrLineColor
             {
                 get => GetEnum("AssAttr.LineColor", (global::TeklaHelper.DrawingAttribute.DrawingColor)0);
                 set => SetEnum("AssAttr.LineColor", value);
@@ -655,7 +679,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Type (<c>AssAttr.LineType</c>). The dialog shows it on another page with the same keys, not on this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+            public global::TeklaHelper.DrawingAttribute.DrawingLineType AssAttrLineType
             {
                 get => GetEnum("AssAttr.LineType", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
                 set => SetEnum("AssAttr.LineType", value);

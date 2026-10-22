@@ -39,7 +39,7 @@ namespace TeklaHelper.DrawingAttribute.Filters
             Property = RequireToken(property, nameof(property));
             PropertyLabel = FilterToken.Check(propertyLabel, nameof(propertyLabel)) ?? string.Empty;
             Operator = @operator ?? throw new ArgumentNullException(nameof(@operator));
-            Value = FilterToken.Check(value, nameof(value)) ?? string.Empty;
+            Value = FilterToken.CheckValue(value, nameof(value)) ?? string.Empty;
         }
 
         /// <summary>Category token, e.g. <c>co_part</c>.</summary>

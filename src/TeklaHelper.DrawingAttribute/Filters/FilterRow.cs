@@ -12,6 +12,17 @@ namespace TeklaHelper.DrawingAttribute.Filters
     {
         internal const int TokenCount = 10;
 
+        /// <summary>
+        /// Longest value Tekla accepts: the Value column of the filter dialog (<c>RuleTable</c> in TeklaStructures.aid) is
+        /// a 1024-byte text buffer, i.e. 1023 bytes in the file's encoding plus the terminator. Tekla.Structures.Filtering
+        /// writes longer values without error, but Tekla cannot use them. Setting a longer value throws, and saving
+        /// checks the length in bytes (a character outside ASCII takes 2 bytes in code page 932, up to 3 in UTF-8).
+        /// </summary>
+        public const int MaxValueLength = 1023;
+
+        // Index of the value among the ten tokens of a row
+        internal const int ValueTokenIndex = 7;
+
         private string _category = string.Empty;
         private string _property = string.Empty;
         private string _propertyLabel = string.Empty;
@@ -100,12 +111,12 @@ namespace TeklaHelper.DrawingAttribute.Filters
 
         /// <summary>
         /// Value as written in the file, with spaces where the file has its space marker (<c>\u0002</c>).
-        /// See <see cref="FilterCondition.Value"/> for the formats.
+        /// See <see cref="FilterCondition.Value"/> for the formats. At most <see cref="MaxValueLength"/> characters.
         /// </summary>
         public string Value
         {
             get => _value;
-            set => _value = FilterToken.Check(value, nameof(value)) ?? string.Empty;
+            set => _value = FilterToken.CheckValue(value, nameof(value)) ?? string.Empty;
         }
 
         /// <summary>Number of parentheses closed after this row.</summary>
@@ -171,11 +182,12 @@ namespace TeklaHelper.DrawingAttribute.Filters
                 PropertyLabel = tokens[4],
                 Condition = tokens[5],
                 ConditionLabel = tokens[6],
-                Value = tokens[7],
                 CloseParentheses = ParseCount(tokens[8], "closing parentheses"),
                 Logic = ParseLogic(tokens[9]),
             };
 
+            // Read as written: a file may hold a value longer than Tekla accepts, and loading must not fail on it
+            row._value = tokens[ValueTokenIndex];
             row._sourceLines = lines;
             row._sourceTokens = tokens;
             row._sourceCodePage = codePage;

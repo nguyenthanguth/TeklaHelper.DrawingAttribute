@@ -775,9 +775,9 @@
               "confidence": "decoded",
               "position": 16,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
-                  "0": 201,
+                  "0": 199,
                   "3": 49,
                   "1": 40
                 },
@@ -812,10 +812,10 @@
               "confidence": "decoded",
               "position": 17,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "2": 157,
-                  "0": 100
+                  "0": 98
                 },
                 "outsideMenu": {
                   "1": 33
@@ -884,10 +884,10 @@
               "confidence": "decoded",
               "position": 19,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "1": 180,
-                  "0": 98
+                  "0": 96
                 },
                 "outsideMenu": {
                   "3": 12
@@ -943,9 +943,9 @@
               "confidence": "decoded",
               "position": 21,
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "0.000000": 189,
+                  "0.000000": 187,
                   "22.000000": 99,
                   "20.000000": 2
                 }
@@ -1048,9 +1048,9 @@
               "position": 23,
               "apiEnum": "Tekla.Structures.Drawing.FrameTypes",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
-                  "1": 193,
+                  "1": 191,
                   "0": 54,
                   "2": 22,
                   "3": 21
@@ -1217,7 +1217,7 @@
               "position": 24,
               "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "inMenu": {
                   "153": 254,
                   "152": 27,
@@ -1225,7 +1225,7 @@
                   "155": 1
                 },
                 "outsideMenu": {
-                  "1": 6
+                  "1": 4
                 }
               }
             },
@@ -1444,9 +1444,9 @@
               "position": 5,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "8": 289,
+                  "8": 287,
                   "0": 1
                 }
               }
@@ -1467,9 +1467,9 @@
               "position": 6,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "1": 289,
+                  "1": 287,
                   "0": 1
                 }
               }
@@ -1490,9 +1490,9 @@
               "position": 7,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "4": 289,
+                  "4": 287,
                   "0": 1
                 }
               }
@@ -1513,9 +1513,9 @@
               "position": 8,
               "labelConfidence": "key-name",
               "samples": {
-                "files": 290,
+                "files": 288,
                 "top": {
-                  "2": 290
+                  "2": 288
                 }
               }
             }
@@ -1539,9 +1539,9 @@
           "confidence": "decoded",
           "position": 1,
           "samples": {
-            "files": 290,
+            "files": 288,
             "top": {
-              "5.000000": 136,
+              "5.000000": 134,
               "1.000000": 116,
               "10.000000": 36,
               "2.000000": 2
@@ -1562,10 +1562,10 @@
           "confidence": "decoded",
           "position": 2,
           "samples": {
-            "files": 290,
+            "files": 288,
             "top": {
               "1.000000": 93,
-              "10.000000": 90,
+              "10.000000": 88,
               "3.000000": 35,
               "2.000000": 27,
               "15.000000": 24
@@ -1805,10 +1805,10 @@
         "Leader line"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {},
         "outsideMenu": {
-          "0": 290
+          "0": 288
         }
       }
     },
@@ -1884,9 +1884,9 @@
         "Visibility of mark"
       ],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 290
+          "0": 288
         },
         "outsideMenu": {}
       }
@@ -2033,9 +2033,9 @@
       "aidDialog": "gr_textpl_attrib",
       "dialogPath": [],
       "samples": {
-        "files": 290,
+        "files": 288,
         "inMenu": {
-          "0": 290
+          "0": 288
         },
         "outsideMenu": {}
       }
@@ -2096,5 +2096,5 @@
     "RebarGroupMarkAttributes.Type_en"
   ],
   "dialogKeysNotInSamples": [],
-  "samplesSource": "293 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+  "samplesSource": "289 .vi files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
 }

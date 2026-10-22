@@ -162,6 +162,19 @@ namespace TeklaHelper.DrawingAttribute.Tests
         }
 
         [Fact]
+        public void Tekla2026FillColor_WritesTheKeysOfBarsAndMeshes()
+        {
+            var view = new ViewProperties();
+            var drawing = new AssemblyDrawingAttributeFile();
+
+            view.Objects.Reinforcement.BarAppearance.VisibleLines.FillColor = DrawingColor.Red;
+            drawing.Objects.NeighborReinforcement.MeshAppearance.VisibleLines.FillColor = DrawingColor.Blue;
+
+            Assert.Equal("160", view.Values["vrebar.BarAttr.fill_color"].RawText);
+            Assert.Equal("162", drawing.Values["NeighborRebar.MeshAttr.fill_color"].RawText);
+        }
+
+        [Fact]
         public void ObjectPages_HaveNoReferenceObjectInTheAssemblyFamily()
         {
             Assert.NotNull(new GADrawingAttributeFile().Objects.ReferenceObject);
