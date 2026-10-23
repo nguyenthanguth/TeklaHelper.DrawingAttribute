@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.3.2 - 2026-10-23
+## 1.4.0 - 2026-10-23
 
 ### Mark content tables
 - The content tables of the mark pages by kind of object, as Tekla 2025 showed them: `PartMark.MainPartElements`,

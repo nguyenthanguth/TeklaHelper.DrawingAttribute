@@ -12,7 +12,7 @@
 
   <PropertyGroup>
     <PackageId>TeklaHelper.DrawingAttribute</PackageId>
-    <Version>1.3.2</Version>
+    <Version>1.4.0</Version>
     <!-- Fails the pack when the public API breaks what the last release offered -->
     <EnablePackageValidation>true</EnablePackageValidation>
     <PackageValidationBaselineVersion>1.3.1</PackageValidationBaselineVersion>
