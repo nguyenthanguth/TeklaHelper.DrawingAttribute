@@ -189,7 +189,9 @@ Trimble DLLs and load them side by side in other Tekla versions).
   `MarkSymbolElement`, `MarkFrameElement`, `MarkTemplateElement`, `MarkXmlElement` for the rest; `MarkFormat`). Each
   element keeps its XML attributes in the order read (`XmlAttributeList`), and the content its layout (a line per tag, or
   one line), line break and way of writing `>`, so content Tekla wrote is written back as it was.
-  `AttributeSection.GetMarkContent` / `SetMarkContent` (no change when the elements are the same), `ViewLabelMark.Elements`.
+  `AttributeSection.GetMarkContent` / `SetMarkContent` (no change when the elements are the same), `ViewLabelMark.Elements`,
+  and the content tables by kind of object in the hand-written partials `Pages/PartMark.cs`, `BoltMark.cs`,
+  `ReinforcementMark.cs` and `DrawingObjects/AssociativeNoteProperties.cs`.
 - `Filters/` — `FilterFile` (rows, byte-preserving), `FilterRow`, expression tree (`FilterExpression`, `FilterCondition`,
   `FilterGroup`), `FilterOperator`, typed `FilterProperty` subclasses, `FilterProperties` (generated catalog of
   `Tekla.Structures.Filtering.Categories`), `FilterFileExtensions`, `FilterObjectType` (hand-written: the label keys of
@@ -293,9 +295,21 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   for 1–53 and 57–70 only). Tekla reads the number only: `name` and `value` are ignored. `Format` gives font,
   colour, height (and `unit` / `format` of a user-defined attribute); `override` and `hidden` change nothing the API
   reads. `BackSpace` is dropped by the API; it inserts a `SpaceElement` between elements otherwise. A frame needs a
-  `frame_id` other than 0 (with 0 or none its elements read as following it; the files number them from 101). A mark of
-  a part reads `ContentString1`, of a reinforcement group `ContentString4`. Two layouts: a line per tag with
+  `frame_id` other than 0 (with 0 or none its elements read as following it; the files number them from 101). Two layouts: a line per tag with
   `hidden="0"` (mark dialogs, drawing properties) or one line without `hidden` (the 2025 View properties dialog).
+- **Content tables** (TFIL_MODE=marktables of the harness: every content key of a `.vi` holds its own name, a view of a
+  probe GA drawing is inserted with it and every mark read back; a single bar and a mesh were added to a slab, one bolt
+  made a workshop bolt and one assembly a sub-assembly for the run, all put back): part mark `vpm.` main part 1,
+  secondary 2, sub-assembly main part 3, sub-assembly secondary part 4; bolt mark `vsm.` site 1, workshop 2;
+  reinforcement mark `vrm.` single 1, group 2, mesh 4 (the "Mark content of" menu values are Single 0 / Group 1 / Mesh 2:
+  not the table numbers); connection mark 1. Marks merged by `MergeMarks` + `leader_line_type` 1–4 (159 → 68 marks) still
+  show table 2. Table 3 of the reinforcement mark holds only `<MergeElement subType="53"..."56">` in the files (the
+  Open API's `MergedMarkPropertyElementTypes`: block prefix, single mark content, distances between groups, separator):
+  the merged mark set of `Operation.MergeMarks`, whose content the API cannot read. The associative note
+  (`Mark.MarkAttributes(object, name)` on a `.note`) has a table per kind of object: every part 1, every bolt 2, every
+  reinforcement (single, group, mesh) 4, a reference model `ReferenceObjectContentString`; surface treatment (3 by the
+  files) was not checked. The typed properties: `PartMark.MainPartElements` ..., `BoltMark.SiteBoltElements` ...,
+  `ReinforcementMark.SingleElements` ..., `AssociativeNoteProperties.PartElements` ....
 - **Drawing object files in the dialogs**: every `CreateDefault()` object file (41 types), with one value changed, was
   loaded in its dialog by a macro (Load) and saved again (Save as): the dialogs kept the value (rounded to the field's
   decimals) and every key, except mark contents they normalise, the obsolete `RebarGroupMarkAttributes.*` keys of `.dim`

@@ -330,8 +330,19 @@ for every N from 1 to 110, and the element the API returned was noted. All four 
 one table for every kind of mark; the lists of the API's `*PropertyElementTypes` say which elements each kind offers.
 Further probes showed that `name` and `value` are ignored (an element named `PART_POS` with number 82 is the view
 name), that `override` and `hidden` change nothing the API reads, and that a frame with `frame_id` 0 (as the library
-first wrote) loses its elements: they read as following the frame. A mark of a part read `ContentString1`, a mark of a
-reinforcement group `ContentString4`; the model had no other objects to tell the other tables apart.
+first wrote) loses its elements: they read as following the frame. These probes loaded a `.note` file (associative
+note), whose tables are by kind of object: a part read `ContentString1`, a reinforcement group `ContentString4`.
+
+**The content tables.** The mark pages have a table per kind of part, bolt or bar instead ("Mark content of" in the
+dialog). The maintainer noticed the four tables of the reinforcement mark; in the shipped files the first holds the
+elements of single bars, the second spacing and number, the third only merged mark settings, the fourth the mesh size.
+A probe wrote a `.vi` whose every content key held its own name, inserted a view of a probe GA drawing with it and read
+every mark: main parts showed table 1, secondary parts 2, reinforcement groups 2, site bolts 1. For the rest the model
+was changed for the run and put back: a single bar and a mesh added to a slab (tables 1 and 4), one bolt made a
+workshop bolt (2), one assembly added to another as a sub-assembly (its main part 3, its secondary part 4). The dialog's
+menu values (Single 0, Group 1, Mesh 2) are not the table numbers. Marks merged with `MergeMarks` still showed table 2;
+table 3 is the merged mark set, which the Open API cannot read. The same probe on a `.note` gave every part table 1,
+every bolt 2, every reinforcement 4 and a reference model `ReferenceObjectContentString`.
 
 **Round trip.** Content Tekla wrote must be written back as it was. The reader keeps the attributes of each element in
 their order, the layout (a line per tag, or one line), the line break (two line feeds in some older files), whether a
@@ -464,8 +475,9 @@ view filtered on `Name = COLUMN`.
 
 - What `override="1"` in the format of a mark element does: the Open API reads the element's font with or without it,
   and no dialog control writes it; whether the drawing draws the element's own font without it was not looked at.
-- What the content tables `ContentString2` and `ContentString3` of a mark are for (the model had only parts and
-  reinforcement groups).
+- Table 3 of the reinforcement mark (merged mark settings) was not seen read, and `ContentString3` / `ContentString4` of
+  the bolt mark, `ContentString3` of the associative note (surface treatment by the files) and the tables of the
+  neighbour part and neighbour reinforcement marks were not probed.
 - The weld menus Edge / Around and Workshop / Site are named from the order of their pictures, not from a capture
   (`KeyNotes` says so in the XML comment).
 - The legacy key prefixes (`<dialog>.`) of 14 object file types are taken from the dialog names; no shipped legacy file

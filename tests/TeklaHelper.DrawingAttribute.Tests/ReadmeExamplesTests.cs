@@ -164,9 +164,9 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 .AddUserAttribute("USER_FIELD_1");
 
             var mark = PartMarkAttributeFile.CreateDefault();
-            mark.Properties.SetMarkContent("ContentString1", new Marks.MarkContent()
+            mark.Properties.MainPartElements = new Marks.MarkContent()
                 .Add(Marks.MarkElementTypes.PartMark.PartPosition)
-                .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.Profile)));
+                .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.Profile));
 
             Marks.MarkContent read = vi.Attributes.LabelMarkA1.Elements;
 

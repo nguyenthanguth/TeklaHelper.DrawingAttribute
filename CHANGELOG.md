@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.2 - 2026-10-23
+
+### Mark content tables
+- The content tables of the mark pages by kind of object, as Tekla 2025 showed them: `PartMark.MainPartElements`,
+  `SecondaryPartElements`, `SubAssemblyMainPartElements`, `SubAssemblySecondaryPartElements` (`ContentString1` ... `4`);
+  `BoltMark.SiteBoltElements`, `WorkshopBoltElements`; `ReinforcementMark.SingleElements`, `GroupElements`,
+  `MergedMarkElements`, `MeshElements` (the mesh table is `ContentString4`, the merged mark `ContentString3`); and
+  `AssociativeNoteProperties.PartElements`, `BoltElements`, `SurfaceTreatmentElements`, `ReinforcementElements`,
+  `ReferenceObjectElements`.
+- The documentation no longer says that every mark file shows parts in `ContentString1` and reinforcement in
+  `ContentString4`: that holds for the associative note (`.note`) only.
+
 ## 1.3.1 - 2026-10-23
 
 ### Fixed

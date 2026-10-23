@@ -42,7 +42,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// </summary>
         public MarkContent Elements
         {
-            get => MarkContent.TryParse(GetString("ContentString"), out MarkContent content) ? content : null;
+            get => GetMarkContentOrNull("ContentString");
             set => SetMarkContent("ContentString", value);
         }
     }

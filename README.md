@@ -322,9 +322,9 @@ vi.Attributes.LabelMarkA1.Elements = new MarkContent()
     .AddUserAttribute("USER_FIELD_1");
 
 var mark = PartMarkAttributeFile.CreateDefault();
-mark.Properties.SetMarkContent("ContentString1", new MarkContent()       // the marks of parts
+mark.Properties.MainPartElements = new MarkContent()                     // the marks of main parts (ContentString1)
     .Add(MarkElementTypes.PartMark.PartPosition)
-    .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new MarkContent().Add(MarkElementTypes.PartMark.Profile)));
+    .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new MarkContent().Add(MarkElementTypes.PartMark.Profile));
 
 MarkContent read = vi.Attributes.LabelMarkA1.Elements;                  // the elements of an existing file
 ```
@@ -345,8 +345,20 @@ MarkContent read = vi.Attributes.LabelMarkA1.Elements;                  // the e
   files are read as Tekla meant them: an attribute without its value (`value= subType="45"`, 390 values, read as empty)
   and a raw `<` in a text (`<< Mark >>`, 18 values, kept raw). Assigning content its own value changes no byte;
   assigning null empties the row.
-- In a mark file, `ContentString1` is what the marks of parts show and `ContentString4` what the marks of reinforcement
-  groups show (checked through the Open API); the other tables are reachable by key.
+- Each kind of object shows its own table of a mark page, by the "Mark content of" menu of the dialog (checked in Tekla
+  2025: a view loaded with a different text in each table, its marks read through the Open API; model objects added
+  for the probe and removed afterwards):
+
+  | Page | `ContentString1` | `ContentString2` | `ContentString3` | `ContentString4` |
+  | --- | --- | --- | --- | --- |
+  | `PartMark` | `MainPartElements` | `SecondaryPartElements` | `SubAssemblyMainPartElements` | `SubAssemblySecondaryPartElements` |
+  | `BoltMark` | `SiteBoltElements` | `WorkshopBoltElements` | | |
+  | `ReinforcementMark` | `SingleElements` | `GroupElements` | `MergedMarkElements` (not seen read) | `MeshElements` |
+  | `AssociativeNoteProperties` (`.note`) | `PartElements` | `BoltElements` | `SurfaceTreatmentElements` (not checked) | `ReinforcementElements` |
+
+  The associative note has a table per kind of object (every part reads `ContentString1`, every reinforcement
+  `ContentString4`, a reference model `ReferenceObjectElements`); the mark pages a table per kind of part, bolt or bar.
+  Like `Elements`, each property returns a copy.
 
 ## Filters
 

@@ -285,6 +285,10 @@ namespace TeklaHelper.DrawingAttribute
         /// <summary>Sets <paramref name="name"/> to a quoted text value.</summary>
         public void SetString(string name, string value) => Set(name, AttributeValue.FromString(value));
 
+        /// <summary>The mark content of <paramref name="name"/>; null when the key is missing, empty or holds no mark content.</summary>
+        internal Marks.MarkContent GetMarkContentOrNull(string name) =>
+            Marks.MarkContent.TryParse(GetString(name, null), out Marks.MarkContent content) ? content : null;
+
         /// <summary>
         /// Returns the mark content of <paramref name="name"/> (a <c>ContentString</c> key: the elements of a label row or a
         /// mark), or null when the key is missing or empty. The content is a copy: write a change back with
