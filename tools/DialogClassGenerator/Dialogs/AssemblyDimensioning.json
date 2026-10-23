@@ -1,0 +1,2771 @@
+{
+  "page": "AssemblyDimensioning",
+  "viewPrefix": null,
+  "gaDrawingPrefix": null,
+  "assemblyDrawingPrefix": "dcd.",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gr_adcd_attrib",
+  "otherSources": [
+    "gr_wdcd_attrib",
+    "gr_cudcd_attrib"
+  ],
+  "treeCheckBoxKey": {
+    "key": "dcd_en",
+    "in": "top level of the drawing file",
+    "confidence": "decoded",
+    "note": "check box in front of the button that opens the page in the drawing properties (gr_gdraw_attrib, gr_adraw_attrib)"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [],
+  "tabs": [
+    {
+      "label": "General",
+      "aidName": "Container_254",
+      "controls": [
+        {
+          "label": "Part mark on dimension line",
+          "labelSource": "enableCheckBox",
+          "key": "part_mark_dim_line",
+          "enableKey": "part_mark_dim_line_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_part_mark_dim_line_none"
+            },
+            {
+              "label": "On assembly overall dimension",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "albl_part_mark_dim_line_ass"
+            },
+            {
+              "label": "Between extreme bolts",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "albl_part_mark_dim_line_bolts"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_part_mark_dim_line_sw",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 16,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 145,
+              "1": 96
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Main dimension position",
+          "labelSource": "enableCheckBox",
+          "key": "main_dimension_side",
+          "enableKey": "main_dimension_side_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Auto",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_main_dimension_side_auto"
+            },
+            {
+              "label": "Above",
+              "labelSource": "aid",
+              "value": 3,
+              "aidName": "adcd_main_dimension_side_up"
+            },
+            {
+              "label": "Below",
+              "labelSource": "aid",
+              "value": 4,
+              "aidName": "adcd_main_dimension_side_down"
+            }
+          ],
+          "dialogDefault": 1,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_main_dimension_side_sw",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 17,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "3": 136,
+              "1": 105
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Grid dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "GridDimension",
+          "enableKey": "GridDimension_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_grid_dimensions_none"
+            },
+            {
+              "label": "Individual spans",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_grid_dimensions_individual"
+            },
+            {
+              "label": "Overall",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_grid_dimension_overall"
+            },
+            {
+              "label": "Individual spans and overall",
+              "labelSource": "aid",
+              "value": 3,
+              "aidName": "adcd_grid_dimensions_both"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_grid_dimension_sw",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 18,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 133,
+              "1": 108
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Grid dimension position",
+          "labelSource": "enableCheckBox",
+          "key": "GridDimensionSide",
+          "enableKey": "GridDimensionSide_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Main view - above",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_grid_dimension_main_up"
+            },
+            {
+              "label": "Main view - below",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_grid_dimension_main_down"
+            },
+            {
+              "label": "Top view - above",
+              "labelSource": "aid",
+              "value": 3,
+              "aidName": "adcd_grid_dimension_top_up"
+            },
+            {
+              "label": "Top view - below",
+              "labelSource": "aid",
+              "value": 4,
+              "aidName": "adcd_grid_dimension_top_down"
+            },
+            {
+              "label": "Bottom view - above",
+              "labelSource": "aid",
+              "value": 5,
+              "aidName": "adcd_grid_dimension_bottom_up"
+            },
+            {
+              "label": "Bottom view - below",
+              "labelSource": "aid",
+              "value": 6,
+              "aidName": "adcd_grid_dimension_bottom_down"
+            },
+            {
+              "label": "Back view - above",
+              "labelSource": "aid",
+              "value": 7,
+              "aidName": "adcd_grid_dimension_back_up"
+            },
+            {
+              "label": "Back view - below",
+              "labelSource": "aid",
+              "value": 8,
+              "aidName": "adcd_grid_dimension_back_down"
+            },
+            {
+              "label": "All views - above",
+              "labelSource": "aid",
+              "value": 9,
+              "aidName": "adcd_grid_dimension_all_up"
+            },
+            {
+              "label": "All views - below",
+              "labelSource": "aid",
+              "value": 10,
+              "aidName": "adcd_grid_dimension_all_down"
+            }
+          ],
+          "dialogDefault": 1,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_grid_dimension_side",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 19,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 219,
+              "3": 13
+            },
+            "outsideMenu": {
+              "0": 9
+            }
+          }
+        }
+      ],
+      "groups": [
+        {
+          "label": "Dimensioning type",
+          "aidName": "Container_291",
+          "controls": [
+            {
+              "label": "Dimensioning type",
+              "labelSource": "group",
+              "key": "dimensioning_type",
+              "enableKey": "dimensioning_type_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Standard",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "adcd_dimensioning_type_standard"
+                },
+                {
+                  "label": "Truss",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "adcd_dimensioning_type_truss"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_dimensioning_type",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 2,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "0": 225,
+                  "1": 16
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 1
+        },
+        {
+          "label": "Number of views",
+          "aidName": "Container_301",
+          "controls": [
+            {
+              "label": "Minimize",
+              "labelSource": "enableCheckBox",
+              "key": "distribution_type",
+              "enableKey": "distribution_type_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "Optionbutton_1"
+                },
+                {
+                  "label": "Yes",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "Optionbutton"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_distrib",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 4,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "1": 223,
+                  "2": 18
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 3
+        },
+        {
+          "label": "Combine dimensions",
+          "aidName": "Container_253",
+          "controls": [
+            {
+              "label": "Options",
+              "labelSource": "enableCheckBox",
+              "key": "prog_no",
+              "enableKey": "prog_no_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "Optionbutton_263"
+                },
+                {
+                  "label": "1",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "Optionbutton_381"
+                },
+                {
+                  "label": "2",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "Optionbutton_5"
+                },
+                {
+                  "label": "3",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "Optionbutton_4"
+                },
+                {
+                  "label": "4",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "Optionbutton_3"
+                },
+                {
+                  "label": "4.5",
+                  "labelSource": "aid",
+                  "value": 6,
+                  "aidName": "Optionbutton_6"
+                },
+                {
+                  "label": "5",
+                  "labelSource": "aid",
+                  "value": 5,
+                  "aidName": "Optionbutton_2"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_prog_no",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 6,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "5": 198,
+                  "3": 27,
+                  "0": 13,
+                  "2": 2,
+                  "4": 1
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Distance",
+              "labelSource": "enableCheckBox",
+              "key": "subgroup_length",
+              "enableKey": "subgroup_length_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "adcd_subgr_len",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 7,
+              "samples": {
+                "files": 241,
+                "top": {
+                  "800.000000": 106,
+                  "500.000000": 49,
+                  "200.000000": 30,
+                  "50.000000": 18,
+                  "300.000000": 12
+                }
+              }
+            },
+            {
+              "label": "Min distance",
+              "labelSource": "enableCheckBox",
+              "key": "subgroup_distance",
+              "enableKey": "subgroup_distance_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "adcd_subgr_dist",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 8,
+              "samples": {
+                "files": 241,
+                "top": {
+                  "200.000000": 169,
+                  "10.000000": 42,
+                  "100.000000": 18,
+                  "5000.000000": 7,
+                  "50.000000": 2
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 5
+        },
+        {
+          "label": "Close dimensions",
+          "aidName": "Container_266",
+          "controls": [
+            {
+              "label": "Close dimensions",
+              "labelSource": "group",
+              "key": "create_close_dim",
+              "enableKey": "create_close_dim_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "Optionbutton_252"
+                },
+                {
+                  "label": "In X",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "Optionbutton_254"
+                },
+                {
+                  "label": "All",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "Optionbutton_253"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_cre_close_dim",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 10,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "1": 152,
+                  "2": 82,
+                  "0": 7
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Short dimensions",
+              "labelSource": "enableCheckBox",
+              "key": "close_dim",
+              "enableKey": "close_dim_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "Optionbutton_257"
+                },
+                {
+                  "label": "Yes",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "Optionbutton_258"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_close_dim",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 11,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "1": 232,
+                  "0": 9
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 9
+        },
+        {
+          "label": "Placing",
+          "aidName": "Container_281",
+          "controls": [
+            {
+              "label": "Forward offset",
+              "labelSource": "enableCheckBox",
+              "key": "base_forward_offset",
+              "enableKey": "base_forward_offset_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "adcd_forw_ofs",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 13,
+              "samples": {
+                "files": 241,
+                "top": {
+                  "250.000000": 134,
+                  "10.000000": 40,
+                  "15.000000": 37,
+                  "100.000000": 17,
+                  "20.000000": 12
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 12
+        },
+        {
+          "label": "Necessary internal dimensioning",
+          "aidName": "Container_947",
+          "controls": [
+            {
+              "label": "Recognizable distance",
+              "labelSource": "enableCheckBox",
+              "key": "recogn_dist",
+              "enableKey": "recogn_dist_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "adcd_recogn_dist",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 15,
+              "samples": {
+                "files": 241,
+                "top": {
+                  "10.000000": 237,
+                  "5.000000": 2,
+                  "1.000000": 2
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 14
+        },
+        {
+          "label": "Dimension properties",
+          "aidName": "conDimensionProperties",
+          "controls": [
+            {
+              "label": "Straight dimensions",
+              "labelSource": "enableCheckBox",
+              "key": "aStraightDimensionsAttributeName",
+              "enableKey": "StraightDimensionsAttribute_en",
+              "type": "text",
+              "optionsFilledAtRuntime": true,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_dcd_straight_dimensions",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 21,
+              "samples": {
+                "files": 233,
+                "top": {
+                  "\"\"": 233
+                }
+              }
+            },
+            {
+              "label": "In X direction",
+              "labelSource": "enableCheckBox",
+              "key": "DimTypeInXDirection",
+              "enableKey": "DimTypeInXDirection_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": null,
+                  "labelSource": "bitmap",
+                  "value": 0,
+                  "aidName": "none_x_dd"
+                },
+                {
+                  "label": "DIM_RELATIVE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_RELATIVE",
+                  "value": 1,
+                  "aidName": "relative_x_dd",
+                  "apiName": "Relative"
+                },
+                {
+                  "label": "DIM_ABSOLUTE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_ABSOLUTE",
+                  "value": 2,
+                  "aidName": "absolute_x_dd",
+                  "apiName": "Absolute"
+                },
+                {
+                  "label": "DIM_BOTH",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_BOTH",
+                  "value": 3,
+                  "aidName": "both_x_dd",
+                  "apiName": "RelativeAndAbsolute"
+                },
+                {
+                  "label": "DIM_US_ABSOLUTE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_US_ABSOLUTE",
+                  "value": 4,
+                  "aidName": "us_absolute_x_dd",
+                  "apiName": "USAbsolute"
+                },
+                {
+                  "label": "DIM_US_ABSOLUTE_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_US_ABSOLUTE_2",
+                  "value": 16,
+                  "aidName": "us_absolute2_x_dd",
+                  "apiName": "USAbsolute2"
+                },
+                {
+                  "label": "DIM_INTERNAL_ABSOLUTE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_INTERNAL_ABSOLUTE",
+                  "value": 35,
+                  "aidName": "us_internal_absolute_dd_1",
+                  "apiName": "AbsoluteWithShortRelatives"
+                },
+                {
+                  "label": "DIM_INTERNAL_ABSOLUTE_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_INTERNAL_ABSOLUTE_2",
+                  "value": 99,
+                  "aidName": "us_internal_absolute_2",
+                  "apiName": "AbsoluteWithAllRelativesAbove"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "dd_type_x",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 22,
+              "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.DimensionTypes",
+              "samples": {
+                "files": 233,
+                "inMenu": {
+                  "0": 233
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "US Absolute dimensions",
+              "labelSource": "enableCheckBox",
+              "key": "USAbsoluteArrowShape",
+              "enableKey": "USAbsoluteArrowShape_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "om_pb_dim_arrow_filled",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_filled",
+                  "value": 0,
+                  "aidName": "USAbsoluteArrowFilled"
+                },
+                {
+                  "label": "om_pb_dim_arrow_line",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_line",
+                  "value": 1,
+                  "aidName": "USAbsoluteArrowLine"
+                },
+                {
+                  "label": "om_pb_dim_arrow_circle",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_circle",
+                  "value": 2,
+                  "aidName": "USAbsoluteArrowCircle"
+                },
+                {
+                  "label": "om_pb_dim_arrow_open",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_open",
+                  "value": 3,
+                  "aidName": "USAbsoluteArrowOpen"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "ddUSAbsoluteArrowShape",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 23,
+              "samples": {
+                "files": 233,
+                "inMenu": {
+                  "0": 191,
+                  "3": 42
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Level dimensions",
+              "labelSource": "enableCheckBox",
+              "key": "LevelArrowShape",
+              "enableKey": "LevelArrowShape_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "om_pb_dim_arrow_filled",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_filled",
+                  "value": 0,
+                  "aidName": "LevelArrowFilled"
+                },
+                {
+                  "label": "om_pb_dim_arrow_line",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_line",
+                  "value": 1,
+                  "aidName": "LevelArrowLine"
+                },
+                {
+                  "label": "om_pb_dim_arrow_circle",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_circle",
+                  "value": 2,
+                  "aidName": "LevelArrowCircle"
+                },
+                {
+                  "label": "om_pb_dim_arrow_open",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_open",
+                  "value": 3,
+                  "aidName": "LevelArrowOpen"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "ddLevelArrowShape",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 24,
+              "samples": {
+                "files": 233,
+                "inMenu": {
+                  "0": 233
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Angle and radius dimensions",
+              "labelSource": "enableCheckBox",
+              "key": "aAngleDimensionsAttributeName",
+              "enableKey": "AngleDimensionsAttribute_en",
+              "type": "text",
+              "optionsFilledAtRuntime": true,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_dcd_angle_dimensions",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 25,
+              "samples": {
+                "files": 233,
+                "top": {
+                  "\"\"": 233
+                }
+              }
+            },
+            {
+              "label": "Check dimensions",
+              "labelSource": "enableCheckBox",
+              "key": "aCheckDimensionsAttributeName",
+              "enableKey": "CheckDimensionsAttribute_en",
+              "type": "text",
+              "optionsFilledAtRuntime": true,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_dcd_check_dimensions",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 26,
+              "samples": {
+                "files": 233,
+                "top": {
+                  "\"\"": 233
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 20
+        }
+      ],
+      "position": 27
+    },
+    {
+      "label": "Part dimensions",
+      "aidName": "Container_278",
+      "controls": [
+        {
+          "label": "Internal",
+          "labelSource": "enableCheckBox",
+          "key": "part_internal",
+          "enableKey": "part_internal_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_part_internal_none"
+            },
+            {
+              "label": "Necessary",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_part_internal_necessary"
+            },
+            {
+              "label": "All",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_part_internal_all"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_part_internal",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 28,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 128,
+              "0": 108,
+              "2": 5
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Main part overall dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "main_part_extrema",
+          "enableKey": "main_part_extrema_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_main_part_extrema_none"
+            },
+            {
+              "label": "Once",
+              "labelSource": "aid",
+              "value": 3,
+              "aidName": "adcd_main_part_extrema_once"
+            },
+            {
+              "label": "All",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_main_part_extrema_all"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_main_part_extrema",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 29,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "3": 157,
+              "2": 48,
+              "0": 36
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Assembly part overall dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "assembly_extrema",
+          "enableKey": "assembly_extrema_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_assembly_extrema_off"
+            },
+            {
+              "label": "Length only",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_assembly_extrema_length"
+            },
+            {
+              "label": "All dimensions",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_assembly_extrema_all"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_assembly_extrema",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 30,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 149,
+              "0": 92
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Main part work points",
+          "labelSource": "enableCheckBox",
+          "key": "main_work_points",
+          "enableKey": "main_work_points_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_main_work_points_no"
+            },
+            {
+              "label": "On",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_main_work_points_yes"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_main_work_points",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 31,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 210,
+              "1": 31
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Main part shape",
+          "labelSource": "enableCheckBox",
+          "key": "main_part_shape",
+          "enableKey": "main_part_shape_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_main_part_shape_off"
+            },
+            {
+              "label": "On",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_main_part_shape_on"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_main_part_shape",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 32,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 194,
+              "0": 47
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Main part radius dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "main_part_radius_dims",
+          "enableKey": "main_part_radius_dims_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_main_part_radius_dims_off"
+            },
+            {
+              "label": "On",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_main_part_radius_dims_on"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_main_part_radius_dims",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 33,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 177,
+              "0": 64
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Bevel dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "main_part_bevel",
+          "enableKey": "main_part_bevel_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_main_part_bevel_off"
+            },
+            {
+              "label": "On",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_main_part_bevel_on"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_main_part_bevel",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 34,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "2": 169,
+              "0": 65
+            },
+            "outsideMenu": {
+              "3": 5,
+              "1": 2
+            }
+          }
+        },
+        {
+          "label": "Bevel angle",
+          "labelSource": "enableCheckBox",
+          "key": "main_part_bevel_angle",
+          "enableKey": "main_part_bevel_angle_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_main_part_bevel_angle_none"
+            },
+            {
+              "label": "Angle of cut",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_main_part_bevel_angle_cut"
+            },
+            {
+              "label": "Angle of beam",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_main_part_bevel_angle_beam"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_main_part_bevel_angle",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 35,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 136,
+              "0": 75,
+              "2": 30
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Knock off dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "create_knock_off_dims",
+          "enableKey": "create_knock_off_dims_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_create_knock_off_dims_off"
+            },
+            {
+              "label": "On",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_create_knock_off_dims_on"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_create_knock_off_dims",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 36,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 190,
+              "1": 51
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Knock off dimension type",
+          "labelSource": "enableCheckBox",
+          "key": "KnockOffDimensionsType",
+          "enableKey": "KnockOffDimensionsType_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "knock_off_dimension_line",
+              "labelSource": "bitmap",
+              "bitmap": "knock_off_dimension_line",
+              "value": 0,
+              "aidName": "DimensionLine"
+            },
+            {
+              "label": "knock_off_dimension_parenthesis",
+              "labelSource": "bitmap",
+              "bitmap": "knock_off_dimension_parenthesis",
+              "value": 1,
+              "aidName": "Parenthesis"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcdKnockOffType",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 37,
+          "samples": {
+            "files": 233,
+            "inMenu": {
+              "0": 162,
+              "1": 71
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Preferred dim side",
+          "labelSource": "enableCheckBox",
+          "key": "part_prefered_side",
+          "enableKey": "part_prefered_side_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "adcd_part_prefered_side_view",
+              "labelSource": "bitmap",
+              "bitmap": "adcd_part_prefered_side_view",
+              "value": 0,
+              "aidName": "adcd_part_prefered_side_view"
+            },
+            {
+              "label": "adcd_part_prefered_side_side",
+              "labelSource": "bitmap",
+              "bitmap": "adcd_part_prefered_side_side",
+              "value": 1,
+              "aidName": "adcd_part_prefered_side_side"
+            }
+          ],
+          "dialogDefault": 1,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_part_prefered_side",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 38,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 189,
+              "0": 52
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "From the nearest floor level to part",
+          "labelSource": "enableCheckBox",
+          "key": "FloorLevelToPart",
+          "enableKey": "FloorLevelToPart_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_floor_to_part_off"
+            },
+            {
+              "label": "To part top",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_floor_to_part_top"
+            },
+            {
+              "label": "To part bottom",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_floor_to_part_bottom"
+            },
+            {
+              "label": "To part top and bottom",
+              "labelSource": "aid",
+              "value": 3,
+              "aidName": "adcd_floor_to_part_both"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_floor_level_to_part",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 39,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 214,
+              "1": 27
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "From grid to part centerline",
+          "labelSource": "enableCheckBox",
+          "key": "GridToCenterline",
+          "enableKey": "GridToCenterline_en",
+          "aidNote": "CALLBACKPARAMETER names adcd_grid_to_part_center_en, which is not a widget of this dialog (no enable check box)",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_grid_to_center_off"
+            },
+            {
+              "label": "On",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_grid_to_center_on"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_grid_to_part_center",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 40,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 214,
+              "1": 27
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "From grid to part ends",
+          "labelSource": "enableCheckBox",
+          "key": "GridToPartEnds",
+          "enableKey": "GridToPartEnds_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_grid_to_part_ends_off"
+            },
+            {
+              "label": "To near end of part",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_grid_to_near_part_end"
+            },
+            {
+              "label": "To far end of part",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_grid_to_far_part_end"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "optionmenu_5588",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 41,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 163,
+              "1": 78
+            },
+            "outsideMenu": {}
+          }
+        }
+      ],
+      "groups": [],
+      "position": 42
+    },
+    {
+      "label": "Bolt dimensions",
+      "aidName": "Container_280",
+      "controls": [
+        {
+          "label": "Preferred dim side",
+          "labelSource": "enableCheckBox",
+          "key": "screw_prefered_side",
+          "enableKey": "screw_prefered_side_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "adcd_screw_prefered_side_view",
+              "labelSource": "bitmap",
+              "bitmap": "adcd_screw_prefered_side_view",
+              "value": 0,
+              "aidName": "adcd_screw_prefered_side_view"
+            },
+            {
+              "label": "adcd_screw_prefered_side_side",
+              "labelSource": "bitmap",
+              "bitmap": "adcd_screw_prefered_side_side",
+              "value": 1,
+              "aidName": "adcd_screw_prefered_side_side"
+            }
+          ],
+          "dialogDefault": 1,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_screw_prefered_side",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 52,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 227,
+              "1": 14
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Combine bolt dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "combine_bolt_dim",
+          "enableKey": "combine_bolt_dim_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_screw_combine_none",
+              "apiName": "Off"
+            },
+            {
+              "label": "3*60",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_screw_combine_1",
+              "apiName": "NumberOfItemsTimesLength"
+            },
+            {
+              "label": "3*60=180",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_screw_combine_2",
+              "apiName": "NumberOfItemsTimesLengthEqualsResult"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_screw_combine",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 53,
+          "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.CombineFormats",
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 118,
+              "1": 82,
+              "2": 41
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Minimum number to combine",
+          "labelSource": "enableCheckBox",
+          "key": "min_bolts_num_to_combine",
+          "enableKey": "min_bolts_num_to_combine_en",
+          "type": "number",
+          "aidWidget": "text",
+          "aidName": "text_9205",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 54,
+          "samples": {
+            "files": 241,
+            "top": {
+              "3": 183,
+              "20": 29,
+              "6": 17,
+              "2": 12
+            }
+          }
+        }
+      ],
+      "groups": [
+        {
+          "label": "Main part bolt internal dimensions",
+          "aidName": "Container_347",
+          "controls": [
+            {
+              "label": "Main part bolt internal dimensions",
+              "labelSource": "group",
+              "key": "screw_main_internal",
+              "enableKey": "screw_main_internal_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "adcd_screw_main_internal_none"
+                },
+                {
+                  "label": "Internal",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "adcd_screw_main_internal_internal"
+                },
+                {
+                  "label": "All",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "adcd_screw_main_internal_all"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_screw_main_internal",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 44,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "4": 99,
+                  "2": 97,
+                  "0": 41
+                },
+                "outsideMenu": {
+                  "1": 4
+                }
+              }
+            },
+            {
+              "label": "Skewed bolt group",
+              "labelSource": "enableCheckBox",
+              "key": "MainSkewedBoltGroupDim",
+              "enableKey": "MainSkewedBoltGroupDim_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No dimensions",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "adcd_main_skewed_bolt_none"
+                },
+                {
+                  "label": "In part direction",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "adcd_main_skewed_bolt_part"
+                },
+                {
+                  "label": "In bolt group direction",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "adcd_main_skewed_bolt_bolt"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_main_skewed_bolt",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 45,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "0": 189,
+                  "1": 52
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 43
+        },
+        {
+          "label": "Secondary part bolt internal dimensions",
+          "aidName": "Container_356",
+          "controls": [
+            {
+              "label": "Secondary part bolt internal dimensions",
+              "labelSource": "group",
+              "key": "screw_sec_internal",
+              "enableKey": "screw_sec_internal_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "adcd_screw_sec_internal_none"
+                },
+                {
+                  "label": "Necessary",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "adcd_screw_sec_internal_necessary"
+                },
+                {
+                  "label": "Internal",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "adcd_screw_sec_internal_internal"
+                },
+                {
+                  "label": "All",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "adcd_screw_sec_internal_all"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_screw_sec_internal",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 47,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "4": 97,
+                  "1": 74,
+                  "0": 58,
+                  "2": 12
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Skewed bolt group",
+              "labelSource": "enableCheckBox",
+              "key": "SecSkewedBoltGroupDim",
+              "enableKey": "SecSkewedBoltGroupDim_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No dimensions",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "adcd_sec_skewed_bolt_none"
+                },
+                {
+                  "label": "In part direction",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "adcd_sec_skewed_bolt_part"
+                },
+                {
+                  "label": "In bolt group direction",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "adcd_sec_skewed_bolt_bolt"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_sec_skewed_bolt",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 48,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "0": 133,
+                  "2": 67,
+                  "1": 41
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 46
+        },
+        {
+          "label": "Distance between extreme bolts",
+          "aidName": "Container_361",
+          "controls": [
+            {
+              "label": "Extreme bolts",
+              "labelSource": "enableCheckBox",
+              "key": "extreme_bolts",
+              "enableKey": "extreme_bolts_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "adcd_extreme_bolts_none"
+                },
+                {
+                  "label": "Main part",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "adcd_extreme_bolts_main_part"
+                },
+                {
+                  "label": "Assembly",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "adcd_extreme_bolts_assembly"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_extreme_bolts",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 50,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "0": 239,
+                  "2": 2
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Extreme bolts to work points",
+              "labelSource": "enableCheckBox",
+              "key": "bolts_to_work_points",
+              "enableKey": "bolts_to_work_points_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "adcd_bolts_to_work_points_no"
+                },
+                {
+                  "label": "Yes",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "adcd_bolts_to_work_points_yes"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "adcd_bolts_to_work_points",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 51,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "0": 238,
+                  "1": 3
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 49
+        }
+      ],
+      "position": 55
+    },
+    {
+      "label": "Position dimensions",
+      "aidName": "Container_283",
+      "controls": [
+        {
+          "label": "Position bolts to",
+          "labelSource": "enableCheckBox",
+          "key": "position_to",
+          "enableKey": "position_to_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 3,
+              "aidName": "adcd_position_to_none"
+            },
+            {
+              "label": "Main part",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_position_to_main_part"
+            },
+            {
+              "label": "Working points",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_position_to_working_points"
+            },
+            {
+              "label": "Both",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_position_to_both"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_position_to",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 56,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 200,
+              "3": 33,
+              "1": 8
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Position parts to",
+          "labelSource": "enableCheckBox",
+          "key": "PartPositionTo",
+          "enableKey": "PartPositionTo_en",
+          "aidNote": "CALLBACKPARAMETER names adcd_PartPositionTo_en, which is not a widget of this dialog (no enable check box)",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 3,
+              "aidName": "optButPartPositionToNone"
+            },
+            {
+              "label": "Main part",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "optButPartPositionToMainPart"
+            },
+            {
+              "label": "Working points",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "optButPartPositionToWorkingPoints"
+            },
+            {
+              "label": "Both",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "optButPartPositionToBoth"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "optMnuPartPositionTo",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 57,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 206,
+              "3": 35
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Secondary part",
+          "labelSource": "enableCheckBox",
+          "key": "pos_sec",
+          "enableKey": "pos_sec_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_pos_sec_none"
+            },
+            {
+              "label": "By bolt",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_pos_sec_screw"
+            },
+            {
+              "label": "By part",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_pos_sec_part"
+            },
+            {
+              "label": "By both",
+              "labelSource": "aid",
+              "value": 4,
+              "aidName": "adcd_pos_sec_screw_and_part"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_pos_sec",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 58,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 106,
+              "1": 64,
+              "4": 39,
+              "2": 32
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Secondary part dimension direction",
+          "labelSource": "enableCheckBox",
+          "key": "sec_part_dim_dir",
+          "enableKey": "sec_part_dim_dir_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Main part",
+              "labelSource": "aid",
+              "bitmap": "gr_pos_dimension_in_main_part_dir",
+              "value": 0,
+              "aidName": "adcd_sec_part_dim_dir_main"
+            },
+            {
+              "label": "Neighbor part",
+              "labelSource": "aid",
+              "bitmap": "gr_pos_dimension_in_sec_part_dir",
+              "value": 1,
+              "aidName": "adcd_sec_part_dim_secondary"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_sec_part_dim_dir",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 59,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 241
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Position from",
+          "labelSource": "enableCheckBox",
+          "key": "position_from",
+          "enableKey": "position_from_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Main part",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_position_from_main_part"
+            },
+            {
+              "label": "Work point",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_position_from_work_point"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_position_from",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 60,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 229,
+              "1": 12
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Reversed direction for running dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "ReversedDirection",
+          "enableKey": "ReversedDirection_en",
+          "aidNote": "CALLBACKPARAMETER names ReversedDirection_en, which is not a widget of this dialog (no enable check box)",
+          "type": "option",
+          "note": "no item has VALUEINT; values taken as the 0-based menu position (consistent with shipped files)",
+          "options": [
+            {
+              "label": "No",
+              "labelSource": "aid",
+              "value": 0,
+              "indexInMenu": 0,
+              "aidName": "adcdReversedDirectionNo",
+              "valueSource": "menu index (no VALUEINT in .aid)"
+            },
+            {
+              "label": "Yes",
+              "labelSource": "aid",
+              "value": 1,
+              "indexInMenu": 1,
+              "aidName": "adcdReversedDirectionYes",
+              "valueSource": "menu index (no VALUEINT in .aid)"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcdReversedDirection",
+          "aidType": "int",
+          "confidence": "order",
+          "position": 61,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 241
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Main part bolt position",
+          "labelSource": "enableCheckBox",
+          "key": "main_part_screw_pos",
+          "enableKey": "main_part_screw_pos_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_main_part_screw_pos_off"
+            },
+            {
+              "label": "On",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_main_part_screw_pos_on"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_main_part_screw_pos",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 62,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 198,
+              "0": 43
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Main part skew position",
+          "labelSource": "enableCheckBox",
+          "key": "main_skew_position",
+          "enableKey": "main_skew_position_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "No",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_main_skew_position_no"
+            },
+            {
+              "label": "Yes",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_main_skew_position_yes"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_main_skew_position",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 63,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 229,
+              "1": 12
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Skew position",
+          "labelSource": "enableCheckBox",
+          "key": "skew_pos_type",
+          "enableKey": "skew_pos_type_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_skew_pos_type_none"
+            },
+            {
+              "label": "angle",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_skew_pos_type_angle"
+            },
+            {
+              "label": "Dimensions",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "adcd_skew_pos_type_dim"
+            },
+            {
+              "label": "Both",
+              "labelSource": "aid",
+              "value": 3,
+              "aidName": "adcd_skew_pos_type_both"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_skew_pos_type",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 64,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 132,
+              "3": 98,
+              "1": 11
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Centered part",
+          "labelSource": "enableCheckBox",
+          "key": "pos_cent_part",
+          "enableKey": "pos_cent_part_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_pos_cent_part_none"
+            },
+            {
+              "label": "Internal",
+              "labelSource": "aid",
+              "value": 5,
+              "aidName": "adcd_pos_cent_part_internal"
+            },
+            {
+              "label": "Position",
+              "labelSource": "aid",
+              "value": 6,
+              "aidName": "adcd_pos_cent_part_position"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_pos_cent_part",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 65,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 128,
+              "5": 101,
+              "6": 12
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Centered bolt",
+          "labelSource": "enableCheckBox",
+          "key": "pos_cent_screw",
+          "enableKey": "pos_cent_screw_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_pos_cent_screw_none"
+            },
+            {
+              "label": "Internal",
+              "labelSource": "aid",
+              "value": 5,
+              "aidName": "adcd_pos_cent_screw_internal"
+            },
+            {
+              "label": "Position",
+              "labelSource": "aid",
+              "value": 6,
+              "aidName": "adcd_pos_cent_screw_position"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_pos_cent_screw",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 66,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "6": 174,
+              "0": 40,
+              "5": 27
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Elevation dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "create_elevation_dims",
+          "enableKey": "create_elevation_dims_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "adcd_create_elevation_dims_off"
+            },
+            {
+              "label": "On",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "adcd_create_elevation_dims_on"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "adcd_create_elevation_dims",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 67,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 235,
+              "1": 6
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Combine equal dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "combine_part_dimensions",
+          "enableKey": "combine_part_dimensions_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "optionbutton_9196",
+              "apiName": "Off"
+            },
+            {
+              "label": "3*60",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "optionbutton_9197",
+              "apiName": "NumberOfItemsTimesLength"
+            },
+            {
+              "label": "3*60=180",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "optionbutton_9198",
+              "apiName": "NumberOfItemsTimesLengthEqualsResult"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "optionmenu_9195",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 68,
+          "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.CombineFormats",
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "0": 178,
+              "1": 53,
+              "2": 10
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Minimum number to combine",
+          "labelSource": "enableCheckBox",
+          "key": "min_parts_num_to_combine",
+          "enableKey": "min_parts_num_to_combine_en",
+          "type": "number",
+          "aidWidget": "text",
+          "aidName": "text_9209",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 69,
+          "samples": {
+            "files": 241,
+            "top": {
+              "3": 229,
+              "1": 12
+            }
+          }
+        }
+      ],
+      "groups": [],
+      "position": 70
+    },
+    {
+      "label": "Sub-assemblies",
+      "aidName": "cntSubassemblies",
+      "controls": [
+        {
+          "label": "Dimension parts inside sub-assemblies",
+          "labelSource": "enableCheckBox",
+          "key": "SubassemblySecondaryParts",
+          "enableKey": "SubassemblySecondaryParts_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "Yes",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "optSubassemblySecondaryYes"
+            },
+            {
+              "label": "No",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "optSubassemblySecondaryNo"
+            }
+          ],
+          "dialogDefault": 1,
+          "aidWidget": "optionmenu",
+          "aidName": "optmnuIgnoreInsideAssemblies",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 71,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 122,
+              "0": 119
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Measure sub-assembly position from",
+          "labelSource": "enableCheckBox",
+          "key": "SubassemblyPosition",
+          "enableKey": "SubassemblyPosition_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "None",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "optSubassPosNone"
+            },
+            {
+              "label": "Bolt",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "optSubassPosByBolt"
+            },
+            {
+              "label": "Extrema points",
+              "labelSource": "aid",
+              "value": 2,
+              "aidName": "optSubassPosByExtrema"
+            },
+            {
+              "label": "Reference point",
+              "labelSource": "aid",
+              "value": 3,
+              "aidName": "optSubassPosByReferencePoint"
+            }
+          ],
+          "dialogDefault": 1,
+          "aidWidget": "optionmenu",
+          "aidName": "optmnuSubassemblyPosition",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 72,
+          "samples": {
+            "files": 241,
+            "inMenu": {
+              "1": 122,
+              "0": 119
+            },
+            "outsideMenu": {}
+          }
+        }
+      ],
+      "groups": [],
+      "position": 73
+    },
+    {
+      "label": "Dimension grouping",
+      "aidName": "tabDimensionGrouping",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Activate dimension grouping",
+          "aidName": "grContainerDimGrouping",
+          "controls": [
+            {
+              "label": null,
+              "type": "table",
+              "aidName": "grTableDimensionGrouping",
+              "aidStruct": "gr_dim_grouping_table_t",
+              "columns": [
+                {
+                  "member": "Check",
+                  "title": null
+                },
+                {
+                  "member": "aItemLabel",
+                  "title": null
+                }
+              ],
+              "note": "runtime table: its rows are kept in the dialog structure, not under a single key of this page",
+              "position": 75
+            }
+          ],
+          "groups": [],
+          "position": 74
+        },
+        {
+          "label": "Automatic tagging",
+          "aidName": "grContainerAutomaticTagging",
+          "controls": [
+            {
+              "label": "Display tags",
+              "labelSource": "textlabel",
+              "key": "DisplayTags",
+              "enableKey": "AutomaticTagging_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "grCheckDisplayTags",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 77,
+              "samples": {
+                "files": 241,
+                "top": {
+                  "1": 136,
+                  "0": 105
+                }
+              }
+            },
+            {
+              "label": "Include part count in the tag",
+              "labelSource": "textlabel",
+              "key": "IncludePartCountInTag",
+              "enableKey": "AutomaticTagging_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "grCheckIncludePartCount",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 78,
+              "samples": {
+                "files": 241,
+                "top": {
+                  "1": 132,
+                  "0": 109
+                }
+              }
+            },
+            {
+              "label": "Do not display marks for the grouped items",
+              "labelSource": "textlabel",
+              "key": "DontDisplayMarksForGroupedItems",
+              "enableKey": "AutomaticTagging_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "aidWidget": "checkbutton",
+              "aidName": "grCheckDontDisplayMarks",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 79,
+              "samples": {
+                "files": 241,
+                "top": {
+                  "1": 135,
+                  "0": 106
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 76
+        },
+        {
+          "label": "PART grouping properties",
+          "aidName": "grContainerCurrentItem",
+          "controls": [
+            {
+              "label": null,
+              "type": "table",
+              "aidName": "gr_mark_elements",
+              "aidStruct": "gr_mark_content_t",
+              "columns": [
+                {
+                  "member": "Label",
+                  "title": "Available elements"
+                }
+              ],
+              "note": "runtime table: its rows are kept in the dialog structure, not under a single key of this page",
+              "position": 81
+            },
+            {
+              "label": "Add >",
+              "type": "button",
+              "aidName": "grButtonAddElement",
+              "callback": "grDimElementTableAddCB",
+              "position": 82
+            },
+            {
+              "label": "Remove",
+              "type": "button",
+              "aidName": "grButtonRemoveElement",
+              "callback": "grDimElementTableRemoveCB",
+              "position": 83
+            },
+            {
+              "label": null,
+              "type": "table",
+              "aidName": "gr_mark_selected_elements",
+              "aidStruct": "gr_mark_content_t",
+              "columns": [
+                {
+                  "member": "Label",
+                  "title": "Selected elements"
+                }
+              ],
+              "note": "runtime table: its rows are kept in the dialog structure, not under a single key of this page",
+              "position": 84
+            }
+          ],
+          "groups": [],
+          "position": 80
+        },
+        {
+          "label": "Updating",
+          "aidName": "grContainerDimGroupingUpdating",
+          "controls": [
+            {
+              "label": "Update grouping when model changes",
+              "labelSource": "textlabel",
+              "key": "UpdateGrouping",
+              "enableKey": "UpdateGrouping_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Yes",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButDimGroupingUpdatingYes"
+                },
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButDimGroupingUpdatingNo"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuDimGroupingUpdating",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 86,
+              "samples": {
+                "files": 241,
+                "inMenu": {
+                  "1": 151,
+                  "0": 90
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 85
+        }
+      ],
+      "position": 87
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [
+    {
+      "label": "Dimensions for reinforcing bar groups",
+      "labelSource": "textlabel",
+      "key": "RebarDimensioningOn",
+      "enableKey": "RebarDimensioningOn_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "On",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "optButRebarDimensionsOn"
+        },
+        {
+          "label": "Off",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "optButRebarDimensionsOff"
+        }
+      ],
+      "dialogDefault": 0,
+      "aidWidget": "optionmenu",
+      "aidName": "optMnuRebarDimensioningOn",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 55,
+      "aidDialog": "gr_cudcd_attrib",
+      "dialogPath": [
+        "Reinforcement dimensions",
+        "Reinforcing bar groups"
+      ],
+      "samples": {
+        "files": 241,
+        "inMenu": {
+          "0": 238,
+          "1": 3
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Dimension mark settings",
+      "labelSource": "enableCheckBox",
+      "key": "RebarDimensionMarkSettings",
+      "enableKey": "RebarDimensionMarkSettings_en",
+      "type": "text",
+      "optionsFilledAtRuntime": true,
+      "aidWidget": "optionmenu",
+      "aidName": "optRebarDimensionMarkSettings",
+      "aidType": "char",
+      "confidence": "other-dialog",
+      "position": 56,
+      "aidDialog": "gr_cudcd_attrib",
+      "dialogPath": [
+        "Reinforcement dimensions",
+        "Reinforcing bar groups"
+      ],
+      "samples": {
+        "files": 36,
+        "top": {
+          "\"\"": 36
+        }
+      }
+    },
+    {
+      "label": "Embedded objects",
+      "labelSource": "enableCheckBox",
+      "key": "EmbeddedObjects",
+      "enableKey": "EmbeddedObjects_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "As secondary objects",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "optButOldWay"
+        },
+        {
+          "label": "By reference point",
+          "labelSource": "aid",
+          "value": 2,
+          "aidName": "optButNewWay"
+        }
+      ],
+      "dialogDefault": 1,
+      "aidWidget": "optionmenu",
+      "aidName": "adcd_optMnuEmbed",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 60,
+      "aidDialog": "gr_cudcd_attrib",
+      "dialogPath": [
+        "Position dimensions"
+      ],
+      "samples": {
+        "files": 241,
+        "inMenu": {
+          "1": 212,
+          "2": 29
+        },
+        "outsideMenu": {}
+      }
+    }
+  ],
+  "unmappedKeys": [
+    "create_cuts",
+    "ActivatePartGrouping",
+    "ActivateBoltGrouping",
+    "ActivateComponentGrouping",
+    "ActivateCutsShapesGrouping",
+    "aPartGroupingElements",
+    "aBoltGroupingElements",
+    "aComponentGroupingElements",
+    "aCutsShapesGroupingElements",
+    "MinNumberForParts",
+    "MinNumberForBolts",
+    "MinNumberForComponents",
+    "MinNumberForCutsShapes",
+    "CurrentContentTableNumber",
+    "create_cuts_en"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "367 drawing files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

@@ -1,0 +1,2650 @@
+{
+  "page": "Dimensioning",
+  "viewPrefix": null,
+  "gaDrawingPrefix": "dd.",
+  "assemblyDrawingPrefix": "dd.",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gr_dd_attrib",
+  "otherSources": [],
+  "treeCheckBoxKey": {
+    "key": "dd_en",
+    "in": "top level of the drawing file",
+    "confidence": "decoded",
+    "note": "check box in front of the button that opens the page in the drawing properties (gr_gdraw_attrib, gr_adraw_attrib)"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [],
+  "tabs": [
+    {
+      "label": "General",
+      "aidName": "tabGeneral",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Dimension types",
+          "aidName": "conDimTypesTitle",
+          "groupSource": "heading-textlabel+separator",
+          "controls": [
+            {
+              "label": "Straight",
+              "labelSource": "enableCheckBox",
+              "key": "dim_type",
+              "enableKey": "dim_type_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "DIM_RELATIVE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_RELATIVE",
+                  "value": 1,
+                  "aidName": "relative_dd",
+                  "apiName": "Relative"
+                },
+                {
+                  "label": "DIM_ABSOLUTE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_ABSOLUTE",
+                  "value": 2,
+                  "aidName": "absolute_dd",
+                  "apiName": "Absolute"
+                },
+                {
+                  "label": "DIM_BOTH",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_BOTH",
+                  "value": 3,
+                  "aidName": "both_dd",
+                  "apiName": "RelativeAndAbsolute"
+                },
+                {
+                  "label": "DIM_US_ABSOLUTE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_US_ABSOLUTE",
+                  "value": 4,
+                  "aidName": "us_absolute_dd",
+                  "apiName": "USAbsolute"
+                },
+                {
+                  "label": "DIM_US_ABSOLUTE_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_US_ABSOLUTE_2",
+                  "value": 16,
+                  "aidName": "us_absolute2_dd",
+                  "apiName": "USAbsolute2"
+                },
+                {
+                  "label": "DIM_INTERNAL_ABSOLUTE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_INTERNAL_ABSOLUTE",
+                  "value": 35,
+                  "aidName": "us_internal_absolute_dd",
+                  "apiName": "AbsoluteWithShortRelatives"
+                },
+                {
+                  "label": "DIM_INTERNAL_ABSOLUTE_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_INTERNAL_ABSOLUTE_2",
+                  "value": 99,
+                  "aidName": "Optionbutton_230",
+                  "apiName": "AbsoluteWithAllRelativesAbove"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "dd_type",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 2,
+              "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.DimensionTypes",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "1": 347,
+                  "2": 1
+                },
+                "outsideMenu": {
+                  "0": 12
+                }
+              }
+            },
+            {
+              "label": "In X direction",
+              "labelSource": "enableCheckBox",
+              "key": "dim_type_x",
+              "enableKey": "dim_type_x_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": null,
+                  "labelSource": "bitmap",
+                  "value": 0,
+                  "aidName": "none_x_dd"
+                },
+                {
+                  "label": "DIM_RELATIVE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_RELATIVE",
+                  "value": 1,
+                  "aidName": "relative_x_dd",
+                  "apiName": "Relative"
+                },
+                {
+                  "label": "DIM_ABSOLUTE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_ABSOLUTE",
+                  "value": 2,
+                  "aidName": "absolute_x_dd",
+                  "apiName": "Absolute"
+                },
+                {
+                  "label": "DIM_BOTH",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_BOTH",
+                  "value": 3,
+                  "aidName": "both_x_dd",
+                  "apiName": "RelativeAndAbsolute"
+                },
+                {
+                  "label": "DIM_US_ABSOLUTE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_US_ABSOLUTE",
+                  "value": 4,
+                  "aidName": "us_absolute_x_dd",
+                  "apiName": "USAbsolute"
+                },
+                {
+                  "label": "DIM_US_ABSOLUTE_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_US_ABSOLUTE_2",
+                  "value": 16,
+                  "aidName": "us_absolute2_x_dd",
+                  "apiName": "USAbsolute2"
+                },
+                {
+                  "label": "DIM_INTERNAL_ABSOLUTE",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_INTERNAL_ABSOLUTE",
+                  "value": 35,
+                  "aidName": "us_internal_absolute_dd_1",
+                  "apiName": "AbsoluteWithShortRelatives"
+                },
+                {
+                  "label": "DIM_INTERNAL_ABSOLUTE_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "DIM_INTERNAL_ABSOLUTE_2",
+                  "value": 99,
+                  "aidName": "us_internal_absolute_2",
+                  "apiName": "AbsoluteWithAllRelativesAbove"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "dd_type_x",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 3,
+              "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.DimensionTypes",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "1": 170,
+                  "0": 123,
+                  "3": 67
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Angle",
+              "labelSource": "enableCheckBox",
+              "key": "angle_dim_type",
+              "enableKey": "angle_dim_type_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Degrees on side",
+                  "labelSource": "aid",
+                  "bitmap": "om_pb_dim_angle_type_angle",
+                  "value": 1,
+                  "aidName": "om_pb_dim_angle_type_angle"
+                },
+                {
+                  "label": "Degrees at angle vertex",
+                  "labelSource": "aid",
+                  "bitmap": "AngleTypeDegreesAtAngleVertex",
+                  "value": 3,
+                  "aidName": "optButAngleTypeDregreesAtVertex"
+                },
+                {
+                  "label": "Triangle",
+                  "labelSource": "aid",
+                  "bitmap": "om_pb_dim_angle_type_triangle",
+                  "value": 2,
+                  "aidName": "om_pb_dim_angle_type_triangle"
+                },
+                {
+                  "label": "Triangle with degrees",
+                  "labelSource": "aid",
+                  "bitmap": "AngleTypeTriangleWithDegrees",
+                  "value": 4,
+                  "aidName": "optButAngleTypeTriangleWithDegrees"
+                },
+                {
+                  "label": "Gradians on side",
+                  "labelSource": "aid",
+                  "bitmap": "om_pb_dim_angle_type_angle",
+                  "value": 5,
+                  "aidName": "om_pb_dim_angle_type_angle_gradian"
+                },
+                {
+                  "label": "Gradians at angle vertex",
+                  "labelSource": "aid",
+                  "bitmap": "AngleTypeDegreesAtAngleVertex",
+                  "value": 6,
+                  "aidName": "optButAngleTypeGradiansAtVertex"
+                },
+                {
+                  "label": "Triangle with gradians",
+                  "labelSource": "aid",
+                  "bitmap": "AngleTypeTriangleWithDegrees",
+                  "value": 7,
+                  "aidName": "optButAngleTypeTriangleWithGradians"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "dd_angle_dim_type",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 4,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "1": 250,
+                  "2": 56,
+                  "4": 50
+                },
+                "outsideMenu": {
+                  "0": 4
+                }
+              }
+            },
+            {
+              "label": "Triangle base length",
+              "labelSource": "enableCheckBox",
+              "key": "TriangleBaseLength",
+              "enableKey": "TriangleBaseLength_en",
+              "type": "number",
+              "aidWidget": "text",
+              "aidName": "ddTriangleBaseLength",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 5,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "100": 231,
+                  "300": 95,
+                  "1000": 22,
+                  "0": 12
+                }
+              }
+            },
+            {
+              "label": "Short extension line",
+              "labelSource": "enableCheckBox",
+              "key": "ShortExtensionLine",
+              "enableKey": "ShortExtensionLine_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Yes",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButShortExtLineYes",
+                  "apiName": "Yes"
+                },
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButShortExtLineNo",
+                  "apiName": "No"
+                },
+                {
+                  "label": "On grid lines only",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optButShortExtLineOnGridLines",
+                  "apiName": "NotOnGridlines"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "ShortExtensionLine",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 6,
+              "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.ExtensionLineTypes",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 320,
+                  "1": 39,
+                  "2": 1
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [
+            {
+              "label": "Units",
+              "aidName": "conUnits",
+              "groupSource": "heading-textlabel+separator",
+              "controls": [
+                {
+                  "label": "Units",
+                  "labelSource": "enableCheckBox",
+                  "key": "dim_units",
+                  "enableKey": "dim_units_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "automatic",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "dd_units_auto",
+                      "apiName": "Automatic"
+                    },
+                    {
+                      "label": "mm",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "dd_units_mm",
+                      "apiName": "Millimeters"
+                    },
+                    {
+                      "label": "cm",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "dd_units_cm",
+                      "apiName": "Centimeters"
+                    },
+                    {
+                      "label": "m",
+                      "labelSource": "aid",
+                      "value": 3,
+                      "aidName": "dd_units_m",
+                      "apiName": "Meters"
+                    },
+                    {
+                      "label": "foot - inch",
+                      "labelSource": "aid",
+                      "value": 4,
+                      "aidName": "ddUnitsFootAndInch",
+                      "apiName": "FeetAndInches"
+                    },
+                    {
+                      "label": "cm / m",
+                      "labelSource": "aid",
+                      "value": 5,
+                      "aidName": "dd_units_cm_or_m",
+                      "apiName": "CentimetersOrMeters"
+                    },
+                    {
+                      "label": "inch",
+                      "labelSource": "aid",
+                      "value": 6,
+                      "aidName": "ddUnitsInch",
+                      "apiName": "Inches"
+                    },
+                    {
+                      "label": "feet",
+                      "labelSource": "aid",
+                      "value": 7,
+                      "aidName": "ddUnitsFeet",
+                      "apiName": "Feet"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "dd_units",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 8,
+                  "apiEnum": "Tekla.Structures.Drawing.Units",
+                  "samples": {
+                    "files": 360,
+                    "inMenu": {
+                      "0": 331,
+                      "1": 29
+                    },
+                    "outsideMenu": {}
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 7
+            },
+            {
+              "label": "Precision",
+              "aidName": "conPrecisionTitle",
+              "groupSource": "heading-textlabel+separator",
+              "controls": [
+                {
+                  "label": "Straight",
+                  "labelSource": "enableCheckBox",
+                  "key": "dim_precision",
+                  "enableKey": "dim_precision_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "0.00",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "dd_precision_1",
+                      "apiName": "Whole"
+                    },
+                    {
+                      "label": "0.50",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "dd_precision_2",
+                      "apiName": "OnePerTwo"
+                    },
+                    {
+                      "label": "0.33",
+                      "labelSource": "aid",
+                      "value": 3,
+                      "aidName": "dd_precision_3",
+                      "apiName": "OnePerThree"
+                    },
+                    {
+                      "label": "0.25",
+                      "labelSource": "aid",
+                      "value": 4,
+                      "aidName": "dd_precision_4",
+                      "apiName": "OnePerFour"
+                    },
+                    {
+                      "label": "1/8",
+                      "labelSource": "aid",
+                      "value": 8,
+                      "aidName": "dd_precision_8",
+                      "apiName": "OnePerEight"
+                    },
+                    {
+                      "label": "1/16",
+                      "labelSource": "aid",
+                      "value": 16,
+                      "aidName": "dd_precision_16",
+                      "apiName": "OnePerSixteen"
+                    },
+                    {
+                      "label": "1/32",
+                      "labelSource": "aid",
+                      "value": 32,
+                      "aidName": "dd_precision_32",
+                      "apiName": "OnePerThirtytwo"
+                    },
+                    {
+                      "label": "1/10",
+                      "labelSource": "aid",
+                      "value": 10,
+                      "aidName": "dd_precision_10",
+                      "apiName": "OnePerTen"
+                    },
+                    {
+                      "label": "1/100",
+                      "labelSource": "aid",
+                      "value": 100,
+                      "aidName": "dd_precision_100",
+                      "apiName": "OnePerHundred"
+                    },
+                    {
+                      "label": "1/1000",
+                      "labelSource": "aid",
+                      "value": 1000,
+                      "aidName": "dd_precision_1000",
+                      "apiName": "OnePerThousand"
+                    },
+                    {
+                      "label": "2.50",
+                      "labelSource": "aid",
+                      "value": -25,
+                      "aidName": "dd_precision_2_50",
+                      "apiName": "TwoAndHalfPerOne"
+                    },
+                    {
+                      "label": "5.00",
+                      "labelSource": "aid",
+                      "value": -50,
+                      "aidName": "dd_precision_5_00",
+                      "apiName": "FivePerOne"
+                    },
+                    {
+                      "label": "10.00",
+                      "labelSource": "aid",
+                      "value": -100,
+                      "aidName": "dd_precision_10_00",
+                      "apiName": "TenPerOne"
+                    }
+                  ],
+                  "dialogDefault": 2,
+                  "aidWidget": "optionmenu",
+                  "aidName": "dd_precision",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 10,
+                  "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.DimensionValuePrecisions",
+                  "samples": {
+                    "files": 360,
+                    "inMenu": {
+                      "1": 195,
+                      "2": 82,
+                      "10": 53,
+                      "100": 10,
+                      "1000": 8
+                    },
+                    "outsideMenu": {
+                      "0": 12
+                    }
+                  }
+                },
+                {
+                  "label": "Angle",
+                  "labelSource": "enableCheckBox",
+                  "key": "AnglePrecision",
+                  "enableKey": "AnglePrecision_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "0.00",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "ddAnglePrecision1",
+                      "apiName": "Whole"
+                    },
+                    {
+                      "label": "0.50",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "ddAnglePrecision2",
+                      "apiName": "OnePerTwo"
+                    },
+                    {
+                      "label": "0.33",
+                      "labelSource": "aid",
+                      "value": 3,
+                      "aidName": "ddAnglePrecision3",
+                      "apiName": "OnePerThree"
+                    },
+                    {
+                      "label": "0.25",
+                      "labelSource": "aid",
+                      "value": 4,
+                      "aidName": "ddAnglePrecision4",
+                      "apiName": "OnePerFour"
+                    },
+                    {
+                      "label": "1/8",
+                      "labelSource": "aid",
+                      "value": 8,
+                      "aidName": "ddAnglePrecision8",
+                      "apiName": "OnePerEight"
+                    },
+                    {
+                      "label": "1/16",
+                      "labelSource": "aid",
+                      "value": 16,
+                      "aidName": "ddAnglePrecision16",
+                      "apiName": "OnePerSixteen"
+                    },
+                    {
+                      "label": "1/32",
+                      "labelSource": "aid",
+                      "value": 32,
+                      "aidName": "ddAnglePrecision32",
+                      "apiName": "OnePerThirtytwo"
+                    },
+                    {
+                      "label": "1/10",
+                      "labelSource": "aid",
+                      "value": 10,
+                      "aidName": "ddAnglePrecision10",
+                      "apiName": "OnePerTen"
+                    },
+                    {
+                      "label": "1/100",
+                      "labelSource": "aid",
+                      "value": 100,
+                      "aidName": "ddAnglePrecision100",
+                      "apiName": "OnePerHundred"
+                    },
+                    {
+                      "label": "1/1000",
+                      "labelSource": "aid",
+                      "value": 1000,
+                      "aidName": "ddAnglePrecision1000",
+                      "apiName": "OnePerThousand"
+                    }
+                  ],
+                  "dialogDefault": 2,
+                  "aidWidget": "optionmenu",
+                  "aidName": "ddAnglePrecision",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 11,
+                  "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.DimensionValuePrecisions",
+                  "samples": {
+                    "files": 360,
+                    "inMenu": {
+                      "100": 346,
+                      "1": 2
+                    },
+                    "outsideMenu": {
+                      "0": 12
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 9
+            },
+            {
+              "label": "Format",
+              "aidName": "conFormatTitle",
+              "groupSource": "heading-textlabel+separator",
+              "controls": [
+                {
+                  "label": "Straight",
+                  "labelSource": "enableCheckBox",
+                  "key": "dim_format",
+                  "enableKey": "dim_format_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "###",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "dd_format_0",
+                      "apiName": "NoDecimals"
+                    },
+                    {
+                      "label": "###[.#]",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "dd_format_short_1",
+                      "apiName": "OneOptionalDecimal"
+                    },
+                    {
+                      "label": "###.#",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "dd_format_long_1",
+                      "apiName": "OneDecimal"
+                    },
+                    {
+                      "label": "###[.##]",
+                      "labelSource": "aid",
+                      "value": 3,
+                      "aidName": "dd_format_short_2",
+                      "apiName": "TwoOptionalDecimals"
+                    },
+                    {
+                      "label": "###.##",
+                      "labelSource": "aid",
+                      "value": 4,
+                      "aidName": "dd_format_long_2",
+                      "apiName": "TwoDecimals"
+                    },
+                    {
+                      "label": "###[.###]",
+                      "labelSource": "aid",
+                      "value": 5,
+                      "aidName": "dd_format_short_3",
+                      "apiName": "ThreeOptionalDecimals"
+                    },
+                    {
+                      "label": "###.###",
+                      "labelSource": "aid",
+                      "value": 6,
+                      "aidName": "dd_format_long_3",
+                      "apiName": "ThreeDecimals"
+                    },
+                    {
+                      "label": "### #/#",
+                      "labelSource": "aid",
+                      "value": 7,
+                      "aidName": "dd_format_fractional",
+                      "apiName": "RationalPart"
+                    },
+                    {
+                      "label": "DIM_FORMAT_CM_M_SUPERSCRIPT",
+                      "labelSource": "bitmap",
+                      "bitmap": "DIM_FORMAT_CM_M_SUPERSCRIPT",
+                      "value": 8,
+                      "aidName": "dd_format_cm_m_superscript",
+                      "apiName": "SuperscriptEnding"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "dd_format",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 13,
+                  "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.DimensionValueFormats",
+                  "samples": {
+                    "files": 360,
+                    "inMenu": {
+                      "0": 215,
+                      "1": 145
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Angle",
+                  "labelSource": "enableCheckBox",
+                  "key": "AngleFormat",
+                  "enableKey": "AngleFormat_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "###",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "ddAngleFormat0",
+                      "apiName": "NoDecimals"
+                    },
+                    {
+                      "label": "###[.#]",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "ddAngleFormatShort1",
+                      "apiName": "OneOptionalDecimal"
+                    },
+                    {
+                      "label": "###.#",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "ddAngleFormatLong1",
+                      "apiName": "OneDecimal"
+                    },
+                    {
+                      "label": "###[.##]",
+                      "labelSource": "aid",
+                      "value": 3,
+                      "aidName": "ddAngleFormatShort2",
+                      "apiName": "TwoOptionalDecimals"
+                    },
+                    {
+                      "label": "###.##",
+                      "labelSource": "aid",
+                      "value": 4,
+                      "aidName": "ddAngleFormatLong2",
+                      "apiName": "TwoDecimals"
+                    },
+                    {
+                      "label": "###[.###]",
+                      "labelSource": "aid",
+                      "value": 5,
+                      "aidName": "ddAngleFormatShort3",
+                      "apiName": "ThreeOptionalDecimals"
+                    },
+                    {
+                      "label": "###.###",
+                      "labelSource": "aid",
+                      "value": 6,
+                      "aidName": "ddAngleFormatLong3",
+                      "apiName": "ThreeDecimals"
+                    },
+                    {
+                      "label": "### #/#",
+                      "labelSource": "aid",
+                      "value": 7,
+                      "aidName": "ddAngleFormatFractional",
+                      "apiName": "RationalPart"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "ddAngleFormat",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 14,
+                  "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.DimensionValueFormats",
+                  "samples": {
+                    "files": 360,
+                    "inMenu": {
+                      "0": 210,
+                      "3": 81,
+                      "1": 58,
+                      "2": 10,
+                      "5": 1
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Use grouping",
+                  "labelSource": "enableCheckBox",
+                  "key": "UseDigitGrouping",
+                  "enableKey": "UseDigitGrouping_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Yes",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optButDimGroupingYes"
+                    },
+                    {
+                      "label": "No",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optButDimGroupingNo"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optMenuDimGrouping",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 15,
+                  "samples": {
+                    "files": 360,
+                    "inMenu": {
+                      "0": 360
+                    },
+                    "outsideMenu": {}
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 12
+            }
+          ],
+          "position": 1
+        },
+        {
+          "label": "Placing",
+          "aidName": "conPlacingTitle",
+          "groupSource": "heading-textlabel+separator",
+          "controls": [],
+          "groups": [
+            {
+              "label": "Placing",
+              "aidName": "conPlacing",
+              "controls": [
+                {
+                  "label": "Dimension lines spacing",
+                  "labelSource": "enableCheckBox",
+                  "key": "DimensionLinesSpacing",
+                  "enableKey": "DimensionLinesSpacing_en",
+                  "type": "number",
+                  "format": "%2.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "ddDimensionLinesSpacing",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 18,
+                  "samples": {
+                    "files": 360,
+                    "top": {
+                      "10.000000": 134,
+                      "0.000000": 76,
+                      "20.000000": 74,
+                      "5.000000": 66,
+                      "50.000000": 3
+                    }
+                  }
+                },
+                {
+                  "label": "Short dimensions",
+                  "labelSource": "enableCheckBox",
+                  "key": "short_dim_type",
+                  "enableKey": "short_dim_type_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Inside",
+                      "labelSource": "aid",
+                      "bitmap": "gr_short_dimension_inside",
+                      "value": 0,
+                      "aidName": "short_dim_type_inside",
+                      "apiName": "Inside"
+                    },
+                    {
+                      "label": "Outside",
+                      "labelSource": "aid",
+                      "bitmap": "gr_short_dimension_outside",
+                      "value": 1,
+                      "aidName": "short_dim_type_outside",
+                      "apiName": "Outside"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "dd_short_dim_type",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 19,
+                  "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.ShortDimensionTypes",
+                  "samples": {
+                    "files": 360,
+                    "inMenu": {
+                      "1": 184,
+                      "0": 176
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Place...",
+                  "type": "button",
+                  "aidName": "dd_placing",
+                  "callback": "gr_display_attr_dialog_cb",
+                  "callbackParameter": "gr_dd_placing",
+                  "position": 20,
+                  "opensDialog": "gr_dd_placing"
+                }
+              ],
+              "groups": [],
+              "position": 17
+            }
+          ],
+          "position": 16
+        }
+      ],
+      "position": 21
+    },
+    {
+      "label": "Appearance",
+      "aidName": "tabAppearance",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Line, Arrow",
+          "aidName": "conLineArrowTitle",
+          "groupSource": "heading-textlabel+separator",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "dim_line_colour",
+              "enableKey": "dim_line_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_white_line",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_black_line",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_red_line",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_green_line",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_blue_line",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_cyan_line",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_yellow_line",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_magenta_line",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_new_line_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_new_line_2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_new_line_3",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_new_line_4",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_new_line_5",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_new_line_6",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "dd_line_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 23,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "153": 262,
+                  "159": 67,
+                  "160": 10,
+                  "157": 8,
+                  "152": 1
+                },
+                "outsideMenu": {
+                  "0": 12
+                }
+              }
+            },
+            {
+              "label": "Background mask",
+              "labelSource": "enableCheckBox",
+              "key": "dim_background_mask",
+              "enableKey": "dim_background_mask_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Opaque",
+                  "labelSource": "aid",
+                  "value": 150,
+                  "aidName": ""
+                },
+                {
+                  "label": "Transparent",
+                  "labelSource": "aid",
+                  "value": -1,
+                  "aidName": ""
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "dd_background_mask",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 24,
+              "samples": {
+                "files": 182,
+                "inMenu": {
+                  "150": 170
+                },
+                "outsideMenu": {
+                  "0": 12
+                }
+              }
+            },
+            {
+              "label": "Arrow shape",
+              "labelSource": "enableCheckBox",
+              "key": "dim_arrow_shape",
+              "enableKey": "dim_arrow_shape_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "om_pb_dim_arrow_filled",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_filled",
+                  "value": 0,
+                  "aidName": "om_pb_dim_arrow_filled"
+                },
+                {
+                  "label": "om_pb_dim_arrow_line",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_line",
+                  "value": 1,
+                  "aidName": "om_pb_dim_arrow_line"
+                },
+                {
+                  "label": "om_pb_dim_arrow_circle",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_circle",
+                  "value": 2,
+                  "aidName": "om_pb_dim_arrow_circle"
+                },
+                {
+                  "label": "om_pb_dim_arrow_open",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_open",
+                  "value": 3,
+                  "aidName": "om_pb_dim_arrow_open"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "dd_arrow_shape",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 25,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "1": 246,
+                  "2": 68,
+                  "0": 33
+                },
+                "outsideMenu": {
+                  "11": 13
+                }
+              }
+            },
+            {
+              "label": "US Absolute dimensions",
+              "labelSource": "enableCheckBox",
+              "key": "USAbsoluteArrowShape",
+              "enableKey": "USAbsoluteArrowShape_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "om_pb_dim_arrow_filled",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_filled",
+                  "value": 0,
+                  "aidName": "USAbsoluteArrowFilled"
+                },
+                {
+                  "label": "om_pb_dim_arrow_line",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_line",
+                  "value": 1,
+                  "aidName": "USAbsoluteArrowLine"
+                },
+                {
+                  "label": "om_pb_dim_arrow_circle",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_circle",
+                  "value": 2,
+                  "aidName": "USAbsoluteArrowCircle"
+                },
+                {
+                  "label": "om_pb_dim_arrow_open",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_open",
+                  "value": 3,
+                  "aidName": "USAbsoluteArrowOpen"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "ddUSAbsoluteArrowShape",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 26,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "3": 241,
+                  "0": 54,
+                  "1": 53,
+                  "2": 12
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Level dimensions",
+              "labelSource": "enableCheckBox",
+              "key": "LevelArrowShape",
+              "enableKey": "LevelArrowShape_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "om_pb_dim_arrow_filled",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_filled",
+                  "value": 0,
+                  "aidName": "LevelArrowFilled"
+                },
+                {
+                  "label": "om_pb_dim_arrow_line",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_line",
+                  "value": 1,
+                  "aidName": "LevelArrowLine"
+                },
+                {
+                  "label": "om_pb_dim_arrow_circle",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_circle",
+                  "value": 2,
+                  "aidName": "LevelArrowCircle"
+                },
+                {
+                  "label": "om_pb_dim_arrow_open",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_arrow_open",
+                  "value": 3,
+                  "aidName": "LevelArrowOpen"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "ddLevelArrowShape",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 27,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 322,
+                  "1": 26,
+                  "2": 7,
+                  "3": 5
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Line, Arrow height",
+              "labelSource": "group+key",
+              "key": "dim_arrow_height",
+              "enableKey": "dim_arrow_height_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "dd_arrow_height",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 28,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 360,
+                "top": {
+                  "1.000000": 348,
+                  "0.000000": 12
+                }
+              }
+            },
+            {
+              "label": "Line, Arrow width",
+              "labelSource": "group+key",
+              "key": "dim_arrow_width",
+              "enableKey": "dim_arrow_width_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "dd_arrow_width",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 29,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 360,
+                "top": {
+                  "1.000000": 161,
+                  "2.000000": 92,
+                  "2.500000": 73,
+                  "3.000000": 20,
+                  "0.000000": 12
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 22
+        },
+        {
+          "label": "Text",
+          "aidName": "conTextTitle",
+          "groupSource": "heading-textlabel+separator",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "dim_text_colour",
+              "enableKey": "dim_text_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_white",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_black",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_red",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_green",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_blue",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_cyan",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_yellow",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_magenta",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_new_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_new_2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_new_3",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_new_4",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_new_5",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_new_6",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "dd_text_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 31,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "161": 196,
+                  "155": 63,
+                  "153": 41,
+                  "164": 29,
+                  "157": 9,
+                  "160": 9,
+                  "152": 1
+                },
+                "outsideMenu": {
+                  "0": 12
+                }
+              }
+            },
+            {
+              "label": "Height",
+              "labelSource": "enableCheckBox",
+              "key": "dim_text_height",
+              "enableKey": "dim_height_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "dd_text_height",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 32,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "2.500000": 188,
+                  "3.000000": 66,
+                  "3.500000": 25,
+                  "4.000000": 22,
+                  "2.000000": 21
+                }
+              }
+            },
+            {
+              "label": "Font",
+              "labelSource": "enableCheckBox",
+              "key": "FontName",
+              "enableKey": "FontName_en",
+              "type": "font",
+              "maxLength": 44,
+              "aidWidget": "text",
+              "aidName": "dd_font_name",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 33,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"Arial\"": 168,
+                  "\"romsim\"": 56,
+                  "\"lr SVbN\"": 48,
+                  "\"Arial Narrow\"": 44,
+                  "\"Comic Sans MS\"": 17
+                }
+              }
+            },
+            {
+              "label": "Select...",
+              "type": "button",
+              "aidName": "butSelectFont",
+              "callback": "dia_select_font_cb",
+              "callbackParameter": "dd_font_name",
+              "position": 34
+            },
+            {
+              "label": "Frame",
+              "labelSource": "enableCheckBox",
+              "key": "dim_frame",
+              "enableKey": "dim_frame_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_frame_none",
+                  "value": 0,
+                  "aidName": "om_pb_frame_none",
+                  "apiName": "None"
+                },
+                {
+                  "label": "Underline",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_frame_underline",
+                  "value": 2,
+                  "aidName": "om_pb_frame_underline",
+                  "apiName": "Underline"
+                },
+                {
+                  "label": "Rectangular",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_frame_rectangular",
+                  "value": 1,
+                  "aidName": "om_pb_frame_rectangular",
+                  "apiName": "Rectangle"
+                },
+                {
+                  "label": "Rounded",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_frame_rounded",
+                  "value": 3,
+                  "aidName": "om_pb_frame_rounded",
+                  "apiName": "RoundedRectangle"
+                },
+                {
+                  "label": "Sharpened",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_frame_sharpened",
+                  "value": 8,
+                  "aidName": "om_pb_frame_sharpened",
+                  "apiName": "SharpenedRectangle"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "dd_frame",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 35,
+              "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.FrameTypes",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 360
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Place",
+              "labelSource": "enableCheckBox",
+              "key": "dim_text_on_line",
+              "enableKey": "dim_text_on_line_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "om_pb_dim_text_place_above",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_text_place_above",
+                  "value": 0,
+                  "aidName": "om_pb_dim_text_place_above",
+                  "apiName": "AboveDimensionLine"
+                },
+                {
+                  "label": "om_pb_dim_text_place_center",
+                  "labelSource": "bitmap",
+                  "bitmap": "om_pb_dim_text_place_center",
+                  "value": 1,
+                  "aidName": "om_pb_dim_text_place_center",
+                  "apiName": "OnDimensionLine"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "dd_text_on_line",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 36,
+              "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.DimensionTextPlacings",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 352,
+                  "1": 8
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 30
+        }
+      ],
+      "position": 37
+    },
+    {
+      "label": "Advanced",
+      "aidName": "ddAdvancedTabPage",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Plate side marks",
+          "aidName": "contPlateSideMarks",
+          "controls": [
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "PlateSideMarkType",
+              "enableKey": "PlateSideMarkType_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButSideMarkTypeNone"
+                },
+                {
+                  "label": "Specified",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButSideMarkTypeSpecified"
+                },
+                {
+                  "label": "Automatic",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optButSideMarkTypeAuto"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuSideMarkType",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 39,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 309,
+                  "2": 51
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Offset",
+              "labelSource": "enableCheckBox",
+              "key": "PlateSideMarkOffset",
+              "enableKey": "PlateSideMarkOffset_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldSideMarkOffset",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 40,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "5.000000": 346,
+                  "0.000000": 12,
+                  "15.000000": 2
+                }
+              }
+            },
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "PlateSideMarkColor",
+              "enableKey": "PlateSideMarkColor_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "optButSideMarkWhite",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "optButSideMarkBlack",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "optButSideMarkRed",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "optButSideMarkGreen",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "optButSideMarkBlue",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "optButSideMarkCyan",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "optButSideMarkYellow",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "optButSideMarkMagenta",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "optButSideMarkNewColor1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "optButSideMarkNewColor2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "optButSideMarkNewColor3",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "optButSideMarkNewColor4",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "optButSideMarkNewColor5",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "optButSideMarkNewColor6",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuSideMarkColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 41,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "153": 348
+                },
+                "outsideMenu": {
+                  "0": 12
+                }
+              }
+            },
+            {
+              "label": "Size",
+              "labelSource": "enableCheckBox",
+              "key": "PlateSideMarkSize",
+              "enableKey": "PlateSideMarkSize_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldSideMarkSize",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 42,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "3.500000": 348,
+                  "0.000000": 12
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 38
+        },
+        {
+          "label": "Check dimensions",
+          "aidName": "conCheckDimensions",
+          "controls": [
+            {
+              "label": "Line color",
+              "labelSource": "enableCheckBox",
+              "key": "ReferenceDimensionColor",
+              "enableKey": "ReferenceDimensionColor_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_white_line_1",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_black_line_1",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_red_line_1",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_green_line_1",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_blue_line_1",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_cyan_line_1",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_yellow_line_1",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_magenta_line_1",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_new_line_1_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_new_line_2_1",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_new_line_3_1",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_new_line_4_1",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_new_line_5_1",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_new_line_6_1",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "ddReferenceDimensionColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 44,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "157": 148,
+                  "163": 135,
+                  "153": 55,
+                  "160": 9,
+                  "152": 1
+                },
+                "outsideMenu": {
+                  "0": 12
+                }
+              }
+            },
+            {
+              "label": "Text color",
+              "labelSource": "enableCheckBox",
+              "key": "ReferenceTextColor",
+              "enableKey": "ReferenceTextColor_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_white_1",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_black_1",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_red_1",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_green_1",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_blue_1",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_cyan_1",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_yellow_1",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_magenta_1",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_new_1_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_new_2_1",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_new_3_1",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_new_4_1",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_new_5_1",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_new_6_1",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "ddReferenceTextColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 45,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "157": 148,
+                  "163": 135,
+                  "161": 29,
+                  "155": 15,
+                  "160": 9,
+                  "152": 7,
+                  "153": 5
+                },
+                "outsideMenu": {
+                  "0": 12
+                }
+              }
+            },
+            {
+              "label": "Text height",
+              "labelSource": "enableCheckBox",
+              "key": "ReferenceTextHeight",
+              "enableKey": "ReferenceTextHeight_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "ddReferenceTextHeight",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 46,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "2.500000": 223,
+                  "2.000000": 95,
+                  "0.000000": 12,
+                  "3.000000": 12,
+                  "2.400000": 9
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 43
+        },
+        {
+          "label": "Exaggeration",
+          "aidName": "conExaggeration_1",
+          "controls": [
+            {
+              "label": "Exaggeration",
+              "labelSource": "enableCheckBox",
+              "key": "Exaggeration",
+              "enableKey": "Exaggeration_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButExaggerationNone"
+                },
+                {
+                  "label": "Specified",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButExaggerationSpec"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuExagg",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 48,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 275,
+                  "1": 85
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Direction",
+              "labelSource": "enableCheckBox",
+              "key": "ExaggerationDirection",
+              "enableKey": "ExaggerationDirection_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Left / Down",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButExaggDirectionLeft",
+                  "apiName": "LeftDown"
+                },
+                {
+                  "label": "Right / Up",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButExaggDirectionRight",
+                  "apiName": "RightUp"
+                },
+                {
+                  "label": "Both",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optButExaggDirectionBoth",
+                  "apiName": "Both"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuExaggDirection",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 49,
+              "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.ExaggerationDirections",
+              "apiEnumOffset": 1,
+              "apiEnumNote": "API value = stored value + 1 (checked on every item)",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 320,
+                  "2": 40
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Origin",
+              "labelSource": "enableCheckBox",
+              "key": "ExaggerationOrigin",
+              "enableKey": "ExaggerationOrigin_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "EXAGGERATION_POSITION1",
+                  "labelSource": "bitmap",
+                  "bitmap": "EXAGGERATION_POSITION1",
+                  "value": 0,
+                  "aidName": "optButExaggOriginDim",
+                  "apiName": "NearDimensionLine"
+                },
+                {
+                  "label": "EXAGGERATION_POSITION2",
+                  "labelSource": "bitmap",
+                  "bitmap": "EXAGGERATION_POSITION2",
+                  "value": 1,
+                  "aidName": "optButExaggOriginBase",
+                  "apiName": "NearMeasuredObject"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuExaggOrigin",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 50,
+              "apiEnum": "Tekla.Structures.Drawing.DimensionSetBaseAttributes.ExaggerationOrigins",
+              "apiEnumOffset": 1,
+              "apiEnumNote": "API value = stored value + 1 (checked on every item)",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 360
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Width",
+              "labelSource": "enableCheckBox",
+              "key": "ExaggerationWidth",
+              "enableKey": "ExaggerationWidth_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldExaggWidth",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 51,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "5.000000": 303,
+                  "1.000000": 45,
+                  "0.000000": 12
+                }
+              }
+            },
+            {
+              "label": "Position",
+              "labelSource": "enableCheckBox",
+              "key": "ExaggerationPosition",
+              "enableKey": "ExaggerationPosition_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldExaggPosition",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 52,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "5.000000": 298,
+                  "1.000000": 45,
+                  "0.000000": 12,
+                  "2.000000": 5
+                }
+              }
+            },
+            {
+              "label": "Height",
+              "labelSource": "enableCheckBox",
+              "key": "ExaggerationHeight",
+              "enableKey": "ExaggerationHeight_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldExaggHeight",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 53,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "5.000000": 303,
+                  "1.000000": 45,
+                  "0.000000": 12
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 47
+        }
+      ],
+      "position": 54
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [
+    {
+      "dialog": "gr_dd_placing",
+      "openedBy": "Place...",
+      "keyPrefix": "dimpl.",
+      "tabs": [],
+      "groups": [],
+      "controls": [
+        {
+          "label": "Search margin",
+          "labelSource": "enableCheckBox",
+          "key": "dimpl.dim_freepl_margin",
+          "enableKey": "dimpl.dim_freepl_margin_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "dd_freepl_margin",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 1,
+          "samples": {
+            "files": 360,
+            "top": {
+              "5.000000": 255,
+              "1.000000": 58,
+              "10.000000": 24,
+              "0.000000": 12,
+              "2.000000": 11
+            }
+          }
+        },
+        {
+          "label": "Minimum distance",
+          "labelSource": "enableCheckBox",
+          "key": "dimpl.dim_freepl_min",
+          "enableKey": "dimpl.dim_freepl_min_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "dd_freepl_min",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 2,
+          "samples": {
+            "files": 360,
+            "top": {
+              "10.000000": 244,
+              "5.000000": 53,
+              "2.000000": 28,
+              "20.000000": 15,
+              "0.000000": 12
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "radius_dim_type",
+    "curved_radial_dim_type",
+    "MainType",
+    "radius_dim_type_en",
+    "curved_radial_dim_type_en"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "367 drawing files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

@@ -6,9 +6,184 @@
 namespace TeklaHelper.DrawingAttribute.Pages
 {
     /// <summary>
+    /// Values of the "Angle" menu, as Tekla stores them. Used by DimensionPage: AngleFormat.
+    /// </summary>
+    public enum AngleDimensionFormat
+    {
+        /// <summary>
+        /// ###.
+        /// </summary>
+        NoDecimals = 0,
+
+        /// <summary>
+        /// ###[.#].
+        /// </summary>
+        OneOptionalDecimal = 1,
+
+        /// <summary>
+        /// ###.#.
+        /// </summary>
+        OneDecimal = 2,
+
+        /// <summary>
+        /// ###[.##].
+        /// </summary>
+        TwoOptionalDecimals = 3,
+
+        /// <summary>
+        /// ###.##.
+        /// </summary>
+        TwoDecimals = 4,
+
+        /// <summary>
+        /// ###[.###].
+        /// </summary>
+        ThreeOptionalDecimals = 5,
+
+        /// <summary>
+        /// ###.###.
+        /// </summary>
+        ThreeDecimals = 6,
+
+        /// <summary>
+        /// ### #/#.
+        /// </summary>
+        RationalPart = 7,
+    }
+
+    /// <summary>
+    /// Values of the "Angle" menu, as Tekla stores them. Used by DimensionPage: AnglePrecision.
+    /// </summary>
+    public enum AngleDimensionPrecision
+    {
+        /// <summary>
+        /// 0.00.
+        /// </summary>
+        Whole = 1,
+
+        /// <summary>
+        /// 0.50.
+        /// </summary>
+        OnePerTwo = 2,
+
+        /// <summary>
+        /// 0.33.
+        /// </summary>
+        OnePerThree = 3,
+
+        /// <summary>
+        /// 0.25.
+        /// </summary>
+        OnePerFour = 4,
+
+        /// <summary>
+        /// 1/8.
+        /// </summary>
+        OnePerEight = 8,
+
+        /// <summary>
+        /// 1/16.
+        /// </summary>
+        OnePerSixteen = 16,
+
+        /// <summary>
+        /// 1/32.
+        /// </summary>
+        OnePerThirtytwo = 32,
+
+        /// <summary>
+        /// 1/10.
+        /// </summary>
+        OnePerTen = 10,
+
+        /// <summary>
+        /// 1/100.
+        /// </summary>
+        OnePerHundred = 100,
+
+        /// <summary>
+        /// 1/1000.
+        /// </summary>
+        OnePerThousand = 1000,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Angle" menu, as Tekla stores them. Used by DimensionPage: angle_dim_type.
+    /// </summary>
+    public enum AngleDimensionType
+    {
+        /// <summary>
+        /// Degrees on side.
+        /// </summary>
+        DegreesOnSide = 1,
+
+        /// <summary>
+        /// Degrees at angle vertex.
+        /// </summary>
+        DegreesAtAngleVertex = 3,
+
+        /// <summary>
+        /// Triangle.
+        /// </summary>
+        Triangle = 2,
+
+        /// <summary>
+        /// Triangle with degrees.
+        /// </summary>
+        TriangleWithDegrees = 4,
+
+        /// <summary>
+        /// Gradians on side.
+        /// </summary>
+        GradiansOnSide = 5,
+
+        /// <summary>
+        /// Gradians at angle vertex.
+        /// </summary>
+        GradiansAtAngleVertex = 6,
+
+        /// <summary>
+        /// Triangle with gradians.
+        /// </summary>
+        TriangleWithGradians = 7,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Assembly part overall dimensions" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// assembly_extrema.
+    /// </summary>
+    public enum AssemblyPartOverallDimensions
+    {
+        /// <summary>
+        /// Off.
+        /// </summary>
+        Off = 0,
+
+        /// <summary>
+        /// Length only.
+        /// </summary>
+        LengthOnly = 1,
+
+        /// <summary>
+        /// All dimensions.
+        /// </summary>
+        AllDimensions = 2,
+    }
+
+    /// <summary>
     /// Values of the "Background mask" menu, as Tekla stores them. Used by BoltMark: background_mask, ConnectionMark:
-    /// background_mask, NeighborPartMark: background_mask, NeighborReinforcementMark: background_mask, PartMark:
-    /// background_mask, PourMark: background_mask and others.
+    /// background_mask, DimensionPage: dim_background_mask, NeighborPartMark: background_mask,
+    /// NeighborReinforcementMark: background_mask, PartMark: background_mask and others.
     /// </summary>
     public enum BackgroundMask
     {
@@ -21,6 +196,32 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Transparent.
         /// </summary>
         Transparent = -1,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Bevel angle" menu, as Tekla stores them. Used by AssemblyDimensioningPage: main_part_bevel_angle.
+    /// </summary>
+    public enum BevelAngle
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Angle of cut.
+        /// </summary>
+        AngleOfCut = 1,
+
+        /// <summary>
+        /// Angle of beam.
+        /// </summary>
+        AngleOfBeam = 2,
     }
 
     /// <summary>
@@ -71,7 +272,130 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Cut parts" menu, as Tekla stores them. Used by ViewAttributes: cut_on.
+    /// Values of the "Preferred dim side" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// screw_prefered_side.
+    /// </summary>
+    public enum BoltPreferredDimensionSide
+    {
+        /// <summary>
+        /// adcd_screw_prefered_side_view.
+        /// </summary>
+        View = 0,
+
+        /// <summary>
+        /// adcd_screw_prefered_side_side.
+        /// </summary>
+        Side = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Centered part" menu, as Tekla stores them. Used by AssemblyDimensioningPage: pos_cent_part,
+    /// AssemblyDimensioningPage: pos_cent_screw.
+    /// </summary>
+    public enum CenteredPosition
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Internal.
+        /// </summary>
+        Internal = 5,
+
+        /// <summary>
+        /// Position.
+        /// </summary>
+        Position = 6,
+    }
+
+    /// <summary>
+    /// Values of the "Close dimensions" menu, as Tekla stores them. Used by AssemblyDimensioningPage: create_close_dim.
+    /// </summary>
+    public enum CloseDimensions
+    {
+        /// <summary>
+        /// No.
+        /// </summary>
+        No = 0,
+
+        /// <summary>
+        /// In X.
+        /// </summary>
+        InX = 1,
+
+        /// <summary>
+        /// All.
+        /// </summary>
+        All = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Combine bolt dimensions" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// combine_bolt_dim, AssemblyDimensioningPage: combine_part_dimensions.
+    /// </summary>
+    public enum CombineDimensions
+    {
+        /// <summary>
+        /// Off.
+        /// </summary>
+        Off = 0,
+
+        /// <summary>
+        /// 3*60.
+        /// </summary>
+        NumberOfItemsTimesLength = 1,
+
+        /// <summary>
+        /// 3*60=180.
+        /// </summary>
+        NumberOfItemsTimesLengthEqualsResult = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Options" menu, as Tekla stores them. Used by AssemblyDimensioningPage: prog_no.
+    /// </summary>
+    public enum CombineDimensionsOption
+    {
+        /// <summary>
+        /// No.
+        /// </summary>
+        No = 0,
+
+        /// <summary>
+        /// Item "1" of the menu (a picture in the dialog).
+        /// </summary>
+        Value1 = 1,
+
+        /// <summary>
+        /// Item "2" of the menu (a picture in the dialog).
+        /// </summary>
+        Value2 = 2,
+
+        /// <summary>
+        /// Item "3" of the menu (a picture in the dialog).
+        /// </summary>
+        Value3 = 3,
+
+        /// <summary>
+        /// Item "4" of the menu (a picture in the dialog).
+        /// </summary>
+        Value4 = 4,
+
+        /// <summary>
+        /// Item "4.5" of the menu (a picture in the dialog).
+        /// </summary>
+        Value6 = 6,
+
+        /// <summary>
+        /// Item "5" of the menu (a picture in the dialog).
+        /// </summary>
+        Value5 = 5,
+    }
+
+    /// <summary>
+    /// Values of the "Cut parts" menu, as Tekla stores them. Used by SectionViewPage: cut_on, ViewAttributes: cut_on.
     /// </summary>
     public enum CutParts
     {
@@ -97,8 +421,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Datum point for elevations" menu, as Tekla stores them. Used by ViewAttributes:
-    /// ElevationDatumSwitch.
+    /// Values of the "Datum point for elevations" menu, as Tekla stores them. Used by DrawingViewCreationSection:
+    /// ElevationDatumSwitch, ViewAttributes: ElevationDatumSwitch.
     /// </summary>
     public enum DatumPointForElevations
     {
@@ -111,6 +435,86 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Specified.
         /// </summary>
         Specified = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Shape of the boundary" menu, as Tekla stores them. Used by DetailViewPage: SymbolShape.
+    /// </summary>
+    public enum DetailBoundaryShape
+    {
+        /// <summary>
+        /// Circle.
+        /// </summary>
+        Circle = 0,
+
+        /// <summary>
+        /// Rectangle.
+        /// </summary>
+        Rectangle = 1,
+
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Symbol" menu, as Tekla stores them. Used by DetailViewPage: DetailMarkSymbolIndex.
+    /// </summary>
+    public enum DetailMarkSymbol
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_160" of the menu (a picture in the dialog).
+        /// </summary>
+        Value161 = 161,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_161" of the menu (a picture in the dialog).
+        /// </summary>
+        Value162 = 162,
+
+        /// <summary>
+        /// Custom.
+        /// </summary>
+        Custom = 1000,
+    }
+
+    /// <summary>
+    /// Values of the "Arrow shape" menu, as Tekla stores them. Used by AssemblyDimensioningPage: LevelArrowShape,
+    /// AssemblyDimensioningPage: USAbsoluteArrowShape, DimensionPage: LevelArrowShape, DimensionPage:
+    /// USAbsoluteArrowShape, DimensionPage: dim_arrow_shape.
+    /// </summary>
+    public enum DimensionArrowShape
+    {
+        /// <summary>
+        /// om_pb_dim_arrow_filled.
+        /// </summary>
+        FilledArrow = 0,
+
+        /// <summary>
+        /// om_pb_dim_arrow_line.
+        /// </summary>
+        LineArrow = 1,
+
+        /// <summary>
+        /// om_pb_dim_arrow_circle.
+        /// </summary>
+        CircleArrow = 2,
+
+        /// <summary>
+        /// om_pb_dim_arrow_open.
+        /// </summary>
+        OpenArrow = 3,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value11 = 11,
     }
 
     /// <summary>
@@ -136,6 +540,336 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
+    /// Values of the "Straight" menu, as Tekla stores them. Used by DimensionPage: dim_format.
+    /// </summary>
+    public enum DimensionFormat
+    {
+        /// <summary>
+        /// ###.
+        /// </summary>
+        NoDecimals = 0,
+
+        /// <summary>
+        /// ###[.#].
+        /// </summary>
+        OneOptionalDecimal = 1,
+
+        /// <summary>
+        /// ###.#.
+        /// </summary>
+        OneDecimal = 2,
+
+        /// <summary>
+        /// ###[.##].
+        /// </summary>
+        TwoOptionalDecimals = 3,
+
+        /// <summary>
+        /// ###.##.
+        /// </summary>
+        TwoDecimals = 4,
+
+        /// <summary>
+        /// ###[.###].
+        /// </summary>
+        ThreeOptionalDecimals = 5,
+
+        /// <summary>
+        /// ###.###.
+        /// </summary>
+        ThreeDecimals = 6,
+
+        /// <summary>
+        /// ### #/#.
+        /// </summary>
+        RationalPart = 7,
+
+        /// <summary>
+        /// DIM_FORMAT_CM_M_SUPERSCRIPT.
+        /// </summary>
+        SuperscriptEnding = 8,
+    }
+
+    /// <summary>
+    /// Values of the "Straight" menu, as Tekla stores them. Used by DimensionPage: dim_precision.
+    /// </summary>
+    public enum DimensionPrecision
+    {
+        /// <summary>
+        /// 0.00.
+        /// </summary>
+        Whole = 1,
+
+        /// <summary>
+        /// 0.50.
+        /// </summary>
+        OnePerTwo = 2,
+
+        /// <summary>
+        /// 0.33.
+        /// </summary>
+        OnePerThree = 3,
+
+        /// <summary>
+        /// 0.25.
+        /// </summary>
+        OnePerFour = 4,
+
+        /// <summary>
+        /// 1/8.
+        /// </summary>
+        OnePerEight = 8,
+
+        /// <summary>
+        /// 1/16.
+        /// </summary>
+        OnePerSixteen = 16,
+
+        /// <summary>
+        /// 1/32.
+        /// </summary>
+        OnePerThirtytwo = 32,
+
+        /// <summary>
+        /// 1/10.
+        /// </summary>
+        OnePerTen = 10,
+
+        /// <summary>
+        /// 1/100.
+        /// </summary>
+        OnePerHundred = 100,
+
+        /// <summary>
+        /// 1/1000.
+        /// </summary>
+        OnePerThousand = 1000,
+
+        /// <summary>
+        /// 2.50.
+        /// </summary>
+        TwoAndHalfPerOne = -25,
+
+        /// <summary>
+        /// 5.00.
+        /// </summary>
+        FivePerOne = -50,
+
+        /// <summary>
+        /// 10.00.
+        /// </summary>
+        TenPerOne = -100,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Frame" menu, as Tekla stores them. Used by DimensionPage: dim_frame.
+    /// </summary>
+    public enum DimensionTextFrame
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Underline.
+        /// </summary>
+        Underline = 2,
+
+        /// <summary>
+        /// Rectangular.
+        /// </summary>
+        Rectangle = 1,
+
+        /// <summary>
+        /// Rounded.
+        /// </summary>
+        RoundedRectangle = 3,
+
+        /// <summary>
+        /// Sharpened.
+        /// </summary>
+        SharpenedRectangle = 8,
+    }
+
+    /// <summary>
+    /// Values of the "Place" menu, as Tekla stores them. Used by DimensionPage: dim_text_on_line.
+    /// </summary>
+    public enum DimensionTextPlacing
+    {
+        /// <summary>
+        /// om_pb_dim_text_place_above.
+        /// </summary>
+        AboveDimensionLine = 0,
+
+        /// <summary>
+        /// om_pb_dim_text_place_center.
+        /// </summary>
+        OnDimensionLine = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Straight" menu, as Tekla stores them. Used by DimensionPage: dim_type.
+    /// </summary>
+    public enum DimensionType
+    {
+        /// <summary>
+        /// DIM_RELATIVE.
+        /// </summary>
+        Relative = 1,
+
+        /// <summary>
+        /// DIM_ABSOLUTE.
+        /// </summary>
+        Absolute = 2,
+
+        /// <summary>
+        /// DIM_BOTH.
+        /// </summary>
+        RelativeAndAbsolute = 3,
+
+        /// <summary>
+        /// DIM_US_ABSOLUTE.
+        /// </summary>
+        USAbsolute = 4,
+
+        /// <summary>
+        /// DIM_US_ABSOLUTE_2.
+        /// </summary>
+        USAbsolute2 = 16,
+
+        /// <summary>
+        /// DIM_INTERNAL_ABSOLUTE.
+        /// </summary>
+        AbsoluteWithShortRelatives = 35,
+
+        /// <summary>
+        /// DIM_INTERNAL_ABSOLUTE_2.
+        /// </summary>
+        AbsoluteWithAllRelativesAbove = 99,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "In X direction" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// DimTypeInXDirection, DimensionPage: dim_type_x.
+    /// </summary>
+    public enum DimensionTypeInXDirection
+    {
+        /// <summary>
+        /// Item "" of the menu (a picture in the dialog).
+        /// </summary>
+        Value0 = 0,
+
+        /// <summary>
+        /// DIM_RELATIVE.
+        /// </summary>
+        Relative = 1,
+
+        /// <summary>
+        /// DIM_ABSOLUTE.
+        /// </summary>
+        Absolute = 2,
+
+        /// <summary>
+        /// DIM_BOTH.
+        /// </summary>
+        RelativeAndAbsolute = 3,
+
+        /// <summary>
+        /// DIM_US_ABSOLUTE.
+        /// </summary>
+        USAbsolute = 4,
+
+        /// <summary>
+        /// DIM_US_ABSOLUTE_2.
+        /// </summary>
+        USAbsolute2 = 16,
+
+        /// <summary>
+        /// DIM_INTERNAL_ABSOLUTE.
+        /// </summary>
+        AbsoluteWithShortRelatives = 35,
+
+        /// <summary>
+        /// DIM_INTERNAL_ABSOLUTE_2.
+        /// </summary>
+        AbsoluteWithAllRelativesAbove = 99,
+    }
+
+    /// <summary>
+    /// Values of the "Units" menu, as Tekla stores them. Used by DimensionPage: dim_units.
+    /// </summary>
+    public enum DimensionUnits
+    {
+        /// <summary>
+        /// automatic.
+        /// </summary>
+        Automatic = 0,
+
+        /// <summary>
+        /// mm.
+        /// </summary>
+        Millimeters = 1,
+
+        /// <summary>
+        /// cm.
+        /// </summary>
+        Centimeters = 2,
+
+        /// <summary>
+        /// m.
+        /// </summary>
+        Meters = 3,
+
+        /// <summary>
+        /// foot - inch.
+        /// </summary>
+        FeetAndInches = 4,
+
+        /// <summary>
+        /// cm / m.
+        /// </summary>
+        CentimetersOrMeters = 5,
+
+        /// <summary>
+        /// inch.
+        /// </summary>
+        Inches = 6,
+
+        /// <summary>
+        /// feet.
+        /// </summary>
+        Feet = 7,
+    }
+
+    /// <summary>
+    /// Values of the "Dimensioning type" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// dimensioning_type.
+    /// </summary>
+    public enum DimensioningType
+    {
+        /// <summary>
+        /// Standard.
+        /// </summary>
+        Standard = 0,
+
+        /// <summary>
+        /// Truss.
+        /// </summary>
+        Truss = 1,
+    }
+
+    /// <summary>
     /// Values of the "Grid" menu, as Tekla stores them. Used by GridObject: drawing_grid_on.
     /// </summary>
     public enum DrawingGridOn
@@ -154,6 +888,96 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Visible in all views.
         /// </summary>
         VisibleInAllViews = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Embedded objects" menu, as Tekla stores them. Used by AssemblyDimensioningPage: EmbeddedObjects.
+    /// </summary>
+    public enum EmbeddedObjects
+    {
+        /// <summary>
+        /// As secondary objects.
+        /// </summary>
+        AsSecondaryObjects = 1,
+
+        /// <summary>
+        /// By reference point.
+        /// </summary>
+        ByReferencePoint = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Exaggeration" menu, as Tekla stores them. Used by DimensionPage: Exaggeration.
+    /// </summary>
+    public enum Exaggeration
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Specified.
+        /// </summary>
+        Specified = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Direction" menu, as Tekla stores them. Used by DimensionPage: ExaggerationDirection.
+    /// </summary>
+    public enum ExaggerationDirection
+    {
+        /// <summary>
+        /// Left / Down.
+        /// </summary>
+        LeftDown = 0,
+
+        /// <summary>
+        /// Right / Up.
+        /// </summary>
+        RightUp = 1,
+
+        /// <summary>
+        /// Both.
+        /// </summary>
+        Both = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Origin" menu, as Tekla stores them. Used by DimensionPage: ExaggerationOrigin.
+    /// </summary>
+    public enum ExaggerationOrigin
+    {
+        /// <summary>
+        /// EXAGGERATION_POSITION1.
+        /// </summary>
+        NearDimensionLine = 0,
+
+        /// <summary>
+        /// EXAGGERATION_POSITION2.
+        /// </summary>
+        NearMeasuredObject = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Extreme bolts" menu, as Tekla stores them. Used by AssemblyDimensioningPage: extreme_bolts.
+    /// </summary>
+    public enum ExtremeBolts
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Main part.
+        /// </summary>
+        MainPart = 1,
+
+        /// <summary>
+        /// Assembly.
+        /// </summary>
+        Assembly = 2,
     }
 
     /// <summary>
@@ -263,6 +1087,55 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
+    /// Values of the "From grid to part ends" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// GridToPartEnds.
+    /// </summary>
+    public enum FromGridToPartEnds
+    {
+        /// <summary>
+        /// Off.
+        /// </summary>
+        Off = 0,
+
+        /// <summary>
+        /// To near end of part.
+        /// </summary>
+        ToNearEndOfPart = 1,
+
+        /// <summary>
+        /// To far end of part.
+        /// </summary>
+        ToFarEndOfPart = 2,
+    }
+
+    /// <summary>
+    /// Values of the "From the nearest floor level to part" menu, as Tekla stores them. Used by
+    /// AssemblyDimensioningPage: FloorLevelToPart.
+    /// </summary>
+    public enum FromTheNearestFloorLevelToPart
+    {
+        /// <summary>
+        /// Off.
+        /// </summary>
+        Off = 0,
+
+        /// <summary>
+        /// To part top.
+        /// </summary>
+        ToPartTop = 1,
+
+        /// <summary>
+        /// To part bottom.
+        /// </summary>
+        ToPartBottom = 2,
+
+        /// <summary>
+        /// To part top and bottom.
+        /// </summary>
+        ToPartTopAndBottom = 3,
+    }
+
+    /// <summary>
     /// Values of the "Grid" menu, as Tekla stores them. Used by GridObject: grid_on.
     /// </summary>
     public enum Grid
@@ -281,6 +1154,146 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Only grid labels visible.
         /// </summary>
         OnlyGridLabelsVisible = 3,
+    }
+
+    /// <summary>
+    /// Values of the "Horizontal" menu, as Tekla stores them. Used by DimensioningPage: GridLineHPositioning.
+    /// </summary>
+    public enum GridDimensionHorizontalPosition
+    {
+        /// <summary>
+        /// Left.
+        /// </summary>
+        Left = 1,
+
+        /// <summary>
+        /// Right.
+        /// </summary>
+        Right = 2,
+
+        /// <summary>
+        /// Both.
+        /// </summary>
+        Both = 3,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Grid dimension position" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// GridDimensionSide.
+    /// </summary>
+    public enum GridDimensionPosition
+    {
+        /// <summary>
+        /// Main view - above.
+        /// </summary>
+        MainViewAbove = 1,
+
+        /// <summary>
+        /// Main view - below.
+        /// </summary>
+        MainViewBelow = 2,
+
+        /// <summary>
+        /// Top view - above.
+        /// </summary>
+        TopViewAbove = 3,
+
+        /// <summary>
+        /// Top view - below.
+        /// </summary>
+        TopViewBelow = 4,
+
+        /// <summary>
+        /// Bottom view - above.
+        /// </summary>
+        BottomViewAbove = 5,
+
+        /// <summary>
+        /// Bottom view - below.
+        /// </summary>
+        BottomViewBelow = 6,
+
+        /// <summary>
+        /// Back view - above.
+        /// </summary>
+        BackViewAbove = 7,
+
+        /// <summary>
+        /// Back view - below.
+        /// </summary>
+        BackViewBelow = 8,
+
+        /// <summary>
+        /// All views - above.
+        /// </summary>
+        AllViewsAbove = 9,
+
+        /// <summary>
+        /// All views - below.
+        /// </summary>
+        AllViewsBelow = 10,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Vertical" menu, as Tekla stores them. Used by DimensioningPage: GridLineVPositioning.
+    /// </summary>
+    public enum GridDimensionVerticalPosition
+    {
+        /// <summary>
+        /// Above.
+        /// </summary>
+        Above = 1,
+
+        /// <summary>
+        /// Below.
+        /// </summary>
+        Below = 2,
+
+        /// <summary>
+        /// Both.
+        /// </summary>
+        Both = 3,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Grid dimensions" menu, as Tekla stores them. Used by AssemblyDimensioningPage: GridDimension.
+    /// </summary>
+    public enum GridDimensions
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Individual spans.
+        /// </summary>
+        IndividualSpans = 1,
+
+        /// <summary>
+        /// Overall.
+        /// </summary>
+        Overall = 2,
+
+        /// <summary>
+        /// Individual spans and overall.
+        /// </summary>
+        IndividualSpansAndOverall = 3,
     }
 
     /// <summary>
@@ -324,7 +1337,26 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Horizontal" menu, as Tekla stores them. Used by ViewAttributes: ViewLabelHorizontalPosition.
+    /// Values of the "Knock off dimension type" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// KnockOffDimensionsType.
+    /// </summary>
+    public enum KnockOffDimensionType
+    {
+        /// <summary>
+        /// knock_off_dimension_line.
+        /// </summary>
+        DimensionLine = 0,
+
+        /// <summary>
+        /// knock_off_dimension_parenthesis.
+        /// </summary>
+        Parenthesis = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Horizontal" menu, as Tekla stores them. Used by DetailViewPage: ViewLabelHorizontalPosition,
+    /// DrawingViewCreationSection: ViewLabelHorizontalPosition, SectionViewPage:
+    /// SectionMark.ViewLabelHorizontalPosition, ViewAttributes: ViewLabelHorizontalPosition.
     /// </summary>
     public enum LabelPositionHorizontal
     {
@@ -360,7 +1392,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Vertical" menu, as Tekla stores them. Used by ViewAttributes: label_position.
+    /// Values of the "Vertical" menu, as Tekla stores them. Used by DetailViewPage: ViewLabelPosition, SectionViewPage:
+    /// SectionMark.ViewLabelPosition, ViewAttributes: label_position.
     /// </summary>
     public enum LabelPositionVertical
     {
@@ -447,6 +1480,104 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Not an item of the menu, but written by Tekla in many files; meaning not known.
         /// </summary>
         Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Main dimension position" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// main_dimension_side.
+    /// </summary>
+    public enum MainDimensionPosition
+    {
+        /// <summary>
+        /// Auto.
+        /// </summary>
+        Auto = 1,
+
+        /// <summary>
+        /// Above.
+        /// </summary>
+        Above = 3,
+
+        /// <summary>
+        /// Below.
+        /// </summary>
+        Below = 4,
+    }
+
+    /// <summary>
+    /// Values of the "Main part bolt internal dimensions" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// screw_main_internal.
+    /// </summary>
+    public enum MainPartBoltInternalDimensions
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Internal.
+        /// </summary>
+        Internal = 4,
+
+        /// <summary>
+        /// All.
+        /// </summary>
+        All = 2,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value1 = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Main part overall dimensions" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// main_part_extrema.
+    /// </summary>
+    public enum MainPartOverallDimensions
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Once.
+        /// </summary>
+        Once = 3,
+
+        /// <summary>
+        /// All.
+        /// </summary>
+        All = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Measure sub-assembly position from" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// SubassemblyPosition.
+    /// </summary>
+    public enum MeasureSubAssemblyPositionFrom
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Bolt.
+        /// </summary>
+        Bolt = 1,
+
+        /// <summary>
+        /// Extrema points.
+        /// </summary>
+        ExtremaPoints = 2,
+
+        /// <summary>
+        /// Reference point.
+        /// </summary>
+        ReferencePoint = 3,
     }
 
     /// <summary>
@@ -712,6 +1843,66 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
+    /// Values of the "Internal" menu, as Tekla stores them. Used by AssemblyDimensioningPage: part_internal.
+    /// </summary>
+    public enum PartInternalDimensions
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Necessary.
+        /// </summary>
+        Necessary = 1,
+
+        /// <summary>
+        /// All.
+        /// </summary>
+        All = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Part mark on dimension line" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// part_mark_dim_line.
+    /// </summary>
+    public enum PartMarkOnDimensionLine
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// On assembly overall dimension.
+        /// </summary>
+        OnAssemblyOverallDimension = 1,
+
+        /// <summary>
+        /// Between extreme bolts.
+        /// </summary>
+        BetweenExtremeBolts = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Preferred dim side" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// part_prefered_side.
+    /// </summary>
+    public enum PartPreferredDimensionSide
+    {
+        /// <summary>
+        /// adcd_part_prefered_side_view.
+        /// </summary>
+        View = 0,
+
+        /// <summary>
+        /// adcd_part_prefered_side_side.
+        /// </summary>
+        Side = 1,
+    }
+
+    /// <summary>
     /// Values of the "Place" menu, as Tekla stores them. Used by ViewAttributes: ViewPlace.
     /// </summary>
     public enum Place
@@ -756,6 +1947,27 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by DimensionPage: PlateSideMarkType.
+    /// </summary>
+    public enum PlateSideMarkType
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Specified.
+        /// </summary>
+        Specified = 1,
+
+        /// <summary>
+        /// Automatic.
+        /// </summary>
+        Automatic = 2,
+    }
+
+    /// <summary>
     /// Values of the "Alignment" menu, as Tekla stores them. Used by ViewLabelMark: Alignment.
     /// </summary>
     public enum PositionAlignment
@@ -774,6 +1986,49 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Right.
         /// </summary>
         Right = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Position from" menu, as Tekla stores them. Used by AssemblyDimensioningPage: position_from.
+    /// </summary>
+    public enum PositionFrom
+    {
+        /// <summary>
+        /// Main part.
+        /// </summary>
+        MainPart = 0,
+
+        /// <summary>
+        /// Work point.
+        /// </summary>
+        WorkPoint = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Position bolts to" menu, as Tekla stores them. Used by AssemblyDimensioningPage: PartPositionTo,
+    /// AssemblyDimensioningPage: position_to.
+    /// </summary>
+    public enum PositionTo
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 3,
+
+        /// <summary>
+        /// Main part.
+        /// </summary>
+        MainPart = 0,
+
+        /// <summary>
+        /// Working points.
+        /// </summary>
+        WorkingPoints = 1,
+
+        /// <summary>
+        /// Both.
+        /// </summary>
+        Both = 2,
     }
 
     /// <summary>
@@ -1070,7 +2325,262 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Show marks" menu, as Tekla stores them. Used by ViewAttributes: DirectionMarks.
+    /// Values of the "Secondary part bolt internal dimensions" menu, as Tekla stores them. Used by
+    /// AssemblyDimensioningPage: screw_sec_internal.
+    /// </summary>
+    public enum SecondaryPartBoltInternalDimensions
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Necessary.
+        /// </summary>
+        Necessary = 1,
+
+        /// <summary>
+        /// Internal.
+        /// </summary>
+        Internal = 4,
+
+        /// <summary>
+        /// All.
+        /// </summary>
+        All = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Secondary part dimension direction" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// sec_part_dim_dir.
+    /// </summary>
+    public enum SecondaryPartDimensionDirection
+    {
+        /// <summary>
+        /// Main part.
+        /// </summary>
+        MainPart = 0,
+
+        /// <summary>
+        /// Neighbor part.
+        /// </summary>
+        NeighborPart = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Secondary part" menu, as Tekla stores them. Used by AssemblyDimensioningPage: pos_sec.
+    /// </summary>
+    public enum SecondaryPartPosition
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// By bolt.
+        /// </summary>
+        ByBolt = 1,
+
+        /// <summary>
+        /// By part.
+        /// </summary>
+        ByPart = 2,
+
+        /// <summary>
+        /// By both.
+        /// </summary>
+        ByBoth = 4,
+    }
+
+    /// <summary>
+    /// Values of the "Left section" menu, as Tekla stores them. Used by SectionViewPage: left_cut_dir, SectionViewPage:
+    /// middle_cut_dir, SectionViewPage: right_cut_dir.
+    /// </summary>
+    public enum SectionDirection
+    {
+        /// <summary>
+        /// left.
+        /// </summary>
+        Left = 2,
+
+        /// <summary>
+        /// right.
+        /// </summary>
+        Right = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Symbol" menu, as Tekla stores them. Used by SectionViewPage:
+    /// SectionMark.SectionMarkLeftSymbolIndex.
+    /// </summary>
+    public enum SectionMarkLeftSymbol
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_183" of the menu (a picture in the dialog).
+        /// </summary>
+        Value184 = 184,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_184" of the menu (a picture in the dialog).
+        /// </summary>
+        Value185 = 185,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_179" of the menu (a picture in the dialog).
+        /// </summary>
+        Value180 = 180,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_181" of the menu (a picture in the dialog).
+        /// </summary>
+        Value182 = 182,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_177" of the menu (a picture in the dialog).
+        /// </summary>
+        Value178 = 178,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_176" of the menu (a picture in the dialog).
+        /// </summary>
+        Value177 = 177,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_185" of the menu (a picture in the dialog).
+        /// </summary>
+        Value186 = 186,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_186" of the menu (a picture in the dialog).
+        /// </summary>
+        Value187 = 187,
+
+        /// <summary>
+        /// Custom.
+        /// </summary>
+        Custom = 1000,
+    }
+
+    /// <summary>
+    /// Values of the "Symbol" menu, as Tekla stores them. Used by SectionViewPage:
+    /// SectionMark.SectionMarkRightSymbolIndex.
+    /// </summary>
+    public enum SectionMarkRightSymbol
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_182" of the menu (a picture in the dialog).
+        /// </summary>
+        Value183 = 183,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_184" of the menu (a picture in the dialog).
+        /// </summary>
+        Value185 = 185,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_178" of the menu (a picture in the dialog).
+        /// </summary>
+        Value179 = 179,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_180" of the menu (a picture in the dialog).
+        /// </summary>
+        Value181 = 181,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_177" of the menu (a picture in the dialog).
+        /// </summary>
+        Value178 = 178,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_176" of the menu (a picture in the dialog).
+        /// </summary>
+        Value177 = 177,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_185" of the menu (a picture in the dialog).
+        /// </summary>
+        Value186 = 186,
+
+        /// <summary>
+        /// Item "SYMBOL_BMP_SECTIONS_AT_186" of the menu (a picture in the dialog).
+        /// </summary>
+        Value187 = 187,
+
+        /// <summary>
+        /// Custom.
+        /// </summary>
+        Custom = 1000,
+    }
+
+    /// <summary>
+    /// Values of the "Size" menu, as Tekla stores them. Used by SectionViewPage: size_mode.
+    /// </summary>
+    public enum SectionViewSize
+    {
+        /// <summary>
+        /// Fit by parts.
+        /// </summary>
+        FitByParts = 1,
+
+        /// <summary>
+        /// Section depth.
+        /// </summary>
+        SectionDepth = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Short dimensions" menu, as Tekla stores them. Used by DimensionPage: short_dim_type.
+    /// </summary>
+    public enum ShortDimensionPlacing
+    {
+        /// <summary>
+        /// Inside.
+        /// </summary>
+        Inside = 0,
+
+        /// <summary>
+        /// Outside.
+        /// </summary>
+        Outside = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Short extension line" menu, as Tekla stores them. Used by DimensionPage: ShortExtensionLine.
+    /// </summary>
+    public enum ShortExtensionLine
+    {
+        /// <summary>
+        /// Yes.
+        /// </summary>
+        Yes = 1,
+
+        /// <summary>
+        /// No.
+        /// </summary>
+        No = 0,
+
+        /// <summary>
+        /// On grid lines only.
+        /// </summary>
+        NotOnGridlines = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Show marks" menu, as Tekla stores them. Used by SectionViewPage: DirMarksForEndViews,
+    /// SectionViewPage: DirMarksForSectionViews, ViewAttributes: DirectionMarks.
     /// </summary>
     public enum ShowMarks
     {
@@ -1114,6 +2624,54 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Right.
         /// </summary>
         Right = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Skew position" menu, as Tekla stores them. Used by AssemblyDimensioningPage: skew_pos_type.
+    /// </summary>
+    public enum SkewPosition
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// angle.
+        /// </summary>
+        Angle = 1,
+
+        /// <summary>
+        /// Dimensions.
+        /// </summary>
+        Dimensions = 2,
+
+        /// <summary>
+        /// Both.
+        /// </summary>
+        Both = 3,
+    }
+
+    /// <summary>
+    /// Values of the "Skewed bolt group" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
+    /// MainSkewedBoltGroupDim, AssemblyDimensioningPage: SecSkewedBoltGroupDim.
+    /// </summary>
+    public enum SkewedBoltGroup
+    {
+        /// <summary>
+        /// No dimensions.
+        /// </summary>
+        NoDimensions = 2,
+
+        /// <summary>
+        /// In part direction.
+        /// </summary>
+        InPartDirection = 1,
+
+        /// <summary>
+        /// In bolt group direction.
+        /// </summary>
+        InBoltGroupDirection = 0,
     }
 
     /// <summary>
@@ -1222,7 +2780,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Line length" menu, as Tekla stores them. Used by ViewAttributes: ViewLabelLineLengthType.
+    /// Values of the "Line length" menu, as Tekla stores them. Used by DetailViewPage: ViewLabelLineLengthType,
+    /// DrawingViewCreationSection: ViewLabelLineLengthType, SectionViewPage: SectionMark.ViewLabelLineLengthType,
+    /// ViewAttributes: ViewLabelLineLengthType.
     /// </summary>
     public enum SymbolLineLength
     {
@@ -1460,7 +3020,50 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Symbol" menu, as Tekla stores them. Used by ViewAttributes: ViewLabelMarkSymbolIndex.
+    /// Values of the "Coordinate system" menu, as Tekla stores them. Used by DrawingViewCreationSection: coord_sys.
+    /// </summary>
+    public enum ViewCoordinateSystem
+    {
+        /// <summary>
+        /// local.
+        /// </summary>
+        Local = 1,
+
+        /// <summary>
+        /// model.
+        /// </summary>
+        Model = 2,
+
+        /// <summary>
+        /// oriented.
+        /// </summary>
+        Oriented = 3,
+
+        /// <summary>
+        /// horizontal brace.
+        /// </summary>
+        HorizontalBrace = 4,
+
+        /// <summary>
+        /// vertical brace.
+        /// </summary>
+        VerticalBrace = 5,
+
+        /// <summary>
+        /// Fixed.
+        /// </summary>
+        Fixed = 6,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Symbol" menu, as Tekla stores them. Used by DetailViewPage: ViewLabelMarkSymbolIndex,
+    /// DrawingViewCreationSection: ViewLabelMarkSymbolIndex, SectionViewPage: SectionMark.ViewLabelMarkSymbolIndex,
+    /// ViewAttributes: ViewLabelMarkSymbolIndex.
     /// </summary>
     public enum ViewLabelSymbol
     {
@@ -1483,6 +3086,53 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Custom.
         /// </summary>
         Custom = 1000,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value1 = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Around X" menu, as Tekla stores them. Used by DrawingViewCreationSection: coord_sys_x_rotate.
+    /// </summary>
+    public enum ViewRotationAroundX
+    {
+        /// <summary>
+        /// Item "0" of the menu (a picture in the dialog).
+        /// </summary>
+        Value0 = 0,
+
+        /// <summary>
+        /// Item "90" of the menu (a picture in the dialog).
+        /// </summary>
+        Value90 = 90,
+
+        /// <summary>
+        /// Item "180" of the menu (a picture in the dialog).
+        /// </summary>
+        Value180 = 180,
+
+        /// <summary>
+        /// Item "270" of the menu (a picture in the dialog).
+        /// </summary>
+        Value270 = 270,
+    }
+
+    /// <summary>
+    /// Values of the "Around Y" menu, as Tekla stores them. Used by DrawingViewCreationSection: coord_sys_y_rotate.
+    /// </summary>
+    public enum ViewRotationAroundY
+    {
+        /// <summary>
+        /// Item "0" of the menu (a picture in the dialog).
+        /// </summary>
+        Value0 = 0,
+
+        /// <summary>
+        /// Item "180" of the menu (a picture in the dialog).
+        /// </summary>
+        Value180 = 180,
     }
 
     /// <summary>

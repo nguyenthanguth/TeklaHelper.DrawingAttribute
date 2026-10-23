@@ -1,7 +1,7 @@
 # DialogDecoder
 
-Decodes the View properties dialog of Tekla Structures from its compiled dialog resources into one JSON file per page
-(`tools/DialogClassGenerator/Dialogs/*.json`). `tools/DialogClassGenerator` turns those files into the page classes of
+Decodes the View properties dialog of Tekla Structures, and the pages of the drawing properties dialogs it does not
+have, from the compiled dialog resources into one JSON file per page (`tools/DialogClassGenerator/Dialogs/*.json`). `tools/DialogClassGenerator` turns those files into the page classes of
 the library (`src/TeklaHelper.DrawingAttribute/Pages/Generated`). Run it again for another Tekla version.
 
 Needs Python 3 and a shell (`sh` from Git for Windows). No Python packages.
@@ -15,7 +15,13 @@ identical copy of the View properties dialog. The decoder reads:
 - the dialog `gratViewAttributes`: the tree on the left, one panel per page on the right (`PanelPart`,
   `PanelPartMark`, ...), with tabs, group boxes, controls and the sub-dialogs their buttons open;
 - the older dialogs with the same keys (`gr_vp_attrib`, `gr_vpm_attrib`, ...), for keys the 2025 panels no longer show;
-- the English labels (`string_utf8` objects, `albl_*` names, `enu` entries).
+- the English labels (`string_utf8` objects, `albl_*` names, `enu` entries);
+- for the drawing pages (`DRAWING_PAGES` in `extract.py`): per page the newest dialog or panel that shows it (the GA
+  dialogs `gr_ga_view_attrib`, `gr_detail_symbol_attrib`, `gr_dd_attrib`, `gr_gdcd_attrib`; the panels of
+  `gratAssemblyDrawingAttributes`; `gr_adcd_attrib`) and other dialogs with the same keys for the keys it does not show.
+  Their controls keep the tab and group of their own dialog (`dialogPath`). The rows of label texts
+  (`ViewLabelMarkA1.`, `SectionMark.SectionMarkA1.`, `DetailMarkA1.`, ...) are listed under `labelMarks`; they are the
+  structure of the page `ViewLabelMark`.
 
 The `.aid` format ("RES 1.1") is a header, a pool of NUL-terminated strings and a token stream of objects and
 attributes; `aid.py` describes and parses it. In a control, `MEMBER` is the key in the attribute file, `VALUEINT` the
@@ -31,7 +37,7 @@ is recorded per control (`labelSource`, `confidence`), and the generator keeps t
 | `run.sh` | The whole decoding: `extract.py` then `annotate.py`. |
 | `aid.py` | Parser of the `.aid` format. `python aid.py file.aid` prints statistics. |
 | `extract.py` | Writes one JSON file per page: tabs, groups, controls, options, sub-dialogs, keys of older dialogs, keys only seen in files. `PAGES` maps each panel to its page name, `.vi` prefix and older dialogs; `TREE_KEYS` the tree check boxes. |
-| `annotate.py` | Adds the Tekla Open API enum of each option list (`ENUMS`, from `Tekla.Structures.Drawing` 2025) and the value statistics of real `.vi` files (`samples`). |
+| `annotate.py` | Adds the Tekla Open API enum of each option list (`ENUMS`, from `Tekla.Structures.Drawing` 2025; `DIMENSION_ENUMS` for the dimension pages) and the value statistics of real `.vi` files, or of the drawing files for the drawing pages (`samples`). |
 | `compare.py` | Compares two decodings page by page: keys added and removed, every other change. |
 | `validate.py` | Checks the option values of the JSON files against real `.vi` files. |
 | `condensed.py`, `dump.py`, `show.py` | Text views for investigation: one dialog with English labels, the whole `.aid` as a tree, one page JSON. |
@@ -43,8 +49,9 @@ is recorded per control (`labelSource`, `confidence`), and the generator keeps t
    - `VIEW-TEST.vi`: View properties dialog, Save as `VIEW-TEST` (one file with every page). Optional but useful:
      open each page and save it as `TEST` too, which writes `TEST.vi` plus the page files (`TEST.vp`, `TEST.vpm`, ...).
      The decoder needs `TEST.vi`; a copy of `VIEW-TEST.vi` saved as `TEST.vi` works.
-   - `DRAWING-TEST.gd`: GA drawing properties, Save as `DRAWING-TEST`. The generator takes value types and drawing-only
-     keys from it. `test-ad.ad` (assembly drawing) helps the coverage tests.
+   - `DRAWING-TEST.gd`: GA drawing properties, Save as `DRAWING-TEST`, and `test-ad.ad`: assembly drawing properties,
+     Save as `test-ad`. The decoder takes the keys of the drawing pages from them (`--drawing`), the generator value
+     types and drawing-only keys.
 3. **Decode into a new folder**, not over the current files:
 
    ```shell

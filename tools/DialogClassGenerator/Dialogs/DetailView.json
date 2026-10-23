@@ -1,0 +1,1348 @@
+{
+  "page": "DetailView",
+  "viewPrefix": null,
+  "gaDrawingPrefix": "DetailLabel.",
+  "assemblyDrawingPrefix": "DetailLabel.",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gr_detail_symbol_attrib",
+  "otherSources": [
+    "gr_detail_label_attrib",
+    "gratAssemblyDrawingAttributes/PanelContentDetailView"
+  ],
+  "treeCheckBoxKey": {
+    "key": "DetailLabel_en",
+    "in": "top level of the drawing file",
+    "confidence": "decoded",
+    "note": "check box in front of the button that opens the page in the drawing properties (gr_gdraw_attrib, gr_adraw_attrib)"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [
+    {
+      "keyStem": "DetailMarkA",
+      "rows": 5,
+      "keys": 130,
+      "note": "one row per label text A1..A5, each the structure of the \"...\" dialog gr_view_reference_mark_attrib (page ViewLabelMark)"
+    },
+    {
+      "keyStem": "ViewLabelMarkA",
+      "rows": 5,
+      "keys": 130,
+      "note": "one row per label text A1..A5, each the structure of the \"...\" dialog gr_view_reference_mark_attrib (page ViewLabelMark)"
+    }
+  ],
+  "tabs": [
+    {
+      "label": "View label",
+      "aidName": "conViewLabelMarkLabelSettings",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Text",
+          "aidName": "container_1",
+          "controls": [
+            {
+              "label": "A1",
+              "labelSource": "enableCheckBox",
+              "key": "aViewMarkA1",
+              "enableKey": "ViewMarkA1_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailViewMarkA1TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 3,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"<< Mark >>\"": 283,
+                  "\"<< }[N >>\"": 51,
+                  "\"<< ¸¶Å© >>\"": 14,
+                  "\"\"": 12
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailViewLabelA1",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 4
+            },
+            {
+              "label": "A2",
+              "labelSource": "enableCheckBox",
+              "key": "aViewMarkA2",
+              "enableKey": "ViewMarkA2_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailViewMarkA2TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 5,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"<< Mark >>\"": 259,
+                  "\"\"": 62,
+                  "\"<< }[N >>\"": 25,
+                  "\"<< ¸¶Å© >>\"": 14
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailViewLabelA2",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 6
+            },
+            {
+              "label": "A3",
+              "labelSource": "enableCheckBox",
+              "key": "aViewMarkA3",
+              "enableKey": "ViewMarkA3_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailViewMarkA3TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 7,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"\"": 360
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailViewLabelA3",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 8
+            },
+            {
+              "label": "A4",
+              "labelSource": "enableCheckBox",
+              "key": "aViewMarkA4",
+              "enableKey": "ViewMarkA4_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailViewMarkA4TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 9,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"\"": 360
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailViewLabelA4",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 10
+            },
+            {
+              "label": "A5",
+              "labelSource": "enableCheckBox",
+              "key": "aViewMarkA5",
+              "enableKey": "ViewMarkA5_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailViewMarkA5TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 11,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"\"": 360
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailViewLabelA5",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 12
+            }
+          ],
+          "groups": [],
+          "position": 2
+        },
+        {
+          "label": "Symbol",
+          "aidName": "conViewLabelMarkSymbolSettings",
+          "controls": [
+            {
+              "label": "Symbol",
+              "labelSource": "enableCheckBox",
+              "key": "ViewLabelMarkSymbolIndex",
+              "enableKey": "ViewLabelMarkSymbolIndex_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optBtnNone"
+                },
+                {
+                  "label": "SYMBOL_BMP_SECTIONS_AT_144",
+                  "labelSource": "bitmap",
+                  "bitmap": "SYMBOL_BMP_SECTIONS_AT_144",
+                  "value": 145,
+                  "aidName": "optionbutton_5663"
+                },
+                {
+                  "label": "SYMBOL_BMP_SECTIONS_AT_145",
+                  "labelSource": "bitmap",
+                  "bitmap": "SYMBOL_BMP_SECTIONS_AT_145",
+                  "value": 146,
+                  "aidName": "optionbutton_5664"
+                },
+                {
+                  "label": "Custom",
+                  "labelSource": "aid",
+                  "value": 1000,
+                  "aidName": "optionbutton_5754"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optionmenu",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 14,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 360
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "ViewLabelMarkSymbolColor",
+              "enableKey": "ViewLabelMarkSymbolColor_en",
+              "aidNote": "CALLBACKPARAMETER names ViewLabelMarkSymbolColor_en, which is not a widget of this dialog (no enable check box)",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "optButSymbol_invisible_1",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "optButSymbol_black_1",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "optButSymbol_red_1",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "optButSymbol_green_1",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "optButSymbol_blue_1",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "optButSymbol_cyan_1",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "optButSymbol_yellow_1",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "optButSymbol_magenta_1",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "optButSymbol_new",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "optButSymbol_new_12",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "optButSymbol_new_13",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "optButSymbol_new_14",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "optButSymbol_new_15",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "optButSymbol_new_16",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuDetailSymbolColor_1",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 15,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "154": 308,
+                  "159": 39
+                },
+                "outsideMenu": {
+                  "0": 13
+                }
+              }
+            },
+            {
+              "label": "Size",
+              "labelSource": "enableCheckBox",
+              "key": "ViewLabelMarkSymbolSize",
+              "enableKey": "ViewLabelMarkSymbolSize_en",
+              "type": "number",
+              "format": "%3.1f",
+              "maxLength": 31,
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "text_16724",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 16,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "5.000000": 290,
+                  "0.000000": 70
+                }
+              }
+            },
+            {
+              "label": "Line length",
+              "labelSource": "enableCheckBox",
+              "key": "ViewLabelLineLengthType",
+              "enableKey": "ViewLabelLineLength_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Minimum",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optionbutton_6270",
+                  "apiName": "Minimal"
+                },
+                {
+                  "label": "Custom",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optionbutton_6273",
+                  "apiName": "Custom"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optViewLabelLineLengthType",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 17,
+              "apiEnum": "Tekla.Structures.Drawing.View.LabelLineLengthType",
+              "apiEnumOffset": 1,
+              "apiEnumNote": "API value = stored value + 1 (checked on every item)",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 360
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Line length ViewLabelCustomLength",
+              "labelSource": "enableCheckBox(shared)+key",
+              "key": "ViewLabelCustomLength",
+              "enableKey": "ViewLabelLineLength_en",
+              "enableLabel": "Line length",
+              "type": "number",
+              "format": "%3.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "fldViewLabelCustomLength",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 18,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 360,
+                "top": {
+                  "0.000000": 360
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 13
+        },
+        {
+          "label": "Label position",
+          "aidName": "conViewLabelMarkLabelPosition",
+          "controls": [
+            {
+              "label": "Vertical",
+              "labelSource": "enableCheckBox",
+              "key": "ViewLabelPosition",
+              "enableKey": "ViewLabelPosition_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Above",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optBtnAbove"
+                },
+                {
+                  "label": "Below",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optBtnBelow"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optionmenu_2",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 20,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 317,
+                  "1": 43
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Horizontal",
+              "labelSource": "enableCheckBox",
+              "key": "ViewLabelHorizontalPosition",
+              "enableKey": "ViewLabelHorizontalPosition_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Left aligned to view frame",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optBtn_ds_LeftAlignedToViewFrame"
+                },
+                {
+                  "label": "Center aligned to view frame",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optBtn_ds_CenterAlignedToViewFrame"
+                },
+                {
+                  "label": "Right aligned to view frame",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "optBtn_ds_RightAlignedToViewFrame"
+                },
+                {
+                  "label": "Left aligned to view restriction box",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "optBtn_ds_LeftAlignedToViewRestBox"
+                },
+                {
+                  "label": "Center aligned to view restriction box",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optBtn_ds_CenterAlignedToViewRestBox"
+                },
+                {
+                  "label": "Right aligned to view restriction box",
+                  "labelSource": "aid",
+                  "value": 5,
+                  "aidName": "optBtn_ds_RightAlignedToViewRestBox"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optionmenu_3",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 21,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 360
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 19
+        }
+      ],
+      "position": 22
+    },
+    {
+      "label": "Detail boundary",
+      "aidName": "tabbeditem_10815",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Shape",
+          "aidName": "conDetailBoundaryShape",
+          "controls": [
+            {
+              "label": "Shape of the boundary",
+              "labelSource": "enableCheckBox",
+              "key": "SymbolShape",
+              "enableKey": "SymbolShape_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Circle",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButDetailShapeCircle"
+                },
+                {
+                  "label": "Rectangle",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButDetailShapeRectangle"
+                },
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optButDetailShapeNone"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuDetailSymbolShape",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 24,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 360
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 23
+        },
+        {
+          "label": "Bounding line",
+          "aidName": "conDetailBoundaryLine",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "SymbolColor",
+              "enableKey": "SymbolColor_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "optButSymbol_invisible",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "optButSymbol_black",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "optButSymbol_red",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "optButSymbol_green",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "optButSymbol_blue",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "optButSymbol_cyan",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "optButSymbol_yellow",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "optButSymbol_magenta",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "optButSymbol_new_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "optButSymbol_new_2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "optButSymbol_new_3",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "optButSymbol_new_4",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "optButSymbol_new_5",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "optButSymbol_new_6",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuDetailSymbolColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 26,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "154": 309,
+                  "159": 39
+                },
+                "outsideMenu": {
+                  "0": 12
+                }
+              }
+            },
+            {
+              "label": "Line type",
+              "labelSource": "enableCheckBox",
+              "key": "LineType",
+              "enableKey": "LineType_en",
+              "type": "linetype",
+              "options": [
+                {
+                  "label": "Solid",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_solid",
+                  "value": 1,
+                  "aidName": "optMnuLineTypeSolid",
+                  "apiName": "SolidLine"
+                },
+                {
+                  "label": "Dashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed1",
+                  "value": 2,
+                  "aidName": "optMnuLineTypeDashed1",
+                  "apiName": "DashedLine"
+                },
+                {
+                  "label": "Slashed",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed2",
+                  "value": 3,
+                  "aidName": "optMnuLineTypeDashed2",
+                  "apiName": "SlashedLine"
+                },
+                {
+                  "label": "DashDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dot_dash",
+                  "value": 4,
+                  "aidName": "optMnuLineTypeDotDash",
+                  "apiName": "DashDot"
+                },
+                {
+                  "label": "Dotted",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dotted",
+                  "value": 5,
+                  "aidName": "optMnuLineTypeDotted",
+                  "apiName": "DottedLine"
+                },
+                {
+                  "label": "DashDoubleDot",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed3",
+                  "value": 6,
+                  "aidName": "optMnuLineTypeDashed3",
+                  "apiName": "DashDoubleDot"
+                },
+                {
+                  "label": "SlashDash",
+                  "labelSource": "bitmap=DrawingLineType (verified by API)",
+                  "bitmap": "gr_pb_dashed4",
+                  "value": 7,
+                  "aidName": "optMnuLineTypeDashed4",
+                  "apiName": "SlashDash"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuDetailSymbolLineType",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 27,
+              "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "1": 341
+                },
+                "outsideMenu": {
+                  "0": 19
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 25
+        }
+      ],
+      "position": 28
+    },
+    {
+      "label": "Detail mark",
+      "aidName": "tabbeditem_5495",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Text",
+          "aidName": "conDetalMarkLabelSettings",
+          "controls": [
+            {
+              "label": "A1",
+              "labelSource": "enableCheckBox",
+              "key": "aDetailMarkA1",
+              "enableKey": "DetailMarkA1_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailMarkA1TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 30,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"<< Mark >>\"": 283,
+                  "\"<< }[N >>\"": 51,
+                  "\"<< ¸¶Å© >>\"": 14,
+                  "\"\"": 12
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailMarkA1",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 31
+            },
+            {
+              "label": "A2",
+              "labelSource": "enableCheckBox",
+              "key": "aDetailMarkA2",
+              "enableKey": "DetailMarkA2_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailMarkA2TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 32,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"<< Mark >>\"": 218,
+                  "\"\"": 109,
+                  "\"<< }[N >>\"": 25,
+                  "\"<< ¸¶Å© >>\"": 8
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailMarkA2",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 33
+            },
+            {
+              "label": "A3",
+              "labelSource": "enableCheckBox",
+              "key": "aDetailMarkA3",
+              "enableKey": "DetailMarkA3_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailMarkA3TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 34,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"\"": 360
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailMarkA3",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 35
+            },
+            {
+              "label": "A4",
+              "labelSource": "enableCheckBox",
+              "key": "aDetailMarkA4",
+              "enableKey": "DetailMarkA4_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailMarkA4TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 36,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"\"": 360
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailMarkA4",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 37
+            },
+            {
+              "label": "A5",
+              "labelSource": "enableCheckBox",
+              "key": "aDetailMarkA5",
+              "enableKey": "DetailMarkA5_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "DetailMarkA5TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 38,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "\"\"": 360
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butDetailMarkA5",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 39
+            }
+          ],
+          "groups": [],
+          "position": 29
+        },
+        {
+          "label": "Symbol",
+          "aidName": "conDetailMarkSymbolSettings",
+          "controls": [
+            {
+              "label": "Symbol",
+              "labelSource": "enableCheckBox",
+              "key": "DetailMarkSymbolIndex",
+              "enableKey": "DetailMarkSymbolIndex_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optionbutton_4"
+                },
+                {
+                  "label": "SYMBOL_BMP_SECTIONS_AT_160",
+                  "labelSource": "bitmap",
+                  "bitmap": "SYMBOL_BMP_SECTIONS_AT_160",
+                  "value": 161,
+                  "aidName": "optionbutton_5"
+                },
+                {
+                  "label": "SYMBOL_BMP_SECTIONS_AT_161",
+                  "labelSource": "bitmap",
+                  "bitmap": "SYMBOL_BMP_SECTIONS_AT_161",
+                  "value": 162,
+                  "aidName": "optionbutton_7"
+                },
+                {
+                  "label": "Custom",
+                  "labelSource": "aid",
+                  "value": 1000,
+                  "aidName": "optionbutton_8"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optionmenu_1",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 41,
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "0": 360
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "DetailMarkSymbolColor",
+              "enableKey": "DetailMarkSymbolColor_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "optButMark_invisible",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "optButMark_black",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "optButMark_red",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "optButMark_green",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "optButMark_blue",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "optButMark_cyan",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "optButMark_yellow",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "optButMark_magenta",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "optButMark_new",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "optButSymbol_new_7",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "optButSymbol_new_8",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "optButSymbol_new_9",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "optButSymbol_new_10",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "optButSymbol_new_11",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuDetailMarklColor",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 42,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 360,
+                "inMenu": {
+                  "154": 308,
+                  "159": 39
+                },
+                "outsideMenu": {
+                  "0": 13
+                }
+              }
+            },
+            {
+              "label": "Symbol size",
+              "labelSource": "enableCheckBox",
+              "key": "DetailMarkSymbolSize",
+              "enableKey": "DetailMarkSymbolSize_en",
+              "type": "number",
+              "format": "%2.1f",
+              "maxLength": 31,
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "text_5604",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 43,
+              "samples": {
+                "files": 360,
+                "top": {
+                  "5.000000": 290,
+                  "0.000000": 70
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 40
+        }
+      ],
+      "position": 44
+    }
+  ],
+  "groups": [],
+  "controls": [
+    {
+      "label": "Detail name",
+      "labelSource": "enableCheckBox",
+      "key": "aIndexText",
+      "enableKey": "IndexText_en",
+      "type": "text",
+      "maxLength": 9,
+      "aidWidget": "text",
+      "aidName": "lbltxtDetailLabelIndexStart",
+      "aidType": "char",
+      "confidence": "decoded",
+      "position": 1,
+      "samples": {
+        "files": 360,
+        "top": {
+          "\"A\"": 327,
+          "\"\"": 23,
+          "\"C\"": 7,
+          "\"H\"": 3
+        }
+      }
+    }
+  ],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "DetailMarkSymbolPositionX",
+    "DetailMarkSymbolPositionY",
+    "ViewLabelMarkSymbolPositionX",
+    "ViewLabelMarkSymbolPositionY",
+    "DetailMarkSymbolPositionX_en",
+    "DetailMarkSymbolPositionY_en",
+    "ViewLabelMarkSymbolPositionX_en",
+    "ViewLabelMarkSymbolPositionY_en"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "367 drawing files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

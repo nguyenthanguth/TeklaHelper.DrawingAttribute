@@ -8,9 +8,13 @@ namespace TeklaHelper.DrawingAttribute.Drawings
 {
     /// <summary>
     /// View settings of a drawing: which views are created and how they look. The same keys are <c>dview.*</c> in GA and
-    /// multi drawings and <c>dv.*</c> in assembly, single-part and cast unit drawings.
+    /// multi drawings and <c>dv.*</c> in assembly, single-part and cast unit drawings. This file holds the view creation
+    /// (switches and the View creation table), the scale, the shortening switch and the label colour, height and
+    /// position; the generated part (<c>Pages/Generated/DrawingViewCreationSection.g.cs</c>) holds every other key as
+    /// the "View..." page of the GA drawing properties: tabs Attributes, Shortening, Label (with the label rows
+    /// <c>LabelMarkA1</c> ... <c>LabelMarkA5</c>), Anchor bolt plan, and <c>SetDefaults()</c> / <c>SetAllEnabled</c>.
     /// </summary>
-    public sealed class DrawingViewCreationSection : AttributeSection
+    public sealed partial class DrawingViewCreationSection : AttributeSection
     {
         /// <summary>Prefix in GA (.gd) and multi (.md) drawing files.</summary>
         public const string GAPrefix = "dview.";

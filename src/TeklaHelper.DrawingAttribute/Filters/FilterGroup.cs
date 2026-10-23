@@ -15,6 +15,8 @@ namespace TeklaHelper.DrawingAttribute.Filters
     ///         .Add(FilterProperties.Part.Profile.BeginsWith("HEA"), FilterLogic.Or)
     ///         .Add(FilterProperties.Part.Profile.BeginsWith("IPE")));
     /// </code>
+    /// Within one group Tekla evaluates And before Or: <c>A Or B And C</c> is <c>A Or (B And C)</c>. Nest a group to
+    /// get <c>(A Or B) And C</c>. Items that are not <see cref="FilterCondition.Enabled"/> are skipped.
     /// </summary>
     public sealed class FilterGroup : FilterExpression, IEnumerable<FilterGroupItem>
     {

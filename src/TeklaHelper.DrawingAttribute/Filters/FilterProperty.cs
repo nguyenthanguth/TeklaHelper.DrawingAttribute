@@ -70,7 +70,8 @@ namespace TeklaHelper.DrawingAttribute.Filters
     }
 
     /// <summary>
-    /// A text property, e.g. part name or profile.
+    /// A text property, e.g. part name or profile. Tekla compares case-sensitively, reads <c>*</c> and <c>?</c> as
+    /// wildcards (<c>B*</c> equals <c>BEAM</c>), and takes several values separated by spaces as alternatives.
     /// </summary>
     public sealed class StringFilterProperty : FilterProperty
     {
@@ -111,7 +112,8 @@ namespace TeklaHelper.DrawingAttribute.Filters
     }
 
     /// <summary>
-    /// A numeric property, e.g. phase or class.
+    /// A numeric property, e.g. phase or class. Tekla reads the value in single precision (about seven digits):
+    /// <c>LENGTH &gt;= 3992.925</c> becomes 3992.92505 and leaves out a part 3992.92504 long, so keep a margin at a limit.
     /// </summary>
     public sealed class NumericFilterProperty : FilterProperty
     {

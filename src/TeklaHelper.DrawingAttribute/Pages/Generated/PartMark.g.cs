@@ -819,7 +819,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             }
 
             /// <summary>
-            /// Key (<c>create</c>). Not shown in the dialog.
+            /// Key (<c>create</c>). Tekla 2025 ignores it when it loads the file: with 0 the part marks of a view still
+            /// showed. Hide the marks with <c>General.VisibilityOfMark.VisibilityInView</c> (<c>in_all_views</c>). Not
+            /// shown in the dialog.
             /// </summary>
             public int Create
             {

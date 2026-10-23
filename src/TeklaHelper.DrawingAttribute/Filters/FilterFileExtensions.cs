@@ -49,10 +49,18 @@ namespace TeklaHelper.DrawingAttribute.Filters
         /// <summary>Cast unit drawing neighbour part filter (<c>.cunf</c>).</summary>
         public const string CastUnitDrawingNeighborPartFilter = ".cunf";
 
-        /// <summary>Model selection filter (<c>.SObjGrp</c>; <c>FilterExpressionFileType.OBJECT_GROUP_SELECTION</c>).</summary>
+        /// <summary>
+        /// Model selection filter (<c>.SObjGrp</c>; <c>FilterExpressionFileType.OBJECT_GROUP_SELECTION</c>). The filter
+        /// <c>ModelObjectSelector.GetObjectsByFilterName</c> and <c>Operation.ObjectMatchesToFilter</c> look up by name;
+        /// in Tekla 2025 they read the file again on each call (not checked with the filter cache of the Open API on).
+        /// </summary>
         public const string ModelSelectionFilter = ".SObjGrp";
 
-        /// <summary>Model view filter (<c>.VObjGrp</c>; <c>FilterExpressionFileType.OBJECT_GROUP_VIEW</c>).</summary>
+        /// <summary>
+        /// Model view filter (<c>.VObjGrp</c>; <c>FilterExpressionFileType.OBJECT_GROUP_VIEW</c>), for
+        /// <c>Model.UI.View.ViewFilter</c>. The selection methods of the Open API do not find it: save a
+        /// <see cref="ModelSelectionFilter"/> for them.
+        /// </summary>
         public const string ModelViewFilter = ".VObjGrp";
 
         /// <summary>View filter saved with a view attribute file (<c>name.vi</c> + <c>name.vi.filter</c>), for <c>vfilter.*</c>.</summary>

@@ -28,7 +28,8 @@ and pass the file name to the Open API.
   ... `Objects.PourObject` — and each page has the tabs and group boxes of the dialog as nested classes, with a typed
   property for every control: `view.Objects.Part.Content.HiddenLines.HiddenLines = true`. The pages are generated from
   the Tekla Structures dialog definition (currently Tekla 2026) and checked against files saved from the dialogs; every key of a page has
-  a property (keys the dialog does not show are in the page's `Advanced` group).
+  a property (keys the dialog does not show are in the page's `Advanced` group). Drawings add the pages of the drawing
+  properties: `Views`, `SectionView`, `DetailView`, `Dimension`, `Dimensioning` / `AssemblyDimensioning`, `Layout`.
 - **One page class for every host**: the object and mark pages have the same keys in views and in all drawing types,
   under different prefixes (`vp.` in a view, `dp.` in a drawing, `dgrid.` / `grid.` for the grid, ...), so
   `drawing.Objects.Part` and `view.Objects.Part` are the same `PartObject` class. Copy settings with `CopyFrom`.
@@ -157,8 +158,8 @@ empty); the enum members and labels come from the dialog.
 
 ## Drawings
 
-Drawings have the same `Marks`, `Objects` and `Protection` pages under their own prefixes, plus `Layout`, `Views`, the
-titles and the user-defined attributes:
+Drawings have the same `Marks`, `Objects` and `Protection` pages under their own prefixes, plus the pages of the drawing
+properties, the titles and the user-defined attributes:
 
 | Page | GA / multi (`.gd`, `.md`) | Assembly / single-part / cast unit (`.ad`, `.wd`, `.cud`) |
 | --- | --- | --- |
@@ -169,7 +170,21 @@ titles and the user-defined attributes:
 | `Marks.PartMark`, `NeighborPartMark`, `BoltMark`, `ConnectionMark`, `WeldMark` | `dpm.`, `dnpm.`, `dsm.`, `djm.`, `dwel.` | same |
 | `Marks.ReinforcementMark`, `SurfaceTreatmentMark` | `drebar_mark.`, `dsurf_mark.` | `drmark.`, `dsurfmark.` |
 | `Protection` | `dpro.` | `dpro.` |
-| `Layout`, `Views` | `dl.`, `dview.` | `dl.`, `dv.` |
+| `Layout` | `dl.` | `dl.` |
+| `Views` (View page, view creation; label rows `LabelMarkA1` ... `A5`) | `dview.` | `dv.` |
+| `SectionView` (section mark rows `SectionMarkA1` ..., label rows `LabelMarkA1` ...) | `dc.` | `dc.` |
+| `DetailView` (detail mark rows `DetailMarkA1` ..., label rows `LabelMarkA1` ...) | `DetailLabel.` | `DetailLabel.` |
+| `Dimension` | `dd.` | `dd.` |
+| `Dimensioning` / `AssemblyDimensioning` | `Dimensioning.` / — (null) | — (null) / `dcd.` |
+
+The drawing pages are generated from the drawing dialogs of Tekla 2026 like the view pages: the GA dialogs (View,
+Detail view, Dimension, Dimensioning), the assembly drawing dialog (Section view panel, Dimensioning) and, for the keys
+the newest dialog does not show, older dialogs with the same keys, whose controls sit in the tabs of that dialog. Checked
+in Tekla 2025: an assembly drawing created from a file with changed values showed them (view extension for neighbor
+parts, openings symbol, datum level, skew part shortening; dimension type, colour and text height; cutting line colour,
+section mark symbol colour and arrow length; fewer automatic dimensions). `CreateDefault()` writes the value most files
+of the same drawing type shipped with Tekla hold for these pages; `SetDefaults()` of a page writes the value most shipped
+files hold (GA and assembly files together), else the dialog's default, the same for every drawing type.
 
 ```csharp
 AssemblyDrawingAttributeFile assemblyDrawing = AssemblyDrawingAttributeFile.CreateDefault();
@@ -187,10 +202,16 @@ ViewProperties.CreateDefault().SaveTo(attributes, "assembly_views");
 assemblyDrawing.Views.SetViewAttributeFile("assembly_views");     // every view of the table and the 3D view
 assemblyDrawing.Views.CreateTopView = ViewCreation.On;         // the table row and the cre_top_view switch
 
-// Keys without a typed property: dimension text height and colour
-var dimensioning = ga.GetSection("dd.");
-dimensioning.SetDouble("dim_text_height", 2.5);
-dimensioning.SetEnum("dim_text_colour", DrawingColor.Blue);
+// The pages of the drawing properties
+assemblyDrawing.Dimension.General.DimensionTypes.Straight = DimensionType.Absolute;
+assemblyDrawing.Dimension.Appearance.Text.Height = 3.5;
+assemblyDrawing.SectionView.CuttingLine.Properties.Color = DrawingColor.Blue;
+assemblyDrawing.AssemblyDimensioning.PartDimensions.MainPartOverallDimensions = MainPartOverallDimensions.All;
+ga.Views.Attributes.ViewSize.ViewExtensionForNeighborParts = 500;
+ga.Dimensioning.Grid.DimensionCreation.GridLineDimensions = true;
+
+// A key no dialog shows keeps its name
+ga.Layout.SetInt32("placing_direction", 0);
 ```
 
 ## Filters
@@ -212,10 +233,36 @@ filter.Save(Path.Combine(attributes, "columns.vf"));
 
 // User-defined attributes
 FilterProperties.Assembly.CustomString("USER_FIELD_1").Contains("A");
+
+// Object type: every object but reinforcing bars (the row "Object type  Does not equal  Reinforcing bar")
+FilterProperties.Object.Type.IsNotEqual(FilterObjectType.ReinforcingBar);
+FilterProperties.Object.Type.IsEqual(FilterObjectType.Part, FilterObjectType.BoltGroup);   // parts or bolts
 ```
 
 Tekla accepts at most 1000 rows and 1023 bytes per value (the buffer of its filter dialog); a longer value or an
 expression with more rows throws instead of writing a filter Tekla cannot use.
+
+How Tekla 2025 applies these files. Each point was checked in a running Tekla, with selection filters and with the
+view filters of drawing views, against the properties of every object in the model:
+
+- Text is compared case-sensitively. `*` and `?` are wildcards (`B*` equals `BEAM`), and several values separated by
+  spaces are alternatives (`BEAM COLUMN`).
+- Numbers are read in single precision, about seven digits: `LENGTH >= 3992.925` leaves out a part 3992.92504 long.
+- Within a group And comes before Or: `A Or B And C` means `A Or (B And C)`. Nest a `FilterGroup` for `(A Or B) And C`.
+- A row of another category does not filter an object: `Part.Name == BEAM` keeps every bolt, and
+  `Part.Name == BEAM Or Bolt.Size == 20` keeps every part. Add an object type row,
+  `FilterProperties.Object.Type.IsEqual(FilterObjectType.Part)`, to keep only parts.
+- A numeric user-defined attribute an object does not have passes `>` but not `<`. A text attribute it does not have
+  equals `Empty`.
+- Disabled rows (`Enabled = false`) are skipped. A filter whose rows are all disabled keeps everything.
+- Some values are codes: `Part.PrimaryPart` is `1` / `0`, `Bolt.SiteWorkshop` `0` for site bolts, `Assembly.Type`
+  `0` precast, `1` cast in place, `2` steel. The dialog writes the object type as a label key (`albl_Reinforcement_bar`):
+  `FilterObjectType` lists the twelve Tekla evaluates, `FilterObjectTypes.TryParse` reads them back. Tekla also takes
+  the numbers of `TeklaStructuresDatabaseTypeEnum` (`Object.Type.IsEqual(2)` selects parts), but the dialog cannot
+  show them.
+- `ModelObjectSelector.GetObjectsByFilterName` and `Operation.ObjectMatchesToFilter` read `.SObjGrp` files only, not
+  `.VObjGrp`. They read the file again on every call, so a rewritten filter needs no new name (unlike attribute files; not checked
+  with the filter cache of the Open API on).
 
 `FilterFile.Rows` is the file as written: each row with its parentheses, check box, tokens and And/Or. `SetExpression`
 writes a tree the way `Tekla.Structures.Filtering.Filter.CreateFile` does, and `ToExpression` reads rows back into a
@@ -245,9 +292,8 @@ vg.line_colour 160
 | File | Status |
 | --- | --- |
 | `.vi` (+ `.vi.filter`, `.vi.npfilter`) | Every page of the View properties dialog, every key typed; `CreateDefault()` |
-| `.gd`, `.ad`, `.wd`, `.cud`, `.md` and their `.more` / filter files | Marks, objects and protection pages typed; layout, view creation (with the View creation table), titles and user-defined attributes typed (common settings); every key by name; `CreateDefault()` |
+| `.gd`, `.ad`, `.wd`, `.cud`, `.md` and their `.more` / filter files | Every page typed: marks, objects, protection, layout, view (with the View creation table), section view, detail view, dimension, dimensioning; titles and user-defined attributes; `CreateDefault()`. Not typed: check boxes (`SetAllEnabled`), page file names, `dl.placing_direction` and the fixed fields of the filter pages, which no dialog shows |
 | Page files (`.vg`, `.vpm`, `.gdgr`, ...) | `ExportTo` / `ImportFrom` on pages |
-| Drawing layout, dimensioning, detail and section views (`dl.`, `dd.`, `dc.`, `DetailLabel.`, ...) | Every key by name; typed pages planned (decoding the drawing dialogs) |
 | Filters (`.vf`, `.vnf`, `.vi.filter`, `.gd.filter`, `.gdf`, `.SObjGrp`, ...) | Supported |
 | Dimensions (`.dim`) and other object attribute files | `GenericAttributeFile` |
 | Object level settings (`.copt`, `TITLE_CLASSIFIER`) | Not supported |

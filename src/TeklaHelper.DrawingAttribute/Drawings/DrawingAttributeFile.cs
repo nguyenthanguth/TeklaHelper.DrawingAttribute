@@ -18,6 +18,13 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             UserAttributes = new DrawingUserAttributeFile(userAttributeExtension, userAttributeObjectType);
             Layout = new DrawingLayoutSection(Values);
             Views = new DrawingViewCreationSection(Values, host == PageHost.GADrawing ? DrawingViewCreationSection.GAPrefix : DrawingViewCreationSection.AssemblyPrefix);
+            SectionView = new SectionViewPage(Values, SectionViewPage.PrefixFor(host));
+            DetailView = new DetailViewPage(Values, DetailViewPage.PrefixFor(host));
+            Dimension = new DimensionPage(Values, DimensionPage.PrefixFor(host));
+            string dimensioning = DimensioningPage.PrefixFor(host);
+            Dimensioning = dimensioning == null ? null : new DimensioningPage(Values, dimensioning);
+            string assemblyDimensioning = AssemblyDimensioningPage.PrefixFor(host);
+            AssemblyDimensioning = assemblyDimensioning == null ? null : new AssemblyDimensioningPage(Values, assemblyDimensioning);
             Protection = new ProtectionPage(Values, ProtectionPage.PrefixFor(host));
             Marks = new MarkPages(Values, host);
             Objects = new ObjectPages(Values, host);
@@ -49,8 +56,36 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>Layout settings (<c>dl.*</c>).</summary>
         public DrawingLayoutSection Layout { get; }
 
-        /// <summary>View settings (<c>dview.*</c> or <c>dv.*</c>).</summary>
+        /// <summary>
+        /// The "View..." page (<c>dview.*</c> or <c>dv.*</c>): view size, shortening, labels (with <c>LabelMarkA1</c> ...
+        /// <c>LabelMarkA5</c>), anchor bolt plans, and the views the drawing creates.
+        /// </summary>
         public DrawingViewCreationSection Views { get; }
+
+        /// <summary>
+        /// The section view settings (<c>dc.*</c>): scale and direction of the section views, the cutting line, the section
+        /// mark and the section view label.
+        /// </summary>
+        public SectionViewPage SectionView { get; }
+
+        /// <summary>The "Detail view..." page (<c>DetailLabel.*</c>): detail view label, detail boundary and detail mark.</summary>
+        public DetailViewPage DetailView { get; }
+
+        /// <summary>The "Dimension..." page (<c>dd.*</c>): dimension types, units, precision, placing and appearance.</summary>
+        public DimensionPage Dimension { get; }
+
+        /// <summary>
+        /// The "Dimensioning..." page of GA and multi drawings (<c>Dimensioning.*</c>): grid line dimensions and the
+        /// dimensioning of parts. Null for assembly, single-part and cast unit drawings: see <see cref="AssemblyDimensioning"/>.
+        /// </summary>
+        public DimensioningPage Dimensioning { get; }
+
+        /// <summary>
+        /// The "Dimensioning..." page of assembly, single-part and cast unit drawings (<c>dcd.*</c>): the automatic
+        /// dimensioning of parts, bolts, positions and sub-assemblies. Null for GA and multi drawings: see
+        /// <see cref="Dimensioning"/>.
+        /// </summary>
+        public AssemblyDimensioningPage AssemblyDimensioning { get; }
 
         /// <summary>The "Protection" page (<c>dpro.*</c>).</summary>
         public ProtectionPage Protection { get; }
@@ -94,6 +129,16 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         {
             get => GetString("StyleName");
             set => SetString("StyleName", value);
+        }
+
+        /// <summary>
+        /// Use detailed object level settings: the Yes / No choice in front of the Edit settings button of the drawing
+        /// properties dialog (<c>UseDetailedObjectLevelSettings</c>, 1 / 0).
+        /// </summary>
+        public bool UseDetailedObjectLevelSettings
+        {
+            get => GetBoolean("UseDetailedObjectLevelSettings");
+            set => SetBoolean("UseDetailedObjectLevelSettings", value);
         }
 
         /// <inheritdoc />

@@ -33,10 +33,44 @@ namespace DialogClassGenerator
 
         /// <summary>Key of the "Save as" name (<c>out_file</c>, <c>aOutFile</c>, ...), from the decoded dialog.</summary>
         public string FileOutKey { get; set; } = "out_file";
+
+        /// <summary>
+        /// For a page of the drawing properties only: the first sentence of the class summary (where the dialog shows it).
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The class is also written by hand (a class released before the page was generated): the generated part has no
+        /// constructor, and skips the keys and member names of the hand-written part.
+        /// </summary>
+        public bool HandWrittenPart { get; set; }
+
+        /// <summary>Keys (relative to the prefix) that properties of the hand-written part read and write.</summary>
+        public string[] HandWrittenKeys { get; set; } = new string[0];
+
+        /// <summary>Member names of the hand-written part, which generated properties must not take.</summary>
+        public string[] HandWrittenMembers { get; set; } = new string[0];
+
+        /// <summary>
+        /// Properties of the hand-written part that <c>SetDefaults()</c> assigns too: (property, key, C# type). Keys that
+        /// name a resource of the environment (the View creation table, the 3D view file) are left out.
+        /// </summary>
+        public (string Property, string Key, string Type)[] HandWrittenDefaults { get; set; } = new (string, string, string)[0];
+
+        /// <summary>
+        /// Rows of label texts A1 to A5, each a <c>ViewLabelMark</c> under <c>stem + row + "."</c>: (property name without the
+        /// row number, key stem relative to the prefix, summary of the row).
+        /// </summary>
+        public (string Property, string KeyStem, string Summary)[] LabelMarks { get; set; } = new (string, string, string)[0];
+
+        /// <summary>A page of the drawing properties dialogs, not of the View properties dialog.</summary>
+        public bool DrawingPage => ViewPrefix == null;
     }
 
     internal static class PageSpecs
     {
+        private const string ViewCreation = "global::TeklaHelper.DrawingAttribute.Drawings.ViewCreation";
+
         // Drawing extensions were matched by key set against the files shipped with Tekla (see SectionFileExtensions)
         public static readonly PageSpec[] All =
         {
@@ -66,6 +100,72 @@ namespace DialogClassGenerator
             new PageSpec { Class = "PourBreakObject", Json = "PourBreakObject", Title = "Pour break", ViewPrefix = "PourBreaks.", GADrawingPrefix = "PourBreaks.", AssemblyDrawingPrefix = "PourBreaks.", ViewFile = ".vpbr", GADrawingFile = ".gpbr" },
             new PageSpec { Class = "NeighborReinforcementObject", Json = "NeighborReinforcementObject", Title = "Neighbor reinforcement", ViewPrefix = "NeighborRebar.", GADrawingPrefix = "NeighborRebar.", AssemblyDrawingPrefix = "NeighborRebar.", ViewFile = ".vnr", GADrawingFile = ".gnr" },
             new PageSpec { Class = "PourObject", Json = "PourObject", Title = "Pour object", ViewPrefix = "PourObjects.", GADrawingPrefix = "PourObjects.", AssemblyDrawingPrefix = "PourObjects.", ViewFile = ".vpo", GADrawingFile = ".gpo" },
+
+            // Pages of the drawing properties only (DRAWING_PAGES of tools/DialogDecoder/extract.py); after ViewLabelMark,
+            // whose defaults their label rows take
+            new PageSpec
+            {
+                Class = "DrawingViewCreationSection", Json = "DrawingView", Namespace = "TeklaHelper.DrawingAttribute.Drawings", Title = "View",
+                Description = "The \"View...\" page of the GA drawing properties (the view settings of the assembly, single-part and cast unit drawing properties): view size, shortening, labels, anchor bolt plans, and the views the drawing creates",
+                GADrawingPrefix = "dview.", AssemblyDrawingPrefix = "dv.", GADrawingFile = ".gdv", AssemblyDrawingFile = ".adv",
+                HandWrittenPart = true,
+                HandWrittenKeys = new[]
+                {
+                    "main_scale", "cre_front_view", "cre_top_view", "cre_back_view", "cre_bottom_view", "cre_cuts", "cre_end_views", "Create3dView",
+                    "aDrawingViews", "aCreate3dViewAttrib", "ViewShorteningOn", "cut_length", "cut_min_dist", "label_height", "label_position", "label_colour",
+                },
+                HandWrittenMembers = new[]
+                {
+                    "GAPrefix", "AssemblyPrefix", "Scale", "CreateFrontView", "CreateTopView", "CreateBackView", "CreateBottomView", "CreateSectionViews",
+                    "CreateEndViews", "Create3dView", "GetViewTable", "SetViewTable", "SetViewAttributeFile", "SyncSwitchesWithViewTable", "SwitchKeys",
+                    "GetCreation", "SetCreation", "TryGetViewTable", "View3dAttributeFile", "ShorteningOn", "ShorteningCutLength",
+                    "ShorteningMinimumDistance", "LabelHeight", "LabelPosition", "LabelColor",
+                },
+                HandWrittenDefaults = new[]
+                {
+                    ("Scale", "main_scale", "double"),
+                    ("CreateFrontView", "cre_front_view", ViewCreation), ("CreateTopView", "cre_top_view", ViewCreation),
+                    ("CreateBackView", "cre_back_view", ViewCreation), ("CreateBottomView", "cre_bottom_view", ViewCreation),
+                    ("CreateSectionViews", "cre_cuts", ViewCreation), ("CreateEndViews", "cre_end_views", ViewCreation),
+                    ("Create3dView", "Create3dView", "bool"), ("ShorteningOn", "ViewShorteningOn", "bool"),
+                    ("ShorteningCutLength", "cut_length", "double"), ("ShorteningMinimumDistance", "cut_min_dist", "double"),
+                    ("LabelHeight", "label_height", "double"), ("LabelPosition", "label_position", "int"),
+                    ("LabelColor", "label_colour", "global::TeklaHelper.DrawingAttribute.DrawingColor"),
+                },
+                LabelMarks = new[] { ("LabelMarkA", "ViewLabelMarkA", "view label") },
+            },
+            new PageSpec
+            {
+                Class = "SectionViewPage", Json = "SectionView", Namespace = "TeklaHelper.DrawingAttribute.Drawings", Title = "Section view",
+                Description = "The section view settings of the drawing properties (the \"Section view\" panel of the assembly drawing properties of Tekla 2026; the GA drawing properties show only the start number): scale and direction of the section views, the cutting line and the section mark",
+                GADrawingPrefix = "dc.", AssemblyDrawingPrefix = "dc.", AssemblyDrawingFile = ".adc",
+                LabelMarks = new[] { ("SectionMarkA", "SectionMark.SectionMarkA", "section mark text"), ("LabelMarkA", "SectionMark.ViewLabelMarkA", "section view label") },
+            },
+            new PageSpec
+            {
+                Class = "DetailViewPage", Json = "DetailView", Namespace = "TeklaHelper.DrawingAttribute.Drawings", Title = "Detail view",
+                Description = "The \"Detail view...\" page of the drawing properties: the detail view label, the detail boundary and the detail mark",
+                GADrawingPrefix = "DetailLabel.", AssemblyDrawingPrefix = "DetailLabel.",
+                LabelMarks = new[] { ("DetailMarkA", "DetailMarkA", "detail mark text"), ("LabelMarkA", "ViewLabelMarkA", "detail view label") },
+            },
+            new PageSpec
+            {
+                Class = "DimensionPage", Json = "Dimensioning", Namespace = "TeklaHelper.DrawingAttribute.Drawings", Title = "Dimension",
+                Description = "The \"Dimension...\" page of the drawing properties: dimension types, units, precision, placing and appearance",
+                GADrawingPrefix = "dd.", AssemblyDrawingPrefix = "dd.", GADrawingFile = ".gdd",
+            },
+            new PageSpec
+            {
+                Class = "DimensioningPage", Json = "DimensioningRules", Namespace = "TeklaHelper.DrawingAttribute.Drawings", Title = "Dimensioning",
+                Description = "The \"Dimensioning...\" page of the GA drawing properties (GA and multi drawings only): grid line dimensions and the dimensioning of parts",
+                GADrawingPrefix = "Dimensioning.",
+            },
+            new PageSpec
+            {
+                Class = "AssemblyDimensioningPage", Json = "AssemblyDimensioning", Namespace = "TeklaHelper.DrawingAttribute.Drawings", Title = "Dimensioning",
+                Description = "The \"Dimensioning...\" page of the assembly, single-part and cast unit drawing properties (not in GA drawings): the automatic dimensioning of parts, bolts, positions and sub-assemblies",
+                AssemblyDrawingPrefix = "dcd.",
+            },
         };
     }
 }

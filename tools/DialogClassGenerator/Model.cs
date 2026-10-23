@@ -49,6 +49,9 @@ namespace DialogClassGenerator
         /// <summary>Why the control is in the Advanced group: where the dialog shows it, if anywhere.</summary>
         public string Origin { get; set; }
 
+        /// <summary>For a control of another dialog with the same keys: that dialog (and panel).</summary>
+        public string AidDialog { get; set; }
+
         public double Position { get; set; }
 
         /// <summary>Values found in the sample files that are items of the menu: value → number of files.</summary>

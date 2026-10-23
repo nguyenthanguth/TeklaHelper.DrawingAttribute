@@ -92,12 +92,20 @@ namespace TeklaHelper.DrawingAttribute.Tests
             Assert.All(assemblyDrawing.Views.GetViewTable(), row => Assert.Equal("assembly_views", row.ViewAttributeFile));
             Assert.Equal(ViewCreation.On, assemblyDrawing.Views.GetViewTable().Single(row => row.ViewType == DrawingViewType.Top).Creation);
 
-            var dimensioning = ga.GetSection("dd.");
-            dimensioning.SetDouble("dim_text_height", 2.5);
-            dimensioning.SetEnum("dim_text_colour", DrawingColor.Blue);
+            assemblyDrawing.Dimension.General.DimensionTypes.Straight = DimensionType.Absolute;
+            assemblyDrawing.Dimension.Appearance.Text.Height = 3.5;
+            assemblyDrawing.SectionView.CuttingLine.Properties.Color = DrawingColor.Blue;
+            assemblyDrawing.AssemblyDimensioning.PartDimensions.MainPartOverallDimensions = MainPartOverallDimensions.All;
+            ga.Views.Attributes.ViewSize.ViewExtensionForNeighborParts = 500;
+            ga.Dimensioning.Grid.DimensionCreation.GridLineDimensions = true;
+
+            ga.Layout.SetInt32("placing_direction", 0);
 
             Assert.Equal("Arial", assemblyDrawing.Marks.PartMark.Content.Font.Font);
-            Assert.Equal(162, ga.GetInt32("dd.dim_text_colour"));
+            Assert.Equal(2, assemblyDrawing.GetInt32("dd.dim_type"));
+            Assert.Equal(162, assemblyDrawing.GetInt32("dc.SectionMark.line_colour"));
+            Assert.Equal(500, ga.GetDouble("dview.np_extrema_size"));
+            Assert.Equal(0, ga.GetInt32("dl.placing_direction"));
         }
 
         [Fact]
@@ -118,7 +126,12 @@ namespace TeklaHelper.DrawingAttribute.Tests
 
             FilterProperties.Assembly.CustomString("USER_FIELD_1").Contains("A");
 
+            FilterCondition noRebar = FilterProperties.Object.Type.IsNotEqual(FilterObjectType.ReinforcingBar);
+            FilterCondition partsOrBolts = FilterProperties.Object.Type.IsEqual(FilterObjectType.Part, FilterObjectType.BoltGroup);
+
             Assert.Equal("COLUMN", FilterFile.FromFile(Path.Combine(attributes, "columns.vf")).Rows[0].Value);
+            Assert.Equal("albl_Reinforcement_bar", noRebar.Value);
+            Assert.Equal("albl_Part albl_BoltGroup", partsOrBolts.Value);
         }
     }
 }

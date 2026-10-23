@@ -39,8 +39,11 @@ so it runs even when the library does not build until the pages are regenerated)
 pages in `PageSpecs.cs`, enum renames in `EnumRenames`) or its input, regenerate, and review the diff. Input: the dialog
 definitions decoded from Tekla's `.aid` files (`tools/DialogClassGenerator/Dialogs/*.json`, made with
 `tools/DialogDecoder`; its README explains the `.aid` format and how to decode another Tekla version, and `compare.py`
-diffs two decodings) and two files saved from the dialogs, for value types and keys the dialog does not show. Fix
-decoding errors in `extract.py`, never by hand in the JSON files:
+diffs two decodings) and two files saved from the dialogs, for value types and keys the dialog does not show. The
+pages of the drawing properties come from `DRAWING_PAGES` in `extract.py` (a dialog or panel per page plus other dialogs
+with the same keys, decoded with the samples `DRAWING-TEST.gd` and `test-ad.ad` passed after `--drawing`); controls of the
+other dialogs go into the tabs and groups of their own dialog (`dialogPath`). Fix decoding errors in `extract.py`, never
+by hand in the JSON files:
 
 The JSON files are decoded from the **latest** Tekla dialog (decision: follow the newest version; older versions are
 expected to cope). Currently Tekla 2026 (`TEKLA_AID=C:/Users/InuYasha/Downloads/test/2026/TeklaStructures.aid`, Tekla
@@ -120,7 +123,11 @@ Trimble DLLs and load them side by side in other Tekla versions).
   `bool` with the dialog's on/off values, options → generated enums in `Enums.g.cs`, colours → `DrawingColor`, line
   types → `DrawingLineType`), an `Advanced` group for keys the dialog does not show (other pages, older dialogs, keys
   only seen in files), `SetAllEnabled`, internal `Keys` / `EnableKeys`, and the prefix and page file extension constants
-  of each host (`ViewPrefix`, `GADrawingPrefix`, `AssemblyDrawingPrefix`, `*FileExtension`).
+  of each host (`ViewPrefix`, `GADrawingPrefix`, `AssemblyDrawingPrefix`, `*FileExtension`). The pages of the drawing
+  properties are in the `Drawings` namespace: `DrawingViewCreationSection` (generated part of the hand-written class:
+  `HandWrittenPart`, its keys in `HandWrittenKeys`), `SectionViewPage`, `DetailViewPage`, `DimensionPage`,
+  `DimensioningPage` (GA family) and `AssemblyDimensioningPage` (assembly family); their label text rows
+  (`LabelMarkA1` ..., `SectionMarkA1` ..., `DetailMarkA1` ...) are `ViewLabelMark` pages (`PageSpec.LabelMarks`).
 - `Pages/` hand-written: `PageHost` (View / GADrawing / AssemblyDrawing → prefixes), `MarkPages` and `ObjectPages`
   (the Marks and Objects nodes; `ObjectPages.ReferenceObject` is null in the assembly family).
 - `Sections/FilterSection` — `vfilter.` / `dfilter.` keys + the rows of the companion filter file.
@@ -133,9 +140,12 @@ Trimble DLLs and load them side by side in other Tekla versions).
   then `.md`→`.gd`, `.wd`/`.cud`→`.ad`), else the dialog file value; `EnvironmentFreeValues` sets layouts, attribute
   files, `StyleName`, titles and descriptions to names every environment has or to empty text. `CreateDefault()` applies
   the table, calls `SetDefaults()` of every page, then `Pages/DefaultSetup` (the library's own choices) and, for drawings,
-  the empty user-defined attribute fields. Change values in `tools/DialogClassGenerator/Defaults.cs` or `DefaultSetup`.
-- `Drawings/` — `DrawingAttributeFile` base with `Layout`, `Views`, `Protection`, `Marks`, `Objects`, titles and
-  `UserAttributes`; `GADrawingAttributeFile`, `MultiDrawingAttributeFile` (GA prefixes) and `AssemblyDrawingAttributeFile`,
+  the empty user-defined attribute fields. The pages of the drawing properties only keep the table's values of their
+  own file type (GA and assembly files do not agree on dimensions; `SetDefaults()` serves every host), so their keys are
+  not null in the table. Change values in `tools/DialogClassGenerator/Defaults.cs` or `DefaultSetup`.
+- `Drawings/` — `DrawingAttributeFile` base with `Layout`, `Views`, `SectionView`, `DetailView`, `Dimension`,
+  `Dimensioning` (null in the assembly family), `AssemblyDimensioning` (null in the GA family), `Protection`, `Marks`,
+  `Objects`, titles and `UserAttributes`; `GADrawingAttributeFile`, `MultiDrawingAttributeFile` (GA prefixes) and `AssemblyDrawingAttributeFile`,
   `SinglePartDrawingAttributeFile`, `CastUnitDrawingAttributeFile` (assembly prefixes); `DrawingLayoutSection`,
   `DrawingViewCreationSection`.
 - `Views/ViewProperties` — `.vi` organised like the View properties dialog tree: `Attributes` (`ViewAttributes`, top-level
@@ -145,7 +155,8 @@ Trimble DLLs and load them side by side in other Tekla versions).
   API reads.
 - `Filters/` — `FilterFile` (rows, byte-preserving), `FilterRow`, expression tree (`FilterExpression`, `FilterCondition`,
   `FilterGroup`), `FilterOperator`, typed `FilterProperty` subclasses, `FilterProperties` (generated catalog of
-  `Tekla.Structures.Filtering.Categories`), `FilterFileExtensions`.
+  `Tekla.Structures.Filtering.Categories`), `FilterFileExtensions`, `FilterObjectType` (hand-written: the label keys of
+  the object type row, as extension methods on the numeric `Object.Type` so the released field keeps its type).
 
 Typed property pattern for hand-written classes — always name the key in the XML comment:
 
@@ -186,6 +197,16 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   `standard.vi` (Korea: 1:75, outline, colour 6). `CreateDefault()` clears the names (the shipped ones exist only in some
   environments); naming a `CreateDefault()` .vi made every view, 3D included, use it. Several rows of one type: the
   highest creation counts (Tekla wrote `cre_cuts 2` for Auto + On); `SetViewTable` keeps a table's final-comma form. `DrawingViewCreationSection.GetViewTable/SetViewTable/SetViewAttributeFile`.
+- **The drawing pages are applied:** an assembly drawing of a two-part assembly created from a `CreateDefault()` .ad with
+  changed values showed them through the Drawing API: `dv.np_extrema_size` 321, `HoleSymbol`, `Elevation_datum_point`
+  1234, `cut_skew_parts` on the front and bottom views (`View.Attributes`; the section view keeps `dc.` values);
+  `dd.dim_type` Absolute, `dim_line_colour` Red, `dim_text_height` 5 (`StraightDimensionSet.Attributes`);
+  `dc.SectionMark.line_colour` Blue, `SectionMarkSymbolColor` Green, `ArrowLength` 33 (`SectionMarkBase.Attributes`
+  `LineColor`, `SymbolColor`, `LineLength`); `dcd.part_internal` / `main_part_extrema` / `screw_main_internal` None gave
+  3 dimension sets instead of 4 in the front view.
+- **Mark `create` is ignored:** a view loaded with `vpm.create 0` still showed its 85 part marks; `vpm.in_all_views 3`
+  (`VisibilityInView.None`) removed them (245 → 160 marks). `KeyNotes` in the generator says so in the XML comment of the
+  part mark page only (`create` of the weld mark page is the visible "Welds" menu; the others were not probed).
 - **`_en` check boxes do not gate `LoadAttributes`:** with `draw_hidden 1` + `draw_hidden_en 0` the value is applied.
   They only matter to the dialog's Modify.
 - Colour numbers pass through unchanged into `DrawingColors` (`3` stays 3, `160` is Red); the small numbers are valid,
@@ -246,6 +267,20 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
 | neighbour parts | `dnpart.` | `dnp.` |
 | reinforcement / surface marks | `drebar_mark.` / `dsurf_mark.` | `drmark.` / `dsurfmark.` |
 | shared | `dl.` `dp.` `ds.` `dpm.` `dnpm.` `dsm.` `djm.` `dc.` `dd.` `dwel.` `DetailLabel.` ... | same |
+| automatic dimensioning | `Dimensioning.` (19, dialog `gr_gdcd_attrib`) | `dcd.` (146, `gr_adcd_attrib`) |
+
+Drawing page sources (2026 `.aid`): view `gr_ga_view_attrib` (+ `gr_dv_attrib`, the assembly panel
+`PanelContentViewCreation`), section view the assembly panel `PanelContentSectionView` (+ `gr_dc_attrib`,
+`gr_csym_attrib` under `SectionMark.`, `gr_section_label_attrib`; the GA dialog shows only `StartNumberOrLetter`), detail
+view `gr_detail_symbol_attrib` (+ `gr_detail_label_attrib`), dimension `gr_dd_attrib` (+ "Place..." `gr_dd_placing`
+under `dimpl.`). Label rows `ViewLabelMarkA1`..`A5`, `SectionMark.SectionMarkA1`.., `SectionMark.ViewLabelMarkA1`..,
+`DetailMarkA1`.. all have the 26 keys of the view's `ViewLabelMarkA1.`. The top-level `*_en` keys (`dview_en`, `dc_en`,
+...) are the check boxes in front of the page buttons. Cast unit `bound_type`: 1 by position, 2 by ID.
+
+`dl.` is the struct `gr_dl_at_t`, shared by the GA layout dialog `gr_dl_attrib` (layout, sheet size) and the assembly
+family's `gr_wdl_attrib` (also the Scale and Other tabs), so GA files hold every key; `dl.sheet` / `dl.size` are ids
+in the environment's layout files, not formats. `dl.placing_direction` has no control in the 2020, 2025 or 2026
+dialogs (only in files, 0 / 1): left untyped. `dl.in_file` / `out_file` are the page Save / Load names.
 
 A sub-dialog saved on its own writes exactly the keys of one section without the prefix (checked value by value against
 `TEST.vi`), and the host records the loaded name in `<prefix>.in_file`. View: `.vg` `vg`, `.vp` `vp`, `.vnp` `vnp`,
@@ -300,6 +335,20 @@ TITLE_OBJECT_GROUP
   same table has `Category` / `Property` 127, `Condition` / `AndOr` 19 bytes and parentheses 0–3 per row (not enforced:
   shipped files hold translated labels, and the API writes deeper nesting).
 - `.copt` / `TITLE_CLASSIFIER` (object level settings) is another block format, not supported yet.
+- Evaluation, verified in Tekla 2025 on "New model". The harness `%TEMP%\tfiltest` wrote about 110 filters with the
+  library and compared what Tekla kept with the properties of every object: `GetObjectsByFilterName` and
+  `ObjectMatchesToFilter` on `.SObjGrp`, the parts of drawing views loaded with a `.vi.filter`, and assembly drawings
+  with a `.ad.filter`. All agreed, over repeated runs. Findings: text is case-sensitive; `*` and `?` are wildcards;
+  space-separated values are alternatives; numbers are single precision (`>= 3992.925` excludes 3992.92504); in a flat
+  group And binds before Or; a row of another category passes (Part rows keep bolts, `Part.Name == X || Bolt.Size == 20`
+  keeps every part); a missing numeric UDA passes `>` but not `<`, a missing text UDA equals `Empty`; disabled rows are
+  skipped (all disabled = everything); `proPrimaryPart` 1/0, `proBOLT_TYPE` 0 = site, `proAssemblyType` 0 precast /
+  1 cast in place / 2 steel, `proOBJECT_TYPE` takes the twelve label keys hard-coded in `bin\TeklaModel.dll` (`albl_Part` ...
+  `albl_Reinforcement_bar`; `albl_Joint` matched a connection, not plug-ins), several separated by spaces, or the numbers
+  of `TeklaStructuresDatabaseTypeEnum` (2 = part); `proNUMBERING_POSITION`
+  matches the full `PART_POS` (`Concrete_G-1/4`). The selection methods read `.SObjGrp` only (not `.VObjGrp`) and re-read
+  the file on each call. A 1000-row filter, 1023-character values and UTF-8 values (Vietnamese, Japanese) work. A
+  `.gd.filter` does not affect views inserted through the API with their own view file.
 
 ## Conventions
 

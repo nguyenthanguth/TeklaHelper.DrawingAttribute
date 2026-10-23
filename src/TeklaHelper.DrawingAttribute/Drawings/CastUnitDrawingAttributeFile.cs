@@ -49,7 +49,26 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             set => SetInt32("sheet_number", value);
         }
 
+        /// <summary>Cast unit definition method of the cast unit drawing properties (<c>bound_type</c>).</summary>
+        public CastUnitDefinitionMethod CastUnitDefinitionMethod
+        {
+            get => GetEnum("bound_type", CastUnitDefinitionMethod.ByCastUnitPosition);
+            set => SetEnum("bound_type", value);
+        }
+
         /// <inheritdoc />
         protected override string LegacyKeyPrefix => "cudraw_dial.";
+    }
+
+    /// <summary>
+    /// The Cast unit definition method menu of the cast unit drawing properties (<c>bound_type</c>), as Tekla stores it.
+    /// </summary>
+    public enum CastUnitDefinitionMethod
+    {
+        /// <summary>By cast unit position (1).</summary>
+        ByCastUnitPosition = 1,
+
+        /// <summary>By cast unit ID (2).</summary>
+        ByCastUnitId = 2,
     }
 }

@@ -146,5 +146,62 @@ namespace TeklaHelper.DrawingAttribute.Tests
             Assert.Equal("Arial", drawing.Marks.PartMark.Content.Font.Font);
             Assert.Equal("<Mark/>", drawing.GetString("dpm.ContentString1"));
         }
+
+        [Fact]
+        public void Layout_ReadsAndWritesTheKeysOfTheLayoutDialog()
+        {
+            // Keys and values of a Tekla 2020 GA drawing file; the meanings are those of the layout dialogs
+            // (gr_dl_attrib, gr_wdl_attrib) of TeklaStructures.aid
+            Directory.CreateDirectory(_directory);
+            string path = Path.Combine(_directory, "layout.gd");
+            string original = "encoding 1252\r\nin_file \"layout\"\r\nout_file \"layout\"\r\nUseDetailedObjectLevelSettings 0\r\ndl.sheet 3\r\ndl.size 0\r\ndl.side_view_beside 0\r\n"
+                + "dl.CutViewsInLineWithMain 0\r\ndl.change_scale_mode 1\r\ndl.als_width 420.000000\r\ndl.als_height 297.000000\r\n"
+                + "dl.adjust_min_dist 0\r\ndl.include_single_parts 0\r\ndl.single_attrib_file \"\"\r\ndl.ListHiddenObjectsInReports 0\r\n";
+            File.WriteAllText(path, original);
+            var file = AttributeFile.FromFile<GADrawingAttributeFile>(path);
+            DrawingLayoutSection layout = file.Layout;
+
+            Assert.False(file.UseDetailedObjectLevelSettings);
+            Assert.Equal(3, layout.TableLayout);
+            Assert.Equal(0, layout.DrawingSize);
+            Assert.False(layout.AlignEndViewsWithMainView);
+            Assert.False(layout.AlignSectionViewsWithMainView);
+            Assert.Equal(ScaleChangeMode.MainLessThanSection, layout.ScaleChangeMode);
+            Assert.Equal(420, layout.PreferredWidth);
+            Assert.Equal(297, layout.PreferredHeight);
+            Assert.False(layout.ExpandShortenedPartsToFit);
+            Assert.False(layout.IncludeSingleParts);
+            Assert.Equal(string.Empty, layout.SinglePartAttributeFile);
+            Assert.False(layout.ListHiddenObjectsInTemplates);
+
+            // Assigning the values read changes no byte
+            file.UseDetailedObjectLevelSettings = file.UseDetailedObjectLevelSettings;
+            layout.TableLayout = layout.TableLayout;
+            layout.ScaleChangeMode = layout.ScaleChangeMode;
+            layout.PreferredWidth = layout.PreferredWidth;
+            layout.SinglePartAttributeFile = layout.SinglePartAttributeFile;
+            file.Save(path);
+            Assert.Equal(original, File.ReadAllText(path));
+
+            file.UseDetailedObjectLevelSettings = true;
+            layout.TableLayout = 518263;
+            layout.DrawingSize = 654352;
+            layout.AlignEndViewsWithMainView = true;
+            layout.AlignSectionViewsWithMainView = true;
+            layout.ScaleChangeMode = ScaleChangeMode.MainLessOrEqualSection;
+            layout.PreferredWidth = 410;
+            layout.PreferredHeight = 287;
+            layout.ExpandShortenedPartsToFit = true;
+            layout.IncludeSingleParts = true;
+            layout.SinglePartAttributeFile = "standard";
+            layout.ListHiddenObjectsInTemplates = true;
+            file.Save(path);
+
+            Assert.Equal(
+                "encoding 1252\r\nin_file \"layout\"\r\nout_file \"layout\"\r\nUseDetailedObjectLevelSettings 1\r\ndl.sheet 518263\r\ndl.size 654352\r\ndl.side_view_beside 1\r\n"
+                + "dl.CutViewsInLineWithMain 1\r\ndl.change_scale_mode 2\r\ndl.als_width 410.000000\r\ndl.als_height 287.000000\r\n"
+                + "dl.adjust_min_dist 1\r\ndl.include_single_parts 1\r\ndl.single_attrib_file \"standard\"\r\ndl.ListHiddenObjectsInReports 1\r\n",
+                File.ReadAllText(path));
+        }
     }
 }

@@ -1,7 +1,7 @@
 """Extract the Tekla Structures View properties dialog (gratViewAttributes) from TeklaStructures.aid
-into one JSON file per page.
+into one JSON file per page, and the pages of the drawing properties dialogs that it does not have (DRAWING_PAGES).
 
-python extract.py <TeklaStructures.aid> <out_dir> <sample.vi> [<sample2.vi> ...]
+python extract.py <TeklaStructures.aid> <out_dir> <sample.vi> [<sample2.vi> ...] [--drawing <sample.gd> ...]
 
 The .aid widget tree is decoded exactly (see aid.py). What is inferred here:
 - which text label belongs to which control (row order), group headings drawn as
@@ -44,6 +44,28 @@ PAGES = OD([
     ('PanelGrid',                      ('GridObject', 'vg.', ['gr_grid_attrib'])),
 ])
 
+# Pages of the drawing properties dialogs that the View properties dialog does not have. The GA and the assembly family
+# store them under the same keys (only the view page has two prefixes; the dimensioning pages differ); the samples are a
+# .gd and an .ad file saved from the dialogs.
+#   page: (GA prefix, assembly prefix, source, other sources with the same keys, page check box of the drawing dialog)
+# A source is (dialog, panel row or None, nested key prefix). The first source is the newest dialog that shows the page;
+# the others give the keys it does not show (older dialogs and the assembly drawing dialog of Tekla 2026).
+DRAWING_PAGES = OD([
+    ('DrawingView',  ('dview.', 'dv.', ('gr_ga_view_attrib', None, ''),
+                      [('gr_dv_attrib', None, ''), ('gratAssemblyDrawingAttributes', 'PanelContentViewCreation', '')], 'dview_en')),
+    ('SectionView',  ('dc.', 'dc.', ('gratAssemblyDrawingAttributes', 'PanelContentSectionView', ''),
+                      [('gr_dc_attrib', None, ''), ('gr_csym_attrib', None, 'SectionMark.'), ('gr_section_label_attrib', None, '')], 'dc_en')),
+    ('DetailView',   ('DetailLabel.', 'DetailLabel.', ('gr_detail_symbol_attrib', None, ''),
+                      [('gr_detail_label_attrib', None, ''), ('gratAssemblyDrawingAttributes', 'PanelContentDetailView', '')], 'DetailLabel_en')),
+    ('Dimensioning', ('dd.', 'dd.', ('gr_dd_attrib', None, ''), [], 'dd_en')),
+    ('DimensioningRules', ('Dimensioning.', None, ('gr_gdcd_attrib', None, ''), [], 'Dimensioning_en')),
+    ('AssemblyDimensioning', (None, 'dcd.', ('gr_adcd_attrib', None, ''),
+                              [('gr_wdcd_attrib', None, ''), ('gr_cudcd_attrib', None, '')], 'dcd_en')),
+])
+
+# Rows of label texts: one structure (the "..." dialog gr_view_reference_mark_attrib) per row, typed by the page ViewLabelMark
+LABEL_MARK_RE = re.compile(r'^((?:\w+\.)?(?:ViewLabelMark|SectionMark|DetailMark)A)[1-5]\.')
+
 # Page check boxes of the tree control: top-level keys "<x>_en". Matched by name only.
 TREE_KEYS = {
     'Filter': 'filter_en', 'NeighborPartFilter': 'np_filter_en', 'Protection': 'Protection_en',
@@ -80,6 +102,10 @@ def bitmap_label(bm):
 def main():
     path, outdir = sys.argv[1], sys.argv[2]
     samples = sys.argv[3:]
+    drawing_samples = []
+    if '--drawing' in samples:
+        i = samples.index('--drawing')
+        samples, drawing_samples = samples[:i], samples[i + 1:]
     pool, st = aid.load(path)
     root = aid.parse(pool, st)
     en = english_table(pool, root)
@@ -134,11 +160,15 @@ def main():
 
     # ---------------------------------------------------------------- builder
     class Builder:
-        def __init__(self, scope, prefix, nested=''):
+        def __init__(self, scope, prefix, nested='', radio_text_labels=False):
             self.scope = scope
             self.prefix = prefix
             self.nested = nested
+            # A radio button without a label of its own is followed by a text label in the drawing dialogs ("Fit by
+            # parts"); off for the View properties pages, whose decoding the released classes follow
+            self.radio_text_labels = radio_text_labels
             self.allw = list(walk(scope))
+            self.parent = {id(c): w for w in self.allw for c in w.children}
             self.byname = {}
             for w in self.allw:
                 if name(w):
@@ -174,9 +204,19 @@ def main():
                 lbl = label_of(it)
                 bm = attr(it, 'BITMAP')
                 vi = attr(it, 'VALUEINT'); vs = attr(it, 'VALUESTRING')
+                text_label = None
+                if not lbl and self.radio_text_labels and cls(it) == 'radiobutton' and id(it) in self.parent:
+                    siblings = self.parent[id(it)].children
+                    following = siblings[siblings.index(it) + 1:]
+                    nxt = following[0] if following else None
+                    if nxt is not None and cls(nxt) == 'textlabel' and label_of(nxt):
+                        text_label = label_of(nxt)
                 if lbl:
                     o['label'] = lbl
                     o['labelSource'] = 'aid'
+                elif text_label:
+                    o['label'] = text_label
+                    o['labelSource'] = 'text label after the radio button'
                 else:
                     o['label'] = bitmap_label(bm)
                     o['labelSource'] = 'bitmap'
@@ -782,6 +822,135 @@ def main():
             json.dump(out, f, indent=2, ensure_ascii=False)
             f.write('\n')
         summary.append((page, prefix, len(file_keys), len(file_keys) - len(out['unmappedKeys']), 0, 0, len(out['unmappedKeys'])))
+
+    # ------------------------------------------------------------- drawing pages
+    drawing_keys = OD()
+    for sp in drawing_samples:
+        for line in open(sp, 'rb').read().split(b'\r\n')[1:]:
+            if line:
+                drawing_keys.setdefault(line.partition(b' ')[0].decode('latin1'), sp)
+
+    def scope_of(dname, panel):
+        if dname not in dialogs:
+            return None
+        if panel is None:
+            return dialogs[dname]
+        return next((w for w in walk(dialogs[dname]) if cls(w) == 'row' and name(w) == panel), None)
+
+    def with_enables(builder, nested_prefix):
+        keys = {nested_prefix + builder.key(m) for m in builder.members}
+        for w in builder.allw:
+            if attr(w, 'MEMBER') and builder.is_enable(w):
+                keys.add(nested_prefix + builder.key(attr(w, 'MEMBER')))
+        return keys
+
+    for page, (ga_prefix, asm_prefix, source, others, tree_key) in DRAWING_PAGES.items():
+        prefix = ga_prefix or asm_prefix
+        dname, panel, nested = source
+        scope = scope_of(dname, panel)
+        if scope is None:
+            print('WARNING: %s: source %s %s not in this .aid' % (page, dname, panel or ''), file=sys.stderr)
+            continue
+        all_keys = [k for k in drawing_keys if k.startswith(prefix)]
+        marks = OD()
+        for k in all_keys:
+            mm = LABEL_MARK_RE.match(k[len(prefix):])
+            if mm:
+                marks[mm.group(1)] = marks.get(mm.group(1), 0) + 1
+        file_keys = [k for k in all_keys if not LABEL_MARK_RE.match(k[len(prefix):])]
+        b = Builder(scope, prefix, nested, radio_text_labels=True)
+        tree = b.build(scope)
+        dialog_keys = with_enables(b, prefix)
+        subdialogs = []
+        for btn in b.buttons:
+            sub = btn.get('callbackParameter')
+            if sub not in dialogs:
+                continue
+            mem = [attr(w, 'MEMBER') for w in walk(dialogs[sub]) if attr(w, 'MEMBER')]
+            cands = collections.Counter()
+            for k in file_keys:
+                rest = k[len(prefix):]
+                for m_ in mem:
+                    if rest.endswith('.' + m_) or rest == m_:
+                        cands[rest[:len(rest) - len(m_)]] += 1
+            btn['opensDialog'] = sub
+            if not cands:
+                btn['note'] = 'members of this dialog are not stored under the page prefix (separate settings)'
+                continue
+            sb = Builder(dialogs[sub], '', cands.most_common(1)[0][0], radio_text_labels=True)
+            st_ = sb.build(dialogs[sub])
+            subdialogs.append(OD([('dialog', sub), ('openedBy', btn['label']), ('keyPrefix', sb.nested),
+                                  ('tabs', st_.get('tabs', [])), ('groups', st_['groups']), ('controls', st_['controls'])]))
+            dialog_keys |= with_enables(sb, prefix)
+        unmapped = [k for k in file_keys if k not in dialog_keys]
+        panel_keys = {c.get(f) for c, _ in collect(tree, []) for f in ('key', 'enableKey') if c.get(f)}
+        found = set()
+        legacy_ctl = []
+        for oname, opanel, onested in others:
+            oscope = scope_of(oname, opanel)
+            if oscope is None:
+                print('WARNING: %s: source %s %s not in this .aid' % (page, oname, opanel or ''), file=sys.stderr)
+                continue
+            lb = Builder(oscope, prefix, onested, radio_text_labels=True)
+            ltree = lb.build(oscope)
+            for c, pth in collect(ltree, []):
+                k = c.get('key')
+                if not k or prefix + k not in unmapped or prefix + k in found:
+                    continue
+                if any(pk.endswith('.' + k) for pk in panel_keys):
+                    continue
+                c = OD(c)
+                c['confidence'] = 'other-dialog'
+                c['aidDialog'] = oname + ('/' + opanel if opanel else '')
+                c['dialogPath'] = [x for x in pth if x]
+                legacy_ctl.append(c)
+                found.add(prefix + k)
+                if c.get('enableKey') and prefix + c['enableKey'] in unmapped:
+                    found.add(prefix + c['enableKey'])
+            for k in with_enables(lb, prefix):
+                if k in unmapped and re.search(r'(_en|_enable|Enable)$', k):
+                    found.add(k)
+        save_as = [k[len(prefix):] for k in unmapped if re.search(r'(^|\.)(out_file|aOutFile|OutFile)$', k[len(prefix):])
+                   and '.' not in k[len(prefix):]]
+        file_menu = [b.key(m) for m in b.members if re.search(r'(^|\.)(in_file|aInFile|InFile)$', m)]
+        for k in save_as + file_menu:
+            found.add(prefix + k)
+        if not file_menu and prefix + 'in_file' in unmapped:
+            found.add(prefix + 'in_file')
+            file_menu = ['in_file']
+        still = [k[len(prefix):] for k in unmapped if k not in found]
+
+        out = OD()
+        out['page'] = page
+        out['viewPrefix'] = None
+        out['gaDrawingPrefix'] = ga_prefix
+        out['assemblyDrawingPrefix'] = asm_prefix
+        out['aidFile'] = os.path.basename(path)
+        out['aidDialog'] = dname
+        if panel:
+            out['aidPanel'] = panel
+        out['otherSources'] = [o[0] + ('/' + o[1] if o[1] else '') + (' (keys under %s)' % o[2] if o[2] else '') for o in others]
+        out['treeCheckBoxKey'] = OD([('key', tree_key), ('in', 'top level of the drawing file'), ('confidence', 'decoded'),
+                                     ('note', 'check box in front of the button that opens the page in the drawing properties (gr_gdraw_attrib, gr_adraw_attrib)')])
+        out['fileMenuKey'] = file_menu[0] if file_menu else None
+        out['saveAsKey'] = save_as[0] if save_as else None
+        out['labelMarks'] = [OD([('keyStem', stem), ('rows', 5), ('keys', n),
+                                 ('note', 'one row per label text A1..A5, each the structure of the "..." dialog '
+                                          'gr_view_reference_mark_attrib (page ViewLabelMark)')]) for stem, n in marks.items()]
+        out['tabs'] = tree.get('tabs', [])
+        out['groups'] = tree['groups']
+        out['controls'] = tree['controls']
+        out['subDialogs'] = subdialogs
+        out['siblingPageControls'] = []
+        out['legacyControls'] = legacy_ctl
+        out['unmappedKeys'] = still
+        out['dialogKeysNotInSamples'] = sorted(k[len(prefix):] for k in dialog_keys
+                                               if k not in drawing_keys and not re.search(r'(in_file|InFile)$', k))
+        with open(os.path.join(outdir, page + '.json'), 'w', encoding='utf-8', newline='\n') as f:
+            json.dump(out, f, indent=2, ensure_ascii=False)
+            f.write('\n')
+        summary.append((page, prefix, len(file_keys), len(file_keys) - len(unmapped), 0, len(legacy_ctl), len(still)))
+
     print('%-28s %-20s %5s %7s %7s %7s %9s' % ('page', 'prefix', 'keys', 'dialog', 'sibling', 'legacy', 'unmapped'))
     for s_ in summary:
         print('%-28s %-20s %5d %7d %7d %7d %9d' % s_)

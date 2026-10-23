@@ -53,6 +53,39 @@ namespace DialogClassGenerator
             ["PartFacesScale"] = "HatchScale",
             ["LineType"] = "WeldMarkLineShape",
             ["Symbol"] = "ViewLabelSymbol",
+
+            // Pages of the drawing properties
+            ["Straight"] = "DimensionType",
+            ["InXDirection"] = "DimensionTypeInXDirection",
+            ["Angle"] = "AngleDimensionType",
+            ["PrecisionStraight"] = "DimensionPrecision",
+            ["PrecisionAngle"] = "AngleDimensionPrecision",
+            ["FormatStraight"] = "DimensionFormat",
+            ["FormatAngle"] = "AngleDimensionFormat",
+            ["TextPlace"] = "DimensionTextPlacing",
+            ["ArrowShape"] = "DimensionArrowShape",
+            ["ShortDimensions"] = "ShortDimensionPlacing",
+            ["Origin"] = "ExaggerationOrigin",
+            ["PlateSideMarksType"] = "PlateSideMarkType",
+            ["DimensionPositioningHorizontal"] = "GridDimensionHorizontalPosition",
+            ["DimensionPositioningVertical"] = "GridDimensionVerticalPosition",
+            ["LeftSection"] = "SectionDirection",
+            ["ScaleSize"] = "SectionViewSize",
+            ["LeftSymbol"] = "SectionMarkLeftSymbol",
+            ["RightSymbol"] = "SectionMarkRightSymbol",
+            ["ShapeOfTheBoundary"] = "DetailBoundaryShape",
+            ["DetailViewSymbol"] = "DetailMarkSymbol",
+            ["CoordSys"] = "ViewCoordinateSystem",
+            ["CoordSysXRotate"] = "ViewRotationAroundX",
+            ["CoordSysYRotate"] = "ViewRotationAroundY",
+            ["Internal"] = "PartInternalDimensions",
+            ["Options"] = "CombineDimensionsOption",
+            ["SecondaryPart"] = "SecondaryPartPosition",
+            ["PreferredDimSide"] = "PartPreferredDimensionSide",
+            ["BoltDimensionsPreferredDimSide"] = "BoltPreferredDimensionSide",
+            ["PositionBoltsTo"] = "PositionTo",
+            ["CenteredPart"] = "CenteredPosition",
+            ["CombineBoltDimensions"] = "CombineDimensions",
         };
 
         /// <summary>Member names for options that the dialog shows as a picture only, by the picture's name.</summary>
@@ -65,6 +98,16 @@ namespace DialogClassGenerator
             ["weld_single_line"] = "SingleLine",
             ["weld_double_line"] = "DoubleLine",
             ["gr_mark_parallel_on_rebar_leader_line"] = "ParallelOnLeaderLine",
+            ["om_pb_dim_arrow_filled"] = "FilledArrow",
+            ["om_pb_dim_arrow_line"] = "LineArrow",
+            ["om_pb_dim_arrow_circle"] = "CircleArrow",
+            ["om_pb_dim_arrow_open"] = "OpenArrow",
+            ["knock_off_dimension_line"] = "DimensionLine",
+            ["knock_off_dimension_parenthesis"] = "Parenthesis",
+            ["adcd_part_prefered_side_view"] = "View",
+            ["adcd_part_prefered_side_side"] = "Side",
+            ["adcd_screw_prefered_side_view"] = "View",
+            ["adcd_screw_prefered_side_side"] = "Side",
         };
 
         private static readonly HashSet<string> GenericLabels = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -83,6 +126,19 @@ namespace DialogClassGenerator
             ["BarAttr.fill_color"] = "2026",
             ["MeshAttr.fill_color"] = "2026",
         };
+
+        /// <summary>
+        /// What a running Tekla does with a key, verified with a probe view (see CLAUDE.md): "page class:key" → note for its
+        /// XML comment. Only the pages that were probed: the same key of another page can mean something else.
+        /// </summary>
+        private static readonly Dictionary<string, string> KeyNotes = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["PartMark:create"] = "Tekla 2025 ignores it when it loads the file: with 0 the part marks of a view still showed."
+                + " Hide the marks with <c>General.VisibilityOfMark.VisibilityInView</c> (<c>in_all_views</c>).",
+        };
+
+        /// <summary>The page being written, for <see cref="KeyNotes"/>.</summary>
+        private static string CurrentPage;
 
         /// <summary>Check boxes (page class, key) found in the files saved from the dialog.</summary>
         private static readonly List<(string Page, string Key)> FileEnableKeys = new List<(string Page, string Key)>();
@@ -159,9 +215,12 @@ namespace DialogClassGenerator
             }
 
             Prune(page);
+            var handWritten = new HashSet<string>(spec.HandWrittenKeys, StringComparer.Ordinal);
+            RemoveControls(page, control => handWritten.Contains(control.Key));
 
             // Everything the dialog does not show on this page, so that every key has a property
             var covered = new HashSet<string>(AllControls(page).Select(c => c.Key), StringComparer.Ordinal);
+            covered.UnionWith(handWritten);
             var enableKeys = new HashSet<string>(AllControls(page).Where(c => c.EnableKey != null).Select(c => c.EnableKey), StringComparer.Ordinal);
             var advanced = new Container { Kind = "Group", Label = "Advanced", Description = "Keys of this page that the dialog does not show (or shows on another page)." };
             foreach ((string array, string origin) in new[] { ("siblingPageControls", "sibling"), ("legacyControls", "legacy") })
@@ -172,6 +231,14 @@ namespace DialogClassGenerator
                     if (control.Key != null && covered.Add(control.Key))
                     {
                         control.Origin = origin;
+                        if (Str(element, "confidence") == "other-dialog")
+                        {
+                            // A control of another dialog with the same keys goes where that dialog shows it
+                            control.Origin = "other";
+                            InsertByPath(page, Array(element, "dialogPath").Select(p => p.GetString()).ToList(), control);
+                            continue;
+                        }
+
                         advanced.Items.Add(control);
                     }
                 }
@@ -212,14 +279,60 @@ namespace DialogClassGenerator
                 Resolve(spec, control, vi, gd);
             }
 
-            AssignNames(page, new HashSet<string>(StringComparer.Ordinal) { spec.Class });
+            // Names the hand-written part and the label rows take are taken at the level of the page only
+            var reserved = new HashSet<string>(spec.HandWrittenMembers, StringComparer.Ordinal);
+            reserved.UnionWith(LabelMarkProperties(spec).Select(row => row.Property));
+            AssignNames(page, new HashSet<string>(StringComparer.Ordinal) { spec.Class }, reserved, spec.DrawingPage);
             return page;
+        }
+
+        /// <summary>Adds <paramref name="control"/> to the tab and groups named by <paramref name="path"/>, creating the missing ones.</summary>
+        private static void InsertByPath(Container page, List<string> path, Control control)
+        {
+            Container target = page;
+            foreach (string label in path)
+            {
+                Container found = target.Items.OfType<Container>().FirstOrDefault(c => c.Kind != "Dialog" && c.Label == label);
+                if (found == null)
+                {
+                    bool tabs = target == page && page.Items.OfType<Container>().Any(c => c.Kind == "Tab");
+                    found = new Container { Kind = tabs ? "Tab" : "Group", Label = label };
+                    target.Items.Add(found);
+                }
+
+                target = found;
+            }
+
+            target.Items.Add(control);
+        }
+
+        /// <summary>The label rows of a page: property name, key stem relative to the prefix (ending with the row and a dot), summary.</summary>
+        private static IEnumerable<(string Property, string KeyStem, string Summary, int Row)> LabelMarkProperties(PageSpec spec) =>
+            spec.LabelMarks.SelectMany(mark => Enumerable.Range(1, 5).Select(row =>
+                (mark.Property + row.ToString(CultureInfo.InvariantCulture), mark.KeyStem + row.ToString(CultureInfo.InvariantCulture) + ".", mark.Summary, row)));
+
+        /// <summary>Whether a key of the page belongs to one of its label rows (typed by <c>ViewLabelMark</c>).</summary>
+        private static bool IsLabelMarkKey(PageSpec spec, string key) =>
+            LabelMarkProperties(spec).Any(row => key.StartsWith(row.KeyStem, StringComparison.Ordinal));
+
+        private static void RemoveControls(Container container, Func<Control, bool> predicate)
+        {
+            container.Items.RemoveAll(item => item is Control control && predicate(control));
+            foreach (Container child in container.Items.OfType<Container>())
+            {
+                RemoveControls(child, predicate);
+            }
+
+            container.Items.RemoveAll(item => item is Container child && child.Items.Count == 0);
         }
 
         private static IEnumerable<(string Key, AttributeValue Value)> SampleKeys(PageSpec spec, AttributeCollection vi, AttributeCollection gd)
         {
             var seen = new HashSet<string>(StringComparer.Ordinal);
-            foreach ((AttributeCollection file, string prefix) in new[] { (vi, spec.ViewPrefix), (gd, spec.GADrawingPrefix) })
+
+            // The assembly drawing file only for a page GA drawings do not have (dcd.): the other pages keep the keys they had
+            string assemblyOnly = spec.GADrawingPrefix == null ? spec.AssemblyDrawingPrefix : null;
+            foreach ((AttributeCollection file, string prefix) in new[] { (vi, spec.ViewPrefix), (gd, spec.GADrawingPrefix), (SampleAd, assemblyOnly) })
             {
                 if (prefix == null)
                 {
@@ -234,7 +347,7 @@ namespace DialogClassGenerator
                     }
 
                     string key = pair.Key.Substring(prefix.Length);
-                    if (key.Length == 0 || (spec.TopLevelOnly && key.IndexOf('.') >= 0))
+                    if (key.Length == 0 || (spec.TopLevelOnly && key.IndexOf('.') >= 0) || IsLabelMarkKey(spec, key))
                     {
                         continue;
                     }
@@ -291,6 +404,7 @@ namespace DialogClassGenerator
                 Confidence = Str(json, "confidence"),
                 Format = Str(json, "format"),
                 Position = Num(json, "position") ?? double.MaxValue,
+                AidDialog = Str(json, "aidDialog"),
             };
 
             if (json.TryGetProperty("samples", out JsonElement samples) && samples.ValueKind == JsonValueKind.Object)
@@ -413,6 +527,11 @@ namespace DialogClassGenerator
             }
 
             if (spec.GADrawingPrefix != null && gd.TryGetValue(spec.GADrawingPrefix + key, out value))
+            {
+                return value.Kind;
+            }
+
+            if (spec.GADrawingPrefix == null && spec.AssemblyDrawingPrefix != null && SampleAd.TryGetValue(spec.AssemblyDrawingPrefix + key, out value))
             {
                 return value.Kind;
             }
@@ -578,9 +697,9 @@ namespace DialogClassGenerator
             return name;
         }
 
-        private static void AssignNames(Container container, HashSet<string> enclosing)
+        private static void AssignNames(Container container, HashSet<string> enclosing, HashSet<string> reserved = null, bool drawingPage = false)
         {
-            var used = new HashSet<string>(StringComparer.Ordinal);
+            var used = new HashSet<string>(reserved ?? Enumerable.Empty<string>(), StringComparer.Ordinal);
             int groupIndex = 0;
             foreach (object item in container.Items)
             {
@@ -589,11 +708,14 @@ namespace DialogClassGenerator
                     string name = Pascal(TrimLabel(control.Label));
 
                     // In the Advanced group a generic label ("Color") does not say which setting it is, and which control
-                    // gets it would depend on the order of the dialog: the key says it for good (ReferenceColour)
-                    bool generic = control.Origin != null && GenericLabels.Contains(TrimLabel(control.Label));
+                    // gets it would depend on the order of the dialog: the key says it for good (ReferenceColour).
+                    // Controls of another dialog sit in the groups of that dialog, where the label says it.
+                    bool generic = control.Origin != null && control.Origin != "other" && GenericLabels.Contains(TrimLabel(control.Label));
                     if (name.Length < 2 || control.Origin == "file" || generic)
                     {
-                        name = KeyPascal(control.Key);
+                        // A nested key repeats its struct (SectionMark.SectionMarkLeftSymbolPositionX): the drawing pages name
+                        // a control by the last part of its key
+                        name = KeyPascal(drawingPage ? LastSegment(control.Key) : control.Key);
                     }
 
                     name = Unique(name, used, enclosing, () => KeyPascal(control.Key));
@@ -612,7 +734,7 @@ namespace DialogClassGenerator
                     child.PropertyName = name;
                     child.ClassName = Unique(name + child.Kind, used, enclosing, () => name + child.Kind + "Section");
                     var inner = new HashSet<string>(enclosing, StringComparer.Ordinal) { child.ClassName };
-                    AssignNames(child, inner);
+                    AssignNames(child, inner, null, drawingPage);
                 }
             }
         }
@@ -640,6 +762,7 @@ namespace DialogClassGenerator
 
         private static string WritePage(PageSpec spec, Container page, AttributeCollection vi, AttributeCollection gd)
         {
+            CurrentPage = spec.Class;
             var w = new CodeWriter();
             w.Line("// <auto-generated>");
             w.Line($"//     Generated by tools/DialogClassGenerator from tools/DialogClassGenerator/Dialogs/{spec.Json}.json, the decoded");
@@ -649,7 +772,11 @@ namespace DialogClassGenerator
             w.Line();
             w.Line($"namespace {spec.Namespace}");
             w.Open();
-            w.Summary(PageSummary(spec));
+            if (!spec.HandWrittenPart)
+            {
+                w.Summary(PageSummary(spec));
+            }
+
             w.Line($"public sealed partial class {spec.Class} : global::TeklaHelper.DrawingAttribute.AttributeSection");
             w.Open();
             WriteConstant(w, "ViewPrefix", spec.ViewPrefix, "Prefix of the page in view attribute files (.vi).");
@@ -661,15 +788,29 @@ namespace DialogClassGenerator
             string Constant(string name, string value) => value == null ? "null" : name;
             w.Summary("Returns the prefix of the page in a file of <paramref name=\"host\"/>; null when that kind of file has no such page.");
             w.Line($"public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, {Constant("ViewPrefix", spec.ViewPrefix)}, {Constant("GADrawingPrefix", spec.GADrawingPrefix)}, {Constant("AssemblyDrawingPrefix", spec.AssemblyDrawingPrefix)});");
-            w.Line();
-            w.Summary("Creates the page over the keys of <paramref name=\"values\"/> under <paramref name=\"prefix\"/>.");
-            w.Line("/// <param name=\"values\">Values of the attribute file.</param>");
-            w.Line("/// <param name=\"prefix\">Prefix of the page in that file, e.g. <see cref=\"ViewPrefix\"/>.</param>");
-            w.Line($"public {spec.Class}(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)");
-            w.Line("    : base(values, prefix)");
-            w.Open();
-            w.Close();
+            if (!spec.HandWrittenPart)
+            {
+                w.Line();
+                w.Summary("Creates the page over the keys of <paramref name=\"values\"/> under <paramref name=\"prefix\"/>.");
+                w.Line("/// <param name=\"values\">Values of the attribute file.</param>");
+                string example = spec.ViewPrefix != null ? "ViewPrefix" : spec.GADrawingPrefix != null ? "GADrawingPrefix" : "AssemblyDrawingPrefix";
+                w.Line($"/// <param name=\"prefix\">Prefix of the page in that file, e.g. <see cref=\"{example}\"/>.</param>");
+                w.Line($"public {spec.Class}(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)");
+                w.Line("    : base(values, prefix)");
+                w.Open();
+                w.Close();
+            }
+
             WriteMembers(w, page);
+            foreach ((string property, string keyStem, string summary, int row) in LabelMarkProperties(spec))
+            {
+                string field = "_" + char.ToLowerInvariant(property[0]) + property.Substring(1);
+                w.Line();
+                w.Line($"private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark {field};");
+                w.Line();
+                w.Summary($"Row A{row.ToString(CultureInfo.InvariantCulture)} of the {Xml(summary)} texts: the dialog of its \"...\" button (<c>{keyStem}*</c>).");
+                w.Line($"public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark {property} => {field} ?? ({field} = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + \"{keyStem}\"));");
+            }
 
             if (spec.FileInKey != "in_file" || spec.FileOutKey != "out_file")
             {
@@ -698,7 +839,7 @@ namespace DialogClassGenerator
             w.Summary("Keys the properties of the page read and write, relative to the page prefix.");
             w.Line("internal static readonly string[] Keys =");
             w.Open();
-            foreach (string key in controls.Select(c => c.Key).Distinct())
+            foreach (string key in controls.Select(c => c.Key).Concat(spec.HandWrittenKeys).Distinct())
             {
                 w.Line($"\"{key}\",");
             }
@@ -848,6 +989,11 @@ namespace DialogClassGenerator
                 hosts.Add($"<c>{spec.AssemblyDrawingPrefix}*</c> in assembly, single-part and cast unit drawing files");
             }
 
+            if (spec.DrawingPage)
+            {
+                return $"{spec.Description}, with its tabs and group boxes as nested classes: {string.Join(", ", hosts)}. Every key of the page in files saved from the Tekla 2025 dialogs has a property; those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).";
+            }
+
             return $"The \"{Xml(spec.Title)}\" page of the Tekla View properties dialog, with its tabs and group boxes as nested classes: {string.Join(", ", hosts)}. Every key of the page in files saved from the Tekla 2025 dialogs has a property; those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).";
         }
 
@@ -874,6 +1020,11 @@ namespace DialogClassGenerator
                 text.Append($" New in Tekla Structures {version}: the dialogs of earlier versions do not have it.");
             }
 
+            if (KeyNotes.TryGetValue(CurrentPage + ":" + control.Key, out string note))
+            {
+                text.Append(' ').Append(note);
+            }
+
             if (control.ClrType == "bool" && (control.BoolOn != 1 || control.BoolOff != 0))
             {
                 text.Append($" Stored as {control.BoolOn} (true) and {control.BoolOff} (false).");
@@ -897,6 +1048,9 @@ namespace DialogClassGenerator
                     break;
                 case "legacy":
                     text.Append(" Shown in an older Tekla dialog, not in the current View properties.");
+                    break;
+                case "other":
+                    text.Append($" Shown in another Tekla dialog with the same keys (<c>{Xml(control.AidDialog)}</c>).");
                     break;
                 case "file":
                     text.Append(" Not shown in the dialog.");

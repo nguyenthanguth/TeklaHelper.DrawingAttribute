@@ -1,7 +1,8 @@
 """Post-process the page JSON files in place:
 - apiEnum / apiName: Tekla.Structures.Drawing 2025 enum whose values equal (or are offset from) the stored values
   (enum values read by reflection from Tekla.Structures.Drawing.dll of Tekla 2025, written out in ENUMS below);
-- samples: value counts of every option key in real .vi files, values outside the menu listed separately.
+- samples: value counts of every option key in real .vi files (drawing pages: .gd, .md, .ad, .wd and .cud files under
+  both drawing prefixes), values outside the menu listed separately.
 
 python annotate.py <dialogs dir> <folder with .vi files> ...
 """
@@ -34,11 +35,49 @@ ENUMS = {
     'ReinforcementBase.HookedEndSymbolTypes': {1: 'NoHook', 2: 'HalfHook', 3: 'FullHook'},
     'View.LabelLineLengthType': {1: 'Minimal', 2: 'Custom'},
     'View.ShorteningCutPartType': {1: 'BothDirections', 2: 'X_Direction', 3: 'Y_Direction'},
+    # DimensionSetBaseAttributes, for the Dimension page of the drawing properties
+    'DimensionSetBaseAttributes.DimensionTypes': {1: 'Relative', 2: 'Absolute', 3: 'RelativeAndAbsolute', 4: 'USAbsolute', 8: 'Elevation',
+                                                  16: 'USAbsolute2', 35: 'AbsoluteWithShortRelatives', 99: 'AbsoluteWithAllRelativesAbove'},
+    'DimensionSetBaseAttributes.DimensionValuePrecisions': {1: 'Whole', 2: 'OnePerTwo', 3: 'OnePerThree', 4: 'OnePerFour', 8: 'OnePerEight',
+                                                            10: 'OnePerTen', 16: 'OnePerSixteen', 32: 'OnePerThirtytwo', 100: 'OnePerHundred',
+                                                            1000: 'OnePerThousand', -100: 'TenPerOne', -50: 'FivePerOne', -25: 'TwoAndHalfPerOne'},
+    'DimensionSetBaseAttributes.DimensionValueFormats': {0: 'NoDecimals', 1: 'OneOptionalDecimal', 2: 'OneDecimal', 3: 'TwoOptionalDecimals',
+                                                         4: 'TwoDecimals', 5: 'ThreeOptionalDecimals', 6: 'ThreeDecimals', 7: 'RationalPart',
+                                                         8: 'SuperscriptEnding'},
+    'DimensionSetBaseAttributes.FrameTypes': {0: 'None', 1: 'Rectangle', 2: 'Underline', 3: 'RoundedRectangle', 8: 'SharpenedRectangle'},
+    'DimensionSetBaseAttributes.DimensionTextPlacings': {0: 'AboveDimensionLine', 1: 'OnDimensionLine'},
+    'DimensionSetBaseAttributes.ShortDimensionTypes': {0: 'Inside', 1: 'Outside'},
+    'DimensionSetBaseAttributes.ExtensionLineTypes': {0: 'No', 1: 'Yes', 2: 'NotOnGridlines'},
+    'DimensionSetBaseAttributes.ExaggerationDirections': {1: 'LeftDown', 2: 'RightUp', 3: 'Both'},
+    'DimensionSetBaseAttributes.ExaggerationOrigins': {1: 'NearDimensionLine', 2: 'NearMeasuredObject'},
+    'DimensionSetBaseAttributes.CombineFormats': {0: 'Off', 1: 'NumberOfItemsTimesLength', 2: 'NumberOfItemsTimesLengthEqualsResult'},
+}
+
+# Dimension pages (dd., dcd.): key → (enum, API value - stored value), checked value by value against the menus
+DIMENSION_ENUMS = {
+    'dim_type': ('DimensionSetBaseAttributes.DimensionTypes', 0),
+    'dim_type_x': ('DimensionSetBaseAttributes.DimensionTypes', 0),
+    'dim_precision': ('DimensionSetBaseAttributes.DimensionValuePrecisions', 0),
+    'AnglePrecision': ('DimensionSetBaseAttributes.DimensionValuePrecisions', 0),
+    'dim_format': ('DimensionSetBaseAttributes.DimensionValueFormats', 0),
+    'AngleFormat': ('DimensionSetBaseAttributes.DimensionValueFormats', 0),
+    'dim_frame': ('DimensionSetBaseAttributes.FrameTypes', 0),
+    'dim_text_on_line': ('DimensionSetBaseAttributes.DimensionTextPlacings', 0),
+    'short_dim_type': ('DimensionSetBaseAttributes.ShortDimensionTypes', 0),
+    'ShortExtensionLine': ('DimensionSetBaseAttributes.ExtensionLineTypes', 0),
+    'ExaggerationDirection': ('DimensionSetBaseAttributes.ExaggerationDirections', 1),
+    'ExaggerationOrigin': ('DimensionSetBaseAttributes.ExaggerationOrigins', 1),
+    'dim_units': ('Units', 0),
+    'DimTypeInXDirection': ('DimensionSetBaseAttributes.DimensionTypes', 0),
+    'combine_bolt_dim': ('DimensionSetBaseAttributes.CombineFormats', 0),
+    'combine_part_dimensions': ('DimensionSetBaseAttributes.CombineFormats', 0),
 }
 
 def enum_for(page, key, ctl):
     k = key.split('.')[-1]
     t = ctl['type']
+    if page in ('Dimensioning', 'AssemblyDimensioning') and key in DIMENSION_ENUMS:
+        return DIMENSION_ENUMS[key]
     if t == 'color':
         return 'DrawingColors', 0
     if t == 'linetype':
@@ -87,6 +126,20 @@ def main():
     for a in sys.argv[2:]:
         files += glob.glob(os.path.join(a, '**', '*.vi'), recursive=True)
     vals = collections.defaultdict(collections.Counter)
+    drawing_files = []
+    for a in sys.argv[2:]:
+        for ext in ('gd', 'md', 'ad', 'wd', 'cud'):
+            drawing_files += glob.glob(os.path.join(a, '**', '*.' + ext), recursive=True)
+    drawing_vals = collections.defaultdict(collections.Counter)
+    for f in drawing_files:
+        try:
+            data = open(f, 'rb').read()
+        except OSError:
+            continue
+        for line in data.split(b'\r\n'):
+            k, _, v = line.partition(b' ')
+            k = re.sub(r'^(gdraw|mdraw|adraw|wdraw|cudraw)_dial\.', '', k.decode('latin1'))
+            drawing_vals[k][v.decode('latin1')] += 1
     for f in files:
         try:
             data = open(f, 'rb').read()
@@ -101,6 +154,8 @@ def main():
     for f in sorted(glob.glob(os.path.join(ddir, '*.json'))):
         d = json.load(open(f, encoding='utf-8'), object_pairs_hook=OD)
         page, prefix = d['page'], d['viewPrefix']
+        drawing = prefix is None
+        prefixes = [p for p in (d.get('gaDrawingPrefix'), d.get('assemblyDrawingPrefix')) if p] if drawing else [prefix]
         items = list(walk(d))
         for sd in d.get('subDialogs', []):
             items += list(walk(sd))
@@ -108,7 +163,9 @@ def main():
         for c in items:
             if not c.get('key'):
                 continue
-            full = prefix + c['key']
+            counts = collections.Counter()
+            for p in dict.fromkeys(prefixes):
+                counts.update((drawing_vals if drawing else vals).get(p + c['key'], collections.Counter()))
             if c.get('options') and c['type'] in ('option', 'color', 'linetype'):
                 en, off = enum_for(page, c['key'], c)
                 if en:
@@ -124,16 +181,17 @@ def main():
                                 o['label'] = table[o['value']]
                                 o['labelSource'] = 'bitmap; name from DrawingColors'
                 allowed = {str(o['value']) for o in c['options']}
-                seen = vals.get(full, collections.Counter())
+                seen = counts
                 if seen:
                     c['samples'] = OD([('files', sum(seen.values())),
                                        ('inMenu', OD(sorted(((v, n) for v, n in seen.items() if v in allowed), key=lambda x: -x[1]))),
                                        ('outsideMenu', OD(sorted(((v, n) for v, n in seen.items() if v not in allowed), key=lambda x: -x[1])))])
             elif c['type'] in ('toggle', 'number', 'text', 'hatch', 'font'):
-                seen = vals.get(full)
+                seen = counts
                 if seen:
                     c['samples'] = OD([('files', sum(seen.values())), ('top', OD(seen.most_common(5)))])
-        d['samplesSource'] = '%d .vi files under %s' % (len(files), ', '.join(sys.argv[2:]))
+        d['samplesSource'] = '%d %s files under %s' % (len(drawing_files) if drawing else len(files),
+                                                       'drawing' if drawing else '.vi', ', '.join(sys.argv[2:]))
         with open(f, 'w', encoding='utf-8', newline='\n') as fh:
             json.dump(d, fh, indent=2, ensure_ascii=False)
             fh.write('\n')

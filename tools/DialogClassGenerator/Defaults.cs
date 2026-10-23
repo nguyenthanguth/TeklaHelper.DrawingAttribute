@@ -227,9 +227,15 @@ namespace DialogClassGenerator
         {
             var keys = new List<string>();
             w.Line();
-            w.Summary("Sets every property of the page to its default and ticks every check box. A default is the value most files shipped with Tekla hold (at least three), else the dialog's own default, else the value of a file saved from the dialog.");
+            w.Summary("Sets every property of the page to its default and ticks every check box. A default is the value most files shipped with Tekla hold (at least three), else the dialog's own default, else the value of a file saved from the dialog."
+                + (spec.HandWrittenPart ? " The View creation table and the 3D view properties file are left as they are: their shipped values name files of an environment." : string.Empty));
             w.Line("public void SetDefaults()");
             w.Open();
+            foreach ((string property, string key, string type) in spec.HandWrittenDefaults)
+            {
+                keys.Add(key);
+                w.Line($"{property} = {HandWrittenExpression(spec, key, type)};");
+            }
             foreach ((string path, Control control) in ControlPaths(page, string.Empty))
             {
                 if (keys.Contains(control.Key))
@@ -241,10 +247,36 @@ namespace DialogClassGenerator
                 w.Line($"{path} = {Expression(control, ControlDefault(spec, control, vi, gd, ad))};");
             }
 
+            foreach ((string property, _, _, _) in LabelMarkProperties(spec))
+            {
+                w.Line($"{property}.SetDefaults();");
+            }
+
             w.Line();
             w.Line("SetAllEnabled(true);");
             w.Close();
             PageDefaults[spec.Class] = (keys, enableKeys);
+        }
+
+        /// <summary>The default of a property of the hand-written part of a page, as a C# expression.</summary>
+        private static string HandWrittenExpression(PageSpec spec, string key, string type)
+        {
+            string text = MostCommon("gd", Prefixed(spec.GADrawingPrefix, key)) ?? MostCommon("ad", Prefixed(spec.AssemblyDrawingPrefix, key))
+                ?? throw new InvalidOperationException($"No shipped value for the hand-written key {key} of {spec.Class}.");
+            AttributeValue value = AttributeValue.Parse(text);
+            if (type.EndsWith(".ViewCreation", StringComparison.Ordinal))
+            {
+                string[] names = { "Off", "Auto", "On" };
+                int number = value.AsInt32();
+                return Named(type, number, number >= 0 && number < names.Length ? names[number] : null);
+            }
+
+            if (type == "bool")
+            {
+                return value.AsInt32() != 0 ? "true" : "false";
+            }
+
+            return Expression(new Control { ClrType = type }, text);
         }
 
         /// <summary>The value properties of a page with their path from the page (<c>Content.Representation.Representation</c>).</summary>
@@ -349,7 +381,10 @@ namespace DialogClassGenerator
             foreach (PageSpec spec in PageSpecs.All)
             {
                 string prefix = host == PageHost.View ? spec.ViewPrefix : host == PageHost.GADrawing ? spec.GADrawingPrefix : spec.AssemblyDrawingPrefix;
-                if (prefix == null || !PageDefaults.TryGetValue(spec.Class, out var defaults))
+
+                // The pages of the drawing properties only keep the values of their own file type (the shipped GA and
+                // assembly files do not agree on dimensions and views), which SetDefaults(), written for every host, cannot
+                if (prefix == null || spec.DrawingPage || !PageDefaults.TryGetValue(spec.Class, out var defaults))
                 {
                     continue;
                 }
@@ -369,6 +404,17 @@ namespace DialogClassGenerator
                     {
                         pageValues[p + key] = null;
                         pagePrefixes[p + key] = p;
+                    }
+                }
+
+                // The label rows of the page: the keys of ViewLabelMark under each row
+                foreach ((_, string keyStem, _, _) in LabelMarkProperties(spec))
+                {
+                    var label = PageDefaults["ViewLabelMark"];
+                    foreach (string key in label.Values.Concat(label.EnableKeys))
+                    {
+                        pageValues[prefix + keyStem + key] = null;
+                        pagePrefixes[prefix + keyStem + key] = prefix + keyStem;
                     }
                 }
             }

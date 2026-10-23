@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using TeklaHelper.DrawingAttribute.Drawings;
 using TeklaHelper.DrawingAttribute.Pages;
 using TeklaHelper.DrawingAttribute.Views;
@@ -245,7 +246,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
                     {
                         // "GridObjectGridOnEn" is the check box of the older "GridObjectGridOn"
                         bool camelEnableKey = name.EndsWith("En", StringComparison.Ordinal) && known.Contains(name.Substring(0, name.Length - 2));
-                        if (!known.Contains(name) && !IsFileKey(name) && !IsEnableKey(name) && !camelEnableKey)
+                        if (!known.Contains(name) && !IsFileKey(name) && !IsEnableKey(name) && !camelEnableKey && !IsOtherPageKey(file, page, page.Prefix + name))
                         {
                             failures.Add($"{Path.GetFileName(path)}: {page.Prefix}{name}");
                         }
@@ -254,6 +255,105 @@ namespace TeklaHelper.DrawingAttribute.Tests
             }
 
             Assert.True(failures.Count == 0, string.Join(Environment.NewLine, failures.Take(30)));
+        }
+
+        /// <summary>
+        /// Every key of a file saved from the Tekla dialogs (TEKLA_VIEW_DIALOG_SAMPLES) is read and written by a property:
+        /// of a generated page (its <c>Keys</c>), or of the hand-written file, layout and filter sections (found by setting
+        /// each of them on an empty file). Not typed: check boxes (<c>*_en</c>, <c>*_enable</c>, the page check boxes at the
+        /// top level), the names of page files (<c>in_file</c> ...), <c>dl.placing_direction</c> (no Tekla dialog of 2020,
+        /// 2025 or 2026 shows it), the fixed filter fields of the filter pages (<c>vfilter.partname_enable</c> ...: no dialog
+        /// shows them since the filter rows moved to the .vi.filter file) and <c>bound_type</c> in assembly and single-part
+        /// drawings (only the cast unit drawing properties show it).
+        /// </summary>
+        [Fact]
+        public void EveryKeyOfAFileSavedFromTekla_IsTyped()
+        {
+            string root = Environment.GetEnvironmentVariable("TEKLA_VIEW_DIALOG_SAMPLES");
+            if (string.IsNullOrEmpty(root) || !Directory.Exists(root))
+            {
+                return;
+            }
+
+            var failures = new List<string>();
+            var types = new (string Pattern, Func<AttributeFile> Create)[]
+            {
+                ("*.vi", () => new ViewProperties()),
+                ("*.gd", () => new GADrawingAttributeFile()),
+                ("*.ad", () => new AssemblyDrawingAttributeFile()),
+                ("*.wd", () => new SinglePartDrawingAttributeFile()),
+                ("*.cud", () => new CastUnitDrawingAttributeFile()),
+            };
+            foreach ((string pattern, Func<AttributeFile> create) in types)
+            {
+                HashSet<string> handWritten = KeysOfHandWrittenProperties(create);
+                foreach (string path in Directory.EnumerateFiles(root, pattern))
+                {
+                    if (!AttributeFileFormat.Read(path).HasEncodingLine)
+                    {
+                        continue;
+                    }
+
+                    AttributeFile file = create();
+                    file.Load(path);
+                    var typed = new HashSet<string>(handWritten, StringComparer.Ordinal);
+                    foreach (AttributeSection page in Pages(file))
+                    {
+                        typed.UnionWith(PageKeys(page.GetType()).Select(key => page.Prefix + key));
+                    }
+
+                    foreach (string key in file.Values.Keys)
+                    {
+                        bool filterField = Regex.IsMatch(key, @"^(vfilter|vnp_filter|dfilter|dnp_filter)\.");
+                        bool castUnitOnly = key == "bound_type" && !(file is CastUnitDrawingAttributeFile);
+                        if (!typed.Contains(key) && !IsEnableKey(key) && !key.EndsWith("En", StringComparison.Ordinal) && !IsFileKey(key)
+                            && key != "dl.placing_direction" && !filterField && !castUnitOnly)
+                        {
+                            failures.Add($"{Path.GetFileName(path)}: {key}");
+                        }
+                    }
+                }
+            }
+
+            Assert.True(failures.Count == 0, failures.Count + " keys without a property:" + Environment.NewLine + string.Join(Environment.NewLine, failures.Distinct().Take(40)));
+        }
+
+        /// <summary>
+        /// The keys the hand-written properties of a file type write: those of the file itself and of its layout and filter
+        /// sections, each set on an empty file.
+        /// </summary>
+        private static HashSet<string> KeysOfHandWrittenProperties(Func<AttributeFile> create)
+        {
+            var keys = new HashSet<string>(StringComparer.Ordinal);
+            var owners = new List<Func<AttributeFile, object>> { file => file };
+            foreach (string name in new[] { "Layout", "Filter", "NeighborPartFilter" })
+            {
+                PropertyInfo section = create().GetType().GetProperty(name);
+                if (section != null && typeof(AttributeSection).IsAssignableFrom(section.PropertyType))
+                {
+                    owners.Add(file => section.GetValue(file));
+                }
+            }
+
+            foreach (Func<AttributeFile, object> owner in owners)
+            {
+                foreach (PropertyInfo property in owner(create()).GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance))
+                {
+                    Type type = property.PropertyType;
+                    bool simple = type == typeof(bool) || type == typeof(int) || type == typeof(double) || type == typeof(string) || type.IsEnum;
+                    if (!property.CanWrite || !simple || property.GetIndexParameters().Length > 0 || property.Name == nameof(AttributeFile.CodePage))
+                    {
+                        continue;
+                    }
+
+                    AttributeFile file = create();
+                    object target = owner(file);
+                    property.SetValue(target, TestValue(type, property.GetValue(target)));
+                    keys.UnionWith(file.Values.Keys);
+                }
+            }
+
+            return keys;
         }
 
         private static IEnumerable<AttributeSection> Pages(AttributeFile file)
@@ -277,6 +377,17 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 roots.Add(drawing.Protection);
                 roots.Add(drawing.Marks);
                 roots.Add(drawing.Objects);
+                foreach (AttributeSection page in new AttributeSection[] { drawing.Views, drawing.SectionView, drawing.DetailView, drawing.Dimension, drawing.Dimensioning, drawing.AssemblyDimensioning })
+                {
+                    if (page == null)
+                    {
+                        continue;
+                    }
+
+                    // The page and its label rows (LabelMarkA1, SectionMarkA1, DetailMarkA1, ...)
+                    roots.Add(page);
+                    roots.AddRange(page.GetType().GetProperties().Where(p => p.PropertyType == typeof(ViewLabelMark)).Select(p => p.GetValue(page)));
+                }
             }
 
             foreach (object root in roots)

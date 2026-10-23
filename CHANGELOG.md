@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.1.0 - 2026-10-23
+
+### Filters
+- `FilterObjectType` and `FilterObjectTypes`: the object type row of the filter dialog,
+  `FilterProperties.Object.Type.IsNotEqual(FilterObjectType.ReinforcingBar)`, written with the label keys the dialog
+  writes (`albl_Reinforcement_bar`, ...); several types in one row; `TryParse` reads a row's value back. The twelve keys
+  are the list Tekla Structures 2025 evaluates, and every one was checked in Tekla with `==` and `!=`.
+
+### Drawings
+- Every page of the drawing properties is typed, generated from the decoded drawing dialogs like the view pages (tabs
+  and groups as nested classes, a property per control, `SetDefaults()`, `SetAllEnabled`, `ExportTo` / `ImportFrom`):
+  - `Views` (`dview.` / `dv.`): the "View..." page — view size, shortening, labels with the rows `LabelMarkA1` ...
+    `LabelMarkA5`, anchor bolt plans, coordinate system, view names — next to the existing view creation properties;
+  - `SectionView` (`dc.`, new `SectionViewPage`): scale and direction, cutting line, section mark with the rows
+    `SectionMarkA1` ..., section view label with the rows `LabelMarkA1` ...;
+  - `DetailView` (`DetailLabel.`, new `DetailViewPage`): detail view label, detail boundary, detail mark rows;
+  - `Dimension` (`dd.`, new `DimensionPage`): dimension types, units, precision, format, placing, appearance;
+  - `Dimensioning` (`Dimensioning.`, GA and multi drawings, new `DimensioningPage`) and `AssemblyDimensioning` (`dcd.`,
+    assembly, single-part and cast unit drawings, new `AssemblyDimensioningPage`);
+  - `CastUnitDrawingAttributeFile.CastUnitDefinitionMethod` (`bound_type`).
+  Checked in Tekla 2025 with an assembly drawing created from a file with changed values. `CreateDefault()` writes the
+  same files as 1.0.0, byte for byte. `Views.SetDefaults()` also sets the view creation switches, scale, shortening and
+  label properties.
+- The enums `BackgroundMask` and `ViewLabelSymbol` gain a member each for a value the drawing files hold.
+- `DrawingAttributeFile.UseDetailedObjectLevelSettings`, and on `DrawingLayoutSection` the keys of the layout dialogs:
+  `ListHiddenObjectsInTemplates`, `DrawingSize`, `TableLayout`, `ScaleChangeMode` (new enum), `PreferredWidth` /
+  `PreferredHeight`, `AlignSectionViewsWithMainView`, `AlignEndViewsWithMainView`, `ExpandShortenedPartsToFit`,
+  `IncludeSingleParts`, `SinglePartAttributeFile`; the values of `SizeSearchingMode` and `ProjectionType` documented.
+
+### Documentation
+- `PartMark.Advanced.Create` (`*.create` of the part mark page): Tekla 2025 ignores it when it loads a file; hide the
+  part marks with `General.VisibilityOfMark.VisibilityInView` (verified in Tekla).
+- How Tekla applies filter files, as checked in a running Tekla 2025: case-sensitive text, wildcards, single-precision
+  numbers, And before Or, rows of other categories, missing user-defined attributes, disabled rows, coded values, and
+  which files the selection methods of the Open API read (README, `FilterGroup`, `StringFilterProperty`,
+  `NumericFilterProperty`, `FilterFileExtensions`).
+
 ## 1.0.0 - 2026-10-23
 
 First release.

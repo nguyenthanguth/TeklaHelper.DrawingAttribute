@@ -1,0 +1,394 @@
+{
+  "page": "DimensioningRules",
+  "viewPrefix": null,
+  "gaDrawingPrefix": "Dimensioning.",
+  "assemblyDrawingPrefix": null,
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gr_gdcd_attrib",
+  "otherSources": [],
+  "treeCheckBoxKey": {
+    "key": "Dimensioning_en",
+    "in": "top level of the drawing file",
+    "confidence": "decoded",
+    "note": "check box in front of the button that opens the page in the drawing properties (gr_gdraw_attrib, gr_adraw_attrib)"
+  },
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [],
+  "tabs": [
+    {
+      "label": "Grid",
+      "aidName": "cnt_Grid",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Dimension creation",
+          "aidName": "cnt_GridDimCreation",
+          "controls": [
+            {
+              "label": "Grid line dimensions",
+              "labelSource": "enableCheckBox",
+              "key": "GridLineDims",
+              "enableKey": "GridLineDims_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "On",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "opt_GridLineDimsYes"
+                },
+                {
+                  "label": "Off",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "opt_GridLineDimsNo"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnu_GridLineDims",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 2,
+              "samples": {
+                "files": 119,
+                "inMenu": {
+                  "1": 91,
+                  "0": 28
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Overall dimension",
+              "labelSource": "enableCheckBox",
+              "key": "GridLineOverallDims",
+              "enableKey": "GridLineOverallDims_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "On",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "opt_OverallDimsYes"
+                },
+                {
+                  "label": "Off",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "opt_OverallDimsNo"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnu_OverallDims",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 3,
+              "samples": {
+                "files": 119,
+                "inMenu": {
+                  "1": 65,
+                  "0": 54
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 1
+        },
+        {
+          "label": "Dimension positioning",
+          "aidName": "cnt_DimPositioning",
+          "controls": [
+            {
+              "label": "Horizontal",
+              "labelSource": "enableCheckBox",
+              "key": "GridLineHPositioning",
+              "enableKey": "GridLineHPositioning_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Left",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "opt_HorizontalLeft"
+                },
+                {
+                  "label": "Right",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "opt_HorizontalRight"
+                },
+                {
+                  "label": "Both",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "opt_HorizontalBoth"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnu_Horizontal",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 5,
+              "samples": {
+                "files": 119,
+                "inMenu": {
+                  "1": 82,
+                  "2": 27
+                },
+                "outsideMenu": {
+                  "0": 10
+                }
+              }
+            },
+            {
+              "label": "Vertical",
+              "labelSource": "enableCheckBox",
+              "key": "GridLineVPositioning",
+              "enableKey": "GridLineVPositioning_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Above",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "opt_VerticalAbove"
+                },
+                {
+                  "label": "Below",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "opt_VerticalBelow"
+                },
+                {
+                  "label": "Both",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "opt_VerticalBoth"
+                }
+              ],
+              "dialogDefault": 1,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnu_Vertical",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 6,
+              "samples": {
+                "files": 119,
+                "inMenu": {
+                  "1": 79,
+                  "2": 30
+                },
+                "outsideMenu": {
+                  "0": 10
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 4
+        }
+      ],
+      "position": 7
+    },
+    {
+      "label": "Parts",
+      "aidName": "cnt_Parts",
+      "controls": [
+        {
+          "label": "Outside dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "OutsideDimMaxLeaderLen",
+          "enableKey": "OutsideDimMaxLeaderLen_en",
+          "type": "number",
+          "format": "%.0f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "txt_OutsideDims",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 8,
+          "samples": {
+            "files": 119,
+            "top": {
+              "25.000000": 58,
+              "0.000000": 56,
+              "50.000000": 5
+            }
+          }
+        },
+        {
+          "label": "Inside dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "InsideDimMaxLeaderLen",
+          "enableKey": "InsideDimMaxLeaderLen_en",
+          "type": "number",
+          "format": "%.0f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "txt_InsideDims",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 9,
+          "samples": {
+            "files": 119,
+            "top": {
+              "25.000000": 58,
+              "0.000000": 56,
+              "10.000000": 5
+            }
+          }
+        },
+        {
+          "label": "Include parts not entirely in view",
+          "labelSource": "enableCheckBox",
+          "key": "DimPartialParts",
+          "enableKey": "DimPartialParts_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "On",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "opt_PartialPartsYes"
+            },
+            {
+              "label": "Off",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "opt_PartialPartsNo"
+            }
+          ],
+          "dialogDefault": 1,
+          "aidWidget": "optionmenu",
+          "aidName": "optMnu_PartialParts",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 10,
+          "samples": {
+            "files": 119,
+            "inMenu": {
+              "0": 119
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Maximum number of outside dimensions",
+          "labelSource": "enableCheckBox",
+          "key": "MaxOutsideDimNr",
+          "enableKey": "MaxOutsideDimNr_en",
+          "type": "number",
+          "aidWidget": "text",
+          "aidName": "txt_MaxOutsideDims",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 11,
+          "samples": {
+            "files": 119,
+            "top": {
+              "3": 63,
+              "0": 56
+            }
+          }
+        }
+      ],
+      "groups": [
+        {
+          "label": "Object group dimensioning rules",
+          "aidName": "contObjectGroupDimRules",
+          "controls": [
+            {
+              "label": null,
+              "type": "table",
+              "aidName": "table_PartFilter",
+              "aidStruct": "gr_dim_object_group_rule_at_t",
+              "columns": [
+                {
+                  "member": "aObjectGroup",
+                  "title": "Object group"
+                },
+                {
+                  "member": "DimensionCreation",
+                  "title": "Positioning"
+                },
+                {
+                  "member": "PositionX",
+                  "title": "Horizontal position"
+                },
+                {
+                  "member": "PositionY",
+                  "title": "Vertical position"
+                },
+                {
+                  "member": "aTag",
+                  "title": "Tag"
+                }
+              ],
+              "note": "runtime table: its rows are kept in the dialog structure, not under a single key of this page",
+              "position": 13
+            },
+            {
+              "label": "Add Rule",
+              "type": "button",
+              "aidName": "btnAddRule",
+              "callback": "grAddRowToObjectGroupDimRuleCB",
+              "callbackParameter": "table_PartFilter",
+              "position": 14
+            },
+            {
+              "label": "Remove rule",
+              "type": "button",
+              "aidName": "btnRemoveRule",
+              "callback": "grDelRowFromObjGroupDimRuleCB",
+              "callbackParameter": "table_PartFilter",
+              "position": 15
+            },
+            {
+              "label": "Move up",
+              "type": "button",
+              "aidName": "btnMoveUp",
+              "callback": "grMoveSelectedRuleUpCB",
+              "callbackParameter": "table_PartFilter",
+              "position": 16
+            },
+            {
+              "label": "Move down",
+              "type": "button",
+              "aidName": "btnMoveDown",
+              "callback": "grMoveSelectedRuleDownCB",
+              "callbackParameter": "table_PartFilter",
+              "position": 17
+            },
+            {
+              "label": "Object groups...",
+              "type": "button",
+              "aidName": "btnObjectGroups",
+              "callback": "diaDisplayObjectGroupDialogBCB",
+              "callbackParameter": "diaSelectObjectGroupNoApply",
+              "position": 18
+            }
+          ],
+          "groups": [],
+          "position": 12
+        }
+      ],
+      "position": 19
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "ObjectGroupDimensioningRules"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "367 drawing files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

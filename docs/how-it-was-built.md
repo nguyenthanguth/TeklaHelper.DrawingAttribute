@@ -193,6 +193,57 @@ The 2020 result matches the shipped environment files: most of them were saved b
 `section_*` / `center_*` keys. Not checked yet: what Tekla 2020 does with keys it does not know, and files saved from
 the 2020 and 2026 dialogs.
 
+### The pages of the drawing properties
+
+The drawing files hold about 1000 keys more than the pages shared with the view: the view page of the drawing, section
+views, detail views, dimensions and automatic dimensioning. A report from another project (every key of a Tekla 2020
+`.gd` and `.vi` without a typed property) led to decoding them too.
+
+**Finding the dialogs.** For each key prefix, the members of every dialog of the 2026 `.aid` were matched with the keys
+of `DRAWING-TEST.gd` and `test-ad.ad`:
+
+| Keys | Newest dialog that shows them | Other dialogs with the same keys |
+| --- | --- | --- |
+| `dview.` / `dv.` | `gr_ga_view_attrib` ("View..." of the GA drawing properties) | `gr_dv_attrib`, the assembly panel `PanelContentViewCreation` |
+| `dc.` | the "Section view" panel of the assembly drawing properties (the GA dialog only shows the start number) | `gr_dc_attrib`, `gr_csym_attrib` (section mark, keys under `SectionMark.`), `gr_section_label_attrib` |
+| `DetailLabel.` | `gr_detail_symbol_attrib` | `gr_detail_label_attrib` |
+| `dd.` | `gr_dd_attrib` ("Dimension...") with the sub-dialog "Place..." (`dimpl.`) | — |
+| `Dimensioning.` (GA only) | `gr_gdcd_attrib` ("Dimensioning...") | — |
+| `dcd.` (assembly family only) | `gr_adcd_attrib` | `gr_wdcd_attrib`, `gr_cudcd_attrib` |
+
+The rows of label texts of the view, section and detail pages (`ViewLabelMarkA1` ... `A5`, `SectionMark.SectionMarkA1`,
+`SectionMark.ViewLabelMarkA1`, `DetailMarkA1`, ...) have exactly the 26 keys of the view's `ViewLabelMarkA1.`: they reuse
+the class `ViewLabelMark` instead of 650 more generated properties.
+
+**Decoding.** `extract.py` decodes each page from its newest dialog or panel and fills the keys it does not show from the
+other dialogs; those controls keep the tab and group of their own dialog (`dialogPath`), so that `aLabelFrontView`
+becomes `Views.Label.ViewName.FrontView` rather than an unexplained `FrontView` in `Advanced`. A radio button without a
+label takes the text label after it ("Fit by parts", "Section depth"), only on these pages, so that the released view
+pages keep their names. `annotate.py` reads the drawing files for the value statistics and maps the dimension menus to
+the Open API enums (`DimensionSetBaseAttributes.DimensionTypes`, `DimensionValuePrecisions`, `DimensionValueFormats`,
+`CombineFormats`, ...), which name the enum members (`DimensionType.Absolute`, `DimensionPrecision.OnePerEight`).
+
+**Generating.** The view page of the drawing extends the class `DrawingViewCreationSection` released in 1.0.0: the
+generated part skips the keys and member names of the hand-written part (view creation, scale, shortening switch, label
+colour, height and position), and its `SetDefaults()` assigns those properties too, except the View creation table and
+the 3D view file, whose shipped values name files of an environment. The other pages are new classes. The released
+enums only gained members; of the existing generated pages only the XML comment of `PartMark.Advanced.Create` changed.
+
+**Defaults.** `SetDefaults()` of a page cannot tell a GA from an assembly drawing, and their shipped files disagree on
+dimensions and views. `CreateDefault()` therefore keeps, for these pages, the value most files of the same drawing type
+hold, as before: its output did not change.
+
+**Checked in Tekla.** An assembly drawing created from a `CreateDefault()` .ad with changed values (view extension for
+neighbor parts, openings symbol, datum level, skew part shortening; dimension type, colour and text height; cutting
+line colour, section mark symbol colour and arrow length; fewer automatic dimensions) showed every one of them through
+the Drawing API (`View.Attributes`, `StraightDimensionSet.Attributes`, `SectionMarkBase.Attributes`, the number of
+dimension sets).
+
+**What stays untyped.** A test (`EveryKeyOfAFileSavedFromTekla_IsTyped`) checks every key of the files saved from the
+dialogs. The exceptions: check boxes (`SetAllEnabled`), page file names, `dl.placing_direction` (no dialog of 2020, 2025
+or 2026 shows it) and the fixed fields of the filter pages (`vfilter.partname_enable`, ...: no dialog shows them since
+the filter rows moved to the `.vi.filter` file).
+
 ## 7. Default settings
 
 **Probe.** A view with red, dashed, hidden-line parts was loaded with a file holding only `view_scale`: the parts lost
@@ -283,7 +334,7 @@ view filtered on `Name = COLUMN`.
 - **Files.** `AttributeFile` and its companions (`.more`, filters): loading parses every file before applying any;
   saving encodes every file before writing any.
 - **Dialog pages.**
-  - Generated classes for every page of the View properties dialog.
+  - Generated classes for every page of the View properties dialog and of the drawing properties.
   - `MarkPages` and `ObjectPages` group the mark and object pages.
   - `ViewProperties` (`.vi`) and the drawing files (`.gd`, `.md`, `.ad`, `.wd`, `.cud`) expose them, with the prefixes of
     each host.
@@ -298,8 +349,8 @@ view filtered on `Name = COLUMN`.
   dialog (`LeaderLineType`).
 - The dialog's column limits other than the value (127 bytes for category and property, 19 for condition and And/Or,
   0–3 parentheses per row) are documented but not enforced.
-- Assembly drawing dimensioning (`dcd.`), GA dimensioning (`dd.`) and the detail and section view pages have no page
-  classes yet; their keys are reachable by name.
+- `dl.placing_direction` has no control in any dialog; its meaning is not known.
+- What Tekla 2020 does with the keys it does not know (the 70 keys newer dialogs added to `.gd` files).
 
 ## Tools in this repository
 
