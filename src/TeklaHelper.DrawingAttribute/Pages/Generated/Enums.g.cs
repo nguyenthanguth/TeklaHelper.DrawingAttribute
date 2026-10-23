@@ -113,7 +113,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Angle" menu, as Tekla stores them. Used by DimensionPage: angle_dim_type.
+    /// Values of the "Angle" menu, as Tekla stores them. Used by DimensionPage: angle_dim_type, DimensionProperties:
+    /// angle_dim_type.
     /// </summary>
     public enum AngleDimensionType
     {
@@ -182,8 +183,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Background mask" menu, as Tekla stores them. Used by BoltMark: background_mask, ConnectionMark:
-    /// background_mask, DimensionPage: dim_background_mask, NeighborPartMark: background_mask,
-    /// NeighborReinforcementMark: background_mask, PartMark: background_mask and others.
+    /// background_mask, DimensionPage: dim_background_mask, DimensionProperties: dim_background_mask, NeighborPartMark:
+    /// background_mask, NeighborReinforcementMark: background_mask and others.
     /// </summary>
     public enum BackgroundMask
     {
@@ -333,7 +334,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Combine bolt dimensions" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
-    /// combine_bolt_dim, AssemblyDimensioningPage: combine_part_dimensions.
+    /// combine_bolt_dim, AssemblyDimensioningPage: combine_part_dimensions, DimensionProperties: CombineDims.
     /// </summary>
     public enum CombineDimensions
     {
@@ -392,6 +393,76 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Item "5" of the menu (a picture in the dialog).
         /// </summary>
         Value5 = 5,
+    }
+
+    /// <summary>
+    /// Values of the "Curved Dimension Tag Type" menu, as Tekla stores them. Used by DimensionProperties:
+    /// CurvedDimensionTagType.
+    /// </summary>
+    public enum CurvedDimensionTagType
+    {
+        /// <summary>
+        /// gr_dim_tag_type_horver.
+        /// </summary>
+        HorizontalOrVertical = 0,
+
+        /// <summary>
+        /// gr_dim_tag_type_hor.
+        /// </summary>
+        Horizontal = 1,
+
+        /// <summary>
+        /// gr_dim_tag_type_ver.
+        /// </summary>
+        Vertical = 2,
+
+        /// <summary>
+        /// gr_dim_tag_type_horver_extline.
+        /// </summary>
+        HorizontalOrVerticalAtExtensionLine = 3,
+
+        /// <summary>
+        /// gr_dim_tag_type_curve_align.
+        /// </summary>
+        AlignedToCurve = 4,
+
+        /// <summary>
+        /// gr_dim_tag_type_curve_along.
+        /// </summary>
+        AlongCurve = 5,
+    }
+
+    /// <summary>
+    /// Values of the "Curved" menu, as Tekla stores them. Used by DimensionProperties: curved_radial_dim_type.
+    /// </summary>
+    public enum CurvedDimensionType
+    {
+        /// <summary>
+        /// Distance.
+        /// </summary>
+        Distance = 0,
+
+        /// <summary>
+        /// Angle.
+        /// </summary>
+        Angle = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Curved dimension type" menu, as Tekla stores them. Used by DimensionProperties:
+    /// TaperedCurvedReinforcementGroup.
+    /// </summary>
+    public enum CurvedRebarDimensionType
+    {
+        /// <summary>
+        /// DIM_REINFORCEMENT_STRAIGHT.
+        /// </summary>
+        Straight = 0,
+
+        /// <summary>
+        /// DIM_REINFORCEMENT_CURVE.
+        /// </summary>
+        Curve = 1,
     }
 
     /// <summary>
@@ -487,7 +558,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// <summary>
     /// Values of the "Arrow shape" menu, as Tekla stores them. Used by AssemblyDimensioningPage: LevelArrowShape,
     /// AssemblyDimensioningPage: USAbsoluteArrowShape, DimensionPage: LevelArrowShape, DimensionPage:
-    /// USAbsoluteArrowShape, DimensionPage: dim_arrow_shape.
+    /// USAbsoluteArrowShape, DimensionPage: dim_arrow_shape, DimensionProperties: dim_arrow_shape.
     /// </summary>
     public enum DimensionArrowShape
     {
@@ -540,7 +611,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Straight" menu, as Tekla stores them. Used by DimensionPage: dim_format.
+    /// Values of the "Straight" menu, as Tekla stores them. Used by DimensionPage: dim_format, DimensionProperties:
+    /// dim_format.
     /// </summary>
     public enum DimensionFormat
     {
@@ -591,7 +663,24 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Straight" menu, as Tekla stores them. Used by DimensionPage: dim_precision.
+    /// Values of the "Rotation" menu, as Tekla stores them. Used by DimensionMark: Rotation.
+    /// </summary>
+    public enum DimensionMarkRotation
+    {
+        /// <summary>
+        /// Parallel to dimension line.
+        /// </summary>
+        ParallelToDimensionLine = 0,
+
+        /// <summary>
+        /// Perpendicular to dimension line.
+        /// </summary>
+        PerpendicularToDimensionLine = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Straight" menu, as Tekla stores them. Used by DimensionPage: dim_precision, DimensionProperties:
+    /// dim_precision.
     /// </summary>
     public enum DimensionPrecision
     {
@@ -667,7 +756,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Frame" menu, as Tekla stores them. Used by DimensionPage: dim_frame.
+    /// Values of the "Frame" menu, as Tekla stores them. Used by DimensionPage: dim_frame, DimensionProperties:
+    /// dim_frame.
     /// </summary>
     public enum DimensionTextFrame
     {
@@ -698,7 +788,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Place" menu, as Tekla stores them. Used by DimensionPage: dim_text_on_line.
+    /// Values of the "Place" menu, as Tekla stores them. Used by DimensionPage: dim_text_on_line, DimensionProperties:
+    /// dim_text_on_line.
     /// </summary>
     public enum DimensionTextPlacing
     {
@@ -807,7 +898,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Units" menu, as Tekla stores them. Used by DimensionPage: dim_units.
+    /// Values of the "Units" menu, as Tekla stores them. Used by DimensionPage: dim_units, DimensionProperties:
+    /// dim_units.
     /// </summary>
     public enum DimensionUnits
     {
@@ -850,6 +942,23 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// feet.
         /// </summary>
         Feet = 7,
+    }
+
+    /// <summary>
+    /// Values of the "Visibility of numeric value" menu, as Tekla stores them. Used by DimensionProperties:
+    /// DimensionTextHidden.
+    /// </summary>
+    public enum DimensionValueVisibility
+    {
+        /// <summary>
+        /// Visible.
+        /// </summary>
+        Visible = 0,
+
+        /// <summary>
+        /// Hidden.
+        /// </summary>
+        Hidden = 1,
     }
 
     /// <summary>
@@ -907,7 +1016,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Exaggeration" menu, as Tekla stores them. Used by DimensionPage: Exaggeration.
+    /// Values of the "Exaggeration" menu, as Tekla stores them. Used by DimensionPage: Exaggeration,
+    /// DimensionProperties: Exaggeration.
     /// </summary>
     public enum Exaggeration
     {
@@ -923,7 +1033,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Direction" menu, as Tekla stores them. Used by DimensionPage: ExaggerationDirection.
+    /// Values of the "Direction" menu, as Tekla stores them. Used by DimensionPage: ExaggerationDirection,
+    /// DimensionProperties: ExaggerationDirection.
     /// </summary>
     public enum ExaggerationDirection
     {
@@ -944,7 +1055,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Origin" menu, as Tekla stores them. Used by DimensionPage: ExaggerationOrigin.
+    /// Values of the "Origin" menu, as Tekla stores them. Used by DimensionPage: ExaggerationOrigin,
+    /// DimensionProperties: ExaggerationOrigin.
     /// </summary>
     public enum ExaggerationOrigin
     {
@@ -982,8 +1094,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Type" menu, as Tekla stores them. Used by BoltMark: FrameAttr.frame_type, ConnectionMark:
-    /// FrameAttr.frame_type, NeighborPartMark: FrameAttr.frame_type, NeighborReinforcementMark: FrameAttr.frame_type,
-    /// PartMark: FrameAttr.frame_type, PourMark: FrameAttr.frame_type and others.
+    /// FrameAttr.frame_type, DimensionMark: FrameAttr.frame_type, NeighborPartMark: FrameAttr.frame_type,
+    /// NeighborReinforcementMark: FrameAttr.frame_type, PartMark: FrameAttr.frame_type and others.
     /// </summary>
     public enum FrameAroundElementsType
     {
@@ -1947,7 +2059,35 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Type" menu, as Tekla stores them. Used by DimensionPage: PlateSideMarkType.
+    /// Values of the "Plate side marks PlateSideMarkSymbol1" menu, as Tekla stores them. Used by DimensionProperties:
+    /// PlateSideMarkSymbol1, DimensionProperties: PlateSideMarkSymbol2.
+    /// </summary>
+    public enum PlateSideMarkSymbol
+    {
+        /// <summary>
+        /// ob_dim_side_mark_none.
+        /// </summary>
+        None = -1,
+
+        /// <summary>
+        /// ob_dim_side_mark_left.
+        /// </summary>
+        Left = 0,
+
+        /// <summary>
+        /// ob_dim_side_mark_both.
+        /// </summary>
+        Both = 1,
+
+        /// <summary>
+        /// ob_dim_side_mark_right.
+        /// </summary>
+        Right = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by DimensionPage: PlateSideMarkType, DimensionProperties:
+    /// PlateSideMarkType.
     /// </summary>
     public enum PlateSideMarkType
     {
@@ -2083,6 +2223,22 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Sub-assemblies as outline, highest level as individual rebar objects.
         /// </summary>
         SubAssembliesAsOutlineHighestLevelAsIndividualRebarObjects = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Dimension to" menu, as Tekla stores them. Used by DimensionProperties: RebarDimensionPointType.
+    /// </summary>
+    public enum RebarDimensionPointType
+    {
+        /// <summary>
+        /// All rebars.
+        /// </summary>
+        AllRebars = 0,
+
+        /// <summary>
+        /// Start and end rebars.
+        /// </summary>
+        StartAndEndRebars = 1,
     }
 
     /// <summary>
@@ -2542,7 +2698,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Short dimensions" menu, as Tekla stores them. Used by DimensionPage: short_dim_type.
+    /// Values of the "Short dimensions" menu, as Tekla stores them. Used by DimensionPage: short_dim_type,
+    /// DimensionProperties: short_dim_type.
     /// </summary>
     public enum ShortDimensionPlacing
     {
@@ -2558,7 +2715,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Short extension line" menu, as Tekla stores them. Used by DimensionPage: ShortExtensionLine.
+    /// Values of the "Short extension line" menu, as Tekla stores them. Used by DimensionPage: ShortExtensionLine,
+    /// DimensionProperties: ShortExtensionLine.
     /// </summary>
     public enum ShortExtensionLine
     {
@@ -2672,6 +2830,52 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// In bolt group direction.
         /// </summary>
         InBoltGroupDirection = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Straight" menu, as Tekla stores them. Used by DimensionProperties: dim_type.
+    /// </summary>
+    public enum StraightDimensionType
+    {
+        /// <summary>
+        /// DIM_RELATIVE.
+        /// </summary>
+        Relative = 1,
+
+        /// <summary>
+        /// DIM_ABSOLUTE.
+        /// </summary>
+        Absolute = 2,
+
+        /// <summary>
+        /// DIM_BOTH.
+        /// </summary>
+        RelativeAndAbsolute = 3,
+
+        /// <summary>
+        /// DIM_US_ABSOLUTE.
+        /// </summary>
+        USAbsolute = 4,
+
+        /// <summary>
+        /// DIM_US_ABSOLUTE_2.
+        /// </summary>
+        USAbsolute2 = 16,
+
+        /// <summary>
+        /// DIM_INTERNAL_ABSOLUTE.
+        /// </summary>
+        AbsoluteWithShortRelatives = 35,
+
+        /// <summary>
+        /// DIM_INTERNAL_ABSOLUTE_2.
+        /// </summary>
+        AbsoluteWithAllRelativesAbove = 99,
+
+        /// <summary>
+        /// DIM_ELEVATION.
+        /// </summary>
+        Elevation = 8,
     }
 
     /// <summary>
@@ -2798,6 +3002,23 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
+    /// Values of the "Tapered dimension type" menu, as Tekla stores them. Used by DimensionProperties:
+    /// TaperedSkewedReinforcementGroup.
+    /// </summary>
+    public enum TaperedRebarDimensionType
+    {
+        /// <summary>
+        /// DIM_REINFORCEMENT_STRAIGHT.
+        /// </summary>
+        Straight = 0,
+
+        /// <summary>
+        /// DIM_REINFORCEMENT_SKEWED.
+        /// </summary>
+        Skewed = 1,
+    }
+
+    /// <summary>
     /// Values of the "Frame" menu, as Tekla stores them. Used by GridObject: text_frame.
     /// </summary>
     public enum TextFrame
@@ -2902,8 +3123,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Placing" menu, as Tekla stores them. Used by BoltMark: txpl.text_placing_mode, ConnectionMark:
-    /// txpl.text_placing_mode, NeighborPartMark: txpl.text_placing_mode, NeighborReinforcementMark:
-    /// txpl.text_placing_mode, PartMark: txpl.text_placing_mode, PourMark: txpl.text_placing_mode and others.
+    /// txpl.text_placing_mode, DimensionProperties: dimpl.dim_placing_mode, NeighborPartMark: txpl.text_placing_mode,
+    /// NeighborReinforcementMark: txpl.text_placing_mode, PartMark: txpl.text_placing_mode and others.
     /// </summary>
     public enum TxplTextPlacingMode
     {
@@ -2920,8 +3141,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Units" menu, as Tekla stores them. Used by BoltMark: UnitAttr.Unit, ConnectionMark:
-    /// UnitAttr.Unit, NeighborPartMark: UnitAttr.Unit, NeighborReinforcementMark: UnitAttr.Unit, PartMark:
-    /// UnitAttr.Unit, PourMark: UnitAttr.Unit and others.
+    /// UnitAttr.Unit, DimensionMark: UnitAttr.Unit, NeighborPartMark: UnitAttr.Unit, NeighborReinforcementMark:
+    /// UnitAttr.Unit, PartMark: UnitAttr.Unit and others.
     /// </summary>
     public enum Units
     {
@@ -2968,8 +3189,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Format" menu, as Tekla stores them. Used by BoltMark: UnitAttr.Format, ConnectionMark:
-    /// UnitAttr.Format, NeighborPartMark: UnitAttr.Format, NeighborReinforcementMark: UnitAttr.Format, PartMark:
-    /// UnitAttr.Format, PourMark: UnitAttr.Format and others.
+    /// UnitAttr.Format, DimensionMark: UnitAttr.Format, NeighborPartMark: UnitAttr.Format, NeighborReinforcementMark:
+    /// UnitAttr.Format, PartMark: UnitAttr.Format and others.
     /// </summary>
     public enum UnitsFormat
     {

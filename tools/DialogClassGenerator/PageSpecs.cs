@@ -64,7 +64,25 @@ namespace DialogClassGenerator
         public (string Property, string KeyStem, string Summary)[] LabelMarks { get; set; } = new (string, string, string)[0];
 
         /// <summary>A page of the drawing properties dialogs, not of the View properties dialog.</summary>
-        public bool DrawingPage => ViewPrefix == null;
+        public bool DrawingPage => ViewPrefix == null && FileExtension == null;
+
+        /// <summary>For a page of a drawing object file (the dimension properties, .dim): the extension of that file.</summary>
+        public string FileExtension { get; set; }
+
+        /// <summary>The prefixes of the page in its object file: <c>""</c> for the top-level keys, one per mark otherwise.</summary>
+        public string[] FilePrefixes { get; set; }
+
+        /// <summary>Sample of the object file, relative to the folder of the environments shipped with Tekla.</summary>
+        public string SampleFile { get; set; }
+
+        /// <summary>Extension of the file the page's own Save button writes (only for the dialogs).</summary>
+        public string PageFileExtension { get; set; }
+
+        /// <summary>A page of a drawing object file.</summary>
+        public bool ObjectFilePage => FileExtension != null;
+
+        /// <summary>The prefix the samples of the page use: the first of <see cref="FilePrefixes"/>.</summary>
+        public string FileSamplePrefix => FilePrefixes?[0];
     }
 
     internal static class PageSpecs
@@ -165,6 +183,25 @@ namespace DialogClassGenerator
                 Class = "AssemblyDimensioningPage", Json = "AssemblyDimensioning", Namespace = "TeklaHelper.DrawingAttribute.Drawings", Title = "Dimensioning",
                 Description = "The \"Dimensioning...\" page of the assembly, single-part and cast unit drawing properties (not in GA drawings): the automatic dimensioning of parts, bolts, positions and sub-assemblies",
                 AssemblyDrawingPrefix = "dcd.",
+            },
+
+            // Drawing object files (FILE_PAGES of tools/DialogDecoder/extract.py)
+            new PageSpec
+            {
+                Class = "DimensionProperties", Json = "Dimension", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Dimension properties",
+                Description = "The Dimension properties dialog of the drawing editor (dialog <c>gr_dim_attrib</c>), the top-level keys of a .dim file: dimension types, format, placing, appearance, marks and tags",
+                FileExtension = ".dim", FilePrefixes = new[] { string.Empty }, SampleFile = "common/system/standard.dim", TopLevelOnly = true,
+            },
+            new PageSpec
+            {
+                Class = "DimensionMark", Json = "DimensionMark", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Dimension mark",
+                Description = "A mark of a dimension: the dialog of the \"...\" buttons on the Marks and Tags tabs of the Dimension properties (dialog <c>gr_dim_mark_attrib</c>): content, frame, font, units and rotation; the other keys are those of every mark, which this dialog does not show",
+                FileExtension = ".dim", SampleFile = "common/system/standard.dim", PageFileExtension = ".dimension_mark",
+                FilePrefixes = new[]
+                {
+                    "PrefixMark.", "PostfixMark.", "LeftUpperTagMark.", "LeftMiddleTagMark.", "LeftLowerTagMark.", "MiddleLowerTagMark.",
+                    "RightUpperTagMark.", "RightMiddleTagMark.", "RightLowerTagMark.",
+                },
             },
         };
     }

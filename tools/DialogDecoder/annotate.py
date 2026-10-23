@@ -51,6 +51,7 @@ ENUMS = {
     'DimensionSetBaseAttributes.ExaggerationDirections': {1: 'LeftDown', 2: 'RightUp', 3: 'Both'},
     'DimensionSetBaseAttributes.ExaggerationOrigins': {1: 'NearDimensionLine', 2: 'NearMeasuredObject'},
     'DimensionSetBaseAttributes.CombineFormats': {0: 'Off', 1: 'NumberOfItemsTimesLength', 2: 'NumberOfItemsTimesLengthEqualsResult'},
+    'DimensionSetBaseAttributes.CurvedDimensionTypes': {0: 'Distance', 1: 'Angle'},
 }
 
 # Dimension pages (dd., dcd.): key → (enum, API value - stored value), checked value by value against the menus
@@ -71,12 +72,14 @@ DIMENSION_ENUMS = {
     'DimTypeInXDirection': ('DimensionSetBaseAttributes.DimensionTypes', 0),
     'combine_bolt_dim': ('DimensionSetBaseAttributes.CombineFormats', 0),
     'combine_part_dimensions': ('DimensionSetBaseAttributes.CombineFormats', 0),
+    'CombineDims': ('DimensionSetBaseAttributes.CombineFormats', 0),
+    'curved_radial_dim_type': ('DimensionSetBaseAttributes.CurvedDimensionTypes', 0),
 }
 
 def enum_for(page, key, ctl):
     k = key.split('.')[-1]
     t = ctl['type']
-    if page in ('Dimensioning', 'AssemblyDimensioning') and key in DIMENSION_ENUMS:
+    if page in ('Dimensioning', 'AssemblyDimensioning', 'Dimension') and key in DIMENSION_ENUMS:
         return DIMENSION_ENUMS[key]
     if t == 'color':
         return 'DrawingColors', 0
@@ -120,6 +123,27 @@ def walk(n):
     for t in n.get('tabs', []):
         yield from walk(t)
 
+_object_files = {}
+
+def object_file_values(folders, extension):
+    """Value counts of the files of a drawing object type (.dim), legacy dialog prefixes (dim_dial.) stripped."""
+    if extension not in _object_files:
+        found = []
+        for a in folders:
+            found += glob.glob(os.path.join(a, '**', '*' + extension), recursive=True)
+        counts = collections.defaultdict(collections.Counter)
+        for f in found:
+            try:
+                data = open(f, 'rb').read()
+            except OSError:
+                continue
+            for line in data.split(b'\r\n'):
+                k, _, v = line.partition(b' ')
+                k = re.sub(r'^\w+_dial\.', '', k.decode('latin1'))
+                counts[k][v.decode('latin1')] += 1
+        _object_files[extension] = (counts, len(found))
+    return _object_files[extension]
+
 def main():
     ddir = sys.argv[1]
     files = []
@@ -156,6 +180,13 @@ def main():
         page, prefix = d['page'], d['viewPrefix']
         drawing = prefix is None
         prefixes = [p for p in (d.get('gaDrawingPrefix'), d.get('assemblyDrawingPrefix')) if p] if drawing else [prefix]
+        object_file = d.get('fileExtension')
+        if object_file:
+            # A page of a drawing object file (.dim): its own files, under its prefix
+            pool, count = object_file_values(sys.argv[2:], object_file)
+            prefixes = [d.get('filePrefix', '')]
+        else:
+            pool, count = (drawing_vals, len(drawing_files)) if drawing else (vals, len(files))
         items = list(walk(d))
         for sd in d.get('subDialogs', []):
             items += list(walk(sd))
@@ -165,7 +196,7 @@ def main():
                 continue
             counts = collections.Counter()
             for p in dict.fromkeys(prefixes):
-                counts.update((drawing_vals if drawing else vals).get(p + c['key'], collections.Counter()))
+                counts.update(pool.get(p + c['key'], collections.Counter()))
             if c.get('options') and c['type'] in ('option', 'color', 'linetype'):
                 en, off = enum_for(page, c['key'], c)
                 if en:
@@ -190,8 +221,7 @@ def main():
                 seen = counts
                 if seen:
                     c['samples'] = OD([('files', sum(seen.values())), ('top', OD(seen.most_common(5)))])
-        d['samplesSource'] = '%d %s files under %s' % (len(drawing_files) if drawing else len(files),
-                                                       'drawing' if drawing else '.vi', ', '.join(sys.argv[2:]))
+        d['samplesSource'] = '%d %s files under %s' % (count, object_file or ('drawing' if drawing else '.vi'), ', '.join(sys.argv[2:]))
         with open(f, 'w', encoding='utf-8', newline='\n') as fh:
             json.dump(d, fh, indent=2, ensure_ascii=False)
             fh.write('\n')

@@ -242,7 +242,30 @@ dimension sets).
 **What stays untyped.** A test (`EveryKeyOfAFileSavedFromTekla_IsTyped`) checks every key of the files saved from the
 dialogs. The exceptions: check boxes (`SetAllEnabled`), page file names, `dl.placing_direction` (no dialog of 2020, 2025
 or 2026 shows it) and the fixed fields of the filter pages (`vfilter.partname_enable`, ...: no dialog shows them since
-the filter rows moved to the `.vi.filter` file).
+the filter rows moved to the `.vi.filter` file, and a probe view showed that Tekla 2025 ignores them: `vfilter.partname
+"BEAM"` with any `filtering_type` kept all 85 parts, a filter row kept 9).
+
+### Drawing object files: dimension properties
+
+The drawing editor saves the properties of its objects in files of their own: `.dim` for dimensions, `.drtxt` for
+texts, `.lev` for level marks, ... The dialog-name table of `TeklaStructures_application.dll` lists them (`dim_dial`
+`.dim`, `.drtxt`, `.note`, `.sbl`, `.lev`, `.gln`, ..., `dim_prefix_mark_dial` `.dimension_mark`). The first one typed
+is `.dim`:
+
+- The dialog `gr_dim_attrib` writes 100 of the 109 top-level keys of `common/system/standard.dim`; the rebar dimension
+  dialog `gr_rebar_dim_attrib` shares the structure and gives six more keys that the .dim files Tekla 2025 writes hold
+  (`RebarSubgrouping`, `TaperedSkewedReinforcementGroup`, ...). `--file-folders` lets the decoder see the keys of every
+  .dim file of the environments and models, not only of the sample.
+- Each of the nine marks (prefix, postfix, tags A to G) holds the 116 keys of every mark plus four rebar dimension mark
+  keys. Its dialog `gr_dim_mark_attrib` names its members without their struct (`height`, `frame_type`); it declares the
+  structs `gr_mark_unit_at_t`, `gr_mark_frame_at_t`, `gr_mark_font_at_t` before `gr_mark_at_t`, so `height` is
+  `FontAttr.height` although a top-level `height` exists too. The decoder resolves the struct from the file keys.
+- Menus whose items are constant names (`DIM_REINFORCEMENT_STRAIGHT`) get readable members (`Straight`); the dimension
+  menus take the names of the Open API enums.
+
+Checked in Tekla 2025: `new StraightDimensionSetAttributes("name")` read a library-written file with the changed type,
+precision, format, short dimension placing, text height, frame, colour and exaggeration, and a dimension created with
+those attributes in a probe drawing kept them.
 
 ## 7. Default settings
 

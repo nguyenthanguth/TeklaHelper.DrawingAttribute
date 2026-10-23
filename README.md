@@ -19,6 +19,8 @@ and pass the file name to the Open API.
 
 ## Features
 
+- **Dimension properties**: `DimensionAttributeFile` (`.dim`), the file of the Dimension properties dialog of the
+  drawing editor, with its nine marks (prefix, postfix, tags A to G).
 - **Drawing and view settings**: `GADrawingAttributeFile` (`.gd`), `AssemblyDrawingAttributeFile` (`.ad`),
   `SinglePartDrawingAttributeFile` (`.wd`), `CastUnitDrawingAttributeFile` (`.cud`), `MultiDrawingAttributeFile` (`.md`)
   and `ViewProperties` (`.vi`), each saved with the companion files Tekla writes (`.gd.more`, `.gd.filter`,
@@ -214,6 +216,28 @@ ga.Dimensioning.Grid.DimensionCreation.GridLineDimensions = true;
 ga.Layout.SetInt32("placing_direction", 0);
 ```
 
+## Dimension properties
+
+`DimensionAttributeFile` is the `.dim` file the Dimension properties dialog of the drawing editor saves, which a
+dimension loads by name (`new StraightDimensionSet.StraightDimensionSetAttributes("absolute")` in the Open API):
+
+```csharp
+DimensionAttributeFile dimension = DimensionAttributeFile.CreateDefault();
+dimension.Properties.General.DimensionTypes.Straight = StraightDimensionType.Absolute;
+dimension.Properties.General.DimensionFormat.Precision = DimensionPrecision.OnePerEight;
+dimension.Properties.Appearance.Text.Height = 3.5;
+dimension.Properties.Marks.Exaggeration.Exaggeration = Exaggeration.Specified;
+dimension.PrefixMark.Font.Height = 2.5;                        // PrefixMark.FontAttr.height
+dimension.SaveTo(attributes, "absolute");                      // absolute.dim
+```
+
+`Properties` follows the dialog (tabs General, Appearance, Marks, Tags, and the Place dialog); the marks
+(`PrefixMark`, `PostfixMark`, `LeftUpperTagMark` ... `RightLowerTagMark`) are `DimensionMark` pages: content, frame,
+font, units and rotation, plus the keys every mark has. Every key of the 177 `.dim` files of the Tekla environments and
+models on the maintainer's machine has a property. Checked in Tekla 2025: the attributes read from a file the library
+wrote, and a dimension created with them, showed the type, precision, format, short dimension placing, text height and
+frame, colour and exaggeration of the file.
+
 ## Filters
 
 ```csharp
@@ -295,7 +319,8 @@ vg.line_colour 160
 | `.gd`, `.ad`, `.wd`, `.cud`, `.md` and their `.more` / filter files | Every page typed: marks, objects, protection, layout, view (with the View creation table), section view, detail view, dimension, dimensioning; titles and user-defined attributes; `CreateDefault()`. Not typed: check boxes (`SetAllEnabled`), page file names, `dl.placing_direction` and the fixed fields of the filter pages, which no dialog shows |
 | Page files (`.vg`, `.vpm`, `.gdgr`, ...) | `ExportTo` / `ImportFrom` on pages |
 | Filters (`.vf`, `.vnf`, `.vi.filter`, `.gd.filter`, `.gdf`, `.SObjGrp`, ...) | Supported |
-| Dimensions (`.dim`) and other object attribute files | `GenericAttributeFile` |
+| Dimension properties (`.dim`) | `DimensionAttributeFile`: every key typed; `CreateDefault()` |
+| Other drawing object files (`.drtxt`, `.note`, `.lev`, `.sbl`, `.rdim`, marks, graphics, ...) and model object files | `GenericAttributeFile` |
 | Object level settings (`.copt`, `TITLE_CLASSIFIER`) | Not supported |
 
 ## Requirements

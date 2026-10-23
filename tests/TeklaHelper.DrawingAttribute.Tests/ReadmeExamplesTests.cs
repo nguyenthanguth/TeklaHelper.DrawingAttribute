@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using TeklaHelper.DrawingAttribute.DrawingObjects;
 using TeklaHelper.DrawingAttribute.Drawings;
 using TeklaHelper.DrawingAttribute.Filters;
 using TeklaHelper.DrawingAttribute.Pages;
@@ -106,6 +107,23 @@ namespace TeklaHelper.DrawingAttribute.Tests
             Assert.Equal(162, assemblyDrawing.GetInt32("dc.SectionMark.line_colour"));
             Assert.Equal(500, ga.GetDouble("dview.np_extrema_size"));
             Assert.Equal(0, ga.GetInt32("dl.placing_direction"));
+        }
+
+        [Fact]
+        public void DimensionProperties()
+        {
+            string attributes = _attributes;
+            DimensionAttributeFile dimension = DimensionAttributeFile.CreateDefault();
+            dimension.Properties.General.DimensionTypes.Straight = StraightDimensionType.Absolute;
+            dimension.Properties.General.DimensionFormat.Precision = DimensionPrecision.OnePerEight;
+            dimension.Properties.Appearance.Text.Height = 3.5;
+            dimension.Properties.Marks.Exaggeration.Exaggeration = Exaggeration.Specified;
+            dimension.PrefixMark.Font.Height = 2.5;
+            dimension.SaveTo(attributes, "absolute");
+
+            var read = AttributeFile.FromFile<DimensionAttributeFile>(Path.Combine(attributes, "absolute.dim"));
+            Assert.Equal(StraightDimensionType.Absolute, read.Properties.General.DimensionTypes.Straight);
+            Assert.Equal(2.5, read.GetDouble("PrefixMark.FontAttr.height"));
         }
 
         [Fact]

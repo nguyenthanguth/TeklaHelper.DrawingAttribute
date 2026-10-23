@@ -153,6 +153,12 @@ Trimble DLLs and load them side by side in other Tekla versions).
   `vfilter.` / `vnp_filter.` keys + rows in `.vi.filter` / `.vi.npfilter`), `Protection`, `Dimensioning`, `Marks` (9),
   `Objects` (11). Saves only `.vi`, `.vi.filter`, `.vi.npfilter` — what the dialog's Save button writes and the Open
   API reads.
+- `DrawingObjects/` — files of the drawing editor's object dialogs: `DimensionAttributeFile` (`.dim`, legacy prefix
+  `dim_dial.`): generated `DimensionProperties` (top-level keys, dialog `gr_dim_attrib` + rebar keys from
+  `gr_rebar_dim_attrib`, "Place..." `dimpl.`) and nine `DimensionMark` pages (`PrefixMark.`, `PostfixMark.`, the seven
+  `*TagMark.`; dialog `gr_dim_mark_attrib`, whose bare members `height`, `frame_type` ... are the `FontAttr.` /
+  `FrameAttr.` keys). Decoded from `FILE_PAGES` (`extract.py`, samples `--file standard.dim` and `--file-folders`), generated
+  from `PageSpec.FileExtension` / `FilePrefixes` / `SampleFile`; `FileDefaults.Dimension` for `CreateDefault()`.
 - `Filters/` — `FilterFile` (rows, byte-preserving), `FilterRow`, expression tree (`FilterExpression`, `FilterCondition`,
   `FilterGroup`), `FilterOperator`, typed `FilterProperty` subclasses, `FilterProperties` (generated catalog of
   `Tekla.Structures.Filtering.Categories`), `FilterFileExtensions`, `FilterObjectType` (hand-written: the label keys of
@@ -197,6 +203,13 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   `standard.vi` (Korea: 1:75, outline, colour 6). `CreateDefault()` clears the names (the shipped ones exist only in some
   environments); naming a `CreateDefault()` .vi made every view, 3D included, use it. Several rows of one type: the
   highest creation counts (Tekla wrote `cre_cuts 2` for Auto + On); `SetViewTable` keeps a table's final-comma form. `DrawingViewCreationSection.GetViewTable/SetViewTable/SetViewAttributeFile`.
+- **The fixed fields of the old filter page are ignored:** a view loaded with `vfilter.partname "BEAM"` (or `profile
+  "I*"`), its `_enable` 1 and `filtering_type` 0, 1 or 2, without `.vi.filter` rows, showed all 85 parts; the rows
+  (`co_part proNAME == BEAM`) showed 9. Hence no properties for `vfilter.partname` ... (60 keys per filter page).
+- **Dimension properties are applied:** `new StraightDimensionSetAttributes("name")` read from a `CreateDefault()` .dim
+  with changes, and a dimension created with it in a probe GA drawing, both showed dimension type Absolute, precision
+  OnePerEight, format TwoDecimals, short dimensions Inside, text height 5, frame RoundedRectangle, colour Red,
+  exaggeration on / RightUp (stored 1) / width 7.
 - **The drawing pages are applied:** an assembly drawing of a two-part assembly created from a `CreateDefault()` .ad with
   changed values showed them through the Drawing API: `dv.np_extrema_size` 321, `HoleSymbol`, `Elevation_datum_point`
   1234, `cut_skew_parts` on the front and bottom views (`View.Attributes`; the section view keeps `dc.` values);

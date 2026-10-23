@@ -25,6 +25,7 @@ namespace DialogClassGenerator
             ["ad"] = "adraw_dial.",
             ["wd"] = "wdraw_dial.",
             ["cud"] = "cudraw_dial.",
+            ["dim"] = "dim_dial.",
         };
 
         // extension → key → file text of the value → number of files
@@ -152,6 +153,7 @@ namespace DialogClassGenerator
             ["ad"] = Values(("dl.layout", "assembly"), ("dl.single_attrib_file", "standard"), ("StyleName", "standard"), ("description", ""), ("title_1", ""), ("title_2", ""), ("title_3", "")),
             ["wd"] = Values(("dl.layout", "single"), ("dl.single_attrib_file", "standard"), ("StyleName", "standard"), ("description", ""), ("title_1", ""), ("title_2", ""), ("title_3", "")),
             ["cud"] = Values(("dl.layout", "cu"), ("dl.single_attrib_file", "standard"), ("StyleName", "standard"), ("description", ""), ("title_1", ""), ("title_2", ""), ("title_3", "")),
+            ["dim"] = Values(),
         };
 
         private static Dictionary<string, string> Values(params (string Key, string Text)[] values) =>
@@ -172,7 +174,8 @@ namespace DialogClassGenerator
         /// </summary>
         private static string ControlDefault(PageSpec spec, Control control, AttributeCollection vi, AttributeCollection gd, AttributeCollection ad)
         {
-            string common = MostCommon("vi", Prefixed(spec.ViewPrefix, control.Key))
+            string common = (spec.ObjectFilePage ? MostCommon(spec.FileExtension.TrimStart('.'), spec.FileSamplePrefix + control.Key) : null)
+                ?? MostCommon("vi", Prefixed(spec.ViewPrefix, control.Key))
                 ?? MostCommon("gd", Prefixed(spec.GADrawingPrefix, control.Key))
                 ?? MostCommon("ad", Prefixed(spec.AssemblyDrawingPrefix, control.Key));
             if (common != null)
@@ -193,9 +196,10 @@ namespace DialogClassGenerator
                 }
             }
 
-            foreach ((AttributeCollection file, string prefix) in new[] { (vi, spec.ViewPrefix), (gd, spec.GADrawingPrefix), (ad, spec.AssemblyDrawingPrefix) })
+            ObjectFileSamples.TryGetValue(spec.Class, out AttributeCollection objectFile);
+            foreach ((AttributeCollection file, string prefix) in new[] { (vi, spec.ViewPrefix), (gd, spec.GADrawingPrefix), (ad, spec.AssemblyDrawingPrefix), (objectFile, spec.FileSamplePrefix) })
             {
-                if (prefix != null && file.TryGetValue(prefix + control.Key, out AttributeValue value) && IsAscii(value.ToFileText()))
+                if (prefix != null && file != null && file.TryGetValue(prefix + control.Key, out AttributeValue value) && IsAscii(value.ToFileText()))
                 {
                     return value.ToFileText();
                 }
@@ -356,6 +360,7 @@ namespace DialogClassGenerator
             WriteTable(w, "AssemblyDrawing", "assembly drawings (.ad)", FileTable("ad", ad, PageHost.AssemblyDrawing));
             WriteTable(w, "SinglePartDrawing", "single-part drawings (.wd)", FileTable("wd", ad, PageHost.AssemblyDrawing));
             WriteTable(w, "CastUnitDrawing", "cast unit drawings (.cud)", FileTable("cud", ad, PageHost.AssemblyDrawing));
+            WriteTable(w, "Dimension", "dimension properties (.dim)", FileTable("dim", ObjectFileSamples["DimensionProperties"], PageHost.ObjectFile));
             w.TrimBlankLine();
             w.Close();
             w.Close();
@@ -367,6 +372,7 @@ namespace DialogClassGenerator
             View,
             GADrawing,
             AssemblyDrawing,
+            ObjectFile,
         }
 
         /// <summary>
@@ -380,7 +386,9 @@ namespace DialogClassGenerator
             var pagePrefixes = new Dictionary<string, string>(StringComparer.Ordinal);
             foreach (PageSpec spec in PageSpecs.All)
             {
-                string prefix = host == PageHost.View ? spec.ViewPrefix : host == PageHost.GADrawing ? spec.GADrawingPrefix : spec.AssemblyDrawingPrefix;
+                string prefix = host == PageHost.View ? spec.ViewPrefix : host == PageHost.GADrawing ? spec.GADrawingPrefix
+                    : host == PageHost.AssemblyDrawing ? spec.AssemblyDrawingPrefix
+                    : spec.FileExtension == "." + extension ? spec.FileSamplePrefix : null;
 
                 // The pages of the drawing properties only keep the values of their own file type (the shipped GA and
                 // assembly files do not agree on dimensions and views), which SetDefaults(), written for every host, cannot
@@ -391,6 +399,7 @@ namespace DialogClassGenerator
 
                 IEnumerable<string> prefixes = spec.Class == "ViewLabelMark"
                     ? Enumerable.Range(1, 5).Select(i => "ViewLabelMarkA" + i.ToString(CultureInfo.InvariantCulture) + ".")
+                    : host == PageHost.ObjectFile ? spec.FilePrefixes
                     : new[] { prefix };
                 foreach (string p in prefixes)
                 {

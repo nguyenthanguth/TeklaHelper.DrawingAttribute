@@ -21,7 +21,11 @@ identical copy of the View properties dialog. The decoder reads:
   `gratAssemblyDrawingAttributes`; `gr_adcd_attrib`) and other dialogs with the same keys for the keys it does not show.
   Their controls keep the tab and group of their own dialog (`dialogPath`). The rows of label texts
   (`ViewLabelMarkA1.`, `SectionMark.SectionMarkA1.`, `DetailMarkA1.`, ...) are listed under `labelMarks`; they are the
-  structure of the page `ViewLabelMark`.
+  structure of the page `ViewLabelMark`;
+- for the files of drawing objects (`FILE_PAGES`): the dialog of the object (`gr_dim_attrib` for `.dim`, the mark
+  dialog `gr_dim_mark_attrib`), with the keys of a sample file (`--file`, `common/system/standard.dim`) and of every file
+  of that type under the folders after `--file-folders`. A member without its struct (`height`) takes the struct of the
+  unique file key ending with it (`FontAttr.height`).
 
 The `.aid` format ("RES 1.1") is a header, a pool of NUL-terminated strings and a token stream of objects and
 attributes; `aid.py` describes and parses it. In a control, `MEMBER` is the key in the attribute file, `VALUEINT` the

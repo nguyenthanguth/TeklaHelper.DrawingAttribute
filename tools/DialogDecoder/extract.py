@@ -1,7 +1,7 @@
 """Extract the Tekla Structures View properties dialog (gratViewAttributes) from TeklaStructures.aid
 into one JSON file per page, and the pages of the drawing properties dialogs that it does not have (DRAWING_PAGES).
 
-python extract.py <TeklaStructures.aid> <out_dir> <sample.vi> [<sample2.vi> ...] [--drawing <sample.gd> ...]
+python extract.py <TeklaStructures.aid> <out_dir> <sample.vi> [<sample2.vi> ...] [--drawing <sample.gd> ...] [--file <sample.dim> ...] [--file-folders <folder> ...]
 
 The .aid widget tree is decoded exactly (see aid.py). What is inferred here:
 - which text label belongs to which control (row order), group headings drawn as
@@ -63,6 +63,16 @@ DRAWING_PAGES = OD([
                               [('gr_wdcd_attrib', None, ''), ('gr_cudcd_attrib', None, '')], 'dcd_en')),
 ])
 
+# Pages of the attribute files of drawing objects (the property dialogs of the drawing editor), decoded with sample files
+# of that type passed after --file (e.g. common/system/standard.dim of the environments); the keys of every file of that
+# type under the folders passed after --file-folders count as well (keys newer files have, such as the rebar settings of
+# .dim files written by Tekla 2025):
+#   page: (file extension, prefix of the page in the file, source, other sources, keys of other pages to skip (regex))
+FILE_PAGES = OD([
+    ('Dimension', ('.dim', '', ('gr_dim_attrib', None, ''), [('gr_rebar_dim_attrib', None, '')], r'(PrefixMark|PostfixMark|\w+TagMark)\.')),
+    ('DimensionMark', ('.dim', 'PrefixMark.', ('gr_dim_mark_attrib', None, ''), [], None)),
+])
+
 # Rows of label texts: one structure (the "..." dialog gr_view_reference_mark_attrib) per row, typed by the page ViewLabelMark
 LABEL_MARK_RE = re.compile(r'^((?:\w+\.)?(?:ViewLabelMark|SectionMark|DetailMark)A)[1-5]\.')
 
@@ -102,6 +112,14 @@ def bitmap_label(bm):
 def main():
     path, outdir = sys.argv[1], sys.argv[2]
     samples = sys.argv[3:]
+    file_folders = []
+    if '--file-folders' in samples:
+        i = samples.index('--file-folders')
+        samples, file_folders = samples[:i], samples[i + 1:]
+    file_samples = []
+    if '--file' in samples:
+        i = samples.index('--file')
+        samples, file_samples = samples[:i], samples[i + 1:]
     drawing_samples = []
     if '--drawing' in samples:
         i = samples.index('--drawing')
@@ -844,14 +862,14 @@ def main():
                 keys.add(nested_prefix + builder.key(attr(w, 'MEMBER')))
         return keys
 
-    for page, (ga_prefix, asm_prefix, source, others, tree_key) in DRAWING_PAGES.items():
-        prefix = ga_prefix or asm_prefix
+    def decode_page(page, prefix, hosts, source, others, tree_key, keys_pool, skip=None, resolve_structs=False):
+        """Writes the JSON file of a page decoded from a dialog of its own (a drawing page or an object file)."""
         dname, panel, nested = source
         scope = scope_of(dname, panel)
         if scope is None:
             print('WARNING: %s: source %s %s not in this .aid' % (page, dname, panel or ''), file=sys.stderr)
-            continue
-        all_keys = [k for k in drawing_keys if k.startswith(prefix)]
+            return
+        all_keys = [k for k in keys_pool if k.startswith(prefix) and not (skip and re.match(skip, k[len(prefix):]))]
         marks = OD()
         for k in all_keys:
             mm = LABEL_MARK_RE.match(k[len(prefix):])
@@ -861,6 +879,27 @@ def main():
         b = Builder(scope, prefix, nested, radio_text_labels=True)
         tree = b.build(scope)
         dialog_keys = with_enables(b, prefix)
+        if resolve_structs:
+            # The mark dialogs name a member without its struct (height for FontAttr.height): the unique file key ending
+            # with it gives the struct, as for ViewLabelMark. The structs of the dialog (gr_mark_unit_at_t,
+            # gr_mark_frame_at_t, gr_mark_font_at_t before gr_mark_at_t) come before the top-level keys of the same name
+            # (frame_type, line_colour, text_colour, height): a nested key wins.
+            rest = [k[len(prefix):] for k in file_keys]
+            for c, _ in collect(tree, []):
+                for fld in ('key', 'enableKey'):
+                    k = c.get(fld)
+                    if k and '.' not in k:
+                        hits = [r for r in rest if r.endswith('.' + k)]
+                        if len(hits) == 1:
+                            c[fld] = hits[0]
+                            c[fld + 'ResolvedBy'] = 'member name; nested struct prefix taken from the unique file key ending with it'
+                            dialog_keys.add(prefix + hits[0])
+            for w in b.allw:
+                m_ = attr(w, 'MEMBER')
+                if m_ and b.is_enable(w):
+                    hits = [r for r in rest if r.endswith('.' + m_)]
+                    if len(hits) == 1:
+                        dialog_keys.add(prefix + hits[0])
         subdialogs = []
         for btn in b.buttons:
             sub = btn.get('callbackParameter')
@@ -923,15 +962,15 @@ def main():
         out = OD()
         out['page'] = page
         out['viewPrefix'] = None
-        out['gaDrawingPrefix'] = ga_prefix
-        out['assemblyDrawingPrefix'] = asm_prefix
+        out.update(hosts)
         out['aidFile'] = os.path.basename(path)
         out['aidDialog'] = dname
         if panel:
             out['aidPanel'] = panel
         out['otherSources'] = [o[0] + ('/' + o[1] if o[1] else '') + (' (keys under %s)' % o[2] if o[2] else '') for o in others]
-        out['treeCheckBoxKey'] = OD([('key', tree_key), ('in', 'top level of the drawing file'), ('confidence', 'decoded'),
-                                     ('note', 'check box in front of the button that opens the page in the drawing properties (gr_gdraw_attrib, gr_adraw_attrib)')])
+        if tree_key:
+            out['treeCheckBoxKey'] = OD([('key', tree_key), ('in', 'top level of the drawing file'), ('confidence', 'decoded'),
+                                         ('note', 'check box in front of the button that opens the page in the drawing properties (gr_gdraw_attrib, gr_adraw_attrib)')])
         out['fileMenuKey'] = file_menu[0] if file_menu else None
         out['saveAsKey'] = save_as[0] if save_as else None
         out['labelMarks'] = [OD([('keyStem', stem), ('rows', 5), ('keys', n),
@@ -945,11 +984,40 @@ def main():
         out['legacyControls'] = legacy_ctl
         out['unmappedKeys'] = still
         out['dialogKeysNotInSamples'] = sorted(k[len(prefix):] for k in dialog_keys
-                                               if k not in drawing_keys and not re.search(r'(in_file|InFile)$', k))
+                                               if k not in keys_pool and not re.search(r'(in_file|InFile)$', k))
         with open(os.path.join(outdir, page + '.json'), 'w', encoding='utf-8', newline='\n') as f:
             json.dump(out, f, indent=2, ensure_ascii=False)
             f.write('\n')
         summary.append((page, prefix, len(file_keys), len(file_keys) - len(unmapped), 0, len(legacy_ctl), len(still)))
+
+
+    for page, (ga_prefix, asm_prefix, source, others, tree_key) in DRAWING_PAGES.items():
+        decode_page(page, ga_prefix or asm_prefix, OD([('gaDrawingPrefix', ga_prefix), ('assemblyDrawingPrefix', asm_prefix)]),
+                    source, others, tree_key, drawing_keys)
+
+    # ------------------------------------------------------------- object files (.dim, ...)
+    file_keys_by_extension = collections.defaultdict(OD)
+    for sp in file_samples:
+        ext = os.path.splitext(sp)[1].lower()
+        for line in open(sp, 'rb').read().split(b'\r\n')[1:]:
+            if line:
+                file_keys_by_extension[ext].setdefault(line.partition(b' ')[0].decode('latin1'), sp)
+    for ext in {v[0] for v in FILE_PAGES.values()}:
+        for folder in file_folders:
+            for dp, dn, fn in os.walk(folder):
+                for f_ in fn:
+                    if f_.lower().endswith(ext):
+                        data = open(os.path.join(dp, f_), 'rb').read()
+                        if data.startswith(b'encoding'):
+                            for line in data.split(bytes([13, 10]))[1:]:
+                                if line:
+                                    file_keys_by_extension[ext].setdefault(line.partition(b' ')[0].decode('latin1'), f_)
+    for page, (ext, prefix, source, others, skip) in FILE_PAGES.items():
+        if ext not in file_keys_by_extension:
+            print('WARNING: %s: no sample %s file (pass one after --file)' % (page, ext), file=sys.stderr)
+            continue
+        decode_page(page, prefix, OD([('fileExtension', ext), ('filePrefix', prefix)]), source, others, None,
+                    file_keys_by_extension[ext], skip, resolve_structs=True)
 
     print('%-28s %-20s %5s %7s %7s %7s %9s' % ('page', 'prefix', 'keys', 'dialog', 'sibling', 'legacy', 'unmapped'))
     for s_ in summary:

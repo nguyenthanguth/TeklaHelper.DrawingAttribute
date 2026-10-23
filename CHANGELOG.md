@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.2.0 - 2026-10-23
+
+### Dimension properties
+- `DimensionAttributeFile` (`.dim`): the file of the Dimension properties dialog of the drawing editor, generated from
+  the decoded dialog like the other pages. `Properties` holds the tabs General, Appearance, Marks and Tags and the Place
+  dialog; `PrefixMark`, `PostfixMark` and the seven tag marks are `DimensionMark` pages (content, frame, font, units,
+  rotation). Every key of the shipped .dim files is typed; `CreateDefault()` writes the value most of them hold. Checked
+  in Tekla 2025 by loading the file into dimension attributes and by creating a dimension with it.
+- Enum members of the dialogs named by constants (`DIM_REINFORCEMENT_STRAIGHT`) get readable names (`Straight`).
+
+### Documentation
+- The fixed fields of the old filter pages (`vfilter.partname`, ...) stay without properties: Tekla 2025 ignores them
+  (checked with a probe view); only the filter rows filter.
+
 ## 1.1.0 - 2026-10-23
 
 ### Filters

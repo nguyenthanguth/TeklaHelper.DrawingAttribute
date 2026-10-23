@@ -35,7 +35,7 @@ namespace DialogClassGenerator
             "SetAllEnabled", "EmptyDateValue", "Equals", "GetHashCode", "ToString", "GetType", "MemberwiseClone",
             "Finalize", "Keys", "EnableKeys", "ViewPrefix", "GADrawingPrefix", "AssemblyDrawingPrefix",
             "ViewFileExtension", "GADrawingFileExtension", "AssemblyDrawingFileExtension", "SetDefaults", "DefaultValues",
-            "PrefixFor", "SetBooleanUnlessSame", "PageFileInKey", "PageFileOutKey",
+            "PrefixFor", "SetBooleanUnlessSame", "PageFileInKey", "PageFileOutKey", "PageFileExtension",
         };
 
         // Control labels that say nothing on their own: their enum takes the group label in front
@@ -86,6 +86,15 @@ namespace DialogClassGenerator
             ["PositionBoltsTo"] = "PositionTo",
             ["CenteredPart"] = "CenteredPosition",
             ["CombineBoltDimensions"] = "CombineDimensions",
+
+            // Dimension properties (.dim)
+            ["Curved"] = "CurvedDimensionType",
+            ["DimensionTypesStraight"] = "StraightDimensionType",
+            ["PlateSideMarksPlateSideMarkSymbol1"] = "PlateSideMarkSymbol",
+            ["Rotation"] = "DimensionMarkRotation",
+            ["VisibilityOfNumericValue"] = "DimensionValueVisibility",
+            ["TaperedSkewedReinforcementGroup"] = "TaperedRebarDimensionType",
+            ["TaperedCurvedReinforcementGroup"] = "CurvedRebarDimensionType",
         };
 
         /// <summary>Member names for options that the dialog shows as a picture only, by the picture's name.</summary>
@@ -108,6 +117,16 @@ namespace DialogClassGenerator
             ["adcd_part_prefered_side_side"] = "Side",
             ["adcd_screw_prefered_side_view"] = "View",
             ["adcd_screw_prefered_side_side"] = "Side",
+            ["ob_dim_side_mark_none"] = "None",
+            ["ob_dim_side_mark_left"] = "Left",
+            ["ob_dim_side_mark_both"] = "Both",
+            ["ob_dim_side_mark_right"] = "Right",
+            ["gr_dim_tag_type_horver"] = "HorizontalOrVertical",
+            ["gr_dim_tag_type_hor"] = "Horizontal",
+            ["gr_dim_tag_type_ver"] = "Vertical",
+            ["gr_dim_tag_type_horver_extline"] = "HorizontalOrVerticalAtExtensionLine",
+            ["gr_dim_tag_type_curve_align"] = "AlignedToCurve",
+            ["gr_dim_tag_type_curve_along"] = "AlongCurve",
         };
 
         private static readonly HashSet<string> GenericLabels = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -163,6 +182,11 @@ namespace DialogClassGenerator
             AttributeCollection ad = AttributeFileFormat.Read(args[4]).Values;
             SampleAd = ad;
             LoadStatistics(args[5]);
+            foreach (PageSpec spec in PageSpecs.All.Where(s => s.SampleFile != null))
+            {
+                ObjectFileSamples[spec.Class] = AttributeFileFormat.Read(Path.Combine(args[5], spec.SampleFile)).Values;
+            }
+
             Directory.CreateDirectory(args[3]);
             foreach (string old in Directory.GetFiles(args[3], "*.g.cs"))
             {
@@ -282,7 +306,7 @@ namespace DialogClassGenerator
             // Names the hand-written part and the label rows take are taken at the level of the page only
             var reserved = new HashSet<string>(spec.HandWrittenMembers, StringComparer.Ordinal);
             reserved.UnionWith(LabelMarkProperties(spec).Select(row => row.Property));
-            AssignNames(page, new HashSet<string>(StringComparer.Ordinal) { spec.Class }, reserved, spec.DrawingPage);
+            AssignNames(page, new HashSet<string>(StringComparer.Ordinal) { spec.Class }, reserved, spec.DrawingPage || spec.ObjectFilePage, spec.ObjectFilePage);
             return page;
         }
 
@@ -332,9 +356,10 @@ namespace DialogClassGenerator
 
             // The assembly drawing file only for a page GA drawings do not have (dcd.): the other pages keep the keys they had
             string assemblyOnly = spec.GADrawingPrefix == null ? spec.AssemblyDrawingPrefix : null;
-            foreach ((AttributeCollection file, string prefix) in new[] { (vi, spec.ViewPrefix), (gd, spec.GADrawingPrefix), (SampleAd, assemblyOnly) })
+            ObjectFileSamples.TryGetValue(spec.Class, out AttributeCollection objectFile);
+            foreach ((AttributeCollection file, string prefix) in new[] { (vi, spec.ViewPrefix), (gd, spec.GADrawingPrefix), (SampleAd, assemblyOnly), (objectFile, spec.FileSamplePrefix) })
             {
-                if (prefix == null)
+                if (prefix == null || file == null)
                 {
                     continue;
                 }
@@ -536,6 +561,11 @@ namespace DialogClassGenerator
                 return value.Kind;
             }
 
+            if (ObjectFileSamples.TryGetValue(spec.Class, out AttributeCollection objectFile) && objectFile.TryGetValue(spec.FileSamplePrefix + key, out value))
+            {
+                return value.Kind;
+            }
+
             return null;
         }
 
@@ -617,9 +647,12 @@ namespace DialogClassGenerator
 
                 model = new EnumModel { Name = name, Description = label };
                 var used = new HashSet<string>(StringComparer.Ordinal);
+                // Menus whose items are all constant names (DIM_REINFORCEMENT_STRAIGHT, DIM_REINFORCEMENT_SKEWED): the words they
+                // share in front say nothing
+                int shared = SharedConstantWords(control.Options);
                 foreach (Option option in control.Options)
                 {
-                    string member = MemberName(option);
+                    string member = MemberName(option, shared);
                     if (!used.Add(member))
                     {
                         member = member + Math.Abs(option.Value).ToString(CultureInfo.InvariantCulture);
@@ -682,9 +715,36 @@ namespace DialogClassGenerator
             }
         }
 
-        private static string MemberName(Option option)
+        /// <summary>The number of words all the labels share in front when every label is a constant name; else 0.</summary>
+        private static int SharedConstantWords(List<Option> options)
+        {
+            if (options.Count < 2 || options.Any(o => o.ApiName != null || !IsConstantName(o.Label)))
+            {
+                return 0;
+            }
+
+            string[][] words = options.Select(o => o.Label.Split('_')).ToArray();
+            int shared = 0;
+            while (words.All(w => w.Length > shared + 1 && w[shared] == words[0][shared]))
+            {
+                shared++;
+            }
+
+            return shared;
+        }
+
+        private static bool IsConstantName(string label) => label != null && System.Text.RegularExpressions.Regex.IsMatch(label, "^[A-Z][A-Z0-9]*(_[A-Z0-9]+)+$")
+            && !label.StartsWith("SYMBOL_BMP", StringComparison.Ordinal);
+
+        private static string MemberName(Option option, int sharedWords = 0)
         {
             string label = option.Label ?? string.Empty;
+            if (string.IsNullOrEmpty(option.ApiName) && IsConstantName(label))
+            {
+                // DIM_REINFORCEMENT_STRAIGHT → Straight once the shared words are dropped
+                return string.Concat(label.Split('_').Skip(sharedWords).Select(w => char.ToUpperInvariant(w[0]) + w.Substring(1).ToLowerInvariant()));
+            }
+
             bool picture = label.Length == 0 || System.Text.RegularExpressions.Regex.IsMatch(label, "^[a-z]+(_[a-z0-9]+)+$") || label.StartsWith("SYMBOL_BMP", StringComparison.Ordinal);
             string name = !string.IsNullOrEmpty(option.ApiName) && IsIdentifier(option.ApiName) ? option.ApiName
                 : picture ? (option.Bitmap != null && PictureMembers.TryGetValue(option.Bitmap, out string member) ? member : string.Empty)
@@ -697,7 +757,7 @@ namespace DialogClassGenerator
             return name;
         }
 
-        private static void AssignNames(Container container, HashSet<string> enclosing, HashSet<string> reserved = null, bool drawingPage = false)
+        private static void AssignNames(Container container, HashSet<string> enclosing, HashSet<string> reserved = null, bool drawingPage = false, bool objectFilePage = false)
         {
             var used = new HashSet<string>(reserved ?? Enumerable.Empty<string>(), StringComparer.Ordinal);
             int groupIndex = 0;
@@ -718,6 +778,15 @@ namespace DialogClassGenerator
                         name = KeyPascal(drawingPage ? LastSegment(control.Key) : control.Key);
                     }
 
+                    // The pages of object files drop the group name a label repeats (LineArrowHeight in Line, Arrow): the
+                    // released pages keep their names
+                    string group = Pascal(TrimLabel(container.Label));
+                    if (objectFilePage && container.Kind != "Page" && group.Length > 0 && name.Length > group.Length + 1
+                        && name.StartsWith(group, StringComparison.Ordinal) && char.IsUpper(name[group.Length]))
+                    {
+                        name = name.Substring(group.Length);
+                    }
+
                     name = Unique(name, used, enclosing, () => KeyPascal(control.Key));
                     control.PropertyName = name;
                 }
@@ -734,7 +803,7 @@ namespace DialogClassGenerator
                     child.PropertyName = name;
                     child.ClassName = Unique(name + child.Kind, used, enclosing, () => name + child.Kind + "Section");
                     var inner = new HashSet<string>(enclosing, StringComparer.Ordinal) { child.ClassName };
-                    AssignNames(child, inner, null, drawingPage);
+                    AssignNames(child, inner, null, drawingPage, objectFilePage);
                 }
             }
         }
@@ -759,6 +828,9 @@ namespace DialogClassGenerator
 
         // The assembly drawing file saved from the dialog, for default values
         private static AttributeCollection SampleAd;
+
+        // Page class → sample of its drawing object file (PageSpec.SampleFile)
+        private static readonly Dictionary<string, AttributeCollection> ObjectFileSamples = new Dictionary<string, AttributeCollection>(StringComparer.Ordinal);
 
         private static string WritePage(PageSpec spec, Container page, AttributeCollection vi, AttributeCollection gd)
         {
@@ -785,16 +857,26 @@ namespace DialogClassGenerator
             WriteConstant(w, "ViewFileExtension", spec.ViewFile, "Extension of the file the page's Save button writes in the view properties (only for the dialogs; the Open API reads the .vi file).");
             WriteConstant(w, "GADrawingFileExtension", spec.GADrawingFile, "Extension of the page file in GA drawing properties (matched by key set; only for the dialogs).");
             WriteConstant(w, "AssemblyDrawingFileExtension", spec.AssemblyDrawingFile, "Extension of the page file in assembly drawing properties (matched by key set; only for the dialogs).");
-            string Constant(string name, string value) => value == null ? "null" : name;
-            w.Summary("Returns the prefix of the page in a file of <paramref name=\"host\"/>; null when that kind of file has no such page.");
-            w.Line($"public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, {Constant("ViewPrefix", spec.ViewPrefix)}, {Constant("GADrawingPrefix", spec.GADrawingPrefix)}, {Constant("AssemblyDrawingPrefix", spec.AssemblyDrawingPrefix)});");
+            WriteConstant(w, "PageFileExtension", spec.PageFileExtension, "Extension of the file the page's own Save button writes (only for the dialogs).");
+            if (!spec.ObjectFilePage)
+            {
+                string Constant(string name, string value) => value == null ? "null" : name;
+                w.Summary("Returns the prefix of the page in a file of <paramref name=\"host\"/>; null when that kind of file has no such page.");
+                w.Line($"public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, {Constant("ViewPrefix", spec.ViewPrefix)}, {Constant("GADrawingPrefix", spec.GADrawingPrefix)}, {Constant("AssemblyDrawingPrefix", spec.AssemblyDrawingPrefix)});");
+            }
+
             if (!spec.HandWrittenPart)
             {
-                w.Line();
+                if (!spec.ObjectFilePage)
+                {
+                    w.Line();
+                }
+
                 w.Summary("Creates the page over the keys of <paramref name=\"values\"/> under <paramref name=\"prefix\"/>.");
                 w.Line("/// <param name=\"values\">Values of the attribute file.</param>");
-                string example = spec.ViewPrefix != null ? "ViewPrefix" : spec.GADrawingPrefix != null ? "GADrawingPrefix" : "AssemblyDrawingPrefix";
-                w.Line($"/// <param name=\"prefix\">Prefix of the page in that file, e.g. <see cref=\"{example}\"/>.</param>");
+                string example = spec.ViewPrefix != null ? "<see cref=\"ViewPrefix\"/>" : spec.GADrawingPrefix != null ? "<see cref=\"GADrawingPrefix\"/>"
+                    : spec.AssemblyDrawingPrefix != null ? "<see cref=\"AssemblyDrawingPrefix\"/>" : $"<c>\"{spec.FileSamplePrefix}\"</c>";
+                w.Line($"/// <param name=\"prefix\">Prefix of the page in that file, e.g. {example}.</param>");
                 w.Line($"public {spec.Class}(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)");
                 w.Line("    : base(values, prefix)");
                 w.Open();
@@ -935,7 +1017,7 @@ namespace DialogClassGenerator
                     string type = "global::TeklaHelper.DrawingAttribute.Pages." + control.EnumName;
                     w.Line($"public {type} {control.PropertyName}");
                     w.Open();
-                    w.Line($"get => GetEnum(\"{key}\", ({type}){(MissingValue(control) ?? control.Options[0].Value)});");
+                    w.Line($"get => GetEnum(\"{key}\", ({type}){CastOperand(MissingValue(control) ?? control.Options[0].Value)});");
                     w.Line($"set => SetEnum(\"{key}\", value);");
                     w.Close();
                     break;
@@ -943,7 +1025,7 @@ namespace DialogClassGenerator
                 case "global::TeklaHelper.DrawingAttribute.DrawingLineType":
                     w.Line($"public {control.ClrType} {control.PropertyName}");
                     w.Open();
-                    w.Line($"get => GetEnum(\"{key}\", ({control.ClrType}){(MissingValue(control) ?? (control.Type == "color" ? (control.Options.Count > 0 ? control.Options[0].Value : 153) : 1))});");
+                    w.Line($"get => GetEnum(\"{key}\", ({control.ClrType}){CastOperand(MissingValue(control) ?? (control.Type == "color" ? (control.Options.Count > 0 ? control.Options[0].Value : 153) : 1))});");
                     w.Line($"set => SetEnum(\"{key}\", value);");
                     w.Close();
                     break;
@@ -971,6 +1053,10 @@ namespace DialogClassGenerator
             }
         }
 
+        /// <summary>The number after a cast: a negative one needs parentheses (<c>(T)(-1)</c>).</summary>
+        private static string CastOperand(int value) =>
+            value < 0 ? "(" + value.ToString(CultureInfo.InvariantCulture) + ")" : value.ToString(CultureInfo.InvariantCulture);
+
         private static string PageSummary(PageSpec spec)
         {
             var hosts = new List<string>();
@@ -987,6 +1073,14 @@ namespace DialogClassGenerator
             if (spec.AssemblyDrawingPrefix != null)
             {
                 hosts.Add($"<c>{spec.AssemblyDrawingPrefix}*</c> in assembly, single-part and cast unit drawing files");
+            }
+
+            if (spec.ObjectFilePage)
+            {
+                string where = spec.FilePrefixes.Length == 1 && spec.FilePrefixes[0].Length == 0
+                    ? $"the top-level keys of {spec.FileExtension} files"
+                    : $"in {spec.FileExtension} files under each of {string.Join(", ", spec.FilePrefixes.Select(p => $"<c>{p}*</c>"))}";
+                return $"{spec.Description}, with its tabs and group boxes as nested classes: {where}. Every key of the page in the {spec.FileExtension} files shipped with Tekla has a property; those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).";
             }
 
             if (spec.DrawingPage)

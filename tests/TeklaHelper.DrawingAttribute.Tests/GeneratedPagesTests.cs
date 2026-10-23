@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using TeklaHelper.DrawingAttribute.DrawingObjects;
 using TeklaHelper.DrawingAttribute.Drawings;
 using TeklaHelper.DrawingAttribute.Pages;
 using TeklaHelper.DrawingAttribute.Views;
@@ -25,6 +26,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
             yield return new object[] { new Func<AttributeFile>(() => new AssemblyDrawingAttributeFile()) };
             yield return new object[] { new Func<AttributeFile>(() => new SinglePartDrawingAttributeFile()) };
             yield return new object[] { new Func<AttributeFile>(() => new CastUnitDrawingAttributeFile()) };
+            yield return new object[] { new Func<AttributeFile>(() => new DimensionAttributeFile()) };
         }
 
         [Theory]
@@ -283,6 +285,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 ("*.ad", () => new AssemblyDrawingAttributeFile()),
                 ("*.wd", () => new SinglePartDrawingAttributeFile()),
                 ("*.cud", () => new CastUnitDrawingAttributeFile()),
+                ("*.dim", () => new DimensionAttributeFile()),
             };
             foreach ((string pattern, Func<AttributeFile> create) in types)
             {
@@ -371,6 +374,11 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 roots.Add(view.Dimensioning);
                 roots.Add(view.Marks);
                 roots.Add(view.Objects);
+            }
+            else if (file is DimensionAttributeFile dimension)
+            {
+                roots.Add(dimension.Properties);
+                roots.AddRange(dimension.Marks);
             }
             else if (file is DrawingAttributeFile drawing)
             {
