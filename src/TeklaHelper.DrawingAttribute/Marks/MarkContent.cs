@@ -178,7 +178,7 @@ namespace TeklaHelper.DrawingAttribute.Marks
 
             string text = xml.Replace("\r\n", "\n");
             string emptyValues = Regex.Replace(text, @"(\s[A-Za-z_]+)=(?=\s+[A-Za-z_]+="")", "$1=\"\"");
-            string RawLessThan(string t) => Regex.Replace(t, @"<(?![A-Za-z_/!?])", "&lt;");
+            string RawLessThan(string t) => Regex.Replace(t, @"<(?=[^\p{L}_:/!?]|$)", "&lt;");
             XDocument document = null;
             bool rawLessThan = false;
             XmlException failure = null;
@@ -214,13 +214,18 @@ namespace TeklaHelper.DrawingAttribute.Marks
                 lineBreakEnd++;
             }
 
+            // The layout is told by the declaration alone: in one-line content a text may hold line feeds of its own
+            bool lines = declarationEnd >= 2 ? lineBreakEnd > declarationEnd : text.IndexOf('\n') >= 0;
             string lineBreak = lineBreakEnd > declarationEnd ? text.Substring(declarationEnd, lineBreakEnd - declarationEnd) : "\n";
-            MarkContent content = ReadParts(document.Root, lineBreak);
-            content.Layout = text.IndexOf('\n') >= 0 ? MarkContentLayout.Lines : MarkContentLayout.Compact;
+            MarkContent content = ReadParts(document.Root, lineBreak, lines);
+            content.Layout = lines ? MarkContentLayout.Lines : MarkContentLayout.Compact;
             content.EscapeGreaterThan = text.IndexOf("&gt;", StringComparison.Ordinal) >= 0;
             content.EscapeLessThan = !rawLessThan;
             return content;
         }
+
+        /// <summary>Whether a <c>&lt;</c> followed by <paramref name="c"/> would open a tag rather than be text.</summary>
+        internal static bool StartsTag(char c) => char.IsLetter(c) || c == '_' || c == ':' || c == '/' || c == '!' || c == '?';
 
         private static XDocument Load(string text)
         {
@@ -231,9 +236,15 @@ namespace TeklaHelper.DrawingAttribute.Marks
             }
         }
 
-        /// <summary>Reads mark content; false when the text is not mark content.</summary>
+        /// <summary>Reads mark content; false when the text is null or not mark content.</summary>
         public static bool TryParse(string xml, out MarkContent content)
         {
+            if (xml == null)
+            {
+                content = null;
+                return false;
+            }
+
             try
             {
                 content = Parse(xml);
@@ -324,7 +335,7 @@ namespace TeklaHelper.DrawingAttribute.Marks
             public int GetHashCode(MarkContent obj) => System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(obj);
         }
 
-        private static MarkContent ReadParts(XElement mark, string lineBreak)
+        private static MarkContent ReadParts(XElement mark, string lineBreak, bool lines)
         {
             var content = new MarkContent { LineBreak = lineBreak };
             foreach (XElement part in mark.Elements())
@@ -336,15 +347,10 @@ namespace TeklaHelper.DrawingAttribute.Marks
                     continue;
                 }
 
-                var partAttributes = new XmlAttributeList("groupid");
-                foreach (XAttribute attribute in part.Attributes())
-                {
-                    partAttributes.Add(attribute.Name.LocalName, attribute.Value);
-                }
-
+                XmlAttributeList partAttributes = XmlAttributeList.From(part, "groupid");
                 foreach (XElement child in part.Elements())
                 {
-                    MarkElement element = ReadElement(child, lineBreak);
+                    MarkElement element = ReadElement(child, lineBreak, lines);
                     element.PartAttributes = partAttributes;
                     content.Add(element);
                 }
@@ -353,18 +359,9 @@ namespace TeklaHelper.DrawingAttribute.Marks
             return content;
         }
 
-        private static MarkElement ReadElement(XElement element, string lineBreak)
+        private static MarkElement ReadElement(XElement element, string lineBreak, bool lines)
         {
-            XmlAttributeList Attributes(params string[] order)
-            {
-                var list = new XmlAttributeList(order);
-                foreach (XAttribute attribute in element.Attributes())
-                {
-                    list.Add(attribute.Name.LocalName, attribute.Value);
-                }
-
-                return list;
-            }
+            XmlAttributeList Attributes(params string[] order) => XmlAttributeList.From(element, order);
 
             XElement formatElement = element.Element("Format");
             MarkFormat format = formatElement == null ? null : MarkFormat.Read(formatElement);
@@ -393,8 +390,14 @@ namespace TeklaHelper.DrawingAttribute.Marks
                 case "UserText":
                     if (onlyFormat && !element.Attributes().Any())
                     {
-                        // The text before <Format>; the line break after it is layout
+                        // The text before <Format>; in the line layout the line breaks around it are layout, in one line
+                        // they are the text's own
                         string text = string.Concat(element.Nodes().TakeWhile(n => !(n is XElement)).OfType<XText>().Select(t => t.Value));
+                        if (!lines)
+                        {
+                            return new MarkTextElement(text, format, breakBefore: true, breakAfter: true);
+                        }
+
                         bool before = text.StartsWith(lineBreak, StringComparison.Ordinal);
                         if (before)
                         {
@@ -435,7 +438,7 @@ namespace TeklaHelper.DrawingAttribute.Marks
                         List<XElement> inner = element.Elements().ToList();
                         if (inner.Count == 1 && inner[0].Name.LocalName == "Mark")
                         {
-                            return new MarkFrameElement(Attributes("type", "color", "frame_id"), ReadParts(inner[0], lineBreak));
+                            return new MarkFrameElement(Attributes("type", "color", "frame_id"), ReadParts(inner[0], lineBreak, lines));
                         }
 
                         break;
@@ -456,12 +459,7 @@ namespace TeklaHelper.DrawingAttribute.Marks
         /// <summary>An element as Tekla writes it: attributes as read, no space before <c>/&gt;</c>.</summary>
         private static string Serialize(XElement element)
         {
-            var attributes = new XmlAttributeList();
-            foreach (XAttribute attribute in element.Attributes())
-            {
-                attributes.Add(attribute.Name.LocalName, attribute.Value);
-            }
-
+            XmlAttributeList attributes = XmlAttributeList.From(element);
             var w = new MarkXmlWriter(lines: false);
             if (!element.Nodes().Any())
             {
@@ -486,9 +484,32 @@ namespace TeklaHelper.DrawingAttribute.Marks
             return w.ToString();
         }
 
-        /// <summary>Same elements with the same formats, whatever the layout.</summary>
-        public bool Equals(MarkContent other) =>
-            other != null && other.Count == Count && this.Zip(other, (a, b) => a.SameAs(b) && a.PartAttributes.SameAs(b.PartAttributes)).All(same => same);
+        /// <summary>
+        /// Same elements with the same formats, in the same <c>&lt;MarkPart&gt;</c>s (the same grouping and part
+        /// attributes, or none), whatever the layout.
+        /// </summary>
+        public bool Equals(MarkContent other)
+        {
+            if (other == null || other.Count != Count)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < Count; i++)
+            {
+                MarkElement a = this[i], b = other[i];
+                if (!a.SameAs(b) || !XmlAttributeList.Same(a.PartAttributes, b.PartAttributes) || StartsPart(i) != other.StartsPart(i))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>Whether element <paramref name="index"/> opens a MarkPart of its own (as <see cref="WriteParts"/> writes it).</summary>
+        private bool StartsPart(int index) =>
+            this[index].PartAttributes == null || index == 0 || !ReferenceEquals(this[index].PartAttributes, this[index - 1].PartAttributes);
 
         /// <inheritdoc />
         public override bool Equals(object obj) => Equals(obj as MarkContent);

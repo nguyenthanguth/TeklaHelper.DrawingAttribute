@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace TeklaHelper.DrawingAttribute.Marks
 {
@@ -18,6 +19,26 @@ namespace TeklaHelper.DrawingAttribute.Marks
         internal XmlAttributeList(params string[] order)
         {
             _order = order;
+        }
+
+        /// <summary>The attributes of <paramref name="element"/> in the order read; new ones go where <paramref name="order"/> puts them.</summary>
+        internal static XmlAttributeList From(XElement element, params string[] order)
+        {
+            var list = new XmlAttributeList(order);
+            foreach (XAttribute attribute in element.Attributes())
+            {
+                list.Add(attribute.Name.LocalName, attribute.Value);
+            }
+
+            return list;
+        }
+
+        /// <summary>A copy, with the same order for new attributes.</summary>
+        internal XmlAttributeList Clone()
+        {
+            var copy = new XmlAttributeList(_order);
+            copy._items.AddRange(_items);
+            return copy;
         }
 
         internal IEnumerable<KeyValuePair<string, string>> Items => _items;
@@ -60,6 +81,9 @@ namespace TeklaHelper.DrawingAttribute.Marks
             _items.Insert(position, new KeyValuePair<string, string>(name, value));
         }
 
+        /// <summary>Both null, or the same attributes.</summary>
+        internal static bool Same(XmlAttributeList a, XmlAttributeList b) => a == null ? b == null : b != null && a.SameAs(b);
+
         internal bool SameAs(XmlAttributeList other, params string[] ignore) =>
             Normalized(this, ignore).SequenceEqual(Normalized(other, ignore));
 
@@ -86,7 +110,11 @@ namespace TeklaHelper.DrawingAttribute.Marks
         /// <summary>Whether text writes <c>&gt;</c> as <c>&amp;gt;</c>: Tekla wrote both, so parsed content keeps its own way.</summary>
         internal bool EscapeGreaterThan { get; set; } = true;
 
-        /// <summary>Whether text writes <c>&lt;</c> as <c>&amp;lt;</c>: false for content read from a file that held it raw.</summary>
+        /// <summary>
+        /// Whether text writes every <c>&lt;</c> as <c>&amp;lt;</c>. False for content read from a file that held it raw
+        /// (<c>&lt;&lt; Mark &gt;&gt;</c>): a <c>&lt;</c> no name can follow stays raw, as Tekla wrote it, and the others are
+        /// escaped all the same, so that new or changed text cannot turn into a tag.
+        /// </summary>
         internal bool EscapeLessThan { get; set; } = true;
 
         /// <summary>The id the next frame without one takes.</summary>
@@ -125,8 +153,9 @@ namespace TeklaHelper.DrawingAttribute.Marks
         private static string Escape(string text, bool attribute, bool greaterThan, bool lessThan)
         {
             var builder = new StringBuilder(text.Length);
-            foreach (char c in text)
+            for (int i = 0; i < text.Length; i++)
             {
+                char c = text[i];
                 if ((c < ' ' && c != '\t' && c != '\n' && c != '\r') || c == '￾' || c == '￿')
                 {
                     throw new ArgumentException($"Mark content cannot hold the character U+{(int)c:X4}: \"{text}\".");
@@ -137,7 +166,7 @@ namespace TeklaHelper.DrawingAttribute.Marks
                     case '&':
                         builder.Append("&amp;");
                         break;
-                    case '<' when lessThan:
+                    case '<' when lessThan || i + 1 < text.Length && MarkContent.StartsTag(text[i + 1]):
                         builder.Append("&lt;");
                         break;
                     case '>' when greaterThan:

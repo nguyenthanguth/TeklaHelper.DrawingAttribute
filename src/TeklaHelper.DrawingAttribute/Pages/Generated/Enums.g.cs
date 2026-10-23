@@ -109,7 +109,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         OnePerThousand = 1000,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DimensionPage: AnglePrecision; meaning not
+        /// known.
         /// </summary>
         Value0 = 0,
     }
@@ -156,7 +157,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         TriangleWithGradians = 7,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DimensionPage: angle_dim_type; meaning not
+        /// known.
         /// </summary>
         Value0 = 0,
     }
@@ -228,7 +230,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Transparent = -1,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DimensionPage: dim_background_mask,
+        /// DimensionProperties: dim_background_mask; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -296,7 +299,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         UserDefined = 8,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for NeighborPartObject: BoltDrawAs,
+        /// PartObject: BoltDrawAs, PourObject: BoltDrawAs; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -614,7 +618,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         OpenArrow = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DimensionPage: dim_arrow_shape,
+        /// DimensionProperties: dim_arrow_shape; meaning not known.
         /// </summary>
         Value11 = 11,
     }
@@ -781,7 +786,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         TenPerOne = -100,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DimensionPage: dim_precision; meaning not
+        /// known.
         /// </summary>
         Value0 = 0,
     }
@@ -876,7 +882,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         AbsoluteWithAllRelativesAbove = 99,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DimensionPage: dim_type; meaning not
+        /// known.
         /// </summary>
         Value0 = 0,
     }
@@ -1256,7 +1263,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Triangle = 7,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for NeighborReinforcementMark:
+        /// FrameAttr.frame_type, PourMark: FrameAttr.frame_type, ReinforcementMark: FrameAttr.frame_type,
+        /// ViewLabelMark: FrameAttr.frame_type; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -1485,7 +1494,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Both = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DimensioningPage: GridLineHPositioning;
+        /// meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -1547,7 +1557,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         AllViewsBelow = 10,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for AssemblyDimensioningPage:
+        /// GridDimensionSide; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -1573,7 +1584,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Both = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DimensioningPage: GridLineVPositioning;
+        /// meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -1620,7 +1632,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         OnlyGridLabelsVisible = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for GridObject: GridObjectGridOn; meaning not
+        /// known.
         /// </summary>
         Value0 = 0,
     }
@@ -1741,12 +1754,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
         OpenArrow = 2,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for AssociativeNoteProperties: ArrowType;
+        /// meaning not known.
         /// </summary>
         Value16 = 16,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for AssociativeNoteProperties: ArrowType;
+        /// meaning not known.
         /// </summary>
         Value17 = 17,
     }
@@ -1798,7 +1813,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Value13 = 13,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for BoltMark: text_type, ConnectionMark:
+        /// text_type; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -1888,7 +1904,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         OpenArrow = 2,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for LineProperties: arrow_type,
+        /// RevisionMarkProperties: arrow_type; meaning not known.
         /// </summary>
         NoArrow = 0,
     }
@@ -1937,7 +1954,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         All = 2,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for AssemblyDimensioningPage:
+        /// screw_main_internal; meaning not known.
         /// </summary>
         Value1 = 1,
     }
@@ -2009,7 +2027,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         MergeHorizontal = 2,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for BoltMark: merge_dir, ConnectionMark:
+        /// merge_dir, NeighborPartMark: merge_dir, NeighborReinforcementMark: merge_dir and others; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -2042,7 +2061,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         LeaderLinesToOnePoint = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for AssociativeNoteProperties:
+        /// leader_line_type, BoltMark: leader_line_type, ConnectionMark: leader_line_type, NeighborPartMark:
+        /// leader_line_type and others; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -2270,7 +2291,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Both = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for PartObject: np_which, PourObject:
+        /// np_which; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -2536,7 +2558,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
         None = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for PourMark: in_all_views; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -2635,7 +2657,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Outline = 16,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for ReferenceObject: DrawAs; meaning not
+        /// known.
         /// </summary>
         Value0 = 0,
     }
@@ -2667,7 +2690,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Circle = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for ReinforcementMark: ArrowType; meaning not
+        /// known.
         /// </summary>
         Value17 = 17,
     }
@@ -2704,7 +2728,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         ParallelOnLeaderLine = 14,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for NeighborReinforcementMark: text_type,
+        /// ReinforcementMark: text_type; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -3298,7 +3323,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         FullHook = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for NeighborReinforcementObject:
+        /// BarAttr.hooked_symbol, ReinforcementObject: BarAttr.hooked_symbol; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -3340,7 +3366,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         HooksOnOuterSide = 3,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for NeighborReinforcementObject:
+        /// BarAttr.straight_symbol, ReinforcementObject: BarAttr.straight_symbol; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -3424,12 +3451,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
         OpenArrow = 2,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for TextProperties: arrow_type; meaning not
+        /// known.
         /// </summary>
         Value16 = 16,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for SymbolProperties: arrow_type; meaning not
+        /// known.
         /// </summary>
         Value0 = 0,
     }
@@ -3741,7 +3770,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Fixed = 6,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DrawingViewCreationSection: coord_sys;
+        /// meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -3775,7 +3805,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Custom = 1000,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for DrawingViewCreationSection:
+        /// ViewLabelMarkSymbolIndex; meaning not known.
         /// </summary>
         Value1 = 1,
     }
@@ -3911,7 +3942,10 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Customized = 7,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for NeighborReinforcementObject:
+        /// BarAttr.visibility_in_groups, NeighborReinforcementObject: MeshAttr.visibility_crossing,
+        /// NeighborReinforcementObject: MeshAttr.visibility_longitudinal, ReinforcementObject:
+        /// BarAttr.visibility_in_groups and others; meaning not known.
         /// </summary>
         Value0 = 0,
     }
@@ -4055,7 +4089,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
         Path = 2,
 
         /// <summary>
-        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// Not an item of the menu; written by Tekla in at least 3 files for WeldObject: DrawAs; meaning not known.
         /// </summary>
         Value0 = 0,
     }

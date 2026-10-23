@@ -14,7 +14,8 @@ namespace TeklaHelper.DrawingAttribute.Marks
     /// </summary>
     public sealed class MarkFormat : IEquatable<MarkFormat>
     {
-        internal readonly XmlAttributeList Attributes = new XmlAttributeList("font", "unit", "format", "color", "height", "hidden", "override");
+        private static readonly string[] Order = { "font", "unit", "format", "color", "height", "hidden", "override" };
+        internal XmlAttributeList Attributes { get; private set; } = new XmlAttributeList(Order);
 
         /// <summary>Creates a format: Arial, black, 2.5.</summary>
         public MarkFormat()
@@ -76,27 +77,10 @@ namespace TeklaHelper.DrawingAttribute.Marks
         }
 
         /// <summary>A copy of this format.</summary>
-        public MarkFormat Clone()
-        {
-            var copy = new MarkFormat(true);
-            foreach (var pair in Attributes.Items)
-            {
-                copy.Attributes.Add(pair.Key, pair.Value);
-            }
+        public MarkFormat Clone() => new MarkFormat(true) { Attributes = Attributes.Clone() };
 
-            return copy;
-        }
-
-        internal static MarkFormat Read(XElement element)
-        {
-            var format = new MarkFormat(true) { FromFile = true };
-            foreach (XAttribute attribute in element.Attributes())
-            {
-                format.Attributes.Add(attribute.Name.LocalName, attribute.Value);
-            }
-
-            return format;
-        }
+        internal static MarkFormat Read(XElement element) =>
+            new MarkFormat(true) { FromFile = true, Attributes = XmlAttributeList.From(element, Order) };
 
         internal void Write(MarkXmlWriter w)
         {
@@ -511,12 +495,7 @@ namespace TeklaHelper.DrawingAttribute.Marks
             if (ValidId == null)
             {
                 // A new frame, or one Tekla would empty: the next free id, for this writing only
-                var copy = new XmlAttributeList("type", "color", "frame_id");
-                foreach (var pair in Attributes.Items)
-                {
-                    copy.Add(pair.Key, pair.Value);
-                }
-
+                XmlAttributeList copy = Attributes.Clone();
                 copy.Set("frame_id", MarkXmlNumbers.Int(w.NextFrameId()));
                 attributes = copy;
             }

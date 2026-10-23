@@ -30,6 +30,15 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <see cref="MarkElementTypes.DetailMark"/>), texts, symbols and frames; null when the row has none, or text that is
         /// no mark content (<see cref="AttributeSection.GetMarkContent"/> says why). Null empties the row. Checked in Tekla
         /// 2025: the Open API read the elements of a view label, a section mark and a detail mark the library wrote.
+        /// <para>
+        /// Each get reads the key afresh and returns a copy: changing it changes nothing in the file until it is assigned
+        /// back.
+        /// </para>
+        /// <code>
+        /// MarkContent elements = view.Attributes.LabelMarkA1.Elements;
+        /// elements.AddText(" (preliminary)");
+        /// view.Attributes.LabelMarkA1.Elements = elements;
+        /// </code>
         /// </summary>
         public MarkContent Elements
         {

@@ -339,7 +339,11 @@ text sits on lines of its own, and whether `>` is written `&gt;` (Tekla did both
 models is written back the same, except 25 values that mix UTF-8 with the code page. Two kinds of damage Tekla's own
 files hold are read: an attribute without value (`value= subType`, 390 values, repaired) and a raw `<` in a text
 (`<< Mark >>`, 18 values, kept raw). A review pass found the last one, and that the library numbered frames by changing
-the content it wrote; frames are now numbered per writing.
+the content it wrote; frames are now numbered per writing. A second review (1.3.1) found that content with an element
+outside any `<MarkPart>` could not be compared, that the comparison ignored the grouping into MarkParts, that new text in
+content read with a raw `<` could become a tag (now only a `<` no name can follow stays raw), and that one-line content
+whose text held a line feed was taken for the line layout (the layout is now told by the line break after the XML
+declaration alone).
 
 **Picture-only menus.** The leader line menus of the text, symbol, level mark, revision mark and note dialogs show only
 pictures, the pictures are compiled into Tekla, and the Open API does not read the value. A macro opened each dialog

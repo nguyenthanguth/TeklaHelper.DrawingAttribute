@@ -287,7 +287,8 @@ namespace TeklaHelper.DrawingAttribute
 
         /// <summary>
         /// Returns the mark content of <paramref name="name"/> (a <c>ContentString</c> key: the elements of a label row or a
-        /// mark), or null when the key is missing or empty.
+        /// mark), or null when the key is missing or empty. The content is a copy: write a change back with
+        /// <see cref="SetMarkContent"/>.
         /// </summary>
         /// <exception cref="FormatException">The value is not mark content.</exception>
         public Marks.MarkContent GetMarkContent(string name)

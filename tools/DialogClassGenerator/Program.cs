@@ -855,14 +855,19 @@ namespace DialogClassGenerator
             }
 
             // Values Tekla writes that the menu does not offer (vg.GridObjectGridOn 0, DrawingWeld.DrawAs 0, ...): a member
-            // each, so that they have a name
+            // each, so that they have a name. The enum may serve other pages too, so the member records whose files hold it
             foreach (KeyValuePair<int, int> pair in control.SamplesOutsideMenu.Where(pair => pair.Value >= MinimumFilesForMember).OrderBy(pair => pair.Key))
             {
                 if (model.Members.All(member => member.Value != pair.Key))
                 {
                     string member = "Value" + (pair.Key < 0 ? "Minus" : string.Empty) + Math.Abs(pair.Key).ToString(CultureInfo.InvariantCulture);
                     model.Members.Add((MemberRenames.TryGetValue(model.Name + "." + member, out string renamed) ? renamed : member, pair.Key, null));
-                    model.FromFiles.Add(pair.Key);
+                    model.FromFiles[pair.Key] = new SortedSet<string>(StringComparer.Ordinal);
+                }
+
+                if (model.FromFiles.TryGetValue(pair.Key, out SortedSet<string> sources))
+                {
+                    sources.Add(spec.Class + ": " + control.Key);
                 }
             }
 
@@ -1347,6 +1352,11 @@ namespace DialogClassGenerator
             return text.ToString();
         }
 
+        /// <summary>The comment of a member found only in files: which controls' files hold it (not every page of the enum).</summary>
+        private static string FromFilesSummary(SortedSet<string> sources) =>
+            $"Not an item of the menu; written by Tekla in at least {MinimumFilesForMember.ToString(CultureInfo.InvariantCulture)} files for "
+            + Xml(string.Join(", ", sources.Take(4))) + (sources.Count > 4 ? " and others" : string.Empty) + "; meaning not known.";
+
         private static string WriteEnums()
         {
             var w = new CodeWriter();
@@ -1372,7 +1382,7 @@ namespace DialogClassGenerator
                 w.Open();
                 foreach ((string name, int value, string label) in model.Members)
                 {
-                    w.Summary(model.FromFiles.Contains(value) ? "Not an item of the menu, but written by Tekla in many files; meaning not known." : string.IsNullOrEmpty(label) || name.StartsWith("Value", StringComparison.Ordinal) && label != name ? $"Item \"{Xml(label)}\" of the menu (a picture in the dialog)." : $"{Xml(label)}.");
+                    w.Summary(model.FromFiles.TryGetValue(value, out SortedSet<string> sources) ? FromFilesSummary(sources) : string.IsNullOrEmpty(label) || name.StartsWith("Value", StringComparison.Ordinal) && label != name ? $"Item \"{Xml(label)}\" of the menu (a picture in the dialog)." : $"{Xml(label)}.");
                     w.Line($"{name} = {value.ToString(CultureInfo.InvariantCulture)},");
                     w.Line();
                 }

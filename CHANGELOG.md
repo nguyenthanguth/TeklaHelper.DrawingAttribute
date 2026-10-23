@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.3.1 - 2026-10-23
+
+### Fixed
+- `MarkContent.Equals` (and so `SetMarkContent` / `Elements = ...` with content read from a file) threw
+  `NullReferenceException` for content holding an element outside any `<MarkPart>`.
+- `MarkContent.Equals` compares how the elements are grouped into `<MarkPart>`s, so `SetMarkContent` writes content that
+  differs from the file's only in its grouping.
+- Content read from a file with a raw `<` in a text (`<< Mark >>`) wrote new or changed text holding `<` followed by a
+  letter raw, which made the value unreadable; only a `<` no name can follow stays raw now.
+- One-line content (`MarkContentLayout.Compact`) whose text holds a line feed was read back in the line layout and lost
+  the line feed at the start or end of the text.
+- `MarkContent.TryParse(null, ...)` returns false instead of throwing.
+- The comments of enum members found only in files name the pages whose files hold them (`LeaderLineArrow.Value16` /
+  `Value17` come from the note dialog's `.note` files, not from the mark pages that share the enum).
+
+### Documentation
+- `ViewLabelMark.Elements` and `AttributeSection.GetMarkContent` return a copy: changing it changes nothing until it is
+  assigned back.
+
 ## 1.3.0 - 2026-10-23
 
 ### Packaging

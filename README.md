@@ -329,6 +329,8 @@ mark.Properties.SetMarkContent("ContentString1", new MarkContent()       // the 
 MarkContent read = vi.Attributes.LabelMarkA1.Elements;                  // the elements of an existing file
 ```
 
+`Elements` and `GetMarkContent` return a copy: change it, then assign it back (`Elements = read`).
+
 - Elements: the properties of each kind of mark (`MarkElementTypes.PartMark`, `BoltMark`, `ConnectionMark`,
   `ReinforcementMark`, `ReinforcementMeshMark`, `SurfaceTreatmentMark`, `EdgeChamferMark`, `PourMark`, `ViewLabel`,
   `SectionMark`, `DetailMark`), user-defined attributes (with unit and format), texts, line feeds, spaces, backspaces,

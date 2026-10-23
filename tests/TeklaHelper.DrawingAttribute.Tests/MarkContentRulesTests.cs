@@ -223,5 +223,78 @@ namespace TeklaHelper.DrawingAttribute.Tests
             Assert.Equal(3, content.Count);
             Assert.Equal(MarkSeparatorKind.LineFeed, Assert.IsType<MarkSeparatorElement>(content[2]).Kind);
         }
+
+        [Fact]
+        public void Equals_TakesElementsOutsideAnyMarkPart()
+        {
+            string xml = Head + "<Foo/>\n" + Part("<LineFeed/>")
+                + Part("<Frame type=\"1\" color=\"153\" frame_id=\"101\">\n<Mark>\n<Bar/>\n</Mark>\n</Frame>") + "</Mark>\n";
+
+            Assert.Equal(MarkContent.Parse(xml), MarkContent.Parse(xml));
+            Assert.NotEqual(MarkContent.Parse(Head + "<LineFeed/>\n</Mark>\n"), new MarkContent().AddLineFeed());
+            Assert.NotEqual(new MarkContent().AddLineFeed(), MarkContent.Parse(Head + "<LineFeed/>\n</Mark>\n"));
+
+            var view = new ViewProperties();
+            view.SetString("ViewLabelMarkA1.ContentString", xml);
+            string before = view.GetString("ViewLabelMarkA1.ContentString");
+            view.Attributes.LabelMarkA1.Elements = view.Attributes.LabelMarkA1.Elements;
+            Assert.Equal(before, view.GetString("ViewLabelMarkA1.ContentString"));
+        }
+
+        [Fact]
+        public void Equals_TakesTheGroupingOfMarkParts()
+        {
+            MarkContent separate = new MarkContent().AddText("A").AddText("B");
+            string together = separate.ToXml().Replace("</MarkPart>\n<MarkPart groupid=\"0\">\n", string.Empty);
+            Assert.Equal(1, together.Split(new[] { "<MarkPart" }, StringSplitOptions.None).Length - 1);
+
+            Assert.NotEqual(MarkContent.Parse(together), separate);
+            Assert.Equal(MarkContent.Parse(separate.ToXml()), separate);
+
+            var view = new ViewProperties();
+            view.SetString("ViewLabelMarkA1.ContentString", together);
+            view.Attributes.LabelMarkA1.Elements = separate;
+            Assert.Equal(separate.ToXml(), view.GetString("ViewLabelMarkA1.ContentString").Replace("\r\n", "\n"));
+        }
+
+        [Fact]
+        public void Writer_EscapesNewText_InContentReadWithARawLessThan()
+        {
+            const string Format = "<Format font=\"Arial\" color=\"153\" height=\"2.500\" hidden=\"0\"/>\n";
+            string xml = Head + Part("<UserText>\n<< Mark >>\n" + Format + "</UserText>\n<UserText>\n&lt;Tag\n" + Format + "</UserText>") + "</Mark>\n";
+
+            MarkContent content = MarkContent.Parse(xml);
+            Assert.Equal(new[] { "<< Mark >>", "<Tag" }, content.OfType<MarkTextElement>().Select(t => t.Text));
+            Assert.Equal(xml, content.ToXml());
+
+            content.AddText("<A>").AddText("x<y").AddText("<");
+            string written = content.ToXml();
+            Assert.Contains("<< Mark >>", written);
+            Assert.Contains("&lt;A>", written);
+            Assert.Contains("x&lt;y", written);
+            Assert.Equal(new[] { "<< Mark >>", "<Tag", "<A>", "x<y", "<" }, MarkContent.Parse(written).OfType<MarkTextElement>().Select(t => t.Text));
+        }
+
+        [Fact]
+        public void CompactContent_KeepsTheLineFeedsOfItsTexts()
+        {
+            MarkContent content = new MarkContent { Layout = MarkContentLayout.Compact }.AddText("abc\n").AddText("\nx\n").AddText("y");
+            string xml = content.ToXml();
+
+            MarkContent read = MarkContent.Parse(xml);
+
+            Assert.Equal(MarkContentLayout.Compact, read.Layout);
+            Assert.Equal(new[] { "abc\n", "\nx\n", "y" }, read.OfType<MarkTextElement>().Select(t => t.Text));
+            Assert.Equal(content, read);
+            Assert.Equal(xml, read.ToXml());
+            Assert.Equal(new[] { "abc\n", "\nx\n", "y" }, MarkContent.Parse(read.ToXml(MarkContentLayout.Lines)).OfType<MarkTextElement>().Select(t => t.Text));
+        }
+
+        [Fact]
+        public void TryParse_OfNull_IsFalse()
+        {
+            Assert.False(MarkContent.TryParse(null, out MarkContent content));
+            Assert.Null(content);
+        }
     }
 }

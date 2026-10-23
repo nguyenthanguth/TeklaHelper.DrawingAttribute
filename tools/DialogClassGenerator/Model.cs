@@ -88,8 +88,11 @@ namespace DialogClassGenerator
 
     internal sealed class EnumModel
     {
-        /// <summary>Members that are not items of the menu but are common in files saved by Tekla.</summary>
-        public HashSet<int> FromFiles { get; } = new HashSet<int>();
+        /// <summary>
+        /// Members that are not items of the menu but are common in files saved by Tekla, with the controls (page: key) whose
+        /// files hold them: an enum shared by several pages gets the values of each, and its comment must say whose they are.
+        /// </summary>
+        public Dictionary<int, SortedSet<string>> FromFiles { get; } = new Dictionary<int, SortedSet<string>>();
 
         public string Name { get; set; }
 
