@@ -182,27 +182,36 @@ namespace TeklaHelper.DrawingAttribute
 
                 foreach (KeyValuePair<string, AttributeValue> pair in values)
                 {
-                    AttributeValue value = pair.Value;
-                    if (value.IsWithoutSeparator(codePage))
+                    try
                     {
-                        WriteText(encoding, pair.Key + NewLine);
-                        continue;
+                        AttributeValue value = pair.Value;
+                        if (value.IsWithoutSeparator(codePage))
+                        {
+                            WriteText(encoding, pair.Key + NewLine);
+                            continue;
+                        }
+
+                        WriteText(encoding, pair.Key + " ");
+
+                        byte[] fileBytes = value.GetFileBytes(codePage);
+                        if (fileBytes != null)
+                        {
+                            stream.Write(fileBytes, 0, fileBytes.Length);
+                        }
+                        else
+                        {
+                            bool isUtf8 = value.Kind == AttributeValueKind.String && IsUtf8Xml(value.RawText);
+                            WriteText(isUtf8 ? TextEncodings.StrictUtf8 : encoding, value.ToFileText());
+                        }
+
+                        WriteText(encoding, NewLine);
                     }
-
-                    WriteText(encoding, pair.Key + " ");
-
-                    byte[] fileBytes = value.GetFileBytes(codePage);
-                    if (fileBytes != null)
+                    catch (EncoderFallbackException exception)
                     {
-                        stream.Write(fileBytes, 0, fileBytes.Length);
+                        throw new EncoderFallbackException(
+                            $"The value of {pair.Key} has a character code page {codePage} cannot store. Set the code page of the file (932 for Japanese, 949 for Korean, ...) or change the value.",
+                            exception);
                     }
-                    else
-                    {
-                        bool isUtf8 = value.Kind == AttributeValueKind.String && IsUtf8Xml(value.RawText);
-                        WriteText(isUtf8 ? TextEncodings.StrictUtf8 : encoding, value.ToFileText());
-                    }
-
-                    WriteText(encoding, NewLine);
                 }
 
                 return stream.ToArray();

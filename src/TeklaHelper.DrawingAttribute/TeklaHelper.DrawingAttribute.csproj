@@ -10,9 +10,9 @@
 
   <PropertyGroup>
     <PackageId>TeklaHelper.DrawingAttribute</PackageId>
-    <Version>0.1.0</Version>
-    <Description>Object-oriented model of Tekla Structures drawing attribute files (.gd, .gd.more, .vi, .vi.more, ...). Build drawing and view settings in C# and save them as attribute files that GADrawing, View and other Tekla Open API objects can load by name.</Description>
-    <PackageTags>tekla;tekla-structures;open-api;drawing;attributes</PackageTags>
+    <Version>1.0.0</Version>
+    <Description>Typed model of Tekla Structures drawing and view attribute files (.vi, .gd, .md, .ad, .wd, .cud, their .more and filter files). Every page, tab and control of the View properties dialog as C# properties, complete default files, view creation tables and filters, written byte for byte like Tekla. Save the files and load them by name with GADrawing, View and the other Tekla Open API objects. No Tekla reference.</Description>
+    <PackageTags>tekla;tekla-structures;tekla-open-api;open-api;drawing;attributes;view-properties;filter</PackageTags>
     <Authors>nguyenthanguth</Authors>
     <Copyright>Copyright (c) 2026 nguyenthanguth</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

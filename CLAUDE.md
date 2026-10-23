@@ -48,7 +48,7 @@ expected to cope). Currently Tekla 2026 (`TEKLA_AID=C:/Users/InuYasha/Downloads/
 `KeysAddedIn` (generator), which notes the version in the XML comment.
 
 ```shell
-dotnet run --project tools/DialogClassGenerator -c Release -- tools/DialogClassGenerator/Dialogs "D:/Tekla/Models/New model/attributes/VIEW-TEST.vi" "D:/Tekla/Models/New model/attributes/DRAWING-TEST.gd" src/TeklaHelper.DrawingAttribute/Pages/Generated
+dotnet run --project tools/DialogClassGenerator -c Release -- tools/DialogClassGenerator/Dialogs "D:/Tekla/Models/New model/attributes/VIEW-TEST.vi" "D:/Tekla/Models/New model/attributes/DRAWING-TEST.gd" src/TeklaHelper.DrawingAttribute/Pages/Generated "D:/Tekla/Models/New model/attributes/test-ad.ad" "D:/Tekla/Structures/2025.0/Environments"
 ```
 
 The sample application (`samples/TeklaHelper.DrawingAttribute.Samples`, net48 x64, Tekla NuGet packages with
@@ -124,6 +124,16 @@ Trimble DLLs and load them side by side in other Tekla versions).
 - `Pages/` hand-written: `PageHost` (View / GADrawing / AssemblyDrawing → prefixes), `MarkPages` and `ObjectPages`
   (the Marks and Objects nodes; `ObjectPages.ReferenceObject` is null in the assembly family).
 - `Sections/FilterSection` — `vfilter.` / `dfilter.` keys + the rows of the companion filter file.
+- Defaults: every page has a generated `SetDefaults()` (one property assignment per control, then `SetAllEnabled(true)`).
+  `Pages/Generated/FileDefaults.g.cs` lists every key of each file type in the order of the dialog files (`VIEW-TEST.vi`;
+  `DRAWING-TEST.gd` for `.gd`/`.md`; `test-ad.ad` for `.ad`/`.wd`/`.cud`, whose newer shipped files have the same `dcd.`
+  keys) plus keys of the newer dialog; a null value marks a page key. Page values: the most common ASCII value in at least 3 shipped files (no empty font, zero text height or
+  zero text colour), else the dialog default (the line type menus declare their first item, Solid, which no shipped
+  file holds), else the dialog file value. Other keys: most common shipped value (same type,
+  then `.md`→`.gd`, `.wd`/`.cud`→`.ad`), else the dialog file value; `EnvironmentFreeValues` sets layouts, attribute
+  files, `StyleName`, titles and descriptions to names every environment has or to empty text. `CreateDefault()` applies
+  the table, calls `SetDefaults()` of every page, then `Pages/DefaultSetup` (the library's own choices) and, for drawings,
+  the empty user-defined attribute fields. Change values in `tools/DialogClassGenerator/Defaults.cs` or `DefaultSetup`.
 - `Drawings/` — `DrawingAttributeFile` base with `Layout`, `Views`, `Protection`, `Marks`, `Objects`, titles and
   `UserAttributes`; `GADrawingAttributeFile`, `MultiDrawingAttributeFile` (GA prefixes) and `AssemblyDrawingAttributeFile`,
   `SinglePartDrawingAttributeFile`, `CastUnitDrawingAttributeFile` (assembly prefixes); `DrawingLayoutSection`,
@@ -165,6 +175,17 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   picked up; a probe needs a new name per load. Users who regenerate a file while Tekla runs should use a new name.
 - **An empty filter file (`Count= 0`) shows no objects at all.** Without filter rows, write no `.vi.filter` (the library
   deletes a stale one). The dialogs write "no filter" as one row `co_part proNAME == Empty`.
+- **Keys a loaded file lacks take the value of the environment's `standard.vi`**, not the view's current value (a view
+  with red dashed lines lost them when a file with only `view_scale` was loaded, and got colour 6 of the Korea
+  `standard.vi`). A file made with `CreateDefault()` was applied as written (black lines, not colour 6).
+- **Drawings made with `CreateDefault()`** (GA, assembly, single-part, cast unit) were inserted in the model and their
+  views showed the file's part settings. Views of the assembly family take their settings from the .vi named in the
+  View creation table `dv.aDrawingViews` (rows `type,creation,label,file,`: types 1 front, 2 top, 3 back, 4 bottom,
+  5 end, 7 section, 16 3D; creation Off 0 / Auto 1 / On 2, also for `cre_*`; `Create3dView` On = 2), else from the
+  drawing's own object and mark settings — except the 3D view, which with an empty name took the environment's
+  `standard.vi` (Korea: 1:75, outline, colour 6). `CreateDefault()` clears the names (the shipped ones exist only in some
+  environments); naming a `CreateDefault()` .vi made every view, 3D included, use it. Several rows of one type: the
+  highest creation counts (Tekla wrote `cre_cuts 2` for Auto + On); `SetViewTable` keeps a table's final-comma form. `DrawingViewCreationSection.GetViewTable/SetViewTable/SetViewAttributeFile`.
 - **`_en` check boxes do not gate `LoadAttributes`:** with `draw_hidden 1` + `draw_hidden_en 0` the value is applied.
   They only matter to the dialog's Modify.
 - Colour numbers pass through unchanged into `DrawingColors` (`3` stays 3, `160` is Red); the small numbers are valid,

@@ -59,7 +59,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
 
             Console.WriteLine($"    {views.Count} view{(views.Count == 1 ? string.Empty : "s")} of drawing '{drawing.Name}'");
             string template = TeklaSession.FindAttributeFile(model, "standard" + ViewProperties.FileExtension);
-            Console.WriteLine("    Template: " + (template ?? "none found, starting from an empty file"));
+            Console.WriteLine("    Template: " + (template ?? "none found, starting from ViewProperties.CreateDefault()"));
             foreach (TSD.View view in views)
             {
                 Console.WriteLine($"    View '{view.Name}', profiles of its parts: {string.Join(", ", Profiles(model, view))}");
@@ -78,7 +78,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
                 TSD.View view = views[i];
                 int before = TeklaSession.Count(view, typeof(TSD.Part));
 
-                ViewProperties properties = template == null ? new ViewProperties() : AttributeFile.FromFile<ViewProperties>(template);
+                ViewProperties properties = template == null ? ViewProperties.CreateDefault() : AttributeFile.FromFile<ViewProperties>(template);
                 properties.Attributes.Attributes1.View.Scale = view.Attributes.Scale;
                 properties.Objects.Part.Content.HiddenLines.HiddenLines = true;
                 properties.Objects.Part.Appearance.HiddenLines.Type = DrawingLineType.Dashed;

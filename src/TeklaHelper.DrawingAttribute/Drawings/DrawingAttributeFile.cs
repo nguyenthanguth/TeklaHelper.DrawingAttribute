@@ -23,6 +23,26 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             Objects = new ObjectPages(Values, host);
         }
 
+        /// <summary>
+        /// Creates a file of type <typeparamref name="T"/> from the table of every key of its type: the <c>CreateDefault()</c>
+        /// of each drawing type describes the values.
+        /// </summary>
+        private protected static T CreateDefault<T>((string Key, string Value)[] table)
+            where T : DrawingAttributeFile, new()
+        {
+            var file = new T();
+            FileDefaults.Apply(file.Values, table);
+            file.Protection.SetDefaults();
+            file.Marks.SetDefaults();
+            file.Objects.SetDefaults();
+            DefaultSetup.Apply(file);
+
+            // The shipped files vote key by key: make the cre_* switches say what the view table says, as Tekla follows the table
+            file.Views.SyncSwitchesWithViewTable();
+            file.UserAttributes.SetEmptyFields();
+            return file;
+        }
+
         /// <summary>User-defined attributes, saved as the .more file with the same name.</summary>
         public DrawingUserAttributeFile UserAttributes { get; }
 

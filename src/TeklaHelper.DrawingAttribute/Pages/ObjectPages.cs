@@ -35,6 +35,22 @@ namespace TeklaHelper.DrawingAttribute.Pages
             ReferenceObject = referencePrefix == null ? null : new ReferenceObject(values, referencePrefix);
         }
 
+        /// <summary>Sets every object page to its defaults (see <c>SetDefaults()</c> of each page).</summary>
+        public void SetDefaults()
+        {
+            Part.SetDefaults();
+            Bolt.SetDefaults();
+            NeighborPart.SetDefaults();
+            SurfaceTreatment.SetDefaults();
+            Weld.SetDefaults();
+            Reinforcement.SetDefaults();
+            ReferenceObject?.SetDefaults();
+            Grid.SetDefaults();
+            PourBreak.SetDefaults();
+            NeighborReinforcement.SetDefaults();
+            PourObject.SetDefaults();
+        }
+
         /// <summary>Part.</summary>
         public PartObject Part { get; }
 

@@ -56,6 +56,41 @@ namespace TeklaHelper.DrawingAttribute.Views
             Objects = new ObjectPages(Values, PageHost.View);
         }
 
+        /// <summary>
+        /// Creates view properties with every key the Tekla dialog saves, so that Tekla takes nothing from the
+        /// <c>standard</c> file of the environment: loading a file that lacks a key gives the key the value of that
+        /// standard file, which differs between environments (checked in Tekla 2025). The values are the defaults of the
+        /// pages (<c>SetDefaults()</c>), the defaults of the other keys (the value most shipped files hold), and
+        /// on top a setup of this library: parts exact with hidden lines, part, bolt and grid lines black,
+        /// bolts, welds, surface treatments, the grid and connected neighbor parts shown, part marks with the assembly
+        /// position, no bolt marks, no filter, black view labels, scale 1:20, size fitted to the parts, no shortening. The file
+        /// uses code page 1252: set <see cref="AttributeFile.CodePage"/> before saving Japanese or Korean text. Change what
+        /// you need and save:
+        /// <code>
+        /// var view = ViewProperties.CreateDefault();
+        /// view.Attributes.Attributes1.View.Scale = 50;
+        /// view.SaveTo(attributes, "plan_50");
+        /// </code>
+        /// </summary>
+        public static ViewProperties CreateDefault()
+        {
+            var view = new ViewProperties();
+            FileDefaults.Apply(view.Values, FileDefaults.View.Table);
+            view.Attributes.SetDefaults();
+            foreach (ViewLabelMark labelMark in new[] { view.Attributes.LabelMarkA1, view.Attributes.LabelMarkA2, view.Attributes.LabelMarkA3, view.Attributes.LabelMarkA4, view.Attributes.LabelMarkA5 })
+            {
+                labelMark.SetDefaults();
+            }
+
+            view.Protection.SetDefaults();
+            view.Dimensioning.SetDefaults();
+            view.Marks.SetDefaults();
+            view.Objects.SetDefaults();
+
+            DefaultSetup.Apply(view);
+            return view;
+        }
+
         /// <inheritdoc />
         public override string Extension => FileExtension;
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -61,11 +62,178 @@ namespace TeklaHelper.DrawingAttribute.Tests
             File.WriteAllText(path, "encoding 1252\r\ndv.cre_front_view 2\r\ndv.cre_top_view 2\r\n");
             var drawing = AttributeFile.FromFile<AssemblyDrawingAttributeFile>(path);
 
-            drawing.Views.CreateFrontView = drawing.Views.CreateFrontView;
-            drawing.Views.CreateTopView = false;
+            drawing.Views.SetBoolean("cre_front_view", drawing.Views.GetBoolean("cre_front_view"));
+            drawing.Views.SetBoolean("cre_top_view", false);
 
             Assert.Equal("2", drawing.Values["dv.cre_front_view"].RawText);
             Assert.Equal("0", drawing.Values["dv.cre_top_view"].RawText);
+        }
+
+        [Fact]
+        public void ViewCreation_ReadsOffAutoAndOn_FromTheViewTable()
+        {
+            var drawing = new AssemblyDrawingAttributeFile();
+            drawing.SetString("dv.aDrawingViews", "1,2,,STL_FRONT,2,1,,STL_TOP,4,0,,STL_BOTTOM,7,1,,STL_SECTION,16,0,,STL_3D,");
+            drawing.SetInt32("dv.cre_front_view", 0);
+            drawing.SetInt32("dv.cre_back_view", 2);
+
+            // The table wins where it has a row (Tekla follows it); the switch is read where it has none
+            Assert.Equal(ViewCreation.On, drawing.Views.CreateFrontView);
+            Assert.Equal(ViewCreation.Auto, drawing.Views.CreateTopView);
+            Assert.Equal(ViewCreation.On, drawing.Views.CreateBackView);
+            Assert.False(drawing.Views.Create3dView);
+
+            IList<DrawingViewTableRow> table = drawing.Views.GetViewTable();
+            Assert.Equal(new[] { DrawingViewType.Front, DrawingViewType.Top, DrawingViewType.Bottom, DrawingViewType.Section, DrawingViewType.ThreeD }, table.Select(r => r.ViewType));
+            Assert.Equal("STL_TOP", table[1].ViewAttributeFile);
+
+            drawing.Views.SetViewTable(table);
+            Assert.Equal("1,2,,STL_FRONT,2,1,,STL_TOP,4,0,,STL_BOTTOM,7,1,,STL_SECTION,16,0,,STL_3D,", drawing.GetString("dv.aDrawingViews"));
+        }
+
+        [Fact]
+        public void ViewCreation_SettingASwitch_WritesTheTableRowAndTheKey()
+        {
+            var drawing = new AssemblyDrawingAttributeFile();
+            drawing.SetString("dv.aDrawingViews", "1,2,,,2,1,,,4,1,,,16,0,,standard,");
+
+            drawing.Views.CreateTopView = ViewCreation.On;
+            drawing.Views.CreateBottomView = ViewCreation.Off;
+            drawing.Views.Create3dView = true;
+
+            Assert.Equal("1,2,,,2,2,,,4,0,,,16,2,,standard,", drawing.GetString("dv.aDrawingViews"));
+            Assert.Equal("2", drawing.Values["dv.cre_top_view"].RawText);
+            Assert.Equal("0", drawing.Values["dv.cre_bottom_view"].RawText);
+            Assert.Equal("2", drawing.Values["dv.Create3dView"].RawText);
+        }
+
+        [Fact]
+        public void ViewCreation_AssigningItsOwnValue_ChangesNoByte_WhenTheSwitchAndTheTableDisagree()
+        {
+            var drawing = new AssemblyDrawingAttributeFile();
+            drawing.SetString("dv.aDrawingViews", "2,1,,,4,1,,,16,1,,,");
+            drawing.SetInt32("dv.cre_top_view", 0);
+            drawing.SetInt32("dv.Create3dView", 0);
+            byte[] before = drawing.ToBytes();
+
+            drawing.Views.CreateTopView = drawing.Views.CreateTopView;
+            drawing.Views.CreateBottomView = drawing.Views.CreateBottomView;
+            drawing.Views.Create3dView = drawing.Views.Create3dView;
+
+            Assert.Equal(before, drawing.ToBytes());
+        }
+
+        [Fact]
+        public void ViewTable_SetViewAttributeFile_NamesTheFileForEveryViewAndTheThreeDView()
+        {
+            var drawing = new AssemblyDrawingAttributeFile();
+            Assert.Throws<InvalidOperationException>(() => drawing.Views.SetViewAttributeFile("my_view"));
+
+            drawing.SetString("dv.aDrawingViews", "1,2,,STL_FRONT,16,0,,STL_3D,");
+            drawing.Views.SetViewAttributeFile("my_view");
+
+            Assert.Equal("1,2,,my_view,16,0,,my_view,", drawing.GetString("dv.aDrawingViews"));
+            Assert.Equal("my_view", drawing.Views.View3dAttributeFile);
+            Assert.Throws<ArgumentException>(() => new DrawingViewTableRow(DrawingViewType.Front, ViewCreation.On, "A,B"));
+        }
+
+        [Fact]
+        public void ViewCreation_TableWithoutTheType_GetsARow_AndRepeatedTypesAllChange()
+        {
+            var drawing = new AssemblyDrawingAttributeFile();
+            drawing.SetString("dv.aDrawingViews", "1,2,,standard,");
+
+            drawing.Views.CreateEndViews = ViewCreation.On;
+
+            Assert.Equal("1,2,,standard,5,2,,,", drawing.GetString("dv.aDrawingViews"));
+            Assert.Equal("2", drawing.Values["dv.cre_end_views"].RawText);
+
+            // A shipped Korean table repeats the front view: the highest value is read, and a change sets every row
+            drawing.SetString("dv.aDrawingViews", "1,2,F2,F_PLAN,1,1,C2,standard,");
+            Assert.Equal(ViewCreation.On, drawing.Views.CreateFrontView);
+            drawing.Views.CreateFrontView = ViewCreation.On;
+            Assert.Equal("1,2,F2,F_PLAN,1,1,C2,standard,", drawing.GetString("dv.aDrawingViews"));
+            drawing.Views.CreateFrontView = ViewCreation.Off;
+            Assert.Equal("1,0,F2,F_PLAN,1,0,C2,standard,", drawing.GetString("dv.aDrawingViews"));
+
+            Assert.Throws<ArgumentNullException>(() => drawing.Views.SetViewAttributeFile(null));
+            Assert.Throws<ArgumentException>(() => new DrawingViewTableRow(DrawingViewType.Front, ViewCreation.On, "A\nB"));
+        }
+
+        [Fact]
+        public void ViewTable_ShippedForms_AreKeptWhenNothingChanges()
+        {
+            // standard.cud: two section rows (Auto, On) with cre_cuts 2
+            var castUnit = new CastUnitDrawingAttributeFile();
+            castUnit.SetString("dv.aDrawingViews", "1,2,,a,7,1,,cu_section_formwork,7,2,,cu_section_reinforcement,");
+            castUnit.SetInt32("dv.cre_cuts", 2);
+            castUnit.SetInt32("dv.Create3dView", 1);
+            byte[] before = castUnit.ToBytes();
+            castUnit.Views.CreateSectionViews = castUnit.Views.CreateSectionViews;
+            castUnit.Views.Create3dView = castUnit.Views.Create3dView;
+            Assert.Equal(ViewCreation.On, castUnit.Views.CreateSectionViews);
+            Assert.Equal(before, castUnit.ToBytes());
+
+            // A few shipped tables end without a comma
+            var singlePart = new SinglePartDrawingAttributeFile();
+            singlePart.SetString("dv.aDrawingViews", "1,1,,,16,0,,single_3D_view");
+            singlePart.Views.SetViewTable(singlePart.Views.GetViewTable());
+            Assert.Equal("1,1,,,16,0,,single_3D_view", singlePart.GetString("dv.aDrawingViews"));
+            singlePart.Views.CreateFrontView = ViewCreation.On;
+            Assert.Equal("1,2,,,16,0,,single_3D_view", singlePart.GetString("dv.aDrawingViews"));
+
+            // A label with a quote cannot be a row: the switches fall back to their keys
+            var assembly = new AssemblyDrawingAttributeFile();
+            assembly.SetString("dv.aDrawingViews", "1,2,5\" BEAM,x,");
+            assembly.SetInt32("dv.cre_front_view", 1);
+            Assert.Throws<FormatException>(() => assembly.Views.GetViewTable());
+            Assert.Equal(ViewCreation.Auto, assembly.Views.CreateFrontView);
+        }
+
+        [Fact]
+        public void Save_ACharacterTheCodePageCannotStore_NamesTheKey()
+        {
+            GADrawingAttributeFile drawing = GADrawingAttributeFile.CreateDefault();
+            drawing.Title1 = "図面";
+
+            EncoderFallbackException exception = Assert.Throws<EncoderFallbackException>(() => drawing.SaveTo(_directory, "jp"));
+
+            Assert.Contains("title_1", exception.Message);
+            drawing.CodePage = 932;
+            Assert.True(File.Exists(drawing.SaveTo(_directory, "jp")));
+        }
+
+        [Fact]
+        public void ViewTable_Unreadable_ThrowsAndLeavesTheSwitchesToTheKeys()
+        {
+            var drawing = new AssemblyDrawingAttributeFile();
+            drawing.SetString("dv.aDrawingViews", "1,x,,STL_FRONT,");
+            drawing.SetInt32("dv.cre_front_view", 1);
+
+            Assert.Throws<FormatException>(() => drawing.Views.GetViewTable());
+            Assert.Equal(ViewCreation.Auto, drawing.Views.CreateFrontView);
+
+            drawing.SetString("dv.aDrawingViews", "1,2,STL_FRONT,");
+            Assert.Throws<FormatException>(() => drawing.Views.GetViewTable());
+        }
+
+        [Fact]
+        public void CreateDefault_ViewSwitches_AgreeWithTheViewTable()
+        {
+            foreach (DrawingAttributeFile drawing in new DrawingAttributeFile[] { AssemblyDrawingAttributeFile.CreateDefault(), SinglePartDrawingAttributeFile.CreateDefault(), CastUnitDrawingAttributeFile.CreateDefault() })
+            {
+                IList<DrawingViewTableRow> table = drawing.Views.GetViewTable();
+                Assert.NotEmpty(table);
+                var keys = new Dictionary<DrawingViewType, string>
+                {
+                    [DrawingViewType.Front] = "cre_front_view", [DrawingViewType.Top] = "cre_top_view", [DrawingViewType.Back] = "cre_back_view",
+                    [DrawingViewType.Bottom] = "cre_bottom_view", [DrawingViewType.Section] = "cre_cuts", [DrawingViewType.End] = "cre_end_views",
+                };
+                foreach (DrawingViewTableRow row in table.Where(r => keys.ContainsKey(r.ViewType)))
+                {
+                    Assert.Equal((int)row.Creation, drawing.Views.GetInt32(keys[row.ViewType]));
+                }
+            }
         }
 
         [Fact]

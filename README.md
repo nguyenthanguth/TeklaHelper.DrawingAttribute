@@ -27,7 +27,7 @@ and pass the file name to the Open API.
   `Filter`, `NeighborPartFilter`, `Protection`, `Dimensioning`, `Marks.PartMark` ... `Marks.PourMark`, `Objects.Part`
   ... `Objects.PourObject` — and each page has the tabs and group boxes of the dialog as nested classes, with a typed
   property for every control: `view.Objects.Part.Content.HiddenLines.HiddenLines = true`. The pages are generated from
-  the Tekla Structures 2025 dialog definition and checked against files saved from the dialogs; every key of a page has
+  the Tekla Structures dialog definition (currently Tekla 2026) and checked against files saved from the dialogs; every key of a page has
   a property (keys the dialog does not show are in the page's `Advanced` group).
 - **One page class for every host**: the object and mark pages have the same keys in views and in all drawing types,
   under different prefixes (`vp.` in a view, `dp.` in a drawing, `dgrid.` / `grid.` for the grid, ...), so
@@ -86,9 +86,39 @@ view.Modify();
 ```
 
 > [!TIP]
-> A file created from scratch contains only the keys that were set, and Tekla uses its defaults for the others. To
-> control every setting, load a complete file as a template — one saved from the Tekla dialog, or one from the
-> environment folders — as in the GA example above.
+> A file created with `new` contains only the keys that were set. Tekla gives every key a file lacks the value of the
+> `standard` file of its environment, so the same file draws differently in another environment. Start from
+> `CreateDefault()` (below), or load a complete file as a template as in the GA example above.
+
+## Default settings
+
+`CreateDefault()` makes a file with every key the Tekla dialog saves, so that Tekla takes nothing from the environment
+(one exception below):
+
+```csharp
+ViewProperties view = ViewProperties.CreateDefault();      // every key of a .vi saved from the dialog
+view.Attributes.Attributes1.View.Scale = 50;
+view.SaveTo(attributes, "plan_50");
+
+GADrawingAttributeFile ga = GADrawingAttributeFile.CreateDefault();   // also .md, .ad, .wd, .cud
+view.Objects.Part.SetDefaults();                            // one page to the Tekla-derived defaults (without the setup below)
+```
+
+The values: for each key of a page, what its `SetDefaults()` writes — the value most files shipped with Tekla hold (at
+least three files, never an empty font or a zero text height), else the dialog's own default, else the value of a file
+saved from the dialog. The other keys take the
+most common shipped value, else the value of the dialog file; keys that name a layout or an attribute file use names
+every environment has (layouts `ga`, `multi`, `assembly`, `single`, `cu`; attribute files `standard`), titles and
+descriptions are empty. The files use code page 1252: set `CodePage` (932, 949, ...) before saving Japanese or Korean
+text. On top, a setup chosen by this library so that views show their objects to the Open API:
+parts exact with hidden lines and the center line of main beams; part, bolt and grid lines black;
+bolts, welds, surface treatments, the grid and connected neighbor parts (outline) shown; part marks with the assembly
+position, no bolt marks, no filter; view labels black; for view properties also 1:20, fitted to the parts, not shortened. The check boxes (`*_en`) of the pages are ticked.
+
+The views Tekla creates in assembly, single-part and cast unit drawings follow the View creation table. `CreateDefault()`
+names no view properties file there, so these views use the drawing file's settings, except a 3D view, which then uses
+the environment's `standard.vi`. To control every view, name a view file made with `ViewProperties.CreateDefault()`:
+`drawing.Views.SetViewAttributeFile("my_views")`.
 
 The [samples](samples) folder has a console application with ten commented examples: view properties page by page,
 filters, every drawing type, page files, and two examples that create a GA drawing with filtered views and change the
@@ -142,12 +172,20 @@ titles and the user-defined attributes:
 | `Layout`, `Views` | `dl.`, `dview.` | `dl.`, `dv.` |
 
 ```csharp
+AssemblyDrawingAttributeFile assemblyDrawing = AssemblyDrawingAttributeFile.CreateDefault();
+
 // Use the part marks of a view in an assembly drawing
 assemblyDrawing.Marks.PartMark.CopyFrom(view.Marks.PartMark);
 
 // Save the grid of a view as a page file (for the dialog), and load one into a drawing
 view.Objects.Grid.ExportTo(attributes, "red_grid", GridObject.ViewFileExtension);    // red_grid.vg
 ga.Objects.Grid.ImportFrom(Path.Combine(attributes, "red_grid.vg"));
+
+// The views Tekla creates in assembly, single-part and cast unit drawings follow the View creation table: which views
+// (Off / Auto / On) and the view properties (.vi) each one uses. Name a .vi made with ViewProperties.CreateDefault()
+ViewProperties.CreateDefault().SaveTo(attributes, "assembly_views");
+assemblyDrawing.Views.SetViewAttributeFile("assembly_views");     // every view of the table and the 3D view
+assemblyDrawing.Views.CreateTopView = ViewCreation.On;         // the table row and the cre_top_view switch
 
 // Keys without a typed property: dimension text height and colour
 var dimensioning = ga.GetSection("dd.");
@@ -206,10 +244,10 @@ vg.line_colour 160
 
 | File | Status |
 | --- | --- |
-| `.vi` (+ `.vi.filter`, `.vi.npfilter`) | Every page of the View properties dialog, every key typed |
-| `.gd`, `.ad`, `.wd`, `.cud`, `.md` and their `.more` / filter files | Marks, objects and protection pages typed; layout, views, titles and user-defined attributes typed (common settings); every key by name |
+| `.vi` (+ `.vi.filter`, `.vi.npfilter`) | Every page of the View properties dialog, every key typed; `CreateDefault()` |
+| `.gd`, `.ad`, `.wd`, `.cud`, `.md` and their `.more` / filter files | Marks, objects and protection pages typed; layout, view creation (with the View creation table), titles and user-defined attributes typed (common settings); every key by name; `CreateDefault()` |
 | Page files (`.vg`, `.vpm`, `.gdgr`, ...) | `ExportTo` / `ImportFrom` on pages |
-| Drawing dimensioning, detail and section views (`dd.`, `dc.`, `DetailLabel.`, ...) | Every key by name |
+| Drawing layout, dimensioning, detail and section views (`dl.`, `dd.`, `dc.`, `DetailLabel.`, ...) | Every key by name; typed pages planned (decoding the drawing dialogs) |
 | Filters (`.vf`, `.vnf`, `.vi.filter`, `.gd.filter`, `.gdf`, `.SObjGrp`, ...) | Supported |
 | Dimensions (`.dim`) and other object attribute files | `GenericAttributeFile` |
 | Object level settings (`.copt`, `TITLE_CLASSIFIER`) | Not supported |

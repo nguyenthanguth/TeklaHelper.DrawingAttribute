@@ -26,15 +26,26 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
             viewMarks.General.FrameAroundMark.Type = FrameAroundMarkType.Round;
 
             context.Step("Assembly drawing (.ad, .ad.more, .ad.filter)");
-            var assembly = new AssemblyDrawingAttributeFile { Title1 = "ASSEMBLY", SheetNumber = 1 };
+            AssemblyDrawingAttributeFile assembly = AssemblyDrawingAttributeFile.CreateDefault();
+            assembly.Title1 = "ASSEMBLY";
+            assembly.SheetNumber = 1;
             assembly.Views.Scale = 15;
-            assembly.Views.CreateFrontView = true;
-            assembly.Views.CreateTopView = true;
+            assembly.Views.CreateFrontView = ViewCreation.On;
+            assembly.Views.CreateTopView = ViewCreation.On;
             assembly.Objects.Grid.Grid = Grid.NotVisible;              // grid.grid_on in the assembly family
             assembly.Objects.NeighborPart.Content.Representation.Representation = NeighborPartRepresentation.Outline;
             assembly.Marks.PartMark.CopyFrom(viewMarks);                 // vpm.* of the view -> dpm.* of the drawing
             assembly.Filter.SetExpression(FilterProperties.Part.Name.IsNotEqual("ERECTION BOLT"));
             assembly.UserAttributes.DrawnBy = "NT";
+
+            // The views Tekla creates take their settings from the view properties named in the View creation table
+            ViewProperties.CreateDefault().SaveTo(context.OutputDirectory, "sample_assembly_views");
+            assembly.Views.SetViewAttributeFile("sample_assembly_views");
+            foreach (DrawingViewTableRow row in assembly.Views.GetViewTable())
+            {
+                Console.WriteLine("    " + row);
+            }
+
             string assemblyPath = assembly.SaveTo(context.OutputDirectory, "sample_assembly");
             context.ShowFile(assemblyPath, 12);
 

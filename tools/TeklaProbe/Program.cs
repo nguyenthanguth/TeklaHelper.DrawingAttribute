@@ -13,6 +13,8 @@ namespace TeklaProbe
     /// <code>
     /// TeklaProbe objects &lt;attributes folder&gt; &lt;template .vi&gt; &lt;source view name&gt;
     /// TeklaProbe map     &lt;attributes folder&gt; &lt;template .vi&gt; &lt;source view name&gt; &lt;key prefix, e.g. vp.&gt; &lt;object type, e.g. Part&gt; &lt;output .tsv&gt;
+    /// TeklaProbe show    &lt;attributes folder&gt; &lt;template .vi&gt; &lt;source view name&gt; &lt;object type, e.g. Part&gt;
+    /// TeklaProbe partial &lt;attributes folder&gt; &lt;template .vi&gt; &lt;source view name&gt; &lt;object type, e.g. Part&gt;
     /// TeklaProbe combo   &lt;attributes folder&gt; &lt;template .vi&gt; &lt;source view name&gt; &lt;object type&gt; "key=value,key=value" ...
     /// </code>
     /// </summary>
@@ -47,6 +49,10 @@ namespace TeklaProbe
                     return probe.ListObjects();
                 case "map":
                     return probe.Map(args[4], args[5], args[6]);
+                case "show":
+                    return probe.Show(args[4]);
+                case "partial":
+                    return probe.Partial(args[4]);
                 case "combo":
                     return probe.Combos(args[4], args.Skip(5).ToArray());
                 default:

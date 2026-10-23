@@ -60,7 +60,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
             }
 
             context.Step("Write the view properties: every part, outline, grid visible");
-            var allParts = new ViewProperties();
+            ViewProperties allParts = ViewProperties.CreateDefault();
             allParts.Attributes.Attributes1.View.Scale = 200;
             allParts.Objects.Part.Content.Representation.Representation = Representation.Outline;
             allParts.Objects.Part.Content.HiddenLines.HiddenLines = false;
@@ -80,7 +80,9 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
             context.ShowFile(Path.Combine(attributes, filteredName + FilterFileExtensions.ViewAttributeFilter), 20);
 
             context.Step("Write the GA drawing properties, with a user-defined attribute");
-            var drawingProperties = new GADrawingAttributeFile { Title1 = "TeklaHelper.DrawingAttribute", Title2 = "sample" };
+            GADrawingAttributeFile drawingProperties = GADrawingAttributeFile.CreateDefault();
+            drawingProperties.Title1 = "TeklaHelper.DrawingAttribute";
+            drawingProperties.Title2 = "sample";
             drawingProperties.UserAttributes.DrawnBy = Environment.UserName;
             string drawingName = TeklaSession.UniqueName("tda_sample");
             drawingProperties.SaveTo(attributes, drawingName);

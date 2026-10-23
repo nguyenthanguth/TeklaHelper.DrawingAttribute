@@ -128,6 +128,101 @@ namespace TeklaProbe
             });
         }
 
+        /// <summary>
+        /// What Tekla does with keys a file does not have: loads the template with a few distinct values, then a file with
+        /// only <c>view_scale</c>, and prints what changed (kept = missing keys keep the view's values). Then inserts a new
+        /// view from that file alone and prints how it differs from the template (Tekla's values for missing keys).
+        /// </summary>
+        public int Partial(string objectType)
+        {
+            Type type = DrawingType(objectType);
+            return WithProbeView(view =>
+            {
+                ViewProperties distinct = LoadTemplate();
+                distinct.Attributes.Attributes1.View.Scale = 37;
+                distinct.Values.Set("vp.visible_colour", AttributeValue.FromInt32(160));
+                distinct.Values.Set("vp.draw_hidden", AttributeValue.FromInt32(distinct.GetInt32("vp.draw_hidden") == 0 ? 1 : 0));
+                distinct.Values.Set("vp.visible_linetype", AttributeValue.FromInt32(2));
+                Apply(view, distinct);
+                Dictionary<string, string> before = Combined(view, type);
+
+                var partial = new ViewProperties();
+                partial.Attributes.Attributes1.View.Scale = 50;
+                Apply(view, partial);
+                Dictionary<string, string> after = Combined(view, type);
+                Console.WriteLine($"Loading a file with only view_scale into a view (properties read: {before.Count}):");
+                Console.WriteLine("  changed: " + Diff(before, after));
+
+                Dictionary<string, string> template = Combined(view, type);
+                T.Drawing drawing = view.GetDrawing();
+                var fresh = new T.View(drawing.GetSheet(), view.ViewCoordinateSystem, view.DisplayCoordinateSystem, view.RestrictionBox, Save(partial));
+                if (!fresh.Insert())
+                {
+                    Console.WriteLine("Could not insert a view from the partial file.");
+                    return;
+                }
+
+                try
+                {
+                    drawing.CommitChanges();
+                    Apply(view, LoadTemplate());
+                    template = Combined(view, type);
+                    Console.WriteLine("New view from a file with only view_scale, compared with the template:");
+                    Console.WriteLine("  differs: " + Diff(template, Combined(fresh, type)));
+                }
+                finally
+                {
+                    fresh.Delete();
+                    drawing.CommitChanges();
+                }
+            });
+        }
+
+        /// <summary>
+        /// Prints the attributes of a view loaded from the template (with its filters) and of its first object of the type,
+        /// and how many objects of each type the view shows.
+        /// </summary>
+        public int Show(string objectType)
+        {
+            Type type = DrawingType(objectType);
+            return WithProbeView(view =>
+            {
+                foreach (KeyValuePair<string, string> pair in Combined(view, type).OrderBy(p => p.Key, StringComparer.Ordinal))
+                {
+                    Console.WriteLine($"{pair.Key} = {pair.Value}");
+                }
+
+                var counts = new SortedDictionary<string, int>(StringComparer.Ordinal);
+                var all = view.GetAllObjects();
+                while (all.MoveNext())
+                {
+                    string name = all.Current.GetType().Name;
+                    counts[name] = counts.TryGetValue(name, out int count) ? count + 1 : 1;
+                }
+
+                Console.WriteLine("objects: " + string.Join(", ", counts.Select(p => $"{p.Key} {p.Value}")));
+            });
+        }
+
+        /// <summary>The view's own attributes (prefixed view.) and those of its first object of the type.</summary>
+        private static Dictionary<string, string> Combined(T.View view, Type type)
+        {
+            var result = new Dictionary<string, string>(StringComparer.Ordinal);
+            var own = new Dictionary<string, string>(StringComparer.Ordinal);
+            Flatten(view.Attributes, string.Empty, own, 0);
+            foreach (KeyValuePair<string, string> pair in own)
+            {
+                result["view" + pair.Key] = pair.Value;
+            }
+
+            foreach (KeyValuePair<string, string> pair in Snapshot(view, type))
+            {
+                result[type.Name + pair.Key] = pair.Value;
+            }
+
+            return result;
+        }
+
         private int WithProbeView(Action<T.View> work)
         {
             T.Drawing drawing = new T.DrawingHandler().GetActiveDrawing();
@@ -244,7 +339,17 @@ namespace TeklaProbe
                 }
             }
 
-            throw new InvalidOperationException($"The active drawing has no view named '{name}'.");
+            var names = new List<string>();
+            views.Reset();
+            while (views.MoveNext())
+            {
+                if (views.Current is T.View view)
+                {
+                    names.Add("'" + view.Name + "'");
+                }
+            }
+
+            throw new InvalidOperationException($"The active drawing has no view named '{name}'. Its views: {string.Join(", ", names)}");
         }
 
         private static int Count(T.View view, Type type)

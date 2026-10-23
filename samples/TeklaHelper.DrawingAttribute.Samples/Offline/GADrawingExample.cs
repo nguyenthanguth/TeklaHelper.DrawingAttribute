@@ -17,15 +17,13 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
 
         public override void Run(ExampleContext context)
         {
-            var drawing = new GADrawingAttributeFile
-            {
-                Title1 = "PLAN +3.600",
-                Title2 = "STEEL STRUCTURE",
-                Description = "Sample GA drawing",
-            };
+            GADrawingAttributeFile drawing = GADrawingAttributeFile.CreateDefault();
+            drawing.Title1 = "PLAN +3.600";
+            drawing.Title2 = "STEEL STRUCTURE";
+            drawing.Description = "Sample GA drawing";
 
             context.Step("Layout and view creation");
-            drawing.Layout.LayoutName = "standard";
+            drawing.Layout.LayoutName = "ga";           // the GA layout every environment has
             drawing.Layout.AutoScale = false;
             drawing.Views.Scale = 100;
 

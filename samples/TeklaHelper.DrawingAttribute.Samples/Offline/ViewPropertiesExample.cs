@@ -17,7 +17,9 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
 
         public override void Run(ExampleContext context)
         {
-            var view = new ViewProperties();
+            // Start from every key the dialog saves (CreateDefault), not from an empty file: Tekla gives a key the file lacks
+            // the value of the "standard" file of its environment, which differs from one environment to the next
+            ViewProperties view = ViewProperties.CreateDefault();
 
             context.Step("Attributes page: Attributes 1, Attributes 2 and Label tabs");
 

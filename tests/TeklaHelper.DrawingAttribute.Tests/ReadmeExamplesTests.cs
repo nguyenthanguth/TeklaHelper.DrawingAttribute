@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using TeklaHelper.DrawingAttribute.Drawings;
 using TeklaHelper.DrawingAttribute.Filters;
 using TeklaHelper.DrawingAttribute.Pages;
@@ -55,18 +56,41 @@ namespace TeklaHelper.DrawingAttribute.Tests
         }
 
         [Fact]
+        public void DefaultSettings()
+        {
+            string attributes = _attributes;
+
+            ViewProperties view = ViewProperties.CreateDefault();
+            view.Attributes.Attributes1.View.Scale = 50;
+            view.SaveTo(attributes, "plan_50");
+
+            GADrawingAttributeFile ga = GADrawingAttributeFile.CreateDefault();
+            view.Objects.Part.SetDefaults();
+
+            Assert.Contains("view_scale 50.000000", File.ReadAllText(Path.Combine(attributes, "plan_50.vi")));
+            Assert.True(ga.Values.Count > 2000);
+            Assert.Equal(Representation.Outline, view.Objects.Part.Content.Representation.Representation);
+        }
+
+        [Fact]
         public void Pages()
         {
             string attributes = _attributes;
             var view = new ViewProperties();
             view.Marks.PartMark.Content.Font.Font = "Arial";
-            var assemblyDrawing = new AssemblyDrawingAttributeFile();
+            AssemblyDrawingAttributeFile assemblyDrawing = AssemblyDrawingAttributeFile.CreateDefault();
             var ga = new GADrawingAttributeFile();
 
             assemblyDrawing.Marks.PartMark.CopyFrom(view.Marks.PartMark);
 
             view.Objects.Grid.ExportTo(attributes, "red_grid", GridObject.ViewFileExtension);
             ga.Objects.Grid.ImportFrom(Path.Combine(attributes, "red_grid.vg"));
+
+            ViewProperties.CreateDefault().SaveTo(attributes, "assembly_views");
+            assemblyDrawing.Views.SetViewAttributeFile("assembly_views");
+            assemblyDrawing.Views.CreateTopView = ViewCreation.On;
+            Assert.All(assemblyDrawing.Views.GetViewTable(), row => Assert.Equal("assembly_views", row.ViewAttributeFile));
+            Assert.Equal(ViewCreation.On, assemblyDrawing.Views.GetViewTable().Single(row => row.ViewType == DrawingViewType.Top).Creation);
 
             var dimensioning = ga.GetSection("dd.");
             dimensioning.SetDouble("dim_text_height", 2.5);

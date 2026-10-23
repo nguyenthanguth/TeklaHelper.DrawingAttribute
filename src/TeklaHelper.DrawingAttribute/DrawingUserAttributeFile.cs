@@ -100,6 +100,27 @@ namespace TeklaHelper.DrawingAttribute
         public string GetUserField(int number) => GetString(GetUserFieldName(number));
 
         /// <summary>
+        /// Writes the fields a .more file saved from the drawing properties dialog has, empty, in its order.
+        /// </summary>
+        internal void SetEmptyFields()
+        {
+            Comment = string.Empty;
+            for (int number = 1; number <= UserFieldCount; number++)
+            {
+                SetUserField(number, string.Empty);
+            }
+
+            AssignedTo = string.Empty;
+            AssignedBy = string.Empty;
+            DrawnBy = string.Empty;
+            CheckedBy = string.Empty;
+            CheckedDate = null;
+            ApprovalSent = null;
+            ApprovalDate = null;
+            ApprovedBy = string.Empty;
+        }
+
+        /// <summary>
         /// Sets <c>DRAWING_USERFIELD_<paramref name="number"/></c>, <paramref name="number"/> from 1 to 8.
         /// </summary>
         public void SetUserField(int number, string value) => SetString(GetUserFieldName(number), value);

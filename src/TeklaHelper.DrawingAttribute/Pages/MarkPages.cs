@@ -28,6 +28,20 @@ namespace TeklaHelper.DrawingAttribute.Pages
             PourMark = new PourMark(values, PourMark.PrefixFor(host));
         }
 
+        /// <summary>Sets every mark page to its defaults (see <c>SetDefaults()</c> of each page).</summary>
+        public void SetDefaults()
+        {
+            PartMark.SetDefaults();
+            BoltMark.SetDefaults();
+            NeighborPartMark.SetDefaults();
+            SurfaceTreatmentMark.SetDefaults();
+            ConnectionMark.SetDefaults();
+            WeldMark.SetDefaults();
+            ReinforcementMark.SetDefaults();
+            NeighborReinforcementMark.SetDefaults();
+            PourMark.SetDefaults();
+        }
+
         /// <summary>Part mark.</summary>
         public PartMark PartMark { get; }
 

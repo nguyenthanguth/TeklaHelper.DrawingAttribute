@@ -193,7 +193,62 @@ The 2020 result matches the shipped environment files: most of them were saved b
 `section_*` / `center_*` keys. Not checked yet: what Tekla 2020 does with keys it does not know, and files saved from
 the 2020 and 2026 dialogs.
 
-## 7. How the work was checked
+## 7. Default settings
+
+**Probe.** A view with red, dashed, hidden-line parts was loaded with a file holding only `view_scale`: the parts lost
+the red, the dashes and the hidden lines and got colour 6, solid, no hidden lines — the values of the Korea
+`standard.vi`, the environment of the model (colour 6 is no dialog default and appears in 4 shipped files only). A new
+view from that file did the same. So **a key a file lacks takes the value of the environment's standard file**, and an
+incomplete file draws differently from one environment to the next.
+
+**Design.** `CreateDefault()` writes every key a file saved from the dialog has, plus the keys of the newer dialog:
+- page keys: `SetDefaults()` of each page, one property assignment per control. The value is the one most shipped
+  files hold (ASCII only, so every code page can store it, only when at least three files have the key, never an empty
+  font or a zero text height or colour), else the dialog's own default, else the value of the dialog file; the page's
+  check boxes are ticked. Shipped files come first because the dialog's declared defaults are sometimes just the first
+  menu item (Solid for every line type, where no shipped file holds Solid for center, own hidden or reference lines);
+- other keys (layout, view creation, dimensioning, section and detail views, the old filter dialog, ...): the most common
+  shipped value, else the value of the dialog file. Keys that name a layout or an attribute file use names every
+  environment has (`ga`, `multi`, `assembly`, `single`, `cu`, `standard`), titles and descriptions are empty;
+- single-part and cast unit drawings use the keys of the assembly drawing file: their newer shipped files have the same
+  `dcd.` keys, the older ones hold keys of earlier versions;
+- on top, `Pages/DefaultSetup`, the library's own choices for views that show their objects to the API: parts exact with
+  hidden lines and the center line of main beams; part, bolt and grid lines black; bolts, welds, surface treatments,
+  the grid and connected neighbor parts (outline) shown; part marks with the assembly position, no bolt marks, no filter;
+  view labels black; views 1:20, fitted to the parts, not shortened;
+- drawings also get the empty user-defined attribute fields of a dialog `.more` file.
+
+A review of the first version found what the rules must avoid: the old filter dialog's switches turned on, values taken
+from one odd shipped file (`inf`), layouts that exist only in the Default environment, surface treatments hidden by the
+dialog default. A second, adversarial pass found the line types and the mark texts above.
+
+**Check in Tekla** (model "New model", several rounds, every drawing and file removed afterwards):
+- A temporary view loaded from a `CreateDefault()` file showed exact parts with black solid lines, black dashed hidden
+  lines, dash-dot center lines, slashed reference lines, at 1:20, with marks: the file's values, not the Korea
+  standard's colour 6.
+- A GA, an assembly, a single-part and a cast unit drawing were inserted from `CreateDefault()` files. In every view Tekla
+  created, the main parts were exact, black, with hidden lines (and the center line of the main beam); neighbor parts
+  were outlines in their default red. The results were the same on every run.
+- The views of assembly, single-part and cast unit drawings take their settings from the view properties file named in
+  the View creation table (`dv.aDrawingViews`: view type, Off 0 / Auto 1 / On 2, label, .vi name, decoded from
+  TeklaStructures.aid). With the names empty they use the object and mark settings of the drawing file; with a
+  `CreateDefault()` view file named there (`Views.SetViewAttributeFile`), they took its scale (1:20) and part settings.
+  The same Off / Auto / On values are those of `cre_front_view` and the other view switches, and the 3D view switch
+  stores On as 2. Tekla follows the table, not the switches: a default file whose shipped-majority switches said the
+  bottom view was off still got a bottom view, because its table said Auto. The library therefore reads and writes the
+  switches through the table (`CreateTopView = ViewCreation.On` changes the table row and `cre_top_view`), and
+  `CreateDefault()` writes the switches from the table. With the top view On and the bottom view Off, Tekla created the
+  front and top views and no bottom view.
+- The 3D view behaves differently: with an empty file name in the table, a cast unit drawing's 3D view used the
+  environment's `standard.vi` (Korea: 1:75, outline, colour 6), while the other views used the drawing file's settings.
+  `CreateDefault()` still clears the names, because the shipped defaults name files that exist only in some
+  environments (`new_standard_5`, `cu_3D_view`, `single_3D_view`); naming a `CreateDefault()` view file with
+  `SetViewAttributeFile` made every view, the 3D view included, exact, black and 1:20.
+- The online examples created a GA drawing whose plan views, loaded from `CreateDefault()` files, showed 85 parts and,
+  filtered on `Name = COLUMN`, exactly the 10 columns; loading a profile filter into the views of the open drawing left
+  exactly the 13 parts with an I profile in both views.
+
+## 8. How the work was checked
 
 **Tests.** xUnit on net48 and net10.0:
 - unit tests for every format rule;
@@ -221,7 +276,7 @@ the 2020 and 2026 dialogs.
 views loaded from generated `.vi` files: the API found 85 parts in the unfiltered view and exactly the 10 columns in the
 view filtered on `Name = COLUMN`.
 
-## 8. What the library is now
+## 9. What the library is now
 
 - **Format layer.** `AttributeValue`, `AttributeCollection`, `AttributeFileFormat`, `TextEncodings`: byte-preserving
   reading and writing.
@@ -235,7 +290,7 @@ view filtered on `Name = COLUMN`.
 - **Filters.** `FilterFile` (rows, byte-preserving), an expression tree, and the generated `FilterProperties` catalog.
 - **Samples.** `samples/`: eight offline examples and two that run against Tekla.
 
-## 9. Not settled
+## 10. Not settled
 
 - `for_main` of bolt marks: the menu stores 2, many files hold 1; both read as visible, but Tekla's behaviour for each
   was not probed.
