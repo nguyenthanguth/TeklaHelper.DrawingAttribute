@@ -41,6 +41,8 @@ namespace TeklaHelper.DrawingAttribute.Samples
                 new PageFilesExample(),
                 new UnmodelledKeysExample(),
                 new ModifyCheckBoxesExample(),
+                new DrawingObjectsExample(),
+                new MarkContentExample(),
                 new CreateGADrawingExample(),
                 new ApplyToOpenDrawingExample(),
             };

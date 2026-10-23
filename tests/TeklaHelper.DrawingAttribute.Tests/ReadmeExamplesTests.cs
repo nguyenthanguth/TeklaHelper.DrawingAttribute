@@ -127,6 +127,55 @@ namespace TeklaHelper.DrawingAttribute.Tests
         }
 
         [Fact]
+        public void DrawingObjectProperties()
+        {
+            string attributes = _attributes;
+            var view = new ViewProperties();
+            view.Marks.PartMark.Content.Font.Height = 3;
+
+            TextAttributeFile text = TextAttributeFile.CreateDefault();
+            text.Properties.Appearance.Text.Height = 3.5;
+            text.Properties.Appearance.Text.Color = DrawingColor.Blue;
+            text.SaveTo(attributes, "blue_text");
+
+            LineAttributeFile line = LineAttributeFile.CreateDefault();
+            line.Properties.Arrow.Position = ArrowPosition.End;
+            line.SaveTo(attributes, "arrow_line");
+
+            PartMarkAttributeFile mark = PartMarkAttributeFile.CreateDefault();
+            mark.Properties.CopyFrom(view.Marks.PartMark);
+            mark.SaveTo(attributes, "view_marks");
+
+            Assert.Contains("text_colour 162", File.ReadAllText(Path.Combine(attributes, "blue_text.drtxt")));
+            Assert.Contains("arrow 2", File.ReadAllText(Path.Combine(attributes, "arrow_line.gln")));
+            Assert.Contains("FontAttr.height 3.000000", File.ReadAllText(Path.Combine(attributes, "view_marks.pm")));
+        }
+
+        [Fact]
+        public void MarkAndLabelContent()
+        {
+            var vi = new ViewProperties();
+
+            vi.Attributes.LabelMarkA1.Elements = new Marks.MarkContent()
+                .Add(Marks.MarkElementTypes.ViewLabel.ViewName, new Marks.MarkFormat { Font = "Tahoma", Color = DrawingColor.Green, Height = 5 })
+                .AddText(" ")
+                .Add(Marks.MarkElementTypes.ViewLabel.Scale)
+                .AddLineFeed()
+                .AddUserAttribute("USER_FIELD_1");
+
+            var mark = PartMarkAttributeFile.CreateDefault();
+            mark.Properties.SetMarkContent("ContentString1", new Marks.MarkContent()
+                .Add(Marks.MarkElementTypes.PartMark.PartPosition)
+                .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.Profile)));
+
+            Marks.MarkContent read = vi.Attributes.LabelMarkA1.Elements;
+
+            Assert.Equal(5, read.Count);
+            Assert.Contains("subType=\"82\"", vi.GetString("ViewLabelMarkA1.ContentString"));
+            Assert.Contains("frame_id=\"101\"", mark.GetString("ContentString1"));
+        }
+
+        [Fact]
         public void Filters()
         {
             string attributes = _attributes;

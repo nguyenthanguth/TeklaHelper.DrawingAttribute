@@ -26,6 +26,16 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         public const string AssemblyDrawingPrefix = "DetailLabel.";
 
         /// <summary>
+        /// Extension of the page file in GA drawing properties (matched by key set; only for the dialogs).
+        /// </summary>
+        public const string GADrawingFileExtension = ".detail_label";
+
+        /// <summary>
+        /// Extension of the page file in assembly drawing properties (matched by key set; only for the dialogs).
+        /// </summary>
+        public const string AssemblyDrawingFileExtension = ".detail_label";
+
+        /// <summary>
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>

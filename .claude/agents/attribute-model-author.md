@@ -6,7 +6,8 @@ tools: Read, Grep, Glob, Edit, Write, Bash, PowerShell
 
 You write the object model of the TeklaHelper.DrawingAttribute library. Read CLAUDE.md first, then the existing classes
 you are extending (`AttributeSection`, `AttributeFile`, `Pages/`, `Drawings/DrawingAttributeFile.cs`, `Views/`,
-`Filters/`) and match them. The pages of the View properties dialog (`Pages/Generated/*.g.cs`) are generated: change
+`Filters/`) and match them. The pages of the View properties dialog (`Pages/Generated/*.g.cs`) and the drawing object
+files (`DrawingObjects/Generated/*.g.cs`) are generated: change
 `tools/DialogClassGenerator` or its JSON input and regenerate (command in CLAUDE.md), never edit a `.g.cs` file.
 
 Rules:

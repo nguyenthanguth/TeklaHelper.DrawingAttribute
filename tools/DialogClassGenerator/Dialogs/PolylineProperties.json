@@ -1,0 +1,846 @@
+{
+  "page": "PolylineProperties",
+  "viewPrefix": null,
+  "fileExtension": ".gpl",
+  "filePrefix": "",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gr_go_polyline_attrib",
+  "otherSources": [
+    "gr_go_line_attrib",
+    "gr_go_arc_attrib",
+    "gr_go_polyline_attrib",
+    "gr_go_circle_attrib",
+    "gr_go_rectangle_attrib",
+    "gr_go_polygon_attrib",
+    "gr_foreign_object_attrib (keys under fo_attr.)",
+    "gr_fo_asc_attrib (keys under fo_attr.)"
+  ],
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [],
+  "tabs": [],
+  "groups": [
+    {
+      "label": "Line",
+      "aidName": "Container_146",
+      "controls": [
+        {
+          "label": "Type",
+          "labelSource": "enableCheckBox",
+          "key": "linetype",
+          "enableKey": "linetype_en",
+          "type": "linetype",
+          "options": [
+            {
+              "label": "Solid",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_solid",
+              "value": 1,
+              "aidName": "Optionbutton_1",
+              "apiName": "SolidLine"
+            },
+            {
+              "label": "Dashed",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed1",
+              "value": 2,
+              "aidName": "Optionbutton_151",
+              "apiName": "DashedLine"
+            },
+            {
+              "label": "Slashed",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed2",
+              "value": 3,
+              "aidName": "Optionbutton_152",
+              "apiName": "SlashedLine"
+            },
+            {
+              "label": "DashDot",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dot_dash",
+              "value": 4,
+              "aidName": "Optionbutton_153",
+              "apiName": "DashDot"
+            },
+            {
+              "label": "Dotted",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dotted",
+              "value": 5,
+              "aidName": "Optionbutton_5",
+              "apiName": "DottedLine"
+            },
+            {
+              "label": "DashDoubleDot",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed3",
+              "value": 6,
+              "aidName": "gr_pb_dashed3",
+              "apiName": "DashDoubleDot"
+            },
+            {
+              "label": "SlashDash",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed4",
+              "value": 7,
+              "aidName": "gr_pb_dashed4",
+              "apiName": "SlashDash"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "line_type",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 2,
+          "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+          "samples": {
+            "files": 3,
+            "inMenu": {
+              "1": 3
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Color",
+          "labelSource": "enableCheckBox",
+          "key": "color",
+          "enableKey": "color_en",
+          "type": "color",
+          "options": [
+            {
+              "label": "Invisible",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_invisible_line",
+              "value": 152,
+              "aidName": "Optionbutton_154",
+              "apiName": "Invisible"
+            },
+            {
+              "label": "Black",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_black_line",
+              "value": 153,
+              "aidName": "Optionbutton_150",
+              "apiName": "Black"
+            },
+            {
+              "label": "Red",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_red_line",
+              "value": 160,
+              "aidName": "Optionbutton_155",
+              "apiName": "Red"
+            },
+            {
+              "label": "Green",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_green_line",
+              "value": 161,
+              "aidName": "Optionbutton_156",
+              "apiName": "Green"
+            },
+            {
+              "label": "Blue",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_blue_line",
+              "value": 162,
+              "aidName": "Optionbutton_2",
+              "apiName": "Blue"
+            },
+            {
+              "label": "Cyan",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_cyan_line",
+              "value": 163,
+              "aidName": "Optionbutton_3",
+              "apiName": "Cyan"
+            },
+            {
+              "label": "Yellow",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_yellow_line",
+              "value": 164,
+              "aidName": "Optionbutton_4",
+              "apiName": "Yellow"
+            },
+            {
+              "label": "Magenta",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_magenta_line",
+              "value": 165,
+              "aidName": "Optionbutton_6",
+              "apiName": "Magenta"
+            },
+            {
+              "label": "NewLine1",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_1",
+              "value": 154,
+              "aidName": "optionbutton_303386",
+              "apiName": "NewLine1"
+            },
+            {
+              "label": "NewLine2",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_2",
+              "value": 155,
+              "aidName": "optionbutton_303385",
+              "apiName": "NewLine2"
+            },
+            {
+              "label": "NewLine3",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_3",
+              "value": 156,
+              "aidName": "optionbutton_303384",
+              "apiName": "NewLine3"
+            },
+            {
+              "label": "NewLine4",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_4",
+              "value": 157,
+              "aidName": "optionbutton_303383",
+              "apiName": "NewLine4"
+            },
+            {
+              "label": "NewLine5",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_5",
+              "value": 158,
+              "aidName": "optionbutton_303382",
+              "apiName": "NewLine5"
+            },
+            {
+              "label": "NewLine6",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_6",
+              "value": 159,
+              "aidName": "optionbutton_303381",
+              "apiName": "NewLine6"
+            },
+            {
+              "label": "Gray30",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray30_line",
+              "value": 130,
+              "aidName": "",
+              "apiName": "Gray30"
+            },
+            {
+              "label": "Gray50",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray50_line",
+              "value": 131,
+              "aidName": "",
+              "apiName": "Gray50"
+            },
+            {
+              "label": "Gray70",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray70_line",
+              "value": 132,
+              "aidName": "",
+              "apiName": "Gray70"
+            },
+            {
+              "label": "Gray90",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray90_line",
+              "value": 133,
+              "aidName": "",
+              "apiName": "Gray90"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "Optionmenu_149",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 3,
+          "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+          "samples": {
+            "files": 3,
+            "inMenu": {
+              "155": 2,
+              "160": 1
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Bulge for all lines",
+          "labelSource": "enableCheckBox",
+          "key": "bulge",
+          "enableKey": "bulge_en",
+          "type": "number",
+          "format": "%.2f",
+          "aidWidget": "text",
+          "aidName": "bulge",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 4,
+          "samples": {
+            "files": 3,
+            "top": {
+              "0.000000": 3
+            }
+          }
+        }
+      ],
+      "groups": [],
+      "position": 1
+    },
+    {
+      "label": "Arrow",
+      "aidName": "Container_165",
+      "controls": [
+        {
+          "label": "Position",
+          "labelSource": "enableCheckBox",
+          "key": "arrow",
+          "enableKey": "arrow_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "gr_pb_no_arrow",
+              "labelSource": "bitmap",
+              "bitmap": "gr_pb_no_arrow",
+              "value": 0,
+              "aidName": "Optionbutton_146",
+              "apiName": "None"
+            },
+            {
+              "label": "gr_pb_solid_arrow1",
+              "labelSource": "bitmap",
+              "bitmap": "gr_pb_solid_arrow1",
+              "value": 1,
+              "aidName": "Optionbutton_148",
+              "apiName": "Start"
+            },
+            {
+              "label": "gr_pb_solid_arrow2",
+              "labelSource": "bitmap",
+              "bitmap": "gr_pb_solid_arrow2",
+              "value": 2,
+              "aidName": "Optionbutton",
+              "apiName": "End"
+            },
+            {
+              "label": "gr_pb_solid_arrow12",
+              "labelSource": "bitmap",
+              "bitmap": "gr_pb_solid_arrow12",
+              "value": 3,
+              "aidName": "Optionbutton_149",
+              "apiName": "Both"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "Optionmenu_145",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 6,
+          "apiEnum": "Tekla.Structures.Drawing.ArrowheadPositions",
+          "samples": {
+            "files": 3,
+            "inMenu": {
+              "0": 3
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Type",
+          "labelSource": "enableCheckBox",
+          "key": "arrow_type",
+          "enableKey": "arrow_type_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "gr_pb_solid_arrow2",
+              "labelSource": "bitmap",
+              "bitmap": "gr_pb_solid_arrow2",
+              "value": 1,
+              "aidName": "Optionbutton_206"
+            },
+            {
+              "label": "gr_pb_open_arrow2",
+              "labelSource": "bitmap",
+              "bitmap": "gr_pb_open_arrow2",
+              "value": 2,
+              "aidName": "Optionbutton_207"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "Optionmenu_205",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 7,
+          "samples": {
+            "files": 3,
+            "inMenu": {},
+            "outsideMenu": {
+              "0": 2,
+              "17": 1
+            }
+          }
+        },
+        {
+          "label": "Arrow height",
+          "labelSource": "group+key",
+          "key": "arrow_height",
+          "enableKey": "arrow_height_en",
+          "type": "number",
+          "format": "%3.2f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "Text_209",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 8,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 3,
+            "top": {
+              "2.000000": 3
+            }
+          }
+        },
+        {
+          "label": "Arrow width",
+          "labelSource": "group+key",
+          "key": "arrow_width",
+          "enableKey": "arrow_width_en",
+          "type": "number",
+          "format": "%3.2f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "Text_211",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 9,
+          "labelConfidence": "key-name",
+          "samples": {
+            "files": 3,
+            "top": {
+              "3.000000": 2,
+              "1.000000": 1
+            }
+          }
+        }
+      ],
+      "groups": [],
+      "position": 5
+    }
+  ],
+  "controls": [],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [
+    {
+      "label": "File type",
+      "labelSource": "enableCheckBox",
+      "key": "fo_attr.file_type",
+      "enableKey": "fo_attr.file_type_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "Hyperlink",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "Optionbutton_131"
+        },
+        {
+          "label": "ASCII",
+          "labelSource": "aid",
+          "value": 2,
+          "aidName": "Optionbutton_287"
+        },
+        {
+          "label": "DWG/DXF",
+          "labelSource": "aid",
+          "value": 3,
+          "aidName": "Optionbutton_288"
+        }
+      ],
+      "aidWidget": "optionmenu",
+      "aidName": "file_type",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 1,
+      "aidDialog": "gr_foreign_object_attrib",
+      "dialogPath": [],
+      "samples": {
+        "files": 3,
+        "inMenu": {
+          "2": 1
+        },
+        "outsideMenu": {
+          "0": 2
+        }
+      }
+    },
+    {
+      "label": "File name",
+      "labelSource": "enableCheckBox",
+      "key": "fo_attr.identifier",
+      "enableKey": "fo_attr.identifier_en",
+      "type": "text",
+      "format": "%s",
+      "maxLength": 255,
+      "aidWidget": "text",
+      "aidName": "file_name",
+      "aidType": "char",
+      "confidence": "other-dialog",
+      "position": 2,
+      "aidDialog": "gr_foreign_object_attrib",
+      "dialogPath": [],
+      "samples": {
+        "files": 3,
+        "top": {
+          "\"\"": 3
+        }
+      }
+    },
+    {
+      "label": "Extra info",
+      "labelSource": "enableCheckBox",
+      "key": "fo_attr.extra_info",
+      "enableKey": "fo_attr.extra_info_en",
+      "type": "text",
+      "format": "%s",
+      "maxLength": 80,
+      "aidWidget": "text",
+      "aidName": "fo_extra_info",
+      "aidType": "char",
+      "confidence": "other-dialog",
+      "position": 4,
+      "aidDialog": "gr_foreign_object_attrib",
+      "dialogPath": [],
+      "samples": {
+        "files": 3,
+        "top": {
+          "\"\"": 3
+        }
+      }
+    },
+    {
+      "label": "Scale in X",
+      "labelSource": "enableCheckBox",
+      "key": "fo_attr.scale_x",
+      "enableKey": "fo_attr.scale_x_en",
+      "type": "number",
+      "aidWidget": "text",
+      "aidName": "fo_scale_x",
+      "aidType": "double",
+      "confidence": "other-dialog",
+      "position": 6,
+      "aidDialog": "gr_foreign_object_attrib",
+      "dialogPath": [],
+      "samples": {
+        "files": 3,
+        "top": {
+          "1.000000": 2,
+          "0.000000": 1
+        }
+      }
+    },
+    {
+      "label": "Scale in Y",
+      "labelSource": "enableCheckBox",
+      "key": "fo_attr.scale_y",
+      "enableKey": "fo_attr.scale_y_en",
+      "type": "number",
+      "aidWidget": "text",
+      "aidName": "fo_scale_y",
+      "aidType": "double",
+      "confidence": "other-dialog",
+      "position": 7,
+      "aidDialog": "gr_foreign_object_attrib",
+      "dialogPath": [],
+      "samples": {
+        "files": 3,
+        "top": {
+          "1.000000": 2,
+          "0.000000": 1
+        }
+      }
+    },
+    {
+      "label": "Color",
+      "labelSource": "enableCheckBox",
+      "key": "fo_attr.text_color",
+      "enableKey": "fo_attr.text_color_en",
+      "type": "color",
+      "options": [
+        {
+          "label": "Invisible",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_invisible_line",
+          "value": 152,
+          "aidName": "Optionbutton_12",
+          "apiName": "Invisible"
+        },
+        {
+          "label": "Black",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_black_line",
+          "value": 153,
+          "aidName": "Optionbutton_13",
+          "apiName": "Black"
+        },
+        {
+          "label": "Red",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_red_line",
+          "value": 160,
+          "aidName": "Optionbutton_11",
+          "apiName": "Red"
+        },
+        {
+          "label": "Green",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_green_line",
+          "value": 161,
+          "aidName": "Optionbutton_10",
+          "apiName": "Green"
+        },
+        {
+          "label": "Blue",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_blue_line",
+          "value": 162,
+          "aidName": "Optionbutton_9",
+          "apiName": "Blue"
+        },
+        {
+          "label": "Cyan",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_cyan_line",
+          "value": 163,
+          "aidName": "Optionbutton_8",
+          "apiName": "Cyan"
+        },
+        {
+          "label": "Yellow",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_yellow_line",
+          "value": 164,
+          "aidName": "Optionbutton_7",
+          "apiName": "Yellow"
+        },
+        {
+          "label": "Magenta",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_magenta_line",
+          "value": 165,
+          "aidName": "Optionbutton_14",
+          "apiName": "Magenta"
+        },
+        {
+          "label": "NewLine1",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_1",
+          "value": 154,
+          "aidName": "optionbutton_235017",
+          "apiName": "NewLine1"
+        },
+        {
+          "label": "NewLine2",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_2",
+          "value": 155,
+          "aidName": "optionbutton_235016",
+          "apiName": "NewLine2"
+        },
+        {
+          "label": "NewLine3",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_3",
+          "value": 156,
+          "aidName": "optionbutton_235015",
+          "apiName": "NewLine3"
+        },
+        {
+          "label": "NewLine4",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_4",
+          "value": 157,
+          "aidName": "optionbutton_235014",
+          "apiName": "NewLine4"
+        },
+        {
+          "label": "NewLine5",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_5",
+          "value": 158,
+          "aidName": "optionbutton_235013",
+          "apiName": "NewLine5"
+        },
+        {
+          "label": "NewLine6",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_new_line_6",
+          "value": 159,
+          "aidName": "optionbutton_235012",
+          "apiName": "NewLine6"
+        },
+        {
+          "label": "Gray30",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_gray30_line",
+          "value": 130,
+          "aidName": "",
+          "apiName": "Gray30"
+        },
+        {
+          "label": "Gray50",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_gray50_line",
+          "value": 131,
+          "aidName": "",
+          "apiName": "Gray50"
+        },
+        {
+          "label": "Gray70",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_gray70_line",
+          "value": 132,
+          "aidName": "",
+          "apiName": "Gray70"
+        },
+        {
+          "label": "Gray90",
+          "labelSource": "bitmap; name from DrawingColors",
+          "bitmap": "gr_pb_gray90_line",
+          "value": 133,
+          "aidName": "",
+          "apiName": "Gray90"
+        }
+      ],
+      "aidWidget": "optionmenu",
+      "aidName": "Optionmenu",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 2,
+      "aidDialog": "gr_fo_asc_attrib",
+      "dialogPath": [
+        "Text Style"
+      ],
+      "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+      "samples": {
+        "files": 3,
+        "inMenu": {
+          "155": 2
+        },
+        "outsideMenu": {
+          "0": 1
+        }
+      }
+    },
+    {
+      "label": "Height",
+      "labelSource": "enableCheckBox",
+      "key": "fo_attr.text_height",
+      "enableKey": "fo_attr.text_height_en",
+      "type": "number",
+      "format": "%.2f",
+      "unit": "length",
+      "aidWidget": "text",
+      "aidName": "text_height",
+      "aidType": "double",
+      "confidence": "other-dialog",
+      "position": 3,
+      "aidDialog": "gr_fo_asc_attrib",
+      "dialogPath": [
+        "Text Style"
+      ],
+      "samples": {
+        "files": 3,
+        "top": {
+          "3.000000": 2,
+          "0.000000": 1
+        }
+      }
+    },
+    {
+      "label": "Font",
+      "labelSource": "enableCheckBox",
+      "key": "fo_attr.text_font",
+      "enableKey": "fo_attr.text_font_en",
+      "type": "font",
+      "format": "%s",
+      "maxLength": 46,
+      "aidWidget": "text",
+      "aidName": "text_font",
+      "aidType": "char",
+      "confidence": "other-dialog",
+      "position": 4,
+      "aidDialog": "gr_fo_asc_attrib",
+      "dialogPath": [
+        "Text Style"
+      ],
+      "samples": {
+        "files": 3,
+        "top": {
+          "\"romsim\"": 2,
+          "\"\"": 1
+        }
+      }
+    },
+    {
+      "label": "Type",
+      "labelSource": "enableCheckBox",
+      "key": "fo_attr.scaling_type",
+      "enableKey": "fo_attr.scaling_type_en",
+      "type": "option",
+      "options": [
+        {
+          "label": "No scaling",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "Optionbutton_196",
+          "apiName": "NoScaling"
+        },
+        {
+          "label": "Scale to fit",
+          "labelSource": "aid",
+          "value": 4,
+          "aidName": "Optionbutton_197",
+          "apiName": "ScaleToFit"
+        }
+      ],
+      "aidWidget": "optionmenu",
+      "aidName": "scaling_type",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 11,
+      "aidDialog": "gr_fo_asc_attrib",
+      "dialogPath": [
+        "Scaling"
+      ],
+      "apiEnum": "Tekla.Structures.Drawing.ScalingOptions",
+      "samples": {
+        "files": 3,
+        "inMenu": {
+          "0": 3
+        },
+        "outsideMenu": {}
+      }
+    }
+  ],
+  "unmappedKeys": [
+    "foreign_object_en",
+    "fo_attr.text_proportion",
+    "fo_attr.text_slant",
+    "fo_attr.text_style",
+    "fo_attr.TextEffect",
+    "fo_attr.text_proportion_en",
+    "fo_attr.text_slant_en",
+    "fo_attr.text_style_en",
+    "fo_attr.TextEffect_en"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "3 .gpl files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

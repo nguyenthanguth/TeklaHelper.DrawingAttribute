@@ -1,0 +1,1595 @@
+{
+  "page": "SectionMarkProperties",
+  "viewPrefix": null,
+  "fileExtension": ".cs",
+  "filePrefix": "",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gr_csym_attrib",
+  "otherSources": [
+    "gr_section_label_attrib"
+  ],
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [
+    {
+      "keyStem": "SectionMarkA",
+      "rows": 5,
+      "keys": 130,
+      "note": "one row per label text A1..A5, each the structure of the \"...\" dialog gr_view_reference_mark_attrib (page ViewLabelMark)"
+    },
+    {
+      "keyStem": "ViewLabelMarkA",
+      "rows": 5,
+      "keys": 130,
+      "note": "one row per label text A1..A5, each the structure of the \"...\" dialog gr_view_reference_mark_attrib (page ViewLabelMark)"
+    }
+  ],
+  "tabs": [
+    {
+      "label": "Cutting line",
+      "aidName": "tabbeditem_5667",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Line",
+          "aidName": "conCuttingLineOffsets",
+          "controls": [
+            {
+              "label": "Line ArrowLength",
+              "labelSource": "group+key",
+              "key": "ArrowLength",
+              "enableKey": "ArrowLength_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldArrowLength",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 3,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 9,
+                "top": {
+                  "10.000000": 4,
+                  "5.000000": 2,
+                  "0.000000": 1,
+                  "7.000000": 1,
+                  "6.000000": 1
+                }
+              }
+            },
+            {
+              "label": "Line ArrowWidth",
+              "labelSource": "group+key",
+              "key": "ArrowWidth",
+              "enableKey": "ArrowWidth_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldArrowWidth",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 4,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 9,
+                "top": {
+                  "10.000000": 4,
+                  "5.000000": 4,
+                  "0.000000": 1
+                }
+              }
+            },
+            {
+              "label": "Line LengthOffset",
+              "labelSource": "group+key",
+              "key": "LengthOffset",
+              "enableKey": "LengthOffset_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldLengthOffset",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 5,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 9,
+                "top": {
+                  "0.000000": 5,
+                  "7.000000": 2,
+                  "3.000000": 2
+                }
+              }
+            },
+            {
+              "label": "Line WidthOffset1",
+              "labelSource": "group+key",
+              "key": "WidthOffset1",
+              "enableKey": "WidthOffset1_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldWidthOffset",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 6,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 9,
+                "top": {
+                  "0.000000": 5,
+                  "5.000000": 2,
+                  "0.030000": 2
+                }
+              }
+            },
+            {
+              "label": "Line WidthOffset2",
+              "labelSource": "group+key",
+              "key": "WidthOffset2",
+              "enableKey": "WidthOffset2_en",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "txtFldWidthOffset2",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 7,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 9,
+                "top": {
+                  "0.000000": 5,
+                  "5.000000": 2,
+                  "3.090000": 2
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 2
+        },
+        {
+          "label": "Properties",
+          "aidName": "conCuttingLineProperties",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "line_colour",
+              "enableKey": "line_colour_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_white_line",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_black_line",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_red_line",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_green_line",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_blue_line",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_cyan_line",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_yellow_line",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_magenta_line",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_new_line_1",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_new_line_2",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_new_line_3",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_new_line_4",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_new_line_5",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_new_line_6",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "csym_line_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 9,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 9,
+                "inMenu": {
+                  "164": 5,
+                  "153": 3,
+                  "159": 1
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 8
+        }
+      ],
+      "position": 10
+    },
+    {
+      "label": "Section mark",
+      "aidName": "tabbeditem_6010",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Text",
+          "aidName": "conSectionMarkLabelSettings",
+          "controls": [
+            {
+              "label": "A1",
+              "labelSource": "enableCheckBox",
+              "key": "aSectionMarkA1",
+              "enableKey": "SectionMarkA1_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionMarkA1TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 12,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"<< Mark >>\"": 5,
+                  "\"\"": 2,
+                  "\"<< }[N >>\"": 1
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionMarkA1",
+              "callback": "grViewReferenceMarkContentCB",
+              "callbackParameter": "DetailMarkA1",
+              "position": 13
+            },
+            {
+              "label": "A2",
+              "labelSource": "enableCheckBox",
+              "key": "aSectionMarkA2",
+              "enableKey": "SectionMarkA2_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionMarkA2TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 14,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"\"": 6,
+                  "\"<< Mark >>\"": 2
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionMarkA2",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 15
+            },
+            {
+              "label": "A3",
+              "labelSource": "enableCheckBox",
+              "key": "aSectionMarkA3",
+              "enableKey": "SectionMarkA3_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionMarkA3TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 16,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"\"": 6,
+                  "\"<< Mark >>\"": 2
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionMarkA3",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 17
+            },
+            {
+              "label": "A4",
+              "labelSource": "enableCheckBox",
+              "key": "aSectionMarkA4",
+              "enableKey": "SectionMarkA4_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionMarkA4TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 18,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"\"": 8
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionMarkA4",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 19
+            },
+            {
+              "label": "A5",
+              "labelSource": "enableCheckBox",
+              "key": "aSectionMarkA5",
+              "enableKey": "SectionMarkA5_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionMarkA5TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 20,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"\"": 8
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionMarkA5",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 21
+            }
+          ],
+          "groups": [],
+          "position": 11
+        },
+        {
+          "label": "Symbol",
+          "aidName": "conSectionMarkSymbolSettings",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "SectionMarkSymbolColor",
+              "enableKey": "SectionMarkSymbolColor_en",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "gr_pb_white_1",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "gr_pb_black_1",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "gr_pb_red_1",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "gr_pb_green_1",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "gr_pb_blue_1",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "gr_pb_cyan_1",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "gr_pb_yellow_1",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "gr_pb_magenta_1",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "gr_pb_new",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "gr_pb_new_7",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "gr_pb_new_8",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "gr_pb_new_9",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "gr_pb_new_10",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "gr_pb_new_11",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "csym_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 23,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "158": 4,
+                  "153": 3,
+                  "159": 1
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [
+            {
+              "label": "Left symbol",
+              "aidName": "conSectionMarkLeftSymbol",
+              "controls": [
+                {
+                  "label": "Symbol",
+                  "labelSource": "enableCheckBox",
+                  "key": "SectionMarkLeftSymbolIndex",
+                  "enableKey": "SectionMarkLeftSymbolIndex_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "None",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optionbutton_6041"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_183",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_183",
+                      "value": 184,
+                      "aidName": "optionbutton_5675"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_184",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_184",
+                      "value": 185,
+                      "aidName": "optionbutton_5676"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_179",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_179",
+                      "value": 180,
+                      "aidName": "optionbutton_5677"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_181",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_181",
+                      "value": 182,
+                      "aidName": "optionbutton_5678"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_177",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_177",
+                      "value": 178,
+                      "aidName": "optionbutton_5793"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_176",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_176",
+                      "value": 177,
+                      "aidName": "optionbutton_5958"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_185",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_185",
+                      "value": 186,
+                      "aidName": "optionbutton_5968"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_186",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_186",
+                      "value": 187,
+                      "aidName": "optionbutton_5970"
+                    },
+                    {
+                      "label": "Custom",
+                      "labelSource": "aid",
+                      "value": 1000,
+                      "aidName": "optionbutton_5679"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "conSectionMarkLeftSymbolIndex",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 25,
+                  "samples": {
+                    "files": 8,
+                    "inMenu": {
+                      "184": 6,
+                      "1000": 1,
+                      "0": 1
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Size",
+                  "labelSource": "enableCheckBox",
+                  "key": "SectionMarkLeftSymbolSize",
+                  "enableKey": "SectionMarkLeftSymbolSize_en",
+                  "type": "number",
+                  "format": "%2.1f",
+                  "maxLength": 31,
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "text_5691",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 26,
+                  "samples": {
+                    "files": 8,
+                    "top": {
+                      "5.000000": 8
+                    }
+                  }
+                },
+                {
+                  "label": "x",
+                  "labelSource": "enableCheckBox",
+                  "key": "SectionMarkLeftSymbolPositionX",
+                  "enableKey": "SectionMarkLeftSymbolPos_en",
+                  "type": "number",
+                  "format": "%2.2f",
+                  "maxLength": 31,
+                  "aidWidget": "text",
+                  "aidName": "text",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 27,
+                  "samples": {
+                    "files": 8,
+                    "top": {
+                      "0.000000": 8
+                    }
+                  }
+                },
+                {
+                  "label": "y",
+                  "labelSource": "textlabel",
+                  "key": "SectionMarkLeftSymbolPositionY",
+                  "enableKey": "SectionMarkLeftSymbolPos_en",
+                  "enableLabel": "x",
+                  "type": "number",
+                  "format": "%2.2f",
+                  "aidWidget": "text",
+                  "aidName": "text_1",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 28,
+                  "samples": {
+                    "files": 8,
+                    "top": {
+                      "0.000000": 6,
+                      "0.650000": 2
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 24
+            },
+            {
+              "label": "Right symbol",
+              "aidName": "conSectionMarkRightSymbol",
+              "controls": [
+                {
+                  "label": "Symbol",
+                  "labelSource": "enableCheckBox",
+                  "key": "SectionMarkRightSymbolIndex",
+                  "enableKey": "SectionMarkRightSymbolIndex_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "None",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optionbutton"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_182",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_182",
+                      "value": 183,
+                      "aidName": "optionbutton_1"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_184",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_184",
+                      "value": 185,
+                      "aidName": "optionbutton_2"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_178",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_178",
+                      "value": 179,
+                      "aidName": "optionbutton_3"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_180",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_180",
+                      "value": 181,
+                      "aidName": "optionbutton_4"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_177",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_177",
+                      "value": 178,
+                      "aidName": "optionbutton_5"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_176",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_176",
+                      "value": 177,
+                      "aidName": "optionbutton_6"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_185",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_185",
+                      "value": 186,
+                      "aidName": "optionbutton_5972"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_186",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_186",
+                      "value": 187,
+                      "aidName": "optionbutton_5973"
+                    },
+                    {
+                      "label": "Custom",
+                      "labelSource": "aid",
+                      "value": 1000,
+                      "aidName": "optionbutton_7"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "conSectionMarkRighSymbolIndex_1",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 30,
+                  "samples": {
+                    "files": 8,
+                    "inMenu": {
+                      "183": 6,
+                      "1000": 1,
+                      "185": 1
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Size",
+                  "labelSource": "enableCheckBox",
+                  "key": "SectionMarkRightSymbolSize",
+                  "enableKey": "SectionMarkRightSymbolSize_en",
+                  "type": "number",
+                  "format": "%2.1f",
+                  "maxLength": 31,
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "SectionMarkRightSymbolSize",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 31,
+                  "samples": {
+                    "files": 8,
+                    "top": {
+                      "5.000000": 8
+                    }
+                  }
+                },
+                {
+                  "label": "x",
+                  "labelSource": "enableCheckBox",
+                  "key": "SectionMarkRightSymbolPositionX",
+                  "enableKey": "SectionMarkRightSymbolPos_en",
+                  "type": "number",
+                  "format": "%2.2f",
+                  "maxLength": 31,
+                  "aidWidget": "text",
+                  "aidName": "text_5695",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 32,
+                  "samples": {
+                    "files": 8,
+                    "top": {
+                      "0.000000": 8
+                    }
+                  }
+                },
+                {
+                  "label": "y",
+                  "labelSource": "textlabel",
+                  "key": "SectionMarkRightSymbolPositionY",
+                  "enableKey": "SectionMarkRightSymbolPos_en",
+                  "enableLabel": "x",
+                  "type": "number",
+                  "format": "%2.2f",
+                  "maxLength": 31,
+                  "aidWidget": "text",
+                  "aidName": "text_5696",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 33,
+                  "samples": {
+                    "files": 8,
+                    "top": {
+                      "0.000000": 6,
+                      "0.650000": 2
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 29
+            }
+          ],
+          "position": 22
+        }
+      ],
+      "position": 34
+    },
+    {
+      "label": "View label",
+      "aidName": "tabbeditem_5644",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Text",
+          "aidName": "conViewLabelMarkLabelSettings",
+          "controls": [
+            {
+              "label": "A1",
+              "labelSource": "enableCheckBox",
+              "key": "aViewLabelMarkA1",
+              "enableKey": "ViewMarkA1_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionViewMarkA1TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 36,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"<< Mark >>\"": 7,
+                  "\"<< }[N >>\"": 1
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionViewLabelA1",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 37
+            },
+            {
+              "label": "A2",
+              "labelSource": "enableCheckBox",
+              "key": "aViewLabelMarkA2",
+              "enableKey": "ViewMarkA2_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionViewMarkA2TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 38,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"<< Mark >>\"": 6,
+                  "\"\"": 2
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionViewLabelA2",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 39
+            },
+            {
+              "label": "A3",
+              "labelSource": "enableCheckBox",
+              "key": "aViewLabelMarkA3",
+              "enableKey": "ViewMarkA3_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionViewMarkA3TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 40,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"\"": 8
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionViewLabelA3",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 41
+            },
+            {
+              "label": "A4",
+              "labelSource": "enableCheckBox",
+              "key": "aViewLabelMarkA4",
+              "enableKey": "ViewMarkA4_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionViewMarkA4TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 42,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"\"": 8
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionViewLabelA4",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 43
+            },
+            {
+              "label": "A5",
+              "labelSource": "enableCheckBox",
+              "key": "aViewLabelMarkA5",
+              "enableKey": "ViewMarkA5_en",
+              "type": "text",
+              "maxLength": 52,
+              "aidWidget": "text",
+              "aidName": "SectionViewMarkA5TextContent",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 44,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"\"": 8
+                }
+              }
+            },
+            {
+              "label": "...",
+              "type": "button",
+              "aidName": "butSectionViewLabelA5",
+              "callback": "grViewReferenceMarkContentCB",
+              "position": 45
+            }
+          ],
+          "groups": [],
+          "position": 35
+        },
+        {
+          "label": "View label",
+          "aidName": "conViewLabel",
+          "controls": [],
+          "groups": [
+            {
+              "label": "Symbol",
+              "aidName": "conViewLabelMarkSymbolSettings",
+              "controls": [
+                {
+                  "label": "Symbol",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelMarkSymbolIndex",
+                  "enableKey": "ViewLabelMarkSymbolIndex_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "None",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optBtnNone"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_144",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_144",
+                      "value": 145,
+                      "aidName": "optionbutton_5663"
+                    },
+                    {
+                      "label": "SYMBOL_BMP_SECTIONS_AT_145",
+                      "labelSource": "bitmap",
+                      "bitmap": "SYMBOL_BMP_SECTIONS_AT_145",
+                      "value": 146,
+                      "aidName": "optionbutton_5664"
+                    },
+                    {
+                      "label": "Custom",
+                      "labelSource": "aid",
+                      "value": 1000,
+                      "aidName": "optionbutton_5754"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optionmenu",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 48,
+                  "samples": {
+                    "files": 8,
+                    "inMenu": {
+                      "0": 8
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Color",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelMarkSymbolColor",
+                  "enableKey": "ViewLabelMarkSymbolColor_en",
+                  "type": "color",
+                  "options": [
+                    {
+                      "label": "Invisible",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_invisible_line",
+                      "value": 152,
+                      "aidName": "optButSymbol_invisible_1",
+                      "apiName": "Invisible"
+                    },
+                    {
+                      "label": "Black",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_black_line",
+                      "value": 153,
+                      "aidName": "optButSymbol_black_1",
+                      "apiName": "Black"
+                    },
+                    {
+                      "label": "Red",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_red_line",
+                      "value": 160,
+                      "aidName": "optButSymbol_red_1",
+                      "apiName": "Red"
+                    },
+                    {
+                      "label": "Green",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_green_line",
+                      "value": 161,
+                      "aidName": "optButSymbol_green_1",
+                      "apiName": "Green"
+                    },
+                    {
+                      "label": "Blue",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_blue_line",
+                      "value": 162,
+                      "aidName": "optButSymbol_blue_1",
+                      "apiName": "Blue"
+                    },
+                    {
+                      "label": "Cyan",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_cyan_line",
+                      "value": 163,
+                      "aidName": "optButSymbol_cyan_1",
+                      "apiName": "Cyan"
+                    },
+                    {
+                      "label": "Yellow",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_yellow_line",
+                      "value": 164,
+                      "aidName": "optButSymbol_yellow_1",
+                      "apiName": "Yellow"
+                    },
+                    {
+                      "label": "Magenta",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_magenta_line",
+                      "value": 165,
+                      "aidName": "optButSymbol_magenta_1",
+                      "apiName": "Magenta"
+                    },
+                    {
+                      "label": "NewLine1",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_1",
+                      "value": 154,
+                      "aidName": "optButSymbol_new",
+                      "apiName": "NewLine1"
+                    },
+                    {
+                      "label": "NewLine2",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_2",
+                      "value": 155,
+                      "aidName": "optButSymbol_new_12",
+                      "apiName": "NewLine2"
+                    },
+                    {
+                      "label": "NewLine3",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_3",
+                      "value": 156,
+                      "aidName": "optButSymbol_new_13",
+                      "apiName": "NewLine3"
+                    },
+                    {
+                      "label": "NewLine4",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_4",
+                      "value": 157,
+                      "aidName": "optButSymbol_new_14",
+                      "apiName": "NewLine4"
+                    },
+                    {
+                      "label": "NewLine5",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_5",
+                      "value": 158,
+                      "aidName": "optButSymbol_new_15",
+                      "apiName": "NewLine5"
+                    },
+                    {
+                      "label": "NewLine6",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_6",
+                      "value": 159,
+                      "aidName": "optButSymbol_new_16",
+                      "apiName": "NewLine6"
+                    },
+                    {
+                      "label": "Gray30",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray30_line",
+                      "value": 130,
+                      "aidName": "",
+                      "apiName": "Gray30"
+                    },
+                    {
+                      "label": "Gray50",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray50_line",
+                      "value": 131,
+                      "aidName": "",
+                      "apiName": "Gray50"
+                    },
+                    {
+                      "label": "Gray70",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray70_line",
+                      "value": 132,
+                      "aidName": "",
+                      "apiName": "Gray70"
+                    },
+                    {
+                      "label": "Gray90",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray90_line",
+                      "value": 133,
+                      "aidName": "",
+                      "apiName": "Gray90"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "optMnuDetailSymbolColor_1",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 49,
+                  "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+                  "samples": {
+                    "files": 8,
+                    "inMenu": {
+                      "158": 5,
+                      "154": 1,
+                      "159": 1,
+                      "153": 1
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Size",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelMarkSymbolSize",
+                  "enableKey": "ViewLabelMarkSymbolSize_en",
+                  "type": "number",
+                  "format": "%3.1f",
+                  "maxLength": 31,
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "text_16724",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 50,
+                  "samples": {
+                    "files": 8,
+                    "top": {
+                      "5.000000": 8
+                    }
+                  }
+                },
+                {
+                  "label": "Line length",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelLineLengthType",
+                  "enableKey": "ViewLabelLineLength_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Minimum",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optionbutton_6270",
+                      "apiName": "Minimal"
+                    },
+                    {
+                      "label": "Custom",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optionbutton_6273",
+                      "apiName": "Custom"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "optViewLabelLineLengthType",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 51,
+                  "apiEnum": "Tekla.Structures.Drawing.View.LabelLineLengthType",
+                  "apiEnumOffset": 1,
+                  "apiEnumNote": "API value = stored value + 1 (checked on every item)",
+                  "samples": {
+                    "files": 7,
+                    "inMenu": {
+                      "0": 7
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Line length ViewLabelCustomLength",
+                  "labelSource": "enableCheckBox(shared)+key",
+                  "key": "ViewLabelCustomLength",
+                  "enableKey": "ViewLabelLineLength_en",
+                  "enableLabel": "Line length",
+                  "type": "number",
+                  "format": "%3.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "fldViewLabelCustomLength",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 52,
+                  "labelConfidence": "key-name",
+                  "samples": {
+                    "files": 7,
+                    "top": {
+                      "0.000000": 7
+                    }
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 47
+            },
+            {
+              "label": "Label position",
+              "aidName": "conViewLabelMarkLabelPosition",
+              "controls": [
+                {
+                  "label": "Vertical",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelPosition",
+                  "enableKey": "ViewLabelPosition_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Above",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optBtnAbove"
+                    },
+                    {
+                      "label": "Below",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optBtnBelow"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optionmenu_2",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 54,
+                  "samples": {
+                    "files": 8,
+                    "inMenu": {
+                      "1": 5,
+                      "0": 3
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Horizontal",
+                  "labelSource": "enableCheckBox",
+                  "key": "ViewLabelHorizontalPosition",
+                  "enableKey": "ViewLabelHorizontalPosition_en",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Left aligned to view frame",
+                      "labelSource": "aid",
+                      "value": 2,
+                      "aidName": "optBtn_csym_LeftAlignedToViewFrame"
+                    },
+                    {
+                      "label": "Center aligned to view frame",
+                      "labelSource": "aid",
+                      "value": 0,
+                      "aidName": "optBtn_csym_CenterAlignedToViewFrame"
+                    },
+                    {
+                      "label": "Right aligned to view frame",
+                      "labelSource": "aid",
+                      "value": 3,
+                      "aidName": "optBtn_csym_RightAlignedToViewFrame"
+                    },
+                    {
+                      "label": "Left aligned to view restriction box",
+                      "labelSource": "aid",
+                      "value": 4,
+                      "aidName": "optBtn_csym_LeftAlignedToViewRestBox"
+                    },
+                    {
+                      "label": "Center aligned to view restriction box",
+                      "labelSource": "aid",
+                      "value": 1,
+                      "aidName": "optBtn_csym_CenterAlignedToViewRestBox"
+                    },
+                    {
+                      "label": "Right aligned to view restriction box",
+                      "labelSource": "aid",
+                      "value": 5,
+                      "aidName": "optBtn_csym_RightAlignedToViewRestBox"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "optionmenu_1",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 55,
+                  "samples": {
+                    "files": 7,
+                    "inMenu": {
+                      "0": 7
+                    },
+                    "outsideMenu": {}
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 53
+            }
+          ],
+          "position": 46
+        }
+      ],
+      "position": 56
+    }
+  ],
+  "groups": [],
+  "controls": [
+    {
+      "label": "Section name",
+      "labelSource": "enableCheckBox",
+      "key": "label_text",
+      "enableKey": "label_en",
+      "type": "text",
+      "format": "%s",
+      "maxLength": 32,
+      "aidWidget": "text",
+      "aidName": "csym_label",
+      "aidType": "char",
+      "confidence": "decoded",
+      "position": 1,
+      "samples": {
+        "files": 9,
+        "top": {
+          "\"A\"": 5,
+          "\"\"": 3,
+          "\"C\"": 1
+        }
+      }
+    }
+  ],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "CutLineSide",
+    "text_colour",
+    "fit_symbol",
+    "ViewLabelMarkSymbolPositionX",
+    "ViewLabelMarkSymbolPositionY",
+    "text_colour_en",
+    "CutLineSide_en",
+    "SectionMarkLeftSymbol_en",
+    "SectionMarkRightSymbol_en",
+    "ViewLabelMarkSymbolPosX_en",
+    "ViewLabelMarkSymbolPosY_en"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "102 .cs files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

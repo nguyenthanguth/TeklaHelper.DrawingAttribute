@@ -1,7 +1,8 @@
 # CLAUDE.md
 
 C# library that models Tekla Structures drawing attribute files (`.gd`, `.ad`, `.wd`, `.cud`, `.md`, `.vi`, their `.more`
-files, sub-dialog files such as `.vg` / `.vpm`) and filter files (`.vf`, `.vi.filter`, `.gdf`, `.SObjGrp`, ...) as
+files, sub-dialog files such as `.vg` / `.vpm`), the files of the property dialogs of the drawing editor (`.dim`,
+`.drtxt`, `.pm`, `.gln`, `.dprt`, ... 41 types) and filter files (`.vf`, `.vi.filter`, `.gdf`, `.SObjGrp`, ...) as
 objects, so settings the Drawing Open API does not expose can be written to a file and loaded by name
 (`new GADrawing(name, "file")`, `view.Attributes.LoadAttributes("file")`).
 
@@ -31,15 +32,24 @@ pages in the `.vi` / `.gd` files there has a typed property (only for folders wh
 together; shipped environments share names without being saved together):
 
 ```shell
-TEKLA_VIEW_DIALOG_SAMPLES="D:/Tekla/Models/New model/attributes" dotnet test TeklaHelper.DrawingAttribute.slnx -c Release --filter "FullyQualifiedName~SubDialogFiles|FullyQualifiedName~GeneratedPagesTests"
+TEKLA_VIEW_DIALOG_SAMPLES="D:/Tekla/Models/New model/attributes" dotnet test TeklaHelper.DrawingAttribute.slnx -c Release --filter "FullyQualifiedName~SubDialogFiles|FullyQualifiedName~GeneratedPagesTests|FullyQualifiedName~ObjectAttributeFileTests"
 ```
 
-The dialog pages (`Pages/Generated/*.g.cs`) are generated (the generator compiles only the format classes of the library,
+Check that every key of every drawing object file (`.dim`, `.drtxt`, `.pm`, ...) a recent Tekla wrote has a typed property:
+
+```shell
+TEKLA_ATTRIBUTE_SAMPLES="D:/Tekla/Structures/2025.0/Environments" dotnet test TeklaHelper.DrawingAttribute.slnx -c Release --filter "FullyQualifiedName~EveryKeyOfTheShippedFiles"
+```
+
+The dialog pages (`Pages/Generated/*.g.cs`, and in `DrawingObjects/Generated/*.g.cs` the drawing object files with their
+own pages; the generator puts each class in the folder of its namespace) are generated (the generator compiles only the format classes of the library,
 so it runs even when the library does not build until the pages are regenerated); change `tools/DialogClassGenerator` (rules in `Program.cs`,
 pages in `PageSpecs.cs`, enum renames in `EnumRenames`) or its input, regenerate, and review the diff. Input: the dialog
 definitions decoded from Tekla's `.aid` files (`tools/DialogClassGenerator/Dialogs/*.json`, made with
 `tools/DialogDecoder`; its README explains the `.aid` format and how to decode another Tekla version, and `compare.py`
-diffs two decodings) and two files saved from the dialogs, for value types and keys the dialog does not show. The
+diffs two decodings) and the files saved from the dialogs, for value types and keys the dialog does not show. The
+drawing object files are listed in `ObjectFileSpecs.cs` (one spec per file type: its pages and prefixes); the generator
+writes their classes too (except the hand-written `DimensionAttributeFile`). The
 pages of the drawing properties come from `DRAWING_PAGES` in `extract.py` (a dialog or panel per page plus other dialogs
 with the same keys, decoded with the samples `DRAWING-TEST.gd` and `test-ad.ad` passed after `--drawing`); controls of the
 other dialogs go into the tabs and groups of their own dialog (`dialogPath`). Fix decoding errors in `extract.py`, never
@@ -79,7 +89,12 @@ dotnet run --project tools/FilterCatalogGenerator -c Release -- src/TeklaHelper.
 - `D:\Tekla\Models\New model\attributes` holds files the maintainer saved from the Tekla 2025 dialogs: `TEST.vi` plus one
   file per view page (`.vg`, `.vp`, `.vpm`, ...) and filters (`.vf`, `.vnf`, `.vi.filter`, `.vi.npfilter`);
   `VIEW-TEST.vi` (+ `.vi.filter`, `.vi.npfilter`) and `DRAWING-TEST.gd` (+ `.gd.more`, `.gd.filter`, `.gd.npfilter`),
-  the files the Open API reads (`TEST.gd` was replaced by `DRAWING-TEST.gd`). `test-ad.ad` (+ `.ad.more`) was saved
+  the files the Open API reads (`TEST.gd` was replaced by `DRAWING-TEST.gd`). `OBJECT-TEST.<ext>` (40 files, every
+  extension of `ObjectFileSpecs` but `.dim`) were saved from the property dialogs of the Tekla 2025 drawing editor by a
+  drawing macro (`akit.Callback("acmd_display_attr_dialog", "text_dial", "main_frame")`, then the Save as field and
+  button of the dialog, names from the `.aid`; `Operation.RunMacro("..\\drawings\\x.cs")` with a drawing open, macro file
+  in `environments/common/macros/drawings`, removed afterwards). `OBJECT-TEST.dim` is not kept there: it would change the
+  sample counts of the released `.dim` pages. `test-ad.ad` (+ `.ad.more`) was saved
   from the Tekla 2025 assembly drawing dialog: every page has exactly the key set of `DRAWING-TEST.gd` under the
   assembly prefixes (`dv.`, `grid.`, `dnp.`, `drmark.`, `dsurfmark.`), there is no `drefobj.` and no `dfilter.` /
   `dnp_filter.`, and `dcd.` (146 keys, assembly dimensioning) exists only there. The `tda_*` files there were written by
@@ -94,7 +109,9 @@ dotnet run --project tools/FilterCatalogGenerator -c Release -- src/TeklaHelper.
 
 ## Architecture
 
-`src/TeklaHelper.DrawingAttribute` targets `netstandard2.0` and has no Tekla reference (decided: the filter part of
+`src/TeklaHelper.DrawingAttribute` targets `net48`, `net8.0` and `netstandard2.0` (decided: only `netstandard2.0` needs
+`System.Text.Encoding.CodePages`, whose version differs from the 7.0 Tekla 2025 ships; `TextEncodings` registers the
+provider outside .NET Framework only; no Costura) and has no Tekla reference (decided: the filter part of
 `Tekla.Structures.dll` needs `BinaryFormatter`, so it fails on .NET 8+, and embedding it with Costura would ship five
 Trimble DLLs and load them side by side in other Tekla versions).
 
@@ -143,6 +160,14 @@ Trimble DLLs and load them side by side in other Tekla versions).
   the empty user-defined attribute fields. The pages of the drawing properties only keep the table's values of their
   own file type (GA and assembly files do not agree on dimensions; `SetDefaults()` serves every host), so their keys are
   not null in the table. Change values in `tools/DialogClassGenerator/Defaults.cs` or `DefaultSetup`.
+- `DrawingObjects/` — the files of the property dialogs of the drawing editor: `DimensionAttributeFile` (hand-written)
+  and the generated `*AttributeFile.g.cs` and their own pages in `DrawingObjects/Generated` (`Properties` = the page; `.dim` / `.rdim` add nine
+  `DimensionMark`s). Files whose key set equals a page of the view properties (`.pm` `.sm` `.jm` `.rm` `.surfm` `.pom`
+  `.wel` `.welo` `.sc` `.pbr` `.drmp` `.dgr` `.grl`) use that page's class; the others have their own pages
+  (`TextProperties`, `PartProperties`, ...), decoded from their dialog with the sibling dialogs of the same structure as
+  other sources (`FILE_PAGES` in `extract.py`). In `FileDefaults` the keys of a file's own pages are null (their
+  `SetDefaults()` writes them); a page shared with another type (view mark page in `.pm`, dimension pages in `.rdim`)
+  gets the values of the file's own type in the table, and `CreateDefault()` does not call its `SetDefaults()`.
 - `Drawings/` — `DrawingAttributeFile` base with `Layout`, `Views`, `SectionView`, `DetailView`, `Dimension`,
   `Dimensioning` (null in the assembly family), `AssemblyDimensioning` (null in the GA family), `Protection`, `Marks`,
   `Objects`, titles and `UserAttributes`; `GADrawingAttributeFile`, `MultiDrawingAttributeFile` (GA prefixes) and `AssemblyDrawingAttributeFile`,
@@ -159,6 +184,12 @@ Trimble DLLs and load them side by side in other Tekla versions).
   `*TagMark.`; dialog `gr_dim_mark_attrib`, whose bare members `height`, `frame_type` ... are the `FontAttr.` /
   `FrameAttr.` keys). Decoded from `FILE_PAGES` (`extract.py`, samples `--file standard.dim` and `--file-folders`), generated
   from `PageSpec.FileExtension` / `FilePrefixes` / `SampleFile`; `FileDefaults.Dimension` for `CreateDefault()`.
+- `Marks/` — `MarkContent` (the XML of the `ContentString` keys as elements: `MarkPropertyElement` with a
+  `MarkElementType` from `MarkElementTypes`, `MarkUserAttributeElement`, `MarkTextElement`, `MarkSeparatorElement`,
+  `MarkSymbolElement`, `MarkFrameElement`, `MarkTemplateElement`, `MarkXmlElement` for the rest; `MarkFormat`). Each
+  element keeps its XML attributes in the order read (`XmlAttributeList`), and the content its layout (a line per tag, or
+  one line), line break and way of writing `>`, so content Tekla wrote is written back as it was.
+  `AttributeSection.GetMarkContent` / `SetMarkContent` (no change when the elements are the same), `ViewLabelMark.Elements`.
 - `Filters/` — `FilterFile` (rows, byte-preserving), `FilterRow`, expression tree (`FilterExpression`, `FilterCondition`,
   `FilterGroup`), `FilterOperator`, typed `FilterProperty` subclasses, `FilterProperties` (generated catalog of
   `Tekla.Structures.Filtering.Categories`), `FilterFileExtensions`, `FilterObjectType` (hand-written: the label keys of
@@ -241,6 +272,38 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   `inner_contours`), Hidden lines (`draw_hidden`, `draw_own`), Center line (`cl_en`, `cl_main|second_beam|plate|polygon`),
   Reference lines (`rl_*` likewise), Additional marks (Orientation `draw_north_mark`, Connecting side
   `connecting_side_mark`, Pop-marks `AddPopMarks`, Edge chamfers `AddChamfers`, Fillet edges `FilletEdges`).
+- **Drawing object files and the Open API** (each type written by `CreateDefault()` with one value changed, loaded with
+  every attribute class of Tekla.Structures.Drawing that takes a file name): `Text.TextAttributes` `.drtxt`,
+  `Symbol.SymbolAttributes` `.sbl`, `LevelMark.LevelMarkAttributes` `.lev`, `Line`/`Arc`/`Polyline`/`Circle`/`Rectangle`
+  `.gln`/`.gar`/`.gpl`/`.gci`/`.grt`, `Polygon` and `Cloud` `.gpg`, `EmbeddedObjectAttributes` `.fdg` (DWG and images),
+  `LinkAttributes` `.fhl`, `Part.PartAttributes` `.dprt`, `PourObject.PourAttributes` `.po`, `PourBreak` `.pbr`, `Bolt`
+  `.sc`, `Weld` `.welo`, `WeldMark` `.wel`, `EdgeChamfer` `.dcha`, every `ReinforcementBase.*Attributes` `.drbr` (meshes
+  too, not `.drmsh`), `Surfacing` `.dsrf`, `Grid` `.dgr`, `GridLine` `.grl`, `SectionMarkBase.SectionMarkAttributes`
+  `.cs`, `DetailMark` `.detail`, the dimension attributes `.dim`; `Mark.MarkAttributes(drawingObject, name)` reads `.note`.
+  Nothing reads `.rev` `.fas` `.idg` `.ldr` `.drmsh` `.wls` `.drmp` `.ga_dim_setup` `.rdim` or the mark files `.pm` `.sm`
+  `.jm` `.rm` `.surfm` `.pom` by name. Values: `arrow` 1/2/3 = `Arrowhead.ArrowPosition` Start/End/Both;
+  `scaling_type` = `EmbeddedObjectScalingOptions` / `ScalingOptions`; `PartHatch.*` / `SectionHatch.*` = `FaceHatch` /
+  `SectionFaceHatch`; a mark's `Frame` is the top-level `line_colour` (frame around the mark), `FrameAttr.*` the frame
+  around its elements.
+- **Mark content (`ContentString*`)**: a file with one element `subType` N, loaded with `Mark.MarkAttributes`,
+  `View.ViewAttributes`, `SectionMarkAttributes` and `DetailMarkAttributes`, gave the same element in all four for N = 1
+  to 110: 1 text, 2 line feed, 3 symbol, 5 frame, 16 user-defined attribute, 7–98 property elements (22 assembly
+  position, 23 part position, 24 profile, 25 name, 79 scale, 80 detail name, 81 section name, 82 view name, 85 source
+  drawing name when moved, 89 template, 90 space, 99 `REBAR_SEQ_POS`; the numbers equal the Open API's `PropertyTypes`
+  for 1–53 and 57–70 only). Tekla reads the number only: `name` and `value` are ignored. `Format` gives font,
+  colour, height (and `unit` / `format` of a user-defined attribute); `override` and `hidden` change nothing the API
+  reads. `BackSpace` is dropped by the API; it inserts a `SpaceElement` between elements otherwise. A frame needs a
+  `frame_id` other than 0 (with 0 or none its elements read as following it; the files number them from 101). A mark of
+  a part reads `ContentString1`, of a reinforcement group `ContentString4`. Two layouts: a line per tag with
+  `hidden="0"` (mark dialogs, drawing properties) or one line without `hidden` (the 2025 View properties dialog).
+- **Drawing object files in the dialogs**: every `CreateDefault()` object file (41 types), with one value changed, was
+  loaded in its dialog by a macro (Load) and saved again (Save as): the dialogs kept the value (rounded to the field's
+  decimals) and every key, except mark contents they normalise, the obsolete `RebarGroupMarkAttributes.*` keys of `.dim`
+  and values they compute (`text_scale` of `.fas`).
+- **Picture-only menus**: a macro selected each value of a menu (`akit.ValueChange(dialog, widget, "<value>")`, the
+  value, not the index; `akit.TabChange` for other tabs) and `PrintWindow` captured the dialog: that named the leader
+  line menus of text, symbol, level mark, revision mark and note (`EnumRenames` / `MemberRenames`). The leader line type
+  (`text_type`) changes nothing the Open API reads; `arrow_type` 0/1/2 = `ArrowheadTypes` NoArrow/FilledArrow/LineArrow.
 - View and drawing share the object/mark/filter pages: 24 sections of `VIEW-TEST.vi` and `DRAWING-TEST.gd` have
   identical key sets (`vp`↔`dp`, `vpm`↔`dpm`, `vg`↔`dgrid`, `vfilter`↔`dfilter`, ...). Only the view attributes and the
   drawing pages (`dl`, `dview`, `dc`, `dd`, `DetailLabel`, ...) differ.

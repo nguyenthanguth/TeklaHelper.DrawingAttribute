@@ -1,0 +1,1492 @@
+{
+  "page": "LevelMarkProperties",
+  "viewPrefix": null,
+  "fileExtension": ".lev",
+  "filePrefix": "",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gr_level_attrib",
+  "otherSources": [
+    "gr_text_attrib",
+    "gr_symbol_attrib",
+    "gr_level_attrib",
+    "gr_revision_attrib",
+    "gr_textpl_attrib (keys under txpl.)"
+  ],
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [],
+  "tabs": [
+    {
+      "label": "General",
+      "aidName": "tabGeneral",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Level mark content",
+          "aidName": "conLevelMarkContent",
+          "controls": [
+            {
+              "label": "Prefix",
+              "labelSource": "enableCheckBox",
+              "key": "text_io",
+              "enableKey": "text_enable",
+              "type": "text",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "ltext",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 2,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"\"": 5,
+                  "\"EL\"": 3
+                }
+              }
+            },
+            {
+              "label": "Prefix for positive level",
+              "labelSource": "enableCheckBox",
+              "key": "text_positive_prefix",
+              "enableKey": "text_positive_prefix_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "ltext_positive_prefix_none"
+                },
+                {
+                  "label": "+",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "ltext_positive_prefix_plus"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "ltext_positive_prefix",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 3,
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "0": 8
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Visibility of numeric value",
+              "labelSource": "enableCheckBox",
+              "key": "LevelMarkTextHidden",
+              "enableKey": "LevelMarkTextHidden_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Visible",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButDimensionShown"
+                },
+                {
+                  "label": "Hidden",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButDimensionHidden"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMnuShowDimension",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 4,
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "0": 8
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Postfix",
+              "labelSource": "enableCheckBox",
+              "key": "aLevelMarkPostfix",
+              "enableKey": "LevelMarkPostfix_en",
+              "type": "text",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "txtFldPostfix",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 5,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "\"\"": 8
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 1
+        },
+        {
+          "label": "Level mark format",
+          "aidName": "conLevelMarkFormat",
+          "controls": [
+            {
+              "label": "Precision",
+              "labelSource": "enableCheckBox",
+              "key": "LevelMarkPrecision",
+              "enableKey": "LevelMarkPrecision_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "0.00",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButPrecision0_00"
+                },
+                {
+                  "label": "0.50",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optButPrecision0_50"
+                },
+                {
+                  "label": "0.33",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "optButPrecision0_33"
+                },
+                {
+                  "label": "0.25",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "optButPrecision0_25"
+                },
+                {
+                  "label": "1/8",
+                  "labelSource": "aid",
+                  "value": 8,
+                  "aidName": "optButPrecision8"
+                },
+                {
+                  "label": "1/16",
+                  "labelSource": "aid",
+                  "value": 16,
+                  "aidName": "optButPrecision16"
+                },
+                {
+                  "label": "1/32",
+                  "labelSource": "aid",
+                  "value": 32,
+                  "aidName": "optButPrecision32"
+                },
+                {
+                  "label": "1/10",
+                  "labelSource": "aid",
+                  "value": 10,
+                  "aidName": "optButPrecision10"
+                },
+                {
+                  "label": "1/100",
+                  "labelSource": "aid",
+                  "value": 100,
+                  "aidName": "optButPrecision100"
+                },
+                {
+                  "label": "1/1000",
+                  "labelSource": "aid",
+                  "value": 1000,
+                  "aidName": "optButPrecision1000"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optMenuPrecision",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 7,
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "2": 4,
+                  "1000": 3,
+                  "10": 1
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Format",
+              "labelSource": "enableCheckBox",
+              "key": "LevelMarkFormat",
+              "enableKey": "LevelMarkFormat_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "###",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButFormat0"
+                },
+                {
+                  "label": "###[.#]",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButFormatShort1"
+                },
+                {
+                  "label": "###.#",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optButFormatLong1"
+                },
+                {
+                  "label": "###[.##]",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "optButFormatShort2"
+                },
+                {
+                  "label": "###.##",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "optButFormatLong2"
+                },
+                {
+                  "label": "###[.###]",
+                  "labelSource": "aid",
+                  "value": 5,
+                  "aidName": "optButFormatShort3"
+                },
+                {
+                  "label": "###.###",
+                  "labelSource": "aid",
+                  "value": 6,
+                  "aidName": "optButFormatLong3"
+                },
+                {
+                  "label": "### #/#",
+                  "labelSource": "aid",
+                  "value": 7,
+                  "aidName": "optButFormatFractional"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMenuFormat",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 8,
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "0": 4,
+                  "5": 3,
+                  "1": 1
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Use grouping",
+              "labelSource": "enableCheckBox",
+              "key": "UseDigitGrouping",
+              "enableKey": "UseDigitGrouping_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Yes",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButDimGroupingYes"
+                },
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButDimGroupingNo"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMenuDimGrouping",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 9,
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "0": 8
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Units",
+              "labelSource": "enableCheckBox",
+              "key": "LevelMarkUnits",
+              "enableKey": "LevelMarkUnits_en",
+              "type": "option",
+              "options": [
+                {
+                  "label": "automatic",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "optButUnits_auto"
+                },
+                {
+                  "label": "mm",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "optButUnits_mm"
+                },
+                {
+                  "label": "cm",
+                  "labelSource": "aid",
+                  "value": 2,
+                  "aidName": "optButUnits_cm"
+                },
+                {
+                  "label": "m",
+                  "labelSource": "aid",
+                  "value": 3,
+                  "aidName": "optButUnits_m"
+                },
+                {
+                  "label": "foot - inch",
+                  "labelSource": "aid",
+                  "value": 4,
+                  "aidName": "optButUnitsFootAndInch"
+                },
+                {
+                  "label": "inch",
+                  "labelSource": "aid",
+                  "value": 6,
+                  "aidName": "optButUnitsInch"
+                },
+                {
+                  "label": "feet",
+                  "labelSource": "aid",
+                  "value": 7,
+                  "aidName": "optButUnitsFeet"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "optMenuUnits",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 10,
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "0": 5,
+                  "3": 2,
+                  "1": 1
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 6
+        },
+        {
+          "label": "Placing",
+          "aidName": "conLevelMarkPlacing",
+          "controls": [
+            {
+              "label": "Place...",
+              "type": "button",
+              "aidName": "text_placing",
+              "callback": "gr_display_attr_dialog_cb",
+              "callbackParameter": "gr_levpl_attrib",
+              "position": 12,
+              "opensDialog": "gr_levpl_attrib"
+            }
+          ],
+          "groups": [],
+          "position": 11
+        }
+      ],
+      "position": 13
+    },
+    {
+      "label": "Appearance",
+      "aidName": "tabAppearance",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Text",
+          "aidName": "contAppearanceText",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "text_colour",
+              "enableKey": "text_colour_enable",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "Optionbutton_154",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "Optionbutton_150",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "Optionbutton_155",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "Optionbutton_156",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "Optionbutton_2",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "Optionbutton_3",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "Optionbutton_4",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "Optionbutton_6",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "optionbutton_334072",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "optionbutton_334071",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "optionbutton_334070",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "optionbutton_334069",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "optionbutton_334068",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "optionbutton_334067",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "ltext_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 15,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "153": 2,
+                  "160": 2,
+                  "161": 1,
+                  "155": 1
+                },
+                "outsideMenu": {
+                  "3": 2
+                }
+              }
+            },
+            {
+              "label": "Height",
+              "labelSource": "enableCheckBox",
+              "key": "height",
+              "enableKey": "height_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "lheight",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 16,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "2.500000": 4,
+                  "3.000000": 3,
+                  "5.000000": 1
+                }
+              }
+            },
+            {
+              "label": "Font",
+              "labelSource": "enableCheckBox",
+              "key": "font_name",
+              "enableKey": "font_enable",
+              "type": "font",
+              "maxLength": 44,
+              "aidWidget": "text",
+              "aidName": "lfont_name",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 17,
+              "samples": {
+                "files": 7,
+                "top": {
+                  "\"Arial\"": 5,
+                  "\"lr SVbN\"": 1,
+                  "\"romsim\"": 1
+                }
+              }
+            },
+            {
+              "label": "Select...",
+              "type": "button",
+              "aidName": "font_select",
+              "callback": "dia_select_font_cb",
+              "callbackParameter": "lfont_name",
+              "position": 18
+            },
+            {
+              "label": "Angle",
+              "labelSource": "enableCheckBox",
+              "key": "angle",
+              "enableKey": "angle_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "aidWidget": "text",
+              "aidName": "langle",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 19,
+              "samples": {
+                "files": 8,
+                "top": {
+                  "360.000000": 4,
+                  "0.000000": 4
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 14
+        },
+        {
+          "label": "Frame",
+          "aidName": "conFrame",
+          "controls": [
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "frame_type",
+              "enableKey": "frame_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_none",
+                  "value": 0,
+                  "aidName": "Optionbutton_231",
+                  "apiName": "None"
+                },
+                {
+                  "label": "Underline",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_underline",
+                  "value": 2,
+                  "aidName": "Optionbutton_238",
+                  "apiName": "Line"
+                },
+                {
+                  "label": "Rectangular",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_rectangular",
+                  "value": 1,
+                  "aidName": "Optionbutton_237",
+                  "apiName": "Rectangular"
+                },
+                {
+                  "label": "Rounded",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_rounded",
+                  "value": 3,
+                  "aidName": "Optionbutton_236",
+                  "apiName": "Round"
+                },
+                {
+                  "label": "Sharpened",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_sharpened",
+                  "value": 8,
+                  "aidName": "Optionbutton_236_1",
+                  "apiName": "Sharpened"
+                },
+                {
+                  "label": "Round",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_round",
+                  "value": 4,
+                  "aidName": "Optionbutton_235",
+                  "apiName": "Circle"
+                },
+                {
+                  "label": "Diamond",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_diamond",
+                  "value": 5,
+                  "aidName": "Optionbutton_234",
+                  "apiName": "Diamond"
+                },
+                {
+                  "label": "Hexagon",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_hexagon",
+                  "value": 6,
+                  "aidName": "Optionbutton_233",
+                  "apiName": "Hexagon"
+                },
+                {
+                  "label": "Triangle",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_triangle",
+                  "value": 7,
+                  "aidName": "Optionbutton_232",
+                  "apiName": "Triangle"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "ltext_frame",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 21,
+              "apiEnum": "Tekla.Structures.Drawing.FrameTypes",
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "0": 8
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Leader line",
+              "labelSource": "enableCheckBox",
+              "key": "text_type",
+              "enableKey": "text_type_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "ltext_type_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "ltext_type_0",
+                  "value": 16,
+                  "aidName": "ltext0"
+                },
+                {
+                  "label": "ltext_type_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "ltext_type_1",
+                  "value": 32,
+                  "aidName": "ltext1"
+                },
+                {
+                  "label": "ltext_type_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "ltext_type_2",
+                  "value": 64,
+                  "aidName": "ltext2"
+                },
+                {
+                  "label": "None",
+                  "labelSource": "aid",
+                  "value": 10,
+                  "aidName": "ltext3_none"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "ltext_type",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 22,
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "32": 5,
+                  "64": 3
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "line_colour",
+              "enableKey": "line_colour_enable",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "Optionbutton",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "Optionbutton_1",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "Optionbutton_5",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "Optionbutton_8",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "Optionbutton_9",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "Optionbutton_10",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "Optionbutton_11",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "Optionbutton_12",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "optionbutton_334078",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "optionbutton_334077",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "optionbutton_334076",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "optionbutton_334075",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "optionbutton_334074",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "optionbutton_334073",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "ltext_line_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 23,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "153": 5,
+                  "161": 1
+                },
+                "outsideMenu": {
+                  "1": 2
+                }
+              }
+            },
+            {
+              "label": "Background mask",
+              "labelSource": "enableCheckBox",
+              "key": "background_colour",
+              "enableKey": "background_colour_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "Opaque",
+                  "labelSource": "aid",
+                  "value": 150,
+                  "aidName": "Optionbutton_Opaque_l"
+                },
+                {
+                  "label": "Transparent",
+                  "labelSource": "aid",
+                  "value": -1,
+                  "aidName": "Optionbutton_Transparent_l"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "ltext_background_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 24,
+              "samples": {
+                "files": 4,
+                "inMenu": {
+                  "150": 4
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 20
+        },
+        {
+          "label": "Arrow",
+          "aidName": "conArrow",
+          "controls": [
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "arrow_type",
+              "enableKey": "arrow_type_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "gr_pb_solid_arrow2",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_pb_solid_arrow2",
+                  "value": 1,
+                  "aidName": "optButArrowTypeSolid"
+                },
+                {
+                  "label": "gr_pb_open_arrow2",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_pb_open_arrow2",
+                  "value": 2,
+                  "aidName": "optButArrowTypeOpen"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "optArrowType",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 26,
+              "samples": {
+                "files": 8,
+                "inMenu": {
+                  "1": 6
+                },
+                "outsideMenu": {
+                  "16": 1,
+                  "0": 1
+                }
+              }
+            },
+            {
+              "label": "Arrow height",
+              "labelSource": "group+key",
+              "key": "arrow_height",
+              "enableKey": "arrow_height_enable",
+              "type": "number",
+              "format": "%.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "larrow_height",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 27,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 8,
+                "top": {
+                  "2.000000": 8
+                }
+              }
+            },
+            {
+              "label": "Arrow width",
+              "labelSource": "group+key",
+              "key": "arrow_width",
+              "enableKey": "arrow_width_enable",
+              "type": "number",
+              "format": "%.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "larrow_width",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 28,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 8,
+                "top": {
+                  "2.500000": 8
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 25
+        }
+      ],
+      "position": 29
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [
+    {
+      "dialog": "gr_levpl_attrib",
+      "openedBy": "Place...",
+      "keyPrefix": "txpl.",
+      "tabs": [],
+      "groups": [
+        {
+          "label": "Quarter",
+          "aidName": "Container_548",
+          "controls": [
+            {
+              "label": "Quarter 4",
+              "labelSource": "group+key",
+              "key": "txpl.quarter_4",
+              "enableKey": "txpl.text_quarter_en",
+              "type": "toggle",
+              "valueOn": 8,
+              "valueOff": 0,
+              "dialogDefault": 8,
+              "aidWidget": "checkbutton",
+              "aidName": "quarter_4",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 5,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 8,
+                "top": {
+                  "1": 4,
+                  "8": 4
+                }
+              }
+            },
+            {
+              "label": "Quarter 1",
+              "labelSource": "group+key",
+              "key": "txpl.quarter_1",
+              "enableKey": "txpl.text_quarter_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 1,
+              "aidWidget": "checkbutton",
+              "aidName": "quarter_1",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 6,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 8,
+                "top": {
+                  "1": 5,
+                  "0": 3
+                }
+              }
+            },
+            {
+              "label": "Quarter 3",
+              "labelSource": "group+key",
+              "key": "txpl.quarter_3",
+              "enableKey": "txpl.text_quarter_en",
+              "type": "toggle",
+              "valueOn": 4,
+              "valueOff": 0,
+              "dialogDefault": 4,
+              "aidWidget": "checkbutton",
+              "aidName": "quarter_3",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 7,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 8,
+                "top": {
+                  "4": 5,
+                  "0": 3
+                }
+              }
+            },
+            {
+              "label": "Quarter 2",
+              "labelSource": "group+key",
+              "key": "txpl.quarter_2",
+              "enableKey": "txpl.text_quarter_en",
+              "type": "toggle",
+              "valueOn": 2,
+              "valueOff": 0,
+              "dialogDefault": 2,
+              "aidWidget": "checkbutton",
+              "aidName": "quarter_2",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 8,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 8,
+                "top": {
+                  "2": 5,
+                  "0": 3
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 4
+        }
+      ],
+      "controls": [
+        {
+          "label": "Placing",
+          "labelSource": "enableCheckBox",
+          "key": "txpl.text_placing_mode",
+          "enableKey": "txpl.text_place_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "free",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "text_free"
+            },
+            {
+              "label": "fixed",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "text_fixed"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "text_placing_mode",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 1,
+          "samples": {
+            "files": 8,
+            "inMenu": {
+              "1": 8
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Search margin",
+          "labelSource": "enableCheckBox",
+          "key": "txpl.text_freepl_margin",
+          "enableKey": "txpl.text_freepl_margin_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "text_freepl_margin",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 2,
+          "samples": {
+            "files": 8,
+            "top": {
+              "5.000000": 7,
+              "10.000000": 1
+            }
+          }
+        },
+        {
+          "label": "Minimum distance",
+          "labelSource": "enableCheckBox",
+          "key": "txpl.text_freepl_min",
+          "enableKey": "txpl.text_freepl_min_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "text_freepl_min",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 3,
+          "samples": {
+            "files": 8,
+            "top": {
+              "0.000000": 5,
+              "5.000000": 2,
+              "10.000000": 1
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "siblingPageControls": [],
+  "legacyControls": [
+    {
+      "label": "Alignment",
+      "labelSource": "enableCheckBox",
+      "key": "Alignment",
+      "enableKey": "Alignment_enable",
+      "type": "option",
+      "options": [
+        {
+          "label": "Left",
+          "labelSource": "aid",
+          "bitmap": "gr_alignment_left",
+          "value": 0,
+          "aidName": "LeftAlignment",
+          "apiName": "Left"
+        },
+        {
+          "label": "Center",
+          "labelSource": "aid",
+          "bitmap": "gr_alignment_center",
+          "value": 1,
+          "aidName": "CenterAlignment",
+          "apiName": "Center"
+        },
+        {
+          "label": "Right",
+          "labelSource": "aid",
+          "bitmap": "gr_alignment_right",
+          "value": 2,
+          "aidName": "RightAlignment",
+          "apiName": "Right"
+        },
+        {
+          "label": "Leader line",
+          "labelSource": "aid",
+          "bitmap": "text_type_1",
+          "value": 3,
+          "aidName": "LeaderLineAlignment",
+          "apiName": "LeaderLine"
+        }
+      ],
+      "aidWidget": "optionmenu",
+      "aidName": "Alignment",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 9,
+      "aidDialog": "gr_text_attrib",
+      "dialogPath": [
+        "Appearance",
+        "Text"
+      ],
+      "apiEnum": "Tekla.Structures.Drawing.TextAlignment",
+      "samples": {
+        "files": 6,
+        "inMenu": {
+          "0": 6
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Word wrapping",
+      "labelSource": "enableCheckBox",
+      "key": "WordWrapping",
+      "enableKey": "WordWrapping_enable",
+      "type": "option",
+      "options": [
+        {
+          "label": "On",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": ""
+        },
+        {
+          "label": "Off",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": ""
+        }
+      ],
+      "aidWidget": "optionmenu",
+      "aidName": "WordWrapping",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 10,
+      "aidDialog": "gr_text_attrib",
+      "dialogPath": [
+        "Appearance",
+        "Text"
+      ],
+      "samples": {
+        "files": 5,
+        "inMenu": {
+          "0": 5
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Ruler width",
+      "labelSource": "enableCheckBox",
+      "key": "RulerWidth",
+      "enableKey": "RulerWidth_enable",
+      "type": "number",
+      "format": "%.1f",
+      "unit": "length",
+      "aidWidget": "text",
+      "aidName": "RulerWidth",
+      "aidType": "double",
+      "confidence": "other-dialog",
+      "position": 11,
+      "aidDialog": "gr_text_attrib",
+      "dialogPath": [
+        "Appearance",
+        "Text"
+      ],
+      "samples": {
+        "files": 5,
+        "top": {
+          "0.000000": 5
+        }
+      }
+    },
+    {
+      "label": "Number",
+      "labelSource": "enableCheckBox",
+      "key": "symbol_number",
+      "enableKey": "symbol_number_enable",
+      "type": "number",
+      "format": "%d",
+      "aidWidget": "text",
+      "aidName": "symbol_number",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 3,
+      "aidDialog": "gr_symbol_attrib",
+      "dialogPath": [
+        "Symbol selection"
+      ],
+      "samples": {
+        "files": 8,
+        "top": {
+          "0": 8
+        }
+      }
+    },
+    {
+      "label": "Maximum distance",
+      "labelSource": "enableCheckBox",
+      "key": "txpl.TextFreeplaceMaxSearchDistance",
+      "enableKey": "txpl.TextFreeplaceMaxSearchDistance_en",
+      "type": "number",
+      "format": "%2.1f",
+      "unit": "length",
+      "aidWidget": "text",
+      "aidName": "TextFreeplaceMaxSearchDistance",
+      "aidType": "double",
+      "confidence": "other-dialog",
+      "position": 4,
+      "aidDialog": "gr_textpl_attrib",
+      "dialogPath": [],
+      "samples": {
+        "files": 5,
+        "top": {
+          "0.000000": 5
+        }
+      }
+    }
+  ],
+  "unmappedKeys": [
+    "type",
+    "mark_type",
+    "symbol_select_enable",
+    "CustomPresentation_en",
+    "aCustomPresentation"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "8 .lev files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

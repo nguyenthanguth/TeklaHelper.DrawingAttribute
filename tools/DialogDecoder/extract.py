@@ -68,13 +68,57 @@ DRAWING_PAGES = OD([
 # type under the folders passed after --file-folders count as well (keys newer files have, such as the rebar settings of
 # .dim files written by Tekla 2025):
 #   page: (file extension, prefix of the page in the file, source, other sources, keys of other pages to skip (regex))
+# Dialogs of the same structure: the keys one does not show are typed where another shows them
+TEXT_SIBLINGS = [('gr_text_attrib', None, ''), ('gr_symbol_attrib', None, ''), ('gr_level_attrib', None, ''), ('gr_revision_attrib', None, ''),
+                 ('gr_textpl_attrib', None, 'txpl.')]
+GRAPHIC_SIBLINGS = [('gr_go_line_attrib', None, ''), ('gr_go_arc_attrib', None, ''), ('gr_go_polyline_attrib', None, ''),
+                    ('gr_go_circle_attrib', None, ''), ('gr_go_rectangle_attrib', None, ''), ('gr_go_polygon_attrib', None, ''),
+                    ('gr_foreign_object_attrib', None, 'fo_attr.'), ('gr_fo_asc_attrib', None, 'fo_attr.')]
+LINK_SIBLINGS = [('gr_fo_asc_attrib', None, ''), ('gr_fo_dwg_attrib', None, ''), ('gr_fo_image_attrib', None, ''), ('gr_fo_link_attrib', None, ''),
+                 ('gr_link_drawing_attrib', None, '')]
+PART_SIBLINGS = [('gr_part_attrib', None, ''), ('gr_surfacing_attrib', None, ''), ('grPourAttrib', None, ''), ('gr_vp_attrib', None, ''),
+                 ('gr_dp_attrib', None, '')]
+
+# Pages whose widgets name members of two structures with the same members (gr_part_hatch_at_t, gr_section_hatch_at_t):
+# the unique-key rule of resolve_structs cannot tell them apart, the structure name can (see struct_prefixes)
+STRUCT_PREFIX_PAGES = {'PartProperties', 'SurfaceTreatmentProperties', 'PourProperties'}
+
 FILE_PAGES = OD([
     ('Dimension', ('.dim', '', ('gr_dim_attrib', None, ''), [('gr_rebar_dim_attrib', None, '')], r'(PrefixMark|PostfixMark|\w+TagMark)\.')),
     ('DimensionMark', ('.dim', 'PrefixMark.', ('gr_dim_mark_attrib', None, ''), [], None)),
+    # The other object files whose keys no page of the view or drawing properties has (the marks, the grid, bolts, welds,
+    # pour breaks and reference objects store the keys of a view page and use its class); the samples are the files saved
+    # from each dialog (OBJECT-TEST.<ext>, see run.sh)
+    ('TextProperties', ('.drtxt', '', ('gr_text_attrib', None, ''), TEXT_SIBLINGS, None)),
+    ('SymbolProperties', ('.sbl', '', ('gr_symbol_attrib', None, ''), TEXT_SIBLINGS, None)),
+    ('LevelMarkProperties', ('.lev', '', ('gr_level_attrib', None, ''), TEXT_SIBLINGS, None)),
+    ('RevisionMarkProperties', ('.rev', '', ('gr_revision_attrib', None, ''), TEXT_SIBLINGS, None)),
+    ('AssociativeNoteProperties', ('.note', '', ('gr_note_attrib', None, ''), [('gratViewAttributes', 'PanelPartMark', '', 'vpm.'), ('gratViewAttributes', 'PanelReinforcementMark', '', 'vrm.'), ('gratViewAttributes', 'PanelPourMark', '', 'PourMark.')], None)),
+    ('LineProperties', ('.gln', '', ('gr_go_line_attrib', None, ''), GRAPHIC_SIBLINGS, None)),
+    ('ArcProperties', ('.gar', '', ('gr_go_arc_attrib', None, ''), GRAPHIC_SIBLINGS, None)),
+    ('PolylineProperties', ('.gpl', '', ('gr_go_polyline_attrib', None, ''), GRAPHIC_SIBLINGS, None)),
+    ('CircleProperties', ('.gci', '', ('gr_go_circle_attrib', None, ''), GRAPHIC_SIBLINGS, None)),
+    ('RectangleProperties', ('.grt', '', ('gr_go_rectangle_attrib', None, ''), GRAPHIC_SIBLINGS, None)),
+    ('PolygonProperties', ('.gpg', '', ('gr_go_polygon_attrib', None, ''), GRAPHIC_SIBLINGS, None)),
+    ('TextFileProperties', ('.fas', '', ('gr_fo_asc_attrib', None, ''), LINK_SIBLINGS, None)),
+    ('DwgProperties', ('.fdg', '', ('gr_fo_dwg_attrib', None, ''), LINK_SIBLINGS, None)),
+    ('ImageProperties', ('.idg', '', ('gr_fo_image_attrib', None, ''), LINK_SIBLINGS, None)),
+    ('HyperlinkProperties', ('.fhl', '', ('gr_fo_link_attrib', None, ''), LINK_SIBLINGS, None)),
+    ('LinkedDrawingProperties', ('.ldr', '', ('gr_link_drawing_attrib', None, ''), LINK_SIBLINGS, None)),
+    ('PartProperties', ('.dprt', '', ('gr_part_attrib', None, ''), PART_SIBLINGS, None)),
+    ('SurfaceTreatmentProperties', ('.dsrf', '', ('gr_surfacing_attrib', None, ''), PART_SIBLINGS, None)),
+    ('PourProperties', ('.po', '', ('grPourAttrib', None, ''), PART_SIBLINGS, None)),
+    ('EdgeChamferProperties', ('.dcha', '', ('grChamferAttrib', None, ''), [], None)),
+    ('ReinforcementProperties', ('.drbr', '', ('gr_rebar_attrib', None, ''), [('gr_rebar_mesh_attrib', None, '')], None)),
+    ('ReinforcementMeshProperties', ('.drmsh', '', ('gr_rebar_mesh_attrib', None, ''), [('gr_rebar_attrib', None, '')], None)),
+    ('DrawingWeldMarkProperties', ('.wls', '', ('gr_wld_attrib', None, ''), [('gr_weld_mark_attrib', None, ''), ('gr_wldpl_attrib', None, 'wldpl.')], None)),
+    ('SectionMarkProperties', ('.cs', '', ('gr_csym_attrib', None, ''), [('gr_section_label_attrib', None, '')], None)),
+    ('DetailMarkProperties', ('.detail', '', ('gr_detail_symbol_attrib', None, ''), [('gr_detail_label_attrib', None, '')], None)),
+    ('GADimensionSetupProperties', ('.ga_dim_setup', '', ('dim_ga_auto_setup', None, ''), [], None)),
 ])
 
 # Rows of label texts: one structure (the "..." dialog gr_view_reference_mark_attrib) per row, typed by the page ViewLabelMark
-LABEL_MARK_RE = re.compile(r'^((?:\w+\.)?(?:ViewLabelMark|SectionMark|DetailMark)A)[1-5]\.')
+LABEL_MARK_RE = re.compile(r'^((?:\w+\.)?(?:ViewLabelMark|ViewMark|SectionMark|DetailMark)A)[1-5]\.')
 
 # Page check boxes of the tree control: top-level keys "<x>_en". Matched by name only.
 TREE_KEYS = {
@@ -203,12 +247,20 @@ def main():
             self.members = []
             self.used_enables = set()
             self.buttons = []
+            # Widgets of a nested structure (STRUCT=gr_part_hatch_at_t) name its member without the structure: the key
+            # prefix of each structure, when known (see struct_prefixes in decode_page)
+            self.struct_prefixes = {}
 
         def is_enable(self, w):
             if cls(w) != 'checkbutton':
                 return False
             m = attr(w, 'MEMBER') or ''
             return name(w) in self.refcount or m.endswith('_en') or m.endswith('_enable') or m.endswith('Enable')
+
+        def member(self, w):
+            m = attr(w, 'MEMBER')
+            st = attr(w, 'STRUCT')
+            return self.struct_prefixes[st] + m if m and st in self.struct_prefixes else m
 
         def key(self, m):
             if self.prefix and m.startswith(self.prefix):
@@ -276,7 +328,7 @@ def main():
             return 'other'
 
         def control(self, w, row_label_w, inherited, group_label, grid):
-            m = attr(w, 'MEMBER')
+            m = self.member(w)
             c = cls(w)
             ctl = OD()
             cp = attr(w, 'CALLBACKPARAMETER')
@@ -321,7 +373,7 @@ def main():
             ctl['labelSource'] = src
             ctl['key'] = self.key(m)
             if enw is not None and attr(enw, 'MEMBER'):
-                ctl['enableKey'] = self.key(attr(enw, 'MEMBER'))
+                ctl['enableKey'] = self.key(self.member(enw))
                 if label_of(enw) and src != 'enableCheckBox':
                     ctl['enableLabel'] = label_of(enw)
                 self.used_enables.add(name(enw))
@@ -859,8 +911,36 @@ def main():
         keys = {nested_prefix + builder.key(m) for m in builder.members}
         for w in builder.allw:
             if attr(w, 'MEMBER') and builder.is_enable(w):
-                keys.add(nested_prefix + builder.key(attr(w, 'MEMBER')))
+                keys.add(nested_prefix + builder.key(builder.member(w)))
         return keys
+
+    def struct_prefixes(scope, rest):
+        """Key prefix of each nested structure whose widgets name a bare member (STRUCT=gr_part_hatch_at_t, member
+        hatch_name): the prefix the file keys ending with its members share; between equally common prefixes, the one
+        spelling the structure's name (PartHatch. for gr_part_hatch_at_t). Structures stored at the top level get none."""
+        members = collections.defaultdict(set)
+        for w in walk(scope):
+            if attr(w, 'STRUCT') and attr(w, 'MEMBER'):
+                members[attr(w, 'STRUCT')].add(attr(w, 'MEMBER'))
+        out = {}
+        for st, ms in members.items():
+            cands = collections.Counter()
+            for m_ in ms:
+                for r in rest:
+                    if r == m_:
+                        cands[''] += 1
+                    elif r.endswith('.' + m_):
+                        cands[r[:len(r) - len(m_)]] += 1
+            if not cands:
+                continue
+            top = max(cands.values())
+            best = [c for c, n in cands.items() if n == top]
+            core = re.sub(r'^gr(at)?_|_at_t$', '', st).replace('_', '').lower()
+            named = [c for c in best if c.rstrip('.').replace('.', '').lower() == core]
+            pick = named[0] if named else (best[0] if len(best) == 1 else None)
+            if pick:
+                out[st] = pick
+        return out
 
     def decode_page(page, prefix, hosts, source, others, tree_key, keys_pool, skip=None, resolve_structs=False):
         """Writes the JSON file of a page decoded from a dialog of its own (a drawing page or an object file)."""
@@ -877,6 +957,8 @@ def main():
                 marks[mm.group(1)] = marks.get(mm.group(1), 0) + 1
         file_keys = [k for k in all_keys if not LABEL_MARK_RE.match(k[len(prefix):])]
         b = Builder(scope, prefix, nested, radio_text_labels=True)
+        if page in STRUCT_PREFIX_PAGES:
+            b.struct_prefixes = struct_prefixes(scope, [k[len(prefix):] for k in file_keys])
         tree = b.build(scope)
         dialog_keys = with_enables(b, prefix)
         if resolve_structs:
@@ -925,12 +1007,17 @@ def main():
         panel_keys = {c.get(f) for c, _ in collect(tree, []) for f in ('key', 'enableKey') if c.get(f)}
         found = set()
         legacy_ctl = []
-        for oname, opanel, onested in others:
+        for other in others:
+            # (dialog, panel, nested key prefix[, prefix of the members to strip]): a panel of the View properties names
+            # its members with the page prefix (vpm.FontAttr.height)
+            oname, opanel, onested = other[:3]
             oscope = scope_of(oname, opanel)
             if oscope is None:
                 print('WARNING: %s: source %s %s not in this .aid' % (page, oname, opanel or ''), file=sys.stderr)
                 continue
-            lb = Builder(oscope, prefix, onested, radio_text_labels=True)
+            lb = Builder(oscope, other[3] if len(other) > 3 else prefix, onested, radio_text_labels=True)
+            if page in STRUCT_PREFIX_PAGES:
+                lb.struct_prefixes = struct_prefixes(oscope, [k[len(prefix):] for k in file_keys])
             ltree = lb.build(oscope)
             for c, pth in collect(ltree, []):
                 k = c.get('key')
@@ -967,7 +1054,7 @@ def main():
         out['aidDialog'] = dname
         if panel:
             out['aidPanel'] = panel
-        out['otherSources'] = [o[0] + ('/' + o[1] if o[1] else '') + (' (keys under %s)' % o[2] if o[2] else '') for o in others]
+        out['otherSources'] = [o[0] + ('/' + o[1] if o[1] else '') + (' (keys under %s)' % o[2] if o[2] else '') + (' (members under %s)' % o[3] if len(o) > 3 else '') for o in others]
         if tree_key:
             out['treeCheckBoxKey'] = OD([('key', tree_key), ('in', 'top level of the drawing file'), ('confidence', 'decoded'),
                                          ('note', 'check box in front of the button that opens the page in the drawing properties (gr_gdraw_attrib, gr_adraw_attrib)')])

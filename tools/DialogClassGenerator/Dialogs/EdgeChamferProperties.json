@@ -1,0 +1,282 @@
+{
+  "page": "EdgeChamferProperties",
+  "viewPrefix": null,
+  "fileExtension": ".dcha",
+  "filePrefix": "",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "grChamferAttrib",
+  "otherSources": [],
+  "fileMenuKey": "InFile",
+  "saveAsKey": null,
+  "labelMarks": [],
+  "tabs": [],
+  "groups": [
+    {
+      "label": "Visible lines",
+      "aidName": "Container_876",
+      "controls": [
+        {
+          "label": "Color",
+          "labelSource": "enableCheckBox",
+          "key": "LineColor",
+          "enableKey": "LineColor_en",
+          "type": "color",
+          "options": [
+            {
+              "label": "Invisible",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_invisible_line",
+              "value": 152,
+              "aidName": "optButPBWhiteLine",
+              "apiName": "Invisible"
+            },
+            {
+              "label": "Black",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_black_line",
+              "value": 153,
+              "aidName": "optButPBBlackLine",
+              "apiName": "Black"
+            },
+            {
+              "label": "Red",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_red_line",
+              "value": 160,
+              "aidName": "optButPBRedLine",
+              "apiName": "Red"
+            },
+            {
+              "label": "Green",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_green_line",
+              "value": 161,
+              "aidName": "optButPBGreenLine",
+              "apiName": "Green"
+            },
+            {
+              "label": "Blue",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_blue_line",
+              "value": 162,
+              "aidName": "optButPBBlueLine",
+              "apiName": "Blue"
+            },
+            {
+              "label": "Cyan",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_cyan_line",
+              "value": 163,
+              "aidName": "optButPBCyanLine",
+              "apiName": "Cyan"
+            },
+            {
+              "label": "Yellow",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_yellow_line",
+              "value": 164,
+              "aidName": "optButPBYellowLine",
+              "apiName": "Yellow"
+            },
+            {
+              "label": "Magenta",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_magenta_line",
+              "value": 165,
+              "aidName": "optButPBMagentaLine",
+              "apiName": "Magenta"
+            },
+            {
+              "label": "NewLine1",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_1",
+              "value": 154,
+              "aidName": "optButPBNewLine1",
+              "apiName": "NewLine1"
+            },
+            {
+              "label": "NewLine2",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_2",
+              "value": 155,
+              "aidName": "optButPBNewLine2",
+              "apiName": "NewLine2"
+            },
+            {
+              "label": "NewLine3",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_3",
+              "value": 156,
+              "aidName": "optButPBNewLine3",
+              "apiName": "NewLine3"
+            },
+            {
+              "label": "NewLine4",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_4",
+              "value": 157,
+              "aidName": "optButPBNewLine4",
+              "apiName": "NewLine4"
+            },
+            {
+              "label": "NewLine5",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_5",
+              "value": 158,
+              "aidName": "optButPBNewLine5",
+              "apiName": "NewLine5"
+            },
+            {
+              "label": "NewLine6",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_new_line_6",
+              "value": 159,
+              "aidName": "optButPBNewLine6",
+              "apiName": "NewLine6"
+            },
+            {
+              "label": "Gray30",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray30_line",
+              "value": 130,
+              "aidName": "",
+              "apiName": "Gray30"
+            },
+            {
+              "label": "Gray50",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray50_line",
+              "value": 131,
+              "aidName": "",
+              "apiName": "Gray50"
+            },
+            {
+              "label": "Gray70",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray70_line",
+              "value": 132,
+              "aidName": "",
+              "apiName": "Gray70"
+            },
+            {
+              "label": "Gray90",
+              "labelSource": "bitmap; name from DrawingColors",
+              "bitmap": "gr_pb_gray90_line",
+              "value": 133,
+              "aidName": "",
+              "apiName": "Gray90"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "optMnuChamferLineColor",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 2,
+          "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+          "samples": {
+            "files": 1,
+            "inMenu": {
+              "154": 1
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Type",
+          "labelSource": "enableCheckBox",
+          "key": "LineType",
+          "enableKey": "LineType_en",
+          "type": "linetype",
+          "options": [
+            {
+              "label": "Undefined",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_empty",
+              "value": 0,
+              "aidName": "optButPBEmpty",
+              "apiName": "UndefinedLine"
+            },
+            {
+              "label": "Solid",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_solid",
+              "value": 1,
+              "aidName": "optButPBSolid",
+              "apiName": "SolidLine"
+            },
+            {
+              "label": "Dashed",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed1",
+              "value": 2,
+              "aidName": "optButPBDashed1",
+              "apiName": "DashedLine"
+            },
+            {
+              "label": "Slashed",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed2",
+              "value": 3,
+              "aidName": "optButPBDashed2",
+              "apiName": "SlashedLine"
+            },
+            {
+              "label": "DashDot",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dot_dash",
+              "value": 4,
+              "aidName": "optButPBDotDash",
+              "apiName": "DashDot"
+            },
+            {
+              "label": "Dotted",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dotted",
+              "value": 5,
+              "aidName": "optButPBDotted",
+              "apiName": "DottedLine"
+            },
+            {
+              "label": "DashDoubleDot",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed3",
+              "value": 6,
+              "aidName": "optButPBDashed3",
+              "apiName": "DashDoubleDot"
+            },
+            {
+              "label": "SlashDash",
+              "labelSource": "bitmap=DrawingLineType (verified by API)",
+              "bitmap": "gr_pb_dashed4",
+              "value": 7,
+              "aidName": "optButPBDashed4",
+              "apiName": "SlashDash"
+            }
+          ],
+          "aidWidget": "optionmenu",
+          "aidName": "optMnuChamferLineType",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 3,
+          "apiEnum": "Tekla.Structures.Drawing.LineTypesEnum",
+          "samples": {
+            "files": 1,
+            "inMenu": {
+              "1": 1
+            },
+            "outsideMenu": {}
+          }
+        }
+      ],
+      "groups": [],
+      "position": 1
+    }
+  ],
+  "controls": [],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "1 .dcha files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

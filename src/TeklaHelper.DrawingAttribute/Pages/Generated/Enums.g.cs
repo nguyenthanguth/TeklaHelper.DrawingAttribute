@@ -6,7 +6,8 @@
 namespace TeklaHelper.DrawingAttribute.Pages
 {
     /// <summary>
-    /// Values of the "Angle" menu, as Tekla stores them. Used by DimensionPage: AngleFormat.
+    /// Values of the "Angle" menu, as Tekla stores them. Used by DimensionPage: AngleFormat, LevelMarkProperties:
+    /// LevelMarkFormat, SymbolProperties: LevelMarkFormat, TextProperties: LevelMarkFormat.
     /// </summary>
     public enum AngleDimensionFormat
     {
@@ -52,7 +53,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Angle" menu, as Tekla stores them. Used by DimensionPage: AnglePrecision.
+    /// Values of the "Angle" menu, as Tekla stores them. Used by DimensionPage: AnglePrecision, LevelMarkProperties:
+    /// LevelMarkPrecision, SymbolProperties: LevelMarkPrecision, TextProperties: LevelMarkPrecision.
     /// </summary>
     public enum AngleDimensionPrecision
     {
@@ -160,6 +162,33 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
+    /// Values of the "Position" menu, as Tekla stores them. Used by ArcProperties: arrow, LineProperties: arrow,
+    /// PolylineProperties: arrow.
+    /// </summary>
+    public enum ArrowPosition
+    {
+        /// <summary>
+        /// gr_pb_no_arrow.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// gr_pb_solid_arrow1.
+        /// </summary>
+        Start = 1,
+
+        /// <summary>
+        /// gr_pb_solid_arrow2.
+        /// </summary>
+        End = 2,
+
+        /// <summary>
+        /// gr_pb_solid_arrow12.
+        /// </summary>
+        Both = 3,
+    }
+
+    /// <summary>
     /// Values of the "Assembly part overall dimensions" menu, as Tekla stores them. Used by AssemblyDimensioningPage:
     /// assembly_extrema.
     /// </summary>
@@ -182,9 +211,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Background mask" menu, as Tekla stores them. Used by BoltMark: background_mask, ConnectionMark:
-    /// background_mask, DimensionPage: dim_background_mask, DimensionProperties: dim_background_mask, NeighborPartMark:
-    /// background_mask, NeighborReinforcementMark: background_mask and others.
+    /// Values of the "Background mask" menu, as Tekla stores them. Used by AssociativeNoteProperties: background_mask,
+    /// BoltMark: background_mask, ConnectionMark: background_mask, DimensionPage: dim_background_mask,
+    /// DimensionProperties: dim_background_mask, DrawingWeldMarkProperties: weld_background_mask and others.
     /// </summary>
     public enum BackgroundMask
     {
@@ -509,7 +538,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Shape of the boundary" menu, as Tekla stores them. Used by DetailViewPage: SymbolShape.
+    /// Values of the "Shape of the boundary" menu, as Tekla stores them. Used by DetailMarkProperties: SymbolShape,
+    /// DetailViewPage: SymbolShape.
     /// </summary>
     public enum DetailBoundaryShape
     {
@@ -530,7 +560,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Symbol" menu, as Tekla stores them. Used by DetailViewPage: DetailMarkSymbolIndex.
+    /// Values of the "Symbol" menu, as Tekla stores them. Used by DetailMarkProperties: DetailMarkSymbolIndex,
+    /// DetailViewPage: DetailMarkSymbolIndex.
     /// </summary>
     public enum DetailMarkSymbol
     {
@@ -946,7 +977,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Visibility of numeric value" menu, as Tekla stores them. Used by DimensionProperties:
-    /// DimensionTextHidden.
+    /// DimensionTextHidden, LevelMarkProperties: LevelMarkTextHidden, SymbolProperties: LevelMarkTextHidden,
+    /// TextProperties: LevelMarkTextHidden.
     /// </summary>
     public enum DimensionValueVisibility
     {
@@ -997,6 +1029,49 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Visible in all views.
         /// </summary>
         VisibleInAllViews = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by DrawingWeldMarkProperties: line_shape.
+    /// </summary>
+    public enum DrawingWeldMarkLineShape
+    {
+        /// <summary>
+        /// wld_single_line.
+        /// </summary>
+        SingleLine = 0,
+
+        /// <summary>
+        /// wld_double_line.
+        /// </summary>
+        DoubleLine = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by DwgProperties: scaling_type, ImageProperties:
+    /// scaling_type.
+    /// </summary>
+    public enum EmbeddedObjectScaling
+    {
+        /// <summary>
+        /// X.
+        /// </summary>
+        ScaleX = 1,
+
+        /// <summary>
+        /// XY.
+        /// </summary>
+        ScaleXY = 3,
+
+        /// <summary>
+        /// Scale to fit.
+        /// </summary>
+        ScaleToFit = 4,
+
+        /// <summary>
+        /// Best fit.
+        /// </summary>
+        ScaleBestFit = 8,
     }
 
     /// <summary>
@@ -1093,9 +1168,50 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Type" menu, as Tekla stores them. Used by BoltMark: FrameAttr.frame_type, ConnectionMark:
-    /// FrameAttr.frame_type, DimensionMark: FrameAttr.frame_type, NeighborPartMark: FrameAttr.frame_type,
-    /// NeighborReinforcementMark: FrameAttr.frame_type, PartMark: FrameAttr.frame_type and others.
+    /// Values of the "File type" menu, as Tekla stores them. Used by ArcProperties: fo_attr.file_type,
+    /// CircleProperties: fo_attr.file_type, LineProperties: fo_attr.file_type, PolygonProperties: fo_attr.file_type,
+    /// PolylineProperties: fo_attr.file_type, RectangleProperties: fo_attr.file_type.
+    /// </summary>
+    public enum ForeignObjectFileType
+    {
+        /// <summary>
+        /// Hyperlink.
+        /// </summary>
+        Hyperlink = 1,
+
+        /// <summary>
+        /// ASCII.
+        /// </summary>
+        ASCII = 2,
+
+        /// <summary>
+        /// DWG/DXF.
+        /// </summary>
+        DWGDXF = 3,
+    }
+
+    /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by ArcProperties: fo_attr.scaling_type, CircleProperties:
+    /// fo_attr.scaling_type, HyperlinkProperties: scaling_type, LineProperties: fo_attr.scaling_type,
+    /// LinkedDrawingProperties: scaling_type, PolygonProperties: fo_attr.scaling_type and others.
+    /// </summary>
+    public enum ForeignObjectScaling
+    {
+        /// <summary>
+        /// No scaling.
+        /// </summary>
+        NoScaling = 0,
+
+        /// <summary>
+        /// Scale to fit.
+        /// </summary>
+        ScaleToFit = 4,
+    }
+
+    /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by AssociativeNoteProperties: FrameAttr.frame_type,
+    /// BoltMark: FrameAttr.frame_type, ConnectionMark: FrameAttr.frame_type, DimensionMark: FrameAttr.frame_type,
+    /// NeighborPartMark: FrameAttr.frame_type, NeighborReinforcementMark: FrameAttr.frame_type and others.
     /// </summary>
     public enum FrameAroundElementsType
     {
@@ -1146,9 +1262,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Type" menu, as Tekla stores them. Used by BoltMark: frame_type, ConnectionMark: frame_type,
-    /// NeighborPartMark: frame_type, NeighborReinforcementMark: frame_type, PartMark: frame_type, PourMark: frame_type
-    /// and others.
+    /// Values of the "Type" menu, as Tekla stores them. Used by AssociativeNoteProperties: FrameAttr.frame_type,
+    /// BoltMark: frame_type, ConnectionMark: frame_type, LevelMarkProperties: frame_type, NeighborPartMark: frame_type,
+    /// NeighborReinforcementMark: frame_type and others.
     /// </summary>
     public enum FrameAroundMarkType
     {
@@ -1245,6 +1361,86 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// To part top and bottom.
         /// </summary>
         ToPartTopAndBottom = 3,
+    }
+
+    /// <summary>
+    /// Values of the "Combine" menu, as Tekla stores them. Used by GADimensionSetupProperties: style.
+    /// </summary>
+    public enum GADimensionCombination
+    {
+        /// <summary>
+        /// All.
+        /// </summary>
+        All = 0,
+
+        /// <summary>
+        /// By grid lines.
+        /// </summary>
+        ByGridLines = 3,
+
+        /// <summary>
+        /// By grid squares.
+        /// </summary>
+        ByGridSquares = 4,
+
+        /// <summary>
+        /// By main parts.
+        /// </summary>
+        ByMainParts = 1,
+
+        /// <summary>
+        /// By selected parts.
+        /// </summary>
+        BySelectedParts = 2,
+    }
+
+    /// <summary>
+    /// Values of the "Use" menu, as Tekla stores them. Used by GADimensionSetupProperties: use_centerlines.
+    /// </summary>
+    public enum GADimensionLines
+    {
+        /// <summary>
+        /// Reference lines.
+        /// </summary>
+        ReferenceLines = 0,
+
+        /// <summary>
+        /// Center lines.
+        /// </summary>
+        CenterLines = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Parts" menu, as Tekla stores them. Used by GADimensionSetupProperties: accept_all_parts.
+    /// </summary>
+    public enum GADimensionParts
+    {
+        /// <summary>
+        /// Main parts.
+        /// </summary>
+        MainParts = 0,
+
+        /// <summary>
+        /// All selected parts.
+        /// </summary>
+        AllSelectedParts = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Dimension" menu, as Tekla stores them. Used by GADimensionSetupProperties:
+    /// accept_reference_points.
+    /// </summary>
+    public enum GADimensionPoints
+    {
+        /// <summary>
+        /// Intersection points.
+        /// </summary>
+        IntersectionPoints = 0,
+
+        /// <summary>
+        /// Intersection and reference points.
+        /// </summary>
+        IntersectionAndReferencePoints = 1,
     }
 
     /// <summary>
@@ -1432,8 +1628,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// <summary>
     /// Values of the "Scale" menu, as Tekla stores them. Used by NeighborPartObject: PartHatch.HatchAutomaticOrCustom,
     /// NeighborPartObject: SectionHatch.HatchAutomaticOrCustom, PartObject: PartHatch.HatchAutomaticOrCustom,
-    /// PartObject: SectionHatch.HatchAutomaticOrCustom, PourObject: PartHatch.HatchAutomaticOrCustom, PourObject:
-    /// SectionHatch.HatchAutomaticOrCustom.
+    /// PartObject: SectionHatch.HatchAutomaticOrCustom, PartProperties: PartHatch.HatchAutomaticOrCustom,
+    /// PartProperties: SectionHatch.HatchAutomaticOrCustom and others.
     /// </summary>
     public enum HatchScale
     {
@@ -1466,8 +1662,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Horizontal" menu, as Tekla stores them. Used by DetailViewPage: ViewLabelHorizontalPosition,
-    /// DrawingViewCreationSection: ViewLabelHorizontalPosition, SectionViewPage:
+    /// Values of the "Horizontal" menu, as Tekla stores them. Used by DetailMarkProperties:
+    /// ViewLabelHorizontalPosition, DetailViewPage: ViewLabelHorizontalPosition, DrawingViewCreationSection:
+    /// ViewLabelHorizontalPosition, SectionMarkProperties: ViewLabelHorizontalPosition, SectionViewPage:
     /// SectionMark.ViewLabelHorizontalPosition, ViewAttributes: ViewLabelHorizontalPosition.
     /// </summary>
     public enum LabelPositionHorizontal
@@ -1504,7 +1701,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Vertical" menu, as Tekla stores them. Used by DetailViewPage: ViewLabelPosition, SectionViewPage:
+    /// Values of the "Vertical" menu, as Tekla stores them. Used by DetailMarkProperties: ViewLabelPosition,
+    /// DetailViewPage: ViewLabelPosition, SectionMarkProperties: ViewLabelPosition, SectionViewPage:
     /// SectionMark.ViewLabelPosition, ViewAttributes: label_position.
     /// </summary>
     public enum LabelPositionVertical
@@ -1521,8 +1719,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Arrow" menu, as Tekla stores them. Used by BoltMark: ArrowType, ConnectionMark: ArrowType,
-    /// NeighborPartMark: ArrowType, PartMark: ArrowType, PourMark: ArrowType, SurfaceTreatmentMark: ArrowType.
+    /// Values of the "Arrow" menu, as Tekla stores them. Used by AssociativeNoteProperties: ArrowType, BoltMark:
+    /// ArrowType, ConnectionMark: ArrowType, NeighborPartMark: ArrowType, PartMark: ArrowType, PourMark: ArrowType and
+    /// others.
     /// </summary>
     public enum LeaderLineArrow
     {
@@ -1540,6 +1739,16 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// gr_pb_open_arrow2.
         /// </summary>
         OpenArrow = 2,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value16 = 16,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value17 = 17,
     }
 
     /// <summary>
@@ -1592,6 +1801,96 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Not an item of the menu, but written by Tekla in many files; meaning not known.
         /// </summary>
         Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Leader line" menu, as Tekla stores them. Used by LevelMarkProperties: text_type.
+    /// </summary>
+    public enum LevelMarkLeaderLineType
+    {
+        /// <summary>
+        /// ltext_type_0.
+        /// </summary>
+        LeaderLine = 16,
+
+        /// <summary>
+        /// ltext_type_1.
+        /// </summary>
+        LeaderLineWithSymbol = 32,
+
+        /// <summary>
+        /// ltext_type_2.
+        /// </summary>
+        Symbol = 64,
+
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 10,
+    }
+
+    /// <summary>
+    /// Values of the "Units" menu, as Tekla stores them. Used by LevelMarkProperties: LevelMarkUnits, SymbolProperties:
+    /// LevelMarkUnits, TextProperties: LevelMarkUnits.
+    /// </summary>
+    public enum LevelMarkUnits
+    {
+        /// <summary>
+        /// automatic.
+        /// </summary>
+        Automatic = 0,
+
+        /// <summary>
+        /// mm.
+        /// </summary>
+        Mm = 1,
+
+        /// <summary>
+        /// cm.
+        /// </summary>
+        Cm = 2,
+
+        /// <summary>
+        /// m.
+        /// </summary>
+        M = 3,
+
+        /// <summary>
+        /// foot - inch.
+        /// </summary>
+        FootInch = 4,
+
+        /// <summary>
+        /// inch.
+        /// </summary>
+        Inch = 6,
+
+        /// <summary>
+        /// feet.
+        /// </summary>
+        Feet = 7,
+    }
+
+    /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by ArcProperties: arrow_type, LevelMarkProperties:
+    /// arrow_type, LineProperties: arrow_type, PolylineProperties: arrow_type, RevisionMarkProperties: arrow_type.
+    /// </summary>
+    public enum LineArrowType
+    {
+        /// <summary>
+        /// gr_pb_solid_arrow2.
+        /// </summary>
+        SolidArrow = 1,
+
+        /// <summary>
+        /// gr_pb_open_arrow2.
+        /// </summary>
+        OpenArrow = 2,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        NoArrow = 0,
     }
 
     /// <summary>
@@ -1693,9 +1992,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Preferred direction of merge" menu, as Tekla stores them. Used by BoltMark: merge_dir,
-    /// ConnectionMark: merge_dir, NeighborPartMark: merge_dir, NeighborReinforcementMark: merge_dir, PartMark:
-    /// merge_dir, PourMark: merge_dir and others.
+    /// Values of the "Preferred direction of merge" menu, as Tekla stores them. Used by AssociativeNoteProperties:
+    /// merge_dir, BoltMark: merge_dir, ConnectionMark: merge_dir, NeighborPartMark: merge_dir,
+    /// NeighborReinforcementMark: merge_dir, PartMark: merge_dir and others.
     /// </summary>
     public enum MergeDir
     {
@@ -1716,9 +2015,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Merged marks" menu, as Tekla stores them. Used by BoltMark: leader_line_type, ConnectionMark:
-    /// leader_line_type, NeighborPartMark: leader_line_type, PartMark: leader_line_type, PourMark: leader_line_type,
-    /// SurfaceTreatmentMark: leader_line_type.
+    /// Values of the "Merged marks" menu, as Tekla stores them. Used by AssociativeNoteProperties: leader_line_type,
+    /// BoltMark: leader_line_type, ConnectionMark: leader_line_type, NeighborPartMark: leader_line_type, PartMark:
+    /// leader_line_type, PourMark: leader_line_type and others.
     /// </summary>
     public enum MergedMarks
     {
@@ -1750,7 +2049,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Representation" menu, as Tekla stores them. Used by NeighborReinforcementObject:
-    /// MeshAttr.representation, ReinforcementObject: MeshAttr.representation.
+    /// MeshAttr.representation, ReinforcementMeshProperties: representation, ReinforcementObject:
+    /// MeshAttr.representation.
     /// </summary>
     public enum MeshRepresentation
     {
@@ -1896,6 +2196,27 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by AssociativeNoteProperties: text_type.
+    /// </summary>
+    public enum NoteLeaderLineType
+    {
+        /// <summary>
+        /// om_pb_text0_big.
+        /// </summary>
+        NoLeaderLine = 10001,
+
+        /// <summary>
+        /// om_pb_text1.
+        /// </summary>
+        LeaderLine = 10002,
+
+        /// <summary>
+        /// om_pb_text3.
+        /// </summary>
+        BaseLine = 10003,
+    }
+
+    /// <summary>
     /// Values of the "Neighbor parts" menu, as Tekla stores them. Used by NeighborPartObject: np_collect_by,
     /// PartObject: np_collect_by, PourObject: np_collect_by.
     /// </summary>
@@ -2031,9 +2352,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Alignment" menu, as Tekla stores them. Used by BoltMark: Alignment, ConnectionMark: Alignment,
-    /// NeighborPartMark: Alignment, NeighborReinforcementMark: Alignment, PartMark: Alignment, PourMark: Alignment and
-    /// others.
+    /// Values of the "Alignment" menu, as Tekla stores them. Used by AssociativeNoteProperties:
+    /// LocationAttributes.Alignment, BoltMark: Alignment, ConnectionMark: Alignment, LevelMarkProperties: Alignment,
+    /// NeighborPartMark: Alignment, NeighborReinforcementMark: Alignment and others.
     /// </summary>
     public enum PlacingAlignment
     {
@@ -2172,6 +2493,23 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
+    /// Values of the "Prefix for positive level" menu, as Tekla stores them. Used by LevelMarkProperties:
+    /// text_positive_prefix, SymbolProperties: text_positive_prefix, TextProperties: text_positive_prefix.
+    /// </summary>
+    public enum PositiveLevelPrefix
+    {
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 1,
+
+        /// <summary>
+        /// +.
+        /// </summary>
+        Plus = 0,
+    }
+
+    /// <summary>
     /// Values of the "Type" menu, as Tekla stores them. Used by PourMark: text_type.
     /// </summary>
     public enum PourMarkLeaderLineType
@@ -2242,10 +2580,11 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Rebar group mark" menu, as Tekla stores them. Used by BoltMark:
-    /// RebarGroupMarkAttributes.LineType, ConnectionMark: RebarGroupMarkAttributes.LineType, NeighborPartMark:
-    /// RebarGroupMarkAttributes.LineType, NeighborReinforcementMark: RebarGroupMarkAttributes.LineType, PartMark:
-    /// RebarGroupMarkAttributes.LineType, PourMark: RebarGroupMarkAttributes.LineType and others.
+    /// Values of the "Rebar group mark" menu, as Tekla stores them. Used by AssociativeNoteProperties:
+    /// RebarGroupMarkAttributes.LineType, BoltMark: RebarGroupMarkAttributes.LineType, ConnectionMark:
+    /// RebarGroupMarkAttributes.LineType, NeighborPartMark: RebarGroupMarkAttributes.LineType,
+    /// NeighborReinforcementMark: RebarGroupMarkAttributes.LineType, PartMark: RebarGroupMarkAttributes.LineType and
+    /// others.
     /// </summary>
     public enum RebarGroupMarkAttributesLineType
     {
@@ -2404,7 +2743,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Representation" menu, as Tekla stores them. Used by NeighborReinforcementObject:
-    /// BarAttr.representation, ReinforcementObject: BarAttr.representation.
+    /// BarAttr.representation, ReinforcementObject: BarAttr.representation, ReinforcementProperties: representation.
     /// </summary>
     public enum ReinforcingBarRepresentation
     {
@@ -2440,7 +2779,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Representation" menu, as Tekla stores them. Used by PartObject: draw_as, PourObject: draw_as.
+    /// Values of the "Representation" menu, as Tekla stores them. Used by PartObject: draw_as, PartProperties: draw_as,
+    /// PourObject: draw_as, PourProperties: draw_as.
     /// </summary>
     public enum Representation
     {
@@ -2478,6 +2818,27 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Base box.
         /// </summary>
         BaseBox = 32,
+    }
+
+    /// <summary>
+    /// Values of the "Leader line" menu, as Tekla stores them. Used by RevisionMarkProperties: text_type.
+    /// </summary>
+    public enum RevisionMarkLeaderLineType
+    {
+        /// <summary>
+        /// text_type_0.
+        /// </summary>
+        NoLeaderLine = 128,
+
+        /// <summary>
+        /// text_type_1.
+        /// </summary>
+        LeaderLine = 256,
+
+        /// <summary>
+        /// text_type_2.
+        /// </summary>
+        BaseLine = 512,
     }
 
     /// <summary>
@@ -2568,8 +2929,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Symbol" menu, as Tekla stores them. Used by SectionViewPage:
-    /// SectionMark.SectionMarkLeftSymbolIndex.
+    /// Values of the "Symbol" menu, as Tekla stores them. Used by SectionMarkProperties: SectionMarkLeftSymbolIndex,
+    /// SectionViewPage: SectionMark.SectionMarkLeftSymbolIndex.
     /// </summary>
     public enum SectionMarkLeftSymbol
     {
@@ -2625,8 +2986,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Symbol" menu, as Tekla stores them. Used by SectionViewPage:
-    /// SectionMark.SectionMarkRightSymbolIndex.
+    /// Values of the "Symbol" menu, as Tekla stores them. Used by SectionMarkProperties: SectionMarkRightSymbolIndex,
+    /// SectionViewPage: SectionMark.SectionMarkRightSymbolIndex.
     /// </summary>
     public enum SectionMarkRightSymbol
     {
@@ -2879,7 +3240,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Representation" menu, as Tekla stores them. Used by SurfaceTreatmentObject: draw_as.
+    /// Values of the "Representation" menu, as Tekla stores them. Used by SurfaceTreatmentObject: draw_as,
+    /// SurfaceTreatmentProperties: draw_as.
     /// </summary>
     public enum SurfaceTreatmentRepresentation
     {
@@ -2916,7 +3278,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Symbol at hooked end" menu, as Tekla stores them. Used by NeighborReinforcementObject:
-    /// BarAttr.hooked_symbol, ReinforcementObject: BarAttr.hooked_symbol.
+    /// BarAttr.hooked_symbol, ReinforcementObject: BarAttr.hooked_symbol, ReinforcementProperties: hooked_symbol.
     /// </summary>
     public enum SymbolAtHookedEnd
     {
@@ -2943,7 +3305,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
     /// <summary>
     /// Values of the "Symbol at straight end" menu, as Tekla stores them. Used by NeighborReinforcementObject:
-    /// BarAttr.straight_symbol, ReinforcementObject: BarAttr.straight_symbol.
+    /// BarAttr.straight_symbol, ReinforcementObject: BarAttr.straight_symbol, ReinforcementProperties: straight_symbol.
     /// </summary>
     public enum SymbolAtStraightEnd
     {
@@ -2984,8 +3346,30 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Line length" menu, as Tekla stores them. Used by DetailViewPage: ViewLabelLineLengthType,
-    /// DrawingViewCreationSection: ViewLabelLineLengthType, SectionViewPage: SectionMark.ViewLabelLineLengthType,
+    /// Values of the "Leader line" menu, as Tekla stores them. Used by SymbolProperties: text_type.
+    /// </summary>
+    public enum SymbolLeaderLineType
+    {
+        /// <summary>
+        /// om_pb_text0.
+        /// </summary>
+        NoLeaderLine = 8192,
+
+        /// <summary>
+        /// om_pb_text1.
+        /// </summary>
+        LeaderLine = 8193,
+
+        /// <summary>
+        /// om_pb_text2.
+        /// </summary>
+        BaseLineOrLeaderLine = 8194,
+    }
+
+    /// <summary>
+    /// Values of the "Line length" menu, as Tekla stores them. Used by DetailMarkProperties: ViewLabelLineLengthType,
+    /// DetailViewPage: ViewLabelLineLengthType, DrawingViewCreationSection: ViewLabelLineLengthType,
+    /// SectionMarkProperties: ViewLabelLineLengthType, SectionViewPage: SectionMark.ViewLabelLineLengthType,
     /// ViewAttributes: ViewLabelLineLengthType.
     /// </summary>
     public enum SymbolLineLength
@@ -3016,6 +3400,55 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// DIM_REINFORCEMENT_SKEWED.
         /// </summary>
         Skewed = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by SymbolProperties: arrow_type, TextProperties:
+    /// arrow_type.
+    /// </summary>
+    public enum TextArrowType
+    {
+        /// <summary>
+        /// gr_pb_no_arrow.
+        /// </summary>
+        NoArrow = -1,
+
+        /// <summary>
+        /// gr_pb_solid_arrow2.
+        /// </summary>
+        SolidArrow = 1,
+
+        /// <summary>
+        /// gr_pb_open_arrow2.
+        /// </summary>
+        OpenArrow = 2,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value16 = 16,
+
+        /// <summary>
+        /// Not an item of the menu, but written by Tekla in many files; meaning not known.
+        /// </summary>
+        Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Effect" menu, as Tekla stores them. Used by HyperlinkProperties: TextEffect,
+    /// LinkedDrawingProperties: TextEffect.
+    /// </summary>
+    public enum TextEffect
+    {
+        /// <summary>
+        /// Underlined.
+        /// </summary>
+        Underlined = 0,
+
+        /// <summary>
+        /// None.
+        /// </summary>
+        None = 1,
     }
 
     /// <summary>
@@ -3052,6 +3485,37 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Round.
         /// </summary>
         Circle = 4,
+    }
+
+    /// <summary>
+    /// Values of the "Leader line" menu, as Tekla stores them. Used by TextProperties: text_type.
+    /// </summary>
+    public enum TextLeaderLineType
+    {
+        /// <summary>
+        /// text_type_0.
+        /// </summary>
+        NoLeaderLine = 0,
+
+        /// <summary>
+        /// text_type_1.
+        /// </summary>
+        LeaderLine = 1,
+
+        /// <summary>
+        /// text_type_2.
+        /// </summary>
+        BaseLine = 2,
+
+        /// <summary>
+        /// text_type_3.
+        /// </summary>
+        BaseLineArrowRight = 3,
+
+        /// <summary>
+        /// text_type_32.
+        /// </summary>
+        BaseLineArrowLeft = 5,
     }
 
     /// <summary>
@@ -3122,9 +3586,10 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Placing" menu, as Tekla stores them. Used by BoltMark: txpl.text_placing_mode, ConnectionMark:
-    /// txpl.text_placing_mode, DimensionProperties: dimpl.dim_placing_mode, NeighborPartMark: txpl.text_placing_mode,
-    /// NeighborReinforcementMark: txpl.text_placing_mode, PartMark: txpl.text_placing_mode and others.
+    /// Values of the "Placing" menu, as Tekla stores them. Used by AssociativeNoteProperties: txpl.text_placing_mode,
+    /// BoltMark: txpl.text_placing_mode, ConnectionMark: txpl.text_placing_mode, DimensionProperties:
+    /// dimpl.dim_placing_mode, DrawingWeldMarkProperties: wldpl.weld_placing_mode, LevelMarkProperties:
+    /// txpl.text_placing_mode and others.
     /// </summary>
     public enum TxplTextPlacingMode
     {
@@ -3140,9 +3605,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Units" menu, as Tekla stores them. Used by BoltMark: UnitAttr.Unit, ConnectionMark:
-    /// UnitAttr.Unit, DimensionMark: UnitAttr.Unit, NeighborPartMark: UnitAttr.Unit, NeighborReinforcementMark:
-    /// UnitAttr.Unit, PartMark: UnitAttr.Unit and others.
+    /// Values of the "Units" menu, as Tekla stores them. Used by AssociativeNoteProperties: UnitAttr.Unit, BoltMark:
+    /// UnitAttr.Unit, ConnectionMark: UnitAttr.Unit, DimensionMark: UnitAttr.Unit, NeighborPartMark: UnitAttr.Unit,
+    /// NeighborReinforcementMark: UnitAttr.Unit and others.
     /// </summary>
     public enum Units
     {
@@ -3188,9 +3653,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Format" menu, as Tekla stores them. Used by BoltMark: UnitAttr.Format, ConnectionMark:
-    /// UnitAttr.Format, DimensionMark: UnitAttr.Format, NeighborPartMark: UnitAttr.Format, NeighborReinforcementMark:
-    /// UnitAttr.Format, PartMark: UnitAttr.Format and others.
+    /// Values of the "Format" menu, as Tekla stores them. Used by AssociativeNoteProperties: UnitAttr.Format, BoltMark:
+    /// UnitAttr.Format, ConnectionMark: UnitAttr.Format, DimensionMark: UnitAttr.Format, NeighborPartMark:
+    /// UnitAttr.Format, NeighborReinforcementMark: UnitAttr.Format and others.
     /// </summary>
     public enum UnitsFormat
     {
@@ -3282,8 +3747,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Symbol" menu, as Tekla stores them. Used by DetailViewPage: ViewLabelMarkSymbolIndex,
-    /// DrawingViewCreationSection: ViewLabelMarkSymbolIndex, SectionViewPage: SectionMark.ViewLabelMarkSymbolIndex,
+    /// Values of the "Symbol" menu, as Tekla stores them. Used by DetailMarkProperties: ViewLabelMarkSymbolIndex,
+    /// DetailViewPage: ViewLabelMarkSymbolIndex, DrawingViewCreationSection: ViewLabelMarkSymbolIndex,
+    /// SectionMarkProperties: ViewLabelMarkSymbolIndex, SectionViewPage: SectionMark.ViewLabelMarkSymbolIndex,
     /// ViewAttributes: ViewLabelMarkSymbolIndex.
     /// </summary>
     public enum ViewLabelSymbol
@@ -3373,9 +3839,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
-    /// Values of the "Visibility in view" menu, as Tekla stores them. Used by BoltMark: in_all_views, ConnectionMark:
-    /// in_all_views, NeighborPartMark: in_all_views, NeighborReinforcementMark: in_all_views, PartMark: in_all_views,
-    /// ReinforcementMark: in_all_views and others.
+    /// Values of the "Visibility in view" menu, as Tekla stores them. Used by AssociativeNoteProperties: in_all_views,
+    /// BoltMark: in_all_views, ConnectionMark: in_all_views, NeighborPartMark: in_all_views, NeighborReinforcementMark:
+    /// in_all_views, PartMark: in_all_views and others.
     /// </summary>
     public enum VisibilityInView
     {
@@ -3404,8 +3870,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// Values of the "Visibility of reinforcing bars in group" menu, as Tekla stores them. Used by
     /// NeighborReinforcementObject: BarAttr.visibility_in_groups, NeighborReinforcementObject:
     /// MeshAttr.visibility_crossing, NeighborReinforcementObject: MeshAttr.visibility_longitudinal,
-    /// ReinforcementObject: BarAttr.visibility_in_groups, ReinforcementObject: MeshAttr.visibility_crossing,
-    /// ReinforcementObject: MeshAttr.visibility_longitudinal.
+    /// ReinforcementMeshProperties: visibility_crossing, ReinforcementMeshProperties: visibility_longitudinal,
+    /// ReinforcementObject: BarAttr.visibility_in_groups and others.
     /// </summary>
     public enum VisibilityOfReinforcingBarsInGroup
     {
@@ -3448,6 +3914,86 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Not an item of the menu, but written by Tekla in many files; meaning not known.
         /// </summary>
         Value0 = 0,
+    }
+
+    /// <summary>
+    /// Values of the "Contour" menu, as Tekla stores them. Used by DrawingWeldMarkProperties: w_ftype,
+    /// DrawingWeldMarkProperties: w_ftype2.
+    /// </summary>
+    public enum WeldContour
+    {
+        /// <summary>
+        /// w_ftype_0.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// w_ftype_1.
+        /// </summary>
+        Flush = 1,
+
+        /// <summary>
+        /// w_ftype_2.
+        /// </summary>
+        Convex = 2,
+
+        /// <summary>
+        /// w_ftype_3.
+        /// </summary>
+        Concave = 3,
+    }
+
+    /// <summary>
+    /// Values of the "Edge/Around" menu, as Tekla stores them. Used by DrawingWeldMarkProperties: w_around.
+    /// </summary>
+    public enum WeldEdgeAround
+    {
+        /// <summary>
+        /// w_around_0.
+        /// </summary>
+        Edge = 0,
+
+        /// <summary>
+        /// w_around_1.
+        /// </summary>
+        Around = 1,
+    }
+
+    /// <summary>
+    /// Values of the "Finish" menu, as Tekla stores them. Used by DrawingWeldMarkProperties: w_finish,
+    /// DrawingWeldMarkProperties: w_finish2.
+    /// </summary>
+    public enum WeldFinish
+    {
+        /// <summary>
+        /// w_finish_0.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// w_finish_1.
+        /// </summary>
+        Grind = 1,
+
+        /// <summary>
+        /// w_finish_2.
+        /// </summary>
+        Machine = 2,
+
+        /// <summary>
+        /// w_finish_3.
+        /// </summary>
+        Chip = 3,
+
+        /// <summary>
+        /// w_Finish_4.
+        /// </summary>
+        FinishedWeld = 4,
+
+        /// <summary>
+        /// w_Finish_5.
+        /// </summary>
+        SmoothTransition = 5,
     }
 
     /// <summary>
@@ -3515,6 +4061,148 @@ namespace TeklaHelper.DrawingAttribute.Pages
     }
 
     /// <summary>
+    /// Values of the "Type" menu, as Tekla stores them. Used by DrawingWeldMarkProperties: w_type,
+    /// DrawingWeldMarkProperties: w_type2.
+    /// </summary>
+    public enum WeldType
+    {
+        /// <summary>
+        /// w_type_0.
+        /// </summary>
+        None = 0,
+
+        /// <summary>
+        /// w_type_10.
+        /// </summary>
+        Fillet = 10,
+
+        /// <summary>
+        /// w_type_3.
+        /// </summary>
+        BevelGrooveSingleVButt = 3,
+
+        /// <summary>
+        /// w_type_4.
+        /// </summary>
+        BevelGrooveSingleBevelButt = 4,
+
+        /// <summary>
+        /// w_type_2.
+        /// </summary>
+        SquareGrooveSquareButt = 2,
+
+        /// <summary>
+        /// w_type_5.
+        /// </summary>
+        SingleVButtWithBroadRootFace = 5,
+
+        /// <summary>
+        /// w_type_6.
+        /// </summary>
+        SingleBevelButtWithBroadRootFace = 6,
+
+        /// <summary>
+        /// w_type_7.
+        /// </summary>
+        UGrooveSingleUButt = 7,
+
+        /// <summary>
+        /// w_type_8.
+        /// </summary>
+        JGrooveJButt = 8,
+
+        /// <summary>
+        /// w_type_16.
+        /// </summary>
+        FlareVGroove = 16,
+
+        /// <summary>
+        /// w_type_15.
+        /// </summary>
+        FlareBevelGroove = 15,
+
+        /// <summary>
+        /// w_type_1.
+        /// </summary>
+        EdgeFlange = 1,
+
+        /// <summary>
+        /// w_type_17.
+        /// </summary>
+        CornerFlange = 17,
+
+        /// <summary>
+        /// w_type_11.
+        /// </summary>
+        Plug = 11,
+
+        /// <summary>
+        /// w_type_9.
+        /// </summary>
+        BevelBacking = 9,
+
+        /// <summary>
+        /// w_type_12.
+        /// </summary>
+        Spot = 12,
+
+        /// <summary>
+        /// w_type_13.
+        /// </summary>
+        Seam = 13,
+
+        /// <summary>
+        /// w_type_14.
+        /// </summary>
+        Slot = 14,
+
+        /// <summary>
+        /// w_type_18.
+        /// </summary>
+        PartialPenetrationSingleBevelButtPlusFillet = 18,
+
+        /// <summary>
+        /// w_type_19.
+        /// </summary>
+        PartialPenetrationSquareGroovePlusFillet = 19,
+
+        /// <summary>
+        /// w_type_20.
+        /// </summary>
+        MeltThrough = 20,
+
+        /// <summary>
+        /// w_type_21.
+        /// </summary>
+        SteepFlankedBevelGrooveSingleVButt = 21,
+
+        /// <summary>
+        /// w_type_22.
+        /// </summary>
+        SteepFlankedBevelGrooveSingleBevelButt = 22,
+
+        /// <summary>
+        /// w_Type_23.
+        /// </summary>
+        Edge = 23,
+
+        /// <summary>
+        /// w_Type_24.
+        /// </summary>
+        IsoSurfacing = 24,
+
+        /// <summary>
+        /// w_Type_25.
+        /// </summary>
+        Fold = 25,
+
+        /// <summary>
+        /// w_Type_26.
+        /// </summary>
+        Inclined = 26,
+    }
+
+    /// <summary>
     /// Values of the "Welds" menu, as Tekla stores them. Used by WeldObject: Create, WeldObject: Subassembly.
     /// </summary>
     public enum WeldVisibility
@@ -3538,5 +4226,21 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Both visible.
         /// </summary>
         BothVisible = 3,
+    }
+
+    /// <summary>
+    /// Values of the "Workshop/Site" menu, as Tekla stores them. Used by DrawingWeldMarkProperties: w_workshop.
+    /// </summary>
+    public enum WeldWorkshopSite
+    {
+        /// <summary>
+        /// w_workshop_0.
+        /// </summary>
+        Workshop = 0,
+
+        /// <summary>
+        /// w_workshop_1.
+        /// </summary>
+        Site = 1,
     }
 }

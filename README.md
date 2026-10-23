@@ -19,8 +19,12 @@ and pass the file name to the Open API.
 
 ## Features
 
-- **Dimension properties**: `DimensionAttributeFile` (`.dim`), the file of the Dimension properties dialog of the
-  drawing editor, with its nine marks (prefix, postfix, tags A to G).
+- **Mark and label content**: `MarkContent` builds what a mark or a label row shows (view name, scale, part position,
+  user-defined attributes, texts, symbols, frames) instead of the XML Tekla stores in the `ContentString` keys.
+- **Drawing object properties**: a class for the file of every property dialog of the drawing editor — texts
+  (`.drtxt`), symbols, level marks, associative notes, dimensions (`.dim`, `.rdim`), lines, arcs, polylines, circles,
+  rectangles, polygons and clouds, text files, DWG/DXF, images, links, parts, pours, bolts, welds, reinforcement, marks,
+  section and detail marks, grids, ... (41 file types, see [Drawing object properties](#drawing-object-properties)).
 - **Drawing and view settings**: `GADrawingAttributeFile` (`.gd`), `AssemblyDrawingAttributeFile` (`.ad`),
   `SinglePartDrawingAttributeFile` (`.wd`), `CastUnitDrawingAttributeFile` (`.cud`), `MultiDrawingAttributeFile` (`.md`)
   and `ViewProperties` (`.vi`), each saved with the companion files Tekla writes (`.gd.more`, `.gd.filter`,
@@ -44,7 +48,7 @@ and pass the file name to the Open API.
   and filter file (3378) of the Tekla Structures 2025 environments, and filter output is compared with
   `Tekla.Structures.Filtering` itself, byte for byte.
 - Every key stays reachable, even without a typed property: `GetDouble("view_scale")`, `SetInt32("dpm.text_colour", 160)`.
-- No reference to the Tekla Open API: targets `netstandard2.0`, works in plugins, extensions and standalone tools of any
+- No reference to the Tekla Open API: targets `net48`, `net8.0` and `netstandard2.0`, works in plugins, extensions and standalone tools of any
   Tekla version, and on .NET 8+ (where `Tekla.Structures.Filtering` itself fails, because it needs `BinaryFormatter`).
 
 ## Quick start
@@ -238,6 +242,110 @@ models on the maintainer's machine has a property. Checked in Tekla 2025: the at
 wrote, and a dimension created with them, showed the type, precision, format, short dimension placing, text height and
 frame, colour and exaggeration of the file.
 
+## Drawing object properties
+
+Each property dialog of the drawing editor saves its own file, which the dialog's Load button reads and, for most
+types, an attribute class of the Open API reads by name. Every type has a class with the dialog's tabs and group boxes,
+`CreateDefault()` and the legacy dialog prefix handled on load; every key of the files saved from the Tekla 2025 dialogs
+and of the shipped files has a property (except four rebar dimension mark keys that older versions wrote into mark
+files and no dialog has):
+
+```csharp
+TextAttributeFile text = TextAttributeFile.CreateDefault();
+text.Properties.Appearance.Text.Height = 3.5;                  // height
+text.Properties.Appearance.Text.Color = DrawingColor.Blue;     // text_colour
+text.SaveTo(attributes, "blue_text");                          // blue_text.drtxt
+// Open API: new Text.TextAttributes("blue_text")
+
+LineAttributeFile line = LineAttributeFile.CreateDefault();
+line.Properties.Arrow.Position = ArrowPosition.End;            // arrow 2 = Arrowhead.ArrowPosition End
+line.SaveTo(attributes, "arrow_line");                         // arrow_line.gln
+
+// The mark, bolt, weld, grid, pour break and reference object files hold the keys of a page of the view properties,
+// so they use that page's class
+PartMarkAttributeFile mark = PartMarkAttributeFile.CreateDefault();
+mark.Properties.CopyFrom(view.Marks.PartMark);
+mark.SaveTo(attributes, "view_marks");                         // view_marks.pm
+```
+
+| Class | File | Dialog | Read by the Open API with |
+| --- | --- | --- | --- |
+| `TextAttributeFile` | `.drtxt` | Text (also with leader line) | `Text.TextAttributes(name)` |
+| `SymbolAttributeFile` | `.sbl` | Symbol | `Symbol.SymbolAttributes(name)` |
+| `LevelMarkAttributeFile` | `.lev` | Level mark | `LevelMark.LevelMarkAttributes(name)` |
+| `RevisionMarkAttributeFile` | `.rev` | Revision mark | — |
+| `AssociativeNoteAttributeFile` | `.note` | Associative note | `Mark.MarkAttributes(modelObject, name)` |
+| `DimensionAttributeFile` | `.dim` | Dimension | `StraightDimensionSet.StraightDimensionSetAttributes(name)` and the other dimension attributes |
+| `ReinforcementDimensionAttributeFile` | `.rdim` | Reinforcement dimension (the keys of `.dim`) | — |
+| `LineAttributeFile`, `ArcAttributeFile`, `PolylineAttributeFile` | `.gln`, `.gar`, `.gpl` | Line, Arc, Polyline | `Line.LineAttributes(name)`, `Arc.ArcAttributes`, `Polyline.PolylineAttributes` |
+| `CircleAttributeFile`, `RectangleAttributeFile`, `PolygonAttributeFile` | `.gci`, `.grt`, `.gpg` | Circle, Rectangle, Polygon | `Circle.CircleAttributes(name)`, `Rectangle.RectangleAttributes`, `Polygon.PolygonAttributes` and `Cloud.CloudAttributes` (both `.gpg`) |
+| `TextFileAttributeFile` | `.fas` | Text file (ASCII) | — |
+| `DwgAttributeFile` | `.fdg` | DWG/DXF | `EmbeddedObjectAttributes(name)` (DWG/DXF objects and images) |
+| `ImageAttributeFile` | `.idg` | Image | — (images read `.fdg`) |
+| `HyperlinkAttributeFile` | `.fhl` | Hyperlink | `LinkAttributes(name)` |
+| `LinkedDrawingAttributeFile` | `.ldr` | Linked drawing | — |
+| `PartAttributeFile` | `.dprt` | Part | `Part.PartAttributes(name)` |
+| `SurfaceTreatmentAttributeFile` | `.dsrf` | Surface treatment | `Surfacing.SurfacingAttributes(name)` |
+| `PourAttributeFile` | `.po` | Pour object | `PourObject.PourAttributes(name)` |
+| `PourBreakAttributeFile` | `.pbr` | Pour break (page class `PourBreakObject`) | `PourBreak.PourBreakAttributes(name)` |
+| `BoltAttributeFile` | `.sc` | Bolt (`BoltObject`) | `Bolt.BoltAttributes(name)` |
+| `WeldAttributeFile` | `.welo` | Weld (`WeldObject`) | `Weld.WeldAttributes(name)` |
+| `WeldMarkAttributeFile` | `.wel` | Weld mark of a model weld (`WeldMark`) | `WeldMark.WeldMarkAttributes(name)` |
+| `DrawingWeldMarkAttributeFile` | `.wls` | Weld mark drawn in the drawing | — |
+| `EdgeChamferAttributeFile` | `.dcha` | Edge chamfer | `EdgeChamfer.EdgeChamferAttributes(name)` |
+| `ReinforcementAttributeFile` | `.drbr` | Reinforcement | every `ReinforcementBase.*Attributes(name)`, meshes included |
+| `ReinforcementMeshAttributeFile` | `.drmsh` | Reinforcement mesh | — (meshes read `.drbr`) |
+| `ReferenceObjectAttributeFile` | `.drmp` | Reference object (`ReferenceObject`) | — |
+| `GridAttributeFile`, `GridLineAttributeFile` | `.dgr`, `.grl` | Grid, Grid line (`GridObject`) | `Grid.GridAttributes(name)`, `GridLine.GridLineAttributes(name)` |
+| `SectionMarkAttributeFile` | `.cs` | Section mark (label rows `SectionMarkA1` ..., `LabelMarkA1` ...) | `SectionMarkBase.SectionMarkAttributes(name)` |
+| `DetailMarkAttributeFile` | `.detail` | Detail mark (label rows `DetailMarkA1` ..., `LabelMarkA1` ...) | `DetailMark.DetailMarkAttributes(name)` |
+| `PartMarkAttributeFile`, `BoltMarkAttributeFile`, `ConnectionMarkAttributeFile`, `ReinforcementMarkAttributeFile`, `SurfaceTreatmentMarkAttributeFile`, `PourMarkAttributeFile` | `.pm`, `.sm`, `.jm`, `.rm`, `.surfm`, `.pom` | Marks (`PartMark`, `BoltMark`, ...) | — |
+| `GADimensionSetupAttributeFile` | `.ga_dim_setup` | Semi-automatic GA dimensioning | — |
+
+The extensions were checked in a running Tekla 2025: a file each type, written by `CreateDefault()` with one value
+changed, was loaded with every attribute class of the Open API that takes a file name, and the class showed the value
+(36 checks). "—" means no attribute class reads that file by name; the dialog's Load button does. `.dim` is described
+under [Dimension properties](#dimension-properties).
+
+## Mark and label content
+
+What a mark or a label row shows — the "Elements in mark" of a mark dialog — is stored as XML in the `ContentString`
+keys (and a few others, such as `aLabelContent`). `MarkContent` builds it from elements; the label rows (`LabelMarkA1` ..., `SectionMarkA1` ..., `DetailMarkA1` ...)
+have it as `Elements`, and any section reads and writes it with `GetMarkContent` / `SetMarkContent`:
+
+```csharp
+vi.Attributes.LabelMarkA1.Elements = new MarkContent()
+    .Add(MarkElementTypes.ViewLabel.ViewName, new MarkFormat { Font = "Tahoma", Color = DrawingColor.Green, Height = 5 })
+    .AddText(" ")
+    .Add(MarkElementTypes.ViewLabel.Scale)
+    .AddLineFeed()
+    .AddUserAttribute("USER_FIELD_1");
+
+var mark = PartMarkAttributeFile.CreateDefault();
+mark.Properties.SetMarkContent("ContentString1", new MarkContent()       // the marks of parts
+    .Add(MarkElementTypes.PartMark.PartPosition)
+    .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new MarkContent().Add(MarkElementTypes.PartMark.Profile)));
+
+MarkContent read = vi.Attributes.LabelMarkA1.Elements;                  // the elements of an existing file
+```
+
+- Elements: the properties of each kind of mark (`MarkElementTypes.PartMark`, `BoltMark`, `ConnectionMark`,
+  `ReinforcementMark`, `ReinforcementMeshMark`, `SurfaceTreatmentMark`, `EdgeChamferMark`, `PourMark`, `ViewLabel`,
+  `SectionMark`, `DetailMark`), user-defined attributes (with unit and format), texts, line feeds, spaces, backspaces,
+  symbols (`xsteel@85`), frames and report templates; other XML (merged mark settings of reinforcement marks) is kept.
+- Tekla identifies a property element by its number (`subType`) alone. The numbers were read back through the Open API
+  of Tekla 2025 for every value from 1 to 110; they equal the Open API's own enum (`PropertyTypes`) for 1 to 53 and 57 to
+  70 only (scale is 79 in the file, 80 in `PropertyTypes`; mesh size 71 and 73).
+- Checked in Tekla 2025: content written by the library in a view label, a part mark (`.note`), a section mark and a
+  detail mark was read by the Open API with every element, format, frame, symbol, unit and template.
+- Content Tekla wrote is written back as it was: every content of the environments and models on the maintainer's
+  machine (about 16 800), except 25 values that mix two encodings (no text in either). Two kinds of damage in shipped
+  files are read as Tekla meant them: an attribute without its value (`value= subType="45"`, 390 values, read as empty)
+  and a raw `<` in a text (`<< Mark >>`, 18 values, kept raw). Assigning content its own value changes no byte;
+  assigning null empties the row.
+- In a mark file, `ContentString1` is what the marks of parts show and `ContentString4` what the marks of reinforcement
+  groups show (checked through the Open API); the other tables are reachable by key.
+
 ## Filters
 
 ```csharp
@@ -319,15 +427,16 @@ vg.line_colour 160
 | `.gd`, `.ad`, `.wd`, `.cud`, `.md` and their `.more` / filter files | Every page typed: marks, objects, protection, layout, view (with the View creation table), section view, detail view, dimension, dimensioning; titles and user-defined attributes; `CreateDefault()`. Not typed: check boxes (`SetAllEnabled`), page file names, `dl.placing_direction` and the fixed fields of the filter pages, which no dialog shows |
 | Page files (`.vg`, `.vpm`, `.gdgr`, ...) | `ExportTo` / `ImportFrom` on pages |
 | Filters (`.vf`, `.vnf`, `.vi.filter`, `.gd.filter`, `.gdf`, `.SObjGrp`, ...) | Supported |
-| Dimension properties (`.dim`) | `DimensionAttributeFile`: every key typed; `CreateDefault()` |
-| Other drawing object files (`.drtxt`, `.note`, `.lev`, `.sbl`, `.rdim`, marks, graphics, ...) and model object files | `GenericAttributeFile` |
+| Drawing object files (`.dim`, `.drtxt`, `.note`, `.lev`, `.sbl`, `.rdim`, marks, graphics, links, parts, welds, reinforcement, section and detail marks, ...) | A class each (41 types): every key typed; `CreateDefault()` |
+| Model object files | `GenericAttributeFile` |
 | Object level settings (`.copt`, `TITLE_CLASSIFIER`) | Not supported |
 
 ## Requirements
 
-- Any .NET implementation of `netstandard2.0` (.NET Framework 4.6.1+, .NET 6/8+). Tekla Open API applications target
-  .NET Framework 4.8.
-- The code pages used by attribute files are registered automatically through `System.Text.Encoding.CodePages`.
+- .NET Framework 4.8 (Tekla Open API applications), .NET 8+, or any other implementation of `netstandard2.0`.
+- No dependency on .NET Framework 4.8 and .NET 8, which have the code pages of the attribute files built in; on
+  `netstandard2.0` they come from `System.Text.Encoding.CodePages`, registered automatically. (The package does not
+  embed that DLL: Tekla 2025 ships its own version 7.0, and a second copy in a plug-in would load side by side.)
 
 ## Building from source
 
@@ -357,7 +466,8 @@ The tests run on .NET Framework 4.8 and .NET 10. Two optional groups need Tekla 
 [docs/how-it-was-built.md](docs/how-it-was-built.md) tells how the formats and the dialog structure were worked out and
 checked.
 
-The page classes in `src/TeklaHelper.DrawingAttribute/Pages/Generated` are generated by `tools/DialogClassGenerator` from
+The page classes in `src/TeklaHelper.DrawingAttribute/Pages/Generated` and `src/TeklaHelper.DrawingAttribute/DrawingObjects/Generated`
+(the drawing object files) are generated by `tools/DialogClassGenerator` from
 the decoded dialog definitions in `tools/DialogClassGenerator/Dialogs` (see CLAUDE.md); do not edit them by hand.
 
 ### Packing

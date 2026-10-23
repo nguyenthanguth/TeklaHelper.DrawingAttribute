@@ -285,6 +285,55 @@ namespace TeklaHelper.DrawingAttribute
         /// <summary>Sets <paramref name="name"/> to a quoted text value.</summary>
         public void SetString(string name, string value) => Set(name, AttributeValue.FromString(value));
 
+        /// <summary>
+        /// Returns the mark content of <paramref name="name"/> (a <c>ContentString</c> key: the elements of a label row or a
+        /// mark), or null when the key is missing or empty.
+        /// </summary>
+        /// <exception cref="FormatException">The value is not mark content.</exception>
+        public Marks.MarkContent GetMarkContent(string name)
+        {
+            string text = GetString(name);
+            return text.Length == 0 ? null : Marks.MarkContent.Parse(text);
+        }
+
+        /// <summary>
+        /// Writes mark content to <paramref name="name"/>. Nothing changes when the key already holds the same elements in
+        /// the same layout, so that assigning content its own value keeps the bytes; content whose layout was neither read
+        /// nor set takes the layout of the value it replaces. Null empties the key, unless its text is no mark content
+        /// (which a getter returning null for it must not destroy) or the key is missing.
+        /// </summary>
+        public void SetMarkContent(string name, Marks.MarkContent content)
+        {
+            bool hasValue = TryGetValue(name, out AttributeValue current);
+            Marks.MarkContent existing = null;
+            bool readable = hasValue && Marks.MarkContent.TryParse(current.AsString(), out existing);
+            if (content == null)
+            {
+                if (readable)
+                {
+                    SetString(name, string.Empty);
+                }
+
+                return;
+            }
+
+            Marks.MarkContentLayout layout = content.Layout;
+            if (readable)
+            {
+                if (existing.Equals(content) && (!content.LayoutChosen || content.Layout == existing.Layout))
+                {
+                    return;
+                }
+
+                if (!content.LayoutChosen)
+                {
+                    layout = existing.Layout;
+                }
+            }
+
+            SetString(name, content.ToXml(layout));
+        }
+
         /// <summary>Sets <paramref name="name"/> to an integer value.</summary>
         public void SetInt32(string name, int value) => Set(name, AttributeValue.FromInt32(value));
 

@@ -34,18 +34,56 @@ namespace DialogClassGenerator
 
         // extension → keys in the order they were first seen, and in how many files each is
         private static readonly Dictionary<string, List<string>> KeyOrder = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
+
+        // extension → keys of the files with an encoding line (written by a recent Tekla), in the order they were first seen
+        private static readonly Dictionary<string, List<string>> ModernKeys = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
         private static readonly Dictionary<string, int> FileCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
         // page class → its keys (relative to the page prefix) with their default values, and its check boxes
         private static readonly Dictionary<string, (List<string> Values, List<string> EnableKeys)> PageDefaults =
             new Dictionary<string, (List<string>, List<string>)>(StringComparer.Ordinal);
 
+        /// <summary>The dialog prefix of legacy files of <paramref name="extension"/>; false for a type without statistics.</summary>
+        private static bool TryGetLegacyPrefix(string extension, out string prefix)
+        {
+            if (LegacyPrefixes.TryGetValue(extension, out prefix))
+            {
+                return true;
+            }
+
+            prefix = ObjectFileSpecs.All.Where(f => string.Equals(f.Extension, "." + extension, StringComparison.OrdinalIgnoreCase))
+                .Select(f => f.LegacyKeyPrefix).FirstOrDefault();
+            return prefix != null;
+        }
+
+        /// <summary>
+        /// Whether a file of an extension that other programs use too is an attribute file: .cs is also the extension of the C#
+        /// macros, so a section mark file must start with its encoding line or the legacy dialog prefix.
+        /// </summary>
+        private static bool IsAttributeFile(string path, string extension, string legacyPrefix)
+        {
+            if (!string.Equals(extension, "cs", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            byte[] start = new byte[Math.Max(legacyPrefix.Length, 8)];
+            int count;
+            using (FileStream stream = File.OpenRead(path))
+            {
+                count = stream.Read(start, 0, start.Length);
+            }
+
+            string text = Encoding.ASCII.GetString(start, 0, count);
+            return text.StartsWith("encoding", StringComparison.Ordinal) || text.StartsWith(legacyPrefix, StringComparison.Ordinal);
+        }
+
         private static void LoadStatistics(string environments)
         {
             foreach (string path in Directory.EnumerateFiles(environments, "*", SearchOption.AllDirectories))
             {
                 string extension = Path.GetExtension(path).TrimStart('.');
-                if (!LegacyPrefixes.ContainsKey(extension))
+                if (!TryGetLegacyPrefix(extension, out string legacyPrefix) || !IsAttributeFile(path, extension, legacyPrefix))
                 {
                     continue;
                 }
@@ -62,7 +100,7 @@ namespace DialogClassGenerator
 
                 if (!content.HasEncodingLine)
                 {
-                    content.Values.StripPrefix(LegacyPrefixes[extension]);
+                    content.Values.StripPrefix(legacyPrefix);
                 }
 
                 extension = extension.ToLowerInvariant();
@@ -70,7 +108,15 @@ namespace DialogClassGenerator
                 {
                     ValueCounts[extension] = keys = new Dictionary<string, Dictionary<string, int>>(StringComparer.Ordinal);
                     KeyOrder[extension] = new List<string>();
+                    ModernKeys[extension] = new List<string>();
                     FileCounts[extension] = 0;
+                }
+
+                if (content.HasEncodingLine)
+                {
+                    List<string> modern = ModernKeys[extension];
+                    var known = new HashSet<string>(modern, StringComparer.Ordinal);
+                    modern.AddRange(content.Values.Keys.Where(key => !known.Contains(key)));
                 }
 
                 FileCounts[extension]++;
@@ -165,6 +211,7 @@ namespace DialogClassGenerator
             ["md"] = "gd",
             ["wd"] = "ad",
             ["cud"] = "ad",
+            ["rdim"] = "dim",
         };
 
         /// <summary>
@@ -360,7 +407,12 @@ namespace DialogClassGenerator
             WriteTable(w, "AssemblyDrawing", "assembly drawings (.ad)", FileTable("ad", ad, PageHost.AssemblyDrawing));
             WriteTable(w, "SinglePartDrawing", "single-part drawings (.wd)", FileTable("wd", ad, PageHost.AssemblyDrawing));
             WriteTable(w, "CastUnitDrawing", "cast unit drawings (.cud)", FileTable("cud", ad, PageHost.AssemblyDrawing));
-            WriteTable(w, "Dimension", "dimension properties (.dim)", FileTable("dim", ObjectFileSamples["DimensionProperties"], PageHost.ObjectFile));
+            foreach (ObjectFileSpec file in ObjectFileSpecs.All)
+            {
+                // The dimension properties keep the key order of common/system/standard.dim they were released with
+                AttributeCollection reference = file.DialogSampleFile != null ? ObjectFileReferences[file.Class] : ObjectFileSamples[file.Pages[0].Page];
+                WriteTable(w, file.Table, file.Title, FileTable(file.Extension.TrimStart('.'), reference, PageHost.ObjectFile, file));
+            }
             w.TrimBlankLine();
             w.Close();
             w.Close();
@@ -380,26 +432,31 @@ namespace DialogClassGenerator
         /// has, with a null value for the keys of a page and a default for the others. Single-part and cast unit drawings
         /// use the keys of the assembly drawing file: the newer shipped files of those types have the same <c>dcd.</c> keys.
         /// </summary>
-        private static List<(string Key, string Value)> FileTable(string extension, AttributeCollection reference, PageHost host)
+        private static List<(string Key, string Value)> FileTable(string extension, AttributeCollection reference, PageHost host, ObjectFileSpec file = null)
         {
             var pageValues = new Dictionary<string, string>(StringComparer.Ordinal);
             var pagePrefixes = new Dictionary<string, string>(StringComparer.Ordinal);
-            foreach (PageSpec spec in PageSpecs.All)
+
+            // An object file: its pages under their prefixes, whatever host the page was written for
+            IEnumerable<(PageSpec Spec, string Prefix)> pages = host == PageHost.ObjectFile
+                ? file.Pages.GroupBy(page => page.Page).Select(group => (PageSpecs.All.Single(s => s.Class == group.Key), group.First().Prefix))
+                : PageSpecs.All.Select(spec => (spec, host == PageHost.View ? spec.ViewPrefix : host == PageHost.GADrawing ? spec.GADrawingPrefix : spec.AssemblyDrawingPrefix));
+            foreach ((PageSpec spec, string prefix) in pages)
             {
-                string prefix = host == PageHost.View ? spec.ViewPrefix : host == PageHost.GADrawing ? spec.GADrawingPrefix
-                    : host == PageHost.AssemblyDrawing ? spec.AssemblyDrawingPrefix
-                    : spec.FileExtension == "." + extension ? spec.FileSamplePrefix : null;
 
                 // The pages of the drawing properties only keep the values of their own file type (the shipped GA and
-                // assembly files do not agree on dimensions and views), which SetDefaults(), written for every host, cannot
-                if (prefix == null || spec.DrawingPage || !PageDefaults.TryGetValue(spec.Class, out var defaults))
+                // assembly files do not agree on dimensions and views), which SetDefaults(), written for every host, cannot;
+                // likewise a page an object file shares with another type (the view's part mark page in a .pm file, the
+                // dimension pages in a .rdim file)
+                if (prefix == null || spec.DrawingPage || (host == PageHost.ObjectFile && !IsOwnPage(spec, file))
+                    || !PageDefaults.TryGetValue(spec.Class, out var defaults))
                 {
                     continue;
                 }
 
                 IEnumerable<string> prefixes = spec.Class == "ViewLabelMark"
                     ? Enumerable.Range(1, 5).Select(i => "ViewLabelMarkA" + i.ToString(CultureInfo.InvariantCulture) + ".")
-                    : host == PageHost.ObjectFile ? spec.FilePrefixes
+                    : host == PageHost.ObjectFile ? file.Pages.Where(page => page.Page == spec.Class).Select(page => page.Prefix)
                     : new[] { prefix };
                 foreach (string p in prefixes)
                 {
@@ -453,7 +510,7 @@ namespace DialogClassGenerator
                 {
                     value = "\"\"";
                 }
-                else if (EnvironmentFreeValues[extension].TryGetValue(key, out string environmentFree))
+                else if (EnvironmentFreeValues.TryGetValue(extension, out Dictionary<string, string> free) && free.TryGetValue(key, out string environmentFree))
                 {
                     value = environmentFree;
                 }
@@ -475,6 +532,9 @@ namespace DialogClassGenerator
 
             return table;
         }
+
+        /// <summary>Whether a page of an object file was decoded for that file type, so that its <c>SetDefaults()</c> holds the values of that type.</summary>
+        internal static bool IsOwnPage(PageSpec spec, ObjectFileSpec file) => spec.ObjectFilePage && spec.FileExtension == file.Extension;
 
         private static void WriteTable(CodeWriter w, string name, string description, List<(string Key, string Value)> table)
         {

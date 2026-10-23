@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <!-- .NET Framework 4.8 (Tekla plug-ins and tools) and .NET 8 have the code pages built in: only netstandard2.0 needs
+         System.Text.Encoding.CodePages, whose version can differ from the one Tekla ships (7.0 in Tekla 2025) -->
+    <TargetFrameworks>net48;net8.0;netstandard2.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>TeklaHelper.DrawingAttribute</RootNamespace>
     <AssemblyName>TeklaHelper.DrawingAttribute</AssemblyName>
@@ -10,11 +12,11 @@
 
   <PropertyGroup>
     <PackageId>TeklaHelper.DrawingAttribute</PackageId>
-    <Version>1.2.0</Version>
+    <Version>1.3.0</Version>
     <!-- Fails the pack when the public API breaks what the last release offered -->
     <EnablePackageValidation>true</EnablePackageValidation>
-    <PackageValidationBaselineVersion>1.1.0</PackageValidationBaselineVersion>
-    <Description>Typed model of Tekla Structures drawing and view attribute files (.vi, .gd, .md, .ad, .wd, .cud, their .more and filter files) and dimension properties (.dim). Every page, tab and control of the view and drawing properties dialogs as C# properties, complete default files, view creation tables and filters, written byte for byte like Tekla. Save the files and load them by name with GADrawing, View and the other Tekla Open API objects. No Tekla reference.</Description>
+    <PackageValidationBaselineVersion>1.2.0</PackageValidationBaselineVersion>
+    <Description>Typed model of Tekla Structures drawing and view attribute files (.vi, .gd, .md, .ad, .wd, .cud, their .more and filter files) and the files of the property dialogs of the drawing editor (.dim, .drtxt, marks, graphics, links, parts, welds, reinforcement, section and detail marks, ... 41 types). Every page, tab and control of the view and drawing properties dialogs as C# properties, complete default files, view creation tables and filters, written byte for byte like Tekla. Save the files and load them by name with GADrawing, View and the other Tekla Open API objects. No Tekla reference.</Description>
     <PackageTags>tekla;tekla-structures;tekla-open-api;open-api;drawing;attributes;view-properties;filter</PackageTags>
     <Authors>nguyenthanguth</Authors>
     <Copyright>Copyright (c) 2026 nguyenthanguth</Copyright>
@@ -33,7 +35,7 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <!-- Attribute files are written in the ANSI code page named on their "encoding" line (1252, 932, 949, ...) -->
     <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
   </ItemGroup>

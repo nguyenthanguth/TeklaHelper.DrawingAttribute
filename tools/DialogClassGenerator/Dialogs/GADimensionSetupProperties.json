@@ -1,0 +1,174 @@
+{
+  "page": "GADimensionSetupProperties",
+  "viewPrefix": null,
+  "fileExtension": ".ga_dim_setup",
+  "filePrefix": "",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "dim_ga_auto_setup",
+  "otherSources": [],
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [],
+  "tabs": [],
+  "groups": [],
+  "controls": [
+    {
+      "label": "Dimension",
+      "labelSource": "textlabel",
+      "key": "accept_reference_points",
+      "type": "option",
+      "options": [
+        {
+          "label": "Intersection points",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "intersection"
+        },
+        {
+          "label": "Intersection and reference points",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "intersection_and_reference"
+        }
+      ],
+      "dialogDefault": 1,
+      "aidWidget": "optionmenu",
+      "aidName": "dimension_om",
+      "aidType": "int",
+      "confidence": "decoded",
+      "position": 1,
+      "samples": {
+        "files": 3,
+        "inMenu": {
+          "1": 3
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Parts",
+      "labelSource": "textlabel",
+      "key": "accept_all_parts",
+      "type": "option",
+      "options": [
+        {
+          "label": "Main parts",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "main_parts"
+        },
+        {
+          "label": "All selected parts",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "all_parts"
+        }
+      ],
+      "dialogDefault": 0,
+      "aidWidget": "optionmenu",
+      "aidName": "parts_om",
+      "aidType": "int",
+      "confidence": "decoded",
+      "position": 2,
+      "samples": {
+        "files": 3,
+        "inMenu": {
+          "0": 2,
+          "1": 1
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Combine",
+      "labelSource": "textlabel",
+      "key": "style",
+      "type": "option",
+      "options": [
+        {
+          "label": "All",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "style_0"
+        },
+        {
+          "label": "By grid lines",
+          "labelSource": "aid",
+          "value": 3,
+          "aidName": "style_1"
+        },
+        {
+          "label": "By grid squares",
+          "labelSource": "aid",
+          "value": 4,
+          "aidName": "style_2"
+        },
+        {
+          "label": "By main parts",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "style_3"
+        },
+        {
+          "label": "By selected parts",
+          "labelSource": "aid",
+          "value": 2,
+          "aidName": "style_4"
+        }
+      ],
+      "dialogDefault": 3,
+      "aidWidget": "optionmenu",
+      "aidName": "style_om",
+      "aidType": "int",
+      "confidence": "decoded",
+      "position": 3,
+      "samples": {
+        "files": 3,
+        "inMenu": {
+          "3": 3
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Use",
+      "labelSource": "textlabel",
+      "key": "use_centerlines",
+      "type": "option",
+      "options": [
+        {
+          "label": "Reference lines",
+          "labelSource": "aid",
+          "value": 0,
+          "aidName": "reference_lines"
+        },
+        {
+          "label": "Center lines",
+          "labelSource": "aid",
+          "value": 1,
+          "aidName": "center_lines"
+        }
+      ],
+      "dialogDefault": 0,
+      "aidWidget": "optionmenu",
+      "aidName": "use_om",
+      "aidType": "int",
+      "confidence": "decoded",
+      "position": 4,
+      "samples": {
+        "files": 3,
+        "inMenu": {
+          "0": 2,
+          "1": 1
+        },
+        "outsideMenu": {}
+      }
+    }
+  ],
+  "subDialogs": [],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "3 .ga_dim_setup files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

@@ -1,0 +1,1260 @@
+{
+  "page": "RevisionMarkProperties",
+  "viewPrefix": null,
+  "fileExtension": ".rev",
+  "filePrefix": "",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gr_revision_attrib",
+  "otherSources": [
+    "gr_text_attrib",
+    "gr_symbol_attrib",
+    "gr_level_attrib",
+    "gr_revision_attrib",
+    "gr_textpl_attrib (keys under txpl.)"
+  ],
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [],
+  "tabs": [
+    {
+      "label": "Revision",
+      "aidName": "Container",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Revision",
+          "aidName": "Container_146",
+          "controls": [
+            {
+              "label": "Mark",
+              "labelSource": "enableCheckBox",
+              "key": "revh_mark",
+              "enableKey": "revh_mark_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "gr_revh_mark",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 2,
+              "samples": {
+                "files": 3,
+                "top": {
+                  "\"Rev. a\"": 2,
+                  "\"\"": 1
+                }
+              }
+            },
+            {
+              "label": "Revision number",
+              "labelSource": "group+key",
+              "key": "revh_number",
+              "type": "text",
+              "optionsFilledAtRuntime": true,
+              "aidWidget": "optionmenu",
+              "aidName": "gr_revh_number",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 3,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 3,
+                "top": {
+                  "\"1\"": 3
+                }
+              }
+            },
+            {
+              "label": "Created by",
+              "labelSource": "enableCheckBox",
+              "key": "revh_text1",
+              "enableKey": "revh_text1_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "gr_revh_text1",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 4,
+              "samples": {
+                "files": 3,
+                "top": {
+                  "\"\"": 3
+                }
+              }
+            },
+            {
+              "label": "Revision date1",
+              "labelSource": "group+key",
+              "key": "revh_date1",
+              "type": "number",
+              "aidWidget": "text",
+              "aidName": "gr_revh_date1",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 5,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 1,
+                "top": {
+                  "0": 1
+                }
+              }
+            },
+            {
+              "label": "Checked by",
+              "labelSource": "enableCheckBox",
+              "key": "revh_text2",
+              "enableKey": "revh_text2_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "gr_revh_text2",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 6,
+              "samples": {
+                "files": 3,
+                "top": {
+                  "\"\"": 3
+                }
+              }
+            },
+            {
+              "label": "Revision date2",
+              "labelSource": "group+key",
+              "key": "revh_date2",
+              "type": "number",
+              "aidWidget": "text",
+              "aidName": "gr_revh_date2",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 7,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 1,
+                "top": {
+                  "0": 1
+                }
+              }
+            },
+            {
+              "label": "Approved by",
+              "labelSource": "enableCheckBox",
+              "key": "revh_text3",
+              "enableKey": "revh_text3_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "gr_revh_text3",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 8,
+              "samples": {
+                "files": 3,
+                "top": {
+                  "\"\"": 3
+                }
+              }
+            },
+            {
+              "label": "Revision date3",
+              "labelSource": "group+key",
+              "key": "revh_date3",
+              "type": "number",
+              "aidWidget": "text",
+              "aidName": "gr_revh_date3",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 9,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 1,
+                "top": {
+                  "0": 1
+                }
+              }
+            },
+            {
+              "label": "Description",
+              "labelSource": "enableCheckBox",
+              "key": "revh_text4",
+              "enableKey": "revh_text4_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "gr_revh_text4",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 10,
+              "samples": {
+                "files": 1,
+                "top": {
+                  "\"\"": 1
+                }
+              }
+            },
+            {
+              "label": "Delivery",
+              "labelSource": "enableCheckBox",
+              "key": "revh_text7",
+              "enableKey": "revh_text7_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "gr_revh_text7",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 11,
+              "samples": {
+                "files": 1,
+                "top": {
+                  "\"\"": 1
+                }
+              }
+            },
+            {
+              "label": "Info 1",
+              "labelSource": "enableCheckBox",
+              "key": "revh_text5",
+              "enableKey": "revh_text5_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "gr_revh_text5",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 12,
+              "samples": {
+                "files": 1,
+                "top": {
+                  "\"\"": 1
+                }
+              }
+            },
+            {
+              "label": "Info 2",
+              "labelSource": "enableCheckBox",
+              "key": "revh_text6",
+              "enableKey": "revh_text6_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 79,
+              "aidWidget": "text",
+              "aidName": "gr_revh_text6",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 13,
+              "samples": {
+                "files": 1,
+                "top": {
+                  "\"\"": 1
+                }
+              }
+            }
+          ],
+          "groups": [
+            {
+              "label": "Placing",
+              "aidName": "Container_1570",
+              "groupSource": "heading-textlabel+separator",
+              "controls": [
+                {
+                  "label": "Place...",
+                  "type": "button",
+                  "aidName": "rtext_placing",
+                  "callback": "gr_display_attr_dialog_cb",
+                  "callbackParameter": "gr_revpl_attrib",
+                  "position": 15,
+                  "opensDialog": "gr_revpl_attrib"
+                }
+              ],
+              "groups": [],
+              "position": 14
+            }
+          ],
+          "position": 1
+        }
+      ],
+      "position": 16
+    },
+    {
+      "label": "Appearance",
+      "aidName": "Container_211",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Text",
+          "aidName": "Container_194",
+          "controls": [
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "text_colour",
+              "enableKey": "text_colour_enable",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "Optionbutton_154",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "Optionbutton_150",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "Optionbutton_155",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "Optionbutton_156",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "Optionbutton_2",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "Optionbutton_3",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "Optionbutton_4",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "Optionbutton_6",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "optionbutton_466728",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "optionbutton_466727",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "optionbutton_466726",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "optionbutton_466725",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "optionbutton_466724",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "optionbutton_466723",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "rtext_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 18,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 3,
+                "inMenu": {
+                  "155": 3
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Height",
+              "labelSource": "enableCheckBox",
+              "key": "height",
+              "enableKey": "height_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "rheight",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 19,
+              "samples": {
+                "files": 3,
+                "top": {
+                  "2.500000": 3
+                }
+              }
+            },
+            {
+              "label": "Font",
+              "labelSource": "enableCheckBox",
+              "key": "font_name",
+              "enableKey": "font_enable",
+              "type": "font",
+              "maxLength": 44,
+              "aidWidget": "text",
+              "aidName": "rfont_name",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 20,
+              "samples": {
+                "files": 3,
+                "top": {
+                  "\"Arial\"": 2,
+                  "\"lr SVbN\"": 1
+                }
+              }
+            },
+            {
+              "label": "Select...",
+              "type": "button",
+              "aidName": "rfont_select",
+              "callback": "dia_select_font_cb",
+              "callbackParameter": "rfont_name",
+              "position": 21
+            },
+            {
+              "label": "Angle",
+              "labelSource": "enableCheckBox",
+              "key": "angle",
+              "enableKey": "angle_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "aidWidget": "text",
+              "aidName": "rangle",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 22,
+              "samples": {
+                "files": 3,
+                "top": {
+                  "0.000000": 3
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 17
+        },
+        {
+          "label": "Arrow",
+          "aidName": "Container_212",
+          "controls": [
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "arrow_type",
+              "enableKey": "arrow_type_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "gr_pb_solid_arrow2",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_pb_solid_arrow2",
+                  "value": 1,
+                  "aidName": "Optionbutton_206"
+                },
+                {
+                  "label": "gr_pb_open_arrow2",
+                  "labelSource": "bitmap",
+                  "bitmap": "gr_pb_open_arrow2",
+                  "value": 2,
+                  "aidName": "Optionbutton_207"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "Optionmenu_205",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 24,
+              "samples": {
+                "files": 3,
+                "inMenu": {},
+                "outsideMenu": {
+                  "0": 3
+                }
+              }
+            },
+            {
+              "label": "Arrow height",
+              "labelSource": "group+key",
+              "key": "arrow_height",
+              "enableKey": "arrow_height_enable",
+              "type": "number",
+              "format": "%.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "rarrow_height",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 25,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 3,
+                "top": {
+                  "2.000000": 3
+                }
+              }
+            },
+            {
+              "label": "Arrow width",
+              "labelSource": "group+key",
+              "key": "arrow_width",
+              "enableKey": "arrow_width_enable",
+              "type": "number",
+              "format": "%.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "rarrow_width",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 26,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 3,
+                "top": {
+                  "2.500000": 3
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 23
+        },
+        {
+          "label": "Frame",
+          "aidName": "Container_209",
+          "controls": [
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "frame_type",
+              "enableKey": "frame_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "None",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_none",
+                  "value": 0,
+                  "aidName": "Optionbutton_231",
+                  "apiName": "None"
+                },
+                {
+                  "label": "Underline",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_underline",
+                  "value": 2,
+                  "aidName": "Optionbutton_238",
+                  "apiName": "Line"
+                },
+                {
+                  "label": "Rectangular",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_rectangular",
+                  "value": 1,
+                  "aidName": "Optionbutton_237",
+                  "apiName": "Rectangular"
+                },
+                {
+                  "label": "Rounded",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_rounded",
+                  "value": 3,
+                  "aidName": "Optionbutton_236",
+                  "apiName": "Round"
+                },
+                {
+                  "label": "Sharpened",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_sharpened",
+                  "value": 8,
+                  "aidName": "Optionbutton_236_1",
+                  "apiName": "Sharpened"
+                },
+                {
+                  "label": "Round",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_round",
+                  "value": 4,
+                  "aidName": "Optionbutton_235",
+                  "apiName": "Circle"
+                },
+                {
+                  "label": "Diamond",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_diamond",
+                  "value": 5,
+                  "aidName": "Optionbutton_234",
+                  "apiName": "Diamond"
+                },
+                {
+                  "label": "Hexagon",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_hexagon",
+                  "value": 6,
+                  "aidName": "Optionbutton_233",
+                  "apiName": "Hexagon"
+                },
+                {
+                  "label": "Triangle",
+                  "labelSource": "bitmap",
+                  "bitmap": "frame_triangle",
+                  "value": 7,
+                  "aidName": "Optionbutton_232",
+                  "apiName": "Triangle"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "rtext_frame",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 28,
+              "apiEnum": "Tekla.Structures.Drawing.FrameTypes",
+              "samples": {
+                "files": 3,
+                "inMenu": {
+                  "1": 3
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Leader line",
+              "labelSource": "enableCheckBox",
+              "key": "text_type",
+              "enableKey": "text_type_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "text_type_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "text_type_0",
+                  "value": 128,
+                  "aidName": "Optionbutton_165"
+                },
+                {
+                  "label": "text_type_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "text_type_1",
+                  "value": 256,
+                  "aidName": "Optionbutton_169"
+                },
+                {
+                  "label": "text_type_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "text_type_2",
+                  "value": 512,
+                  "aidName": "Optionbutton_168"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "rtext_type",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 29,
+              "samples": {
+                "files": 3,
+                "inMenu": {
+                  "512": 3
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Color",
+              "labelSource": "enableCheckBox",
+              "key": "line_colour",
+              "enableKey": "line_colour_enable",
+              "type": "color",
+              "options": [
+                {
+                  "label": "Invisible",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_invisible_line",
+                  "value": 152,
+                  "aidName": "Optionbutton_5",
+                  "apiName": "Invisible"
+                },
+                {
+                  "label": "Black",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_black_line",
+                  "value": 153,
+                  "aidName": "Optionbutton",
+                  "apiName": "Black"
+                },
+                {
+                  "label": "Red",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_red_line",
+                  "value": 160,
+                  "aidName": "Optionbutton_7",
+                  "apiName": "Red"
+                },
+                {
+                  "label": "Green",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_green_line",
+                  "value": 161,
+                  "aidName": "Optionbutton_8",
+                  "apiName": "Green"
+                },
+                {
+                  "label": "Blue",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_blue_line",
+                  "value": 162,
+                  "aidName": "Optionbutton_9",
+                  "apiName": "Blue"
+                },
+                {
+                  "label": "Cyan",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_cyan_line",
+                  "value": 163,
+                  "aidName": "Optionbutton_10",
+                  "apiName": "Cyan"
+                },
+                {
+                  "label": "Yellow",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_yellow_line",
+                  "value": 164,
+                  "aidName": "Optionbutton_11",
+                  "apiName": "Yellow"
+                },
+                {
+                  "label": "Magenta",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_magenta_line",
+                  "value": 165,
+                  "aidName": "Optionbutton_12",
+                  "apiName": "Magenta"
+                },
+                {
+                  "label": "NewLine1",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_1",
+                  "value": 154,
+                  "aidName": "optionbutton_466734",
+                  "apiName": "NewLine1"
+                },
+                {
+                  "label": "NewLine2",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_2",
+                  "value": 155,
+                  "aidName": "optionbutton_466733",
+                  "apiName": "NewLine2"
+                },
+                {
+                  "label": "NewLine3",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_3",
+                  "value": 156,
+                  "aidName": "optionbutton_466732",
+                  "apiName": "NewLine3"
+                },
+                {
+                  "label": "NewLine4",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_4",
+                  "value": 157,
+                  "aidName": "optionbutton_466731",
+                  "apiName": "NewLine4"
+                },
+                {
+                  "label": "NewLine5",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_5",
+                  "value": 158,
+                  "aidName": "optionbutton_466730",
+                  "apiName": "NewLine5"
+                },
+                {
+                  "label": "NewLine6",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_new_line_6",
+                  "value": 159,
+                  "aidName": "optionbutton_466729",
+                  "apiName": "NewLine6"
+                },
+                {
+                  "label": "Gray30",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray30_line",
+                  "value": 130,
+                  "aidName": "",
+                  "apiName": "Gray30"
+                },
+                {
+                  "label": "Gray50",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray50_line",
+                  "value": 131,
+                  "aidName": "",
+                  "apiName": "Gray50"
+                },
+                {
+                  "label": "Gray70",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray70_line",
+                  "value": 132,
+                  "aidName": "",
+                  "apiName": "Gray70"
+                },
+                {
+                  "label": "Gray90",
+                  "labelSource": "bitmap; name from DrawingColors",
+                  "bitmap": "gr_pb_gray90_line",
+                  "value": 133,
+                  "aidName": "",
+                  "apiName": "Gray90"
+                }
+              ],
+              "aidWidget": "optionmenu",
+              "aidName": "rtext_line_colour",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 30,
+              "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+              "samples": {
+                "files": 3,
+                "inMenu": {
+                  "155": 3
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 27
+        }
+      ],
+      "position": 31
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [
+    {
+      "dialog": "gr_revpl_attrib",
+      "openedBy": "Place...",
+      "keyPrefix": "txpl.",
+      "tabs": [],
+      "groups": [
+        {
+          "label": "Quarter",
+          "aidName": "Container_818",
+          "controls": [
+            {
+              "label": "Quarter 4",
+              "labelSource": "group+key",
+              "key": "txpl.quarter_4",
+              "enableKey": "txpl.text_quarter_en",
+              "type": "toggle",
+              "valueOn": 8,
+              "valueOff": 0,
+              "dialogDefault": 8,
+              "aidWidget": "checkbutton",
+              "aidName": "quarter_4",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 5,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 3,
+                "top": {
+                  "8": 3
+                }
+              }
+            },
+            {
+              "label": "Quarter 1",
+              "labelSource": "group+key",
+              "key": "txpl.quarter_1",
+              "enableKey": "txpl.text_quarter_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 1,
+              "aidWidget": "checkbutton",
+              "aidName": "quarter_1",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 6,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 3,
+                "top": {
+                  "1": 3
+                }
+              }
+            },
+            {
+              "label": "Quarter 3",
+              "labelSource": "group+key",
+              "key": "txpl.quarter_3",
+              "enableKey": "txpl.text_quarter_en",
+              "type": "toggle",
+              "valueOn": 4,
+              "valueOff": 0,
+              "dialogDefault": 4,
+              "aidWidget": "checkbutton",
+              "aidName": "quarter_3",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 7,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 3,
+                "top": {
+                  "4": 3
+                }
+              }
+            },
+            {
+              "label": "Quarter 2",
+              "labelSource": "group+key",
+              "key": "txpl.quarter_2",
+              "enableKey": "txpl.text_quarter_en",
+              "type": "toggle",
+              "valueOn": 2,
+              "valueOff": 0,
+              "dialogDefault": 2,
+              "aidWidget": "checkbutton",
+              "aidName": "quarter_2",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 8,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 3,
+                "top": {
+                  "2": 3
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 4
+        }
+      ],
+      "controls": [
+        {
+          "label": "Placing",
+          "labelSource": "enableCheckBox",
+          "key": "txpl.text_placing_mode",
+          "enableKey": "txpl.text_place_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "free",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "text_free"
+            },
+            {
+              "label": "fixed",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "text_fixed"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "text_placing_mode",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 1,
+          "samples": {
+            "files": 3,
+            "inMenu": {
+              "1": 2,
+              "0": 1
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Search margin",
+          "labelSource": "enableCheckBox",
+          "key": "txpl.text_freepl_margin",
+          "enableKey": "txpl.text_freepl_margin_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "text_freepl_margin",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 2,
+          "samples": {
+            "files": 3,
+            "top": {
+              "5.000000": 2,
+              "10.000000": 1
+            }
+          }
+        },
+        {
+          "label": "Minimum distance",
+          "labelSource": "enableCheckBox",
+          "key": "txpl.text_freepl_min",
+          "enableKey": "txpl.text_freepl_min_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "text_freepl_min",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 3,
+          "samples": {
+            "files": 3,
+            "top": {
+              "5.000000": 2,
+              "10.000000": 1
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "siblingPageControls": [],
+  "legacyControls": [
+    {
+      "label": "Text",
+      "labelSource": "enableCheckBox",
+      "key": "text_io",
+      "enableKey": "text_enable",
+      "type": "text",
+      "maxLength": 8192,
+      "aidWidget": "text",
+      "aidName": "textblock",
+      "aidType": "char",
+      "confidence": "other-dialog",
+      "position": 2,
+      "aidDialog": "gr_text_attrib",
+      "dialogPath": [
+        "Appearance",
+        "Text"
+      ],
+      "samples": {
+        "files": 3,
+        "top": {
+          "\"\"": 3
+        }
+      }
+    },
+    {
+      "label": "Alignment",
+      "labelSource": "enableCheckBox",
+      "key": "Alignment",
+      "enableKey": "Alignment_enable",
+      "type": "option",
+      "options": [
+        {
+          "label": "Left",
+          "labelSource": "aid",
+          "bitmap": "gr_alignment_left",
+          "value": 0,
+          "aidName": "LeftAlignment",
+          "apiName": "Left"
+        },
+        {
+          "label": "Center",
+          "labelSource": "aid",
+          "bitmap": "gr_alignment_center",
+          "value": 1,
+          "aidName": "CenterAlignment",
+          "apiName": "Center"
+        },
+        {
+          "label": "Right",
+          "labelSource": "aid",
+          "bitmap": "gr_alignment_right",
+          "value": 2,
+          "aidName": "RightAlignment",
+          "apiName": "Right"
+        },
+        {
+          "label": "Leader line",
+          "labelSource": "aid",
+          "bitmap": "text_type_1",
+          "value": 3,
+          "aidName": "LeaderLineAlignment",
+          "apiName": "LeaderLine"
+        }
+      ],
+      "aidWidget": "optionmenu",
+      "aidName": "Alignment",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 9,
+      "aidDialog": "gr_text_attrib",
+      "dialogPath": [
+        "Appearance",
+        "Text"
+      ],
+      "apiEnum": "Tekla.Structures.Drawing.TextAlignment",
+      "samples": {
+        "files": 2,
+        "inMenu": {
+          "0": 2
+        },
+        "outsideMenu": {}
+      }
+    },
+    {
+      "label": "Number",
+      "labelSource": "enableCheckBox",
+      "key": "symbol_number",
+      "enableKey": "symbol_number_enable",
+      "type": "number",
+      "format": "%d",
+      "aidWidget": "text",
+      "aidName": "symbol_number",
+      "aidType": "int",
+      "confidence": "other-dialog",
+      "position": 3,
+      "aidDialog": "gr_symbol_attrib",
+      "dialogPath": [
+        "Symbol selection"
+      ],
+      "samples": {
+        "files": 3,
+        "top": {
+          "0": 3
+        }
+      }
+    },
+    {
+      "label": "Maximum distance",
+      "labelSource": "enableCheckBox",
+      "key": "txpl.TextFreeplaceMaxSearchDistance",
+      "enableKey": "txpl.TextFreeplaceMaxSearchDistance_en",
+      "type": "number",
+      "format": "%2.1f",
+      "unit": "length",
+      "aidWidget": "text",
+      "aidName": "TextFreeplaceMaxSearchDistance",
+      "aidType": "double",
+      "confidence": "other-dialog",
+      "position": 4,
+      "aidDialog": "gr_textpl_attrib",
+      "dialogPath": [],
+      "samples": {
+        "files": 1,
+        "top": {
+          "0.000000": 1
+        }
+      }
+    }
+  ],
+  "unmappedKeys": [
+    "type",
+    "mark_type",
+    "symbol_select_enable",
+    "extra5",
+    "extra5_enable"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "3 .rev files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}

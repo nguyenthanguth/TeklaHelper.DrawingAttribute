@@ -95,6 +95,69 @@ namespace DialogClassGenerator
             ["VisibilityOfNumericValue"] = "DimensionValueVisibility",
             ["TaperedSkewedReinforcementGroup"] = "TaperedRebarDimensionType",
             ["TaperedCurvedReinforcementGroup"] = "CurvedRebarDimensionType",
+            // Drawing object files (.drtxt, .wls, .ga_dim_setup, ...)
+            ["AboveLineType"] = "WeldType",
+            ["ArrowType"] = "TextArrowType",
+            ["AssociativeNotePropertiesLeaderLineType"] = "NoteLeaderLineType",
+            ["Combine"] = "GADimensionCombination",
+            ["Contour"] = "WeldContour",
+            ["Dimension"] = "GADimensionPoints",
+            ["DrawingWeldMarkPropertiesLineType"] = "DrawingWeldMarkLineShape",
+            ["EdgeAround"] = "WeldEdgeAround",
+            ["Effect"] = "TextEffect",
+            ["Finish"] = "WeldFinish",
+            ["FoAttrFileType"] = "ForeignObjectFileType",
+            ["FoAttrScalingType"] = "ForeignObjectScaling",
+            ["FrameLeaderLine"] = "SymbolLeaderLineType",
+            ["LeaderLine"] = "TextLeaderLineType",
+            ["LevelMarkPropertiesArrowType"] = "LineArrowType",
+            ["LevelMarkPropertiesLeaderLine"] = "LevelMarkLeaderLineType",
+            ["PartPropertiesRepresentation"] = "DrawingPartRepresentation",
+            ["Parts"] = "GADimensionParts",
+            ["RevisionMarkPropertiesLeaderLine"] = "RevisionMarkLeaderLineType",
+            ["ScalingType"] = "EmbeddedObjectScaling",
+            ["TextPositivePrefix"] = "PositiveLevelPrefix",
+            ["Use"] = "GADimensionLines",
+            ["WorkshopSite"] = "WeldWorkshopSite",
+        };
+
+        /// <summary>
+        /// A new menu with the values of a released enum, only in another order (the Representation menu of the part
+        /// properties of the drawing editor and of the view's part page): name chosen by the rules → the released enum.
+        /// </summary>
+        private static readonly Dictionary<string, string> EnumReuse = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["DrawingPartRepresentation"] = "Representation",
+        };
+
+        /// <summary>Members the rules leave as ValueN although the item is known: "enum.member" → name.</summary>
+        private static readonly Dictionary<string, string> MemberRenames = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            // The item ltext_positive_prefix_plus of the menu, labelled "+"
+            ["PositiveLevelPrefix.Value0"] = "Plus",
+
+            // The leader line menus of the drawing editor, named after their pictures (each captured from the Tekla 2025
+            // dialog with the value selected)
+            ["TextLeaderLineType.Value0"] = "NoLeaderLine",
+            ["TextLeaderLineType.Value1"] = "LeaderLine",
+            ["TextLeaderLineType.Value2"] = "BaseLine",
+            ["TextLeaderLineType.Value3"] = "BaseLineArrowRight",
+            ["TextLeaderLineType.Value5"] = "BaseLineArrowLeft",
+            ["SymbolLeaderLineType.Value8192"] = "NoLeaderLine",
+            ["SymbolLeaderLineType.Value8193"] = "LeaderLine",
+            ["SymbolLeaderLineType.Value8194"] = "BaseLineOrLeaderLine",
+            ["LevelMarkLeaderLineType.Value16"] = "LeaderLine",
+            ["LevelMarkLeaderLineType.Value32"] = "LeaderLineWithSymbol",
+            ["LevelMarkLeaderLineType.Value64"] = "Symbol",
+            ["RevisionMarkLeaderLineType.Value128"] = "NoLeaderLine",
+            ["RevisionMarkLeaderLineType.Value256"] = "LeaderLine",
+            ["RevisionMarkLeaderLineType.Value512"] = "BaseLine",
+            ["NoteLeaderLineType.Value10001"] = "NoLeaderLine",
+            ["NoteLeaderLineType.Value10002"] = "LeaderLine",
+            ["NoteLeaderLineType.Value10003"] = "BaseLine",
+
+            // Arrow type 0, which files hold: the Open API of Tekla 2025 read it as ArrowheadTypes.NoArrow
+            ["LineArrowType.Value0"] = "NoArrow",
         };
 
         /// <summary>Member names for options that the dialog shows as a picture only, by the picture's name.</summary>
@@ -127,6 +190,54 @@ namespace DialogClassGenerator
             ["gr_dim_tag_type_horver_extline"] = "HorizontalOrVerticalAtExtensionLine",
             ["gr_dim_tag_type_curve_align"] = "AlignedToCurve",
             ["gr_dim_tag_type_curve_along"] = "AlongCurve",
+            // Weld symbols of the drawing weld marks (.wls): picture w_type_N stores N, the value of the same weld in
+            // Tekla.Structures.Model.BaseWeld.WeldTypeEnum (27 values, 0 to 26), WeldContourEnum (w_ftype_N) and
+            // WeldFinishEnum (w_finish_N); the names are those of the API without its WELD_TYPE_ prefix
+            ["w_type_0"] = "None",
+            ["w_type_1"] = "EdgeFlange",
+            ["w_type_2"] = "SquareGrooveSquareButt",
+            ["w_type_3"] = "BevelGrooveSingleVButt",
+            ["w_type_4"] = "BevelGrooveSingleBevelButt",
+            ["w_type_5"] = "SingleVButtWithBroadRootFace",
+            ["w_type_6"] = "SingleBevelButtWithBroadRootFace",
+            ["w_type_7"] = "UGrooveSingleUButt",
+            ["w_type_8"] = "JGrooveJButt",
+            ["w_type_9"] = "BevelBacking",
+            ["w_type_10"] = "Fillet",
+            ["w_type_11"] = "Plug",
+            ["w_type_12"] = "Spot",
+            ["w_type_13"] = "Seam",
+            ["w_type_14"] = "Slot",
+            ["w_type_15"] = "FlareBevelGroove",
+            ["w_type_16"] = "FlareVGroove",
+            ["w_type_17"] = "CornerFlange",
+            ["w_type_18"] = "PartialPenetrationSingleBevelButtPlusFillet",
+            ["w_type_19"] = "PartialPenetrationSquareGroovePlusFillet",
+            ["w_type_20"] = "MeltThrough",
+            ["w_type_21"] = "SteepFlankedBevelGrooveSingleVButt",
+            ["w_type_22"] = "SteepFlankedBevelGrooveSingleBevelButt",
+            ["w_Type_23"] = "Edge",
+            ["w_Type_24"] = "IsoSurfacing",
+            ["w_Type_25"] = "Fold",
+            ["w_Type_26"] = "Inclined",
+            ["w_ftype_0"] = "None",
+            ["w_ftype_1"] = "Flush",
+            ["w_ftype_2"] = "Convex",
+            ["w_ftype_3"] = "Concave",
+            ["w_finish_0"] = "None",
+            ["w_finish_1"] = "Grind",
+            ["w_finish_2"] = "Machine",
+            ["w_finish_3"] = "Chip",
+            ["w_Finish_4"] = "FinishedWeld",
+            ["w_Finish_5"] = "SmoothTransition",
+
+            // The menus "Edge/Around" and "Workshop/Site" name their two pictures in order
+            ["w_around_0"] = "Edge",
+            ["w_around_1"] = "Around",
+            ["w_workshop_0"] = "Workshop",
+            ["w_workshop_1"] = "Site",
+            ["wld_single_line"] = "SingleLine",
+            ["wld_double_line"] = "DoubleLine",
         };
 
         private static readonly HashSet<string> GenericLabels = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -154,6 +265,11 @@ namespace DialogClassGenerator
         {
             ["PartMark:create"] = "Tekla 2025 ignores it when it loads the file: with 0 the part marks of a view still showed."
                 + " Hide the marks with <c>General.VisibilityOfMark.VisibilityInView</c> (<c>in_all_views</c>).",
+
+            // Picture menus of the drawing weld mark named from the order of their label, not checked in Tekla
+            ["DrawingWeldMarkProperties:w_around"] = "The names of the values follow the menu's label \"Edge/Around\" (0 the first picture); not checked in Tekla.",
+            ["DrawingWeldMarkProperties:w_workshop"] = "The names of the values follow the menu's label \"Workshop/Site\" (0 the first picture); not checked in Tekla.",
+            ["DrawingWeldMarkProperties:line_shape"] = "The names of the values are those of the pictures (wld_single_line, wld_double_line); not checked in Tekla.",
         };
 
         /// <summary>The page being written, for <see cref="KeyNotes"/>.</summary>
@@ -187,11 +303,36 @@ namespace DialogClassGenerator
                 ObjectFileSamples[spec.Class] = AttributeFileFormat.Read(Path.Combine(args[5], spec.SampleFile)).Values;
             }
 
-            Directory.CreateDirectory(args[3]);
-            foreach (string old in Directory.GetFiles(args[3], "*.g.cs"))
+            // The files saved from the property dialogs of the drawing editor lie next to the sample .vi
+            string dialogFiles = Path.GetDirectoryName(Path.GetFullPath(args[1]));
+            foreach (PageSpec spec in PageSpecs.All.Where(s => s.DialogSampleFile != null))
             {
-                File.Delete(old);
+                ObjectFileSamples[spec.Class] = AttributeFileFormat.Read(Path.Combine(dialogFiles, spec.DialogSampleFile)).Values;
             }
+
+            foreach (ObjectFileSpec file in ObjectFileSpecs.All.Where(f => f.DialogSampleFile != null))
+            {
+                ObjectFileReferences[file.Class] = AttributeFileFormat.Read(Path.Combine(dialogFiles, file.DialogSampleFile)).Values;
+            }
+
+            // The classes of the drawing object files (DrawingObjects namespace) go next to the hand-written
+            // DimensionAttributeFile: src/.../DrawingObjects/Generated when the output is src/.../Pages/Generated, else a
+            // DrawingObjects folder inside the output (a scratch folder to compare with)
+            string output = Path.GetFullPath(args[3]);
+            string library = Path.GetDirectoryName(Path.GetDirectoryName(output));
+            string objectOutput = Path.GetFileName(output) == "Generated" && Path.GetFileName(Path.GetDirectoryName(output)) == "Pages"
+                ? Path.Combine(library, "DrawingObjects", "Generated")
+                : Path.Combine(output, "DrawingObjects");
+            foreach (string folder in new[] { output, objectOutput })
+            {
+                Directory.CreateDirectory(folder);
+                foreach (string old in Directory.GetFiles(folder, "*.g.cs"))
+                {
+                    File.Delete(old);
+                }
+            }
+
+            string FolderOf(string ns) => ns == ObjectNamespace ? objectOutput : output;
 
             foreach (PageSpec spec in PageSpecs.All)
             {
@@ -200,9 +341,14 @@ namespace DialogClassGenerator
                     spec.FileInKey = Str(document.RootElement, "fileMenuKey") ?? spec.FileInKey;
                     spec.FileOutKey = Str(document.RootElement, "saveAsKey") ?? spec.FileOutKey;
                     Container page = BuildPage(spec, document.RootElement, vi, gd);
-                    File.WriteAllText(Path.Combine(args[3], spec.Class + ".g.cs"), WritePage(spec, page, vi, gd), new UTF8Encoding(false));
+                    File.WriteAllText(Path.Combine(FolderOf(spec.Namespace), spec.Class + ".g.cs"), WritePage(spec, page, vi, gd), new UTF8Encoding(false));
                     Console.WriteLine($"{spec.Class}: {CountControls(page)} properties");
                 }
+            }
+
+            foreach (ObjectFileSpec file in ObjectFileSpecs.All.Where(f => !f.HandWritten))
+            {
+                File.WriteAllText(Path.Combine(objectOutput, file.Class + ".g.cs"), WriteObjectFile(file), new UTF8Encoding(false));
             }
 
             File.WriteAllText(Path.Combine(args[3], "Enums.g.cs"), WriteEnums(), new UTF8Encoding(false));
@@ -381,6 +527,23 @@ namespace DialogClassGenerator
                     {
                         yield return (key, pair.Value);
                     }
+                }
+            }
+
+            // Keys of the shipped files of the type that the dialog file lacks (the newer pages only: the dimension pages
+            // keep the keys they were released with), typed by their most common value
+            if (spec.DialogSampleFile != null && ModernKeys.TryGetValue(spec.FileExtension.TrimStart('.'), out List<string> modern))
+            {
+                foreach (string fileKey in modern.Where(k => k.StartsWith(spec.FileSamplePrefix, StringComparison.Ordinal)))
+                {
+                    string key = fileKey.Substring(spec.FileSamplePrefix.Length);
+                    if (key.Length == 0 || (spec.TopLevelOnly && key.IndexOf('.') >= 0) || IsLabelMarkKey(spec, key) || !seen.Add(key))
+                    {
+                        continue;
+                    }
+
+                    string text = ValueCounts[spec.FileExtension.TrimStart('.')][fileKey].OrderByDescending(pair => pair.Value).ThenBy(pair => pair.Key, StringComparer.Ordinal).First().Key;
+                    yield return (key, AttributeValue.Parse(text));
                 }
             }
         }
@@ -592,7 +755,17 @@ namespace DialogClassGenerator
                 return control.DialogDefault;
             }
 
-            KeyValuePair<int, int> common = control.SamplesInMenu.Concat(control.SamplesOutsideMenu).OrderByDescending(pair => pair.Value).FirstOrDefault();
+            // Values of the menu and values enough files hold to get a member come before rare values; when only rare ones
+            // are known (a .gar arrow type 17 and 0, one file each), the first item of the menu, so that a missing key reads
+            // as a member of the enum
+            bool Known(KeyValuePair<int, int> pair) => control.SamplesInMenu.ContainsKey(pair.Key) || pair.Value >= MinimumFilesForMember;
+            List<KeyValuePair<int, int>> samples = control.SamplesInMenu.Concat(control.SamplesOutsideMenu).ToList();
+            if (samples.Count > 0 && !samples.Any(Known) && control.Options.Count > 0)
+            {
+                return control.Options[0].Value;
+            }
+
+            KeyValuePair<int, int> common = samples.OrderBy(pair => Known(pair) ? 0 : 1).ThenByDescending(pair => pair.Value).FirstOrDefault();
             return common.Value > 0 ? common.Key : (int?)null;
         }
 
@@ -640,31 +813,45 @@ namespace DialogClassGenerator
                     .Where(candidate => candidate.Length >= 2)
                     .FirstOrDefault(candidate => !EnumsByName.ContainsKey(candidate)) ?? stem + KeyPascal(control.Key);
 
-                for (int n = 2; EnumsByName.ContainsKey(name); n++)
+                if (EnumReuse.TryGetValue(name, out string released) && EnumsByName.TryGetValue(released, out EnumModel reused)
+                    && control.Options.All(option => reused.Members.Any(member => member.Value == option.Value)))
                 {
-                    name = name.TrimEnd('0', '1', '2', '3', '4', '5', '6', '7', '8', '9') + n.ToString(CultureInfo.InvariantCulture);
+                    model = reused;
+                    EnumsBySignature[signature] = reused;
                 }
-
-                model = new EnumModel { Name = name, Description = label };
-                var used = new HashSet<string>(StringComparer.Ordinal);
-                // Menus whose items are all constant names (DIM_REINFORCEMENT_STRAIGHT, DIM_REINFORCEMENT_SKEWED): the words they
-                // share in front say nothing
-                int shared = SharedConstantWords(control.Options);
-                foreach (Option option in control.Options)
+                else
                 {
-                    string member = MemberName(option, shared);
-                    if (!used.Add(member))
+                    for (int n = 2; EnumsByName.ContainsKey(name); n++)
                     {
-                        member = member + Math.Abs(option.Value).ToString(CultureInfo.InvariantCulture);
-                        used.Add(member);
+                        name = name.TrimEnd('0', '1', '2', '3', '4', '5', '6', '7', '8', '9') + n.ToString(CultureInfo.InvariantCulture);
                     }
 
-                    model.Members.Add((member, option.Value, option.Label));
-                }
+                    model = new EnumModel { Name = name, Description = label };
+                    var used = new HashSet<string>(StringComparer.Ordinal);
+                    // Menus whose items are all constant names (DIM_REINFORCEMENT_STRAIGHT, DIM_REINFORCEMENT_SKEWED): the words they
+                    // share in front say nothing
+                    int shared = SharedConstantWords(control.Options);
+                    foreach (Option option in control.Options)
+                    {
+                        string member = MemberName(option, shared);
+                        if (!used.Add(member))
+                        {
+                            member = member + Math.Abs(option.Value).ToString(CultureInfo.InvariantCulture);
+                            used.Add(member);
+                        }
 
-                EnumsBySignature[signature] = model;
-                EnumsByName[name] = model;
-                EnumKeys[name] = new SortedSet<string>(StringComparer.Ordinal);
+                        if (MemberRenames.TryGetValue(name + "." + member, out string renamed))
+                        {
+                            member = renamed;
+                        }
+
+                        model.Members.Add((member, option.Value, option.Label));
+                    }
+
+                    EnumsBySignature[signature] = model;
+                    EnumsByName[name] = model;
+                    EnumKeys[name] = new SortedSet<string>(StringComparer.Ordinal);
+                }
             }
 
             // Values Tekla writes that the menu does not offer (vg.GridObjectGridOn 0, DrawingWeld.DrawAs 0, ...): a member
@@ -673,7 +860,8 @@ namespace DialogClassGenerator
             {
                 if (model.Members.All(member => member.Value != pair.Key))
                 {
-                    model.Members.Add(("Value" + (pair.Key < 0 ? "Minus" : string.Empty) + Math.Abs(pair.Key).ToString(CultureInfo.InvariantCulture), pair.Key, null));
+                    string member = "Value" + (pair.Key < 0 ? "Minus" : string.Empty) + Math.Abs(pair.Key).ToString(CultureInfo.InvariantCulture);
+                    model.Members.Add((MemberRenames.TryGetValue(model.Name + "." + member, out string renamed) ? renamed : member, pair.Key, null));
                     model.FromFiles.Add(pair.Key);
                 }
             }
@@ -745,7 +933,9 @@ namespace DialogClassGenerator
                 return string.Concat(label.Split('_').Skip(sharedWords).Select(w => char.ToUpperInvariant(w[0]) + w.Substring(1).ToLowerInvariant()));
             }
 
-            bool picture = label.Length == 0 || System.Text.RegularExpressions.Regex.IsMatch(label, "^[a-z]+(_[a-z0-9]+)+$") || label.StartsWith("SYMBOL_BMP", StringComparison.Ordinal);
+            // A picture named in PictureMembers whatever its spelling (the weld pictures w_Type_23, w_Finish_4)
+            bool picture = label.Length == 0 || System.Text.RegularExpressions.Regex.IsMatch(label, "^[a-z]+(_[a-z0-9]+)+$") || label.StartsWith("SYMBOL_BMP", StringComparison.Ordinal)
+                || (option.Bitmap != null && label == option.Bitmap && PictureMembers.ContainsKey(option.Bitmap));
             string name = !string.IsNullOrEmpty(option.ApiName) && IsIdentifier(option.ApiName) ? option.ApiName
                 : picture ? (option.Bitmap != null && PictureMembers.TryGetValue(option.Bitmap, out string member) ? member : string.Empty)
                 : Pascal(label);
@@ -829,8 +1019,11 @@ namespace DialogClassGenerator
         // The assembly drawing file saved from the dialog, for default values
         private static AttributeCollection SampleAd;
 
-        // Page class → sample of its drawing object file (PageSpec.SampleFile)
+        // Page class → sample of its drawing object file (PageSpec.SampleFile, PageSpec.DialogSampleFile)
         private static readonly Dictionary<string, AttributeCollection> ObjectFileSamples = new Dictionary<string, AttributeCollection>(StringComparer.Ordinal);
+
+        // Object file class → the file saved from its dialog (ObjectFileSpec.DialogSampleFile): the keys of its table
+        private static readonly Dictionary<string, AttributeCollection> ObjectFileReferences = new Dictionary<string, AttributeCollection>(StringComparer.Ordinal);
 
         private static string WritePage(PageSpec spec, Container page, AttributeCollection vi, AttributeCollection gd)
         {

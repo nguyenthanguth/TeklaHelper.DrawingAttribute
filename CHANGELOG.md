@@ -1,5 +1,63 @@
 # Changelog
 
+## 1.3.0 - 2026-10-23
+
+### Packaging
+- The package targets `net48` and `net8.0` besides `netstandard2.0`: on .NET Framework 4.8 (Tekla plug-ins and tools) and
+  .NET 8 it has no dependency, since they have the code pages built in; `System.Text.Encoding.CodePages` is a dependency
+  of `netstandard2.0` only (its 8.0 differs from the 7.0 Tekla 2025 ships).
+
+### Page files
+- `ViewDimensioning.ViewFileExtension` (`.viewdim`), `DetailViewPage.GADrawingFileExtension` /
+  `AssemblyDrawingFileExtension` (`.detail_label`) and the row files of `ViewLabelMark` (`.view_mark`, `.section_mark`,
+  `.section_view_mark`, `.detail_mark`, `.detail_view_mark`), matched by key set with the shipped files.
+
+### Mark and label content
+- `MarkContent` (namespace `Marks`): the elements of a mark or a label row instead of the XML of the `ContentString`
+  keys — property elements of each kind of mark (`MarkElementTypes`), user-defined attributes with unit and format,
+  texts, line feeds, spaces, backspaces, symbols, frames, report templates — with `MarkFormat` (font, colour, height).
+  `ViewLabelMark.Elements` for the label rows of views, section and detail marks; `AttributeSection.GetMarkContent` /
+  `SetMarkContent` for any key. The sub-type of every element was read back through the Open API of Tekla 2025, and
+  content written by the library in view labels, part marks, section and detail marks was read by it element by
+  element. Content Tekla wrote is written back as it was, including two kinds of damage Tekla's own files hold.
+
+### Drawing object properties
+- A class for the file of every property dialog of the drawing editor (`DrawingObjects` namespace), generated from the
+  decoded dialogs like the other pages, each with `CreateDefault()` and the legacy dialog prefix stripped on load:
+  - new pages: `TextAttributeFile` (`.drtxt`), `SymbolAttributeFile` (`.sbl`), `LevelMarkAttributeFile` (`.lev`),
+    `RevisionMarkAttributeFile` (`.rev`), `AssociativeNoteAttributeFile` (`.note`), `LineAttributeFile` (`.gln`),
+    `ArcAttributeFile` (`.gar`), `PolylineAttributeFile` (`.gpl`), `CircleAttributeFile` (`.gci`),
+    `RectangleAttributeFile` (`.grt`), `PolygonAttributeFile` (`.gpg`, clouds too), `TextFileAttributeFile` (`.fas`),
+    `DwgAttributeFile` (`.fdg`), `ImageAttributeFile` (`.idg`), `HyperlinkAttributeFile` (`.fhl`),
+    `LinkedDrawingAttributeFile` (`.ldr`), `PartAttributeFile` (`.dprt`), `SurfaceTreatmentAttributeFile` (`.dsrf`),
+    `PourAttributeFile` (`.po`), `EdgeChamferAttributeFile` (`.dcha`), `ReinforcementAttributeFile` (`.drbr`),
+    `ReinforcementMeshAttributeFile` (`.drmsh`), `DrawingWeldMarkAttributeFile` (`.wls`, weld marks drawn in the
+    drawing), `SectionMarkAttributeFile` (`.cs`) and `DetailMarkAttributeFile` (`.detail`) with their label rows,
+    `GADimensionSetupAttributeFile` (`.ga_dim_setup`);
+  - files that hold the keys of a page of the view properties use that page's class: `PartMarkAttributeFile` (`.pm`),
+    `BoltMarkAttributeFile` (`.sm`), `ConnectionMarkAttributeFile` (`.jm`), `ReinforcementMarkAttributeFile` (`.rm`),
+    `SurfaceTreatmentMarkAttributeFile` (`.surfm`), `PourMarkAttributeFile` (`.pom`), `WeldMarkAttributeFile` (`.wel`),
+    `WeldAttributeFile` (`.welo`), `BoltAttributeFile` (`.sc`), `PourBreakAttributeFile` (`.pbr`),
+    `ReferenceObjectAttributeFile` (`.drmp`), `GridAttributeFile` (`.dgr`), `GridLineAttributeFile` (`.grl`);
+  - `ReinforcementDimensionAttributeFile` (`.rdim`) holds the keys of a `.dim` file (`DimensionProperties` and the nine
+    `DimensionMark`s).
+- Every key of the files saved from the Tekla 2025 dialogs and of the shipped files has a property (except four rebar
+  dimension mark keys of older versions in mark files, `RebarGroupMarkAttributes.CloseRebarDimMarkToFather` /
+  `TaggedRebarDimMarkLocation`, which no dialog has). `CreateDefault()` writes the value most shipped files of the type
+  hold, also for the files that use a view page's class. Checked in Tekla
+  2025: a file of each type written by `CreateDefault()` with one value changed was loaded with each attribute class of
+  the Open API that takes a file name, and the class showed the value (36 checks). The class summaries name the class
+  that reads each file; `Mark.MarkAttributes(modelObject, name)` reads `.note`, `ReinforcementMeshAttributes` reads
+  `.drbr` and `CloudAttributes` reads `.gpg`. Every file `CreateDefault()` writes was also loaded in its dialog
+  (Load, then Save as) and kept its values.
+- New enums for the menus of these dialogs: `WeldType`, `WeldContour` and `WeldFinish` (named after
+  `Tekla.Structures.Model.BaseWeld`, whose values they store), `ArrowPosition` (`Arrowhead.ArrowPosition`, checked),
+  `EmbeddedObjectScaling` and `ForeignObjectScaling` (the API's scaling options, checked), `TextArrowType`,
+  `LineArrowType` (0 is `NoArrow`, checked), the leader line types of texts, symbols, level marks, revision marks and
+  notes (named after the dialogs' pictures, captured from Tekla 2025), `GADimension*`, and others; the part and pour
+  properties use the released
+  `Representation`. `LeaderLineArrow` gains `Value16` and `Value17`, which shipped files hold.
+
 ## 1.2.0 - 2026-10-23
 
 ### Dimension properties

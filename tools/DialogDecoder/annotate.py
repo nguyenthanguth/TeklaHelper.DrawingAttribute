@@ -52,6 +52,10 @@ ENUMS = {
     'DimensionSetBaseAttributes.ExaggerationOrigins': {1: 'NearDimensionLine', 2: 'NearMeasuredObject'},
     'DimensionSetBaseAttributes.CombineFormats': {0: 'Off', 1: 'NumberOfItemsTimesLength', 2: 'NumberOfItemsTimesLengthEqualsResult'},
     'DimensionSetBaseAttributes.CurvedDimensionTypes': {0: 'Distance', 1: 'Angle'},
+    # Drawing object files
+    'ArrowheadPositions': {0: 'None', 1: 'Start', 2: 'End', 3: 'Both'},
+    'ScalingOptions': {0: 'NoScaling', 4: 'ScaleToFit'},
+    'EmbeddedObjectScalingOptions': {1: 'ScaleX', 3: 'ScaleXY', 4: 'ScaleToFit', 8: 'ScaleBestFit'},
 }
 
 # Dimension pages (dd., dcd.): key → (enum, API value - stored value), checked value by value against the menus
@@ -85,9 +89,9 @@ def enum_for(page, key, ctl):
         return 'DrawingColors', 0
     if t == 'linetype':
         return 'LineTypesEnum', 0
-    if k in ('draw_as',) and page in ('PartObject', 'NeighborPartObject', 'PourObject'):
+    if k in ('draw_as',) and page in ('PartObject', 'NeighborPartObject', 'PourObject', 'PartProperties', 'PourProperties'):
         return 'Part.Representation', 0
-    if k == 'draw_as' and page == 'SurfaceTreatmentObject':
+    if k == 'draw_as' and page in ('SurfaceTreatmentObject', 'SurfaceTreatmentProperties'):
         return 'Surfacing.Representation', 0
     if (k == 'draw_as' and page == 'BoltObject') or k == 'BoltDrawAs':
         return 'Bolt.Representation', 0
@@ -101,7 +105,7 @@ def enum_for(page, key, ctl):
         return 'TextAlignment', 0
     if k == 'DrawAs' and page == 'WeldObject':
         return 'Weld.Representation', 0
-    if k == 'representation' and ('BarAttr' in key or 'MeshAttr' in key):
+    if k == 'representation' and ('BarAttr' in key or 'MeshAttr' in key or page in ('ReinforcementProperties', 'ReinforcementMeshProperties')):
         return 'ReinforcementBase.ReinforcementRepresentationTypes', 1
     if k in ('visibility_in_groups', 'visibility_longitudinal', 'visibility_crossing'):
         return 'ReinforcementBase.ReinforcementVisibilityTypes', 0
@@ -113,6 +117,12 @@ def enum_for(page, key, ctl):
         return 'View.LabelLineLengthType', 1
     if k == 'cut_on' and page == 'Attributes':
         return 'View.ShorteningCutPartType', 0
+    if k == 'arrow' and page in ('LineProperties', 'ArcProperties', 'PolylineProperties'):
+        return 'ArrowheadPositions', 0
+    if k == 'scaling_type' and page in ('DwgProperties', 'ImageProperties'):
+        return 'EmbeddedObjectScalingOptions', 0
+    if k == 'scaling_type' and page.endswith('Properties'):
+        return 'ScalingOptions', 0
     return None, 0
 
 def walk(n):

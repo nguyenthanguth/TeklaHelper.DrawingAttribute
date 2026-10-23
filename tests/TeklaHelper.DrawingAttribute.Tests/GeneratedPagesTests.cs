@@ -13,7 +13,7 @@ using Xunit;
 namespace TeklaHelper.DrawingAttribute.Tests
 {
     /// <summary>
-    /// The pages generated from the decoded Tekla dialogs (Pages/Generated), walked by reflection through every tab and
+    /// The pages generated from the decoded Tekla dialogs (Pages/Generated, DrawingObjects/Generated), walked by reflection through every tab and
     /// group box of every host.
     /// </summary>
     public sealed class GeneratedPagesTests
@@ -26,8 +26,19 @@ namespace TeklaHelper.DrawingAttribute.Tests
             yield return new object[] { new Func<AttributeFile>(() => new AssemblyDrawingAttributeFile()) };
             yield return new object[] { new Func<AttributeFile>(() => new SinglePartDrawingAttributeFile()) };
             yield return new object[] { new Func<AttributeFile>(() => new CastUnitDrawingAttributeFile()) };
-            yield return new object[] { new Func<AttributeFile>(() => new DimensionAttributeFile()) };
+            foreach (Type type in ObjectFileTypes())
+            {
+                yield return new object[] { new Func<AttributeFile>(() => (AttributeFile)Activator.CreateInstance(type)) };
+            }
         }
+
+        /// <summary>The classes of the drawing object files (.dim, .drtxt, .pm, ...): every attribute file of the DrawingObjects namespace.</summary>
+        internal static IEnumerable<Type> ObjectFileTypes() =>
+            typeof(DimensionAttributeFile).Assembly.GetExportedTypes()
+                .Where(t => t.Namespace == typeof(DimensionAttributeFile).Namespace && typeof(AttributeFile).IsAssignableFrom(t) && !t.IsAbstract)
+                .OrderBy(t => t.Name, StringComparer.Ordinal);
+
+        private static bool IsObjectFile(AttributeFile file) => file.GetType().Namespace == typeof(DimensionAttributeFile).Namespace;
 
         [Theory]
         [MemberData(nameof(Hosts))]
@@ -68,7 +79,9 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 }
             }
 
-            Assert.True(count > 300, "only " + count + " properties");
+            // The small object files (an edge chamfer has two settings) only need properties at all
+            int minimum = IsObjectFile(file) && !(file is DimensionAttributeFile) ? 1 : 300;
+            Assert.True(count >= minimum, "only " + count + " properties");
             Assert.True(failures.Count == 0, string.Join(Environment.NewLine, failures.Take(30)));
         }
 
@@ -285,14 +298,16 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 ("*.ad", () => new AssemblyDrawingAttributeFile()),
                 ("*.wd", () => new SinglePartDrawingAttributeFile()),
                 ("*.cud", () => new CastUnitDrawingAttributeFile()),
-                ("*.dim", () => new DimensionAttributeFile()),
-            };
+            }.Concat(ObjectFileTypes().Select(type => ("*" + ((AttributeFile)Activator.CreateInstance(type)).Extension,
+                new Func<AttributeFile>(() => (AttributeFile)Activator.CreateInstance(type)))));
             foreach ((string pattern, Func<AttributeFile> create) in types)
             {
                 HashSet<string> handWritten = KeysOfHandWrittenProperties(create);
-                foreach (string path in Directory.EnumerateFiles(root, pattern))
+
+                // The exact extension: on Windows *.wel also finds .welo files
+                foreach (string path in Directory.EnumerateFiles(root, pattern).Where(p => string.Equals(Path.GetExtension(p), pattern.Substring(1), StringComparison.OrdinalIgnoreCase)))
                 {
-                    if (!AttributeFileFormat.Read(path).HasEncodingLine)
+                    if (!HasEncodingLine(path))
                     {
                         continue;
                     }
@@ -375,10 +390,17 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 roots.Add(view.Marks);
                 roots.Add(view.Objects);
             }
-            else if (file is DimensionAttributeFile dimension)
+            else if (IsObjectFile(file))
             {
-                roots.Add(dimension.Properties);
-                roots.AddRange(dimension.Marks);
+                // Its pages (Properties, the marks of a dimension) and their label rows (SectionMarkA1, LabelMarkA1, ...)
+                foreach (PropertyInfo property in file.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly))
+                {
+                    if (property.GetValue(file) is AttributeSection page)
+                    {
+                        roots.Add(page);
+                        roots.AddRange(page.GetType().GetProperties().Where(p => p.PropertyType == typeof(ViewLabelMark)).Select(p => p.GetValue(page)));
+                    }
+                }
             }
             else if (file is DrawingAttributeFile drawing)
             {
@@ -466,6 +488,11 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 return DrawingColor.Red;
             }
 
+            if (type == typeof(Marks.MarkContent))
+            {
+                return new Marks.MarkContent().AddText("TEST VALUE");
+            }
+
             if (type.IsEnum)
             {
                 Array values = Enum.GetValues(type);
@@ -492,6 +519,19 @@ namespace TeklaHelper.DrawingAttribute.Tests
         /// </summary>
         private static bool IsOtherPageKey(AttributeFile file, AttributeSection page, string key) =>
             Pages(file).Any(other => other.Prefix.Length > page.Prefix.Length && key.StartsWith(other.Prefix, StringComparison.Ordinal));
+
+        /// <summary>
+        /// Whether a file starts with an encoding line (a file a recent Tekla wrote), read from its first bytes: .cs is also
+        /// the extension of the C# macros, which are no attribute files.
+        /// </summary>
+        internal static bool HasEncodingLine(string path)
+        {
+            var start = new byte[8];
+            using (FileStream stream = File.OpenRead(path))
+            {
+                return stream.Read(start, 0, start.Length) == start.Length && System.Text.Encoding.ASCII.GetString(start) == "encoding";
+            }
+        }
 
         private static bool IsEnableKey(string key) =>
             key.EndsWith("_en", StringComparison.Ordinal) || key.EndsWith("_enable", StringComparison.Ordinal);

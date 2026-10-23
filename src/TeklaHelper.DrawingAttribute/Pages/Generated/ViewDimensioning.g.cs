@@ -20,6 +20,12 @@ namespace TeklaHelper.DrawingAttribute.Views
         public const string ViewPrefix = "ViewDimensioning.";
 
         /// <summary>
+        /// Extension of the file the page's Save button writes in the view properties (only for the dialogs; the Open
+        /// API reads the .vi file).
+        /// </summary>
+        public const string ViewFileExtension = ".viewdim";
+
+        /// <summary>
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>

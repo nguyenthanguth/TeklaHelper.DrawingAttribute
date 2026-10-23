@@ -156,7 +156,8 @@ English labels come from the `string_utf8` objects.
    (which text label belongs to which control).
 2. `annotate.py` adds the Open API enum of each option list and the value statistics of real `.vi` files: which values
    files hold, inside and outside the dialog's menu.
-3. `tools/DialogClassGenerator` turns the JSON into `src/TeklaHelper.DrawingAttribute/Pages/Generated/*.g.cs`:
+3. `tools/DialogClassGenerator` turns the JSON into `src/TeklaHelper.DrawingAttribute/Pages/Generated/*.g.cs` (the drawing
+   object files and their pages into `DrawingObjects/Generated`):
    - tabs, group boxes and sub-dialogs become nested classes;
    - toggles become `bool` with the dialog's on/off values, option lists become enums, colours `DrawingColor`, line
      types `DrawingLineType`;
@@ -267,6 +268,95 @@ Checked in Tekla 2025: `new StraightDimensionSetAttributes("name")` read a libra
 precision, format, short dimension placing, text height, frame, colour and exaggeration, and a dimension created with
 those attributes in a probe drawing kept them.
 
+### The other drawing object files
+
+**Which files.** The attribute classes of Tekla.Structures.Drawing that take a file name (`Text.TextAttributes(name)`,
+`Part.PartAttributes(name)`, ...) list the objects the Open API loads settings for; the dialog table of
+`TeklaStructures_application.dll` and the `.aid` give the dialog of each (`text_dial` → `gr_text_attrib`, ...). Few of
+these types have a modern sample among the shipped files (none for `.sbl`, `.rev`, `.fdg`, `.dcha`, `.sc`, `.drmsh`,
+`.drmp`), so each dialog was saved from Tekla 2025 itself: a drawing macro, run with `Operation.RunMacro` while a drawing
+was open, displayed each dialog (`akit.Callback("acmd_display_attr_dialog", "<dial>", "main_frame")`) and pressed its
+Save as with the name `OBJECT-TEST` (widget names from the `.aid`). The 41 files hold every key of every modern shipped
+file of their type, except four rebar dimension mark keys that older versions wrote; 40 are kept next to the other
+dialog files (the `.dim` one would change the sample counts of the released dimension pages).
+
+**Which extension each class reads.** A probe copied every `OBJECT-TEST.<ext>` under a name of its own with every double
+set to 7.77 and every colour to 163, constructed every attribute class from every name and searched the result for the
+markers. The map is in CLAUDE.md; the surprises: `CloudAttributes` reads the polygon file `.gpg`,
+`ReinforcementMeshAttributes` reads `.drbr` (not `.drmsh`), `EmbeddedObjectAttributes` reads `.fdg` for images too, and
+`Mark.MarkAttributes(drawingObject, name)` reads the associative note file `.note`, not `.pm`. The section mark file is
+`.cs`, the extension of C# macros as well: the statistics and the tests take only `.cs` files that start with an encoding
+line (or the legacy prefix `csym_dial.`).
+
+**Reusing the view pages.** Thirteen dialogs write exactly the key set of a page of the View properties (the part mark
+dialog the keys of `vpm.`, the grid and grid line dialogs those of `vg.`, ...), so their files use the released page
+classes. The others got pages of their own, decoded from their dialog. Dialogs of one structure (text, symbol, level mark
+and revision mark share `gr_text_at_t`; part, surface treatment and pour `gr_part_at_t`; the six graphic objects; the
+five link objects) are each other's other sources, so a key one dialog does not show is typed where another shows it.
+Two decoder additions were needed: the part dialog names the members of two structures with the same members
+(`STRUCT=gr_part_hatch_at_t` and `gr_section_hatch_at_t`, member `hatch_name`), which the prefix shared by the file keys
+cannot tell apart, but the structure's name can (`PartHatch.`); and the associative note takes the keys its dialog does
+not show from the mark panels of the View properties, whose members carry the page prefix (`vpm.`), stripped. The JSON
+files of the existing pages stayed byte for byte the same.
+
+**Names.** Menus that show only pictures keep `ValueN` members, as before, except where the meaning is known: the weld
+symbols of the drawing weld mark store the values of `Tekla.Structures.Model.BaseWeld.WeldTypeEnum`,
+`WeldContourEnum` and `WeldFinishEnum` (picture `w_type_10` stores 10, the API's fillet weld), and take those names.
+The "Edge/Around" and "Workshop/Site" menus are named in the order of their label, which their XML comments say is not
+checked. The part and pour object dialogs order the Representation menu differently from the view's part page; they
+use the released `Representation` enum all the same (`EnumReuse`).
+
+**Defaults.** A file that uses the page of another file type (a `.pm` file the view's part mark page, a `.rdim` file
+the dimension pages) does not take that page's `SetDefaults()`, whose values come from the `.vi` (or `.dim`) files: its
+table holds the values most of its own shipped files hold (`text_colour` 155 in `.pm` files, 161 in the views' `vpm.`),
+else those of the dialog file.
+
+**Checked in Tekla 2025.** A file of each type written by `CreateDefault()` with one value changed was loaded with its
+attribute class, and the class showed the value: 36 checks, among them `arrow` 1/2/3 = `Arrowhead.ArrowPosition`
+Start/End/Both, `scaling_type` 3 and 8 = `ScaleXY` and `ScaleBestFit`, the hatch colours under `PartHatch.` and
+`SectionHatch.`, and the frame colour of a mark (the top-level `line_colour`).
+
+### Mark and label content
+
+The marks and the label rows store what they show as XML in the `ContentString` keys: 17 143 values in 1 289 files,
+with `<Element subType="23">` for a property, `<UserText>`, `<LineFeed/>`, `<Symbol>`, `<Frame>` with mark content
+inside, `<Template>` and a `<Format>` per element. The number is what counts, and it is not the Open API's: the API's
+`PropertyTypes` equal the file numbers for 1 to 53 and 57 to 70 only (the merged mark settings 54–56 are in another order,
+the mesh size is 71 in files and 73 in the API, the scale 79 and 80).
+
+**The numbers.** The Open API served as the translator: a file holding only `<Element subType="N">` was loaded with
+`Mark.MarkAttributes` (from a `.note` file), `View.ViewAttributes`, `SectionMarkAttributes` and `DetailMarkAttributes`
+for every N from 1 to 110, and the element the API returned was noted. All four agreed for every N, so the numbers are
+one table for every kind of mark; the lists of the API's `*PropertyElementTypes` say which elements each kind offers.
+Further probes showed that `name` and `value` are ignored (an element named `PART_POS` with number 82 is the view
+name), that `override` and `hidden` change nothing the API reads, and that a frame with `frame_id` 0 (as the library
+first wrote) loses its elements: they read as following the frame. A mark of a part read `ContentString1`, a mark of a
+reinforcement group `ContentString4`; the model had no other objects to tell the other tables apart.
+
+**Round trip.** Content Tekla wrote must be written back as it was. The reader keeps the attributes of each element in
+their order, the layout (a line per tag, or one line), the line break (two line feeds in some older files), whether a
+text sits on lines of its own, and whether `>` is written `&gt;` (Tekla did both). Every content of the environments and
+models is written back the same, except 25 values that mix UTF-8 with the code page. Two kinds of damage Tekla's own
+files hold are read: an attribute without value (`value= subType`, 390 values, repaired) and a raw `<` in a text
+(`<< Mark >>`, 18 values, kept raw). A review pass found the last one, and that the library numbered frames by changing
+the content it wrote; frames are now numbered per writing.
+
+**Picture-only menus.** The leader line menus of the text, symbol, level mark, revision mark and note dialogs show only
+pictures, the pictures are compiled into Tekla, and the Open API does not read the value. A macro opened each dialog
+and selected each value (`akit.ValueChange` takes the value, not the index; `akit.TabChange` brings the tab), and
+`PrintWindow` captured the dialog window without bringing Tekla to the front; the enlarged pictures named the values
+(no leader line, leader line, base line, base line with an arrow left or right; the level mark's leader line with or
+without the level symbol).
+
+**The object files in their dialogs.** A macro loaded every `CreateDefault()` object file of the library, one value
+changed, into its dialog (Load) and saved it again (Save as): all 41 dialogs took the files, kept the value and every
+key, apart from what they normalise or compute.
+
+**Checked in Tekla 2025.** Content built with `MarkContent` — view name in Tahoma green 5.158, a red text, scale, line
+feed, symbol, a frame with a part position, a user-defined attribute in millimetres with two decimals, a template — was
+written to a view label, a part mark, a section mark and a detail mark, in both layouts, and the Open API read every
+element with its format.
+
 ## 7. Default settings
 
 **Probe.** A view with red, dashed, hidden-line parts was loaded with a file holding only `view_scale`: the parts lost
@@ -361,15 +451,28 @@ view filtered on `Name = COLUMN`.
   - `MarkPages` and `ObjectPages` group the mark and object pages.
   - `ViewProperties` (`.vi`) and the drawing files (`.gd`, `.md`, `.ad`, `.wd`, `.cud`) expose them, with the prefixes of
     each host.
+  - The files of the property dialogs of the drawing editor (`DrawingObjects`): 41 types, from `.dim` and `.drtxt` to
+    the marks, links, graphic objects and reinforcement.
 - **Filters.** `FilterFile` (rows, byte-preserving), an expression tree, and the generated `FilterProperties` catalog.
-- **Samples.** `samples/`: eight offline examples and two that run against Tekla.
+- **Samples.** `samples/`: ten offline examples and two that run against Tekla.
 
 ## 10. Not settled
 
+- What `override="1"` in the format of a mark element does: the Open API reads the element's font with or without it,
+  and no dialog control writes it; whether the drawing draws the element's own font without it was not looked at.
+- What the content tables `ContentString2` and `ContentString3` of a mark are for (the model had only parts and
+  reinforcement groups).
+- The weld menus Edge / Around and Workshop / Site are named from the order of their pictures, not from a capture
+  (`KeyNotes` says so in the XML comment).
+- The legacy key prefixes (`<dialog>.`) of 14 object file types are taken from the dialog names; no shipped legacy file
+  of those types exists to prove them.
+- `.vpro` and `.cpbr` have no sample file and no class.
 - `for_main` of bolt marks: the menu stores 2, many files hold 1; both read as visible, but Tekla's behaviour for each
   was not probed.
-- Some enum values in shipped files have no known meaning (named `ValueN`); a few option lists are pictures only in the
-  dialog (`LeaderLineType`).
+- Some enum values in shipped files have no known meaning (named `ValueN`), among them the released `LeaderLineType`
+  of the mark pages, whose menu is pictures only; the leader line menus of the object files were named from captures.
+- The marks of drawing objects are files of the dialogs only: no attribute class of the Open API reads `.pm`, `.sm`,
+  `.jm`, `.rm`, `.surfm` or `.pom` by name.
 - The dialog's column limits other than the value (127 bytes for category and property, 19 for condition and And/Or,
   0–3 parentheses per row) are documented but not enforced.
 - `dl.placing_direction` has no control in any dialog; its meaning is not known.

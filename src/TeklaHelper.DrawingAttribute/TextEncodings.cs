@@ -15,8 +15,10 @@ namespace TeklaHelper.DrawingAttribute
 
         static TextEncodings()
         {
-            // .NET Core / .NET 5+ only know UTF-* and Latin-1 without this provider; .NET Framework ignores it
+#if !NETFRAMEWORK
+            // .NET Core / .NET 5+ only know UTF-* and Latin-1 without this provider; .NET Framework has every code page
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+#endif
         }
 
         /// <summary>Returns the encoding for a code page, for reading.</summary>

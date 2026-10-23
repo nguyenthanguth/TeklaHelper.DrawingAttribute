@@ -75,6 +75,12 @@ namespace DialogClassGenerator
         /// <summary>Sample of the object file, relative to the folder of the environments shipped with Tekla.</summary>
         public string SampleFile { get; set; }
 
+        /// <summary>
+        /// Sample of the object file saved from its dialog (Save as), relative to the folder of the sample .vi: used instead
+        /// of <see cref="SampleFile"/> by the pages generated after the dimension properties.
+        /// </summary>
+        public string DialogSampleFile { get; set; }
+
         /// <summary>Extension of the file the page's own Save button writes (only for the dialogs).</summary>
         public string PageFileExtension { get; set; }
 
@@ -93,7 +99,7 @@ namespace DialogClassGenerator
         public static readonly PageSpec[] All =
         {
             new PageSpec { Class = "ViewAttributes", Json = "Attributes", Namespace = "TeklaHelper.DrawingAttribute.Views", Title = "Attributes", ViewPrefix = "", TopLevelOnly = true },
-            new PageSpec { Class = "ViewDimensioning", Json = "ViewDimensioning", Namespace = "TeklaHelper.DrawingAttribute.Views", Title = "Dimensioning", ViewPrefix = "ViewDimensioning." },
+            new PageSpec { Class = "ViewDimensioning", Json = "ViewDimensioning", Namespace = "TeklaHelper.DrawingAttribute.Views", Title = "Dimensioning", ViewPrefix = "ViewDimensioning.", ViewFile = ".viewdim" },
             new PageSpec { Class = "ViewLabelMark", Json = "ViewLabelMark", Title = "View label mark (the \"...\" dialog of the label texts A1 to A5)", ViewPrefix = "ViewLabelMarkA1." },
             new PageSpec { Class = "ProtectionPage", Json = "Protection", Title = "Protection", ViewPrefix = "Protection.", GADrawingPrefix = "dpro.", AssemblyDrawingPrefix = "dpro.", GADrawingFile = ".gdrp", AssemblyDrawingFile = ".adr" },
 
@@ -163,7 +169,7 @@ namespace DialogClassGenerator
             {
                 Class = "DetailViewPage", Json = "DetailView", Namespace = "TeklaHelper.DrawingAttribute.Drawings", Title = "Detail view",
                 Description = "The \"Detail view...\" page of the drawing properties: the detail view label, the detail boundary and the detail mark",
-                GADrawingPrefix = "DetailLabel.", AssemblyDrawingPrefix = "DetailLabel.",
+                GADrawingPrefix = "DetailLabel.", AssemblyDrawingPrefix = "DetailLabel.", GADrawingFile = ".detail_label", AssemblyDrawingFile = ".detail_label",
                 LabelMarks = new[] { ("DetailMarkA", "DetailMarkA", "detail mark text"), ("LabelMarkA", "ViewLabelMarkA", "detail view label") },
             },
             new PageSpec
@@ -202,6 +208,167 @@ namespace DialogClassGenerator
                     "PrefixMark.", "PostfixMark.", "LeftUpperTagMark.", "LeftMiddleTagMark.", "LeftLowerTagMark.", "MiddleLowerTagMark.",
                     "RightUpperTagMark.", "RightMiddleTagMark.", "RightLowerTagMark.",
                 },
+            },
+
+            // The other drawing object files with a dialog of their own; the marks, the grid, bolts, welds, pour breaks and
+            // reference objects store the keys of a view page and use its class (see ObjectFileSpecs)
+            new PageSpec
+            {
+                Class = "TextProperties", Json = "TextProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Text properties",
+                Description = "The Text properties dialog of the drawing editor (dialog <c>gr_text_attrib</c>): text, frame, leader line arrow and placing",
+                FileExtension = ".drtxt", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.drtxt",
+            },
+            new PageSpec
+            {
+                Class = "SymbolProperties", Json = "SymbolProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Symbol properties",
+                Description = "The Symbol properties dialog of the drawing editor (dialog <c>gr_symbol_attrib</c>): symbol, frame and placing",
+                FileExtension = ".sbl", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.sbl",
+            },
+            new PageSpec
+            {
+                Class = "LevelMarkProperties", Json = "LevelMarkProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Level mark properties",
+                Description = "The Level mark properties dialog of the drawing editor (dialog <c>gr_level_attrib</c>): content and format of the level, text, frame, arrow and placing",
+                FileExtension = ".lev", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.lev",
+            },
+            new PageSpec
+            {
+                Class = "RevisionMarkProperties", Json = "RevisionMarkProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Revision mark properties",
+                Description = "The Revision mark properties dialog of the drawing editor (dialog <c>gr_revision_attrib</c>): revision texts, text, arrow and frame",
+                FileExtension = ".rev", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.rev",
+            },
+            new PageSpec
+            {
+                Class = "AssociativeNoteProperties", Json = "AssociativeNoteProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Associative note properties",
+                Description = "The Associative note properties dialog of the drawing editor (dialog <c>gr_note_attrib</c>): content, frames, font, units, leader line and placing; the other keys are those of every mark, which the View properties show on the mark pages",
+                FileExtension = ".note", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.note",
+            },
+            new PageSpec
+            {
+                Class = "LineProperties", Json = "LineProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Line properties",
+                Description = "The Line properties dialog of the drawing editor (dialog <c>gr_go_line_attrib</c>): line and arrow",
+                FileExtension = ".gln", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.gln",
+            },
+            new PageSpec
+            {
+                Class = "ArcProperties", Json = "ArcProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Arc properties",
+                Description = "The Arc properties dialog of the drawing editor (dialog <c>gr_go_arc_attrib</c>): line and arrow",
+                FileExtension = ".gar", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.gar",
+            },
+            new PageSpec
+            {
+                Class = "PolylineProperties", Json = "PolylineProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Polyline properties",
+                Description = "The Polyline properties dialog of the drawing editor (dialog <c>gr_go_polyline_attrib</c>): line and arrow",
+                FileExtension = ".gpl", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.gpl",
+            },
+            new PageSpec
+            {
+                Class = "CircleProperties", Json = "CircleProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Circle properties",
+                Description = "The Circle properties dialog of the drawing editor (dialog <c>gr_go_circle_attrib</c>): line and fill",
+                FileExtension = ".gci", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.gci",
+            },
+            new PageSpec
+            {
+                Class = "RectangleProperties", Json = "RectangleProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Rectangle properties",
+                Description = "The Rectangle properties dialog of the drawing editor (dialog <c>gr_go_rectangle_attrib</c>): line and fill",
+                FileExtension = ".grt", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.grt",
+            },
+            new PageSpec
+            {
+                Class = "PolygonProperties", Json = "PolygonProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Polygon properties",
+                Description = "The Polygon properties dialog of the drawing editor (dialog <c>gr_go_polygon_attrib</c>), which clouds use too: line and fill",
+                FileExtension = ".gpg", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.gpg",
+            },
+            new PageSpec
+            {
+                Class = "TextFileProperties", Json = "TextFileProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Text file properties",
+                Description = "The Text file properties dialog of the drawing editor (dialog <c>gr_fo_asc_attrib</c>): text style, frame, scaling and file",
+                FileExtension = ".fas", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.fas",
+            },
+            new PageSpec
+            {
+                Class = "DwgProperties", Json = "DwgProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "DWG/DXF properties",
+                Description = "The DWG/DXF properties dialog of the drawing editor (dialog <c>gr_fo_dwg_attrib</c>): scaling, frame and file",
+                FileExtension = ".fdg", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.fdg",
+            },
+            new PageSpec
+            {
+                Class = "ImageProperties", Json = "ImageProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Image properties",
+                Description = "The Image properties dialog of the drawing editor (dialog <c>gr_fo_image_attrib</c>): scaling, frame and file",
+                FileExtension = ".idg", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.idg",
+            },
+            new PageSpec
+            {
+                Class = "HyperlinkProperties", Json = "HyperlinkProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Hyperlink properties",
+                Description = "The Hyperlink properties dialog of the drawing editor (dialog <c>gr_fo_link_attrib</c>): text style, frame, scaling and link",
+                FileExtension = ".fhl", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.fhl",
+            },
+            new PageSpec
+            {
+                Class = "LinkedDrawingProperties", Json = "LinkedDrawingProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Linked drawing properties",
+                Description = "The Linked drawing properties dialog of the drawing editor (dialog <c>gr_link_drawing_attrib</c>): text style, frame, scaling and link",
+                FileExtension = ".ldr", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.ldr",
+            },
+            new PageSpec
+            {
+                Class = "PartProperties", Json = "PartProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Part properties",
+                Description = "The Part properties dialog of the drawing editor (dialog <c>gr_part_attrib</c>): representation, lines, additional marks and fill of a part in a drawing",
+                FileExtension = ".dprt", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.dprt",
+            },
+            new PageSpec
+            {
+                Class = "SurfaceTreatmentProperties", Json = "SurfaceTreatmentProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Surface treatment properties",
+                Description = "The Surface treatment properties dialog of the drawing editor (dialog <c>gr_surfacing_attrib</c>): visible and hidden lines; the other keys are those of the part properties, whose structure the file shares",
+                FileExtension = ".dsrf", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.dsrf",
+            },
+            new PageSpec
+            {
+                Class = "PourProperties", Json = "PourProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Pour object properties",
+                Description = "The Pour object properties dialog of the drawing editor (dialog <c>grPourAttrib</c>): lines, additional marks and fill",
+                FileExtension = ".po", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.po",
+            },
+            new PageSpec
+            {
+                Class = "EdgeChamferProperties", Json = "EdgeChamferProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Edge chamfer properties",
+                Description = "The Edge chamfer properties dialog of the drawing editor (dialog <c>grChamferAttrib</c>): the visible lines",
+                FileExtension = ".dcha", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.dcha",
+            },
+            new PageSpec
+            {
+                Class = "ReinforcementProperties", Json = "ReinforcementProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Reinforcement properties",
+                Description = "The Reinforcement properties dialog of the drawing editor (dialog <c>gr_rebar_attrib</c>): representation, lines, symbols and line appearance",
+                FileExtension = ".drbr", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.drbr",
+            },
+            new PageSpec
+            {
+                Class = "ReinforcementMeshProperties", Json = "ReinforcementMeshProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Reinforcement mesh properties",
+                Description = "The Reinforcement mesh properties dialog of the drawing editor (dialog <c>gr_rebar_mesh_attrib</c>): representation, lines, symbols and line appearance",
+                FileExtension = ".drmsh", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.drmsh",
+            },
+            new PageSpec
+            {
+                Class = "DrawingWeldMarkProperties", Json = "DrawingWeldMarkProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Weld mark properties",
+                Description = "The Weld mark properties dialog of a weld mark drawn in the drawing editor (dialog <c>gr_wld_attrib</c>; the weld marks of model welds are in .wel files): weld symbols above and below the line, text and placing",
+                FileExtension = ".wls", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.wls",
+            },
+            new PageSpec
+            {
+                Class = "SectionMarkProperties", Json = "SectionMarkProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Section mark properties",
+                Description = "The Section mark properties dialog of the drawing editor (dialog <c>gr_csym_attrib</c>): cutting line, section mark and view label",
+                FileExtension = ".cs", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.cs",
+                LabelMarks = new[] { ("SectionMarkA", "SectionMarkA", "section mark text"), ("LabelMarkA", "ViewLabelMarkA", "section view label") },
+            },
+            new PageSpec
+            {
+                Class = "DetailMarkProperties", Json = "DetailMarkProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "Detail mark properties",
+                Description = "The Detail mark properties dialog of the drawing editor (dialog <c>gr_detail_symbol_attrib</c>): view label, detail boundary and detail mark",
+                FileExtension = ".detail", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.detail",
+                LabelMarks = new[] { ("DetailMarkA", "DetailMarkA", "detail mark text"), ("LabelMarkA", "ViewMarkA", "detail view label") },
+            },
+            new PageSpec
+            {
+                Class = "GADimensionSetupProperties", Json = "GADimensionSetupProperties", Namespace = "TeklaHelper.DrawingAttribute.DrawingObjects", Title = "GA drawing dimension setup",
+                Description = "The settings dialog of the semi-automatic dimensioning of GA drawings (dialog <c>dim_ga_auto_setup</c>)",
+                FileExtension = ".ga_dim_setup", FilePrefixes = new[] { string.Empty }, DialogSampleFile = "OBJECT-TEST.ga_dim_setup",
             },
         };
     }

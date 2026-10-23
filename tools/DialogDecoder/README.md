@@ -2,7 +2,8 @@
 
 Decodes the View properties dialog of Tekla Structures, and the pages of the drawing properties dialogs it does not
 have, from the compiled dialog resources into one JSON file per page (`tools/DialogClassGenerator/Dialogs/*.json`). `tools/DialogClassGenerator` turns those files into the page classes of
-the library (`src/TeklaHelper.DrawingAttribute/Pages/Generated`). Run it again for another Tekla version.
+the library (`src/TeklaHelper.DrawingAttribute/Pages/Generated`, and `DrawingObjects/Generated` for the drawing object
+files). Run it again for another Tekla version.
 
 Needs Python 3 and a shell (`sh` from Git for Windows). No Python packages.
 
@@ -23,9 +24,13 @@ identical copy of the View properties dialog. The decoder reads:
   (`ViewLabelMarkA1.`, `SectionMark.SectionMarkA1.`, `DetailMarkA1.`, ...) are listed under `labelMarks`; they are the
   structure of the page `ViewLabelMark`;
 - for the files of drawing objects (`FILE_PAGES`): the dialog of the object (`gr_dim_attrib` for `.dim`, the mark
-  dialog `gr_dim_mark_attrib`), with the keys of a sample file (`--file`, `common/system/standard.dim`) and of every file
+  dialog `gr_dim_mark_attrib`, `gr_text_attrib` for `.drtxt`, ...), with the keys of a sample file (`--file`:
+  `common/system/standard.dim` and the files `OBJECT-TEST.<ext>` saved from each dialog of Tekla 2025) and of every file
   of that type under the folders after `--file-folders`. A member without its struct (`height`) takes the struct of the
-  unique file key ending with it (`FontAttr.height`).
+  unique file key ending with it (`FontAttr.height`); on the pages of `STRUCT_PREFIX_PAGES`, a widget's `STRUCT`
+  (`gr_part_hatch_at_t`) gives the prefix its members' file keys share, between equal ones the one spelling the
+  structure (`PartHatch.`). Dialogs of the same structure are each other's other sources (`TEXT_SIBLINGS`, ...); a
+  source may name a panel of the View properties with a fourth element, the prefix its members carry (`vpm.`).
 
 The `.aid` format ("RES 1.1") is a header, a pool of NUL-terminated strings and a token stream of objects and
 attributes; `aid.py` describes and parses it. In a control, `MEMBER` is the key in the attribute file, `VALUEINT` the
@@ -75,7 +80,7 @@ is recorded per control (`labelSource`, `confidence`), and the generator keeps t
    ```
 
 5. **Take the new files and regenerate** the page classes (command in CLAUDE.md), then review the diff of
-   `Pages/Generated`: renamed properties and enums break users of the library.
+   `Pages/Generated` and `DrawingObjects/Generated`: renamed properties and enums break users of the library.
 6. **Check** with the samples of that version:
 
    ```shell

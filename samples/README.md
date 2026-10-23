@@ -5,7 +5,7 @@ A console application with a menu of examples. Each example is one file and read
 ```shell
 dotnet build samples/TeklaHelper.DrawingAttribute.Samples -c Release
 samples/TeklaHelper.DrawingAttribute.Samples/bin/Release/net48/TeklaHelper.DrawingAttribute.Samples.exe            # menu
-samples/TeklaHelper.DrawingAttribute.Samples/bin/Release/net48/TeklaHelper.DrawingAttribute.Samples.exe offline    # examples 1-8
+samples/TeklaHelper.DrawingAttribute.Samples/bin/Release/net48/TeklaHelper.DrawingAttribute.Samples.exe offline    # examples 1-10
 samples/TeklaHelper.DrawingAttribute.Samples/bin/Release/net48/TeklaHelper.DrawingAttribute.Samples.exe 1 --out C:\temp\attributes
 ```
 
@@ -22,12 +22,14 @@ code that wrote them.
 | 6 | [Offline/PageFilesExample.cs](TeklaHelper.DrawingAttribute.Samples/Offline/PageFilesExample.cs) | The files of single pages (`.vp`, `.vpm`, `.vg`, `.gdgr`, ...) for the dialogs: export, import into a view or a drawing |
 | 7 | [Offline/UnmodelledKeysExample.cs](TeklaHelper.DrawingAttribute.Samples/Offline/UnmodelledKeysExample.cs) | Keys without a typed property: the `Advanced` groups, `GetSection` and typed `Get*` / `Set*` by key, `GenericAttributeFile` for any extension |
 | 8 | [Offline/ModifyCheckBoxesExample.cs](TeklaHelper.DrawingAttribute.Samples/Offline/ModifyCheckBoxesExample.cs) | The check boxes of the dialogs (`*_en`): `SetAllEnabled`, `SetEnabled` |
-| 9 | [Online/CreateGADrawingExample.cs](TeklaHelper.DrawingAttribute.Samples/Online/CreateGADrawingExample.cs) | **Needs Tekla Structures 2025 with a model open.** Writes `.gd` and `.vi` files to the model's attributes folder, creates a GA drawing with two plan views (all parts / only the parts of one name) and counts the parts the Drawing API finds in each view |
-| 10 | [Online/ApplyToOpenDrawingExample.cs](TeklaHelper.DrawingAttribute.Samples/Online/ApplyToOpenDrawingExample.cs) | **Needs a drawing open.** For the selected views (or all), writes a `.vi` from `standard.vi` with hidden lines and a profile filter, loads it with `view.Attributes.LoadAttributes`, and counts the parts before and after |
+| 9 | [Offline/DrawingObjectsExample.cs](TeklaHelper.DrawingAttribute.Samples/Offline/DrawingObjectsExample.cs) | Property files of drawing editor objects: a text (`.drtxt`), a line (`.gln`), and the part mark page of a view as a part mark file (`.pm`) |
+| 10 | [Offline/MarkContentExample.cs](TeklaHelper.DrawingAttribute.Samples/Offline/MarkContentExample.cs) | The "Elements in mark" (`ContentString`) of a view label and a part mark built from typed elements, a format and a frame, and read back |
+| 11 | [Online/CreateGADrawingExample.cs](TeklaHelper.DrawingAttribute.Samples/Online/CreateGADrawingExample.cs) | **Needs Tekla Structures 2025 with a model open.** Writes `.gd` and `.vi` files to the model's attributes folder, creates a GA drawing with two plan views (all parts / only the parts of one name) and counts the parts the Drawing API finds in each view |
+| 12 | [Online/ApplyToOpenDrawingExample.cs](TeklaHelper.DrawingAttribute.Samples/Online/ApplyToOpenDrawingExample.cs) | **Needs a drawing open.** For the selected views (or all), writes a `.vi` from `standard.vi` with hidden lines and a profile filter, loads it with `view.Attributes.LoadAttributes`, and counts the parts before and after |
 
 The online examples ask before they change anything. The answers can also be piped, one per line, e.g.
-`printf 'COLUMN\ny\nn\n' | ...Samples.exe 9`; with no more input, a question is answered no (or with its default).
-Example 9 lists the part names of the model and example 10 the profiles of each view, to choose a filter from.
+`printf 'COLUMN\ny\nn\n' | ...Samples.exe 11`; with no more input, a question is answered no (or with its default).
+Example 11 lists the part names of the model and example 12 the profiles of each view, to choose a filter from.
 
 ## How the project references Tekla
 
@@ -37,7 +39,7 @@ Example 9 lists the part names of the model and example 10 the profiles of each 
   of the Tekla Structures 2025 installed on the machine. `TeklaAssemblyResolver.Register()` is the first line of `Main`,
   and the code that uses Tekla types is in methods that run after it (`Program.Run` is `NoInlining`).
 - Tekla Structures 2025 needs an x64 .NET Framework 4.8 application.
-- TeklaHelper.DrawingAttribute itself has no Tekla reference: examples 1 to 8 run on a machine without Tekla.
+- TeklaHelper.DrawingAttribute itself has no Tekla reference: examples 1 to 10 run on a machine without Tekla.
 
 ## Things to know when you use the files with Tekla
 

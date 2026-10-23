@@ -1,0 +1,1857 @@
+{
+  "page": "DrawingWeldMarkProperties",
+  "viewPrefix": null,
+  "fileExtension": ".wls",
+  "filePrefix": "",
+  "aidFile": "TeklaStructures.aid",
+  "aidDialog": "gr_wld_attrib",
+  "otherSources": [
+    "gr_weld_mark_attrib",
+    "gr_wldpl_attrib (keys under wldpl.)"
+  ],
+  "fileMenuKey": "in_file",
+  "saveAsKey": null,
+  "labelMarks": [],
+  "tabs": [
+    {
+      "label": "Content",
+      "aidName": "Container_2249",
+      "controls": [
+        {
+          "label": "Place...",
+          "type": "button",
+          "aidName": "wld_placing",
+          "callback": "gr_display_attr_dialog_cb",
+          "callbackParameter": "gr_wldpl_attrib",
+          "position": 31,
+          "opensDialog": "gr_wldpl_attrib"
+        }
+      ],
+      "groups": [
+        {
+          "label": "Above line",
+          "aidName": "Container_791",
+          "controls": [
+            {
+              "label": "Prefix",
+              "labelSource": "enableCheckBox",
+              "key": "PrefixAboveLine",
+              "enableKey": "PrefixAboveLine_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 20,
+              "aidWidget": "text",
+              "aidName": "grPrefixAboveLine",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 2,
+              "samples": {
+                "files": 4,
+                "top": {
+                  "\"\"": 4
+                }
+              }
+            },
+            {
+              "label": "Size",
+              "labelSource": "enableCheckBox",
+              "key": "w_size",
+              "enableKey": "w_size_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_size",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 3,
+              "samples": {
+                "files": 5,
+                "top": {
+                  "6.000000": 5
+                }
+              }
+            },
+            {
+              "label": "Size AdditionalSizeAbove",
+              "labelSource": "enableCheckBox(shared)+key",
+              "key": "AdditionalSizeAbove",
+              "enableKey": "w_size_enable",
+              "enableLabel": "Size",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "AdditionalSizeAbove",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 4,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 4,
+                "top": {
+                  "0.000000": 4
+                }
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "w_type",
+              "enableKey": "w_type_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "w_type_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_0",
+                  "value": 0,
+                  "aidName": "w_type_0"
+                },
+                {
+                  "label": "w_type_10",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_10",
+                  "value": 10,
+                  "aidName": "w_type_10"
+                },
+                {
+                  "label": "w_type_3",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_3",
+                  "value": 3,
+                  "aidName": "w_type_3"
+                },
+                {
+                  "label": "w_type_4",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_4",
+                  "value": 4,
+                  "aidName": "w_type_4"
+                },
+                {
+                  "label": "w_type_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_2",
+                  "value": 2,
+                  "aidName": "w_type_2"
+                },
+                {
+                  "label": "w_type_5",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_5",
+                  "value": 5,
+                  "aidName": "w_type_5"
+                },
+                {
+                  "label": "w_type_6",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_6",
+                  "value": 6,
+                  "aidName": "w_type_6"
+                },
+                {
+                  "label": "w_type_7",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_7",
+                  "value": 7,
+                  "aidName": "w_type_7"
+                },
+                {
+                  "label": "w_type_8",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_8",
+                  "value": 8,
+                  "aidName": "w_type_8"
+                },
+                {
+                  "label": "w_type_16",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_16",
+                  "value": 16,
+                  "aidName": "w_type_16"
+                },
+                {
+                  "label": "w_type_15",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_15",
+                  "value": 15,
+                  "aidName": "w_type_15"
+                },
+                {
+                  "label": "w_type_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_1",
+                  "value": 1,
+                  "aidName": "w_type_1"
+                },
+                {
+                  "label": "w_type_17",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_17",
+                  "value": 17,
+                  "aidName": "w_type_17"
+                },
+                {
+                  "label": "w_type_11",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_11",
+                  "value": 11,
+                  "aidName": "w_type_11"
+                },
+                {
+                  "label": "w_type_9",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_9",
+                  "value": 9,
+                  "aidName": "w_type_9"
+                },
+                {
+                  "label": "w_type_12",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_12",
+                  "value": 12,
+                  "aidName": "w_type_12"
+                },
+                {
+                  "label": "w_type_13",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_13",
+                  "value": 13,
+                  "aidName": "w_type_13"
+                },
+                {
+                  "label": "w_type_14",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_14",
+                  "value": 14,
+                  "aidName": "w_type_14"
+                },
+                {
+                  "label": "w_type_18",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_18",
+                  "value": 18,
+                  "aidName": "w_type1_18"
+                },
+                {
+                  "label": "w_type_19",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_19",
+                  "value": 19,
+                  "aidName": "w_type_119"
+                },
+                {
+                  "label": "w_type_20",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_20",
+                  "value": 20,
+                  "aidName": "w_type_220"
+                },
+                {
+                  "label": "w_type_21",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_21",
+                  "value": 21,
+                  "aidName": "w_type_221"
+                },
+                {
+                  "label": "w_type_22",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_22",
+                  "value": 22,
+                  "aidName": "w_type_222"
+                },
+                {
+                  "label": "w_Type_23",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Type_23",
+                  "value": 23,
+                  "aidName": "w_Type1_23"
+                },
+                {
+                  "label": "w_Type_24",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Type_24",
+                  "value": 24,
+                  "aidName": "w_Type1_24"
+                },
+                {
+                  "label": "w_Type_25",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Type_25",
+                  "value": 25,
+                  "aidName": "w_Type1_25"
+                },
+                {
+                  "label": "w_Type_26",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Type_26",
+                  "value": 26,
+                  "aidName": "w_Type1_26"
+                }
+              ],
+              "dialogDefault": 10,
+              "aidWidget": "optionmenu",
+              "aidName": "w_type",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 5,
+              "samples": {
+                "files": 5,
+                "inMenu": {
+                  "10": 5
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Angle",
+              "labelSource": "enableCheckBox",
+              "key": "w_angle",
+              "enableKey": "w_angle_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "aidWidget": "text",
+              "aidName": "w_angle",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 6,
+              "samples": {
+                "files": 5,
+                "top": {
+                  "0.000000": 5
+                }
+              }
+            },
+            {
+              "label": "Contour",
+              "labelSource": "enableCheckBox",
+              "key": "w_ftype",
+              "enableKey": "w_ftype_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "w_ftype_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_ftype_0",
+                  "value": 0,
+                  "aidName": "w_ftype_0"
+                },
+                {
+                  "label": "w_ftype_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_ftype_1",
+                  "value": 1,
+                  "aidName": "w_ftype_1"
+                },
+                {
+                  "label": "w_ftype_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_ftype_2",
+                  "value": 2,
+                  "aidName": "w_ftype_2"
+                },
+                {
+                  "label": "w_ftype_3",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_ftype_3",
+                  "value": 3,
+                  "aidName": "w_ftype_3"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "w_ftype",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 7,
+              "samples": {
+                "files": 5,
+                "inMenu": {
+                  "0": 5
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Finish",
+              "labelSource": "enableCheckBox",
+              "key": "w_finish",
+              "enableKey": "w_finish_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "w_finish_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_finish_0",
+                  "value": 0,
+                  "aidName": "w_finish_0"
+                },
+                {
+                  "label": "w_finish_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_finish_1",
+                  "value": 1,
+                  "aidName": "w_finish_1"
+                },
+                {
+                  "label": "w_finish_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_finish_2",
+                  "value": 2,
+                  "aidName": "w_finish_2"
+                },
+                {
+                  "label": "w_finish_3",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_finish_3",
+                  "value": 3,
+                  "aidName": "w_finish_3"
+                },
+                {
+                  "label": "w_Finish_4",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Finish_4",
+                  "value": 4,
+                  "aidName": "w_Finish1_4"
+                },
+                {
+                  "label": "w_Finish_5",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Finish_5",
+                  "value": 5,
+                  "aidName": "w_Finish1_5"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "w_finish",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 8,
+              "samples": {
+                "files": 5,
+                "inMenu": {
+                  "0": 5
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Length",
+              "labelSource": "enableCheckBox",
+              "key": "w_length",
+              "enableKey": "w_length_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_length",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 9,
+              "samples": {
+                "files": 5,
+                "top": {
+                  "0.000000": 5
+                }
+              }
+            },
+            {
+              "label": "Pitch",
+              "labelSource": "enableCheckBox",
+              "key": "w_cc",
+              "enableKey": "w_cc_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_cc",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 10,
+              "samples": {
+                "files": 5,
+                "top": {
+                  "0.000000": 5
+                }
+              }
+            },
+            {
+              "label": "Effective throat",
+              "labelSource": "enableCheckBox",
+              "key": "w_EffectiveThroatAbove",
+              "enableKey": "w_EffectiveThroatAbove_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_EffectiveThroatAbove",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 11,
+              "samples": {
+                "files": 4,
+                "top": {
+                  "0.000000": 4
+                }
+              }
+            },
+            {
+              "label": "Root opening",
+              "labelSource": "enableCheckBox",
+              "key": "w_RootOpeningAbove",
+              "enableKey": "w_RootOpeningAbove_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_RootOpeningAbove",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 12,
+              "samples": {
+                "files": 4,
+                "top": {
+                  "0.000000": 4
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 1
+        },
+        {
+          "label": "Below line",
+          "aidName": "Container_794",
+          "controls": [
+            {
+              "label": "Prefix",
+              "labelSource": "enableCheckBox",
+              "key": "PrefixBelowLine",
+              "enableKey": "PrefixBelowLine_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 20,
+              "aidWidget": "text",
+              "aidName": "grPrefixBelowLine",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 14,
+              "samples": {
+                "files": 4,
+                "top": {
+                  "\"\"": 4
+                }
+              }
+            },
+            {
+              "label": "Size",
+              "labelSource": "enableCheckBox",
+              "key": "w_size2",
+              "enableKey": "w_size2_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_size2",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 15,
+              "samples": {
+                "files": 5,
+                "top": {
+                  "0.000000": 5
+                }
+              }
+            },
+            {
+              "label": "Size AdditionalSizeBelow",
+              "labelSource": "enableCheckBox(shared)+key",
+              "key": "AdditionalSizeBelow",
+              "enableKey": "w_size2_enable",
+              "enableLabel": "Size",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "AdditionalSizeBelow",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 16,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 4,
+                "top": {
+                  "0.000000": 4
+                }
+              }
+            },
+            {
+              "label": "Type",
+              "labelSource": "enableCheckBox",
+              "key": "w_type2",
+              "enableKey": "w_type2_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "w_type_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_0",
+                  "value": 0,
+                  "aidName": "w_type_18"
+                },
+                {
+                  "label": "w_type_10",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_10",
+                  "value": 10,
+                  "aidName": "w_type_19"
+                },
+                {
+                  "label": "w_type_3",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_3",
+                  "value": 3,
+                  "aidName": "w_type_20"
+                },
+                {
+                  "label": "w_type_4",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_4",
+                  "value": 4,
+                  "aidName": "w_type_21"
+                },
+                {
+                  "label": "w_type_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_2",
+                  "value": 2,
+                  "aidName": "w_type_22"
+                },
+                {
+                  "label": "w_type_5",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_5",
+                  "value": 5,
+                  "aidName": "w_type_23"
+                },
+                {
+                  "label": "w_type_6",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_6",
+                  "value": 6,
+                  "aidName": "w_type_24"
+                },
+                {
+                  "label": "w_type_7",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_7",
+                  "value": 7,
+                  "aidName": "w_type_25"
+                },
+                {
+                  "label": "w_type_8",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_8",
+                  "value": 8,
+                  "aidName": "w_type_26"
+                },
+                {
+                  "label": "w_type_16",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_16",
+                  "value": 16,
+                  "aidName": "w_type_27"
+                },
+                {
+                  "label": "w_type_15",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_15",
+                  "value": 15,
+                  "aidName": "w_type_28"
+                },
+                {
+                  "label": "w_type_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_1",
+                  "value": 1,
+                  "aidName": "w_type_29"
+                },
+                {
+                  "label": "w_type_17",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_17",
+                  "value": 17,
+                  "aidName": "w_type_30"
+                },
+                {
+                  "label": "w_type_11",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_11",
+                  "value": 11,
+                  "aidName": "w_type_31"
+                },
+                {
+                  "label": "w_type_9",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_9",
+                  "value": 9,
+                  "aidName": "w_type_32"
+                },
+                {
+                  "label": "w_type_12",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_12",
+                  "value": 12,
+                  "aidName": "w_type_33"
+                },
+                {
+                  "label": "w_type_13",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_13",
+                  "value": 13,
+                  "aidName": "w_type_34"
+                },
+                {
+                  "label": "w_type_14",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_14",
+                  "value": 14,
+                  "aidName": "w_type_35"
+                },
+                {
+                  "label": "w_type_18",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_18",
+                  "value": 18,
+                  "aidName": "w_type2_18"
+                },
+                {
+                  "label": "w_type_19",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_19",
+                  "value": 19,
+                  "aidName": "w_type2_19"
+                },
+                {
+                  "label": "w_type_20",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_20",
+                  "value": 20,
+                  "aidName": "w_type_120"
+                },
+                {
+                  "label": "w_type_21",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_21",
+                  "value": 21,
+                  "aidName": "w_type_121"
+                },
+                {
+                  "label": "w_type_22",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_type_22",
+                  "value": 22,
+                  "aidName": "w_type_122"
+                },
+                {
+                  "label": "w_Type_23",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Type_23",
+                  "value": 23,
+                  "aidName": "w_Type2_23"
+                },
+                {
+                  "label": "w_Type_24",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Type_24",
+                  "value": 24,
+                  "aidName": "w_Type2_24"
+                },
+                {
+                  "label": "w_Type_25",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Type_25",
+                  "value": 25,
+                  "aidName": "w_Type2_25"
+                },
+                {
+                  "label": "w_Type_26",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Type_26",
+                  "value": 26,
+                  "aidName": "w_Type2_26"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "w_type2",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 17,
+              "samples": {
+                "files": 5,
+                "inMenu": {
+                  "0": 5
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Angle",
+              "labelSource": "enableCheckBox",
+              "key": "w_angle2",
+              "enableKey": "w_angle2_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "aidWidget": "text",
+              "aidName": "w_angle2",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 18,
+              "samples": {
+                "files": 5,
+                "top": {
+                  "0.000000": 5
+                }
+              }
+            },
+            {
+              "label": "Contour",
+              "labelSource": "enableCheckBox",
+              "key": "w_ftype2",
+              "enableKey": "w_ftype2_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "w_ftype_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_ftype_0",
+                  "value": 0,
+                  "aidName": "w_ftype_4"
+                },
+                {
+                  "label": "w_ftype_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_ftype_1",
+                  "value": 1,
+                  "aidName": "w_ftype_5"
+                },
+                {
+                  "label": "w_ftype_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_ftype_2",
+                  "value": 2,
+                  "aidName": "w_ftype_6"
+                },
+                {
+                  "label": "w_ftype_3",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_ftype_3",
+                  "value": 3,
+                  "aidName": "w_ftype_7"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "w_ftype2",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 19,
+              "samples": {
+                "files": 5,
+                "inMenu": {
+                  "0": 5
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Finish",
+              "labelSource": "enableCheckBox",
+              "key": "w_finish2",
+              "enableKey": "w_finish2_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "w_finish_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_finish_0",
+                  "value": 0,
+                  "aidName": "w_finish_4"
+                },
+                {
+                  "label": "w_finish_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_finish_1",
+                  "value": 1,
+                  "aidName": "w_finish_5"
+                },
+                {
+                  "label": "w_finish_2",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_finish_2",
+                  "value": 2,
+                  "aidName": "w_finish_6"
+                },
+                {
+                  "label": "w_finish_3",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_finish_3",
+                  "value": 3,
+                  "aidName": "w_finish_7"
+                },
+                {
+                  "label": "w_Finish_4",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Finish_4",
+                  "value": 4,
+                  "aidName": "w_Finish2_4"
+                },
+                {
+                  "label": "w_Finish_5",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_Finish_5",
+                  "value": 5,
+                  "aidName": "w_Finish2_5"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "w_finish2",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 20,
+              "samples": {
+                "files": 5,
+                "inMenu": {
+                  "0": 5
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Length",
+              "labelSource": "enableCheckBox",
+              "key": "w_length2",
+              "enableKey": "w_length2_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_length2",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 21,
+              "samples": {
+                "files": 5,
+                "top": {
+                  "0.000000": 5
+                }
+              }
+            },
+            {
+              "label": "Pitch",
+              "labelSource": "enableCheckBox",
+              "key": "w_cc2",
+              "enableKey": "w_cc2_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_cc2",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 22,
+              "samples": {
+                "files": 5,
+                "top": {
+                  "0.000000": 5
+                }
+              }
+            },
+            {
+              "label": "Effective throat",
+              "labelSource": "enableCheckBox",
+              "key": "w_EffectiveThroatBelow",
+              "enableKey": "w_EffectiveThroatBelow_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_EffectiveThroatBelow",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 23,
+              "samples": {
+                "files": 4,
+                "top": {
+                  "0.000000": 4
+                }
+              }
+            },
+            {
+              "label": "Root opening",
+              "labelSource": "enableCheckBox",
+              "key": "w_RootOpeningBelow",
+              "enableKey": "w_RootOpeningBelow_enable",
+              "type": "number",
+              "format": "%2.1f",
+              "unit": "length",
+              "aidWidget": "text",
+              "aidName": "w_RootOpeningBelow",
+              "aidType": "double",
+              "confidence": "decoded",
+              "position": 24,
+              "samples": {
+                "files": 4,
+                "top": {
+                  "0.000000": 4
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 13
+        },
+        {
+          "label": "Other",
+          "aidName": "Container_1066",
+          "groupSource": "heading-textlabel+separator",
+          "controls": [
+            {
+              "label": "Reference text",
+              "labelSource": "enableCheckBox",
+              "key": "w_weld",
+              "enableKey": "w_weld_enable",
+              "type": "text",
+              "format": "%s",
+              "maxLength": 80,
+              "aidWidget": "text",
+              "aidName": "w_wld",
+              "aidType": "char",
+              "confidence": "decoded",
+              "position": 26,
+              "samples": {
+                "files": 5,
+                "top": {
+                  "\"\"": 5
+                }
+              }
+            },
+            {
+              "label": "Edge/Around",
+              "labelSource": "enableCheckBox",
+              "key": "w_around",
+              "enableKey": "edge_around_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "w_around_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_around_0",
+                  "value": 0,
+                  "aidName": "w_around_0"
+                },
+                {
+                  "label": "w_around_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_around_1",
+                  "value": 1,
+                  "aidName": "w_around_1"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "w_around",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 27,
+              "samples": {
+                "files": 5,
+                "inMenu": {
+                  "0": 5
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Workshop/Site",
+              "labelSource": "enableCheckBox",
+              "key": "w_workshop",
+              "enableKey": "workshop_site_enable",
+              "type": "option",
+              "options": [
+                {
+                  "label": "w_workshop_0",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_workshop_0",
+                  "value": 0,
+                  "aidName": "w_workshop_0"
+                },
+                {
+                  "label": "w_workshop_1",
+                  "labelSource": "bitmap",
+                  "bitmap": "w_workshop_1",
+                  "value": 1,
+                  "aidName": "w_workshop_1"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "w_workshop",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 28,
+              "samples": {
+                "files": 5,
+                "inMenu": {
+                  "0": 5
+                },
+                "outsideMenu": {}
+              }
+            },
+            {
+              "label": "Stitch weld",
+              "labelSource": "enableCheckBox",
+              "key": "w_Stitch",
+              "enableKey": "w_Stitch_enable",
+              "aidNote": "CALLBACKPARAMETER names w_Stitch_enable, which is not a widget of this dialog (no enable check box)",
+              "type": "option",
+              "options": [
+                {
+                  "label": "No",
+                  "labelSource": "aid",
+                  "value": 0,
+                  "aidName": "w_stitch_no"
+                },
+                {
+                  "label": "Yes",
+                  "labelSource": "aid",
+                  "value": 1,
+                  "aidName": "w_stitch_yes"
+                }
+              ],
+              "dialogDefault": 0,
+              "aidWidget": "optionmenu",
+              "aidName": "w_stitch",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 29,
+              "samples": {
+                "files": 4,
+                "inMenu": {
+                  "0": 4
+                },
+                "outsideMenu": {}
+              }
+            }
+          ],
+          "groups": [],
+          "position": 25
+        },
+        {
+          "label": "Placing",
+          "aidName": "Container_1106",
+          "groupSource": "heading-textlabel+separator",
+          "controls": [],
+          "groups": [],
+          "position": 30
+        }
+      ],
+      "position": 32
+    },
+    {
+      "label": "Appearance",
+      "aidName": "Container_2251",
+      "controls": [],
+      "groups": [
+        {
+          "label": "Text",
+          "aidName": "Container_1426",
+          "controls": [],
+          "groups": [
+            {
+              "label": "Text",
+              "aidName": "Container_471",
+              "groupSource": "heading-textlabel+separator",
+              "controls": [
+                {
+                  "label": "Color",
+                  "labelSource": "enableCheckBox",
+                  "key": "weld_colour",
+                  "enableKey": "weld_colour_enable",
+                  "type": "color",
+                  "options": [
+                    {
+                      "label": "Invisible",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_invisible_line",
+                      "value": 152,
+                      "aidName": "gr_pb_white",
+                      "apiName": "Invisible"
+                    },
+                    {
+                      "label": "Black",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_black_line",
+                      "value": 153,
+                      "aidName": "gr_pb_black",
+                      "apiName": "Black"
+                    },
+                    {
+                      "label": "Red",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_red_line",
+                      "value": 160,
+                      "aidName": "gr_pb_red",
+                      "apiName": "Red"
+                    },
+                    {
+                      "label": "Green",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_green_line",
+                      "value": 161,
+                      "aidName": "gr_pb_green",
+                      "apiName": "Green"
+                    },
+                    {
+                      "label": "Blue",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_blue_line",
+                      "value": 162,
+                      "aidName": "gr_pb_blue",
+                      "apiName": "Blue"
+                    },
+                    {
+                      "label": "Cyan",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_cyan_line",
+                      "value": 163,
+                      "aidName": "gr_pb_cyan",
+                      "apiName": "Cyan"
+                    },
+                    {
+                      "label": "Yellow",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_yellow_line",
+                      "value": 164,
+                      "aidName": "gr_pb_yellow",
+                      "apiName": "Yellow"
+                    },
+                    {
+                      "label": "Magenta",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_magenta_line",
+                      "value": 165,
+                      "aidName": "gr_pb_magenta",
+                      "apiName": "Magenta"
+                    },
+                    {
+                      "label": "NewLine1",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_1",
+                      "value": 154,
+                      "aidName": "gr_pb_new_1",
+                      "apiName": "NewLine1"
+                    },
+                    {
+                      "label": "NewLine2",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_2",
+                      "value": 155,
+                      "aidName": "gr_pb_new_2",
+                      "apiName": "NewLine2"
+                    },
+                    {
+                      "label": "NewLine3",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_3",
+                      "value": 156,
+                      "aidName": "gr_pb_new_3",
+                      "apiName": "NewLine3"
+                    },
+                    {
+                      "label": "NewLine4",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_4",
+                      "value": 157,
+                      "aidName": "gr_pb_new_4",
+                      "apiName": "NewLine4"
+                    },
+                    {
+                      "label": "NewLine5",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_5",
+                      "value": 158,
+                      "aidName": "gr_pb_new_5",
+                      "apiName": "NewLine5"
+                    },
+                    {
+                      "label": "NewLine6",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_6",
+                      "value": 159,
+                      "aidName": "gr_pb_new_6",
+                      "apiName": "NewLine6"
+                    },
+                    {
+                      "label": "Gray30",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray30_line",
+                      "value": 130,
+                      "aidName": "",
+                      "apiName": "Gray30"
+                    },
+                    {
+                      "label": "Gray50",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray50_line",
+                      "value": 131,
+                      "aidName": "",
+                      "apiName": "Gray50"
+                    },
+                    {
+                      "label": "Gray70",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray70_line",
+                      "value": 132,
+                      "aidName": "",
+                      "apiName": "Gray70"
+                    },
+                    {
+                      "label": "Gray90",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray90_line",
+                      "value": 133,
+                      "aidName": "",
+                      "apiName": "Gray90"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "wld_colour",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 35,
+                  "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+                  "samples": {
+                    "files": 5,
+                    "inMenu": {
+                      "161": 2,
+                      "160": 2,
+                      "155": 1
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Background mask",
+                  "labelSource": "enableCheckBox",
+                  "key": "weld_background_mask",
+                  "enableKey": "weld_background_mask_enable",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "Opaque",
+                      "labelSource": "aid",
+                      "value": 150,
+                      "aidName": "Optionbutton_260"
+                    },
+                    {
+                      "label": "Transparent",
+                      "labelSource": "aid",
+                      "value": -1,
+                      "aidName": "Optionbutton_261"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "weld_background_mask",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 36,
+                  "samples": {
+                    "files": 4,
+                    "inMenu": {
+                      "150": 4
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Height",
+                  "labelSource": "enableCheckBox",
+                  "key": "wheight",
+                  "enableKey": "wheight_enable",
+                  "type": "number",
+                  "format": "%2.1f",
+                  "unit": "length",
+                  "aidWidget": "text",
+                  "aidName": "wheight",
+                  "aidType": "double",
+                  "confidence": "decoded",
+                  "position": 37,
+                  "samples": {
+                    "files": 5,
+                    "top": {
+                      "2.500000": 5
+                    }
+                  }
+                },
+                {
+                  "label": "Font",
+                  "labelSource": "enableCheckBox",
+                  "key": "FontName",
+                  "enableKey": "FontName_en",
+                  "type": "font",
+                  "maxLength": 43,
+                  "aidWidget": "text",
+                  "aidName": "FontName",
+                  "aidType": "char",
+                  "confidence": "decoded",
+                  "position": 38,
+                  "samples": {
+                    "files": 5,
+                    "top": {
+                      "\"Arial\"": 4,
+                      "\"lr SVbN\"": 1
+                    }
+                  }
+                },
+                {
+                  "label": "Select...",
+                  "type": "button",
+                  "aidName": "Pushbutton_455",
+                  "callback": "dia_select_font_cb",
+                  "callbackParameter": "FontName",
+                  "position": 39
+                }
+              ],
+              "groups": [],
+              "position": 34
+            },
+            {
+              "label": "Line",
+              "aidName": "Container_476",
+              "groupSource": "heading-textlabel+separator",
+              "controls": [
+                {
+                  "label": "Color",
+                  "labelSource": "enableCheckBox",
+                  "key": "line_colour",
+                  "enableKey": "line_colour_enable",
+                  "type": "color",
+                  "options": [
+                    {
+                      "label": "Invisible",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_invisible_line",
+                      "value": 152,
+                      "aidName": "gr_pb_white_line",
+                      "apiName": "Invisible"
+                    },
+                    {
+                      "label": "Black",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_black_line",
+                      "value": 153,
+                      "aidName": "gr_pb_black_line",
+                      "apiName": "Black"
+                    },
+                    {
+                      "label": "Red",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_red_line",
+                      "value": 160,
+                      "aidName": "gr_pb_red_line",
+                      "apiName": "Red"
+                    },
+                    {
+                      "label": "Green",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_green_line",
+                      "value": 161,
+                      "aidName": "gr_pb_green_line",
+                      "apiName": "Green"
+                    },
+                    {
+                      "label": "Blue",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_blue_line",
+                      "value": 162,
+                      "aidName": "gr_pb_blue_line",
+                      "apiName": "Blue"
+                    },
+                    {
+                      "label": "Cyan",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_cyan_line",
+                      "value": 163,
+                      "aidName": "gr_pb_cyan_line",
+                      "apiName": "Cyan"
+                    },
+                    {
+                      "label": "Yellow",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_yellow_line",
+                      "value": 164,
+                      "aidName": "gr_pb_yellow_line",
+                      "apiName": "Yellow"
+                    },
+                    {
+                      "label": "Magenta",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_magenta_line",
+                      "value": 165,
+                      "aidName": "gr_pb_magenta_line",
+                      "apiName": "Magenta"
+                    },
+                    {
+                      "label": "NewLine1",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_1",
+                      "value": 154,
+                      "aidName": "gr_pb_new_line_1",
+                      "apiName": "NewLine1"
+                    },
+                    {
+                      "label": "NewLine2",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_2",
+                      "value": 155,
+                      "aidName": "gr_pb_new_line_2",
+                      "apiName": "NewLine2"
+                    },
+                    {
+                      "label": "NewLine3",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_3",
+                      "value": 156,
+                      "aidName": "gr_pb_new_line_3",
+                      "apiName": "NewLine3"
+                    },
+                    {
+                      "label": "NewLine4",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_4",
+                      "value": 157,
+                      "aidName": "gr_pb_new_line_4",
+                      "apiName": "NewLine4"
+                    },
+                    {
+                      "label": "NewLine5",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_5",
+                      "value": 158,
+                      "aidName": "gr_pb_new_line_5",
+                      "apiName": "NewLine5"
+                    },
+                    {
+                      "label": "NewLine6",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_new_line_6",
+                      "value": 159,
+                      "aidName": "gr_pb_new_line_6",
+                      "apiName": "NewLine6"
+                    },
+                    {
+                      "label": "Gray30",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray30_line",
+                      "value": 130,
+                      "aidName": "",
+                      "apiName": "Gray30"
+                    },
+                    {
+                      "label": "Gray50",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray50_line",
+                      "value": 131,
+                      "aidName": "",
+                      "apiName": "Gray50"
+                    },
+                    {
+                      "label": "Gray70",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray70_line",
+                      "value": 132,
+                      "aidName": "",
+                      "apiName": "Gray70"
+                    },
+                    {
+                      "label": "Gray90",
+                      "labelSource": "bitmap; name from DrawingColors",
+                      "bitmap": "gr_pb_gray90_line",
+                      "value": 133,
+                      "aidName": "",
+                      "apiName": "Gray90"
+                    }
+                  ],
+                  "aidWidget": "optionmenu",
+                  "aidName": "wld_line_colour",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 41,
+                  "apiEnum": "Tekla.Structures.Drawing.DrawingColors",
+                  "samples": {
+                    "files": 5,
+                    "inMenu": {
+                      "161": 2,
+                      "153": 2,
+                      "155": 1
+                    },
+                    "outsideMenu": {}
+                  }
+                },
+                {
+                  "label": "Type",
+                  "labelSource": "enableCheckBox",
+                  "key": "line_shape",
+                  "enableKey": "line_shape_enable",
+                  "type": "option",
+                  "options": [
+                    {
+                      "label": "wld_single_line",
+                      "labelSource": "bitmap",
+                      "bitmap": "wld_single_line",
+                      "value": 0,
+                      "aidName": "wld_single_line"
+                    },
+                    {
+                      "label": "wld_double_line",
+                      "labelSource": "bitmap",
+                      "bitmap": "wld_double_line",
+                      "value": 1,
+                      "aidName": "wld_double_line"
+                    }
+                  ],
+                  "dialogDefault": 0,
+                  "aidWidget": "optionmenu",
+                  "aidName": "wld_line_shape",
+                  "aidType": "int",
+                  "confidence": "decoded",
+                  "position": 42,
+                  "samples": {
+                    "files": 5,
+                    "inMenu": {
+                      "0": 5
+                    },
+                    "outsideMenu": {}
+                  }
+                }
+              ],
+              "groups": [],
+              "position": 40
+            }
+          ],
+          "position": 33
+        }
+      ],
+      "position": 43
+    }
+  ],
+  "groups": [],
+  "controls": [],
+  "subDialogs": [
+    {
+      "dialog": "gr_wldpl_attrib",
+      "openedBy": "Place...",
+      "keyPrefix": "wldpl.",
+      "tabs": [],
+      "groups": [
+        {
+          "label": "Quarter",
+          "aidName": "Container_1112",
+          "controls": [
+            {
+              "label": "Quarter 4",
+              "labelSource": "group+key",
+              "key": "wldpl.quarter_4",
+              "enableKey": "wldpl.weld_quarter_en",
+              "type": "toggle",
+              "valueOn": 8,
+              "valueOff": 0,
+              "dialogDefault": 8,
+              "aidWidget": "checkbutton",
+              "aidName": "wld_quart_4",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 5,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 5,
+                "top": {
+                  "8": 5
+                }
+              }
+            },
+            {
+              "label": "Quarter 1",
+              "labelSource": "group+key",
+              "key": "wldpl.quarter_1",
+              "enableKey": "wldpl.weld_quarter_en",
+              "type": "toggle",
+              "valueOn": 1,
+              "valueOff": 0,
+              "dialogDefault": 1,
+              "aidWidget": "checkbutton",
+              "aidName": "wld_quart_1",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 6,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 5,
+                "top": {
+                  "1": 5
+                }
+              }
+            },
+            {
+              "label": "Quarter 3",
+              "labelSource": "group+key",
+              "key": "wldpl.quarter_3",
+              "enableKey": "wldpl.weld_quarter_en",
+              "type": "toggle",
+              "valueOn": 4,
+              "valueOff": 0,
+              "dialogDefault": 4,
+              "aidWidget": "checkbutton",
+              "aidName": "wld_quart_3",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 7,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 5,
+                "top": {
+                  "4": 5
+                }
+              }
+            },
+            {
+              "label": "Quarter 2",
+              "labelSource": "group+key",
+              "key": "wldpl.quarter_2",
+              "enableKey": "wldpl.weld_quarter_en",
+              "type": "toggle",
+              "valueOn": 2,
+              "valueOff": 0,
+              "dialogDefault": 2,
+              "aidWidget": "checkbutton",
+              "aidName": "wld_quart_2",
+              "aidType": "int",
+              "confidence": "decoded",
+              "position": 8,
+              "labelConfidence": "key-name",
+              "samples": {
+                "files": 5,
+                "top": {
+                  "2": 5
+                }
+              }
+            }
+          ],
+          "groups": [],
+          "position": 4
+        }
+      ],
+      "controls": [
+        {
+          "label": "Placing",
+          "labelSource": "enableCheckBox",
+          "key": "wldpl.weld_placing_mode",
+          "enableKey": "wldpl.weld_place_en",
+          "type": "option",
+          "options": [
+            {
+              "label": "free",
+              "labelSource": "aid",
+              "value": 0,
+              "aidName": "wld_free"
+            },
+            {
+              "label": "fixed",
+              "labelSource": "aid",
+              "value": 1,
+              "aidName": "wld_fixed"
+            }
+          ],
+          "dialogDefault": 0,
+          "aidWidget": "optionmenu",
+          "aidName": "wld_placing_mode",
+          "aidType": "int",
+          "confidence": "decoded",
+          "position": 1,
+          "samples": {
+            "files": 5,
+            "inMenu": {
+              "1": 4,
+              "0": 1
+            },
+            "outsideMenu": {}
+          }
+        },
+        {
+          "label": "Search margin",
+          "labelSource": "enableCheckBox",
+          "key": "wldpl.weld_freepl_margin",
+          "enableKey": "wldpl.weld_freepl_margin_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "wld_freepl_margin",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 2,
+          "samples": {
+            "files": 5,
+            "top": {
+              "5.000000": 4,
+              "10.000000": 1
+            }
+          }
+        },
+        {
+          "label": "Minimum distance",
+          "labelSource": "enableCheckBox",
+          "key": "wldpl.weld_freepl_min",
+          "enableKey": "wldpl.weld_freepl_min_en",
+          "type": "number",
+          "format": "%2.1f",
+          "unit": "length",
+          "aidWidget": "text",
+          "aidName": "wld_freepl_min",
+          "aidType": "double",
+          "confidence": "decoded",
+          "position": 3,
+          "samples": {
+            "files": 5,
+            "top": {
+              "5.000000": 4,
+              "10.000000": 1
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "siblingPageControls": [],
+  "legacyControls": [],
+  "unmappedKeys": [
+    "arrow_type",
+    "arrow_type_en",
+    "arrow_height",
+    "arrow_height_en",
+    "arrow_width",
+    "arrow_width_en",
+    "CustomPresentation_en",
+    "aCustomPresentation",
+    "wldpl.WeldFreeplaceMaxSearchDistance",
+    "wldpl.WeldFreeplaceMaxSearchDistance_en"
+  ],
+  "dialogKeysNotInSamples": [],
+  "samplesSource": "5 .wls files under D:/Tekla/Structures/2025.0/Environments, D:/Tekla/Models"
+}
