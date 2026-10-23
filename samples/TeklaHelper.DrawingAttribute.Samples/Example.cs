@@ -68,7 +68,7 @@ namespace TeklaHelper.DrawingAttribute.Samples
 
         /// <summary>
         /// Asks a yes/no question. Answers can also come from redirected input, one per line
-        /// (<c>echo y| ...Samples.exe 12</c>); no more input means no.
+        /// (<c>echo y| ...Samples.exe 22</c>); no more input means no.
         /// </summary>
         public bool Confirm(string question)
         {

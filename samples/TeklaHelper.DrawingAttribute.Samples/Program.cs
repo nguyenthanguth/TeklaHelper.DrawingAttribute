@@ -43,8 +43,22 @@ namespace TeklaHelper.DrawingAttribute.Samples
                 new ModifyCheckBoxesExample(),
                 new DrawingObjectsExample(),
                 new MarkContentExample(),
+                new DimensionPropertiesExample(),
+                new GADrawingPagesExample(),
+                new FilterObjectTypesExample(),
+                new ModelObjectPropertiesExample(),
+                new GraphicObjectsExample(),
+                new AnnotationsExample(),
+                new EmbeddedObjectsExample(),
+                new SharedStyleExample(),
+                new CodePageExample(),
+                new InspectAndCompareExample(),
                 new CreateGADrawingExample(),
                 new ApplyToOpenDrawingExample(),
+                new PlaceAnnotationsExample(),
+                new MarkContentInDrawingExample(),
+                new RestyleDrawingObjectsExample(),
+                new CreateAssemblyDrawingExample(),
             };
 
             string output = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "output", "attributes");

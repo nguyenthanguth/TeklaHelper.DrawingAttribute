@@ -342,7 +342,9 @@ was changed for the run and put back: a single bar and a mesh added to a slab (t
 workshop bolt (2), one assembly added to another as a sub-assembly (its main part 3, its secondary part 4). The dialog's
 menu values (Single 0, Group 1, Mesh 2) are not the table numbers. Marks merged with `MergeMarks` still showed table 2;
 table 3 is the merged mark set, which the Open API cannot read. The same probe on a `.note` gave every part table 1,
-every bolt 2, every reinforcement 4 and a reference model `ReferenceObjectContentString`.
+every bolt 2, every reinforcement 4 and a reference model `ReferenceObjectContentString`. Loading such a file into a
+view that already has its marks (`LoadAttributes` + `Modify`) left their content as it was; a copy of the view inserted
+with the file showed the new content, so the sample application inserts a view to show it.
 
 **Round trip.** Content Tekla wrote must be written back as it was. The reader keeps the attributes of each element in
 their order, the layout (a line per tag, or one line), the line break (two line feeds in some older files), whether a
@@ -469,7 +471,7 @@ view filtered on `Name = COLUMN`.
   - The files of the property dialogs of the drawing editor (`DrawingObjects`): 41 types, from `.dim` and `.drtxt` to
     the marks, links, graphic objects and reinforcement.
 - **Filters.** `FilterFile` (rows, byte-preserving), an expression tree, and the generated `FilterProperties` catalog.
-- **Samples.** `samples/`: ten offline examples and two that run against Tekla.
+- **Samples.** `samples/`: twenty offline examples and six that run against Tekla.
 
 ## 10. Not settled
 

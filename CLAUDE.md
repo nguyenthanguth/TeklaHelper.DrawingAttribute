@@ -303,7 +303,9 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   secondary 2, sub-assembly main part 3, sub-assembly secondary part 4; bolt mark `vsm.` site 1, workshop 2;
   reinforcement mark `vrm.` single 1, group 2, mesh 4 (the "Mark content of" menu values are Single 0 / Group 1 / Mesh 2:
   not the table numbers); connection mark 1. Marks merged by `MergeMarks` + `leader_line_type` 1–4 (159 → 68 marks) still
-  show table 2. Table 3 of the reinforcement mark holds only `<MergeElement subType="53"..."56">` in the files (the
+  show table 2. The marks a view already has keep their content when other view properties are loaded
+  (`LoadAttributes` + `Modify`, sample 24): the tables give the content of the marks Tekla creates (a new view with the
+  file showed it). Table 3 of the reinforcement mark holds only `<MergeElement subType="53"..."56">` in the files (the
   Open API's `MergedMarkPropertyElementTypes`: block prefix, single mark content, distances between groups, separator):
   the merged mark set of `Operation.MergeMarks`, whose content the API cannot read. The associative note
   (`Mark.MarkAttributes(object, name)` on a `.note`) has a table per kind of object: every part 1, every bolt 2, every
