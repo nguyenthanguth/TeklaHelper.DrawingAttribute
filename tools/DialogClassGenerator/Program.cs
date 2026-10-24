@@ -1095,6 +1095,18 @@ namespace DialogClassGenerator
                 w.Line($"public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark {property} => {field} ?? ({field} = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + \"{keyStem}\"));");
             }
 
+            // The mark content keys whose meaning is known, as MarkContent (the string properties stay for the raw XML)
+            foreach ((string key, string property, string summary) in ContentProperties.For(spec.Class, AllControls(page).Select(c => c.Key).Distinct()))
+            {
+                w.Line();
+                w.Summary(summary);
+                w.Line($"public global::TeklaHelper.DrawingAttribute.Marks.MarkContent {property}");
+                w.Open();
+                w.Line($"get => GetMarkContentOrNull(\"{key}\");");
+                w.Line($"set => SetMarkContent(\"{key}\", value);");
+                w.Close();
+            }
+
             if (spec.FileInKey != "in_file" || spec.FileOutKey != "out_file")
             {
                 w.Line();

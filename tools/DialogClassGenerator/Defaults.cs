@@ -299,7 +299,11 @@ namespace DialogClassGenerator
                 List<string> content = MarkContentDefault(spec, control, text);
                 if (content != null)
                 {
-                    // Mark content is built with MarkContent, not written as XML
+                    // Mark content is built with MarkContent, not written as XML: through the page's MarkContent property
+                    // where it has one
+                    string property = ContentProperties.PropertyFor(spec.Class, control.Key);
+                    content[0] = (property != null ? property + " = " : $"SetMarkContent({Literal(control.Key)}, ") + content[0];
+                    content[content.Count - 1] += property != null ? ";" : ");";
                     content.ForEach(w.Line);
                     continue;
                 }
@@ -319,7 +323,7 @@ namespace DialogClassGenerator
         }
 
         /// <summary>
-        /// The statement that sets a mark content default (a text holding <c>&lt;?xml ... &lt;Mark&gt;</c>) with MarkContent, as
+        /// The expression that builds a mark content default (a text holding <c>&lt;?xml ... &lt;Mark&gt;</c>) with MarkContent, as
         /// lines; null for any other default, or content MarkContent would not write back the same.
         /// </summary>
         private static List<string> MarkContentDefault(PageSpec spec, Control control, string text)

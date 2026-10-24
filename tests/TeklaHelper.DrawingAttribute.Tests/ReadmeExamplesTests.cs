@@ -164,7 +164,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 .AddUserAttribute("USER_FIELD_1");
 
             var mark = PartMarkAttributeFile.CreateDefault();
-            mark.Properties.MainPartElements = new Marks.MarkContent()
+            mark.Elements = new Marks.MarkContent()
                 .Add(Marks.MarkElementTypes.PartMark.PartPosition)
                 .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.Profile));
 
@@ -173,6 +173,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
             Assert.Equal(5, read.Count);
             Assert.Contains("subType=\"82\"", vi.GetString("ViewLabelMarkA1.ContentString"));
             Assert.Contains("frame_id=\"101\"", mark.GetString("ContentString1"));
+            Assert.Equal(mark.GetString("ContentString1"), mark.GetString("ContentString4"));
         }
 
         [Fact]

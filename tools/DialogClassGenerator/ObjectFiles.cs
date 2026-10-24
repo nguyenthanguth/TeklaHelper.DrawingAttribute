@@ -77,6 +77,25 @@ namespace DialogClassGenerator
                 w.Close(";");
             }
 
+            if (file.DialogContent is (string read, string[] writes, string dialog, string note))
+            {
+                string keys = string.Join(", ", writes.Select(k => $"<c>{k}</c>"));
+                w.Line();
+                w.Summary($"What the marks show: the one content table of the {dialog} dialog of the drawing editor, which reads <c>{read}</c> and saves it into {keys}.{note} Checked in Tekla 2025: a file with a different text in each content key, loaded and saved again by the dialog. Setting it writes those keys the same way; null empties them. Each get returns a copy, to be assigned back after a change.");
+                w.Line("public global::TeklaHelper.DrawingAttribute.Marks.MarkContent Elements");
+                w.Open();
+                w.Line($"get => Properties.GetMarkContentOrNull(\"{read}\");");
+                w.Line("set");
+                w.Open();
+                foreach (string key in writes)
+                {
+                    w.Line($"Properties.SetMarkContent(\"{key}\", value);");
+                }
+
+                w.Close();
+                w.Close();
+            }
+
             w.Line();
             w.Line("/// <inheritdoc />");
             w.Line($"protected override string LegacyKeyPrefix => \"{file.LegacyKeyPrefix}\";");

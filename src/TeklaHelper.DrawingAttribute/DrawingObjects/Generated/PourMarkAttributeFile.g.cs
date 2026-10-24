@@ -47,6 +47,23 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public global::TeklaHelper.DrawingAttribute.Pages.PourMark Properties { get; }
 
+        /// <summary>
+        /// What the marks show: the one content table of the Pour mark properties dialog of the drawing editor, which
+        /// reads <c>PourContentString</c> and saves it into <c>PourContentString</c>, <c>ContentString1</c>.
+        /// <c>ContentString2</c> to <c>ContentString4</c> are left as they are. Checked in Tekla 2025: a file with a
+        /// different text in each content key, loaded and saved again by the dialog. Setting it writes those keys the
+        /// same way; null empties them. Each get returns a copy, to be assigned back after a change.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent Elements
+        {
+            get => Properties.GetMarkContentOrNull("PourContentString");
+            set
+            {
+                Properties.SetMarkContent("PourContentString", value);
+                Properties.SetMarkContent("ContentString1", value);
+            }
+        }
+
         /// <inheritdoc />
         protected override string LegacyKeyPrefix => "pour_mark_dial.";
     }

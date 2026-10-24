@@ -15,7 +15,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
     {
         public override string Title => "Mark and label content (ContentString) from typed elements";
 
-        public override string Description => "View label; part / bolt / rebar mark tables (main, secondary, site, shop, single, group, mesh); note; edit existing content.";
+        public override string Description => "View label; part / bolt / rebar mark tables (main, secondary, site, shop, single, group, mesh); note; .pm / .pom; edit existing content.";
 
         public override void Run(ExampleContext context)
         {
@@ -110,6 +110,16 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
             note.Properties.ReinforcementElements = new MarkContent().Add(MarkElementTypes.ReinforcementMark.Grade);
             note.Properties.General.FrameAroundMark.Type = FrameAroundMarkType.Rectangular;
             context.ShowFile(note.SaveTo(context.OutputDirectory, "sample_note"), 8);
+
+            context.Step("Mark files of the drawing editor: their dialogs have one table, Elements writes it like the dialog");
+            PartMarkAttributeFile pm = PartMarkAttributeFile.CreateDefault();
+            pm.Elements = new MarkContent().Add(MarkElementTypes.PartMark.PartPosition).AddSpace().Add(MarkElementTypes.PartMark.Profile);
+            pm.SaveTo(context.OutputDirectory, "sample_part_marks");                           // ContentString1 to 4
+            PourMarkAttributeFile pom = PourMarkAttributeFile.CreateDefault();
+            pom.Elements = new MarkContent().Add(MarkElementTypes.PourMark.PourNumber);         // PourContentString and ContentString1
+            pom.Properties.PourBreakElements = new MarkContent().AddText("JOINT");
+            pom.SaveTo(context.OutputDirectory, "sample_pour_marks");
+            Console.WriteLine("    .pm: " + pm.Elements + "; .pom: " + pom.Elements);
 
             context.Step("A symbol and a template in a mark; a user-defined attribute with a unit and a number format");
             MarkContent special = new MarkContent()

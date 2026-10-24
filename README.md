@@ -322,7 +322,7 @@ vi.Attributes.LabelMarkA1.Elements = new MarkContent()
     .AddUserAttribute("USER_FIELD_1");
 
 var mark = PartMarkAttributeFile.CreateDefault();
-mark.Properties.MainPartElements = new MarkContent()                     // the marks of main parts (ContentString1)
+mark.Elements = new MarkContent()                                        // the one table of the part mark dialog
     .Add(MarkElementTypes.PartMark.PartPosition)
     .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new MarkContent().Add(MarkElementTypes.PartMark.Profile));
 
@@ -358,7 +358,23 @@ MarkContent read = vi.Attributes.LabelMarkA1.Elements;                  // the e
 
   The associative note has a table per kind of object (every part reads `ContentString1`, every reinforcement
   `ContentString4`, a reference model `ReferenceObjectElements`); the mark pages a table per kind of part, bolt or bar.
-  Like `Elements`, each property returns a copy.
+  Every mark page also has `PourElements`, `PourBreakElements`, `EdgeChamferElements` and `ReferenceObjectElements`
+  (`PourContentString`, ... named after the key; the pour mark dialog edits `PourContentString`). Like `Elements`, each
+  property returns a copy.
+- The mark dialogs of the drawing editor have **one** table, not one per kind of object: the file's `Elements` reads
+  and writes it the way the dialog does (checked in Tekla 2025: a file with a different text in each key, loaded and
+  saved again by the dialog; Modify of the part mark dialog gave every selected part mark that content):
+
+  | File | `Elements` reads | and writes |
+  | --- | --- | --- |
+  | `PartMarkAttributeFile` (`.pm`), `BoltMarkAttributeFile` (`.sm`) | `ContentString1` | `ContentString1` ... `4` |
+  | `ConnectionMarkAttributeFile` (`.jm`), `ReinforcementMarkAttributeFile` (`.rm`), `SurfaceTreatmentMarkAttributeFile` (`.surfm`) | `ContentString1` | `ContentString1`, `2`, `4` (`3` is left; for reinforcement marks it is the merged mark) |
+  | `PourMarkAttributeFile` (`.pom`) | `PourContentString` | `PourContentString`, `ContentString1` |
+
+  ```csharp
+  var pm = PartMarkAttributeFile.CreateDefault();
+  pm.Elements = new MarkContent().Add(MarkElementTypes.PartMark.PartPosition);   // what the part mark dialog shows
+  ```
 
 ## Filters
 

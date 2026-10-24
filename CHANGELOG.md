@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.5.0 - 2026-10-24
+
+### Mark content
+- `PourElements`, `PourBreakElements`, `EdgeChamferElements` and `ReferenceObjectElements` on every mark page
+  (`PourContentString`, `PourBreakContentString`, `ChamferContentString`, `ReferenceObjectContentString` as
+  `MarkContent`; named after the key, the pour mark dialog edits `PourContentString`).
+- `Elements` on the mark files of the drawing editor (`PartMarkAttributeFile`, `BoltMarkAttributeFile`,
+  `ConnectionMarkAttributeFile`, `ReinforcementMarkAttributeFile`, `SurfaceTreatmentMarkAttributeFile`,
+  `PourMarkAttributeFile`): their dialogs have one content table, not one per kind of object. `Elements` reads the key
+  the dialog reads and writes the keys it writes (checked in Tekla 2025): `ContentString1` into all four for part and
+  bolt marks, into 1, 2 and 4 for connection, reinforcement and surface treatment marks, `PourContentString` and
+  `ContentString1` for pour marks.
+- The table properties of 1.4.0 (`PartMark.MainPartElements` ..., `AssociativeNoteProperties.PartElements` ...) are
+  generated now; their names and behaviour are the same.
+- `SetDefaults()` builds the mark content defaults with `MarkContent` and assigns them through these properties instead
+  of XML literals; `CreateDefault()` writes the same bytes as before.
+
 ## 1.4.0 - 2026-10-23
 
 ### Mark content tables

@@ -86,6 +86,52 @@ namespace TeklaHelper.DrawingAttribute.Tests
         }
 
         [Fact]
+        public void KeysOfEveryMarkPage_HaveContentProperties()
+        {
+            var view = new ViewProperties();
+            foreach (AttributeSection page in new AttributeSection[] { view.Marks.PartMark, view.Marks.BoltMark, view.Marks.ConnectionMark, view.Marks.ReinforcementMark })
+            {
+                dynamic typed = page;
+                AssertTable(page, "PourContentString", () => typed.PourElements, c => typed.PourElements = c);
+                AssertTable(page, "PourBreakContentString", () => typed.PourBreakElements, c => typed.PourBreakElements = c);
+                AssertTable(page, "ChamferContentString", () => typed.EdgeChamferElements, c => typed.EdgeChamferElements = c);
+                AssertTable(page, "ReferenceObjectContentString", () => typed.ReferenceObjectElements, c => typed.ReferenceObjectElements = c);
+            }
+
+            var drawing = new Drawings.GADrawingAttributeFile();
+            drawing.Marks.PartMark.PourElements = Named("pour");
+            Assert.Contains("pour", drawing.GetString("dpm.PourContentString"));
+        }
+
+        [Fact]
+        public void MarkFiles_WriteTheirOneTableLikeTheDialog()
+        {
+            MarkContent content = Named("mark");
+            string Text(AttributeSection section, string key) => Assert.IsType<MarkTextElement>(Assert.Single(section.GetMarkContent(key))).Text;
+
+            var pm = new PartMarkAttributeFile();
+            pm.Elements = content;
+            Assert.All(new[] { "ContentString1", "ContentString2", "ContentString3", "ContentString4" }, k => Assert.Equal("mark", Text(pm.Properties, k)));
+
+            var rm = new ReinforcementMarkAttributeFile();
+            rm.Properties.MergedMarkElements = Named("merged");
+            rm.Elements = content;
+            Assert.All(new[] { "ContentString1", "ContentString2", "ContentString4" }, k => Assert.Equal("mark", Text(rm.Properties, k)));
+            Assert.Equal("merged", Text(rm.Properties, "ContentString3"));
+
+            var pom = new PourMarkAttributeFile();
+            pom.Elements = content;
+            Assert.Equal("mark", Text(pom.Properties, "PourContentString"));
+            Assert.Equal("mark", Text(pom.Properties, "ContentString1"));
+            Assert.False(pom.Values.ContainsKey("ContentString2"));
+            Assert.Equal("mark", Assert.IsType<MarkTextElement>(Assert.Single(pom.Elements)).Text);
+
+            pm.Elements = null;
+            Assert.Null(pm.Elements);
+            Assert.Equal(string.Empty, pm.GetString("ContentString4"));
+        }
+
+        [Fact]
         public void Tables_OfAPageInAFile_UseItsPrefix()
         {
             var view = new ViewProperties();

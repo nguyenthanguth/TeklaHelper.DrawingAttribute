@@ -47,6 +47,25 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public global::TeklaHelper.DrawingAttribute.Pages.BoltMark Properties { get; }
 
+        /// <summary>
+        /// What the marks show: the one content table of the Bolt mark properties dialog of the drawing editor, which
+        /// reads <c>ContentString1</c> and saves it into <c>ContentString1</c>, <c>ContentString2</c>,
+        /// <c>ContentString3</c>, <c>ContentString4</c>. Checked in Tekla 2025: a file with a different text in each
+        /// content key, loaded and saved again by the dialog. Setting it writes those keys the same way; null empties
+        /// them. Each get returns a copy, to be assigned back after a change.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent Elements
+        {
+            get => Properties.GetMarkContentOrNull("ContentString1");
+            set
+            {
+                Properties.SetMarkContent("ContentString1", value);
+                Properties.SetMarkContent("ContentString2", value);
+                Properties.SetMarkContent("ContentString3", value);
+                Properties.SetMarkContent("ContentString4", value);
+            }
+        }
+
         /// <inheritdoc />
         protected override string LegacyKeyPrefix => "smark_dial.";
     }

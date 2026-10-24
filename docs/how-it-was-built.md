@@ -342,7 +342,16 @@ was changed for the run and put back: a single bar and a mesh added to a slab (t
 workshop bolt (2), one assembly added to another as a sub-assembly (its main part 3, its secondary part 4). The dialog's
 menu values (Single 0, Group 1, Mesh 2) are not the table numbers. Marks merged with `MergeMarks` still showed table 2;
 table 3 is the merged mark set, which the Open API cannot read. The same probe on a `.note` gave every part table 1,
-every bolt 2, every reinforcement 4 and a reference model `ReferenceObjectContentString`. Loading such a file into the
+every bolt 2, every reinforcement 4 and a reference model `ReferenceObjectContentString`.
+
+**The mark dialogs of the drawing editor.** The maintainer asked whether the Part mark properties dialog of the drawing
+editor uses the four tables the same way. It does not: loaded with a `.pm` whose tables named themselves and applied
+with Modify to every part mark of a probe view, it gave main, secondary and sub-assembly parts all table 1, whatever the
+file's `CurrentContentTableNumber`. The decoded dialog (`gr_pmark_attrib`, 2025 and 2026) has a single content table and
+no "Mark content of" menu. Saving such files again from each mark dialog showed what each one reads and writes: the part
+and bolt mark dialogs read `ContentString1` and write it into all four keys, the connection, reinforcement and surface
+treatment mark dialogs into 1, 2 and 4 (3 kept), the pour mark dialog reads `PourContentString` and writes it there and
+into `ContentString1`. The library gives each of these files an `Elements` that does the same. Loading such a file into the
 existing view `C BOT` of a FOOTING drawing (`LoadAttributes` + `Modify`) left the content of its reinforcement group
 marks as it was. A review of the sample application then showed that this is not the rule: in a view just inserted with
 the environment's `standard.vi`, the part marks took the new content when the file was loaded the same way. What keeps

@@ -157,7 +157,9 @@ Trimble DLLs and load them side by side in other Tekla versions).
   then `.md`→`.gd`, `.wd`/`.cud`→`.ad`), else the dialog file value; `EnvironmentFreeValues` sets layouts, attribute
   files, `StyleName`, titles and descriptions to names every environment has or to empty text. `CreateDefault()` applies
   the table, calls `SetDefaults()` of every page, then `Pages/DefaultSetup` (the library's own choices) and, for drawings,
-  the empty user-defined attribute fields. Mark content defaults are built with `MarkContent` in `SetDefaults()`
+  the empty user-defined attribute fields. Mark content defaults are built with `MarkContent` in `SetDefaults()`,
+  assigned through the page's `MarkContent` property (`PourElements = new MarkContent(...)...;`; empty defaults stay
+  `Advanced.ContentString1 = "";`, since a null property leaves a missing key missing)
   (`tools/DialogClassGenerator/MarkContentCode.cs`: element types from the catalog in `Marks/MarkElementType.cs`, the
   kind of mark from the table the key is for); the generator writes the code only when the rules of `MarkContent.ToXml`
   give the default back byte for byte, keeps an element they do not as `MarkXmlElement` (the pull-out picture) and a
@@ -194,8 +196,12 @@ Trimble DLLs and load them side by side in other Tekla versions).
   element keeps its XML attributes in the order read (`XmlAttributeList`), and the content its layout (a line per tag, or
   one line), line break and way of writing `>`, so content Tekla wrote is written back as it was.
   `AttributeSection.GetMarkContent` / `SetMarkContent` (no change when the elements are the same), `ViewLabelMark.Elements`,
-  and the content tables by kind of object in the hand-written partials `Pages/PartMark.cs`, `BoltMark.cs`,
-  `ReinforcementMark.cs` and `DrawingObjects/AssociativeNoteProperties.cs`.
+  and the content tables as `MarkContent` properties, generated: those of the pages from
+  `tools/DialogClassGenerator/ContentProperties.cs` (the tables probed by kind of object, and `PourElements`,
+  `PourBreakElements`, `EdgeChamferElements`, `ReferenceObjectElements` on every mark page, named after the key; the
+  tables of pages not probed get no property), the `Elements` of the mark files of the drawing editor from
+  `ObjectFileSpec.DialogContent` (the key the dialog reads and the keys it writes). The `Advanced` string properties of
+  the same keys stay for the raw XML.
 - `Filters/` — `FilterFile` (rows, byte-preserving), `FilterRow`, expression tree (`FilterExpression`, `FilterCondition`,
   `FilterGroup`), `FilterOperator`, typed `FilterProperty` subclasses, `FilterProperties` (generated catalog of
   `Tekla.Structures.Filtering.Categories`), `FilterFileExtensions`, `FilterObjectType` (hand-written: the label keys of
@@ -317,6 +323,17 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   reinforcement (single, group, mesh) 4, a reference model `ReferenceObjectContentString`; surface treatment (3 by the
   files) was not checked. The typed properties: `PartMark.MainPartElements` ..., `BoltMark.SiteBoltElements` ...,
   `ReinforcementMark.SingleElements` ..., `AssociativeNoteProperties.PartElements` ....
+- **The mark dialogs of the drawing editor have one table** (TFIL_MODE=dlgtables: a file whose every content key holds
+  its own name, loaded and saved again by each dialog; TFIL_MODE=marktables with TFIL_PMDIALOG=1: the part mark dialog
+  loaded with such a .pm and Modify pressed on every part mark of a view). Part mark (`.pm`) and bolt mark (`.sm`) read
+  `ContentString1` and save it into `ContentString1` ... `4`; connection (`.jm`), reinforcement (`.rm`) and surface
+  treatment (`.surfm`) marks read `ContentString1` and save it into 1, 2 and 4, leaving 3 (the merged mark of
+  reinforcement marks); the pour mark (`.pom`) reads `PourContentString` and saves it there and into `ContentString1`.
+  Modify gave every selected part mark (main, secondary, of a sub-assembly) table 1, whatever `CurrentContentTableNumber`
+  or the menu said; the .aid of 2025 and 2026 shows no "Mark content of" menu in these dialogs (`gr_pmark_attrib` ...),
+  only in the note and dimension mark dialogs. So `ContentString1` ... `4` mean main / secondary / sub-assembly main /
+  sub-assembly secondary part on the part mark page of the view and drawing properties only; the files' `Elements` write
+  the one table like the dialogs.
 - **Drawing object files in the dialogs**: every `CreateDefault()` object file (41 types), with one value changed, was
   loaded in its dialog by a macro (Load) and saved again (Save as): the dialogs kept the value (rounded to the field's
   decimals) and every key, except mark contents they normalise, the obsolete `RebarGroupMarkAttributes.*` keys of `.dim`

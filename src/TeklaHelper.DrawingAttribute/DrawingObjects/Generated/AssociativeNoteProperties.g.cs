@@ -61,6 +61,92 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         public AdvancedGroup Advanced => _advanced ?? (_advanced = new AdvancedGroup(Values, Prefix));
 
         /// <summary>
+        /// What a note on a part shows (<c>ContentString1</c>, "Part"; every part, also of sub-assemblies). Checked in
+        /// Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy, to be
+        /// assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent PartElements
+        {
+            get => GetMarkContentOrNull("ContentString1");
+            set => SetMarkContent("ContentString1", value);
+        }
+
+        /// <summary>
+        /// What a note on a bolt shows (<c>ContentString2</c>, "Bolt"; site and workshop bolts). Checked in Tekla 2025
+        /// with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy, to be assigned
+        /// back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent BoltElements
+        {
+            get => GetMarkContentOrNull("ContentString2");
+            set => SetMarkContent("ContentString2", value);
+        }
+
+        /// <summary>
+        /// What a note on a surface treatment shows (<c>ContentString3</c>, "Surface treatment"). Not checked in Tekla
+        /// (the model had no surface treatment): the shipped files hold the name and surfacing name elements here. Each
+        /// get reads the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent SurfaceTreatmentElements
+        {
+            get => GetMarkContentOrNull("ContentString3");
+            set => SetMarkContent("ContentString3", value);
+        }
+
+        /// <summary>
+        /// What a note on reinforcement shows (<c>ContentString4</c>, "Rebar"; single bars, groups and meshes). Checked
+        /// in Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy, to
+        /// be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent ReinforcementElements
+        {
+            get => GetMarkContentOrNull("ContentString4");
+            set => SetMarkContent("ContentString4", value);
+        }
+
+        /// <summary>
+        /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
+        /// the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent EdgeChamferElements
+        {
+            get => GetMarkContentOrNull("ChamferContentString");
+            set => SetMarkContent("ChamferContentString", value);
+        }
+
+        /// <summary>
+        /// Mark content of pour objects (<c>PourContentString</c>). The pour mark dialog of the drawing editor edits
+        /// this table (checked in Tekla 2025); on the other mark pages it is named after the key, not probed. Each get
+        /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent PourElements
+        {
+            get => GetMarkContentOrNull("PourContentString");
+            set => SetMarkContent("PourContentString", value);
+        }
+
+        /// <summary>
+        /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get reads
+        /// the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent PourBreakElements
+        {
+            get => GetMarkContentOrNull("PourBreakContentString");
+            set => SetMarkContent("PourBreakContentString", value);
+        }
+
+        /// <summary>
+        /// What a note on a reference model shows (<c>ReferenceObjectContentString</c>, "Reference object"). Checked in
+        /// Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy, to be
+        /// assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent ReferenceObjectElements
+        {
+            get => GetMarkContentOrNull("ReferenceObjectContentString");
+            set => SetMarkContent("ReferenceObjectContentString", value);
+        }
+
+        /// <summary>
         /// Sets every property of the page to its default and ticks every check box. A default is the value most files
         /// shipped with Tekla hold (at least three), else the dialog's own default, else the value of a file saved from
         /// the dialog.
@@ -110,14 +196,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Advanced.Content1 = 1;
             Advanced.Flags = 0;
             Advanced.MarkUsePartEnd = 0;
-            SetMarkContent("ContentString1", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+            PartElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
                 .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PartMark.PartPosition)
-                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PartMark.Profile));
-            SetMarkContent("ContentString2", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
-                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.BoltMark.Size));
-            SetMarkContent("ContentString3", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
-                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.SurfaceTreatmentMark.Name));
-            SetMarkContent("ContentString4", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine5, Height = 2.5 })
+                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PartMark.Profile);
+            BoltElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.BoltMark.Size);
+            SurfaceTreatmentElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.SurfaceTreatmentMark.Name);
+            ReinforcementElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine5, Height = 2.5 })
                 .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.ReinforcementMark.Number)
                 .AddBackSpace()
                 .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.ReinforcementMark.Shape)
@@ -141,15 +227,15 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 .AddText("cc")
                 .AddBackSpace()
                 .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.ReinforcementMark.Cc)
-                .Add(new global::TeklaHelper.DrawingAttribute.Marks.MarkXmlElement("<PullOut name=\"&lt;&lt; Pullout picture >>\" MarkId=\"0\" Scaling=\"1.0\" pullout=\"&lt;&lt; Pullout picture >>\" subType=\"60\" EndMarks=\"1\" ScalingX=\"0.0\" ScalingY=\"0.0\" RebarGUID=\"\" ScaleType=\"1\" Dimensions=\"1\" BendingAngle=\"0\" Exaggeration=\"1\" RotationAxis=\"0\" BendingRadius=\"0\" UsePlaceHolders=\"0\">\u000A<Format font=\"Arial\" color=\"158\" height=\"2.500\" hidden=\"0\"/>\u000A</PullOut>")));
-            SetMarkContent("ChamferContentString", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+                .Add(new global::TeklaHelper.DrawingAttribute.Marks.MarkXmlElement("<PullOut name=\"&lt;&lt; Pullout picture >>\" MarkId=\"0\" Scaling=\"1.0\" pullout=\"&lt;&lt; Pullout picture >>\" subType=\"60\" EndMarks=\"1\" ScalingX=\"0.0\" ScalingY=\"0.0\" RebarGUID=\"\" ScaleType=\"1\" Dimensions=\"1\" BendingAngle=\"0\" Exaggeration=\"1\" RotationAxis=\"0\" BendingRadius=\"0\" UsePlaceHolders=\"0\">\u000A<Format font=\"Arial\" color=\"158\" height=\"2.500\" hidden=\"0\"/>\u000A</PullOut>"));
+            EdgeChamferElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
                 .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.EdgeChamferMark.Dx)
                 .AddText("x")
-                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.EdgeChamferMark.Dy));
-            SetMarkContent("PourContentString", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
-                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PourMark.Material));
-            SetMarkContent("PourBreakContentString", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
-                .AddText("POUR BREAK"));
+                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.EdgeChamferMark.Dy);
+            PourElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PourMark.Material);
+            PourBreakElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+                .AddText("POUR BREAK");
             Advanced.ReferenceObjectContentString = "";
             Advanced.CurrentContentTableNumber = 0;
             Advanced.ForSubassMain = 1;

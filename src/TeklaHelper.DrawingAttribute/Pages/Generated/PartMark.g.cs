@@ -84,6 +84,94 @@ namespace TeklaHelper.DrawingAttribute.Pages
         public AdvancedGroup Advanced => _advanced ?? (_advanced = new AdvancedGroup(Values, Prefix));
 
         /// <summary>
+        /// What the marks of main parts show (<c>ContentString1</c>, "Main part"; <see
+        /// cref="global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PartMark"/>). Checked in Tekla 2025: a
+        /// view loaded with a different text in each table, its marks read through the Open API. Each get reads the key
+        /// and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent MainPartElements
+        {
+            get => GetMarkContentOrNull("ContentString1");
+            set => SetMarkContent("ContentString1", value);
+        }
+
+        /// <summary>
+        /// What the marks of secondary parts show (<c>ContentString2</c>, "Secondary part"). Checked in Tekla 2025: a
+        /// view loaded with a different text in each table, its marks read through the Open API. Each get reads the key
+        /// and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent SecondaryPartElements
+        {
+            get => GetMarkContentOrNull("ContentString2");
+            set => SetMarkContent("ContentString2", value);
+        }
+
+        /// <summary>
+        /// What the marks of the main parts of sub-assemblies show (<c>ContentString3</c>, "Sub-assembly main part").
+        /// Checked in Tekla 2025: a view loaded with a different text in each table, its marks read through the Open
+        /// API. Each get reads the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent SubAssemblyMainPartElements
+        {
+            get => GetMarkContentOrNull("ContentString3");
+            set => SetMarkContent("ContentString3", value);
+        }
+
+        /// <summary>
+        /// What the marks of the secondary parts of sub-assemblies show (<c>ContentString4</c>, "Sub-assembly secondary
+        /// part"). Checked in Tekla 2025: a view loaded with a different text in each table, its marks read through the
+        /// Open API. Each get reads the key and returns a copy, to be assigned back after a change; null empties the
+        /// key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent SubAssemblySecondaryPartElements
+        {
+            get => GetMarkContentOrNull("ContentString4");
+            set => SetMarkContent("ContentString4", value);
+        }
+
+        /// <summary>
+        /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
+        /// the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent EdgeChamferElements
+        {
+            get => GetMarkContentOrNull("ChamferContentString");
+            set => SetMarkContent("ChamferContentString", value);
+        }
+
+        /// <summary>
+        /// Mark content of pour objects (<c>PourContentString</c>). The pour mark dialog of the drawing editor edits
+        /// this table (checked in Tekla 2025); on the other mark pages it is named after the key, not probed. Each get
+        /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent PourElements
+        {
+            get => GetMarkContentOrNull("PourContentString");
+            set => SetMarkContent("PourContentString", value);
+        }
+
+        /// <summary>
+        /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get reads
+        /// the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent PourBreakElements
+        {
+            get => GetMarkContentOrNull("PourBreakContentString");
+            set => SetMarkContent("PourBreakContentString", value);
+        }
+
+        /// <summary>
+        /// Mark content of reference objects (<c>ReferenceObjectContentString</c>), named after the key; not probed on
+        /// this page (the associative note shows it for reference models). Each get reads the key and returns a copy,
+        /// to be assigned back after a change; null empties the key.
+        /// </summary>
+        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent ReferenceObjectElements
+        {
+            get => GetMarkContentOrNull("ReferenceObjectContentString");
+            set => SetMarkContent("ReferenceObjectContentString", value);
+        }
+
+        /// <summary>
         /// Sets every property of the page to its default and ticks every check box. A default is the value most files
         /// shipped with Tekla hold (at least three), else the dialog's own default, else the value of a file saved from
         /// the dialog.
@@ -139,10 +227,10 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.ContentString3 = "";
             Advanced.ContentString4 = "";
             Advanced.ChamferContentString = "";
-            SetMarkContent("PourContentString", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
-                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PourMark.Material));
-            SetMarkContent("PourBreakContentString", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
-                .AddText("POUR BREAK"));
+            PourElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PourMark.Material);
+            PourBreakElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+                .AddText("POUR BREAK");
             Advanced.ReferenceObjectContentString = "";
             Advanced.CurrentContentTableNumber = 0;
             Advanced.Rotation = 0;

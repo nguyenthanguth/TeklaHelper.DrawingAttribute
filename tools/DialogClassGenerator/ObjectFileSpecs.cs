@@ -39,6 +39,12 @@ namespace DialogClassGenerator
 
         /// <summary>Summary of a <c>Marks</c> property listing the <c>DimensionMark</c> pages; null for none.</summary>
         public string MarksSummary { get; set; }
+
+        /// <summary>
+        /// The one content table of the file's dialog in the drawing editor: the key it reads, the keys Save as writes it to,
+        /// and what else was seen (checked in Tekla 2025, see CLAUDE.md); null for files whose dialog has none or several.
+        /// </summary>
+        public (string Read, string[] Writes, string Dialog, string Note)? DialogContent { get; set; }
     }
 
     internal static class ObjectFileSpecs
@@ -109,42 +115,48 @@ namespace DialogClassGenerator
             },
             new ObjectFileSpec
             {
-                Class = "PartMarkAttributeFile", Extension = ".pm", Table = "PartMark", Title = "part mark properties (.pm)",
+                Class = "PartMarkAttributeFile",
+                DialogContent = ("ContentString1", new[] { "ContentString1", "ContentString2", "ContentString3", "ContentString4" }, "Part mark properties", " Modify gave every selected part mark this content, main, secondary and sub-assembly parts alike."), Extension = ".pm", Table = "PartMark", Title = "part mark properties (.pm)",
                 Summary = "Part mark properties (.pm): the file the Part mark properties dialog of the drawing editor saves. It holds the keys of the Part mark page of the view properties, so <see cref=\"Properties\"/> is that page's class.",
                 LegacyKeyPrefix = "pmark_dial.", DialogSampleFile = "OBJECT-TEST.pm",
                 Pages = new[] { ("Properties", "PartMark", "", "The part mark settings (the top-level keys).") },
             },
             new ObjectFileSpec
             {
-                Class = "BoltMarkAttributeFile", Extension = ".sm", Table = "BoltMark", Title = "bolt mark properties (.sm)",
+                Class = "BoltMarkAttributeFile",
+                DialogContent = ("ContentString1", new[] { "ContentString1", "ContentString2", "ContentString3", "ContentString4" }, "Bolt mark properties", string.Empty), Extension = ".sm", Table = "BoltMark", Title = "bolt mark properties (.sm)",
                 Summary = "Bolt mark properties (.sm): the file the Bolt mark properties dialog of the drawing editor saves. It holds the keys of the Bolt mark page of the view properties, so <see cref=\"Properties\"/> is that page's class.",
                 LegacyKeyPrefix = "smark_dial.", DialogSampleFile = "OBJECT-TEST.sm",
                 Pages = new[] { ("Properties", "BoltMark", "", "The bolt mark settings (the top-level keys).") },
             },
             new ObjectFileSpec
             {
-                Class = "ConnectionMarkAttributeFile", Extension = ".jm", Table = "ConnectionMark", Title = "connection mark properties (.jm)",
+                Class = "ConnectionMarkAttributeFile",
+                DialogContent = ("ContentString1", new[] { "ContentString1", "ContentString2", "ContentString4" }, "Connection mark properties", " <c>ContentString3</c> is left as it is."), Extension = ".jm", Table = "ConnectionMark", Title = "connection mark properties (.jm)",
                 Summary = "Connection mark properties (.jm): the file the Connection mark properties dialog of the drawing editor saves. It holds the keys of the Connection mark page of the view properties, so <see cref=\"Properties\"/> is that page's class.",
                 LegacyKeyPrefix = "jmark_dial.", DialogSampleFile = "OBJECT-TEST.jm",
                 Pages = new[] { ("Properties", "ConnectionMark", "", "The connection mark settings (the top-level keys).") },
             },
             new ObjectFileSpec
             {
-                Class = "ReinforcementMarkAttributeFile", Extension = ".rm", Table = "ReinforcementMark", Title = "reinforcement mark properties (.rm)",
+                Class = "ReinforcementMarkAttributeFile",
+                DialogContent = ("ContentString1", new[] { "ContentString1", "ContentString2", "ContentString4" }, "Reinforcement mark properties", " <c>ContentString3</c>, the merged mark, is left as it is."), Extension = ".rm", Table = "ReinforcementMark", Title = "reinforcement mark properties (.rm)",
                 Summary = "Reinforcement mark properties (.rm): the file the Reinforcement mark properties dialog of the drawing editor saves. It holds the keys of the Reinforcement mark page of the view properties, so <see cref=\"Properties\"/> is that page's class.",
                 LegacyKeyPrefix = "rebar_mark_dial.", DialogSampleFile = "OBJECT-TEST.rm",
                 Pages = new[] { ("Properties", "ReinforcementMark", "", "The reinforcement mark settings (the top-level keys).") },
             },
             new ObjectFileSpec
             {
-                Class = "SurfaceTreatmentMarkAttributeFile", Extension = ".surfm", Table = "SurfaceTreatmentMark", Title = "surface treatment mark properties (.surfm)",
+                Class = "SurfaceTreatmentMarkAttributeFile",
+                DialogContent = ("ContentString1", new[] { "ContentString1", "ContentString2", "ContentString4" }, "Surface treatment mark properties", " <c>ContentString3</c> is left as it is."), Extension = ".surfm", Table = "SurfaceTreatmentMark", Title = "surface treatment mark properties (.surfm)",
                 Summary = "Surface treatment mark properties (.surfm): the file the Surface treatment mark properties dialog of the drawing editor saves. It holds the keys of the Surface treatment mark page of the view properties, so <see cref=\"Properties\"/> is that page's class.",
                 LegacyKeyPrefix = "surf_mark_dial.", DialogSampleFile = "OBJECT-TEST.surfm",
                 Pages = new[] { ("Properties", "SurfaceTreatmentMark", "", "The surface treatment mark settings (the top-level keys).") },
             },
             new ObjectFileSpec
             {
-                Class = "PourMarkAttributeFile", Extension = ".pom", Table = "PourMark", Title = "pour mark properties (.pom)",
+                Class = "PourMarkAttributeFile",
+                DialogContent = ("PourContentString", new[] { "PourContentString", "ContentString1" }, "Pour mark properties", " <c>ContentString2</c> to <c>ContentString4</c> are left as they are."), Extension = ".pom", Table = "PourMark", Title = "pour mark properties (.pom)",
                 Summary = "Pour mark properties (.pom): the file the Pour mark properties dialog of the drawing editor saves. It holds the keys of the Pour mark page of the view properties, so <see cref=\"Properties\"/> is that page's class.",
                 LegacyKeyPrefix = "pour_mark_dial.", DialogSampleFile = "OBJECT-TEST.pom",
                 Pages = new[] { ("Properties", "PourMark", "", "The pour mark settings (the top-level keys).") },

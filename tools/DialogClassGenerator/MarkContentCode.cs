@@ -59,7 +59,8 @@ namespace DialogClassGenerator
         }
 
         /// <summary>
-        /// The statement that sets <paramref name="key"/> of a page to <paramref name="text"/>, as lines of code; null when
+        /// The expression that builds the content of <paramref name="key"/> of a page from <paramref name="text"/>, as lines of
+        /// code (the first starts with <c>new MarkContent(</c>, the others are chained calls); null when
         /// the text is no mark content <c>MarkContent</c> writes back the same.
         /// </summary>
         public static List<string> TryWrite(string pageClass, string key, string text, Func<int, string> color)
@@ -108,14 +109,13 @@ namespace DialogClassGenerator
             string defaultFormat = "new " + Marks + "MarkFormat { Font = \"Arial\", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Black, Height = 2.5 }";
             var lines = new List<string>
             {
-                $"SetMarkContent({Program.Literal(key)}, new {Marks}MarkContent({(shared == null || shared == defaultFormat ? string.Empty : shared)})",
+                $"new {Marks}MarkContent({(shared == null || shared == defaultFormat ? string.Empty : shared)})",
             };
             foreach ((string call, string format) in calls)
             {
                 lines.Add("    " + string.Format(CultureInfo.InvariantCulture, call, format == null || format == shared ? string.Empty : ", " + format));
             }
 
-            lines[lines.Count - 1] += ");";
             return lines;
         }
 
