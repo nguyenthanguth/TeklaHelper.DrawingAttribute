@@ -3,6 +3,8 @@
 //     run it again (see CLAUDE.md).
 // </auto-generated>
 
+using System.Collections.Generic;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -11,7 +13,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// mark of the dimension a <see cref="DimensionMark"/> under its own prefix. No attribute class of the Open API
     /// reads it by name (checked in Tekla 2025): the dialog loads it.
     /// </summary>
-    public sealed partial class ReinforcementDimensionAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class ReinforcementDimensionAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -40,13 +42,13 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// the environment. The values are those most of the .rdim files shipped with Tekla hold (at least three
         /// files), else those of the .dim files, else those of the file saved from the Tekla 2025 dialog;
         /// <c>SetDefaults()</c> of the page writes the defaults of the page's own file type instead. The file uses code
-        /// page 1252: set <see cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving
+        /// page 1252: set <see cref="AttributeFile.CodePage"/> before saving
         /// Japanese or Korean text.
         /// </summary>
         public static ReinforcementDimensionAttributeFile CreateDefault()
         {
             var file = new ReinforcementDimensionAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.ReinforcementDimension.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.ReinforcementDimension.Table);
             return file;
         }
 
@@ -106,7 +108,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The nine marks: prefix, postfix and the tags A to G.
         /// </summary>
-        public global::System.Collections.Generic.IEnumerable<DimensionMark> Marks => new[]
+        public IEnumerable<DimensionMark> Marks => new[]
         {
             PrefixMark,
             PostfixMark,

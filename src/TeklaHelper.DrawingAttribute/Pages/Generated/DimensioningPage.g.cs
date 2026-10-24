@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.Drawings
 {
     /// <summary>
@@ -13,7 +15,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
     /// dialog does not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>,
     /// <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class DimensioningPage : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class DimensioningPage : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in GA (.gd) and multi (.md) drawing attribute files.
@@ -24,14 +26,14 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, null, GADrawingPrefix, null);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, null, GADrawingPrefix, null);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="GADrawingPrefix"/>.</param>
-        public DimensioningPage(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public DimensioningPage(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -66,8 +68,8 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         {
             Grid.DimensionCreation.GridLineDimensions = true;
             Grid.DimensionCreation.OverallDimension = true;
-            Grid.DimensionPositioning.Horizontal = global::TeklaHelper.DrawingAttribute.Pages.GridDimensionHorizontalPosition.Left;
-            Grid.DimensionPositioning.Vertical = global::TeklaHelper.DrawingAttribute.Pages.GridDimensionVerticalPosition.Above;
+            Grid.DimensionPositioning.Horizontal = GridDimensionHorizontalPosition.Left;
+            Grid.DimensionPositioning.Vertical = GridDimensionVerticalPosition.Above;
             Parts.OutsideDimensions = 25;
             Parts.InsideDimensions = 25;
             Parts.IncludePartsNotEntirelyInView = false;
@@ -124,9 +126,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Grid" tab.
         /// </summary>
-        public sealed class GridTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class GridTab : AttributeSection
         {
-            internal GridTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal GridTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -148,9 +150,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Dimension creation" group.
             /// </summary>
-            public sealed class DimensionCreationGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class DimensionCreationGroup : AttributeSection
             {
-                internal DimensionCreationGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal DimensionCreationGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -177,9 +179,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Dimension positioning" group.
             /// </summary>
-            public sealed class DimensionPositioningGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class DimensionPositioningGroup : AttributeSection
             {
-                internal DimensionPositioningGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal DimensionPositioningGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -187,18 +189,18 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Horizontal (<c>GridLineHPositioning</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.GridDimensionHorizontalPosition Horizontal
+                public GridDimensionHorizontalPosition Horizontal
                 {
-                    get => GetEnum("GridLineHPositioning", (global::TeklaHelper.DrawingAttribute.Pages.GridDimensionHorizontalPosition)1);
+                    get => GetEnum("GridLineHPositioning", (GridDimensionHorizontalPosition)1);
                     set => SetEnum("GridLineHPositioning", value);
                 }
 
                 /// <summary>
                 /// Vertical (<c>GridLineVPositioning</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.GridDimensionVerticalPosition Vertical
+                public GridDimensionVerticalPosition Vertical
                 {
-                    get => GetEnum("GridLineVPositioning", (global::TeklaHelper.DrawingAttribute.Pages.GridDimensionVerticalPosition)1);
+                    get => GetEnum("GridLineVPositioning", (GridDimensionVerticalPosition)1);
                     set => SetEnum("GridLineVPositioning", value);
                 }
             }
@@ -207,9 +209,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Parts" tab.
         /// </summary>
-        public sealed class PartsTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class PartsTab : AttributeSection
         {
-            internal PartsTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal PartsTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -254,9 +256,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

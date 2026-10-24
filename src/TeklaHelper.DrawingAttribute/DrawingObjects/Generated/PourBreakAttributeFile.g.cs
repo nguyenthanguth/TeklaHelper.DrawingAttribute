@@ -3,6 +3,8 @@
 //     run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -11,7 +13,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// class. The Open API reads it by name with <c>new PourBreak.PourBreakAttributes(name)</c> (checked in Tekla
     /// 2025).
     /// </summary>
-    public sealed partial class PourBreakAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class PourBreakAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -23,7 +25,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public PourBreakAttributeFile()
         {
-            Properties = new global::TeklaHelper.DrawingAttribute.Pages.PourBreakObject(Values, string.Empty);
+            Properties = new PourBreakObject(Values, string.Empty);
         }
 
         /// <summary>
@@ -31,12 +33,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// the environment. The values are those most of the .pbr files shipped with Tekla hold (at least three files),
         /// else those of the file saved from the Tekla 2025 dialog; <c>SetDefaults()</c> of the page writes the
         /// defaults of the page's own file type instead. The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static PourBreakAttributeFile CreateDefault()
         {
             var file = new PourBreakAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.PourBreak.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.PourBreak.Table);
             return file;
         }
 
@@ -46,7 +48,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The pour break settings (the top-level keys).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.PourBreakObject Properties { get; }
+        public PourBreakObject Properties { get; }
 
         /// <inheritdoc />
         protected override string LegacyKeyPrefix => "pour_break_dial.";

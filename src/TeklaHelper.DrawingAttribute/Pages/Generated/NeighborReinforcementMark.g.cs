@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Marks;
+
 namespace TeklaHelper.DrawingAttribute.Pages
 {
     /// <summary>
@@ -13,7 +15,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// files saved from the Tekla 2025 dialogs has a property; those the dialog does not show are in <c>Advanced</c>,
     /// and any other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class NeighborReinforcementMark : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class NeighborReinforcementMark : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in view attribute files (.vi).
@@ -45,14 +47,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="ViewPrefix"/>.</param>
-        public NeighborReinforcementMark(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public NeighborReinforcementMark(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -89,7 +91,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
         /// the key and returns a copy, to be assigned back after a change; null empties the key.
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent EdgeChamferElements
+        public MarkContent EdgeChamferElements
         {
             get => GetMarkContentOrNull("ChamferContentString");
             set => SetMarkContent("ChamferContentString", value);
@@ -100,7 +102,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// this table (checked in Tekla 2025); on the other mark pages it is named after the key, not probed. Each get
         /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent PourElements
+        public MarkContent PourElements
         {
             get => GetMarkContentOrNull("PourContentString");
             set => SetMarkContent("PourContentString", value);
@@ -110,7 +112,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get reads
         /// the key and returns a copy, to be assigned back after a change; null empties the key.
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent PourBreakElements
+        public MarkContent PourBreakElements
         {
             get => GetMarkContentOrNull("PourBreakContentString");
             set => SetMarkContent("PourBreakContentString", value);
@@ -121,7 +123,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// this page (the associative note shows it for reference models). Each get reads the key and returns a copy,
         /// to be assigned back after a change; null empties the key.
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent ReferenceObjectElements
+        public MarkContent ReferenceObjectElements
         {
             get => GetMarkContentOrNull("ReferenceObjectContentString");
             set => SetMarkContent("ReferenceObjectContentString", value);
@@ -134,24 +136,24 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// </summary>
         public void SetDefaults()
         {
-            Content.FrameAroundElements.Type = global::TeklaHelper.DrawingAttribute.Pages.FrameAroundElementsType.Rectangular;
-            Content.FrameAroundElements.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.None;
-            Content.Font.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
+            Content.FrameAroundElements.Type = FrameAroundElementsType.Rectangular;
+            Content.FrameAroundElements.Color = DrawingColor.None;
+            Content.Font.Color = DrawingColor.NewLine2;
             Content.Font.Height = 2.5;
             Content.Font.Font = "romsim";
-            Content.Units.Units = global::TeklaHelper.DrawingAttribute.Pages.Units.Automatic;
-            Content.Units.Format = global::TeklaHelper.DrawingAttribute.Pages.UnitsFormat.Automatic;
-            Merging.IdenticalMarksInSameCastUnit = global::TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMarkMerging.NoMerge;
-            Merging.PreferredDirectionOfMerge = global::TeklaHelper.DrawingAttribute.Pages.MergeDir.MergeHorizontal;
-            Appearance.General.VisibilityInView = global::TeklaHelper.DrawingAttribute.Pages.VisibilityInView.Distributed;
-            Appearance.LeaderLine.RebarGroupMark = global::TeklaHelper.DrawingAttribute.Pages.RebarGroupMarkAttributesLineType.OneLeaderLineToGroup;
-            Appearance.LeaderLine.Type = global::TeklaHelper.DrawingAttribute.Pages.ReinforcementMarkLeaderLineType.Value1;
-            Appearance.LeaderLine.Arrow = global::TeklaHelper.DrawingAttribute.Pages.ReinforcementMarkLeaderLineArrow.NoArrow;
-            Appearance.FrameAroundMark.Type = global::TeklaHelper.DrawingAttribute.Pages.FrameAroundMarkType.None;
-            Appearance.FrameAroundMark.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Black;
-            Appearance.FrameAroundMark.BackgroundMask = global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask.Opaque;
+            Content.Units.Units = Pages.Units.Automatic;
+            Content.Units.Format = UnitsFormat.Automatic;
+            Merging.IdenticalMarksInSameCastUnit = NeighborReinforcementMarkMerging.NoMerge;
+            Merging.PreferredDirectionOfMerge = MergeDir.MergeHorizontal;
+            Appearance.General.VisibilityInView = Pages.VisibilityInView.Distributed;
+            Appearance.LeaderLine.RebarGroupMark = RebarGroupMarkAttributesLineType.OneLeaderLineToGroup;
+            Appearance.LeaderLine.Type = ReinforcementMarkLeaderLineType.Value1;
+            Appearance.LeaderLine.Arrow = ReinforcementMarkLeaderLineArrow.NoArrow;
+            Appearance.FrameAroundMark.Type = FrameAroundMarkType.None;
+            Appearance.FrameAroundMark.Color = DrawingColor.Black;
+            Appearance.FrameAroundMark.BackgroundMask = Pages.BackgroundMask.Opaque;
             Appearance.Placing.Rotation = 0;
-            Appearance.Placing.Alignment = global::TeklaHelper.DrawingAttribute.Pages.PlacingAlignment.Left;
+            Appearance.Placing.Alignment = PlacingAlignment.Left;
             Appearance.Placing.Place.SearchMargin = 0;
             Appearance.Placing.Place.MinimumDistance = 0;
             Appearance.Placing.Place.MaximumDistance = 0;
@@ -168,7 +170,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.InSubAssemblySecondaryParts = false;
             Advanced.IgnoreSize = 0;
             Advanced.MarkNsfs = false;
-            Advanced.TxplTextPlacingMode = global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode.Free;
+            Advanced.TxplTextPlacingMode = Pages.TxplTextPlacingMode.Free;
             Advanced.Create = 0;
             Advanced.ForWhichParts = 0;
             Advanced.TextColour = 155;
@@ -348,9 +350,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Content" tab.
         /// </summary>
-        public sealed class ContentTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ContentTab : AttributeSection
         {
-            internal ContentTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ContentTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -379,9 +381,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Frame around elements" group.
             /// </summary>
-            public sealed class FrameAroundElementsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class FrameAroundElementsGroup : AttributeSection
             {
-                internal FrameAroundElementsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal FrameAroundElementsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -389,18 +391,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Type (<c>FrameAttr.frame_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.FrameAroundElementsType Type
+                public FrameAroundElementsType Type
                 {
-                    get => GetEnum("FrameAttr.frame_type", (global::TeklaHelper.DrawingAttribute.Pages.FrameAroundElementsType)1);
+                    get => GetEnum("FrameAttr.frame_type", (FrameAroundElementsType)1);
                     set => SetEnum("FrameAttr.frame_type", value);
                 }
 
                 /// <summary>
                 /// Color (<c>FrameAttr.line_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("FrameAttr.line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)0);
+                    get => GetEnum("FrameAttr.line_colour", (DrawingColor)0);
                     set => SetEnum("FrameAttr.line_colour", value);
                 }
             }
@@ -408,9 +410,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Font" group.
             /// </summary>
-            public sealed class FontGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class FontGroup : AttributeSection
             {
-                internal FontGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal FontGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -418,9 +420,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>FontAttr.text_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("FontAttr.text_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)0);
+                    get => GetEnum("FontAttr.text_colour", (DrawingColor)0);
                     set => SetEnum("FontAttr.text_colour", value);
                 }
 
@@ -446,9 +448,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Units" group.
             /// </summary>
-            public sealed class UnitsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class UnitsGroup : AttributeSection
             {
-                internal UnitsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal UnitsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -456,18 +458,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Units (<c>UnitAttr.Unit</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.Units Units
+                public Pages.Units Units
                 {
-                    get => GetEnum("UnitAttr.Unit", (global::TeklaHelper.DrawingAttribute.Pages.Units)0);
+                    get => GetEnum("UnitAttr.Unit", (Pages.Units)0);
                     set => SetEnum("UnitAttr.Unit", value);
                 }
 
                 /// <summary>
                 /// Format (<c>UnitAttr.Format</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.UnitsFormat Format
+                public UnitsFormat Format
                 {
-                    get => GetEnum("UnitAttr.Format", (global::TeklaHelper.DrawingAttribute.Pages.UnitsFormat)0);
+                    get => GetEnum("UnitAttr.Format", (UnitsFormat)0);
                     set => SetEnum("UnitAttr.Format", value);
                 }
             }
@@ -476,9 +478,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Merging" tab.
         /// </summary>
-        public sealed class MergingTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class MergingTab : AttributeSection
         {
-            internal MergingTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal MergingTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -486,18 +488,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Identical marks in same cast unit (<c>leader_line_type</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMarkMerging IdenticalMarksInSameCastUnit
+            public NeighborReinforcementMarkMerging IdenticalMarksInSameCastUnit
             {
-                get => GetEnum("leader_line_type", (global::TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMarkMerging)3);
+                get => GetEnum("leader_line_type", (NeighborReinforcementMarkMerging)3);
                 set => SetEnum("leader_line_type", value);
             }
 
             /// <summary>
             /// Preferred direction of merge (<c>merge_dir</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.MergeDir PreferredDirectionOfMerge
+            public MergeDir PreferredDirectionOfMerge
             {
-                get => GetEnum("merge_dir", (global::TeklaHelper.DrawingAttribute.Pages.MergeDir)2);
+                get => GetEnum("merge_dir", (MergeDir)2);
                 set => SetEnum("merge_dir", value);
             }
         }
@@ -505,9 +507,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Appearance" tab.
         /// </summary>
-        public sealed class AppearanceTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AppearanceTab : AttributeSection
         {
-            internal AppearanceTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AppearanceTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -543,9 +545,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "General" group.
             /// </summary>
-            public sealed class GeneralGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class GeneralGroup : AttributeSection
             {
-                internal GeneralGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal GeneralGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -553,9 +555,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Visibility in view (<c>in_all_views</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.VisibilityInView VisibilityInView
+                public Pages.VisibilityInView VisibilityInView
                 {
-                    get => GetEnum("in_all_views", (global::TeklaHelper.DrawingAttribute.Pages.VisibilityInView)3);
+                    get => GetEnum("in_all_views", (Pages.VisibilityInView)3);
                     set => SetEnum("in_all_views", value);
                 }
             }
@@ -563,9 +565,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Leader line" group.
             /// </summary>
-            public sealed class LeaderLineGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class LeaderLineGroup : AttributeSection
             {
-                internal LeaderLineGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal LeaderLineGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -573,27 +575,27 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Rebar group mark (<c>RebarGroupMarkAttributes.LineType</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.RebarGroupMarkAttributesLineType RebarGroupMark
+                public RebarGroupMarkAttributesLineType RebarGroupMark
                 {
-                    get => GetEnum("RebarGroupMarkAttributes.LineType", (global::TeklaHelper.DrawingAttribute.Pages.RebarGroupMarkAttributesLineType)0);
+                    get => GetEnum("RebarGroupMarkAttributes.LineType", (RebarGroupMarkAttributesLineType)0);
                     set => SetEnum("RebarGroupMarkAttributes.LineType", value);
                 }
 
                 /// <summary>
                 /// Type (<c>text_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.ReinforcementMarkLeaderLineType Type
+                public ReinforcementMarkLeaderLineType Type
                 {
-                    get => GetEnum("text_type", (global::TeklaHelper.DrawingAttribute.Pages.ReinforcementMarkLeaderLineType)1);
+                    get => GetEnum("text_type", (ReinforcementMarkLeaderLineType)1);
                     set => SetEnum("text_type", value);
                 }
 
                 /// <summary>
                 /// Arrow (<c>ArrowType</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.ReinforcementMarkLeaderLineArrow Arrow
+                public ReinforcementMarkLeaderLineArrow Arrow
                 {
-                    get => GetEnum("ArrowType", (global::TeklaHelper.DrawingAttribute.Pages.ReinforcementMarkLeaderLineArrow)0);
+                    get => GetEnum("ArrowType", (ReinforcementMarkLeaderLineArrow)0);
                     set => SetEnum("ArrowType", value);
                 }
             }
@@ -601,9 +603,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Frame around mark" group.
             /// </summary>
-            public sealed class FrameAroundMarkGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class FrameAroundMarkGroup : AttributeSection
             {
-                internal FrameAroundMarkGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal FrameAroundMarkGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -611,27 +613,27 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Type (<c>frame_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.FrameAroundMarkType Type
+                public FrameAroundMarkType Type
                 {
-                    get => GetEnum("frame_type", (global::TeklaHelper.DrawingAttribute.Pages.FrameAroundMarkType)3);
+                    get => GetEnum("frame_type", (FrameAroundMarkType)3);
                     set => SetEnum("frame_type", value);
                 }
 
                 /// <summary>
                 /// Color (<c>line_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)153);
+                    get => GetEnum("line_colour", (DrawingColor)153);
                     set => SetEnum("line_colour", value);
                 }
 
                 /// <summary>
                 /// Background mask (<c>background_mask</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask BackgroundMask
+                public Pages.BackgroundMask BackgroundMask
                 {
-                    get => GetEnum("background_mask", (global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask)150);
+                    get => GetEnum("background_mask", (Pages.BackgroundMask)150);
                     set => SetEnum("background_mask", value);
                 }
             }
@@ -639,9 +641,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Placing" group.
             /// </summary>
-            public sealed class PlacingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class PlacingGroup : AttributeSection
             {
-                internal PlacingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal PlacingGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -658,9 +660,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Alignment (<c>Alignment</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.PlacingAlignment Alignment
+                public PlacingAlignment Alignment
                 {
-                    get => GetEnum("Alignment", (global::TeklaHelper.DrawingAttribute.Pages.PlacingAlignment)0);
+                    get => GetEnum("Alignment", (PlacingAlignment)0);
                     set => SetEnum("Alignment", value);
                 }
 
@@ -674,9 +676,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// The dialog opened by the "Place..." button.
                 /// </summary>
-                public sealed class PlaceDialog : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class PlaceDialog : AttributeSection
                 {
-                    internal PlaceDialog(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal PlaceDialog(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -718,9 +720,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                     /// <summary>
                     /// The "Quarter" group.
                     /// </summary>
-                    public sealed class QuarterGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                    public sealed class QuarterGroup : AttributeSection
                     {
-                        internal QuarterGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                        internal QuarterGroup(AttributeCollection values, string prefix)
                             : base(values, prefix)
                         {
                         }
@@ -768,9 +770,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -868,9 +870,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Placing (<c>txpl.text_placing_mode</c>). Shown in an older Tekla dialog, not in the current View
             /// properties.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode TxplTextPlacingMode
+            public Pages.TxplTextPlacingMode TxplTextPlacingMode
             {
-                get => GetEnum("txpl.text_placing_mode", (global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode)0);
+                get => GetEnum("txpl.text_placing_mode", (Pages.TxplTextPlacingMode)0);
                 set => SetEnum("txpl.text_placing_mode", value);
             }
 

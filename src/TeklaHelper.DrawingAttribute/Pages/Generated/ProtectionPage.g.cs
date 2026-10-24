@@ -13,7 +13,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// property; those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by name
     /// (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class ProtectionPage : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class ProtectionPage : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in view attribute files (.vi).
@@ -44,14 +44,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="ViewPrefix"/>.</param>
-        public ProtectionPage(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public ProtectionPage(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }

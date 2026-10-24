@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -13,14 +15,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// files shipped with Tekla has a property; those the dialog does not show are in <c>Advanced</c>, and any other
     /// key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class DrawingWeldMarkProperties : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class DrawingWeldMarkProperties : AttributeSection
     {
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <c>""</c>.</param>
-        public DrawingWeldMarkProperties(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public DrawingWeldMarkProperties(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -56,10 +58,10 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Content.AboveLine.PrefixAboveLine = "";
             Content.AboveLine.Size = 6;
             Content.AboveLine.SizeAdditionalSizeAbove = 0;
-            Content.AboveLine.Type = global::TeklaHelper.DrawingAttribute.Pages.WeldType.Fillet;
+            Content.AboveLine.Type = WeldType.Fillet;
             Content.AboveLine.Angle = 0;
-            Content.AboveLine.Contour = global::TeklaHelper.DrawingAttribute.Pages.WeldContour.None;
-            Content.AboveLine.Finish = global::TeklaHelper.DrawingAttribute.Pages.WeldFinish.None;
+            Content.AboveLine.Contour = WeldContour.None;
+            Content.AboveLine.Finish = WeldFinish.None;
             Content.AboveLine.Length = 0;
             Content.AboveLine.Pitch = 0;
             Content.AboveLine.EffectiveThroat = 0;
@@ -67,31 +69,31 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Content.BelowLine.PrefixBelowLine = "";
             Content.BelowLine.Size = 0;
             Content.BelowLine.SizeAdditionalSizeBelow = 0;
-            Content.BelowLine.Type = global::TeklaHelper.DrawingAttribute.Pages.WeldType.None;
+            Content.BelowLine.Type = WeldType.None;
             Content.BelowLine.Angle = 0;
-            Content.BelowLine.Contour = global::TeklaHelper.DrawingAttribute.Pages.WeldContour.None;
-            Content.BelowLine.Finish = global::TeklaHelper.DrawingAttribute.Pages.WeldFinish.None;
+            Content.BelowLine.Contour = WeldContour.None;
+            Content.BelowLine.Finish = WeldFinish.None;
             Content.BelowLine.Length = 0;
             Content.BelowLine.Pitch = 0;
             Content.BelowLine.EffectiveThroat = 0;
             Content.BelowLine.RootOpening = 0;
             Content.Other.ReferenceText = "";
-            Content.Other.EdgeAround = global::TeklaHelper.DrawingAttribute.Pages.WeldEdgeAround.Edge;
-            Content.Other.WorkshopSite = global::TeklaHelper.DrawingAttribute.Pages.WeldWorkshopSite.Workshop;
+            Content.Other.EdgeAround = WeldEdgeAround.Edge;
+            Content.Other.WorkshopSite = WeldWorkshopSite.Workshop;
             Content.Other.StitchWeld = false;
-            Content.Place.Placing = global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode.Fixed;
+            Content.Place.Placing = TxplTextPlacingMode.Fixed;
             Content.Place.SearchMargin = 5;
             Content.Place.MinimumDistance = 5;
             Content.Place.Quarter.Quarter4 = true;
             Content.Place.Quarter.Quarter1 = true;
             Content.Place.Quarter.Quarter3 = true;
             Content.Place.Quarter.Quarter2 = true;
-            Appearance.Text.Text.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Green;
-            Appearance.Text.Text.BackgroundMask = global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask.Opaque;
+            Appearance.Text.Text.Color = DrawingColor.Green;
+            Appearance.Text.Text.BackgroundMask = Pages.BackgroundMask.Opaque;
             Appearance.Text.Text.Height = 2.5;
             Appearance.Text.Text.Font = "Arial";
-            Appearance.Text.Line.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Green;
-            Appearance.Text.Line.Type = global::TeklaHelper.DrawingAttribute.Pages.DrawingWeldMarkLineShape.SingleLine;
+            Appearance.Text.Line.Color = DrawingColor.Green;
+            Appearance.Text.Line.Type = DrawingWeldMarkLineShape.SingleLine;
             Advanced.ArrowType = 1;
             Advanced.ArrowHeight = 1;
             Advanced.ArrowWidth = 1;
@@ -215,9 +217,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Content" tab.
         /// </summary>
-        public sealed class ContentTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ContentTab : AttributeSection
         {
-            internal ContentTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ContentTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -253,9 +255,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Above line" group.
             /// </summary>
-            public sealed class AboveLineGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class AboveLineGroup : AttributeSection
             {
-                internal AboveLineGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal AboveLineGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -290,9 +292,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Type (<c>w_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldType Type
+                public WeldType Type
                 {
-                    get => GetEnum("w_type", (global::TeklaHelper.DrawingAttribute.Pages.WeldType)10);
+                    get => GetEnum("w_type", (WeldType)10);
                     set => SetEnum("w_type", value);
                 }
 
@@ -308,18 +310,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Contour (<c>w_ftype</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldContour Contour
+                public WeldContour Contour
                 {
-                    get => GetEnum("w_ftype", (global::TeklaHelper.DrawingAttribute.Pages.WeldContour)0);
+                    get => GetEnum("w_ftype", (WeldContour)0);
                     set => SetEnum("w_ftype", value);
                 }
 
                 /// <summary>
                 /// Finish (<c>w_finish</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldFinish Finish
+                public WeldFinish Finish
                 {
-                    get => GetEnum("w_finish", (global::TeklaHelper.DrawingAttribute.Pages.WeldFinish)0);
+                    get => GetEnum("w_finish", (WeldFinish)0);
                     set => SetEnum("w_finish", value);
                 }
 
@@ -363,9 +365,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Below line" group.
             /// </summary>
-            public sealed class BelowLineGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class BelowLineGroup : AttributeSection
             {
-                internal BelowLineGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal BelowLineGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -400,9 +402,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Type (<c>w_type2</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldType Type
+                public WeldType Type
                 {
-                    get => GetEnum("w_type2", (global::TeklaHelper.DrawingAttribute.Pages.WeldType)0);
+                    get => GetEnum("w_type2", (WeldType)0);
                     set => SetEnum("w_type2", value);
                 }
 
@@ -418,18 +420,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Contour (<c>w_ftype2</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldContour Contour
+                public WeldContour Contour
                 {
-                    get => GetEnum("w_ftype2", (global::TeklaHelper.DrawingAttribute.Pages.WeldContour)0);
+                    get => GetEnum("w_ftype2", (WeldContour)0);
                     set => SetEnum("w_ftype2", value);
                 }
 
                 /// <summary>
                 /// Finish (<c>w_finish2</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldFinish Finish
+                public WeldFinish Finish
                 {
-                    get => GetEnum("w_finish2", (global::TeklaHelper.DrawingAttribute.Pages.WeldFinish)0);
+                    get => GetEnum("w_finish2", (WeldFinish)0);
                     set => SetEnum("w_finish2", value);
                 }
 
@@ -473,9 +475,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Other" group.
             /// </summary>
-            public sealed class OtherGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class OtherGroup : AttributeSection
             {
-                internal OtherGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal OtherGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -493,9 +495,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// Edge/Around (<c>w_around</c>). The names of the values follow the menu's label "Edge/Around" (0 the
                 /// first picture); not checked in Tekla.
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldEdgeAround EdgeAround
+                public WeldEdgeAround EdgeAround
                 {
-                    get => GetEnum("w_around", (global::TeklaHelper.DrawingAttribute.Pages.WeldEdgeAround)0);
+                    get => GetEnum("w_around", (WeldEdgeAround)0);
                     set => SetEnum("w_around", value);
                 }
 
@@ -503,9 +505,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// Workshop/Site (<c>w_workshop</c>). The names of the values follow the menu's label "Workshop/Site"
                 /// (0 the first picture); not checked in Tekla.
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldWorkshopSite WorkshopSite
+                public WeldWorkshopSite WorkshopSite
                 {
-                    get => GetEnum("w_workshop", (global::TeklaHelper.DrawingAttribute.Pages.WeldWorkshopSite)0);
+                    get => GetEnum("w_workshop", (WeldWorkshopSite)0);
                     set => SetEnum("w_workshop", value);
                 }
 
@@ -522,9 +524,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The dialog opened by the "Place..." button.
             /// </summary>
-            public sealed class PlaceDialog : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class PlaceDialog : AttributeSection
             {
-                internal PlaceDialog(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal PlaceDialog(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -532,9 +534,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Placing (<c>wldpl.weld_placing_mode</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode Placing
+                public TxplTextPlacingMode Placing
                 {
-                    get => GetEnum("wldpl.weld_placing_mode", (global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode)0);
+                    get => GetEnum("wldpl.weld_placing_mode", (TxplTextPlacingMode)0);
                     set => SetEnum("wldpl.weld_placing_mode", value);
                 }
 
@@ -566,9 +568,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// The "Quarter" group.
                 /// </summary>
-                public sealed class QuarterGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class QuarterGroup : AttributeSection
                 {
-                    internal QuarterGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal QuarterGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -615,9 +617,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Appearance" tab.
         /// </summary>
-        public sealed class AppearanceTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AppearanceTab : AttributeSection
         {
-            internal AppearanceTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AppearanceTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -632,9 +634,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Text" group.
             /// </summary>
-            public sealed class TextGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class TextGroup : AttributeSection
             {
-                internal TextGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal TextGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -656,9 +658,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// The "Text" group.
                 /// </summary>
-                public sealed class TextGroupSection : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class TextGroupSection : AttributeSection
                 {
-                    internal TextGroupSection(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal TextGroupSection(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -666,18 +668,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// <summary>
                     /// Color (<c>weld_colour</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                    public DrawingColor Color
                     {
-                        get => GetEnum("weld_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)161);
+                        get => GetEnum("weld_colour", (DrawingColor)161);
                         set => SetEnum("weld_colour", value);
                     }
 
                     /// <summary>
                     /// Background mask (<c>weld_background_mask</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask BackgroundMask
+                    public Pages.BackgroundMask BackgroundMask
                     {
-                        get => GetEnum("weld_background_mask", (global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask)150);
+                        get => GetEnum("weld_background_mask", (Pages.BackgroundMask)150);
                         set => SetEnum("weld_background_mask", value);
                     }
 
@@ -703,9 +705,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// The "Line" group.
                 /// </summary>
-                public sealed class LineGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class LineGroup : AttributeSection
                 {
-                    internal LineGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal LineGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -713,9 +715,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// <summary>
                     /// Color (<c>line_colour</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                    public DrawingColor Color
                     {
-                        get => GetEnum("line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)161);
+                        get => GetEnum("line_colour", (DrawingColor)161);
                         set => SetEnum("line_colour", value);
                     }
 
@@ -723,9 +725,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// Type (<c>line_shape</c>). The names of the values are those of the pictures (wld_single_line,
                     /// wld_double_line); not checked in Tekla.
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.DrawingWeldMarkLineShape Type
+                    public DrawingWeldMarkLineShape Type
                     {
-                        get => GetEnum("line_shape", (global::TeklaHelper.DrawingAttribute.Pages.DrawingWeldMarkLineShape)0);
+                        get => GetEnum("line_shape", (DrawingWeldMarkLineShape)0);
                         set => SetEnum("line_shape", value);
                     }
                 }
@@ -735,9 +737,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

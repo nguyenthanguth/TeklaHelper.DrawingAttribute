@@ -11,7 +11,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// it by name with <c>new Mark.MarkAttributes(modelObject, name)</c>, the attributes of the marks the Open API
     /// creates (the part, bolt and other mark files are not read by name) (checked in Tekla 2025).
     /// </summary>
-    public sealed partial class AssociativeNoteAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class AssociativeNoteAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -30,12 +30,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Creates a file with every key of a .note file, so that Tekla takes nothing from the <c>standard</c> file of
         /// the environment. The values are the defaults of the page (<c>SetDefaults()</c>: the value most of the .note
         /// files shipped with Tekla hold, else the dialog's default). The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static AssociativeNoteAttributeFile CreateDefault()
         {
             var file = new AssociativeNoteAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.AssociativeNote.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.AssociativeNote.Table);
             file.Properties.SetDefaults();
             return file;
         }

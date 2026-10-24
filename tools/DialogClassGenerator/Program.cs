@@ -344,18 +344,18 @@ namespace DialogClassGenerator
                     spec.FileInKey = Str(document.RootElement, "fileMenuKey") ?? spec.FileInKey;
                     spec.FileOutKey = Str(document.RootElement, "saveAsKey") ?? spec.FileOutKey;
                     Container page = BuildPage(spec, document.RootElement, vi, gd);
-                    File.WriteAllText(Path.Combine(FolderOf(spec.Namespace), spec.Class + ".g.cs"), WritePage(spec, page, vi, gd), new UTF8Encoding(false));
+                    File.WriteAllText(Path.Combine(FolderOf(spec.Namespace), spec.Class + ".g.cs"), CodeShortener.Shorten(WritePage(spec, page, vi, gd)), new UTF8Encoding(false));
                     Console.WriteLine($"{spec.Class}: {CountControls(page)} properties");
                 }
             }
 
             foreach (ObjectFileSpec file in ObjectFileSpecs.All.Where(f => !f.HandWritten))
             {
-                File.WriteAllText(Path.Combine(objectOutput, file.Class + ".g.cs"), WriteObjectFile(file), new UTF8Encoding(false));
+                File.WriteAllText(Path.Combine(objectOutput, file.Class + ".g.cs"), CodeShortener.Shorten(WriteObjectFile(file)), new UTF8Encoding(false));
             }
 
-            File.WriteAllText(Path.Combine(args[3], "Enums.g.cs"), WriteEnums(), new UTF8Encoding(false));
-            File.WriteAllText(Path.Combine(args[3], "FileDefaults.g.cs"), WriteFileDefaults(vi, gd, ad), new UTF8Encoding(false));
+            File.WriteAllText(Path.Combine(args[3], "Enums.g.cs"), CodeShortener.Shorten(WriteEnums()), new UTF8Encoding(false));
+            File.WriteAllText(Path.Combine(args[3], "FileDefaults.g.cs"), CodeShortener.Shorten(WriteFileDefaults(vi, gd, ad)), new UTF8Encoding(false));
             Console.WriteLine($"Enums: {EnumsByName.Count}");
             return 0;
         }

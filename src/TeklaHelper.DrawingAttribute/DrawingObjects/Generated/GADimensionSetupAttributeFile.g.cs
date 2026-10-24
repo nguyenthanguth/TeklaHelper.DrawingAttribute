@@ -9,7 +9,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// Settings of the semi-automatic dimensioning of GA drawings (.ga_dim_setup). No attribute class of the Open API
     /// reads it by name (checked in Tekla 2025): the dialog loads it.
     /// </summary>
-    public sealed partial class GADimensionSetupAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class GADimensionSetupAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -28,13 +28,13 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Creates a file with every key of a .ga_dim_setup file, so that Tekla takes nothing from the <c>standard</c>
         /// file of the environment. The values are the defaults of the page (<c>SetDefaults()</c>: the value most of
         /// the .ga_dim_setup files shipped with Tekla hold, else the dialog's default). The file uses code page 1252:
-        /// set <see cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or
+        /// set <see cref="AttributeFile.CodePage"/> before saving Japanese or
         /// Korean text.
         /// </summary>
         public static GADimensionSetupAttributeFile CreateDefault()
         {
             var file = new GADimensionSetupAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.GADimensionSetup.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.GADimensionSetup.Table);
             file.Properties.SetDefaults();
             return file;
         }

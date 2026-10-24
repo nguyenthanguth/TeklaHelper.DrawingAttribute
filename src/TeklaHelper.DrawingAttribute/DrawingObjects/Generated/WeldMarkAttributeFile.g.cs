@@ -3,6 +3,8 @@
 //     run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -11,7 +13,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// of the Weld mark page of the view properties, so <see cref="Properties"/> is that page's class. The Open API
     /// reads it by name with <c>new WeldMark.WeldMarkAttributes(name)</c> (checked in Tekla 2025).
     /// </summary>
-    public sealed partial class WeldMarkAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class WeldMarkAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -23,7 +25,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public WeldMarkAttributeFile()
         {
-            Properties = new global::TeklaHelper.DrawingAttribute.Pages.WeldMark(Values, string.Empty);
+            Properties = new WeldMark(Values, string.Empty);
         }
 
         /// <summary>
@@ -31,12 +33,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// the environment. The values are those most of the .wel files shipped with Tekla hold (at least three files),
         /// else those of the file saved from the Tekla 2025 dialog; <c>SetDefaults()</c> of the page writes the
         /// defaults of the page's own file type instead. The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static WeldMarkAttributeFile CreateDefault()
         {
             var file = new WeldMarkAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.WeldMark.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.WeldMark.Table);
             return file;
         }
 
@@ -46,7 +48,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The weld mark settings (the top-level keys and the placing, <c>weldpl.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.WeldMark Properties { get; }
+        public WeldMark Properties { get; }
 
         /// <inheritdoc />
         protected override string LegacyKeyPrefix => "weld_dial.";

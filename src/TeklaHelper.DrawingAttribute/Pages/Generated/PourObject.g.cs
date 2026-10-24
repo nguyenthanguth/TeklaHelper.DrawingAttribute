@@ -13,7 +13,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// dialogs has a property; those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by
     /// name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class PourObject : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class PourObject : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in view attribute files (.vi).
@@ -45,14 +45,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="ViewPrefix"/>.</param>
-        public PourObject(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public PourObject(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -96,31 +96,31 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Content.HiddenLines.OwnHiddenLines = true;
             Content.AdditionalMarks.EdgeChamfers = false;
             Content.AdditionalMarks.FilletEdges = true;
-            Appearance.VisibleLines.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine1;
-            Appearance.VisibleLines.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Solid;
-            Appearance.SectionLines.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine1;
-            Appearance.SectionLines.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Solid;
-            Appearance.HiddenLines.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine1;
-            Appearance.HiddenLines.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Slashed;
-            Appearance.OwnHiddenLines.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine1;
-            Appearance.OwnHiddenLines.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Slashed;
+            Appearance.VisibleLines.Color = DrawingColor.NewLine1;
+            Appearance.VisibleLines.Type = DrawingLineType.Solid;
+            Appearance.SectionLines.Color = DrawingColor.NewLine1;
+            Appearance.SectionLines.Type = DrawingLineType.Solid;
+            Appearance.HiddenLines.Color = DrawingColor.NewLine1;
+            Appearance.HiddenLines.Type = DrawingLineType.Slashed;
+            Appearance.OwnHiddenLines.Color = DrawingColor.NewLine1;
+            Appearance.OwnHiddenLines.Type = DrawingLineType.Slashed;
             Fill.PourFaces.Type = "None";
-            Fill.PourFaces.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
-            Fill.PourFaces.Background = global::TeklaHelper.DrawingAttribute.DrawingColor.None;
-            Fill.PourFaces.Scale = global::TeklaHelper.DrawingAttribute.Pages.HatchScale.Automatic;
+            Fill.PourFaces.Color = DrawingColor.NewLine2;
+            Fill.PourFaces.Background = DrawingColor.None;
+            Fill.PourFaces.Scale = HatchScale.Automatic;
             Fill.PourFaces.ScalingInDirectionX = 2;
             Fill.PourFaces.ScalingInDirectionY = 1;
             Fill.PourFaces.KeepRatioOfXAndY = true;
             Fill.PourFaces.Angle = 0;
             Fill.Sections.Type = "Automatic";
-            Fill.Sections.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
-            Fill.Sections.Background = global::TeklaHelper.DrawingAttribute.DrawingColor.None;
-            Fill.Sections.Scale = global::TeklaHelper.DrawingAttribute.Pages.HatchScale.Automatic;
+            Fill.Sections.Color = DrawingColor.NewLine2;
+            Fill.Sections.Background = DrawingColor.None;
+            Fill.Sections.Scale = HatchScale.Automatic;
             Fill.Sections.ScalingInDirectionX = 2;
             Fill.Sections.ScalingInDirectionY = 1;
             Fill.Sections.KeepRatioOfXAndY = true;
             Fill.Sections.Angle = 0;
-            Advanced.DrawAs = global::TeklaHelper.DrawingAttribute.Pages.Representation.Outline;
+            Advanced.DrawAs = Representation.Outline;
             Advanced.SymbolOffset = 10;
             Advanced.InnerContours = true;
             Advanced.Length = 1000;
@@ -140,18 +140,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.OrientationMarks = true;
             Advanced.ConnectingSideMarks = false;
             Advanced.PopMarks = false;
-            Advanced.ReferenceColour = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine1;
-            Advanced.ReferenceLinetype = global::TeklaHelper.DrawingAttribute.DrawingLineType.Slashed;
-            Advanced.CenterColour = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine1;
-            Advanced.CenterLinetype = global::TeklaHelper.DrawingAttribute.DrawingLineType.DashDot;
-            Advanced.NeighborParts = global::TeklaHelper.DrawingAttribute.Pages.NpCollectBy.None;
-            Advanced.MainSecondaryParts = global::TeklaHelper.DrawingAttribute.Pages.NpWhich.MainParts;
+            Advanced.ReferenceColour = DrawingColor.NewLine1;
+            Advanced.ReferenceLinetype = DrawingLineType.Slashed;
+            Advanced.CenterColour = DrawingColor.NewLine1;
+            Advanced.CenterLinetype = DrawingLineType.DashDot;
+            Advanced.NeighborParts = NpCollectBy.None;
+            Advanced.MainSecondaryParts = NpWhich.MainParts;
             Advanced.SkewParts = false;
             Advanced.Bolts = false;
-            Advanced.BoltRepresentation = global::TeklaHelper.DrawingAttribute.Pages.BoltDrawAs.Value0;
+            Advanced.BoltRepresentation = BoltDrawAs.Value0;
             Advanced.Hole = false;
             Advanced.Axis = false;
-            Advanced.BoltColour = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine1;
+            Advanced.BoltColour = DrawingColor.NewLine1;
             Advanced.DotNETScriptNames = "";
             Advanced.ACustomPresentation = "";
             Advanced.PartHatchHatchType = 0;
@@ -304,9 +304,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Content" tab.
         /// </summary>
-        public sealed class ContentTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ContentTab : AttributeSection
         {
-            internal ContentTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ContentTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -328,9 +328,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Hidden lines" group.
             /// </summary>
-            public sealed class HiddenLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class HiddenLinesGroup : AttributeSection
             {
-                internal HiddenLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal HiddenLinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -357,9 +357,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Additional marks" group.
             /// </summary>
-            public sealed class AdditionalMarksGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class AdditionalMarksGroup : AttributeSection
             {
-                internal AdditionalMarksGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal AdditionalMarksGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -387,9 +387,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Appearance" tab.
         /// </summary>
-        public sealed class AppearanceTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AppearanceTab : AttributeSection
         {
-            internal AppearanceTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AppearanceTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -425,9 +425,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Visible lines" group.
             /// </summary>
-            public sealed class VisibleLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class VisibleLinesGroup : AttributeSection
             {
-                internal VisibleLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal VisibleLinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -435,18 +435,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>visible_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("visible_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                    get => GetEnum("visible_colour", (DrawingColor)154);
                     set => SetEnum("visible_colour", value);
                 }
 
                 /// <summary>
                 /// Type (<c>visible_linetype</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                public DrawingLineType Type
                 {
-                    get => GetEnum("visible_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                    get => GetEnum("visible_linetype", (DrawingLineType)1);
                     set => SetEnum("visible_linetype", value);
                 }
             }
@@ -454,9 +454,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Section lines" group.
             /// </summary>
-            public sealed class SectionLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class SectionLinesGroup : AttributeSection
             {
-                internal SectionLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal SectionLinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -464,18 +464,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>section_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("section_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                    get => GetEnum("section_colour", (DrawingColor)154);
                     set => SetEnum("section_colour", value);
                 }
 
                 /// <summary>
                 /// Type (<c>section_linetype</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                public DrawingLineType Type
                 {
-                    get => GetEnum("section_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                    get => GetEnum("section_linetype", (DrawingLineType)1);
                     set => SetEnum("section_linetype", value);
                 }
             }
@@ -483,9 +483,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Hidden lines" group.
             /// </summary>
-            public sealed class HiddenLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class HiddenLinesGroup : AttributeSection
             {
-                internal HiddenLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal HiddenLinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -493,18 +493,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>hidden_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("hidden_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                    get => GetEnum("hidden_colour", (DrawingColor)154);
                     set => SetEnum("hidden_colour", value);
                 }
 
                 /// <summary>
                 /// Type (<c>hidden_linetype</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                public DrawingLineType Type
                 {
-                    get => GetEnum("hidden_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                    get => GetEnum("hidden_linetype", (DrawingLineType)1);
                     set => SetEnum("hidden_linetype", value);
                 }
             }
@@ -512,9 +512,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Own hidden lines" group.
             /// </summary>
-            public sealed class OwnHiddenLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class OwnHiddenLinesGroup : AttributeSection
             {
-                internal OwnHiddenLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal OwnHiddenLinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -522,18 +522,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>own_hidden_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("own_hidden_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                    get => GetEnum("own_hidden_colour", (DrawingColor)154);
                     set => SetEnum("own_hidden_colour", value);
                 }
 
                 /// <summary>
                 /// Type (<c>own_hidden_linetype</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                public DrawingLineType Type
                 {
-                    get => GetEnum("own_hidden_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                    get => GetEnum("own_hidden_linetype", (DrawingLineType)1);
                     set => SetEnum("own_hidden_linetype", value);
                 }
             }
@@ -542,9 +542,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Fill" tab.
         /// </summary>
-        public sealed class FillTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class FillTab : AttributeSection
         {
-            internal FillTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal FillTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -566,9 +566,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Pour faces" group.
             /// </summary>
-            public sealed class PourFacesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class PourFacesGroup : AttributeSection
             {
-                internal PourFacesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal PourFacesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -585,18 +585,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>PartHatch.hatch_color</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("PartHatch.hatch_color", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                    get => GetEnum("PartHatch.hatch_color", (DrawingColor)155);
                     set => SetEnum("PartHatch.hatch_color", value);
                 }
 
                 /// <summary>
                 /// Background (<c>PartHatch.HatchBackgroundColor</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Background
+                public DrawingColor Background
                 {
-                    get => GetEnum("PartHatch.HatchBackgroundColor", (global::TeklaHelper.DrawingAttribute.DrawingColor)0);
+                    get => GetEnum("PartHatch.HatchBackgroundColor", (DrawingColor)0);
                     set => SetEnum("PartHatch.HatchBackgroundColor", value);
                 }
 
@@ -604,9 +604,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// Scale (<c>PartHatch.HatchAutomaticOrCustom</c>). The stored values follow the order of the menu:
                 /// Tekla's dialog definition does not list them.
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.HatchScale Scale
+                public HatchScale Scale
                 {
-                    get => GetEnum("PartHatch.HatchAutomaticOrCustom", (global::TeklaHelper.DrawingAttribute.Pages.HatchScale)1);
+                    get => GetEnum("PartHatch.HatchAutomaticOrCustom", (HatchScale)1);
                     set => SetEnum("PartHatch.HatchAutomaticOrCustom", value);
                 }
 
@@ -650,9 +650,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Sections" group.
             /// </summary>
-            public sealed class SectionsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class SectionsGroup : AttributeSection
             {
-                internal SectionsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal SectionsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -669,18 +669,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>SectionHatch.hatch_color</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("SectionHatch.hatch_color", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                    get => GetEnum("SectionHatch.hatch_color", (DrawingColor)155);
                     set => SetEnum("SectionHatch.hatch_color", value);
                 }
 
                 /// <summary>
                 /// Background (<c>SectionHatch.HatchBackgroundColor</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Background
+                public DrawingColor Background
                 {
-                    get => GetEnum("SectionHatch.HatchBackgroundColor", (global::TeklaHelper.DrawingAttribute.DrawingColor)0);
+                    get => GetEnum("SectionHatch.HatchBackgroundColor", (DrawingColor)0);
                     set => SetEnum("SectionHatch.HatchBackgroundColor", value);
                 }
 
@@ -688,9 +688,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// Scale (<c>SectionHatch.HatchAutomaticOrCustom</c>). The stored values follow the order of the menu:
                 /// Tekla's dialog definition does not list them.
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.HatchScale Scale
+                public HatchScale Scale
                 {
-                    get => GetEnum("SectionHatch.HatchAutomaticOrCustom", (global::TeklaHelper.DrawingAttribute.Pages.HatchScale)1);
+                    get => GetEnum("SectionHatch.HatchAutomaticOrCustom", (HatchScale)1);
                     set => SetEnum("SectionHatch.HatchAutomaticOrCustom", value);
                 }
 
@@ -735,9 +735,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -746,9 +746,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Representation (<c>draw_as</c>). The dialog shows it on another page with the same keys, not on this
             /// one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.Representation DrawAs
+            public Representation DrawAs
             {
-                get => GetEnum("draw_as", (global::TeklaHelper.DrawingAttribute.Pages.Representation)1);
+                get => GetEnum("draw_as", (Representation)1);
                 set => SetEnum("draw_as", value);
             }
 
@@ -944,9 +944,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Color (<c>reference_colour</c>). The dialog shows it on another page with the same keys, not on this
             /// one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor ReferenceColour
+            public DrawingColor ReferenceColour
             {
-                get => GetEnum("reference_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                get => GetEnum("reference_colour", (DrawingColor)154);
                 set => SetEnum("reference_colour", value);
             }
 
@@ -954,27 +954,27 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Type (<c>reference_linetype</c>). The dialog shows it on another page with the same keys, not on this
             /// one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingLineType ReferenceLinetype
+            public DrawingLineType ReferenceLinetype
             {
-                get => GetEnum("reference_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                get => GetEnum("reference_linetype", (DrawingLineType)1);
                 set => SetEnum("reference_linetype", value);
             }
 
             /// <summary>
             /// Color (<c>center_colour</c>). The dialog shows it on another page with the same keys, not on this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor CenterColour
+            public DrawingColor CenterColour
             {
-                get => GetEnum("center_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                get => GetEnum("center_colour", (DrawingColor)154);
                 set => SetEnum("center_colour", value);
             }
 
             /// <summary>
             /// Type (<c>center_linetype</c>). The dialog shows it on another page with the same keys, not on this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingLineType CenterLinetype
+            public DrawingLineType CenterLinetype
             {
-                get => GetEnum("center_linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                get => GetEnum("center_linetype", (DrawingLineType)1);
                 set => SetEnum("center_linetype", value);
             }
 
@@ -982,9 +982,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Neighbor parts (<c>np_collect_by</c>). The dialog shows it on another page with the same keys, not on
             /// this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.NpCollectBy NeighborParts
+            public NpCollectBy NeighborParts
             {
-                get => GetEnum("np_collect_by", (global::TeklaHelper.DrawingAttribute.Pages.NpCollectBy)0);
+                get => GetEnum("np_collect_by", (NpCollectBy)0);
                 set => SetEnum("np_collect_by", value);
             }
 
@@ -992,9 +992,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Main/Secondary parts (<c>np_which</c>). The dialog shows it on another page with the same keys, not on
             /// this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.NpWhich MainSecondaryParts
+            public NpWhich MainSecondaryParts
             {
-                get => GetEnum("np_which", (global::TeklaHelper.DrawingAttribute.Pages.NpWhich)1);
+                get => GetEnum("np_which", (NpWhich)1);
                 set => SetEnum("np_which", value);
             }
 
@@ -1021,9 +1021,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// Bolt representation (<c>BoltDrawAs</c>). The dialog shows it on another page with the same keys, not on
             /// this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.BoltDrawAs BoltRepresentation
+            public BoltDrawAs BoltRepresentation
             {
-                get => GetEnum("BoltDrawAs", (global::TeklaHelper.DrawingAttribute.Pages.BoltDrawAs)0);
+                get => GetEnum("BoltDrawAs", (BoltDrawAs)0);
                 set => SetEnum("BoltDrawAs", value);
             }
 
@@ -1048,9 +1048,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Color (<c>bolt_colour</c>). The dialog shows it on another page with the same keys, not on this one.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor BoltColour
+            public DrawingColor BoltColour
             {
-                get => GetEnum("bolt_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                get => GetEnum("bolt_colour", (DrawingColor)154);
                 set => SetEnum("bolt_colour", value);
             }
 

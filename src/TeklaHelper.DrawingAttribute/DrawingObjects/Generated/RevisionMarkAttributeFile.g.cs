@@ -9,7 +9,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// Revision mark properties (.rev): the file the Revision mark properties dialog of the drawing editor saves. No
     /// attribute class of the Open API reads it by name (checked in Tekla 2025): the dialog loads it.
     /// </summary>
-    public sealed partial class RevisionMarkAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class RevisionMarkAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -28,12 +28,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Creates a file with every key of a .rev file, so that Tekla takes nothing from the <c>standard</c> file of
         /// the environment. The values are the defaults of the page (<c>SetDefaults()</c>: the value most of the .rev
         /// files shipped with Tekla hold, else the dialog's default). The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static RevisionMarkAttributeFile CreateDefault()
         {
             var file = new RevisionMarkAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.RevisionMark.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.RevisionMark.Table);
             file.Properties.SetDefaults();
             return file;
         }

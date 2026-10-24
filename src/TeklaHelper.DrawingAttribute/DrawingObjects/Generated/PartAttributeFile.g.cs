@@ -10,7 +10,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// parts selected in a drawing. The Open API reads it by name with <c>new Part.PartAttributes(name)</c> (checked in
     /// Tekla 2025).
     /// </summary>
-    public sealed partial class PartAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class PartAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -29,12 +29,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Creates a file with every key of a .dprt file, so that Tekla takes nothing from the <c>standard</c> file of
         /// the environment. The values are the defaults of the page (<c>SetDefaults()</c>: the value most of the .dprt
         /// files shipped with Tekla hold, else the dialog's default). The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static PartAttributeFile CreateDefault()
         {
             var file = new PartAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.Part.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.Part.Table);
             file.Properties.SetDefaults();
             return file;
         }

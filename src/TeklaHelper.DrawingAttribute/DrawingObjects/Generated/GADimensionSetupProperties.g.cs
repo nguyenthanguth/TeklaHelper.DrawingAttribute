@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -12,14 +14,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// the .ga_dim_setup files shipped with Tekla has a property; those the dialog does not show are in
     /// <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class GADimensionSetupProperties : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class GADimensionSetupProperties : AttributeSection
     {
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <c>""</c>.</param>
-        public GADimensionSetupProperties(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public GADimensionSetupProperties(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -27,36 +29,36 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// Dimension (<c>accept_reference_points</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.GADimensionPoints Dimension
+        public GADimensionPoints Dimension
         {
-            get => GetEnum("accept_reference_points", (global::TeklaHelper.DrawingAttribute.Pages.GADimensionPoints)1);
+            get => GetEnum("accept_reference_points", (GADimensionPoints)1);
             set => SetEnum("accept_reference_points", value);
         }
 
         /// <summary>
         /// Parts (<c>accept_all_parts</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.GADimensionParts Parts
+        public GADimensionParts Parts
         {
-            get => GetEnum("accept_all_parts", (global::TeklaHelper.DrawingAttribute.Pages.GADimensionParts)0);
+            get => GetEnum("accept_all_parts", (GADimensionParts)0);
             set => SetEnum("accept_all_parts", value);
         }
 
         /// <summary>
         /// Combine (<c>style</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.GADimensionCombination Combine
+        public GADimensionCombination Combine
         {
-            get => GetEnum("style", (global::TeklaHelper.DrawingAttribute.Pages.GADimensionCombination)3);
+            get => GetEnum("style", (GADimensionCombination)3);
             set => SetEnum("style", value);
         }
 
         /// <summary>
         /// Use (<c>use_centerlines</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.GADimensionLines Use
+        public GADimensionLines Use
         {
-            get => GetEnum("use_centerlines", (global::TeklaHelper.DrawingAttribute.Pages.GADimensionLines)0);
+            get => GetEnum("use_centerlines", (GADimensionLines)0);
             set => SetEnum("use_centerlines", value);
         }
 
@@ -67,10 +69,10 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public void SetDefaults()
         {
-            Dimension = global::TeklaHelper.DrawingAttribute.Pages.GADimensionPoints.IntersectionAndReferencePoints;
-            Parts = global::TeklaHelper.DrawingAttribute.Pages.GADimensionParts.MainParts;
-            Combine = global::TeklaHelper.DrawingAttribute.Pages.GADimensionCombination.ByGridLines;
-            Use = global::TeklaHelper.DrawingAttribute.Pages.GADimensionLines.ReferenceLines;
+            Dimension = GADimensionPoints.IntersectionAndReferencePoints;
+            Parts = GADimensionParts.MainParts;
+            Combine = GADimensionCombination.ByGridLines;
+            Use = GADimensionLines.ReferenceLines;
 
             SetAllEnabled(true);
         }

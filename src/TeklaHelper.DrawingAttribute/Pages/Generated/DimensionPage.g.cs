@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.Drawings
 {
     /// <summary>
@@ -13,7 +15,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
     /// dialogs has a property; those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by
     /// name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class DimensionPage : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class DimensionPage : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in GA (.gd) and multi (.md) drawing attribute files.
@@ -34,14 +36,14 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, null, GADrawingPrefix, AssemblyDrawingPrefix);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, null, GADrawingPrefix, AssemblyDrawingPrefix);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="GADrawingPrefix"/>.</param>
-        public DimensionPage(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public DimensionPage(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -81,43 +83,43 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// </summary>
         public void SetDefaults()
         {
-            General.DimensionTypes.Straight = global::TeklaHelper.DrawingAttribute.Pages.DimensionType.Relative;
-            General.DimensionTypes.InXDirection = global::TeklaHelper.DrawingAttribute.Pages.DimensionTypeInXDirection.Value0;
-            General.DimensionTypes.Angle = global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionType.DegreesOnSide;
+            General.DimensionTypes.Straight = DimensionType.Relative;
+            General.DimensionTypes.InXDirection = DimensionTypeInXDirection.Value0;
+            General.DimensionTypes.Angle = AngleDimensionType.DegreesOnSide;
             General.DimensionTypes.TriangleBaseLength = 100;
-            General.DimensionTypes.ShortExtensionLine = global::TeklaHelper.DrawingAttribute.Pages.ShortExtensionLine.No;
-            General.DimensionTypes.Units.Units = global::TeklaHelper.DrawingAttribute.Pages.DimensionUnits.Automatic;
-            General.DimensionTypes.Precision.Straight = global::TeklaHelper.DrawingAttribute.Pages.DimensionPrecision.OnePerTwo;
-            General.DimensionTypes.Precision.Angle = global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionPrecision.OnePerHundred;
-            General.DimensionTypes.Format.Straight = global::TeklaHelper.DrawingAttribute.Pages.DimensionFormat.OneOptionalDecimal;
-            General.DimensionTypes.Format.Angle = global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionFormat.NoDecimals;
+            General.DimensionTypes.ShortExtensionLine = Pages.ShortExtensionLine.No;
+            General.DimensionTypes.Units.Units = DimensionUnits.Automatic;
+            General.DimensionTypes.Precision.Straight = DimensionPrecision.OnePerTwo;
+            General.DimensionTypes.Precision.Angle = AngleDimensionPrecision.OnePerHundred;
+            General.DimensionTypes.Format.Straight = DimensionFormat.OneOptionalDecimal;
+            General.DimensionTypes.Format.Angle = AngleDimensionFormat.NoDecimals;
             General.DimensionTypes.Format.UseGrouping = false;
             General.Placing.Placing.DimensionLinesSpacing = 20;
-            General.Placing.Placing.ShortDimensions = global::TeklaHelper.DrawingAttribute.Pages.ShortDimensionPlacing.Inside;
+            General.Placing.Placing.ShortDimensions = ShortDimensionPlacing.Inside;
             General.Placing.Placing.Place.SearchMargin = 5;
             General.Placing.Placing.Place.MinimumDistance = 10;
-            Appearance.LineArrow.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Black;
-            Appearance.LineArrow.BackgroundMask = global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask.Opaque;
-            Appearance.LineArrow.ArrowShape = global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape.LineArrow;
-            Appearance.LineArrow.USAbsoluteDimensions = global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape.OpenArrow;
-            Appearance.LineArrow.LevelDimensions = global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape.FilledArrow;
+            Appearance.LineArrow.Color = DrawingColor.Black;
+            Appearance.LineArrow.BackgroundMask = Pages.BackgroundMask.Opaque;
+            Appearance.LineArrow.ArrowShape = DimensionArrowShape.LineArrow;
+            Appearance.LineArrow.USAbsoluteDimensions = DimensionArrowShape.OpenArrow;
+            Appearance.LineArrow.LevelDimensions = DimensionArrowShape.FilledArrow;
             Appearance.LineArrow.LineArrowHeight = 1;
             Appearance.LineArrow.LineArrowWidth = 1;
-            Appearance.Text.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Green;
+            Appearance.Text.Color = DrawingColor.Green;
             Appearance.Text.Height = 2.5;
             Appearance.Text.Font = "Arial";
-            Appearance.Text.Frame = global::TeklaHelper.DrawingAttribute.Pages.DimensionTextFrame.None;
-            Appearance.Text.Place = global::TeklaHelper.DrawingAttribute.Pages.DimensionTextPlacing.AboveDimensionLine;
-            Advanced.PlateSideMarks.Type = global::TeklaHelper.DrawingAttribute.Pages.PlateSideMarkType.None;
+            Appearance.Text.Frame = DimensionTextFrame.None;
+            Appearance.Text.Place = DimensionTextPlacing.AboveDimensionLine;
+            Advanced.PlateSideMarks.Type = PlateSideMarkType.None;
             Advanced.PlateSideMarks.Offset = 5;
-            Advanced.PlateSideMarks.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Black;
+            Advanced.PlateSideMarks.Color = DrawingColor.Black;
             Advanced.PlateSideMarks.Size = 3.5;
-            Advanced.CheckDimensions.LineColor = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine4;
-            Advanced.CheckDimensions.TextColor = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine4;
+            Advanced.CheckDimensions.LineColor = DrawingColor.NewLine4;
+            Advanced.CheckDimensions.TextColor = DrawingColor.NewLine4;
             Advanced.CheckDimensions.TextHeight = 2.5;
-            Advanced.Exaggeration.Exaggeration = global::TeklaHelper.DrawingAttribute.Pages.Exaggeration.None;
-            Advanced.Exaggeration.Direction = global::TeklaHelper.DrawingAttribute.Pages.ExaggerationDirection.LeftDown;
-            Advanced.Exaggeration.Origin = global::TeklaHelper.DrawingAttribute.Pages.ExaggerationOrigin.NearDimensionLine;
+            Advanced.Exaggeration.Exaggeration = Pages.Exaggeration.None;
+            Advanced.Exaggeration.Direction = ExaggerationDirection.LeftDown;
+            Advanced.Exaggeration.Origin = ExaggerationOrigin.NearDimensionLine;
             Advanced.Exaggeration.Width = 5;
             Advanced.Exaggeration.Position = 5;
             Advanced.Exaggeration.Height = 5;
@@ -244,9 +246,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "General" tab.
         /// </summary>
-        public sealed class GeneralTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class GeneralTab : AttributeSection
         {
-            internal GeneralTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal GeneralTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -268,9 +270,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Dimension types" group.
             /// </summary>
-            public sealed class DimensionTypesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class DimensionTypesGroup : AttributeSection
             {
-                internal DimensionTypesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal DimensionTypesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -278,27 +280,27 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Straight (<c>dim_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionType Straight
+                public DimensionType Straight
                 {
-                    get => GetEnum("dim_type", (global::TeklaHelper.DrawingAttribute.Pages.DimensionType)1);
+                    get => GetEnum("dim_type", (DimensionType)1);
                     set => SetEnum("dim_type", value);
                 }
 
                 /// <summary>
                 /// In X direction (<c>dim_type_x</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionTypeInXDirection InXDirection
+                public DimensionTypeInXDirection InXDirection
                 {
-                    get => GetEnum("dim_type_x", (global::TeklaHelper.DrawingAttribute.Pages.DimensionTypeInXDirection)0);
+                    get => GetEnum("dim_type_x", (DimensionTypeInXDirection)0);
                     set => SetEnum("dim_type_x", value);
                 }
 
                 /// <summary>
                 /// Angle (<c>angle_dim_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionType Angle
+                public AngleDimensionType Angle
                 {
-                    get => GetEnum("angle_dim_type", (global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionType)1);
+                    get => GetEnum("angle_dim_type", (AngleDimensionType)1);
                     set => SetEnum("angle_dim_type", value);
                 }
 
@@ -314,9 +316,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Short extension line (<c>ShortExtensionLine</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.ShortExtensionLine ShortExtensionLine
+                public Pages.ShortExtensionLine ShortExtensionLine
                 {
-                    get => GetEnum("ShortExtensionLine", (global::TeklaHelper.DrawingAttribute.Pages.ShortExtensionLine)0);
+                    get => GetEnum("ShortExtensionLine", (Pages.ShortExtensionLine)0);
                     set => SetEnum("ShortExtensionLine", value);
                 }
 
@@ -344,9 +346,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// The "Units" group.
                 /// </summary>
-                public sealed class UnitsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class UnitsGroup : AttributeSection
                 {
-                    internal UnitsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal UnitsGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -354,9 +356,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                     /// <summary>
                     /// Units (<c>dim_units</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.DimensionUnits Units
+                    public DimensionUnits Units
                     {
-                        get => GetEnum("dim_units", (global::TeklaHelper.DrawingAttribute.Pages.DimensionUnits)0);
+                        get => GetEnum("dim_units", (DimensionUnits)0);
                         set => SetEnum("dim_units", value);
                     }
                 }
@@ -364,9 +366,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// The "Precision" group.
                 /// </summary>
-                public sealed class PrecisionGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class PrecisionGroup : AttributeSection
                 {
-                    internal PrecisionGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal PrecisionGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -374,18 +376,18 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                     /// <summary>
                     /// Straight (<c>dim_precision</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.DimensionPrecision Straight
+                    public DimensionPrecision Straight
                     {
-                        get => GetEnum("dim_precision", (global::TeklaHelper.DrawingAttribute.Pages.DimensionPrecision)2);
+                        get => GetEnum("dim_precision", (DimensionPrecision)2);
                         set => SetEnum("dim_precision", value);
                     }
 
                     /// <summary>
                     /// Angle (<c>AnglePrecision</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionPrecision Angle
+                    public AngleDimensionPrecision Angle
                     {
-                        get => GetEnum("AnglePrecision", (global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionPrecision)2);
+                        get => GetEnum("AnglePrecision", (AngleDimensionPrecision)2);
                         set => SetEnum("AnglePrecision", value);
                     }
                 }
@@ -393,9 +395,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// The "Format" group.
                 /// </summary>
-                public sealed class FormatGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class FormatGroup : AttributeSection
                 {
-                    internal FormatGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal FormatGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -403,18 +405,18 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                     /// <summary>
                     /// Straight (<c>dim_format</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.DimensionFormat Straight
+                    public DimensionFormat Straight
                     {
-                        get => GetEnum("dim_format", (global::TeklaHelper.DrawingAttribute.Pages.DimensionFormat)0);
+                        get => GetEnum("dim_format", (DimensionFormat)0);
                         set => SetEnum("dim_format", value);
                     }
 
                     /// <summary>
                     /// Angle (<c>AngleFormat</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionFormat Angle
+                    public AngleDimensionFormat Angle
                     {
-                        get => GetEnum("AngleFormat", (global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionFormat)0);
+                        get => GetEnum("AngleFormat", (AngleDimensionFormat)0);
                         set => SetEnum("AngleFormat", value);
                     }
 
@@ -432,9 +434,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Placing" group.
             /// </summary>
-            public sealed class PlacingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class PlacingGroup : AttributeSection
             {
-                internal PlacingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal PlacingGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -449,9 +451,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// The "Placing" group.
                 /// </summary>
-                public sealed class PlacingGroupSection : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class PlacingGroupSection : AttributeSection
                 {
-                    internal PlacingGroupSection(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal PlacingGroupSection(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -468,9 +470,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                     /// <summary>
                     /// Short dimensions (<c>short_dim_type</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.ShortDimensionPlacing ShortDimensions
+                    public ShortDimensionPlacing ShortDimensions
                     {
-                        get => GetEnum("short_dim_type", (global::TeklaHelper.DrawingAttribute.Pages.ShortDimensionPlacing)0);
+                        get => GetEnum("short_dim_type", (ShortDimensionPlacing)0);
                         set => SetEnum("short_dim_type", value);
                     }
 
@@ -484,9 +486,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                     /// <summary>
                     /// The dialog opened by the "Place..." button.
                     /// </summary>
-                    public sealed class PlaceDialog : global::TeklaHelper.DrawingAttribute.AttributeSection
+                    public sealed class PlaceDialog : AttributeSection
                     {
-                        internal PlaceDialog(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                        internal PlaceDialog(AttributeCollection values, string prefix)
                             : base(values, prefix)
                         {
                         }
@@ -516,9 +518,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Appearance" tab.
         /// </summary>
-        public sealed class AppearanceTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AppearanceTab : AttributeSection
         {
-            internal AppearanceTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AppearanceTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -540,9 +542,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Line, Arrow" group.
             /// </summary>
-            public sealed class LineArrowGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class LineArrowGroup : AttributeSection
             {
-                internal LineArrowGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal LineArrowGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -550,45 +552,45 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Color (<c>dim_line_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("dim_line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)153);
+                    get => GetEnum("dim_line_colour", (DrawingColor)153);
                     set => SetEnum("dim_line_colour", value);
                 }
 
                 /// <summary>
                 /// Background mask (<c>dim_background_mask</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask BackgroundMask
+                public Pages.BackgroundMask BackgroundMask
                 {
-                    get => GetEnum("dim_background_mask", (global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask)150);
+                    get => GetEnum("dim_background_mask", (Pages.BackgroundMask)150);
                     set => SetEnum("dim_background_mask", value);
                 }
 
                 /// <summary>
                 /// Arrow shape (<c>dim_arrow_shape</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape ArrowShape
+                public DimensionArrowShape ArrowShape
                 {
-                    get => GetEnum("dim_arrow_shape", (global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape)0);
+                    get => GetEnum("dim_arrow_shape", (DimensionArrowShape)0);
                     set => SetEnum("dim_arrow_shape", value);
                 }
 
                 /// <summary>
                 /// US Absolute dimensions (<c>USAbsoluteArrowShape</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape USAbsoluteDimensions
+                public DimensionArrowShape USAbsoluteDimensions
                 {
-                    get => GetEnum("USAbsoluteArrowShape", (global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape)0);
+                    get => GetEnum("USAbsoluteArrowShape", (DimensionArrowShape)0);
                     set => SetEnum("USAbsoluteArrowShape", value);
                 }
 
                 /// <summary>
                 /// Level dimensions (<c>LevelArrowShape</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape LevelDimensions
+                public DimensionArrowShape LevelDimensions
                 {
-                    get => GetEnum("LevelArrowShape", (global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape)0);
+                    get => GetEnum("LevelArrowShape", (DimensionArrowShape)0);
                     set => SetEnum("LevelArrowShape", value);
                 }
 
@@ -614,9 +616,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Text" group.
             /// </summary>
-            public sealed class TextGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class TextGroup : AttributeSection
             {
-                internal TextGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal TextGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -624,9 +626,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Color (<c>dim_text_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("dim_text_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)161);
+                    get => GetEnum("dim_text_colour", (DrawingColor)161);
                     set => SetEnum("dim_text_colour", value);
                 }
 
@@ -651,18 +653,18 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Frame (<c>dim_frame</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionTextFrame Frame
+                public DimensionTextFrame Frame
                 {
-                    get => GetEnum("dim_frame", (global::TeklaHelper.DrawingAttribute.Pages.DimensionTextFrame)1);
+                    get => GetEnum("dim_frame", (DimensionTextFrame)1);
                     set => SetEnum("dim_frame", value);
                 }
 
                 /// <summary>
                 /// Place (<c>dim_text_on_line</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionTextPlacing Place
+                public DimensionTextPlacing Place
                 {
-                    get => GetEnum("dim_text_on_line", (global::TeklaHelper.DrawingAttribute.Pages.DimensionTextPlacing)0);
+                    get => GetEnum("dim_text_on_line", (DimensionTextPlacing)0);
                     set => SetEnum("dim_text_on_line", value);
                 }
             }
@@ -671,9 +673,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Advanced" tab.
         /// </summary>
-        public sealed class AdvancedTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedTab : AttributeSection
         {
-            internal AdvancedTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -702,9 +704,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Plate side marks" group.
             /// </summary>
-            public sealed class PlateSideMarksGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class PlateSideMarksGroup : AttributeSection
             {
-                internal PlateSideMarksGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal PlateSideMarksGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -712,9 +714,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Type (<c>PlateSideMarkType</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.PlateSideMarkType Type
+                public PlateSideMarkType Type
                 {
-                    get => GetEnum("PlateSideMarkType", (global::TeklaHelper.DrawingAttribute.Pages.PlateSideMarkType)0);
+                    get => GetEnum("PlateSideMarkType", (PlateSideMarkType)0);
                     set => SetEnum("PlateSideMarkType", value);
                 }
 
@@ -730,9 +732,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Color (<c>PlateSideMarkColor</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("PlateSideMarkColor", (global::TeklaHelper.DrawingAttribute.DrawingColor)153);
+                    get => GetEnum("PlateSideMarkColor", (DrawingColor)153);
                     set => SetEnum("PlateSideMarkColor", value);
                 }
 
@@ -749,9 +751,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Check dimensions" group.
             /// </summary>
-            public sealed class CheckDimensionsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class CheckDimensionsGroup : AttributeSection
             {
-                internal CheckDimensionsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal CheckDimensionsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -759,18 +761,18 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Line color (<c>ReferenceDimensionColor</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor LineColor
+                public DrawingColor LineColor
                 {
-                    get => GetEnum("ReferenceDimensionColor", (global::TeklaHelper.DrawingAttribute.DrawingColor)157);
+                    get => GetEnum("ReferenceDimensionColor", (DrawingColor)157);
                     set => SetEnum("ReferenceDimensionColor", value);
                 }
 
                 /// <summary>
                 /// Text color (<c>ReferenceTextColor</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor TextColor
+                public DrawingColor TextColor
                 {
-                    get => GetEnum("ReferenceTextColor", (global::TeklaHelper.DrawingAttribute.DrawingColor)157);
+                    get => GetEnum("ReferenceTextColor", (DrawingColor)157);
                     set => SetEnum("ReferenceTextColor", value);
                 }
 
@@ -787,9 +789,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Exaggeration" group.
             /// </summary>
-            public sealed class ExaggerationGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class ExaggerationGroup : AttributeSection
             {
-                internal ExaggerationGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal ExaggerationGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -797,27 +799,27 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Exaggeration (<c>Exaggeration</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.Exaggeration Exaggeration
+                public Pages.Exaggeration Exaggeration
                 {
-                    get => GetEnum("Exaggeration", (global::TeklaHelper.DrawingAttribute.Pages.Exaggeration)0);
+                    get => GetEnum("Exaggeration", (Pages.Exaggeration)0);
                     set => SetEnum("Exaggeration", value);
                 }
 
                 /// <summary>
                 /// Direction (<c>ExaggerationDirection</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.ExaggerationDirection Direction
+                public ExaggerationDirection Direction
                 {
-                    get => GetEnum("ExaggerationDirection", (global::TeklaHelper.DrawingAttribute.Pages.ExaggerationDirection)0);
+                    get => GetEnum("ExaggerationDirection", (ExaggerationDirection)0);
                     set => SetEnum("ExaggerationDirection", value);
                 }
 
                 /// <summary>
                 /// Origin (<c>ExaggerationOrigin</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.ExaggerationOrigin Origin
+                public ExaggerationOrigin Origin
                 {
-                    get => GetEnum("ExaggerationOrigin", (global::TeklaHelper.DrawingAttribute.Pages.ExaggerationOrigin)0);
+                    get => GetEnum("ExaggerationOrigin", (ExaggerationOrigin)0);
                     set => SetEnum("ExaggerationOrigin", value);
                 }
 
@@ -853,9 +855,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroupGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroupGroup : AttributeSection
         {
-            internal AdvancedGroupGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroupGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -13,14 +15,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>,
     /// <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class ReinforcementMeshProperties : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class ReinforcementMeshProperties : AttributeSection
     {
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <c>""</c>.</param>
-        public ReinforcementMeshProperties(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public ReinforcementMeshProperties(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -53,17 +55,17 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public void SetDefaults()
         {
-            Content.ReinforcingBarRepresentation.ReinforcingBarRepresentation = global::TeklaHelper.DrawingAttribute.Pages.MeshRepresentation.SingleLine;
-            Content.ReinforcingBarRepresentation.VisibilityOfLongitudinalWires = global::TeklaHelper.DrawingAttribute.Pages.VisibilityOfReinforcingBarsInGroup.All;
-            Content.ReinforcingBarRepresentation.VisibilityOfCrossingBars = global::TeklaHelper.DrawingAttribute.Pages.VisibilityOfReinforcingBarsInGroup.All;
+            Content.ReinforcingBarRepresentation.ReinforcingBarRepresentation = MeshRepresentation.SingleLine;
+            Content.ReinforcingBarRepresentation.VisibilityOfLongitudinalWires = VisibilityOfReinforcingBarsInGroup.All;
+            Content.ReinforcingBarRepresentation.VisibilityOfCrossingBars = VisibilityOfReinforcingBarsInGroup.All;
             Content.Lines.HideLinesBehindParts = false;
             Content.Lines.HideLinesBehindOtherRebars = false;
             Content.Symbols.MeshSymbol = 1;
             Content.Symbols.MeshSymbolSize = 1;
-            Appearance.VisibleLines.Color = (global::TeklaHelper.DrawingAttribute.DrawingColor)(3);
-            Appearance.VisibleLines.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Solid;
-            Appearance.HiddenLines.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Invisible;
-            Appearance.HiddenLines.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Solid;
+            Appearance.VisibleLines.Color = (DrawingColor)(3);
+            Appearance.VisibleLines.Type = DrawingLineType.Solid;
+            Appearance.HiddenLines.Color = DrawingColor.Invisible;
+            Appearance.HiddenLines.Type = DrawingLineType.Solid;
             Advanced.Visibility = 1;
             Advanced.ACustomPresentation = "";
 
@@ -126,9 +128,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Content" tab.
         /// </summary>
-        public sealed class ContentTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ContentTab : AttributeSection
         {
-            internal ContentTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ContentTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -157,9 +159,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Reinforcing bar representation" group.
             /// </summary>
-            public sealed class ReinforcingBarRepresentationGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class ReinforcingBarRepresentationGroup : AttributeSection
             {
-                internal ReinforcingBarRepresentationGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal ReinforcingBarRepresentationGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -167,27 +169,27 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Reinforcing bar representation (<c>representation</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.MeshRepresentation ReinforcingBarRepresentation
+                public MeshRepresentation ReinforcingBarRepresentation
                 {
-                    get => GetEnum("representation", (global::TeklaHelper.DrawingAttribute.Pages.MeshRepresentation)0);
+                    get => GetEnum("representation", (MeshRepresentation)0);
                     set => SetEnum("representation", value);
                 }
 
                 /// <summary>
                 /// Visibility of longitudinal wires (<c>visibility_longitudinal</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.VisibilityOfReinforcingBarsInGroup VisibilityOfLongitudinalWires
+                public VisibilityOfReinforcingBarsInGroup VisibilityOfLongitudinalWires
                 {
-                    get => GetEnum("visibility_longitudinal", (global::TeklaHelper.DrawingAttribute.Pages.VisibilityOfReinforcingBarsInGroup)1);
+                    get => GetEnum("visibility_longitudinal", (VisibilityOfReinforcingBarsInGroup)1);
                     set => SetEnum("visibility_longitudinal", value);
                 }
 
                 /// <summary>
                 /// Visibility of crossing bars (<c>visibility_crossing</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.VisibilityOfReinforcingBarsInGroup VisibilityOfCrossingBars
+                public VisibilityOfReinforcingBarsInGroup VisibilityOfCrossingBars
                 {
-                    get => GetEnum("visibility_crossing", (global::TeklaHelper.DrawingAttribute.Pages.VisibilityOfReinforcingBarsInGroup)1);
+                    get => GetEnum("visibility_crossing", (VisibilityOfReinforcingBarsInGroup)1);
                     set => SetEnum("visibility_crossing", value);
                 }
             }
@@ -195,9 +197,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Lines" group.
             /// </summary>
-            public sealed class LinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class LinesGroup : AttributeSection
             {
-                internal LinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal LinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -224,9 +226,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Symbols" group.
             /// </summary>
-            public sealed class SymbolsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class SymbolsGroup : AttributeSection
             {
-                internal SymbolsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal SymbolsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -254,9 +256,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Appearance" tab.
         /// </summary>
-        public sealed class AppearanceTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AppearanceTab : AttributeSection
         {
-            internal AppearanceTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AppearanceTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -278,9 +280,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Visible lines" group.
             /// </summary>
-            public sealed class VisibleLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class VisibleLinesGroup : AttributeSection
             {
-                internal VisibleLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal VisibleLinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -288,18 +290,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Color (<c>line_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)152);
+                    get => GetEnum("line_colour", (DrawingColor)152);
                     set => SetEnum("line_colour", value);
                 }
 
                 /// <summary>
                 /// Type (<c>line_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                public DrawingLineType Type
                 {
-                    get => GetEnum("line_type", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                    get => GetEnum("line_type", (DrawingLineType)1);
                     set => SetEnum("line_type", value);
                 }
             }
@@ -307,9 +309,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Hidden lines" group.
             /// </summary>
-            public sealed class HiddenLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class HiddenLinesGroup : AttributeSection
             {
-                internal HiddenLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal HiddenLinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -317,18 +319,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Color (<c>HiddenLineColour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("HiddenLineColour", (global::TeklaHelper.DrawingAttribute.DrawingColor)152);
+                    get => GetEnum("HiddenLineColour", (DrawingColor)152);
                     set => SetEnum("HiddenLineColour", value);
                 }
 
                 /// <summary>
                 /// Type (<c>HiddenLineType</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                public DrawingLineType Type
                 {
-                    get => GetEnum("HiddenLineType", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                    get => GetEnum("HiddenLineType", (DrawingLineType)1);
                     set => SetEnum("HiddenLineType", value);
                 }
             }
@@ -337,9 +339,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

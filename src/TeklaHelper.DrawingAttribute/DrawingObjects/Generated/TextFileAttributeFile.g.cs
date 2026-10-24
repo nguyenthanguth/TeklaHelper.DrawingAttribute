@@ -9,7 +9,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// Text file properties (.fas): the file the properties dialog of text files (ASCII files) in drawings saves. No
     /// attribute class of the Open API reads it by name (checked in Tekla 2025): the dialog loads it.
     /// </summary>
-    public sealed partial class TextFileAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class TextFileAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -28,12 +28,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Creates a file with every key of a .fas file, so that Tekla takes nothing from the <c>standard</c> file of
         /// the environment. The values are the defaults of the page (<c>SetDefaults()</c>: the value most of the .fas
         /// files shipped with Tekla hold, else the dialog's default). The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static TextFileAttributeFile CreateDefault()
         {
             var file = new TextFileAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.TextFile.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.TextFile.Table);
             file.Properties.SetDefaults();
             return file;
         }

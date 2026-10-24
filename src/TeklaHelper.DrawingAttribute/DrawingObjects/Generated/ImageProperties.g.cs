@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -12,14 +14,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// .idg files shipped with Tekla has a property; those the dialog does not show are in <c>Advanced</c>, and any
     /// other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class ImageProperties : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class ImageProperties : AttributeSection
     {
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <c>""</c>.</param>
-        public ImageProperties(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public ImageProperties(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -59,11 +61,11 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public void SetDefaults()
         {
-            Scaling.Type = global::TeklaHelper.DrawingAttribute.Pages.EmbeddedObjectScaling.ScaleXY;
+            Scaling.Type = EmbeddedObjectScaling.ScaleXY;
             Scaling.ScaleInX = 1;
             Scaling.ScaleInY = 1;
-            Frame.LineType = global::TeklaHelper.DrawingAttribute.DrawingLineType.Solid;
-            Frame.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Green;
+            Frame.LineType = DrawingLineType.Solid;
+            Frame.Color = DrawingColor.Green;
             File.Name = "";
             Link.Text = "";
 
@@ -114,9 +116,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Scaling" group.
         /// </summary>
-        public sealed class ScalingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ScalingGroup : AttributeSection
         {
-            internal ScalingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ScalingGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -124,9 +126,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// Type (<c>scaling_type</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.EmbeddedObjectScaling Type
+            public EmbeddedObjectScaling Type
             {
-                get => GetEnum("scaling_type", (global::TeklaHelper.DrawingAttribute.Pages.EmbeddedObjectScaling)3);
+                get => GetEnum("scaling_type", (EmbeddedObjectScaling)3);
                 set => SetEnum("scaling_type", value);
             }
 
@@ -152,9 +154,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Frame" group.
         /// </summary>
-        public sealed class FrameGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class FrameGroup : AttributeSection
         {
-            internal FrameGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal FrameGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -162,18 +164,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// Line type (<c>linetype</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingLineType LineType
+            public DrawingLineType LineType
             {
-                get => GetEnum("linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                get => GetEnum("linetype", (DrawingLineType)1);
                 set => SetEnum("linetype", value);
             }
 
             /// <summary>
             /// Color (<c>color</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public DrawingColor Color
             {
-                get => GetEnum("color", (global::TeklaHelper.DrawingAttribute.DrawingColor)161);
+                get => GetEnum("color", (DrawingColor)161);
                 set => SetEnum("color", value);
             }
         }
@@ -181,9 +183,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "File" group.
         /// </summary>
-        public sealed class FileGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class FileGroup : AttributeSection
         {
-            internal FileGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal FileGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -201,9 +203,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Link" group.
         /// </summary>
-        public sealed class LinkGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class LinkGroup : AttributeSection
         {
-            internal LinkGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal LinkGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

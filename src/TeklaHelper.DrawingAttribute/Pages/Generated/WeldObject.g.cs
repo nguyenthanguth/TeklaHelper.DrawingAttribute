@@ -13,7 +13,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// dialogs has a property; those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by
     /// name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class WeldObject : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class WeldObject : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in view attribute files (.vi).
@@ -50,14 +50,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="ViewPrefix"/>.</param>
-        public WeldObject(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public WeldObject(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -90,16 +90,16 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// </summary>
         public void SetDefaults()
         {
-            Content.Visibility.Welds = global::TeklaHelper.DrawingAttribute.Pages.WeldVisibility.NotVisible;
-            Content.Visibility.WeldsInSubAssemblies = global::TeklaHelper.DrawingAttribute.Pages.WeldVisibility.NotVisible;
+            Content.Visibility.Welds = WeldVisibility.NotVisible;
+            Content.Visibility.WeldsInSubAssemblies = WeldVisibility.NotVisible;
             Content.Visibility.WeldSizeLimit = 6.5;
-            Content.Representation.Representation = global::TeklaHelper.DrawingAttribute.Pages.WeldRepresentation.Path;
+            Content.Representation.Representation = WeldRepresentation.Path;
             Content.Representation.HiddenLines = true;
             Content.Representation.OwnHiddenLines = true;
-            Appearance.VisibleLines.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
-            Appearance.VisibleLines.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Solid;
-            Appearance.HiddenLines.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
-            Appearance.HiddenLines.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Dashed;
+            Appearance.VisibleLines.Color = DrawingColor.NewLine2;
+            Appearance.VisibleLines.Type = DrawingLineType.Solid;
+            Appearance.HiddenLines.Color = DrawingColor.NewLine2;
+            Appearance.HiddenLines.Type = DrawingLineType.Dashed;
             Advanced.ACustomPresentation = "";
 
             SetAllEnabled(true);
@@ -157,9 +157,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Content" tab.
         /// </summary>
-        public sealed class ContentTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ContentTab : AttributeSection
         {
-            internal ContentTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ContentTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -181,9 +181,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Visibility" group.
             /// </summary>
-            public sealed class VisibilityGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class VisibilityGroup : AttributeSection
             {
-                internal VisibilityGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal VisibilityGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -191,18 +191,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Welds (<c>Create</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldVisibility Welds
+                public WeldVisibility Welds
                 {
-                    get => GetEnum("Create", (global::TeklaHelper.DrawingAttribute.Pages.WeldVisibility)0);
+                    get => GetEnum("Create", (WeldVisibility)0);
                     set => SetEnum("Create", value);
                 }
 
                 /// <summary>
                 /// Welds in sub-assemblies (<c>Subassembly</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldVisibility WeldsInSubAssemblies
+                public WeldVisibility WeldsInSubAssemblies
                 {
-                    get => GetEnum("Subassembly", (global::TeklaHelper.DrawingAttribute.Pages.WeldVisibility)0);
+                    get => GetEnum("Subassembly", (WeldVisibility)0);
                     set => SetEnum("Subassembly", value);
                 }
 
@@ -219,9 +219,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Representation" group.
             /// </summary>
-            public sealed class RepresentationGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class RepresentationGroup : AttributeSection
             {
-                internal RepresentationGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal RepresentationGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -229,9 +229,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Representation (<c>DrawAs</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.WeldRepresentation Representation
+                public WeldRepresentation Representation
                 {
-                    get => GetEnum("DrawAs", (global::TeklaHelper.DrawingAttribute.Pages.WeldRepresentation)1);
+                    get => GetEnum("DrawAs", (WeldRepresentation)1);
                     set => SetEnum("DrawAs", value);
                 }
 
@@ -258,9 +258,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Appearance" tab.
         /// </summary>
-        public sealed class AppearanceTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AppearanceTab : AttributeSection
         {
-            internal AppearanceTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AppearanceTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -282,9 +282,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Visible lines" group.
             /// </summary>
-            public sealed class VisibleLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class VisibleLinesGroup : AttributeSection
             {
-                internal VisibleLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal VisibleLinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -292,18 +292,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>Colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("Colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                    get => GetEnum("Colour", (DrawingColor)155);
                     set => SetEnum("Colour", value);
                 }
 
                 /// <summary>
                 /// Type (<c>PresentationType</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                public DrawingLineType Type
                 {
-                    get => GetEnum("PresentationType", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                    get => GetEnum("PresentationType", (DrawingLineType)1);
                     set => SetEnum("PresentationType", value);
                 }
             }
@@ -311,9 +311,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Hidden lines" group.
             /// </summary>
-            public sealed class HiddenLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class HiddenLinesGroup : AttributeSection
             {
-                internal HiddenLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal HiddenLinesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -321,18 +321,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>HiddenLinesColour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("HiddenLinesColour", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                    get => GetEnum("HiddenLinesColour", (DrawingColor)155);
                     set => SetEnum("HiddenLinesColour", value);
                 }
 
                 /// <summary>
                 /// Type (<c>HiddenLinesType</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+                public DrawingLineType Type
                 {
-                    get => GetEnum("HiddenLinesType", (global::TeklaHelper.DrawingAttribute.DrawingLineType)2);
+                    get => GetEnum("HiddenLinesType", (DrawingLineType)2);
                     set => SetEnum("HiddenLinesType", value);
                 }
             }
@@ -341,9 +341,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

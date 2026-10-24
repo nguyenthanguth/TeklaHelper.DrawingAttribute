@@ -13,7 +13,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>,
     /// <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class GridObject : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class GridObject : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in view attribute files (.vi).
@@ -50,14 +50,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="ViewPrefix"/>.</param>
-        public GridObject(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public GridObject(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -65,9 +65,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// Grid (<c>grid_on</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.Grid Grid
+        public Pages.Grid Grid
         {
-            get => GetEnum("grid_on", (global::TeklaHelper.DrawingAttribute.Pages.Grid)0);
+            get => GetEnum("grid_on", (Pages.Grid)0);
             set => SetEnum("grid_on", value);
         }
 
@@ -106,7 +106,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// </summary>
         public void SetDefaults()
         {
-            Grid = global::TeklaHelper.DrawingAttribute.Pages.Grid.NotVisible;
+            Grid = Pages.Grid.NotVisible;
             TextPlacing.TextPlacingTop = true;
             TextPlacing.TextPlacingLeft = true;
             TextPlacing.TextPlacingRight = false;
@@ -116,14 +116,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
             TextPlacing.TextPlacingRadialLineEnd = true;
             TextPlacing.TextPlacingRadialArcStart = true;
             TextPlacing.TextPlacingOffset = 10;
-            GridLine.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Red;
-            GridLine.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.DashDot;
-            Text.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine4;
+            GridLine.Color = DrawingColor.Red;
+            GridLine.Type = DrawingLineType.DashDot;
+            Text.Color = DrawingColor.NewLine4;
             Text.Height = 3;
             Text.Font = "romsim";
-            Text.Frame = global::TeklaHelper.DrawingAttribute.Pages.TextFrame.Round;
-            Advanced.Grid = global::TeklaHelper.DrawingAttribute.Pages.DrawingGridOn.NotVisible;
-            Advanced.GridObjectGridOn = global::TeklaHelper.DrawingAttribute.Pages.GridObjectGridOn.Value0;
+            Text.Frame = TextFrame.Round;
+            Advanced.Grid = DrawingGridOn.NotVisible;
+            Advanced.GridObjectGridOn = Pages.GridObjectGridOn.Value0;
             Advanced.TextPlacingOffset2 = 10;
             Advanced.ACustomPresentation = "";
 
@@ -193,9 +193,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Text placing" group.
         /// </summary>
-        public sealed class TextPlacingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class TextPlacingGroup : AttributeSection
         {
-            internal TextPlacingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal TextPlacingGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -285,9 +285,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Grid line" group.
         /// </summary>
-        public sealed class GridLineGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class GridLineGroup : AttributeSection
         {
-            internal GridLineGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal GridLineGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -295,18 +295,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Color (<c>line_colour</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public DrawingColor Color
             {
-                get => GetEnum("line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)160);
+                get => GetEnum("line_colour", (DrawingColor)160);
                 set => SetEnum("line_colour", value);
             }
 
             /// <summary>
             /// Type (<c>line_type</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+            public DrawingLineType Type
             {
-                get => GetEnum("line_type", (global::TeklaHelper.DrawingAttribute.DrawingLineType)4);
+                get => GetEnum("line_type", (DrawingLineType)4);
                 set => SetEnum("line_type", value);
             }
         }
@@ -314,9 +314,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Text" group.
         /// </summary>
-        public sealed class TextGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class TextGroup : AttributeSection
         {
-            internal TextGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal TextGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -324,9 +324,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Color (<c>text_colour</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public DrawingColor Color
             {
-                get => GetEnum("text_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)157);
+                get => GetEnum("text_colour", (DrawingColor)157);
                 set => SetEnum("text_colour", value);
             }
 
@@ -351,9 +351,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Frame (<c>text_frame</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.TextFrame Frame
+            public TextFrame Frame
             {
-                get => GetEnum("text_frame", (global::TeklaHelper.DrawingAttribute.Pages.TextFrame)3);
+                get => GetEnum("text_frame", (TextFrame)3);
                 set => SetEnum("text_frame", value);
             }
         }
@@ -361,9 +361,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -371,18 +371,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Grid (<c>drawing_grid_on</c>). Shown in an older Tekla dialog, not in the current View properties.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.DrawingGridOn Grid
+            public DrawingGridOn Grid
             {
-                get => GetEnum("drawing_grid_on", (global::TeklaHelper.DrawingAttribute.Pages.DrawingGridOn)0);
+                get => GetEnum("drawing_grid_on", (DrawingGridOn)0);
                 set => SetEnum("drawing_grid_on", value);
             }
 
             /// <summary>
             /// Grid (<c>GridObjectGridOn</c>). Shown in an older Tekla dialog, not in the current View properties.
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.GridObjectGridOn GridObjectGridOn
+            public Pages.GridObjectGridOn GridObjectGridOn
             {
-                get => GetEnum("GridObjectGridOn", (global::TeklaHelper.DrawingAttribute.Pages.GridObjectGridOn)1);
+                get => GetEnum("GridObjectGridOn", (Pages.GridObjectGridOn)1);
                 set => SetEnum("GridObjectGridOn", value);
             }
 

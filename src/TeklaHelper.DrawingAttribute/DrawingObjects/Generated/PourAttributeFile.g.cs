@@ -9,7 +9,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// Pour object properties in drawings (.po): the file the Pour object properties dialog of the drawing editor
     /// saves. The Open API reads it by name with <c>new PourObject.PourAttributes(name)</c> (checked in Tekla 2025).
     /// </summary>
-    public sealed partial class PourAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class PourAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -28,12 +28,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Creates a file with every key of a .po file, so that Tekla takes nothing from the <c>standard</c> file of
         /// the environment. The values are the defaults of the page (<c>SetDefaults()</c>: the value most of the .po
         /// files shipped with Tekla hold, else the dialog's default). The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static PourAttributeFile CreateDefault()
         {
             var file = new PourAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.Pour.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.Pour.Table);
             file.Properties.SetDefaults();
             return file;
         }

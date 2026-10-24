@@ -9,7 +9,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// Linked drawing properties (.ldr): the file the properties dialog of drawing links in drawings saves. No
     /// attribute class of the Open API reads it by name (checked in Tekla 2025): the dialog loads it.
     /// </summary>
-    public sealed partial class LinkedDrawingAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class LinkedDrawingAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -28,12 +28,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Creates a file with every key of a .ldr file, so that Tekla takes nothing from the <c>standard</c> file of
         /// the environment. The values are the defaults of the page (<c>SetDefaults()</c>: the value most of the .ldr
         /// files shipped with Tekla hold, else the dialog's default). The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static LinkedDrawingAttributeFile CreateDefault()
         {
             var file = new LinkedDrawingAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.LinkedDrawing.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.LinkedDrawing.Table);
             file.Properties.SetDefaults();
             return file;
         }

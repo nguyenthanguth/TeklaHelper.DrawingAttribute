@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -12,14 +14,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// of the page in the .cs files shipped with Tekla has a property; those the dialog does not show are in
     /// <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class SectionMarkProperties : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class SectionMarkProperties : AttributeSection
     {
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <c>""</c>.</param>
-        public SectionMarkProperties(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public SectionMarkProperties(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -61,75 +63,75 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public AdvancedGroup Advanced => _advanced ?? (_advanced = new AdvancedGroup(Values, Prefix));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _sectionMarkA1;
+        private ViewLabelMark _sectionMarkA1;
 
         /// <summary>
         /// Row A1 of the section mark text texts: the dialog of its "..." button (<c>SectionMarkA1.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark SectionMarkA1 => _sectionMarkA1 ?? (_sectionMarkA1 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "SectionMarkA1."));
+        public ViewLabelMark SectionMarkA1 => _sectionMarkA1 ?? (_sectionMarkA1 = new ViewLabelMark(Values, Prefix + "SectionMarkA1."));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _sectionMarkA2;
+        private ViewLabelMark _sectionMarkA2;
 
         /// <summary>
         /// Row A2 of the section mark text texts: the dialog of its "..." button (<c>SectionMarkA2.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark SectionMarkA2 => _sectionMarkA2 ?? (_sectionMarkA2 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "SectionMarkA2."));
+        public ViewLabelMark SectionMarkA2 => _sectionMarkA2 ?? (_sectionMarkA2 = new ViewLabelMark(Values, Prefix + "SectionMarkA2."));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _sectionMarkA3;
+        private ViewLabelMark _sectionMarkA3;
 
         /// <summary>
         /// Row A3 of the section mark text texts: the dialog of its "..." button (<c>SectionMarkA3.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark SectionMarkA3 => _sectionMarkA3 ?? (_sectionMarkA3 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "SectionMarkA3."));
+        public ViewLabelMark SectionMarkA3 => _sectionMarkA3 ?? (_sectionMarkA3 = new ViewLabelMark(Values, Prefix + "SectionMarkA3."));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _sectionMarkA4;
+        private ViewLabelMark _sectionMarkA4;
 
         /// <summary>
         /// Row A4 of the section mark text texts: the dialog of its "..." button (<c>SectionMarkA4.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark SectionMarkA4 => _sectionMarkA4 ?? (_sectionMarkA4 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "SectionMarkA4."));
+        public ViewLabelMark SectionMarkA4 => _sectionMarkA4 ?? (_sectionMarkA4 = new ViewLabelMark(Values, Prefix + "SectionMarkA4."));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _sectionMarkA5;
+        private ViewLabelMark _sectionMarkA5;
 
         /// <summary>
         /// Row A5 of the section mark text texts: the dialog of its "..." button (<c>SectionMarkA5.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark SectionMarkA5 => _sectionMarkA5 ?? (_sectionMarkA5 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "SectionMarkA5."));
+        public ViewLabelMark SectionMarkA5 => _sectionMarkA5 ?? (_sectionMarkA5 = new ViewLabelMark(Values, Prefix + "SectionMarkA5."));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _labelMarkA1;
+        private ViewLabelMark _labelMarkA1;
 
         /// <summary>
         /// Row A1 of the section view label texts: the dialog of its "..." button (<c>ViewLabelMarkA1.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark LabelMarkA1 => _labelMarkA1 ?? (_labelMarkA1 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "ViewLabelMarkA1."));
+        public ViewLabelMark LabelMarkA1 => _labelMarkA1 ?? (_labelMarkA1 = new ViewLabelMark(Values, Prefix + "ViewLabelMarkA1."));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _labelMarkA2;
+        private ViewLabelMark _labelMarkA2;
 
         /// <summary>
         /// Row A2 of the section view label texts: the dialog of its "..." button (<c>ViewLabelMarkA2.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark LabelMarkA2 => _labelMarkA2 ?? (_labelMarkA2 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "ViewLabelMarkA2."));
+        public ViewLabelMark LabelMarkA2 => _labelMarkA2 ?? (_labelMarkA2 = new ViewLabelMark(Values, Prefix + "ViewLabelMarkA2."));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _labelMarkA3;
+        private ViewLabelMark _labelMarkA3;
 
         /// <summary>
         /// Row A3 of the section view label texts: the dialog of its "..." button (<c>ViewLabelMarkA3.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark LabelMarkA3 => _labelMarkA3 ?? (_labelMarkA3 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "ViewLabelMarkA3."));
+        public ViewLabelMark LabelMarkA3 => _labelMarkA3 ?? (_labelMarkA3 = new ViewLabelMark(Values, Prefix + "ViewLabelMarkA3."));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _labelMarkA4;
+        private ViewLabelMark _labelMarkA4;
 
         /// <summary>
         /// Row A4 of the section view label texts: the dialog of its "..." button (<c>ViewLabelMarkA4.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark LabelMarkA4 => _labelMarkA4 ?? (_labelMarkA4 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "ViewLabelMarkA4."));
+        public ViewLabelMark LabelMarkA4 => _labelMarkA4 ?? (_labelMarkA4 = new ViewLabelMark(Values, Prefix + "ViewLabelMarkA4."));
 
-        private global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark _labelMarkA5;
+        private ViewLabelMark _labelMarkA5;
 
         /// <summary>
         /// Row A5 of the section view label texts: the dialog of its "..." button (<c>ViewLabelMarkA5.*</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark LabelMarkA5 => _labelMarkA5 ?? (_labelMarkA5 = new global::TeklaHelper.DrawingAttribute.Pages.ViewLabelMark(Values, Prefix + "ViewLabelMarkA5."));
+        public ViewLabelMark LabelMarkA5 => _labelMarkA5 ?? (_labelMarkA5 = new ViewLabelMark(Values, Prefix + "ViewLabelMarkA5."));
 
         /// <summary>
         /// Sets every property of the page to its default and ticks every check box. A default is the value most files
@@ -143,18 +145,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             CuttingLine.Line.LengthOffset = 0;
             CuttingLine.Line.WidthOffset1 = 0;
             CuttingLine.Line.WidthOffset2 = 0;
-            CuttingLine.Properties.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Yellow;
+            CuttingLine.Properties.Color = DrawingColor.Yellow;
             SectionMark.Text.A1 = "<< Mark >>";
             SectionMark.Text.A2 = "";
             SectionMark.Text.A3 = "";
             SectionMark.Text.A4 = "";
             SectionMark.Text.A5 = "";
-            SectionMark.Symbol.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine5;
-            SectionMark.Symbol.LeftSymbol.Symbol = global::TeklaHelper.DrawingAttribute.Pages.SectionMarkLeftSymbol.Value184;
+            SectionMark.Symbol.Color = DrawingColor.NewLine5;
+            SectionMark.Symbol.LeftSymbol.Symbol = SectionMarkLeftSymbol.Value184;
             SectionMark.Symbol.LeftSymbol.Size = 5;
             SectionMark.Symbol.LeftSymbol.SectionMarkLeftSymbolPositionX = 0;
             SectionMark.Symbol.LeftSymbol.SectionMarkLeftSymbolPositionY = 0;
-            SectionMark.Symbol.RightSymbol.Symbol = global::TeklaHelper.DrawingAttribute.Pages.SectionMarkRightSymbol.Value183;
+            SectionMark.Symbol.RightSymbol.Symbol = SectionMarkRightSymbol.Value183;
             SectionMark.Symbol.RightSymbol.Size = 5;
             SectionMark.Symbol.RightSymbol.SectionMarkRightSymbolPositionX = 0;
             SectionMark.Symbol.RightSymbol.SectionMarkRightSymbolPositionY = 0;
@@ -163,13 +165,13 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             ViewLabel.Text.A3 = "";
             ViewLabel.Text.A4 = "";
             ViewLabel.Text.A5 = "";
-            ViewLabel.ViewLabel.Symbol.Symbol = global::TeklaHelper.DrawingAttribute.Pages.ViewLabelSymbol.None;
-            ViewLabel.ViewLabel.Symbol.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine5;
+            ViewLabel.ViewLabel.Symbol.Symbol = ViewLabelSymbol.None;
+            ViewLabel.ViewLabel.Symbol.Color = DrawingColor.NewLine5;
             ViewLabel.ViewLabel.Symbol.Size = 5;
-            ViewLabel.ViewLabel.Symbol.LineLength = global::TeklaHelper.DrawingAttribute.Pages.SymbolLineLength.Minimal;
+            ViewLabel.ViewLabel.Symbol.LineLength = SymbolLineLength.Minimal;
             ViewLabel.ViewLabel.Symbol.LineLengthViewLabelCustomLength = 0;
-            ViewLabel.ViewLabel.LabelPosition.Vertical = global::TeklaHelper.DrawingAttribute.Pages.LabelPositionVertical.Below;
-            ViewLabel.ViewLabel.LabelPosition.Horizontal = global::TeklaHelper.DrawingAttribute.Pages.LabelPositionHorizontal.CenterAlignedToViewFrame;
+            ViewLabel.ViewLabel.LabelPosition.Vertical = LabelPositionVertical.Below;
+            ViewLabel.ViewLabel.LabelPosition.Horizontal = LabelPositionHorizontal.CenterAlignedToViewFrame;
             SectionName = "A";
             Advanced.CutLineSide = 3;
             Advanced.TextColour = 165;
@@ -294,9 +296,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Cutting line" tab.
         /// </summary>
-        public sealed class CuttingLineTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class CuttingLineTab : AttributeSection
         {
-            internal CuttingLineTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal CuttingLineTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -318,9 +320,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Line" group.
             /// </summary>
-            public sealed class LineGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class LineGroup : AttributeSection
             {
-                internal LineGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal LineGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -374,9 +376,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Properties" group.
             /// </summary>
-            public sealed class PropertiesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class PropertiesGroup : AttributeSection
             {
-                internal PropertiesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal PropertiesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -384,9 +386,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Color (<c>line_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)164);
+                    get => GetEnum("line_colour", (DrawingColor)164);
                     set => SetEnum("line_colour", value);
                 }
             }
@@ -395,9 +397,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Section mark" tab.
         /// </summary>
-        public sealed class SectionMarkTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class SectionMarkTab : AttributeSection
         {
-            internal SectionMarkTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal SectionMarkTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -419,9 +421,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Text" group.
             /// </summary>
-            public sealed class TextGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class TextGroup : AttributeSection
             {
-                internal TextGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal TextGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -475,9 +477,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Symbol" group.
             /// </summary>
-            public sealed class SymbolGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class SymbolGroup : AttributeSection
             {
-                internal SymbolGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal SymbolGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -485,9 +487,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Color (<c>SectionMarkSymbolColor</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("SectionMarkSymbolColor", (global::TeklaHelper.DrawingAttribute.DrawingColor)158);
+                    get => GetEnum("SectionMarkSymbolColor", (DrawingColor)158);
                     set => SetEnum("SectionMarkSymbolColor", value);
                 }
 
@@ -508,9 +510,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// The "Left symbol" group.
                 /// </summary>
-                public sealed class LeftSymbolGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class LeftSymbolGroup : AttributeSection
                 {
-                    internal LeftSymbolGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal LeftSymbolGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -518,9 +520,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// <summary>
                     /// Symbol (<c>SectionMarkLeftSymbolIndex</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.SectionMarkLeftSymbol Symbol
+                    public SectionMarkLeftSymbol Symbol
                     {
-                        get => GetEnum("SectionMarkLeftSymbolIndex", (global::TeklaHelper.DrawingAttribute.Pages.SectionMarkLeftSymbol)184);
+                        get => GetEnum("SectionMarkLeftSymbolIndex", (SectionMarkLeftSymbol)184);
                         set => SetEnum("SectionMarkLeftSymbolIndex", value);
                     }
 
@@ -555,9 +557,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// The "Right symbol" group.
                 /// </summary>
-                public sealed class RightSymbolGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class RightSymbolGroup : AttributeSection
                 {
-                    internal RightSymbolGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal RightSymbolGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -565,9 +567,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// <summary>
                     /// Symbol (<c>SectionMarkRightSymbolIndex</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.SectionMarkRightSymbol Symbol
+                    public SectionMarkRightSymbol Symbol
                     {
-                        get => GetEnum("SectionMarkRightSymbolIndex", (global::TeklaHelper.DrawingAttribute.Pages.SectionMarkRightSymbol)183);
+                        get => GetEnum("SectionMarkRightSymbolIndex", (SectionMarkRightSymbol)183);
                         set => SetEnum("SectionMarkRightSymbolIndex", value);
                     }
 
@@ -604,9 +606,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "View label" tab.
         /// </summary>
-        public sealed class ViewLabelTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ViewLabelTab : AttributeSection
         {
-            internal ViewLabelTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ViewLabelTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -628,9 +630,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Text" group.
             /// </summary>
-            public sealed class TextGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class TextGroup : AttributeSection
             {
-                internal TextGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal TextGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -684,9 +686,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "View label" group.
             /// </summary>
-            public sealed class ViewLabelGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class ViewLabelGroup : AttributeSection
             {
-                internal ViewLabelGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal ViewLabelGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -708,9 +710,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// The "Symbol" group.
                 /// </summary>
-                public sealed class SymbolGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class SymbolGroup : AttributeSection
                 {
-                    internal SymbolGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal SymbolGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -718,18 +720,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// <summary>
                     /// Symbol (<c>ViewLabelMarkSymbolIndex</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelSymbol Symbol
+                    public ViewLabelSymbol Symbol
                     {
-                        get => GetEnum("ViewLabelMarkSymbolIndex", (global::TeklaHelper.DrawingAttribute.Pages.ViewLabelSymbol)0);
+                        get => GetEnum("ViewLabelMarkSymbolIndex", (ViewLabelSymbol)0);
                         set => SetEnum("ViewLabelMarkSymbolIndex", value);
                     }
 
                     /// <summary>
                     /// Color (<c>ViewLabelMarkSymbolColor</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                    public DrawingColor Color
                     {
-                        get => GetEnum("ViewLabelMarkSymbolColor", (global::TeklaHelper.DrawingAttribute.DrawingColor)158);
+                        get => GetEnum("ViewLabelMarkSymbolColor", (DrawingColor)158);
                         set => SetEnum("ViewLabelMarkSymbolColor", value);
                     }
 
@@ -745,9 +747,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// <summary>
                     /// Line length (<c>ViewLabelLineLengthType</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.SymbolLineLength LineLength
+                    public SymbolLineLength LineLength
                     {
-                        get => GetEnum("ViewLabelLineLengthType", (global::TeklaHelper.DrawingAttribute.Pages.SymbolLineLength)0);
+                        get => GetEnum("ViewLabelLineLengthType", (SymbolLineLength)0);
                         set => SetEnum("ViewLabelLineLengthType", value);
                     }
 
@@ -764,9 +766,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// The "Label position" group.
                 /// </summary>
-                public sealed class LabelPositionGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class LabelPositionGroup : AttributeSection
                 {
-                    internal LabelPositionGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal LabelPositionGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -774,18 +776,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// <summary>
                     /// Vertical (<c>ViewLabelPosition</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.LabelPositionVertical Vertical
+                    public LabelPositionVertical Vertical
                     {
-                        get => GetEnum("ViewLabelPosition", (global::TeklaHelper.DrawingAttribute.Pages.LabelPositionVertical)0);
+                        get => GetEnum("ViewLabelPosition", (LabelPositionVertical)0);
                         set => SetEnum("ViewLabelPosition", value);
                     }
 
                     /// <summary>
                     /// Horizontal (<c>ViewLabelHorizontalPosition</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.LabelPositionHorizontal Horizontal
+                    public LabelPositionHorizontal Horizontal
                     {
-                        get => GetEnum("ViewLabelHorizontalPosition", (global::TeklaHelper.DrawingAttribute.Pages.LabelPositionHorizontal)0);
+                        get => GetEnum("ViewLabelHorizontalPosition", (LabelPositionHorizontal)0);
                         set => SetEnum("ViewLabelHorizontalPosition", value);
                     }
                 }
@@ -795,9 +797,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.Drawings
 {
     /// <summary>
@@ -13,7 +15,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
     /// files saved from the Tekla 2025 dialogs has a property; those the dialog does not show are in <c>Advanced</c>,
     /// and any other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class AssemblyDimensioningPage : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class AssemblyDimensioningPage : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in assembly (.ad), single-part (.wd) and cast unit (.cud) drawing attribute files.
@@ -24,14 +26,14 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, null, null, AssemblyDrawingPrefix);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, null, null, AssemblyDrawingPrefix);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="AssemblyDrawingPrefix"/>.</param>
-        public AssemblyDimensioningPage(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public AssemblyDimensioningPage(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -99,65 +101,65 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// </summary>
         public void SetDefaults()
         {
-            General.DimensioningType.DimensioningType = global::TeklaHelper.DrawingAttribute.Pages.DimensioningType.Standard;
+            General.DimensioningType.DimensioningType = Pages.DimensioningType.Standard;
             General.NumberOfViews.Minimize = true;
-            General.CombineDimensions.Options = global::TeklaHelper.DrawingAttribute.Pages.CombineDimensionsOption.Value5;
+            General.CombineDimensions.Options = CombineDimensionsOption.Value5;
             General.CombineDimensions.Distance = 500;
             General.CombineDimensions.MinDistance = 200;
-            General.CloseDimensions.CloseDimensions = global::TeklaHelper.DrawingAttribute.Pages.CloseDimensions.InX;
+            General.CloseDimensions.CloseDimensions = Pages.CloseDimensions.InX;
             General.CloseDimensions.ShortDimensions = true;
             General.Placing.ForwardOffset = 250;
             General.NecessaryInternalDimensioning.RecognizableDistance = 10;
-            General.PartMarkOnDimensionLine = global::TeklaHelper.DrawingAttribute.Pages.PartMarkOnDimensionLine.OnAssemblyOverallDimension;
-            General.MainDimensionPosition = global::TeklaHelper.DrawingAttribute.Pages.MainDimensionPosition.Above;
-            General.GridDimensions = global::TeklaHelper.DrawingAttribute.Pages.GridDimensions.None;
-            General.GridDimensionPosition = global::TeklaHelper.DrawingAttribute.Pages.GridDimensionPosition.MainViewAbove;
+            General.PartMarkOnDimensionLine = Pages.PartMarkOnDimensionLine.OnAssemblyOverallDimension;
+            General.MainDimensionPosition = Pages.MainDimensionPosition.Above;
+            General.GridDimensions = Pages.GridDimensions.None;
+            General.GridDimensionPosition = Pages.GridDimensionPosition.MainViewAbove;
             General.DimensionProperties.StraightDimensions = "";
-            General.DimensionProperties.InXDirection = global::TeklaHelper.DrawingAttribute.Pages.DimensionTypeInXDirection.Value0;
-            General.DimensionProperties.USAbsoluteDimensions = global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape.FilledArrow;
-            General.DimensionProperties.LevelDimensions = global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape.FilledArrow;
+            General.DimensionProperties.InXDirection = DimensionTypeInXDirection.Value0;
+            General.DimensionProperties.USAbsoluteDimensions = DimensionArrowShape.FilledArrow;
+            General.DimensionProperties.LevelDimensions = DimensionArrowShape.FilledArrow;
             General.DimensionProperties.AngleAndRadiusDimensions = "";
             General.DimensionProperties.CheckDimensions = "";
-            PartDimensions.Internal = global::TeklaHelper.DrawingAttribute.Pages.PartInternalDimensions.Necessary;
-            PartDimensions.MainPartOverallDimensions = global::TeklaHelper.DrawingAttribute.Pages.MainPartOverallDimensions.Once;
-            PartDimensions.AssemblyPartOverallDimensions = global::TeklaHelper.DrawingAttribute.Pages.AssemblyPartOverallDimensions.LengthOnly;
+            PartDimensions.Internal = PartInternalDimensions.Necessary;
+            PartDimensions.MainPartOverallDimensions = Pages.MainPartOverallDimensions.Once;
+            PartDimensions.AssemblyPartOverallDimensions = Pages.AssemblyPartOverallDimensions.LengthOnly;
             PartDimensions.MainPartWorkPoints = false;
             PartDimensions.MainPartShape = true;
             PartDimensions.MainPartRadiusDimensions = true;
             PartDimensions.BevelDimensions = true;
-            PartDimensions.BevelAngle = global::TeklaHelper.DrawingAttribute.Pages.BevelAngle.AngleOfCut;
+            PartDimensions.BevelAngle = Pages.BevelAngle.AngleOfCut;
             PartDimensions.KnockOffDimensions = false;
-            PartDimensions.KnockOffDimensionType = global::TeklaHelper.DrawingAttribute.Pages.KnockOffDimensionType.Parenthesis;
-            PartDimensions.PreferredDimSide = global::TeklaHelper.DrawingAttribute.Pages.PartPreferredDimensionSide.Side;
-            PartDimensions.FromTheNearestFloorLevelToPart = global::TeklaHelper.DrawingAttribute.Pages.FromTheNearestFloorLevelToPart.Off;
+            PartDimensions.KnockOffDimensionType = Pages.KnockOffDimensionType.Parenthesis;
+            PartDimensions.PreferredDimSide = PartPreferredDimensionSide.Side;
+            PartDimensions.FromTheNearestFloorLevelToPart = Pages.FromTheNearestFloorLevelToPart.Off;
             PartDimensions.FromGridToPartCenterline = false;
-            PartDimensions.FromGridToPartEnds = global::TeklaHelper.DrawingAttribute.Pages.FromGridToPartEnds.Off;
-            BoltDimensions.MainPartBoltInternalDimensions.MainPartBoltInternalDimensions = global::TeklaHelper.DrawingAttribute.Pages.MainPartBoltInternalDimensions.Internal;
-            BoltDimensions.MainPartBoltInternalDimensions.SkewedBoltGroup = global::TeklaHelper.DrawingAttribute.Pages.SkewedBoltGroup.InBoltGroupDirection;
-            BoltDimensions.SecondaryPartBoltInternalDimensions.SecondaryPartBoltInternalDimensions = global::TeklaHelper.DrawingAttribute.Pages.SecondaryPartBoltInternalDimensions.Internal;
-            BoltDimensions.SecondaryPartBoltInternalDimensions.SkewedBoltGroup = global::TeklaHelper.DrawingAttribute.Pages.SkewedBoltGroup.NoDimensions;
-            BoltDimensions.DistanceBetweenExtremeBolts.ExtremeBolts = global::TeklaHelper.DrawingAttribute.Pages.ExtremeBolts.None;
+            PartDimensions.FromGridToPartEnds = Pages.FromGridToPartEnds.Off;
+            BoltDimensions.MainPartBoltInternalDimensions.MainPartBoltInternalDimensions = Pages.MainPartBoltInternalDimensions.Internal;
+            BoltDimensions.MainPartBoltInternalDimensions.SkewedBoltGroup = Pages.SkewedBoltGroup.InBoltGroupDirection;
+            BoltDimensions.SecondaryPartBoltInternalDimensions.SecondaryPartBoltInternalDimensions = Pages.SecondaryPartBoltInternalDimensions.Internal;
+            BoltDimensions.SecondaryPartBoltInternalDimensions.SkewedBoltGroup = Pages.SkewedBoltGroup.NoDimensions;
+            BoltDimensions.DistanceBetweenExtremeBolts.ExtremeBolts = Pages.ExtremeBolts.None;
             BoltDimensions.DistanceBetweenExtremeBolts.ExtremeBoltsToWorkPoints = false;
-            BoltDimensions.PreferredDimSide = global::TeklaHelper.DrawingAttribute.Pages.BoltPreferredDimensionSide.View;
-            BoltDimensions.CombineBoltDimensions = global::TeklaHelper.DrawingAttribute.Pages.CombineDimensions.Off;
+            BoltDimensions.PreferredDimSide = BoltPreferredDimensionSide.View;
+            BoltDimensions.CombineBoltDimensions = Pages.CombineDimensions.Off;
             BoltDimensions.MinimumNumberToCombine = 3;
-            PositionDimensions.PositionBoltsTo = global::TeklaHelper.DrawingAttribute.Pages.PositionTo.MainPart;
-            PositionDimensions.PositionPartsTo = global::TeklaHelper.DrawingAttribute.Pages.PositionTo.MainPart;
-            PositionDimensions.SecondaryPart = global::TeklaHelper.DrawingAttribute.Pages.SecondaryPartPosition.ByBolt;
-            PositionDimensions.SecondaryPartDimensionDirection = global::TeklaHelper.DrawingAttribute.Pages.SecondaryPartDimensionDirection.MainPart;
-            PositionDimensions.PositionFrom = global::TeklaHelper.DrawingAttribute.Pages.PositionFrom.MainPart;
+            PositionDimensions.PositionBoltsTo = PositionTo.MainPart;
+            PositionDimensions.PositionPartsTo = PositionTo.MainPart;
+            PositionDimensions.SecondaryPart = SecondaryPartPosition.ByBolt;
+            PositionDimensions.SecondaryPartDimensionDirection = Pages.SecondaryPartDimensionDirection.MainPart;
+            PositionDimensions.PositionFrom = Pages.PositionFrom.MainPart;
             PositionDimensions.ReversedDirectionForRunningDimensions = false;
             PositionDimensions.MainPartBoltPosition = true;
             PositionDimensions.MainPartSkewPosition = false;
-            PositionDimensions.SkewPosition = global::TeklaHelper.DrawingAttribute.Pages.SkewPosition.Both;
-            PositionDimensions.CenteredPart = global::TeklaHelper.DrawingAttribute.Pages.CenteredPosition.None;
-            PositionDimensions.CenteredBolt = global::TeklaHelper.DrawingAttribute.Pages.CenteredPosition.Position;
+            PositionDimensions.SkewPosition = Pages.SkewPosition.Both;
+            PositionDimensions.CenteredPart = CenteredPosition.None;
+            PositionDimensions.CenteredBolt = CenteredPosition.Position;
             PositionDimensions.ElevationDimensions = false;
-            PositionDimensions.CombineEqualDimensions = global::TeklaHelper.DrawingAttribute.Pages.CombineDimensions.Off;
+            PositionDimensions.CombineEqualDimensions = Pages.CombineDimensions.Off;
             PositionDimensions.MinimumNumberToCombine = 3;
-            PositionDimensions.EmbeddedObjects = global::TeklaHelper.DrawingAttribute.Pages.EmbeddedObjects.AsSecondaryObjects;
+            PositionDimensions.EmbeddedObjects = Pages.EmbeddedObjects.AsSecondaryObjects;
             SubAssemblies.DimensionPartsInsideSubAssemblies = true;
-            SubAssemblies.MeasureSubAssemblyPositionFrom = global::TeklaHelper.DrawingAttribute.Pages.MeasureSubAssemblyPositionFrom.Bolt;
+            SubAssemblies.MeasureSubAssemblyPositionFrom = Pages.MeasureSubAssemblyPositionFrom.Bolt;
             DimensionGrouping.AutomaticTagging.DisplayTags = false;
             DimensionGrouping.AutomaticTagging.IncludePartCountInTheTag = false;
             DimensionGrouping.AutomaticTagging.DoNotDisplayMarksForTheGroupedItems = false;
@@ -356,9 +358,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "General" tab.
         /// </summary>
-        public sealed class GeneralTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class GeneralTab : AttributeSection
         {
-            internal GeneralTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal GeneralTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -408,36 +410,36 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// Part mark on dimension line (<c>part_mark_dim_line</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.PartMarkOnDimensionLine PartMarkOnDimensionLine
+            public Pages.PartMarkOnDimensionLine PartMarkOnDimensionLine
             {
-                get => GetEnum("part_mark_dim_line", (global::TeklaHelper.DrawingAttribute.Pages.PartMarkOnDimensionLine)0);
+                get => GetEnum("part_mark_dim_line", (Pages.PartMarkOnDimensionLine)0);
                 set => SetEnum("part_mark_dim_line", value);
             }
 
             /// <summary>
             /// Main dimension position (<c>main_dimension_side</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.MainDimensionPosition MainDimensionPosition
+            public Pages.MainDimensionPosition MainDimensionPosition
             {
-                get => GetEnum("main_dimension_side", (global::TeklaHelper.DrawingAttribute.Pages.MainDimensionPosition)1);
+                get => GetEnum("main_dimension_side", (Pages.MainDimensionPosition)1);
                 set => SetEnum("main_dimension_side", value);
             }
 
             /// <summary>
             /// Grid dimensions (<c>GridDimension</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.GridDimensions GridDimensions
+            public Pages.GridDimensions GridDimensions
             {
-                get => GetEnum("GridDimension", (global::TeklaHelper.DrawingAttribute.Pages.GridDimensions)0);
+                get => GetEnum("GridDimension", (Pages.GridDimensions)0);
                 set => SetEnum("GridDimension", value);
             }
 
             /// <summary>
             /// Grid dimension position (<c>GridDimensionSide</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.GridDimensionPosition GridDimensionPosition
+            public Pages.GridDimensionPosition GridDimensionPosition
             {
-                get => GetEnum("GridDimensionSide", (global::TeklaHelper.DrawingAttribute.Pages.GridDimensionPosition)1);
+                get => GetEnum("GridDimensionSide", (Pages.GridDimensionPosition)1);
                 set => SetEnum("GridDimensionSide", value);
             }
 
@@ -451,9 +453,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Dimensioning type" group.
             /// </summary>
-            public sealed class DimensioningTypeGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class DimensioningTypeGroup : AttributeSection
             {
-                internal DimensioningTypeGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal DimensioningTypeGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -461,9 +463,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Dimensioning type (<c>dimensioning_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensioningType DimensioningType
+                public Pages.DimensioningType DimensioningType
                 {
-                    get => GetEnum("dimensioning_type", (global::TeklaHelper.DrawingAttribute.Pages.DimensioningType)0);
+                    get => GetEnum("dimensioning_type", (Pages.DimensioningType)0);
                     set => SetEnum("dimensioning_type", value);
                 }
             }
@@ -471,9 +473,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Number of views" group.
             /// </summary>
-            public sealed class NumberOfViewsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class NumberOfViewsGroup : AttributeSection
             {
-                internal NumberOfViewsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal NumberOfViewsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -491,9 +493,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Combine dimensions" group.
             /// </summary>
-            public sealed class CombineDimensionsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class CombineDimensionsGroup : AttributeSection
             {
-                internal CombineDimensionsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal CombineDimensionsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -501,9 +503,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Options (<c>prog_no</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.CombineDimensionsOption Options
+                public CombineDimensionsOption Options
                 {
-                    get => GetEnum("prog_no", (global::TeklaHelper.DrawingAttribute.Pages.CombineDimensionsOption)5);
+                    get => GetEnum("prog_no", (CombineDimensionsOption)5);
                     set => SetEnum("prog_no", value);
                 }
 
@@ -529,9 +531,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Close dimensions" group.
             /// </summary>
-            public sealed class CloseDimensionsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class CloseDimensionsGroup : AttributeSection
             {
-                internal CloseDimensionsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal CloseDimensionsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -539,9 +541,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Close dimensions (<c>create_close_dim</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.CloseDimensions CloseDimensions
+                public Pages.CloseDimensions CloseDimensions
                 {
-                    get => GetEnum("create_close_dim", (global::TeklaHelper.DrawingAttribute.Pages.CloseDimensions)1);
+                    get => GetEnum("create_close_dim", (Pages.CloseDimensions)1);
                     set => SetEnum("create_close_dim", value);
                 }
 
@@ -558,9 +560,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Placing" group.
             /// </summary>
-            public sealed class PlacingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class PlacingGroup : AttributeSection
             {
-                internal PlacingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal PlacingGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -578,9 +580,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Necessary internal dimensioning" group.
             /// </summary>
-            public sealed class NecessaryInternalDimensioningGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class NecessaryInternalDimensioningGroup : AttributeSection
             {
-                internal NecessaryInternalDimensioningGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal NecessaryInternalDimensioningGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -598,9 +600,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Dimension properties" group.
             /// </summary>
-            public sealed class DimensionPropertiesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class DimensionPropertiesGroup : AttributeSection
             {
-                internal DimensionPropertiesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal DimensionPropertiesGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -617,27 +619,27 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// In X direction (<c>DimTypeInXDirection</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionTypeInXDirection InXDirection
+                public DimensionTypeInXDirection InXDirection
                 {
-                    get => GetEnum("DimTypeInXDirection", (global::TeklaHelper.DrawingAttribute.Pages.DimensionTypeInXDirection)0);
+                    get => GetEnum("DimTypeInXDirection", (DimensionTypeInXDirection)0);
                     set => SetEnum("DimTypeInXDirection", value);
                 }
 
                 /// <summary>
                 /// US Absolute dimensions (<c>USAbsoluteArrowShape</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape USAbsoluteDimensions
+                public DimensionArrowShape USAbsoluteDimensions
                 {
-                    get => GetEnum("USAbsoluteArrowShape", (global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape)0);
+                    get => GetEnum("USAbsoluteArrowShape", (DimensionArrowShape)0);
                     set => SetEnum("USAbsoluteArrowShape", value);
                 }
 
                 /// <summary>
                 /// Level dimensions (<c>LevelArrowShape</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape LevelDimensions
+                public DimensionArrowShape LevelDimensions
                 {
-                    get => GetEnum("LevelArrowShape", (global::TeklaHelper.DrawingAttribute.Pages.DimensionArrowShape)0);
+                    get => GetEnum("LevelArrowShape", (DimensionArrowShape)0);
                     set => SetEnum("LevelArrowShape", value);
                 }
 
@@ -664,9 +666,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Part dimensions" tab.
         /// </summary>
-        public sealed class PartDimensionsTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class PartDimensionsTab : AttributeSection
         {
-            internal PartDimensionsTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal PartDimensionsTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -674,27 +676,27 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// Internal (<c>part_internal</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.PartInternalDimensions Internal
+            public PartInternalDimensions Internal
             {
-                get => GetEnum("part_internal", (global::TeklaHelper.DrawingAttribute.Pages.PartInternalDimensions)0);
+                get => GetEnum("part_internal", (PartInternalDimensions)0);
                 set => SetEnum("part_internal", value);
             }
 
             /// <summary>
             /// Main part overall dimensions (<c>main_part_extrema</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.MainPartOverallDimensions MainPartOverallDimensions
+            public Pages.MainPartOverallDimensions MainPartOverallDimensions
             {
-                get => GetEnum("main_part_extrema", (global::TeklaHelper.DrawingAttribute.Pages.MainPartOverallDimensions)0);
+                get => GetEnum("main_part_extrema", (Pages.MainPartOverallDimensions)0);
                 set => SetEnum("main_part_extrema", value);
             }
 
             /// <summary>
             /// Assembly part overall dimensions (<c>assembly_extrema</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.AssemblyPartOverallDimensions AssemblyPartOverallDimensions
+            public Pages.AssemblyPartOverallDimensions AssemblyPartOverallDimensions
             {
-                get => GetEnum("assembly_extrema", (global::TeklaHelper.DrawingAttribute.Pages.AssemblyPartOverallDimensions)0);
+                get => GetEnum("assembly_extrema", (Pages.AssemblyPartOverallDimensions)0);
                 set => SetEnum("assembly_extrema", value);
             }
 
@@ -737,9 +739,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// Bevel angle (<c>main_part_bevel_angle</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.BevelAngle BevelAngle
+            public Pages.BevelAngle BevelAngle
             {
-                get => GetEnum("main_part_bevel_angle", (global::TeklaHelper.DrawingAttribute.Pages.BevelAngle)0);
+                get => GetEnum("main_part_bevel_angle", (Pages.BevelAngle)0);
                 set => SetEnum("main_part_bevel_angle", value);
             }
 
@@ -755,27 +757,27 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// Knock off dimension type (<c>KnockOffDimensionsType</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.KnockOffDimensionType KnockOffDimensionType
+            public Pages.KnockOffDimensionType KnockOffDimensionType
             {
-                get => GetEnum("KnockOffDimensionsType", (global::TeklaHelper.DrawingAttribute.Pages.KnockOffDimensionType)0);
+                get => GetEnum("KnockOffDimensionsType", (Pages.KnockOffDimensionType)0);
                 set => SetEnum("KnockOffDimensionsType", value);
             }
 
             /// <summary>
             /// Preferred dim side (<c>part_prefered_side</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.PartPreferredDimensionSide PreferredDimSide
+            public PartPreferredDimensionSide PreferredDimSide
             {
-                get => GetEnum("part_prefered_side", (global::TeklaHelper.DrawingAttribute.Pages.PartPreferredDimensionSide)1);
+                get => GetEnum("part_prefered_side", (PartPreferredDimensionSide)1);
                 set => SetEnum("part_prefered_side", value);
             }
 
             /// <summary>
             /// From the nearest floor level to part (<c>FloorLevelToPart</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.FromTheNearestFloorLevelToPart FromTheNearestFloorLevelToPart
+            public Pages.FromTheNearestFloorLevelToPart FromTheNearestFloorLevelToPart
             {
-                get => GetEnum("FloorLevelToPart", (global::TeklaHelper.DrawingAttribute.Pages.FromTheNearestFloorLevelToPart)0);
+                get => GetEnum("FloorLevelToPart", (Pages.FromTheNearestFloorLevelToPart)0);
                 set => SetEnum("FloorLevelToPart", value);
             }
 
@@ -791,9 +793,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// From grid to part ends (<c>GridToPartEnds</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.FromGridToPartEnds FromGridToPartEnds
+            public Pages.FromGridToPartEnds FromGridToPartEnds
             {
-                get => GetEnum("GridToPartEnds", (global::TeklaHelper.DrawingAttribute.Pages.FromGridToPartEnds)0);
+                get => GetEnum("GridToPartEnds", (Pages.FromGridToPartEnds)0);
                 set => SetEnum("GridToPartEnds", value);
             }
         }
@@ -801,9 +803,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Bolt dimensions" tab.
         /// </summary>
-        public sealed class BoltDimensionsTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class BoltDimensionsTab : AttributeSection
         {
-            internal BoltDimensionsTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal BoltDimensionsTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -832,18 +834,18 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// Preferred dim side (<c>screw_prefered_side</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.BoltPreferredDimensionSide PreferredDimSide
+            public BoltPreferredDimensionSide PreferredDimSide
             {
-                get => GetEnum("screw_prefered_side", (global::TeklaHelper.DrawingAttribute.Pages.BoltPreferredDimensionSide)1);
+                get => GetEnum("screw_prefered_side", (BoltPreferredDimensionSide)1);
                 set => SetEnum("screw_prefered_side", value);
             }
 
             /// <summary>
             /// Combine bolt dimensions (<c>combine_bolt_dim</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.CombineDimensions CombineBoltDimensions
+            public Pages.CombineDimensions CombineBoltDimensions
             {
-                get => GetEnum("combine_bolt_dim", (global::TeklaHelper.DrawingAttribute.Pages.CombineDimensions)0);
+                get => GetEnum("combine_bolt_dim", (Pages.CombineDimensions)0);
                 set => SetEnum("combine_bolt_dim", value);
             }
 
@@ -859,9 +861,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Main part bolt internal dimensions" group.
             /// </summary>
-            public sealed class MainPartBoltInternalDimensionsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class MainPartBoltInternalDimensionsGroup : AttributeSection
             {
-                internal MainPartBoltInternalDimensionsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal MainPartBoltInternalDimensionsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -869,18 +871,18 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Main part bolt internal dimensions (<c>screw_main_internal</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.MainPartBoltInternalDimensions MainPartBoltInternalDimensions
+                public Pages.MainPartBoltInternalDimensions MainPartBoltInternalDimensions
                 {
-                    get => GetEnum("screw_main_internal", (global::TeklaHelper.DrawingAttribute.Pages.MainPartBoltInternalDimensions)0);
+                    get => GetEnum("screw_main_internal", (Pages.MainPartBoltInternalDimensions)0);
                     set => SetEnum("screw_main_internal", value);
                 }
 
                 /// <summary>
                 /// Skewed bolt group (<c>MainSkewedBoltGroupDim</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.SkewedBoltGroup SkewedBoltGroup
+                public Pages.SkewedBoltGroup SkewedBoltGroup
                 {
-                    get => GetEnum("MainSkewedBoltGroupDim", (global::TeklaHelper.DrawingAttribute.Pages.SkewedBoltGroup)0);
+                    get => GetEnum("MainSkewedBoltGroupDim", (Pages.SkewedBoltGroup)0);
                     set => SetEnum("MainSkewedBoltGroupDim", value);
                 }
             }
@@ -888,9 +890,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Secondary part bolt internal dimensions" group.
             /// </summary>
-            public sealed class SecondaryPartBoltInternalDimensionsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class SecondaryPartBoltInternalDimensionsGroup : AttributeSection
             {
-                internal SecondaryPartBoltInternalDimensionsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal SecondaryPartBoltInternalDimensionsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -898,18 +900,18 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Secondary part bolt internal dimensions (<c>screw_sec_internal</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.SecondaryPartBoltInternalDimensions SecondaryPartBoltInternalDimensions
+                public Pages.SecondaryPartBoltInternalDimensions SecondaryPartBoltInternalDimensions
                 {
-                    get => GetEnum("screw_sec_internal", (global::TeklaHelper.DrawingAttribute.Pages.SecondaryPartBoltInternalDimensions)0);
+                    get => GetEnum("screw_sec_internal", (Pages.SecondaryPartBoltInternalDimensions)0);
                     set => SetEnum("screw_sec_internal", value);
                 }
 
                 /// <summary>
                 /// Skewed bolt group (<c>SecSkewedBoltGroupDim</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.SkewedBoltGroup SkewedBoltGroup
+                public Pages.SkewedBoltGroup SkewedBoltGroup
                 {
-                    get => GetEnum("SecSkewedBoltGroupDim", (global::TeklaHelper.DrawingAttribute.Pages.SkewedBoltGroup)0);
+                    get => GetEnum("SecSkewedBoltGroupDim", (Pages.SkewedBoltGroup)0);
                     set => SetEnum("SecSkewedBoltGroupDim", value);
                 }
             }
@@ -917,9 +919,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Distance between extreme bolts" group.
             /// </summary>
-            public sealed class DistanceBetweenExtremeBoltsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class DistanceBetweenExtremeBoltsGroup : AttributeSection
             {
-                internal DistanceBetweenExtremeBoltsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal DistanceBetweenExtremeBoltsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -927,9 +929,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 /// <summary>
                 /// Extreme bolts (<c>extreme_bolts</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.ExtremeBolts ExtremeBolts
+                public Pages.ExtremeBolts ExtremeBolts
                 {
-                    get => GetEnum("extreme_bolts", (global::TeklaHelper.DrawingAttribute.Pages.ExtremeBolts)0);
+                    get => GetEnum("extreme_bolts", (Pages.ExtremeBolts)0);
                     set => SetEnum("extreme_bolts", value);
                 }
 
@@ -947,9 +949,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Position dimensions" tab.
         /// </summary>
-        public sealed class PositionDimensionsTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class PositionDimensionsTab : AttributeSection
         {
-            internal PositionDimensionsTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal PositionDimensionsTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -957,45 +959,45 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// Position bolts to (<c>position_to</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.PositionTo PositionBoltsTo
+            public PositionTo PositionBoltsTo
             {
-                get => GetEnum("position_to", (global::TeklaHelper.DrawingAttribute.Pages.PositionTo)0);
+                get => GetEnum("position_to", (PositionTo)0);
                 set => SetEnum("position_to", value);
             }
 
             /// <summary>
             /// Position parts to (<c>PartPositionTo</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.PositionTo PositionPartsTo
+            public PositionTo PositionPartsTo
             {
-                get => GetEnum("PartPositionTo", (global::TeklaHelper.DrawingAttribute.Pages.PositionTo)0);
+                get => GetEnum("PartPositionTo", (PositionTo)0);
                 set => SetEnum("PartPositionTo", value);
             }
 
             /// <summary>
             /// Secondary part (<c>pos_sec</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.SecondaryPartPosition SecondaryPart
+            public SecondaryPartPosition SecondaryPart
             {
-                get => GetEnum("pos_sec", (global::TeklaHelper.DrawingAttribute.Pages.SecondaryPartPosition)0);
+                get => GetEnum("pos_sec", (SecondaryPartPosition)0);
                 set => SetEnum("pos_sec", value);
             }
 
             /// <summary>
             /// Secondary part dimension direction (<c>sec_part_dim_dir</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.SecondaryPartDimensionDirection SecondaryPartDimensionDirection
+            public Pages.SecondaryPartDimensionDirection SecondaryPartDimensionDirection
             {
-                get => GetEnum("sec_part_dim_dir", (global::TeklaHelper.DrawingAttribute.Pages.SecondaryPartDimensionDirection)0);
+                get => GetEnum("sec_part_dim_dir", (Pages.SecondaryPartDimensionDirection)0);
                 set => SetEnum("sec_part_dim_dir", value);
             }
 
             /// <summary>
             /// Position from (<c>position_from</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.PositionFrom PositionFrom
+            public Pages.PositionFrom PositionFrom
             {
-                get => GetEnum("position_from", (global::TeklaHelper.DrawingAttribute.Pages.PositionFrom)0);
+                get => GetEnum("position_from", (Pages.PositionFrom)0);
                 set => SetEnum("position_from", value);
             }
 
@@ -1030,27 +1032,27 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// Skew position (<c>skew_pos_type</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.SkewPosition SkewPosition
+            public Pages.SkewPosition SkewPosition
             {
-                get => GetEnum("skew_pos_type", (global::TeklaHelper.DrawingAttribute.Pages.SkewPosition)0);
+                get => GetEnum("skew_pos_type", (Pages.SkewPosition)0);
                 set => SetEnum("skew_pos_type", value);
             }
 
             /// <summary>
             /// Centered part (<c>pos_cent_part</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.CenteredPosition CenteredPart
+            public CenteredPosition CenteredPart
             {
-                get => GetEnum("pos_cent_part", (global::TeklaHelper.DrawingAttribute.Pages.CenteredPosition)0);
+                get => GetEnum("pos_cent_part", (CenteredPosition)0);
                 set => SetEnum("pos_cent_part", value);
             }
 
             /// <summary>
             /// Centered bolt (<c>pos_cent_screw</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.CenteredPosition CenteredBolt
+            public CenteredPosition CenteredBolt
             {
-                get => GetEnum("pos_cent_screw", (global::TeklaHelper.DrawingAttribute.Pages.CenteredPosition)0);
+                get => GetEnum("pos_cent_screw", (CenteredPosition)0);
                 set => SetEnum("pos_cent_screw", value);
             }
 
@@ -1066,9 +1068,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// Combine equal dimensions (<c>combine_part_dimensions</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.CombineDimensions CombineEqualDimensions
+            public Pages.CombineDimensions CombineEqualDimensions
             {
-                get => GetEnum("combine_part_dimensions", (global::TeklaHelper.DrawingAttribute.Pages.CombineDimensions)0);
+                get => GetEnum("combine_part_dimensions", (Pages.CombineDimensions)0);
                 set => SetEnum("combine_part_dimensions", value);
             }
 
@@ -1085,9 +1087,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// Embedded objects (<c>EmbeddedObjects</c>). Shown in another Tekla dialog with the same keys
             /// (<c>gr_cudcd_attrib</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.EmbeddedObjects EmbeddedObjects
+            public Pages.EmbeddedObjects EmbeddedObjects
             {
-                get => GetEnum("EmbeddedObjects", (global::TeklaHelper.DrawingAttribute.Pages.EmbeddedObjects)1);
+                get => GetEnum("EmbeddedObjects", (Pages.EmbeddedObjects)1);
                 set => SetEnum("EmbeddedObjects", value);
             }
         }
@@ -1095,9 +1097,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Sub-assemblies" tab.
         /// </summary>
-        public sealed class SubAssembliesTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class SubAssembliesTab : AttributeSection
         {
-            internal SubAssembliesTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal SubAssembliesTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -1114,9 +1116,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// Measure sub-assembly position from (<c>SubassemblyPosition</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.MeasureSubAssemblyPositionFrom MeasureSubAssemblyPositionFrom
+            public Pages.MeasureSubAssemblyPositionFrom MeasureSubAssemblyPositionFrom
             {
-                get => GetEnum("SubassemblyPosition", (global::TeklaHelper.DrawingAttribute.Pages.MeasureSubAssemblyPositionFrom)1);
+                get => GetEnum("SubassemblyPosition", (Pages.MeasureSubAssemblyPositionFrom)1);
                 set => SetEnum("SubassemblyPosition", value);
             }
         }
@@ -1124,9 +1126,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Dimension grouping" tab.
         /// </summary>
-        public sealed class DimensionGroupingTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class DimensionGroupingTab : AttributeSection
         {
-            internal DimensionGroupingTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal DimensionGroupingTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -1148,9 +1150,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Automatic tagging" group.
             /// </summary>
-            public sealed class AutomaticTaggingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class AutomaticTaggingGroup : AttributeSection
             {
-                internal AutomaticTaggingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal AutomaticTaggingGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -1186,9 +1188,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Updating" group.
             /// </summary>
-            public sealed class UpdatingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class UpdatingGroup : AttributeSection
             {
-                internal UpdatingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal UpdatingGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -1207,9 +1209,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// The "Reinforcement dimensions" tab.
         /// </summary>
-        public sealed class ReinforcementDimensionsTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ReinforcementDimensionsTab : AttributeSection
         {
-            internal ReinforcementDimensionsTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ReinforcementDimensionsTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -1224,9 +1226,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// <summary>
             /// The "Reinforcing bar groups" group.
             /// </summary>
-            public sealed class ReinforcingBarGroupsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class ReinforcingBarGroupsGroup : AttributeSection
             {
-                internal ReinforcingBarGroupsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal ReinforcingBarGroupsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -1256,9 +1258,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

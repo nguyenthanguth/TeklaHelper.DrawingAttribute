@@ -12,7 +12,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// files saved from the Tekla 2025 dialogs has a property; those the dialog does not show are in <c>Advanced</c>,
     /// and any other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class ViewLabelMark : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class ViewLabelMark : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in view attribute files (.vi).
@@ -23,14 +23,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, ViewPrefix, null, null);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, ViewPrefix, null, null);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="ViewPrefix"/>.</param>
-        public ViewLabelMark(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public ViewLabelMark(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -69,17 +69,17 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// </summary>
         public void SetDefaults()
         {
-            Content.FrameAroundElements.Type = global::TeklaHelper.DrawingAttribute.Pages.FrameAroundElementsType.Rectangular;
-            Content.FrameAroundElements.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
-            Content.Font.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
+            Content.FrameAroundElements.Type = FrameAroundElementsType.Rectangular;
+            Content.FrameAroundElements.Color = DrawingColor.NewLine2;
+            Content.Font.Color = DrawingColor.NewLine2;
             Content.Font.Height = 2.5;
             Content.Font.Font = "romsim";
-            Position.ShowOn = global::TeklaHelper.DrawingAttribute.Pages.ShowOn.BothSides;
-            Position.TextPosition = global::TeklaHelper.DrawingAttribute.Pages.TextPosition.AboveLine;
+            Position.ShowOn = Pages.ShowOn.BothSides;
+            Position.TextPosition = Pages.TextPosition.AboveLine;
             Position.HorizontalOffset = 0;
             Position.VerticalOffset = 0;
-            Position.TextRotation = global::TeklaHelper.DrawingAttribute.Pages.TextRotation.AlwaysRotate;
-            Position.Alignment = global::TeklaHelper.DrawingAttribute.Pages.PositionAlignment.Center;
+            Position.TextRotation = Pages.TextRotation.AlwaysRotate;
+            Position.Alignment = PositionAlignment.Center;
             Advanced.ContentString = "";
 
             SetAllEnabled(true);
@@ -139,9 +139,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Content" tab.
         /// </summary>
-        public sealed class ContentTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ContentTab : AttributeSection
         {
-            internal ContentTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ContentTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -163,9 +163,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Frame around elements" group.
             /// </summary>
-            public sealed class FrameAroundElementsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class FrameAroundElementsGroup : AttributeSection
             {
-                internal FrameAroundElementsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal FrameAroundElementsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -173,18 +173,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Type (<c>FrameAttr.frame_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.FrameAroundElementsType Type
+                public FrameAroundElementsType Type
                 {
-                    get => GetEnum("FrameAttr.frame_type", (global::TeklaHelper.DrawingAttribute.Pages.FrameAroundElementsType)1);
+                    get => GetEnum("FrameAttr.frame_type", (FrameAroundElementsType)1);
                     set => SetEnum("FrameAttr.frame_type", value);
                 }
 
                 /// <summary>
                 /// Color (<c>FrameAttr.line_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("FrameAttr.line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                    get => GetEnum("FrameAttr.line_colour", (DrawingColor)155);
                     set => SetEnum("FrameAttr.line_colour", value);
                 }
             }
@@ -192,9 +192,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Font" group.
             /// </summary>
-            public sealed class FontGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class FontGroup : AttributeSection
             {
-                internal FontGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal FontGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -202,9 +202,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Color (<c>FontAttr.text_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("FontAttr.text_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                    get => GetEnum("FontAttr.text_colour", (DrawingColor)155);
                     set => SetEnum("FontAttr.text_colour", value);
                 }
 
@@ -231,9 +231,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Position" tab.
         /// </summary>
-        public sealed class PositionTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class PositionTab : AttributeSection
         {
-            internal PositionTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal PositionTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -241,18 +241,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Show on (<c>ShowOn</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.ShowOn ShowOn
+            public Pages.ShowOn ShowOn
             {
-                get => GetEnum("ShowOn", (global::TeklaHelper.DrawingAttribute.Pages.ShowOn)0);
+                get => GetEnum("ShowOn", (Pages.ShowOn)0);
                 set => SetEnum("ShowOn", value);
             }
 
             /// <summary>
             /// Text position (<c>TextPosition</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.TextPosition TextPosition
+            public Pages.TextPosition TextPosition
             {
-                get => GetEnum("TextPosition", (global::TeklaHelper.DrawingAttribute.Pages.TextPosition)0);
+                get => GetEnum("TextPosition", (Pages.TextPosition)0);
                 set => SetEnum("TextPosition", value);
             }
 
@@ -277,18 +277,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Text rotation (<c>TextRotation</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.TextRotation TextRotation
+            public Pages.TextRotation TextRotation
             {
-                get => GetEnum("TextRotation", (global::TeklaHelper.DrawingAttribute.Pages.TextRotation)0);
+                get => GetEnum("TextRotation", (Pages.TextRotation)0);
                 set => SetEnum("TextRotation", value);
             }
 
             /// <summary>
             /// Alignment (<c>Alignment</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.PositionAlignment Alignment
+            public PositionAlignment Alignment
             {
-                get => GetEnum("Alignment", (global::TeklaHelper.DrawingAttribute.Pages.PositionAlignment)1);
+                get => GetEnum("Alignment", (PositionAlignment)1);
                 set => SetEnum("Alignment", value);
             }
         }
@@ -296,9 +296,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

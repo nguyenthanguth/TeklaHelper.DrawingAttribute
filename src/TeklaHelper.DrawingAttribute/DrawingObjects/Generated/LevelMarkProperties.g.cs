@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -13,14 +15,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>,
     /// ...).
     /// </summary>
-    public sealed partial class LevelMarkProperties : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class LevelMarkProperties : AttributeSection
     {
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <c>""</c>.</param>
-        public LevelMarkProperties(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public LevelMarkProperties(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -71,32 +73,32 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         public void SetDefaults()
         {
             General.LevelMarkContent.TextIo = "";
-            General.LevelMarkContent.PrefixForPositiveLevel = global::TeklaHelper.DrawingAttribute.Pages.PositiveLevelPrefix.Plus;
-            General.LevelMarkContent.VisibilityOfNumericValue = global::TeklaHelper.DrawingAttribute.Pages.DimensionValueVisibility.Visible;
+            General.LevelMarkContent.PrefixForPositiveLevel = PositiveLevelPrefix.Plus;
+            General.LevelMarkContent.VisibilityOfNumericValue = DimensionValueVisibility.Visible;
             General.LevelMarkContent.Postfix = "";
-            General.LevelMarkFormat.Precision = global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionPrecision.OnePerThousand;
-            General.LevelMarkFormat.Format = global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionFormat.NoDecimals;
+            General.LevelMarkFormat.Precision = AngleDimensionPrecision.OnePerThousand;
+            General.LevelMarkFormat.Format = AngleDimensionFormat.NoDecimals;
             General.LevelMarkFormat.UseGrouping = false;
-            General.LevelMarkFormat.Units = global::TeklaHelper.DrawingAttribute.Pages.LevelMarkUnits.Automatic;
-            General.Placing.Place.Placing = global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode.Fixed;
+            General.LevelMarkFormat.Units = LevelMarkUnits.Automatic;
+            General.Placing.Place.Placing = TxplTextPlacingMode.Fixed;
             General.Placing.Place.SearchMargin = 5;
             General.Placing.Place.MinimumDistance = 0;
             General.Placing.Place.Quarter.Quarter4 = true;
             General.Placing.Place.Quarter.Quarter1 = true;
             General.Placing.Place.Quarter.Quarter3 = true;
             General.Placing.Place.Quarter.Quarter2 = true;
-            Appearance.Text.Color = (global::TeklaHelper.DrawingAttribute.DrawingColor)(3);
+            Appearance.Text.Color = (DrawingColor)(3);
             Appearance.Text.Height = 2.5;
             Appearance.Text.Font = "Arial";
             Appearance.Text.Angle = 0;
-            Appearance.Text.Alignment = global::TeklaHelper.DrawingAttribute.Pages.PlacingAlignment.Left;
+            Appearance.Text.Alignment = PlacingAlignment.Left;
             Appearance.Text.WordWrapping = false;
             Appearance.Text.RulerWidth = 0;
-            Appearance.Frame.Type = global::TeklaHelper.DrawingAttribute.Pages.FrameAroundMarkType.None;
-            Appearance.Frame.LeaderLine = global::TeklaHelper.DrawingAttribute.Pages.LevelMarkLeaderLineType.LeaderLineWithSymbol;
-            Appearance.Frame.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Black;
-            Appearance.Frame.BackgroundMask = global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask.Opaque;
-            Appearance.Arrow.Type = global::TeklaHelper.DrawingAttribute.Pages.LineArrowType.SolidArrow;
+            Appearance.Frame.Type = FrameAroundMarkType.None;
+            Appearance.Frame.LeaderLine = LevelMarkLeaderLineType.LeaderLineWithSymbol;
+            Appearance.Frame.Color = DrawingColor.Black;
+            Appearance.Frame.BackgroundMask = Pages.BackgroundMask.Opaque;
+            Appearance.Arrow.Type = LineArrowType.SolidArrow;
             Appearance.Arrow.Height = 2;
             Appearance.Arrow.Width = 2.5;
             SymbolSelection.Number = 0;
@@ -203,9 +205,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "General" tab.
         /// </summary>
-        public sealed class GeneralTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class GeneralTab : AttributeSection
         {
-            internal GeneralTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal GeneralTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -234,9 +236,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Level mark content" group.
             /// </summary>
-            public sealed class LevelMarkContentGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class LevelMarkContentGroup : AttributeSection
             {
-                internal LevelMarkContentGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal LevelMarkContentGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -253,18 +255,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Prefix for positive level (<c>text_positive_prefix</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.PositiveLevelPrefix PrefixForPositiveLevel
+                public PositiveLevelPrefix PrefixForPositiveLevel
                 {
-                    get => GetEnum("text_positive_prefix", (global::TeklaHelper.DrawingAttribute.Pages.PositiveLevelPrefix)0);
+                    get => GetEnum("text_positive_prefix", (PositiveLevelPrefix)0);
                     set => SetEnum("text_positive_prefix", value);
                 }
 
                 /// <summary>
                 /// Visibility of numeric value (<c>LevelMarkTextHidden</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.DimensionValueVisibility VisibilityOfNumericValue
+                public DimensionValueVisibility VisibilityOfNumericValue
                 {
-                    get => GetEnum("LevelMarkTextHidden", (global::TeklaHelper.DrawingAttribute.Pages.DimensionValueVisibility)0);
+                    get => GetEnum("LevelMarkTextHidden", (DimensionValueVisibility)0);
                     set => SetEnum("LevelMarkTextHidden", value);
                 }
 
@@ -281,9 +283,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Level mark format" group.
             /// </summary>
-            public sealed class LevelMarkFormatGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class LevelMarkFormatGroup : AttributeSection
             {
-                internal LevelMarkFormatGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal LevelMarkFormatGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -291,18 +293,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Precision (<c>LevelMarkPrecision</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionPrecision Precision
+                public AngleDimensionPrecision Precision
                 {
-                    get => GetEnum("LevelMarkPrecision", (global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionPrecision)2);
+                    get => GetEnum("LevelMarkPrecision", (AngleDimensionPrecision)2);
                     set => SetEnum("LevelMarkPrecision", value);
                 }
 
                 /// <summary>
                 /// Format (<c>LevelMarkFormat</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionFormat Format
+                public AngleDimensionFormat Format
                 {
-                    get => GetEnum("LevelMarkFormat", (global::TeklaHelper.DrawingAttribute.Pages.AngleDimensionFormat)0);
+                    get => GetEnum("LevelMarkFormat", (AngleDimensionFormat)0);
                     set => SetEnum("LevelMarkFormat", value);
                 }
 
@@ -318,9 +320,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Units (<c>LevelMarkUnits</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.LevelMarkUnits Units
+                public LevelMarkUnits Units
                 {
-                    get => GetEnum("LevelMarkUnits", (global::TeklaHelper.DrawingAttribute.Pages.LevelMarkUnits)0);
+                    get => GetEnum("LevelMarkUnits", (LevelMarkUnits)0);
                     set => SetEnum("LevelMarkUnits", value);
                 }
             }
@@ -328,9 +330,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Placing" group.
             /// </summary>
-            public sealed class PlacingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class PlacingGroup : AttributeSection
             {
-                internal PlacingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal PlacingGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -345,9 +347,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// The dialog opened by the "Place..." button.
                 /// </summary>
-                public sealed class PlaceDialog : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class PlaceDialog : AttributeSection
                 {
-                    internal PlaceDialog(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal PlaceDialog(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -355,9 +357,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// <summary>
                     /// Placing (<c>txpl.text_placing_mode</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode Placing
+                    public TxplTextPlacingMode Placing
                     {
-                        get => GetEnum("txpl.text_placing_mode", (global::TeklaHelper.DrawingAttribute.Pages.TxplTextPlacingMode)0);
+                        get => GetEnum("txpl.text_placing_mode", (TxplTextPlacingMode)0);
                         set => SetEnum("txpl.text_placing_mode", value);
                     }
 
@@ -389,9 +391,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                     /// <summary>
                     /// The "Quarter" group.
                     /// </summary>
-                    public sealed class QuarterGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                    public sealed class QuarterGroup : AttributeSection
                     {
-                        internal QuarterGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                        internal QuarterGroup(AttributeCollection values, string prefix)
                             : base(values, prefix)
                         {
                         }
@@ -439,9 +441,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Appearance" tab.
         /// </summary>
-        public sealed class AppearanceTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AppearanceTab : AttributeSection
         {
-            internal AppearanceTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AppearanceTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -470,9 +472,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Text" group.
             /// </summary>
-            public sealed class TextGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class TextGroup : AttributeSection
             {
-                internal TextGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal TextGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -480,9 +482,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Color (<c>text_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("text_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)153);
+                    get => GetEnum("text_colour", (DrawingColor)153);
                     set => SetEnum("text_colour", value);
                 }
 
@@ -517,9 +519,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// Alignment (<c>Alignment</c>). Shown in another Tekla dialog with the same keys
                 /// (<c>gr_text_attrib</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.PlacingAlignment Alignment
+                public PlacingAlignment Alignment
                 {
-                    get => GetEnum("Alignment", (global::TeklaHelper.DrawingAttribute.Pages.PlacingAlignment)0);
+                    get => GetEnum("Alignment", (PlacingAlignment)0);
                     set => SetEnum("Alignment", value);
                 }
 
@@ -547,9 +549,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Frame" group.
             /// </summary>
-            public sealed class FrameGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class FrameGroup : AttributeSection
             {
-                internal FrameGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal FrameGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -557,36 +559,36 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Type (<c>frame_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.FrameAroundMarkType Type
+                public FrameAroundMarkType Type
                 {
-                    get => GetEnum("frame_type", (global::TeklaHelper.DrawingAttribute.Pages.FrameAroundMarkType)0);
+                    get => GetEnum("frame_type", (FrameAroundMarkType)0);
                     set => SetEnum("frame_type", value);
                 }
 
                 /// <summary>
                 /// Leader line (<c>text_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.LevelMarkLeaderLineType LeaderLine
+                public LevelMarkLeaderLineType LeaderLine
                 {
-                    get => GetEnum("text_type", (global::TeklaHelper.DrawingAttribute.Pages.LevelMarkLeaderLineType)32);
+                    get => GetEnum("text_type", (LevelMarkLeaderLineType)32);
                     set => SetEnum("text_type", value);
                 }
 
                 /// <summary>
                 /// Color (<c>line_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                public DrawingColor Color
                 {
-                    get => GetEnum("line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)153);
+                    get => GetEnum("line_colour", (DrawingColor)153);
                     set => SetEnum("line_colour", value);
                 }
 
                 /// <summary>
                 /// Background mask (<c>background_colour</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask BackgroundMask
+                public Pages.BackgroundMask BackgroundMask
                 {
-                    get => GetEnum("background_colour", (global::TeklaHelper.DrawingAttribute.Pages.BackgroundMask)150);
+                    get => GetEnum("background_colour", (Pages.BackgroundMask)150);
                     set => SetEnum("background_colour", value);
                 }
             }
@@ -594,9 +596,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// The "Arrow" group.
             /// </summary>
-            public sealed class ArrowGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class ArrowGroup : AttributeSection
             {
-                internal ArrowGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal ArrowGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -604,9 +606,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 /// <summary>
                 /// Type (<c>arrow_type</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.LineArrowType Type
+                public LineArrowType Type
                 {
-                    get => GetEnum("arrow_type", (global::TeklaHelper.DrawingAttribute.Pages.LineArrowType)1);
+                    get => GetEnum("arrow_type", (LineArrowType)1);
                     set => SetEnum("arrow_type", value);
                 }
 
@@ -633,9 +635,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Symbol selection" tab.
         /// </summary>
-        public sealed class SymbolSelectionTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class SymbolSelectionTab : AttributeSection
         {
-            internal SymbolSelectionTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal SymbolSelectionTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -654,9 +656,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

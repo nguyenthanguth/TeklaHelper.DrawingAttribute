@@ -3,6 +3,8 @@
 //     run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -10,7 +12,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// keys of the Bolt page of the view properties, so <see cref="Properties"/> is that page's class. The Open API
     /// reads it by name with <c>new Bolt.BoltAttributes(name)</c> (checked in Tekla 2025).
     /// </summary>
-    public sealed partial class BoltAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class BoltAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -22,7 +24,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public BoltAttributeFile()
         {
-            Properties = new global::TeklaHelper.DrawingAttribute.Pages.BoltObject(Values, string.Empty);
+            Properties = new BoltObject(Values, string.Empty);
         }
 
         /// <summary>
@@ -30,12 +32,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// the environment. The values are those most of the .sc files shipped with Tekla hold (at least three files),
         /// else those of the file saved from the Tekla 2025 dialog; <c>SetDefaults()</c> of the page writes the
         /// defaults of the page's own file type instead. The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static BoltAttributeFile CreateDefault()
         {
             var file = new BoltAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.Bolt.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.Bolt.Table);
             return file;
         }
 
@@ -45,7 +47,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The bolt settings (the top-level keys).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.BoltObject Properties { get; }
+        public BoltObject Properties { get; }
 
         /// <inheritdoc />
         protected override string LegacyKeyPrefix => "screw_dial.";

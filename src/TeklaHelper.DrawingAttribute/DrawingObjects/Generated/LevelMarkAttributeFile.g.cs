@@ -9,7 +9,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// Level mark properties (.lev): the file the Level mark properties dialog of the drawing editor saves. The Open
     /// API reads it by name with <c>new LevelMark.LevelMarkAttributes(name)</c> (checked in Tekla 2025).
     /// </summary>
-    public sealed partial class LevelMarkAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class LevelMarkAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -28,12 +28,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Creates a file with every key of a .lev file, so that Tekla takes nothing from the <c>standard</c> file of
         /// the environment. The values are the defaults of the page (<c>SetDefaults()</c>: the value most of the .lev
         /// files shipped with Tekla hold, else the dialog's default). The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static LevelMarkAttributeFile CreateDefault()
         {
             var file = new LevelMarkAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.LevelMark.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.LevelMark.Table);
             file.Properties.SetDefaults();
             return file;
         }

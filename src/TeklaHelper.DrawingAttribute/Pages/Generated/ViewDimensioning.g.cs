@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.Views
 {
     /// <summary>
@@ -12,7 +14,7 @@ namespace TeklaHelper.DrawingAttribute.Views
     /// property; those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by name
     /// (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class ViewDimensioning : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class ViewDimensioning : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in view attribute files (.vi).
@@ -29,14 +31,14 @@ namespace TeklaHelper.DrawingAttribute.Views
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, ViewPrefix, null, null);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, ViewPrefix, null, null);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="ViewPrefix"/>.</param>
-        public ViewDimensioning(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public ViewDimensioning(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -91,9 +93,9 @@ namespace TeklaHelper.DrawingAttribute.Views
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

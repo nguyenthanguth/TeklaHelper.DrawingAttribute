@@ -44,7 +44,9 @@ TEKLA_ATTRIBUTE_SAMPLES="D:/Tekla/Structures/2025.0/Environments" dotnet test Te
 The dialog pages (`Pages/Generated/*.g.cs`, and in `DrawingObjects/Generated/*.g.cs` the drawing object files with their
 own pages; the generator puts each class in the folder of its namespace) are generated (the generator compiles only the format classes of the library,
 so it runs even when the library does not build until the pages are regenerated); change `tools/DialogClassGenerator` (rules in `Program.cs`,
-pages in `PageSpecs.cs`, enum renames in `EnumRenames`) or its input, regenerate, and review the diff. Input: the dialog
+pages in `PageSpecs.cs`, enum renames in `EnumRenames`) or its input, regenerate, and review the diff. The writers name
+every type in full (`global::...`); `CodeShortener` then gives each file the `using`s it needs and short names, keeping
+the namespace where a member of the page has the type's name (`Pages.Units` next to a property `Units`). Input: the dialog
 definitions decoded from Tekla's `.aid` files (`tools/DialogClassGenerator/Dialogs/*.json`, made with
 `tools/DialogDecoder`; its README explains the `.aid` format and how to decode another Tekla version, and `compare.py`
 diffs two decodings) and the files saved from the dialogs, for value types and keys the dialog does not show. The

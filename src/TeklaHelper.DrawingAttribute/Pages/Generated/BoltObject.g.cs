@@ -13,7 +13,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// the dialog does not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>,
     /// <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class BoltObject : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class BoltObject : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in view attribute files (.vi).
@@ -45,14 +45,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, ViewPrefix, GADrawingPrefix, AssemblyDrawingPrefix);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="ViewPrefix"/>.</param>
-        public BoltObject(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public BoltObject(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -85,13 +85,13 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// </summary>
         public void SetDefaults()
         {
-            Content.BoltRepresentation.SolidSymbol = global::TeklaHelper.DrawingAttribute.Pages.BoltDrawAs.Symbol3;
+            Content.BoltRepresentation.SolidSymbol = BoltDrawAs.Symbol3;
             Content.BoltRepresentation.Hole = true;
             Content.BoltRepresentation.Axis = true;
             Content.BoltRepresentation.VisibilityOfBolts.InMainParts = true;
             Content.BoltRepresentation.VisibilityOfBolts.InSecondaryParts = true;
             Content.BoltRepresentation.VisibilityOfBolts.InSubAssemblies = true;
-            Appearance.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
+            Appearance.Color = DrawingColor.NewLine2;
             Advanced.ACustomPresentation = "";
 
             SetAllEnabled(true);
@@ -142,9 +142,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Content" tab.
         /// </summary>
-        public sealed class ContentTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ContentTab : AttributeSection
         {
-            internal ContentTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ContentTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -159,9 +159,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// The "Bolt representation" group.
             /// </summary>
-            public sealed class BoltRepresentationGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class BoltRepresentationGroup : AttributeSection
             {
-                internal BoltRepresentationGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal BoltRepresentationGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -169,9 +169,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// Solid/Symbol (<c>draw_as</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.BoltDrawAs SolidSymbol
+                public BoltDrawAs SolidSymbol
                 {
-                    get => GetEnum("draw_as", (global::TeklaHelper.DrawingAttribute.Pages.BoltDrawAs)5);
+                    get => GetEnum("draw_as", (BoltDrawAs)5);
                     set => SetEnum("draw_as", value);
                 }
 
@@ -203,9 +203,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
                 /// <summary>
                 /// The "Visibility of bolts" group.
                 /// </summary>
-                public sealed class VisibilityOfBoltsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class VisibilityOfBoltsGroup : AttributeSection
                 {
-                    internal VisibilityOfBoltsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal VisibilityOfBoltsGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -243,9 +243,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// The "Appearance" tab.
         /// </summary>
-        public sealed class AppearanceTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AppearanceTab : AttributeSection
         {
-            internal AppearanceTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AppearanceTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -253,9 +253,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// <summary>
             /// Color (<c>line_colour</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public DrawingColor Color
             {
-                get => GetEnum("line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                get => GetEnum("line_colour", (DrawingColor)155);
                 set => SetEnum("line_colour", value);
             }
         }
@@ -263,9 +263,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

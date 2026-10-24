@@ -12,14 +12,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// .dcha files shipped with Tekla has a property; those the dialog does not show are in <c>Advanced</c>, and any
     /// other key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class EdgeChamferProperties : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class EdgeChamferProperties : AttributeSection
     {
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <c>""</c>.</param>
-        public EdgeChamferProperties(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public EdgeChamferProperties(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -44,8 +44,8 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public void SetDefaults()
         {
-            VisibleLines.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine1;
-            VisibleLines.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Solid;
+            VisibleLines.Color = DrawingColor.NewLine1;
+            VisibleLines.Type = DrawingLineType.Solid;
 
             SetAllEnabled(true);
         }
@@ -84,9 +84,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Visible lines" group.
         /// </summary>
-        public sealed class VisibleLinesGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class VisibleLinesGroup : AttributeSection
         {
-            internal VisibleLinesGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal VisibleLinesGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -94,18 +94,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// Color (<c>LineColor</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public DrawingColor Color
             {
-                get => GetEnum("LineColor", (global::TeklaHelper.DrawingAttribute.DrawingColor)154);
+                get => GetEnum("LineColor", (DrawingColor)154);
                 set => SetEnum("LineColor", value);
             }
 
             /// <summary>
             /// Type (<c>LineType</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+            public DrawingLineType Type
             {
-                get => GetEnum("LineType", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                get => GetEnum("LineType", (DrawingLineType)1);
                 set => SetEnum("LineType", value);
             }
         }

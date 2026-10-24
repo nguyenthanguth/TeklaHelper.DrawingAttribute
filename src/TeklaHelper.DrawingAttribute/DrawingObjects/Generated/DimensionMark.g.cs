@@ -4,6 +4,9 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Marks;
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -16,7 +19,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// dialog does not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>,
     /// <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class DimensionMark : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class DimensionMark : AttributeSection
     {
         /// <summary>
         /// Extension of the file the page's own Save button writes (only for the dialogs).
@@ -28,7 +31,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <c>"PrefixMark."</c>.</param>
-        public DimensionMark(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public DimensionMark(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -72,7 +75,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
         /// the key and returns a copy, to be assigned back after a change; null empties the key.
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent EdgeChamferElements
+        public MarkContent EdgeChamferElements
         {
             get => GetMarkContentOrNull("ChamferContentString");
             set => SetMarkContent("ChamferContentString", value);
@@ -83,7 +86,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// this table (checked in Tekla 2025); on the other mark pages it is named after the key, not probed. Each get
         /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent PourElements
+        public MarkContent PourElements
         {
             get => GetMarkContentOrNull("PourContentString");
             set => SetMarkContent("PourContentString", value);
@@ -93,7 +96,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get reads
         /// the key and returns a copy, to be assigned back after a change; null empties the key.
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent PourBreakElements
+        public MarkContent PourBreakElements
         {
             get => GetMarkContentOrNull("PourBreakContentString");
             set => SetMarkContent("PourBreakContentString", value);
@@ -104,7 +107,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// this page (the associative note shows it for reference models). Each get reads the key and returns a copy,
         /// to be assigned back after a change; null empties the key.
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Marks.MarkContent ReferenceObjectElements
+        public MarkContent ReferenceObjectElements
         {
             get => GetMarkContentOrNull("ReferenceObjectContentString");
             set => SetMarkContent("ReferenceObjectContentString", value);
@@ -117,14 +120,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public void SetDefaults()
         {
-            Placing.Rotation = global::TeklaHelper.DrawingAttribute.Pages.DimensionMarkRotation.ParallelToDimensionLine;
-            FrameAroundElements.Type = global::TeklaHelper.DrawingAttribute.Pages.FrameAroundElementsType.Rectangular;
-            FrameAroundElements.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
-            Font.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
+            Placing.Rotation = DimensionMarkRotation.ParallelToDimensionLine;
+            FrameAroundElements.Type = FrameAroundElementsType.Rectangular;
+            FrameAroundElements.Color = DrawingColor.NewLine2;
+            Font.Color = DrawingColor.NewLine2;
             Font.Height = 2.5;
             Font.Font = "Arial";
-            Units.Units = global::TeklaHelper.DrawingAttribute.Pages.Units.Automatic;
-            Units.Format = global::TeklaHelper.DrawingAttribute.Pages.UnitsFormat.Automatic;
+            Units.Units = Pages.Units.Automatic;
+            Units.Format = UnitsFormat.Automatic;
             Advanced.Create = 0;
             Advanced.ForMain = 0;
             Advanced.ForSec = 0;
@@ -152,9 +155,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Advanced.ContentString3 = "";
             Advanced.ContentString4 = "";
             Advanced.ChamferContentString = "";
-            PourElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
-                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PourMark.Material);
-            PourBreakElements = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+            PourElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
+                .Add(MarkElementTypes.PourMark.Material);
+            PourBreakElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
                 .AddText("POUR BREAK");
             Advanced.ReferenceObjectContentString = "";
             Advanced.LeaderLineType = 0;
@@ -339,9 +342,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Placing" group.
         /// </summary>
-        public sealed class PlacingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class PlacingGroup : AttributeSection
         {
-            internal PlacingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal PlacingGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -349,9 +352,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// Rotation (<c>Rotation</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.DimensionMarkRotation Rotation
+            public DimensionMarkRotation Rotation
             {
-                get => GetEnum("Rotation", (global::TeklaHelper.DrawingAttribute.Pages.DimensionMarkRotation)0);
+                get => GetEnum("Rotation", (DimensionMarkRotation)0);
                 set => SetEnum("Rotation", value);
             }
         }
@@ -359,9 +362,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Frame around elements" group.
         /// </summary>
-        public sealed class FrameAroundElementsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class FrameAroundElementsGroup : AttributeSection
         {
-            internal FrameAroundElementsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal FrameAroundElementsGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -369,18 +372,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// Type (<c>FrameAttr.frame_type</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.FrameAroundElementsType Type
+            public FrameAroundElementsType Type
             {
-                get => GetEnum("FrameAttr.frame_type", (global::TeklaHelper.DrawingAttribute.Pages.FrameAroundElementsType)1);
+                get => GetEnum("FrameAttr.frame_type", (FrameAroundElementsType)1);
                 set => SetEnum("FrameAttr.frame_type", value);
             }
 
             /// <summary>
             /// Color (<c>FrameAttr.line_colour</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public DrawingColor Color
             {
-                get => GetEnum("FrameAttr.line_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                get => GetEnum("FrameAttr.line_colour", (DrawingColor)155);
                 set => SetEnum("FrameAttr.line_colour", value);
             }
         }
@@ -388,9 +391,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Font" group.
         /// </summary>
-        public sealed class FontGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class FontGroup : AttributeSection
         {
-            internal FontGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal FontGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -398,9 +401,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// Color (<c>FontAttr.text_colour</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public DrawingColor Color
             {
-                get => GetEnum("FontAttr.text_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                get => GetEnum("FontAttr.text_colour", (DrawingColor)155);
                 set => SetEnum("FontAttr.text_colour", value);
             }
 
@@ -426,9 +429,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Units" group.
         /// </summary>
-        public sealed class UnitsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class UnitsGroup : AttributeSection
         {
-            internal UnitsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal UnitsGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -436,18 +439,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// Units (<c>UnitAttr.Unit</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.Units Units
+            public Pages.Units Units
             {
-                get => GetEnum("UnitAttr.Unit", (global::TeklaHelper.DrawingAttribute.Pages.Units)0);
+                get => GetEnum("UnitAttr.Unit", (Pages.Units)0);
                 set => SetEnum("UnitAttr.Unit", value);
             }
 
             /// <summary>
             /// Format (<c>UnitAttr.Format</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.UnitsFormat Format
+            public UnitsFormat Format
             {
-                get => GetEnum("UnitAttr.Format", (global::TeklaHelper.DrawingAttribute.Pages.UnitsFormat)0);
+                get => GetEnum("UnitAttr.Format", (UnitsFormat)0);
                 set => SetEnum("UnitAttr.Format", value);
             }
         }
@@ -455,9 +458,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

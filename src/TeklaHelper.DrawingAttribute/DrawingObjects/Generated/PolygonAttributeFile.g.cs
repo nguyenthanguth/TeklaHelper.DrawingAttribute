@@ -10,7 +10,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// too. The Open API reads it by name with <c>new Polygon.PolygonAttributes(name)</c> and <c>new
     /// Cloud.CloudAttributes(name)</c> (checked in Tekla 2025).
     /// </summary>
-    public sealed partial class PolygonAttributeFile : global::TeklaHelper.DrawingAttribute.AttributeFile
+    public sealed partial class PolygonAttributeFile : AttributeFile
     {
         /// <summary>
         /// File extension.
@@ -29,12 +29,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// Creates a file with every key of a .gpg file, so that Tekla takes nothing from the <c>standard</c> file of
         /// the environment. The values are the defaults of the page (<c>SetDefaults()</c>: the value most of the .gpg
         /// files shipped with Tekla hold, else the dialog's default). The file uses code page 1252: set <see
-        /// cref="global::TeklaHelper.DrawingAttribute.AttributeFile.CodePage"/> before saving Japanese or Korean text.
+        /// cref="AttributeFile.CodePage"/> before saving Japanese or Korean text.
         /// </summary>
         public static PolygonAttributeFile CreateDefault()
         {
             var file = new PolygonAttributeFile();
-            global::TeklaHelper.DrawingAttribute.FileDefaults.Apply(file.Values, global::TeklaHelper.DrawingAttribute.FileDefaults.Polygon.Table);
+            FileDefaults.Apply(file.Values, FileDefaults.Polygon.Table);
             file.Properties.SetDefaults();
             return file;
         }

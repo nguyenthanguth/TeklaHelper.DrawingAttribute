@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.DrawingObjects
 {
     /// <summary>
@@ -12,14 +14,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
     /// files shipped with Tekla has a property; those the dialog does not show are in <c>Advanced</c>, and any other
     /// key is reachable by name (<c>GetInt32</c>, <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class PolylineProperties : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class PolylineProperties : AttributeSection
     {
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <c>""</c>.</param>
-        public PolylineProperties(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public PolylineProperties(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -42,9 +44,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// File type (<c>fo_attr.file_type</c>). Shown in another Tekla dialog with the same keys
         /// (<c>gr_foreign_object_attrib</c>).
         /// </summary>
-        public global::TeklaHelper.DrawingAttribute.Pages.ForeignObjectFileType FileType
+        public ForeignObjectFileType FileType
         {
-            get => GetEnum("fo_attr.file_type", (global::TeklaHelper.DrawingAttribute.Pages.ForeignObjectFileType)2);
+            get => GetEnum("fo_attr.file_type", (ForeignObjectFileType)2);
             set => SetEnum("fo_attr.file_type", value);
         }
 
@@ -116,22 +118,22 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public void SetDefaults()
         {
-            Line.Type = global::TeklaHelper.DrawingAttribute.DrawingLineType.Solid;
-            Line.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
+            Line.Type = DrawingLineType.Solid;
+            Line.Color = DrawingColor.NewLine2;
             Line.BulgeForAllLines = 0;
-            Arrow.Position = global::TeklaHelper.DrawingAttribute.Pages.ArrowPosition.None;
-            Arrow.Type = global::TeklaHelper.DrawingAttribute.Pages.LineArrowType.NoArrow;
+            Arrow.Position = ArrowPosition.None;
+            Arrow.Type = LineArrowType.NoArrow;
             Arrow.Height = 2;
             Arrow.Width = 3;
-            FileType = (global::TeklaHelper.DrawingAttribute.Pages.ForeignObjectFileType)(0);
+            FileType = (ForeignObjectFileType)(0);
             FileName = "";
             ExtraInfo = "";
             ScaleInX = 1;
             ScaleInY = 1;
-            TextStyle.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2;
+            TextStyle.Color = DrawingColor.NewLine2;
             TextStyle.Height = 3;
             TextStyle.Font = "romsim";
-            Scaling.Type = global::TeklaHelper.DrawingAttribute.Pages.ForeignObjectScaling.NoScaling;
+            Scaling.Type = ForeignObjectScaling.NoScaling;
             Advanced.TextProportion = 0.75;
             Advanced.TextSlant = 0;
             Advanced.TextStyle = 0;
@@ -211,9 +213,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Line" group.
         /// </summary>
-        public sealed class LineGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class LineGroup : AttributeSection
         {
-            internal LineGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal LineGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -221,18 +223,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// Type (<c>linetype</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingLineType Type
+            public DrawingLineType Type
             {
-                get => GetEnum("linetype", (global::TeklaHelper.DrawingAttribute.DrawingLineType)1);
+                get => GetEnum("linetype", (DrawingLineType)1);
                 set => SetEnum("linetype", value);
             }
 
             /// <summary>
             /// Color (<c>color</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public DrawingColor Color
             {
-                get => GetEnum("color", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                get => GetEnum("color", (DrawingColor)155);
                 set => SetEnum("color", value);
             }
 
@@ -249,9 +251,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Arrow" group.
         /// </summary>
-        public sealed class ArrowGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ArrowGroup : AttributeSection
         {
-            internal ArrowGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ArrowGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -259,18 +261,18 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// <summary>
             /// Position (<c>arrow</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.ArrowPosition Position
+            public ArrowPosition Position
             {
-                get => GetEnum("arrow", (global::TeklaHelper.DrawingAttribute.Pages.ArrowPosition)0);
+                get => GetEnum("arrow", (ArrowPosition)0);
                 set => SetEnum("arrow", value);
             }
 
             /// <summary>
             /// Type (<c>arrow_type</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.LineArrowType Type
+            public LineArrowType Type
             {
-                get => GetEnum("arrow_type", (global::TeklaHelper.DrawingAttribute.Pages.LineArrowType)1);
+                get => GetEnum("arrow_type", (LineArrowType)1);
                 set => SetEnum("arrow_type", value);
             }
 
@@ -296,9 +298,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Text Style" group.
         /// </summary>
-        public sealed class TextStyleGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class TextStyleGroup : AttributeSection
         {
-            internal TextStyleGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal TextStyleGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -307,9 +309,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// Color (<c>fo_attr.text_color</c>). Shown in another Tekla dialog with the same keys
             /// (<c>gr_fo_asc_attrib</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+            public DrawingColor Color
             {
-                get => GetEnum("fo_attr.text_color", (global::TeklaHelper.DrawingAttribute.DrawingColor)155);
+                get => GetEnum("fo_attr.text_color", (DrawingColor)155);
                 set => SetEnum("fo_attr.text_color", value);
             }
 
@@ -337,9 +339,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// The "Scaling" group.
         /// </summary>
-        public sealed class ScalingGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class ScalingGroup : AttributeSection
         {
-            internal ScalingGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal ScalingGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -348,9 +350,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// Type (<c>fo_attr.scaling_type</c>). Shown in another Tekla dialog with the same keys
             /// (<c>gr_fo_asc_attrib</c>).
             /// </summary>
-            public global::TeklaHelper.DrawingAttribute.Pages.ForeignObjectScaling Type
+            public ForeignObjectScaling Type
             {
-                get => GetEnum("fo_attr.scaling_type", (global::TeklaHelper.DrawingAttribute.Pages.ForeignObjectScaling)0);
+                get => GetEnum("fo_attr.scaling_type", (ForeignObjectScaling)0);
                 set => SetEnum("fo_attr.scaling_type", value);
             }
         }
@@ -358,9 +360,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }

@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Pages;
+
 namespace TeklaHelper.DrawingAttribute.Views
 {
     /// <summary>
@@ -12,7 +14,7 @@ namespace TeklaHelper.DrawingAttribute.Views
     /// those the dialog does not show are in <c>Advanced</c>, and any other key is reachable by name (<c>GetInt32</c>,
     /// <c>SetString</c>, ...).
     /// </summary>
-    public sealed partial class ViewAttributes : global::TeklaHelper.DrawingAttribute.AttributeSection
+    public sealed partial class ViewAttributes : AttributeSection
     {
         /// <summary>
         /// Prefix of the page in view attribute files (.vi).
@@ -23,14 +25,14 @@ namespace TeklaHelper.DrawingAttribute.Views
         /// Returns the prefix of the page in a file of <paramref name="host"/>; null when that kind of file has no such
         /// page.
         /// </summary>
-        public static string PrefixFor(global::TeklaHelper.DrawingAttribute.Pages.PageHost host) => global::TeklaHelper.DrawingAttribute.Pages.PageHostPrefix.Select(host, ViewPrefix, null, null);
+        public static string PrefixFor(PageHost host) => PageHostPrefix.Select(host, ViewPrefix, null, null);
 
         /// <summary>
         /// Creates the page over the keys of <paramref name="values"/> under <paramref name="prefix"/>.
         /// </summary>
         /// <param name="values">Values of the attribute file.</param>
         /// <param name="prefix">Prefix of the page in that file, e.g. <see cref="ViewPrefix"/>.</param>
-        public ViewAttributes(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+        public ViewAttributes(AttributeCollection values, string prefix)
             : base(values, prefix)
         {
         }
@@ -74,7 +76,7 @@ namespace TeklaHelper.DrawingAttribute.Views
             Attributes1.View.Rotation3dY = 0;
             Attributes1.View.ReflectedView = false;
             Attributes1.View.Rotation3dX = 0;
-            Attributes1.View.Size = global::TeklaHelper.DrawingAttribute.Pages.ViewSize.DefineAsDistances;
+            Attributes1.View.Size = ViewSize.DefineAsDistances;
             Attributes1.View.XMin = -515.66;
             Attributes1.View.XMax = 515.66;
             Attributes1.View.YMin = -0.66;
@@ -82,32 +84,32 @@ namespace TeklaHelper.DrawingAttribute.Views
             Attributes1.View.DepthDown = 1030.67;
             Attributes1.View.DepthUp = 1030.67;
             Attributes1.View.ViewExtensionForNeighborParts = 0;
-            Attributes1.View.Place = global::TeklaHelper.DrawingAttribute.Pages.Place.Free;
+            Attributes1.View.Place = Pages.Place.Free;
             Attributes1.Settings.UseDetailedObjectLevelSettings = false;
             Attributes2.CutParts.RepresentationOfDeformedObjects.Unfolded = false;
             Attributes2.CutParts.RepresentationOfDeformedObjects.Undeformed = false;
-            Attributes2.CutParts.Shortening.CutParts = global::TeklaHelper.DrawingAttribute.Pages.CutParts.BothDirections;
+            Attributes2.CutParts.Shortening.CutParts = Pages.CutParts.BothDirections;
             Attributes2.CutParts.Shortening.CutSkewParts = false;
             Attributes2.CutParts.Shortening.MinimumCutPartLength = 10000;
             Attributes2.CutParts.Shortening.SpaceBetweenCutParts = 1;
             Attributes2.CutParts.Other.ShowOpeningsRecessSymbol = false;
             Attributes2.CutParts.Other.LocationBy = "ProjectBasePoint";
-            Attributes2.CutParts.Other.DatumPointForElevations = global::TeklaHelper.DrawingAttribute.Pages.DatumPointForElevations.Specified;
+            Attributes2.CutParts.Other.DatumPointForElevations = Pages.DatumPointForElevations.Specified;
             Attributes2.CutParts.Other.DatumLevel = 0;
-            Attributes2.CutParts.Other.DimensionCreationMethodInThisView = global::TeklaHelper.DrawingAttribute.Pages.DimensionCreationMethodInThisView.Automatically;
+            Attributes2.CutParts.Other.DimensionCreationMethodInThisView = Pages.DimensionCreationMethodInThisView.Automatically;
             Label.ViewLabel.Text.A1 = "<< Mark >>";
             Label.ViewLabel.Text.A2 = "<< Mark >>";
             Label.ViewLabel.Text.A3 = "";
             Label.ViewLabel.Text.A4 = "";
             Label.ViewLabel.Text.A5 = "";
-            Label.ViewLabel.Symbol.Symbol = global::TeklaHelper.DrawingAttribute.Pages.ViewLabelSymbol.None;
-            Label.ViewLabel.Symbol.Color = global::TeklaHelper.DrawingAttribute.DrawingColor.Invisible;
+            Label.ViewLabel.Symbol.Symbol = ViewLabelSymbol.None;
+            Label.ViewLabel.Symbol.Color = DrawingColor.Invisible;
             Label.ViewLabel.Symbol.Size = 5;
-            Label.ViewLabel.Symbol.LineLength = global::TeklaHelper.DrawingAttribute.Pages.SymbolLineLength.Minimal;
+            Label.ViewLabel.Symbol.LineLength = SymbolLineLength.Minimal;
             Label.ViewLabel.Symbol.LineLengthViewLabelCustomLength = 0;
-            Label.ViewLabel.LabelPosition.Vertical = global::TeklaHelper.DrawingAttribute.Pages.LabelPositionVertical.Below;
-            Label.ViewLabel.LabelPosition.Horizontal = global::TeklaHelper.DrawingAttribute.Pages.LabelPositionHorizontal.CenterAlignedToViewFrame;
-            Label.ViewLabel.ViewDirectionMarks.ShowMarks = global::TeklaHelper.DrawingAttribute.Pages.ShowMarks.None;
+            Label.ViewLabel.LabelPosition.Vertical = LabelPositionVertical.Below;
+            Label.ViewLabel.LabelPosition.Horizontal = LabelPositionHorizontal.CenterAlignedToViewFrame;
+            Label.ViewLabel.ViewDirectionMarks.ShowMarks = Pages.ShowMarks.None;
             Label.ViewLabel.ViewDirectionMarks.Height = 0;
             Advanced.LabelHeight = 3;
             Advanced.StyleName = "standard";
@@ -256,9 +258,9 @@ namespace TeklaHelper.DrawingAttribute.Views
         /// <summary>
         /// The "Attributes 1" tab.
         /// </summary>
-        public sealed class Attributes1Tab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class Attributes1Tab : AttributeSection
         {
-            internal Attributes1Tab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal Attributes1Tab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -280,9 +282,9 @@ namespace TeklaHelper.DrawingAttribute.Views
             /// <summary>
             /// The "View" group.
             /// </summary>
-            public sealed class ViewGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class ViewGroup : AttributeSection
             {
-                internal ViewGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal ViewGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -326,9 +328,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                 /// <summary>
                 /// Size (<c>size_mode</c>).
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.ViewSize Size
+                public ViewSize Size
                 {
-                    get => GetEnum("size_mode", (global::TeklaHelper.DrawingAttribute.Pages.ViewSize)1);
+                    get => GetEnum("size_mode", (ViewSize)1);
                     set => SetEnum("size_mode", value);
                 }
 
@@ -399,9 +401,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                 /// Place (<c>ViewPlace</c>). The stored values follow the order of the menu: Tekla's dialog definition
                 /// does not list them.
                 /// </summary>
-                public global::TeklaHelper.DrawingAttribute.Pages.Place Place
+                public Pages.Place Place
                 {
-                    get => GetEnum("ViewPlace", (global::TeklaHelper.DrawingAttribute.Pages.Place)0);
+                    get => GetEnum("ViewPlace", (Pages.Place)0);
                     set => SetEnum("ViewPlace", value);
                 }
             }
@@ -409,9 +411,9 @@ namespace TeklaHelper.DrawingAttribute.Views
             /// <summary>
             /// The "Settings" group.
             /// </summary>
-            public sealed class SettingsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class SettingsGroup : AttributeSection
             {
-                internal SettingsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal SettingsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -430,9 +432,9 @@ namespace TeklaHelper.DrawingAttribute.Views
         /// <summary>
         /// The "Attributes 2" tab.
         /// </summary>
-        public sealed class Attributes2Tab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class Attributes2Tab : AttributeSection
         {
-            internal Attributes2Tab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal Attributes2Tab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -447,9 +449,9 @@ namespace TeklaHelper.DrawingAttribute.Views
             /// <summary>
             /// The "Cut parts" group.
             /// </summary>
-            public sealed class CutPartsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class CutPartsGroup : AttributeSection
             {
-                internal CutPartsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal CutPartsGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -478,9 +480,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                 /// <summary>
                 /// The "Representation of deformed objects" group.
                 /// </summary>
-                public sealed class RepresentationOfDeformedObjectsGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class RepresentationOfDeformedObjectsGroup : AttributeSection
                 {
-                    internal RepresentationOfDeformedObjectsGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal RepresentationOfDeformedObjectsGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -507,9 +509,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                 /// <summary>
                 /// The "Shortening" group.
                 /// </summary>
-                public sealed class ShorteningGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class ShorteningGroup : AttributeSection
                 {
-                    internal ShorteningGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal ShorteningGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -517,9 +519,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                     /// <summary>
                     /// Cut parts (<c>cut_on</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.CutParts CutParts
+                    public Pages.CutParts CutParts
                     {
-                        get => GetEnum("cut_on", (global::TeklaHelper.DrawingAttribute.Pages.CutParts)0);
+                        get => GetEnum("cut_on", (Pages.CutParts)0);
                         set => SetEnum("cut_on", value);
                     }
 
@@ -555,9 +557,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                 /// <summary>
                 /// The "Other" group.
                 /// </summary>
-                public sealed class OtherGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class OtherGroup : AttributeSection
                 {
-                    internal OtherGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal OtherGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -584,9 +586,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                     /// Datum point for elevations (<c>ElevationDatumSwitch</c>). The stored values follow the order of
                     /// the menu: Tekla's dialog definition does not list them.
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.DatumPointForElevations DatumPointForElevations
+                    public Pages.DatumPointForElevations DatumPointForElevations
                     {
-                        get => GetEnum("ElevationDatumSwitch", (global::TeklaHelper.DrawingAttribute.Pages.DatumPointForElevations)1);
+                        get => GetEnum("ElevationDatumSwitch", (Pages.DatumPointForElevations)1);
                         set => SetEnum("ElevationDatumSwitch", value);
                     }
 
@@ -602,9 +604,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                     /// <summary>
                     /// Dimension creation method in this view (<c>DimensionCreationMethod</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.DimensionCreationMethodInThisView DimensionCreationMethodInThisView
+                    public Pages.DimensionCreationMethodInThisView DimensionCreationMethodInThisView
                     {
-                        get => GetEnum("DimensionCreationMethod", (global::TeklaHelper.DrawingAttribute.Pages.DimensionCreationMethodInThisView)0);
+                        get => GetEnum("DimensionCreationMethod", (Pages.DimensionCreationMethodInThisView)0);
                         set => SetEnum("DimensionCreationMethod", value);
                     }
                 }
@@ -614,9 +616,9 @@ namespace TeklaHelper.DrawingAttribute.Views
         /// <summary>
         /// The "Label" tab.
         /// </summary>
-        public sealed class LabelTab : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class LabelTab : AttributeSection
         {
-            internal LabelTab(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal LabelTab(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
@@ -631,9 +633,9 @@ namespace TeklaHelper.DrawingAttribute.Views
             /// <summary>
             /// The "View label" group.
             /// </summary>
-            public sealed class ViewLabelGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+            public sealed class ViewLabelGroup : AttributeSection
             {
-                internal ViewLabelGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                internal ViewLabelGroup(AttributeCollection values, string prefix)
                     : base(values, prefix)
                 {
                 }
@@ -669,9 +671,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                 /// <summary>
                 /// The "Text" group.
                 /// </summary>
-                public sealed class TextGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class TextGroup : AttributeSection
                 {
-                    internal TextGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal TextGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -725,9 +727,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                 /// <summary>
                 /// The "Symbol" group.
                 /// </summary>
-                public sealed class SymbolGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class SymbolGroup : AttributeSection
                 {
-                    internal SymbolGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal SymbolGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -735,18 +737,18 @@ namespace TeklaHelper.DrawingAttribute.Views
                     /// <summary>
                     /// Symbol (<c>ViewLabelMarkSymbolIndex</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.ViewLabelSymbol Symbol
+                    public ViewLabelSymbol Symbol
                     {
-                        get => GetEnum("ViewLabelMarkSymbolIndex", (global::TeklaHelper.DrawingAttribute.Pages.ViewLabelSymbol)0);
+                        get => GetEnum("ViewLabelMarkSymbolIndex", (ViewLabelSymbol)0);
                         set => SetEnum("ViewLabelMarkSymbolIndex", value);
                     }
 
                     /// <summary>
                     /// Color (<c>label_colour</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.DrawingColor Color
+                    public DrawingColor Color
                     {
-                        get => GetEnum("label_colour", (global::TeklaHelper.DrawingAttribute.DrawingColor)152);
+                        get => GetEnum("label_colour", (DrawingColor)152);
                         set => SetEnum("label_colour", value);
                     }
 
@@ -762,9 +764,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                     /// <summary>
                     /// Line length (<c>ViewLabelLineLengthType</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.SymbolLineLength LineLength
+                    public SymbolLineLength LineLength
                     {
-                        get => GetEnum("ViewLabelLineLengthType", (global::TeklaHelper.DrawingAttribute.Pages.SymbolLineLength)0);
+                        get => GetEnum("ViewLabelLineLengthType", (SymbolLineLength)0);
                         set => SetEnum("ViewLabelLineLengthType", value);
                     }
 
@@ -781,9 +783,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                 /// <summary>
                 /// The "Label position" group.
                 /// </summary>
-                public sealed class LabelPositionGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class LabelPositionGroup : AttributeSection
                 {
-                    internal LabelPositionGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal LabelPositionGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -791,18 +793,18 @@ namespace TeklaHelper.DrawingAttribute.Views
                     /// <summary>
                     /// Vertical (<c>label_position</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.LabelPositionVertical Vertical
+                    public LabelPositionVertical Vertical
                     {
-                        get => GetEnum("label_position", (global::TeklaHelper.DrawingAttribute.Pages.LabelPositionVertical)0);
+                        get => GetEnum("label_position", (LabelPositionVertical)0);
                         set => SetEnum("label_position", value);
                     }
 
                     /// <summary>
                     /// Horizontal (<c>ViewLabelHorizontalPosition</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.LabelPositionHorizontal Horizontal
+                    public LabelPositionHorizontal Horizontal
                     {
-                        get => GetEnum("ViewLabelHorizontalPosition", (global::TeklaHelper.DrawingAttribute.Pages.LabelPositionHorizontal)0);
+                        get => GetEnum("ViewLabelHorizontalPosition", (LabelPositionHorizontal)0);
                         set => SetEnum("ViewLabelHorizontalPosition", value);
                     }
                 }
@@ -810,9 +812,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                 /// <summary>
                 /// The "View direction marks" group.
                 /// </summary>
-                public sealed class ViewDirectionMarksGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+                public sealed class ViewDirectionMarksGroup : AttributeSection
                 {
-                    internal ViewDirectionMarksGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+                    internal ViewDirectionMarksGroup(AttributeCollection values, string prefix)
                         : base(values, prefix)
                     {
                     }
@@ -820,9 +822,9 @@ namespace TeklaHelper.DrawingAttribute.Views
                     /// <summary>
                     /// Show marks (<c>DirectionMarks</c>).
                     /// </summary>
-                    public global::TeklaHelper.DrawingAttribute.Pages.ShowMarks ShowMarks
+                    public Pages.ShowMarks ShowMarks
                     {
-                        get => GetEnum("DirectionMarks", (global::TeklaHelper.DrawingAttribute.Pages.ShowMarks)0);
+                        get => GetEnum("DirectionMarks", (Pages.ShowMarks)0);
                         set => SetEnum("DirectionMarks", value);
                     }
 
@@ -841,9 +843,9 @@ namespace TeklaHelper.DrawingAttribute.Views
         /// <summary>
         /// Keys of this page that the dialog does not show (or shows on another page).
         /// </summary>
-        public sealed class AdvancedGroup : global::TeklaHelper.DrawingAttribute.AttributeSection
+        public sealed class AdvancedGroup : AttributeSection
         {
-            internal AdvancedGroup(global::TeklaHelper.DrawingAttribute.AttributeCollection values, string prefix)
+            internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
             }
