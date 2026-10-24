@@ -44,7 +44,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
                 return;
             }
 
-            List<TSD.View> views = SelectedViews(handler);
+            List<TSD.View> views = TeklaSession.SelectedViews(handler);
             if (views.Count == 0)
             {
                 DrawingObjectEnumerator all = drawing.GetSheet().GetViews();
@@ -126,21 +126,6 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
             }
 
             return profiles;
-        }
-
-        private static List<TSD.View> SelectedViews(DrawingHandler handler)
-        {
-            var views = new List<TSD.View>();
-            DrawingObjectEnumerator selected = handler.GetDrawingObjectSelector().GetSelected();
-            while (selected.MoveNext())
-            {
-                if (selected.Current is TSD.View view)
-                {
-                    views.Add(view);
-                }
-            }
-
-            return views;
         }
     }
 }

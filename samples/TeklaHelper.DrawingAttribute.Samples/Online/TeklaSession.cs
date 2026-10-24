@@ -98,6 +98,47 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
             return names;
         }
 
+        /// <summary>The views selected in the open drawing.</summary>
+        public static List<TSD.View> SelectedViews(TSD.DrawingHandler handler)
+        {
+            var views = new List<TSD.View>();
+            TSD.DrawingObjectEnumerator selected = handler.GetDrawingObjectSelector().GetSelected();
+            while (selected.MoveNext())
+            {
+                if (selected.Current is TSD.View view)
+                {
+                    views.Add(view);
+                }
+            }
+
+            return views;
+        }
+
+        /// <summary>The first selected view of the open drawing, else its first view; null when it has none.</summary>
+        public static TSD.View SelectedOrFirstView(TSD.DrawingHandler handler, TSD.Drawing drawing)
+        {
+            TSD.View view = SelectedViews(handler).FirstOrDefault();
+            TSD.DrawingObjectEnumerator views = drawing.GetSheet().GetViews();
+            while (view == null && views.MoveNext())
+            {
+                view = views.Current as TSD.View;
+            }
+
+            return view;
+        }
+
+        /// <summary>
+        /// Deletes the files an example wrote under <paramref name="name"/> (name.vi, name.vi.filter, name.ad.more, ...). The
+        /// names are unique per run, so nothing else matches.
+        /// </summary>
+        public static void DeleteFiles(string directory, string name)
+        {
+            foreach (string file in Directory.GetFiles(directory, name + ".*"))
+            {
+                File.Delete(file);
+            }
+        }
+
         /// <summary>
         /// Counts the drawing objects of a type in a view. The Drawing API only returns the objects the view shows: a part
         /// hidden by the view filter cannot be found through the view at all.

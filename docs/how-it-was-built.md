@@ -342,9 +342,11 @@ was changed for the run and put back: a single bar and a mesh added to a slab (t
 workshop bolt (2), one assembly added to another as a sub-assembly (its main part 3, its secondary part 4). The dialog's
 menu values (Single 0, Group 1, Mesh 2) are not the table numbers. Marks merged with `MergeMarks` still showed table 2;
 table 3 is the merged mark set, which the Open API cannot read. The same probe on a `.note` gave every part table 1,
-every bolt 2, every reinforcement 4 and a reference model `ReferenceObjectContentString`. Loading such a file into a
-view that already has its marks (`LoadAttributes` + `Modify`) left their content as it was; a copy of the view inserted
-with the file showed the new content, so the sample application inserts a view to show it.
+every bolt 2, every reinforcement 4 and a reference model `ReferenceObjectContentString`. Loading such a file into the
+existing view `C BOT` of a FOOTING drawing (`LoadAttributes` + `Modify`) left the content of its reinforcement group
+marks as it was. A review of the sample application then showed that this is not the rule: in a view just inserted with
+the environment's `standard.vi`, the part marks took the new content when the file was loaded the same way. What keeps
+the marks of `C BOT` (placed or edited in the drawing, or being reinforcement marks) was not looked at.
 
 **Round trip.** Content Tekla wrote must be written back as it was. The reader keeps the attributes of each element in
 their order, the layout (a line per tag, or one line), the line break (two line feeds in some older files), whether a
@@ -477,6 +479,8 @@ view filtered on `Name = COLUMN`.
 
 - What `override="1"` in the format of a mark element does: the Open API reads the element's font with or without it,
   and no dialog control writes it; whether the drawing draws the element's own font without it was not looked at.
+- Why the reinforcement group marks of an existing view kept their content when other view properties were loaded,
+  while the part marks of a new view took it.
 - Table 3 of the reinforcement mark (merged mark settings) was not seen read, and `ContentString3` / `ContentString4` of
   the bolt mark, `ContentString3` of the associative note (surface treatment by the files) and the tables of the
   neighbour part and neighbour reinforcement marks were not probed.

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using TeklaHelper.DrawingAttribute.Views;
 
 namespace TeklaHelper.DrawingAttribute.Samples.Offline
@@ -33,12 +34,12 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
                 return;
             }
 
-            context.Step("The key-value files of " + folder);
+            context.Step("The key-value files of " + folder + " (three per extension)");
             var byExtension = new SortedDictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
             foreach (string file in Directory.GetFiles(folder))
             {
                 string extension = Path.GetExtension(file);
-                if (extension.Length == 0 || IsFilterFile(file))
+                if (extension.Length == 0)
                 {
                     continue;
                 }
@@ -53,33 +54,60 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
 
             foreach (KeyValuePair<string, List<string>> pair in byExtension)
             {
-                foreach (string file in pair.Value.Take(3))
+                int listed = 0, checkedFiles = 0;
+                foreach (string file in pair.Value)
                 {
+                    if (listed == 3)
+                    {
+                        break;
+                    }
+
+                    checkedFiles++;
+                    if (!MayBeKeyValueFile(file))
+                    {
+                        continue;
+                    }
+
                     try
                     {
                         var generic = new GenericAttributeFile(pair.Key, writesEncodingLine: !pair.Key.Equals(".more", StringComparison.OrdinalIgnoreCase));
                         generic.Load(file);
                         Console.WriteLine($"    {pair.Key,-14} {Path.GetFileName(file),-40} code page {generic.CodePage,5}, {generic.Values.Count,5} keys");
+                        listed++;
                     }
-                    catch (Exception exception) when (exception is FormatException || exception is IOException || exception is InvalidDataException)
+                    catch (Exception exception) when (exception is ArgumentException || exception is FormatException || exception is IOException || exception is UnauthorizedAccessException)
                     {
-                        Console.WriteLine($"    {pair.Key,-14} {Path.GetFileName(file),-40} not a key-value file ({exception.GetType().Name})");
+                        // A line that is no "key value" pair (a key with spaces or quotes, ...): not an attribute file
                     }
                 }
 
-                if (pair.Value.Count > 3)
+                if (listed > 0 && pair.Value.Count > checkedFiles)
                 {
-                    Console.WriteLine($"    {pair.Key,-14} ... {pair.Value.Count - 3} more");
+                    Console.WriteLine($"    {pair.Key,-14} ... {pair.Value.Count - checkedFiles} more files");
                 }
             }
         }
 
-        /// <summary>Filter files (.vf, .vi.filter, .SObjGrp, ...) are blocks, not key-value lines: FilterFile reads them.</summary>
-        private static bool IsFilterFile(string path)
+        /// <summary>
+        /// Whether a file may be a key-value attribute file, from its first line. Filter files (.vf, .vi.filter, .SObjGrp, ...)
+        /// are blocks that FilterFile reads; logs, XML, binary and locked files are not attribute files.
+        /// </summary>
+        private static bool MayBeKeyValueFile(string path)
         {
-            using (var reader = new StreamReader(path))
+            try
             {
-                return (reader.ReadLine() ?? string.Empty).TrimStart('﻿').StartsWith("TITLE_OBJECT_GROUP", StringComparison.Ordinal);
+                using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                using (var reader = new StreamReader(stream))
+                {
+                    // "encoding 1252" (current files), "view_dial.view_scale ..." (older files without an encoding line) or
+                    // "gadrawing_attributes.comment ..." (.more files)
+                    string first = (reader.ReadLine() ?? string.Empty).TrimStart('\uFEFF');
+                    return Regex.IsMatch(first, @"^(encoding \d+$|[A-Za-z]+_dial\.|[A-Za-z_]+_attributes\.)");
+                }
+            }
+            catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException)
+            {
+                return false;
             }
         }
 

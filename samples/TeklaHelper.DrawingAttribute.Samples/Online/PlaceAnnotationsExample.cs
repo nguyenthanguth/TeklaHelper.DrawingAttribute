@@ -37,7 +37,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
                 return;
             }
 
-            TSD.View view = FirstView(handler, drawing);
+            TSD.View view = TeklaSession.SelectedOrFirstView(handler, drawing);
             if (view == null)
             {
                 Console.WriteLine("    The drawing has no view.");
@@ -46,50 +46,47 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
 
             Console.WriteLine($"    View '{view.Name}' of drawing '{drawing.Name}', scale 1:{view.Attributes.Scale}");
 
-            context.Step("Write the property files to the model's attributes folder (a new name per run: Tekla caches files)");
-            string attributes = TeklaSession.AttributesDirectory(model);
-
+            context.Step("The property files (written to the model's attributes folder after you confirm; a new name per run: Tekla caches files)");
             TextAttributeFile text = TextAttributeFile.CreateDefault();
             text.Properties.Appearance.Text.Height = 5;
             text.Properties.Appearance.Text.Color = DrawingColor.Blue;
             text.Properties.Appearance.Frame.Type = FrameAroundMarkType.Rectangular;
-            string textName = TeklaSession.UniqueName("tda_text");
-            text.SaveTo(attributes, textName);
 
             LineAttributeFile line = LineAttributeFile.CreateDefault();
             line.Properties.Line.Color = DrawingColor.Red;
             line.Properties.Line.Type = DrawingLineType.Dashed;
             line.Properties.Arrow.Position = ArrowPosition.End;
-            string lineName = TeklaSession.UniqueName("tda_line");
-            line.SaveTo(attributes, lineName);
 
             LevelMarkAttributeFile level = LevelMarkAttributeFile.CreateDefault();
             level.Properties.General.LevelMarkContent.PrefixForPositiveLevel = PositiveLevelPrefix.Plus;
             level.Properties.Appearance.Text.Color = DrawingColor.Green;
-            string levelName = TeklaSession.UniqueName("tda_level");
-            level.SaveTo(attributes, levelName);
 
             DimensionAttributeFile dimension = DimensionAttributeFile.CreateDefault();
             dimension.Properties.General.DimensionTypes.Straight = StraightDimensionType.Absolute;
             dimension.Properties.Appearance.Text.Height = 4;
             dimension.Properties.Appearance.Text.Color = DrawingColor.Red;
-            string dimensionName = TeklaSession.UniqueName("tda_dimension");
-            dimension.SaveTo(attributes, dimensionName);
 
-            if (!context.Confirm($"Insert four objects into view '{view.Name}'?"))
+            if (!context.Confirm($"Write four property files and insert four objects into view '{view.Name}'?"))
             {
-                Console.WriteLine("    Cancelled.");
+                Console.WriteLine("    Cancelled: nothing was written.");
                 return;
             }
+
+            string attributes = TeklaSession.AttributesDirectory(model);
+            string name = TeklaSession.UniqueName("tda_annotations");
+            text.SaveTo(attributes, name);
+            line.SaveTo(attributes, name);
+            level.SaveTo(attributes, name);
+            dimension.SaveTo(attributes, name);
 
             context.Step("Insert them near the lower left corner of the view");
             AABB box = view.RestrictionBox;
             double step = 20 * view.Attributes.Scale;
             var origin = new Point(box.MinPoint.X, box.MinPoint.Y - step, 0);
 
-            var newText = new Text(view, new Point(origin.X, origin.Y, 0), "TeklaHelper.DrawingAttribute", new Text.TextAttributes(textName));
-            var newLine = new TSD.Line(view, new Point(origin.X, origin.Y - step, 0), new Point(origin.X + 4 * step, origin.Y - step, 0), new TSD.Line.LineAttributes(lineName));
-            var newLevel = new LevelMark(view, new Point(origin.X + 6 * step, origin.Y, 0), new Point(origin.X + 6 * step, origin.Y - step, 0), new LevelMark.LevelMarkAttributes(levelName));
+            var newText = new Text(view, new Point(origin.X, origin.Y, 0), "TeklaHelper.DrawingAttribute", new Text.TextAttributes(name));
+            var newLine = new TSD.Line(view, new Point(origin.X, origin.Y - step, 0), new Point(origin.X + 4 * step, origin.Y - step, 0), new TSD.Line.LineAttributes(name));
+            var newLevel = new LevelMark(view, new Point(origin.X + 6 * step, origin.Y, 0), new Point(origin.X + 6 * step, origin.Y - step, 0), new LevelMark.LevelMarkAttributes(name));
             Console.WriteLine($"    Text: {newText.Insert()}, line: {newLine.Insert()}, level mark: {newLevel.Insert()}");
 
             var points = new PointList { new Point(origin.X, origin.Y - 2 * step, 0), new Point(origin.X + 4 * step, origin.Y - 2 * step, 0) };
@@ -97,7 +94,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
             // Tekla 2025 marks the constructor that takes only the file name obsolete in favour of one that also takes the
             // model object the dimension belongs to; a free dimension has none, and this one reads the .dim as before
 #pragma warning disable CS0618
-            var dimensionAttributes = new StraightDimensionSet.StraightDimensionSetAttributes(dimensionName);
+            var dimensionAttributes = new StraightDimensionSet.StraightDimensionSetAttributes(name);
 #pragma warning restore CS0618
             StraightDimensionSet set = new StraightDimensionSetHandler().CreateDimensionSet(view, points, new Vector(0, -1, 0), step, dimensionAttributes);
             Console.WriteLine($"    Dimension set: {set != null}");
@@ -115,35 +112,14 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
                 Console.WriteLine($"    Dimension: type {read.DimensionType}, text height {read.Text.Font.Height}, colour {read.Text.Font.Color}");
             }
 
-            // The objects are in the open drawing only; closing it without saving removes them
-            if (context.Confirm("Undo (close the drawing without saving)?"))
+            // Only what the example added goes: the rest of the drawing, saved or not, stays as it was
+            if (context.Confirm("Undo (delete the four objects and the property files)?"))
             {
-                handler.CloseActiveDrawing(false);
-                Console.WriteLine("    Closed without saving.");
+                bool deleted = newText.Delete() & newLine.Delete() & newLevel.Delete() & (set == null || set.Delete());
+                drawing.CommitChanges();
+                TeklaSession.DeleteFiles(attributes, name);
+                Console.WriteLine("    Deleted: " + deleted);
             }
-        }
-
-        private static TSD.View FirstView(DrawingHandler handler, Drawing drawing)
-        {
-            DrawingObjectEnumerator selected = handler.GetDrawingObjectSelector().GetSelected();
-            while (selected.MoveNext())
-            {
-                if (selected.Current is TSD.View view)
-                {
-                    return view;
-                }
-            }
-
-            DrawingObjectEnumerator views = drawing.GetSheet().GetViews();
-            while (views.MoveNext())
-            {
-                if (views.Current is TSD.View view)
-                {
-                    return view;
-                }
-            }
-
-            return null;
         }
     }
 }

@@ -47,13 +47,11 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
             Console.WriteLine($"    Assembly {position} (id {assembly.Identifier.ID})");
 
             context.Step("The view properties of every view of the drawing");
-            string attributes = TeklaSession.AttributesDirectory(model);
             ViewProperties views = ViewProperties.CreateDefault();
             views.Objects.Part.Content.HiddenLines.HiddenLines = true;
             views.Marks.PartMark.MainPartElements = new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.AssemblyPosition);
             views.Marks.PartMark.SecondaryPartElements = new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.PartPosition);
             string viewName = TeklaSession.UniqueName("tda_ad_views");
-            views.SaveTo(attributes, viewName);
 
             context.Step("The assembly drawing properties");
             AssemblyDrawingAttributeFile drawing = AssemblyDrawingAttributeFile.CreateDefault();
@@ -66,13 +64,16 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
             drawing.Dimension.General.DimensionTypes.Straight = DimensionType.Absolute;
             drawing.Dimension.Appearance.Text.Height = 3;
             string drawingName = TeklaSession.UniqueName("tda_ad");
-            drawing.SaveTo(attributes, drawingName);
 
-            if (!context.Confirm($"Create an assembly drawing of {position}?"))
+            if (!context.Confirm($"Write a .vi and a .ad and create an assembly drawing of {position}?"))
             {
-                Console.WriteLine("    Cancelled.");
+                Console.WriteLine("    Cancelled: nothing was written.");
                 return;
             }
+
+            string attributes = TeklaSession.AttributesDirectory(model);
+            views.SaveTo(attributes, viewName);
+            drawing.SaveTo(attributes, drawingName);
 
             var assemblyDrawing = new AssemblyDrawing(assembly.Identifier, drawingName);
             if (!assemblyDrawing.Insert())
@@ -82,10 +83,34 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
             }
 
             Console.WriteLine($"    Drawing {assemblyDrawing.Mark} created: '{assemblyDrawing.Title1}'");
+            ListViews(assemblyDrawing);
+
+            if (context.Confirm("Delete the drawing and the two files again?"))
+            {
+                Console.WriteLine("    Deleted: " + assemblyDrawing.Delete());
+                TeklaSession.DeleteFiles(attributes, viewName);
+                TeklaSession.DeleteFiles(attributes, drawingName);
+            }
+        }
+
+        /// <summary>
+        /// Opens the new drawing in the background, lists its views and closes it again; leaves a drawing the user has open
+        /// alone (opening another would close it).
+        /// </summary>
+        private static void ListViews(AssemblyDrawing assemblyDrawing)
+        {
             var handler = new DrawingHandler();
+            if (handler.GetActiveDrawing() != null)
+            {
+                Console.WriteLine("    A drawing is open in the drawing editor: the views of the new drawing are not listed, so that it stays open.");
+                return;
+            }
+
+            bool opened = false;
             try
             {
-                if (handler.SetActiveDrawing(assemblyDrawing, false))
+                opened = handler.SetActiveDrawing(assemblyDrawing, false);
+                if (opened)
                 {
                     DrawingObjectEnumerator sheetViews = handler.GetActiveDrawing().GetSheet().GetViews();
                     while (sheetViews.MoveNext())
@@ -95,8 +120,6 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
                             Console.WriteLine($"    View '{view.Name}' ({view.ViewType}), scale 1:{view.Attributes.Scale}");
                         }
                     }
-
-                    handler.CloseActiveDrawing(false);
                 }
             }
             catch (CannotPerformOperationDrawingNotUpToDateException)
@@ -105,10 +128,12 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
                 // in the Document manager before they open
                 Console.WriteLine("    The drawing is not up to date (number the model first), so its views cannot be listed.");
             }
-
-            if (context.Confirm("Delete the drawing again?"))
+            finally
             {
-                Console.WriteLine("    Deleted: " + assemblyDrawing.Delete());
+                if (opened && handler.GetActiveDrawing() != null)
+                {
+                    handler.CloseActiveDrawing(false);
+                }
             }
         }
     }
