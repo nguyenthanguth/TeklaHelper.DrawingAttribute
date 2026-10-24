@@ -122,6 +122,34 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString2</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString3</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString4</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
@@ -144,6 +172,34 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString1(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString2(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString3(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString4(System.String)</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -262,6 +318,13 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
@@ -284,6 +347,13 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.set_ContentString1(System.String)</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -318,6 +388,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.get_ContentString2</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
@@ -340,6 +424,20 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.set_ContentString1(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.set_ContentString2(System.String)</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -374,6 +472,34 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString2</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString3</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString4</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
@@ -396,6 +522,34 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString1(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString2(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString3(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString4(System.String)</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -710,6 +864,13 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
@@ -732,6 +893,13 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.set_ContentString1(System.String)</Target>
     <Left>lib/net48/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net48/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -892,6 +1060,34 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString2</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString3</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString4</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -914,6 +1110,34 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString1(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString2(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString3(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString4(System.String)</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1032,6 +1256,13 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -1054,6 +1285,13 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.set_ContentString1(System.String)</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1088,6 +1326,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.get_ContentString2</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -1110,6 +1362,20 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.set_ContentString1(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.set_ContentString2(System.String)</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1144,6 +1410,34 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString2</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString3</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString4</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -1166,6 +1460,34 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString1(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString2(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString3(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString4(System.String)</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1480,6 +1802,13 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -1502,6 +1831,13 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.set_ContentString1(System.String)</Target>
     <Left>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/net8.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1662,6 +1998,34 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString2</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString3</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_ContentString4</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -1684,6 +2048,34 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString1(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString2(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString3(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.DrawingObjects.DimensionMark.AdvancedGroup.set_ContentString4(System.String)</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1802,6 +2194,13 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -1824,6 +2223,13 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.ConnectionMark.AdvancedGroup.set_ContentString1(System.String)</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1858,6 +2264,20 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.get_ContentString2</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -1880,6 +2300,20 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.set_ContentString1(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborPartMark.AdvancedGroup.set_ContentString2(System.String)</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -1914,6 +2348,34 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString2</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString3</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_ContentString4</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -1936,6 +2398,34 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString1(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString2(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString3(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.NeighborReinforcementMark.AdvancedGroup.set_ContentString4(System.String)</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>
@@ -2250,6 +2740,13 @@
   </Suppression>
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.get_ContentString1</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.get_PourBreakContentString</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
@@ -2272,6 +2769,13 @@
   <Suppression>
     <DiagnosticId>CP0002</DiagnosticId>
     <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.set_ChamferContentString(System.String)</Target>
+    <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
+    <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:TeklaHelper.DrawingAttribute.Pages.SurfaceTreatmentMark.AdvancedGroup.set_ContentString1(System.String)</Target>
     <Left>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Left>
     <Right>lib/netstandard2.0/TeklaHelper.DrawingAttribute.dll</Right>
     <IsBaselineSuppression>true</IsBaselineSuppression>

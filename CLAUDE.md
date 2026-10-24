@@ -330,6 +330,13 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   reinforcement (single, group, mesh) 4, a reference model `ReferenceObjectContentString`; surface treatment (3 by the
   files) was not checked. The typed properties: `PartMark.MainPartElements` ..., `BoltMark.SiteBoltElements` ...,
   `ReinforcementMark.SingleElements` ..., `AssociativeNoteProperties.PartElements` ....
+  The other mark pages (TFIL_FILTERNAME=GIRDER with `vnp.np_collect_by 4` (by extreme) for neighbour parts and bars,
+  TFIL_SURFACE=1 for a surface treatment added to a slab, all put back): neighbour part mark `vnpm.` main part 1;
+  neighbour reinforcement mark `NeighborRebarMark.` single 1, group 2, mesh 4; connection mark and surface treatment mark
+  (no menu, one table) 1. No mark was made for a neighbouring secondary part (also with `for_sec` 1 and a secondary part
+  added to a column's assembly), so `vnpm.ContentString2` = "Secondary part" comes from the menu (Main part 0,
+  Secondary part 1, as on the part mark page). The dimension mark's menu (Part, Bolt, Rebar, Surface treatment) and the
+  shipped files give part 1, bolt 2, surface treatment 3, reinforcement 4, like the note; not probed.
 - **The mark dialogs of the drawing editor have one table** (TFIL_MODE=dlgtables: a file whose every content key holds
   its own name, loaded and saved again by each dialog; TFIL_MODE=marktables with TFIL_PMDIALOG=1: the part mark dialog
   loaded with such a .pm and Modify pressed on every part mark of a view). Part mark (`.pm`) and bolt mark (`.sm`) read

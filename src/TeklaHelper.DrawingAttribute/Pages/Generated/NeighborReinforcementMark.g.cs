@@ -88,6 +88,53 @@ namespace TeklaHelper.DrawingAttribute.Pages
         public AdvancedGroup Advanced => _advanced ?? (_advanced = new AdvancedGroup(Values, Prefix));
 
         /// <summary>
+        /// What the marks of neighbouring single bars show (<c>ContentString1</c>, "Single"; <see
+        /// cref="MarkElementTypes.ReinforcementMark"/>). Checked in Tekla
+        /// 2025: a view loaded with a different text in each table, its marks read through the Open API. Each get reads
+        /// the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public MarkContent SingleElements
+        {
+            get => GetMarkContentOrNull("ContentString1");
+            set => SetMarkContent("ContentString1", value);
+        }
+
+        /// <summary>
+        /// What the marks of neighbouring reinforcement groups show (<c>ContentString2</c>, "Group"). Checked in Tekla
+        /// 2025: a view loaded with a different text in each table, its marks read through the Open API. Each get reads
+        /// the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public MarkContent GroupElements
+        {
+            get => GetMarkContentOrNull("ContentString2");
+            set => SetMarkContent("ContentString2", value);
+        }
+
+        /// <summary>
+        /// The merged mark (<c>ContentString3</c>), as on the reinforcement mark page: the files hold only
+        /// <c>&lt;MergeElement subType="53"&gt;</c> ... <c>"56"</c> here (kept as <see
+        /// cref="MarkXmlElement"/>); not seen read. Each get reads the key
+        /// and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public MarkContent MergedMarkElements
+        {
+            get => GetMarkContentOrNull("ContentString3");
+            set => SetMarkContent("ContentString3", value);
+        }
+
+        /// <summary>
+        /// What the marks of neighbouring reinforcement meshes show (<c>ContentString4</c>, "Mesh"; <see
+        /// cref="MarkElementTypes.ReinforcementMeshMark"/>). Checked in
+        /// Tekla 2025: a view loaded with a different text in each table, its marks read through the Open API. Each get
+        /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public MarkContent MeshElements
+        {
+            get => GetMarkContentOrNull("ContentString4");
+            set => SetMarkContent("ContentString4", value);
+        }
+
+        /// <summary>
         /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
         /// the key and returns a copy, to be assigned back after a change; null empties the key.
         /// </summary>
@@ -180,10 +227,10 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.Content1 = 0;
             Advanced.Flags = 0;
             Advanced.MarkUsePartEnd = 0;
-            Advanced.ContentString1 = "";
-            Advanced.ContentString2 = "";
-            Advanced.ContentString3 = "";
-            Advanced.ContentString4 = "";
+            SingleElements = new MarkContent();
+            GroupElements = new MarkContent();
+            MergedMarkElements = new MarkContent();
+            MeshElements = new MarkContent();
             EdgeChamferElements = new MarkContent();
             PourElements = new MarkContent();
             PourBreakElements = new MarkContent();
@@ -955,42 +1002,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
             {
                 get => GetInt32("mark_use_part_end");
                 set => SetInt32("mark_use_part_end", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString1</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString1
-            {
-                get => GetString("ContentString1");
-                set => SetString("ContentString1", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString2</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString2
-            {
-                get => GetString("ContentString2");
-                set => SetString("ContentString2", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString3</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString3
-            {
-                get => GetString("ContentString3");
-                set => SetString("ContentString3", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString4</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString4
-            {
-                get => GetString("ContentString4");
-                set => SetString("ContentString4", value);
             }
 
             /// <summary>

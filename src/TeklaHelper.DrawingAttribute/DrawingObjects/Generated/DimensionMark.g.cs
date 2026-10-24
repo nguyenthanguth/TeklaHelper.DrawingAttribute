@@ -72,6 +72,50 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         public AdvancedGroup Advanced => _advanced ?? (_advanced = new AdvancedGroup(Values, Prefix));
 
         /// <summary>
+        /// What the mark shows for parts (<c>ContentString1</c>, "Part" of the dialog's menu). From the menu and the
+        /// shipped files, which hold part elements here, like the associative note; not probed in Tekla. Each get reads
+        /// the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public MarkContent PartElements
+        {
+            get => GetMarkContentOrNull("ContentString1");
+            set => SetMarkContent("ContentString1", value);
+        }
+
+        /// <summary>
+        /// What the mark shows for bolts (<c>ContentString2</c>, "Bolt"). From the menu and the shipped files (bolt
+        /// elements), like the associative note; not probed in Tekla. Each get reads the key and returns a copy, to be
+        /// assigned back after a change; null empties the key.
+        /// </summary>
+        public MarkContent BoltElements
+        {
+            get => GetMarkContentOrNull("ContentString2");
+            set => SetMarkContent("ContentString2", value);
+        }
+
+        /// <summary>
+        /// What the mark shows for surface treatments (<c>ContentString3</c>, "Surface treatment"). From the menu and
+        /// the shipped files, like the associative note; not probed in Tekla. Each get reads the key and returns a
+        /// copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public MarkContent SurfaceTreatmentElements
+        {
+            get => GetMarkContentOrNull("ContentString3");
+            set => SetMarkContent("ContentString3", value);
+        }
+
+        /// <summary>
+        /// What the mark shows for reinforcement (<c>ContentString4</c>, "Rebar"). From the menu and the shipped files
+        /// (reinforcement elements), like the associative note; not probed in Tekla. Each get reads the key and returns
+        /// a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public MarkContent ReinforcementElements
+        {
+            get => GetMarkContentOrNull("ContentString4");
+            set => SetMarkContent("ContentString4", value);
+        }
+
+        /// <summary>
         /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
         /// the key and returns a copy, to be assigned back after a change; null empties the key.
         /// </summary>
@@ -150,10 +194,10 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Advanced.Content1 = 0;
             Advanced.Flags = 0;
             Advanced.MarkUsePartEnd = 0;
-            Advanced.ContentString1 = "";
-            Advanced.ContentString2 = "";
-            Advanced.ContentString3 = "";
-            Advanced.ContentString4 = "";
+            PartElements = new MarkContent();
+            BoltElements = new MarkContent();
+            SurfaceTreatmentElements = new MarkContent();
+            ReinforcementElements = new MarkContent();
             EdgeChamferElements = new MarkContent();
             PourElements = new MarkContent();
             PourBreakElements = new MarkContent();
@@ -659,42 +703,6 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             {
                 get => GetInt32("mark_use_part_end");
                 set => SetInt32("mark_use_part_end", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString1</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString1
-            {
-                get => GetString("ContentString1");
-                set => SetString("ContentString1", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString2</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString2
-            {
-                get => GetString("ContentString2");
-                set => SetString("ContentString2", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString3</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString3
-            {
-                get => GetString("ContentString3");
-                set => SetString("ContentString3", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString4</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString4
-            {
-                get => GetString("ContentString4");
-                set => SetString("ContentString4", value);
             }
 
             /// <summary>

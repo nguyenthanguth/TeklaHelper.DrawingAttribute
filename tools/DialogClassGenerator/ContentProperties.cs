@@ -34,6 +34,19 @@ namespace DialogClassGenerator
             ("AssociativeNoteProperties", "ContentString4", "ReinforcementElements", "What a note on reinforcement shows (<c>ContentString4</c>, \"Rebar\"; single bars, groups and meshes). Checked in Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>."),
             ("AssociativeNoteProperties", "ReferenceObjectContentString", "ReferenceObjectElements", "What a note on a reference model shows (<c>ReferenceObjectContentString</c>, \"Reference object\"). Checked in Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>."),
 
+            ("NeighborPartMark", "ContentString1", "MainPartElements", $"What the marks of neighbouring main parts show (<c>ContentString1</c>, \"Main part\"; <see cref=\"{Types}PartMark\"/>).{ViewProbe}"),
+            ("NeighborPartMark", "ContentString2", "SecondaryPartElements", "What the marks of neighbouring secondary parts show (<c>ContentString2</c>, \"Secondary part\" of the dialog's menu, as on the part mark page). Not seen read: Tekla 2025 made no mark for a neighbouring secondary part in the probes, also with <c>for_sec</c> on."),
+            ("NeighborReinforcementMark", "ContentString1", "SingleElements", $"What the marks of neighbouring single bars show (<c>ContentString1</c>, \"Single\"; <see cref=\"{Types}ReinforcementMark\"/>).{ViewProbe}"),
+            ("NeighborReinforcementMark", "ContentString2", "GroupElements", $"What the marks of neighbouring reinforcement groups show (<c>ContentString2</c>, \"Group\").{ViewProbe}"),
+            ("NeighborReinforcementMark", "ContentString3", "MergedMarkElements", "The merged mark (<c>ContentString3</c>), as on the reinforcement mark page: the files hold only <c>&lt;MergeElement subType=\"53\"&gt;</c> ... <c>\"56\"</c> here (kept as <see cref=\"global::TeklaHelper.DrawingAttribute.Marks.MarkXmlElement\"/>); not seen read."),
+            ("NeighborReinforcementMark", "ContentString4", "MeshElements", $"What the marks of neighbouring reinforcement meshes show (<c>ContentString4</c>, \"Mesh\"; <see cref=\"{Types}ReinforcementMeshMark\"/>).{ViewProbe}"),
+            ("ConnectionMark", "ContentString1", "Elements", $"What connection marks show (<c>ContentString1</c>; the page has one table; <see cref=\"{Types}ConnectionMark\"/>).{ViewProbe}"),
+            ("SurfaceTreatmentMark", "ContentString1", "Elements", $"What surface treatment marks show (<c>ContentString1</c>; the page has one table; <see cref=\"{Types}SurfaceTreatmentMark\"/>).{ViewProbe}"),
+            ("DimensionMark", "ContentString1", "PartElements", "What the mark shows for parts (<c>ContentString1</c>, \"Part\" of the dialog's menu). From the menu and the shipped files, which hold part elements here, like the associative note; not probed in Tekla."),
+            ("DimensionMark", "ContentString2", "BoltElements", "What the mark shows for bolts (<c>ContentString2</c>, \"Bolt\"). From the menu and the shipped files (bolt elements), like the associative note; not probed in Tekla."),
+            ("DimensionMark", "ContentString3", "SurfaceTreatmentElements", "What the mark shows for surface treatments (<c>ContentString3</c>, \"Surface treatment\"). From the menu and the shipped files, like the associative note; not probed in Tekla."),
+            ("DimensionMark", "ContentString4", "ReinforcementElements", "What the mark shows for reinforcement (<c>ContentString4</c>, \"Rebar\"). From the menu and the shipped files (reinforcement elements), like the associative note; not probed in Tekla."),
+
             // Hand-written (Pages/ViewLabelMark.cs, with an example in its comment): no summary, the generator only knows the name
             ("ViewLabelMark", "ContentString", "Elements", null),
         };

@@ -92,6 +92,33 @@ namespace TeklaHelper.DrawingAttribute.Tests
         }
 
         [Fact]
+        public void OtherMarkPages_TablesByKindOfObject()
+        {
+            var view = new ViewProperties();
+
+            NeighborPartMark neighbor = view.Marks.NeighborPartMark;
+            AssertTable(neighbor, "ContentString1", () => neighbor.MainPartElements, c => neighbor.MainPartElements = c);
+            AssertTable(neighbor, "ContentString2", () => neighbor.SecondaryPartElements, c => neighbor.SecondaryPartElements = c);
+
+            NeighborReinforcementMark neighborRebar = view.Marks.NeighborReinforcementMark;
+            AssertTable(neighborRebar, "ContentString1", () => neighborRebar.SingleElements, c => neighborRebar.SingleElements = c);
+            AssertTable(neighborRebar, "ContentString2", () => neighborRebar.GroupElements, c => neighborRebar.GroupElements = c);
+            AssertTable(neighborRebar, "ContentString3", () => neighborRebar.MergedMarkElements, c => neighborRebar.MergedMarkElements = c);
+            AssertTable(neighborRebar, "ContentString4", () => neighborRebar.MeshElements, c => neighborRebar.MeshElements = c);
+
+            ConnectionMark connection = view.Marks.ConnectionMark;
+            AssertTable(connection, "ContentString1", () => connection.Elements, c => connection.Elements = c);
+            SurfaceTreatmentMark surface = view.Marks.SurfaceTreatmentMark;
+            AssertTable(surface, "ContentString1", () => surface.Elements, c => surface.Elements = c);
+
+            DimensionMark tag = DimensionAttributeFile.CreateDefault().LeftUpperTagMark;
+            AssertTable(tag, "ContentString1", () => tag.PartElements, c => tag.PartElements = c);
+            AssertTable(tag, "ContentString2", () => tag.BoltElements, c => tag.BoltElements = c);
+            AssertTable(tag, "ContentString3", () => tag.SurfaceTreatmentElements, c => tag.SurfaceTreatmentElements = c);
+            AssertTable(tag, "ContentString4", () => tag.ReinforcementElements, c => tag.ReinforcementElements = c);
+        }
+
+        [Fact]
         public void KeysOfEveryMarkPage_HaveContentProperties()
         {
             var view = new ViewProperties();
@@ -165,8 +192,12 @@ namespace TeklaHelper.DrawingAttribute.Tests
             Assert.Null(typeof(PartMark.AdvancedGroup).GetProperty("PourContentString"));
             Assert.Null(typeof(ViewLabelMark.AdvancedGroup).GetProperty("ContentString"));
 
-            // Tables no probe named stay as text
-            Assert.NotNull(typeof(ConnectionMark.AdvancedGroup).GetProperty("ContentString1"));
+            Assert.Null(typeof(ConnectionMark.AdvancedGroup).GetProperty("ContentString1"));
+            Assert.Null(typeof(NeighborPartMark.AdvancedGroup).GetProperty("ContentString2"));
+
+            // Tables the dialogs do not offer stay as text
+            Assert.NotNull(typeof(ConnectionMark.AdvancedGroup).GetProperty("ContentString2"));
+            Assert.NotNull(typeof(BoltMark.AdvancedGroup).GetProperty("ContentString3"));
         }
 
         [Fact]

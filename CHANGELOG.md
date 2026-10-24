@@ -5,11 +5,12 @@
 ### Breaking changes
 - A mark content key with a `MarkContent` property has no string property besides it: `Advanced.ContentString1` ...
   `ContentString4`, `PourContentString`, `PourBreakContentString`, `ChamferContentString` and
-  `ReferenceObjectContentString` of the part, bolt and reinforcement mark pages and of the associative note, the four
-  common keys of every mark page, and `Advanced.ContentString` of `ViewLabelMark` are gone. Use the `MarkContent`
+  `ReferenceObjectContentString` of the part, bolt, reinforcement, neighbour part, neighbour reinforcement, connection,
+  surface treatment and dimension marks and of the associative note (the tables named below), the four common keys of
+  every mark page, and `Advanced.ContentString` of `ViewLabelMark` are gone. Use the `MarkContent`
   property (`MainPartElements`, `PourElements`, `Elements`, ...), or `GetString` / `SetString` with the key for the raw
-  text. Tables nobody probed (`ContentString1` ... of the connection, neighbour part, surface treatment, pour and
-  dimension marks, `ContentString3` / `4` of the bolt mark) keep their string properties.
+  text. Tables no dialog menu offers (`ContentString3` / `4` of the bolt and neighbour part marks, `ContentString2` ...
+  of the connection, surface treatment and pour marks) keep their string properties.
 - `SetMarkContent` (and every `MarkContent` property) writes content without elements as an empty text, as the dialogs
   store an empty table, instead of `<?xml ...><Mark></Mark>`; a key that already holds such XML keeps it.
 - `CreateDefault()` of view and drawing files writes the part mark table `ContentString1` it sets (the assembly
@@ -19,6 +20,11 @@
   the pour mark page and `.pom` keep MATERIAL in `PourContentString`, the table their dialog edits.
 
 ### Mark content
+- The tables of the other mark pages: `NeighborPartMark.MainPartElements` / `SecondaryPartElements`,
+  `NeighborReinforcementMark.SingleElements` / `GroupElements` / `MergedMarkElements` / `MeshElements`,
+  `ConnectionMark.Elements`, `SurfaceTreatmentMark.Elements` (checked in Tekla 2025, apart from the neighbouring
+  secondary part and the merged mark), and `DimensionMark.PartElements` / `BoltElements` / `SurfaceTreatmentElements` /
+  `ReinforcementElements` (from the dialog's menu and the shipped files).
 - `PourElements`, `PourBreakElements`, `EdgeChamferElements` and `ReferenceObjectElements` on every mark page
   (`PourContentString`, `PourBreakContentString`, `ChamferContentString`, `ReferenceObjectContentString` as
   `MarkContent`; named after the key, the pour mark dialog edits `PourContentString`).

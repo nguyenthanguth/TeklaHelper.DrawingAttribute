@@ -354,7 +354,11 @@ MarkContent read = vi.Attributes.LabelMarkA1.Elements;                  // the e
   | `PartMark` | `MainPartElements` | `SecondaryPartElements` | `SubAssemblyMainPartElements` | `SubAssemblySecondaryPartElements` |
   | `BoltMark` | `SiteBoltElements` | `WorkshopBoltElements` | | |
   | `ReinforcementMark` | `SingleElements` | `GroupElements` | `MergedMarkElements` (not seen read) | `MeshElements` |
+  | `NeighborPartMark` | `MainPartElements` | `SecondaryPartElements` (not seen read) | | |
+  | `NeighborReinforcementMark` | `SingleElements` | `GroupElements` | `MergedMarkElements` (not seen read) | `MeshElements` |
+  | `ConnectionMark`, `SurfaceTreatmentMark` (one table) | `Elements` | | | |
   | `AssociativeNoteProperties` (`.note`) | `PartElements` | `BoltElements` | `SurfaceTreatmentElements` (not checked) | `ReinforcementElements` |
+  | `DimensionMark` (the marks of `.dim`; not probed, from the menu and the files) | `PartElements` | `BoltElements` | `SurfaceTreatmentElements` | `ReinforcementElements` |
 
   The associative note has a table per kind of object (every part reads `ContentString1`, every reinforcement
   `ContentString4`, a reference model `ReferenceObjectElements`); the mark pages a table per kind of part, bolt or bar.

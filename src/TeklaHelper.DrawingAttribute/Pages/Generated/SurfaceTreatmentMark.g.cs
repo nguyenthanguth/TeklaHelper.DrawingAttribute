@@ -81,6 +81,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
         public AdvancedGroup Advanced => _advanced ?? (_advanced = new AdvancedGroup(Values, Prefix));
 
         /// <summary>
+        /// What surface treatment marks show (<c>ContentString1</c>; the page has one table; <see
+        /// cref="MarkElementTypes.SurfaceTreatmentMark"/>). Checked in Tekla
+        /// 2025: a view loaded with a different text in each table, its marks read through the Open API. Each get reads
+        /// the key and returns a copy, to be assigned back after a change; null empties the key.
+        /// </summary>
+        public MarkContent Elements
+        {
+            get => GetMarkContentOrNull("ContentString1");
+            set => SetMarkContent("ContentString1", value);
+        }
+
+        /// <summary>
         /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
         /// the key and returns a copy, to be assigned back after a change; null empties the key.
         /// </summary>
@@ -173,7 +185,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.Content1 = 0;
             Advanced.Flags = 0;
             Advanced.MarkUsePartEnd = 0;
-            Advanced.ContentString1 = "";
+            Elements = new MarkContent();
             Advanced.ContentString2 = "";
             Advanced.ContentString3 = "";
             Advanced.ContentString4 = "";
@@ -940,15 +952,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
             {
                 get => GetInt32("mark_use_part_end");
                 set => SetInt32("mark_use_part_end", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString1</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString1
-            {
-                get => GetString("ContentString1");
-                set => SetString("ContentString1", value);
             }
 
             /// <summary>
