@@ -135,7 +135,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 }
             }
 
-            Assert.True(count > 100, "only " + count);
+            Assert.True(count > 50, "only " + count);
         }
 
         [Fact]

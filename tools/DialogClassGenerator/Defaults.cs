@@ -219,8 +219,20 @@ namespace DialogClassGenerator
         /// with Tekla agree with each other more than with the dialog's declared defaults: the line type menus declare their
         /// first item, Solid, where every shipped file holds another type), then the dialog's own default.
         /// </summary>
+        /// <summary>
+        /// The library's choice for the pour tables of the mark pages: empty, where the shipped files hold MATERIAL and "POUR
+        /// BREAK"; only the pour mark keeps its own table, which its dialog edits (<c>PourContentString</c>).
+        /// </summary>
+        private static bool EmptyPourTable(bool pourMark, string key) =>
+            key == "PourBreakContentString" || (key == "PourContentString" && !pourMark);
+
         private static string ControlDefault(PageSpec spec, Control control, AttributeCollection vi, AttributeCollection gd, AttributeCollection ad)
         {
+            if (EmptyPourTable(spec.Class == "PourMark", control.Key))
+            {
+                return "\"\"";
+            }
+
             string common = (spec.ObjectFilePage ? MostCommon(spec.FileExtension.TrimStart('.'), spec.FileSamplePrefix + control.Key) : null)
                 ?? MostCommon("vi", Prefixed(spec.ViewPrefix, control.Key))
                 ?? MostCommon("gd", Prefixed(spec.GADrawingPrefix, control.Key))
@@ -547,7 +559,7 @@ namespace DialogClassGenerator
                 }
 
                 string value;
-                if (FileKeys.Contains(LastSegment(key)))
+                if (FileKeys.Contains(LastSegment(key)) || EmptyPourTable(extension == "pom", LastSegment(key)))
                 {
                     value = "\"\"";
                 }

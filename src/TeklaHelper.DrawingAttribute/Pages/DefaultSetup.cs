@@ -7,7 +7,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
     /// <summary>
     /// The settings <c>CreateDefault()</c> chooses on top of the page defaults: a view that shows its objects to the Open
     /// API (which finds only what a view shows) and draws them plainly. Every value here is a choice of this library, not
-    /// a Tekla default, and every choice of the library is here.
+    /// a Tekla default, and every choice of the library is here, apart from the defaults the generator sets without the
+    /// shipped files (names every environment has, the empty pour tables of the mark pages; see
+    /// tools/DialogClassGenerator/Defaults.cs).
     /// </summary>
     internal static class DefaultSetup
     {

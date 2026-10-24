@@ -14,6 +14,9 @@
   store an empty table, instead of `<?xml ...><Mark></Mark>`; a key that already holds such XML keeps it.
 - `CreateDefault()` of view and drawing files writes the part mark table `ContentString1` it sets (the assembly
   position) in the line layout of the mark dialogs instead of one line; the elements are the same.
+- `CreateDefault()` and `SetDefaults()` leave the pour tables (`PourContentString`, `PourBreakContentString`) of the mark
+  pages and files empty (`PourElements = new MarkContent();`), where the shipped files hold MATERIAL and "POUR BREAK";
+  the pour mark page and `.pom` keep MATERIAL in `PourContentString`, the table their dialog edits.
 
 ### Mark content
 - `PourElements`, `PourBreakElements`, `EdgeChamferElements` and `ReferenceObjectElements` on every mark page

@@ -78,9 +78,15 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 note.PartElements.OfType<MarkPropertyElement>().Select(e => e.Type));
             Assert.True(Assert.Single(note.BoltElements.OfType<MarkPropertyElement>()).Type.IsSizeElement);
             Assert.Contains(note.ReinforcementElements, e => e is MarkXmlElement x && x.Tag == "PullOut");
-            Assert.Equal("POUR BREAK", Assert.IsType<MarkTextElement>(Assert.Single(note.GetMarkContent("PourBreakContentString"))).Text);
+            Assert.Null(note.PourBreakElements);
+            Assert.Equal(string.Empty, note.GetString("PourBreakContentString", null));
+            Assert.Null(new ViewProperties().Marks.PartMark.PourElements);
             Assert.All(note.PartElements.OfType<MarkPropertyElement>(), e => Assert.Equal(DrawingColor.NewLine2, e.Format.Color));
 
+            Assert.Null(ViewProperties.CreateDefault().Marks.PartMark.PourElements);
+
+            // The pour mark keeps its own table, which its dialog edits
+            Assert.Equal(MarkElementTypes.PourMark.Material, Assert.IsType<MarkPropertyElement>(Assert.Single(ViewProperties.CreateDefault().Marks.PourMark.PourElements)).Type);
             PourMarkAttributeFile pourMark = PourMarkAttributeFile.CreateDefault();
             Assert.Equal(MarkElementTypes.PourMark.Material, Assert.IsType<MarkPropertyElement>(Assert.Single(pourMark.Properties.GetMarkContent("PourContentString"))).Type);
         }

@@ -229,10 +229,8 @@ namespace TeklaHelper.DrawingAttribute.Pages
             SubAssemblyMainPartElements = new MarkContent();
             SubAssemblySecondaryPartElements = new MarkContent();
             EdgeChamferElements = new MarkContent();
-            PourElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
-                .Add(MarkElementTypes.PourMark.Material);
-            PourBreakElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
-                .AddText("POUR BREAK");
+            PourElements = new MarkContent();
+            PourBreakElements = new MarkContent();
             ReferenceObjectElements = new MarkContent();
             Advanced.CurrentContentTableNumber = 0;
             Advanced.Rotation = 0;

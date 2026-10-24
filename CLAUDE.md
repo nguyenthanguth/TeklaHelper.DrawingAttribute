@@ -161,7 +161,10 @@ Trimble DLLs and load them side by side in other Tekla versions).
   the table, calls `SetDefaults()` of every page, then `Pages/DefaultSetup` (the library's own choices) and, for drawings,
   the empty user-defined attribute fields. Mark content defaults are built with `MarkContent` in `SetDefaults()`,
   assigned through the page's `MarkContent` property (`PourElements = new MarkContent(...)...;`; an empty default is
-  `MainPartElements = new MarkContent();`, which `SetMarkContent` writes as the empty text the dialogs store)
+  `MainPartElements = new MarkContent();`, which `SetMarkContent` writes as the empty text the dialogs store). The pour
+  tables (`PourContentString`, `PourBreakContentString`) of the mark pages and files are empty by the library's choice
+  (`EmptyPourTable` in `Defaults.cs`), where the shipped files hold MATERIAL and "POUR BREAK"; the pour mark page and
+  `.pom` keep MATERIAL in `PourContentString`, the table their dialog edits
   (`tools/DialogClassGenerator/MarkContentCode.cs`: element types from the catalog in `Marks/MarkElementType.cs`, the
   kind of mark from the table the key is for); the generator writes the code only when the rules of `MarkContent.ToXml`
   give the default back byte for byte, keeps an element they do not as `MarkXmlElement` (the pull-out picture) and a

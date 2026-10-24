@@ -235,10 +235,8 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 .Add(MarkElementTypes.EdgeChamferMark.Dx)
                 .AddText("x")
                 .Add(MarkElementTypes.EdgeChamferMark.Dy);
-            PourElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
-                .Add(MarkElementTypes.PourMark.Material);
-            PourBreakElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
-                .AddText("POUR BREAK");
+            PourElements = new MarkContent();
+            PourBreakElements = new MarkContent();
             ReferenceObjectElements = new MarkContent();
             Advanced.CurrentContentTableNumber = 0;
             Advanced.ForSubassMain = 1;
