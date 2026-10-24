@@ -209,7 +209,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
             Assert.Equal(WeldVisibility.BothVisible, view.Objects.Weld.Content.Visibility.Welds);
             Assert.Equal(NpCollectBy.ConnectedParts, view.Objects.NeighborPart.Visibility.NeighborParts);
             Assert.Equal(VisibilityInView.Always, view.Marks.PartMark.General.VisibilityOfMark.VisibilityInView);
-            Assert.Contains("ASSEMBLY_POS", view.Marks.PartMark.Advanced.ContentString1);
+            Assert.Equal(Marks.MarkElementTypes.PartMark.AssemblyPosition, Assert.IsType<Marks.MarkPropertyElement>(Assert.Single(view.Marks.PartMark.MainPartElements)).Type);
             Assert.Equal(VisibilityInView.None, view.Marks.BoltMark.General.VisibilityOfBoltMarks.VisibilityInView);
             Assert.True(view.Objects.SurfaceTreatment.Content.Visibility);
             Assert.Equal(DrawingColor.Black, view.Attributes.Label.ViewLabel.Symbol.Color);

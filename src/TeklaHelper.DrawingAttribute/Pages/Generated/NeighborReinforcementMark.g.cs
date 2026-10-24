@@ -184,10 +184,10 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.ContentString2 = "";
             Advanced.ContentString3 = "";
             Advanced.ContentString4 = "";
-            Advanced.ChamferContentString = "";
-            Advanced.PourContentString = "";
-            Advanced.PourBreakContentString = "";
-            Advanced.ReferenceObjectContentString = "";
+            EdgeChamferElements = new MarkContent();
+            PourElements = new MarkContent();
+            PourBreakElements = new MarkContent();
+            ReferenceObjectElements = new MarkContent();
             Advanced.CurrentContentTableNumber = 0;
             Advanced.Rotation = 0;
             Advanced.ACustomPresentation = "";
@@ -991,42 +991,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
             {
                 get => GetString("ContentString4");
                 set => SetString("ContentString4", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ChamferContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string ChamferContentString
-            {
-                get => GetString("ChamferContentString");
-                set => SetString("ChamferContentString", value);
-            }
-
-            /// <summary>
-            /// Key (<c>PourContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string PourContentString
-            {
-                get => GetString("PourContentString");
-                set => SetString("PourContentString", value);
-            }
-
-            /// <summary>
-            /// Key (<c>PourBreakContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string PourBreakContentString
-            {
-                get => GetString("PourBreakContentString");
-                set => SetString("PourBreakContentString", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ReferenceObjectContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string ReferenceObjectContentString
-            {
-                get => GetString("ReferenceObjectContentString");
-                set => SetString("ReferenceObjectContentString", value);
             }
 
             /// <summary>

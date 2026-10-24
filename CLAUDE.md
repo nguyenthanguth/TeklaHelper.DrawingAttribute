@@ -160,8 +160,8 @@ Trimble DLLs and load them side by side in other Tekla versions).
   files, `StyleName`, titles and descriptions to names every environment has or to empty text. `CreateDefault()` applies
   the table, calls `SetDefaults()` of every page, then `Pages/DefaultSetup` (the library's own choices) and, for drawings,
   the empty user-defined attribute fields. Mark content defaults are built with `MarkContent` in `SetDefaults()`,
-  assigned through the page's `MarkContent` property (`PourElements = new MarkContent(...)...;`; empty defaults stay
-  `Advanced.ContentString1 = "";`, since a null property leaves a missing key missing)
+  assigned through the page's `MarkContent` property (`PourElements = new MarkContent(...)...;`; an empty default is
+  `MainPartElements = new MarkContent();`, which `SetMarkContent` writes as the empty text the dialogs store)
   (`tools/DialogClassGenerator/MarkContentCode.cs`: element types from the catalog in `Marks/MarkElementType.cs`, the
   kind of mark from the table the key is for); the generator writes the code only when the rules of `MarkContent.ToXml`
   give the default back byte for byte, keeps an element they do not as `MarkXmlElement` (the pull-out picture) and a
@@ -202,8 +202,10 @@ Trimble DLLs and load them side by side in other Tekla versions).
   `tools/DialogClassGenerator/ContentProperties.cs` (the tables probed by kind of object, and `PourElements`,
   `PourBreakElements`, `EdgeChamferElements`, `ReferenceObjectElements` on every mark page, named after the key; the
   tables of pages not probed get no property), the `Elements` of the mark files of the drawing editor from
-  `ObjectFileSpec.DialogContent` (the key the dialog reads and the keys it writes). The `Advanced` string properties of
-  the same keys stay for the raw XML.
+  `ObjectFileSpec.DialogContent` (the key the dialog reads and the keys it writes). A key with a `MarkContent` property
+  has no string property (removed in 2.0.0, so that nobody mixes `MainPartElements` and `ContentString1`); the raw text
+  stays reachable with `GetString` / `SetString`. `ViewLabelMark.Elements` is hand-written; `ContentProperties` knows its
+  name only.
 - `Filters/` — `FilterFile` (rows, byte-preserving), `FilterRow`, expression tree (`FilterExpression`, `FilterCondition`,
   `FilterGroup`), `FilterOperator`, typed `FilterProperty` subclasses, `FilterProperties` (generated catalog of
   `Tekla.Structures.Filtering.Categories`), `FilterFileExtensions`, `FilterObjectType` (hand-written: the label keys of

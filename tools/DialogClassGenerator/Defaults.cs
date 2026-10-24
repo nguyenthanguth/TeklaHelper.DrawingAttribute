@@ -308,6 +308,18 @@ namespace DialogClassGenerator
                     continue;
                 }
 
+                string contentProperty = ContentProperties.PropertyFor(spec.Class, control.Key);
+                if (contentProperty != null)
+                {
+                    // A mark content key whose default is empty: content without elements, which SetMarkContent writes as
+                    // the empty text the dialogs store; any other text no MarkContent gives back is set as text (none now)
+                    AttributeValue value = AttributeValue.Parse(text);
+                    w.Line(value.Kind == AttributeValueKind.String && value.AsString().Length == 0
+                        ? $"{contentProperty} = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent();"
+                        : $"SetString({Literal(control.Key)}, {Expression(control, text)});");
+                    continue;
+                }
+
                 w.Line($"{path} = {Expression(control, text)};");
             }
 

@@ -1,4 +1,5 @@
 using TeklaHelper.DrawingAttribute.Drawings;
+using TeklaHelper.DrawingAttribute.Marks;
 using TeklaHelper.DrawingAttribute.Views;
 
 namespace TeklaHelper.DrawingAttribute.Pages
@@ -15,11 +16,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
         /// (<c>vpm.ContentString1</c>), without its line breaks and in black. Without a content a visible part mark shows
         /// nothing.
         /// </summary>
-        internal const string PartMarkContent =
-            "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!DOCTYPE Mark><Mark><MarkPart groupid=\"0\">" +
-            "<Element name=\"ASSEMBLY_POS\" value=\"\" subType=\"22\"><Format font=\"Arial\" color=\"153\" height=\"2.500\" hidden=\"0\"/></Element>" +
-            "</MarkPart></Mark>";
-
         /// <summary>View properties: 1:20, sized to the parts, not shortened, black view label; objects and marks below.</summary>
         public static void Apply(ViewProperties view)
         {
@@ -88,7 +84,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             PartMark partMark = marks.PartMark;
             partMark.General.VisibilityOfMark.VisibilityInView = VisibilityInView.Always;
             partMark.Advanced.Create = 1;
-            partMark.Advanced.ContentString1 = PartMarkContent;
+            partMark.MainPartElements = new MarkContent().Add(MarkElementTypes.PartMark.AssemblyPosition);
 
             marks.BoltMark.General.VisibilityOfBoltMarks.VisibilityInView = VisibilityInView.None;
         }

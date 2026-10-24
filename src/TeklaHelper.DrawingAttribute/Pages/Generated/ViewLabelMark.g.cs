@@ -4,6 +4,8 @@
 //     shipped with Tekla. Do not edit: change the generator or its input and run it again (see CLAUDE.md).
 // </auto-generated>
 
+using TeklaHelper.DrawingAttribute.Marks;
+
 namespace TeklaHelper.DrawingAttribute.Pages
 {
     /// <summary>
@@ -80,7 +82,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Position.VerticalOffset = 0;
             Position.TextRotation = Pages.TextRotation.AlwaysRotate;
             Position.Alignment = PositionAlignment.Center;
-            Advanced.ContentString = "";
+            Elements = new MarkContent();
 
             SetAllEnabled(true);
         }
@@ -301,15 +303,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
             internal AdvancedGroup(AttributeCollection values, string prefix)
                 : base(values, prefix)
             {
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString
-            {
-                get => GetString("ContentString");
-                set => SetString("ContentString", value);
             }
         }
     }

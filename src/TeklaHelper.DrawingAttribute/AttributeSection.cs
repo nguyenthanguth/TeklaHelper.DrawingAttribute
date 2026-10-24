@@ -304,8 +304,9 @@ namespace TeklaHelper.DrawingAttribute
         /// <summary>
         /// Writes mark content to <paramref name="name"/>. Nothing changes when the key already holds the same elements in
         /// the same layout, so that assigning content its own value keeps the bytes; content whose layout was neither read
-        /// nor set takes the layout of the value it replaces. Null empties the key, unless its text is no mark content
-        /// (which a getter returning null for it must not destroy) or the key is missing.
+        /// nor set takes the layout of the value it replaces. Content without elements is written as an empty text, as the
+        /// dialogs store an empty table (a key that already holds content without elements keeps it). Null empties the key,
+        /// unless its text is no mark content (which a getter returning null for it must not destroy) or the key is missing.
         /// </summary>
         public void SetMarkContent(string name, Marks.MarkContent content)
         {
@@ -319,6 +320,12 @@ namespace TeklaHelper.DrawingAttribute
                     SetString(name, string.Empty);
                 }
 
+                return;
+            }
+
+            if (content.Count == 0 && !(readable && existing.Count == 0))
+            {
+                SetString(name, string.Empty);
                 return;
             }
 

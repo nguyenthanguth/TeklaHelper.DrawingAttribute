@@ -132,6 +132,38 @@ namespace TeklaHelper.DrawingAttribute.Tests
         }
 
         [Fact]
+        public void ContentWithoutElements_IsWrittenAsTheEmptyTextOfTheDialogs()
+        {
+            var view = new ViewProperties();
+            PartMark page = view.Marks.PartMark;
+
+            page.MainPartElements = new MarkContent();
+            Assert.Equal(string.Empty, view.GetString("vpm.ContentString1", null));
+
+            page.MainPartElements = Named("x");
+            page.MainPartElements = new MarkContent();
+            Assert.Equal(string.Empty, view.GetString("vpm.ContentString1"));
+            Assert.Null(page.MainPartElements);
+
+            // Content without elements Tekla wrote as XML is kept as it was
+            string xml = new MarkContent().ToXml();
+            view.SetString("vpm.ContentString2", xml);
+            page.SecondaryPartElements = new MarkContent();
+            Assert.Equal(xml.Replace("\n", Environment.NewLine), view.GetString("vpm.ContentString2"));
+        }
+
+        [Fact]
+        public void PagesWithMarkContentProperties_HaveNoStringPropertyForTheSameKey()
+        {
+            Assert.Null(typeof(PartMark.AdvancedGroup).GetProperty("ContentString1"));
+            Assert.Null(typeof(PartMark.AdvancedGroup).GetProperty("PourContentString"));
+            Assert.Null(typeof(ViewLabelMark.AdvancedGroup).GetProperty("ContentString"));
+
+            // Tables no probe named stay as text
+            Assert.NotNull(typeof(ConnectionMark.AdvancedGroup).GetProperty("ContentString1"));
+        }
+
+        [Fact]
         public void Tables_OfAPageInAFile_UseItsPrefix()
         {
             var view = new ViewProperties();

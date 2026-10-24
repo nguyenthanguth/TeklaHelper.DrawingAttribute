@@ -360,7 +360,8 @@ MarkContent read = vi.Attributes.LabelMarkA1.Elements;                  // the e
   `ContentString4`, a reference model `ReferenceObjectElements`); the mark pages a table per kind of part, bolt or bar.
   Every mark page also has `PourElements`, `PourBreakElements`, `EdgeChamferElements` and `ReferenceObjectElements`
   (`PourContentString`, ... named after the key; the pour mark dialog edits `PourContentString`). Like `Elements`, each
-  property returns a copy.
+  property returns a copy. Keys with such a property have no string property; `GetString` / `SetString` with the key
+  give the raw XML. Content without elements is written as an empty text, as the dialogs store an empty table.
 - The mark dialogs of the drawing editor have **one** table, not one per kind of object: the file's `Elements` reads
   and writes it the way the dialog does (checked in Tekla 2025: a file with a different text in each key, loaded and
   saved again by the dialog; Modify of the part mark dialog gave every selected part mark that content):

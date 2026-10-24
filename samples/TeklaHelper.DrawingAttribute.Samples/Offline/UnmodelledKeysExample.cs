@@ -21,11 +21,9 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
             var drawing = new GADrawingAttributeFile();
 
             context.Step("Keys the dialog does not show are in the page's Advanced group");
-            drawing.Marks.PartMark.Advanced.ContentString1 =
-                "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!DOCTYPE Mark><Mark><MarkPart groupid=\"0\">" +
-                "<Element name=\"PART_POS\" value=\"\" subType=\"23\"><Format font=\"Arial\" color=\"153\" height=\"2.500\"/></Element>" +
-                "</MarkPart></Mark>";
-            Console.WriteLine("    dpm.ContentString1 = " + drawing.GetString("dpm.ContentString1").Substring(0, 60) + "...");
+            drawing.Marks.PartMark.Advanced.MergeMarks = true;
+            drawing.Marks.PartMark.Advanced.Rotation = 90;
+            Console.WriteLine($"    dpm.MergeMarks = {drawing.GetInt32("dpm.MergeMarks")}, dpm.Rotation = {drawing.GetInt32("dpm.Rotation")}");
 
             context.Step("Any key by name, typed: the dimensioning settings (dd.*) have no page class yet");
             AttributeSection dimensioning = drawing.GetSection("dd.");

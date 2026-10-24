@@ -33,6 +33,9 @@ namespace DialogClassGenerator
             ("AssociativeNoteProperties", "ContentString3", "SurfaceTreatmentElements", "What a note on a surface treatment shows (<c>ContentString3</c>, \"Surface treatment\"). Not checked in Tekla (the model had no surface treatment): the shipped files hold the name and surfacing name elements here."),
             ("AssociativeNoteProperties", "ContentString4", "ReinforcementElements", "What a note on reinforcement shows (<c>ContentString4</c>, \"Rebar\"; single bars, groups and meshes). Checked in Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>."),
             ("AssociativeNoteProperties", "ReferenceObjectContentString", "ReferenceObjectElements", "What a note on a reference model shows (<c>ReferenceObjectContentString</c>, \"Reference object\"). Checked in Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>."),
+
+            // Hand-written (Pages/ViewLabelMark.cs, with an example in its comment): no summary, the generator only knows the name
+            ("ViewLabelMark", "ContentString", "Elements", null),
         };
 
         private static readonly (string Key, string Property, string Summary)[] Generic =
@@ -43,13 +46,16 @@ namespace DialogClassGenerator
             ("ReferenceObjectContentString", "ReferenceObjectElements", "Mark content of reference objects (<c>ReferenceObjectContentString</c>), named after the key; not probed on this page (the associative note shows it for reference models)."),
         };
 
-        /// <summary>The content properties of a page that has the given keys, in the order of <paramref name="keys"/>.</summary>
+        /// <summary>
+        /// The content properties the generator writes for a page that has the given keys, in the order of
+        /// <paramref name="keys"/> (not the hand-written ones).
+        /// </summary>
         public static IEnumerable<(string Key, string Property, string Summary)> For(string pageClass, IEnumerable<string> keys)
         {
             foreach (string key in keys)
             {
                 (string Key, string Property, string Summary) entry = Find(pageClass, key);
-                if (entry.Property != null)
+                if (entry.Property != null && entry.Summary != null)
                 {
                     yield return (key, entry.Property, entry.Summary + Copy);
                 }

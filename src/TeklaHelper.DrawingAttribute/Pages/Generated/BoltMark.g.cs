@@ -201,16 +201,16 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.Content1 = 0;
             Advanced.Flags = 0;
             Advanced.MarkUsePartEnd = 0;
-            Advanced.ContentString1 = "";
-            Advanced.ContentString2 = "";
+            SiteBoltElements = new MarkContent();
+            WorkshopBoltElements = new MarkContent();
             Advanced.ContentString3 = "";
             Advanced.ContentString4 = "";
-            Advanced.ChamferContentString = "";
+            EdgeChamferElements = new MarkContent();
             PourElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
                 .Add(MarkElementTypes.PourMark.Material);
             PourBreakElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
                 .AddText("POUR BREAK");
-            Advanced.ReferenceObjectContentString = "";
+            ReferenceObjectElements = new MarkContent();
             Advanced.CurrentContentTableNumber = 0;
             Advanced.Rotation = 0;
             Advanced.ACustomPresentation = "";
@@ -968,24 +968,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
             }
 
             /// <summary>
-            /// Key (<c>ContentString1</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString1
-            {
-                get => GetString("ContentString1");
-                set => SetString("ContentString1", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString2</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString2
-            {
-                get => GetString("ContentString2");
-                set => SetString("ContentString2", value);
-            }
-
-            /// <summary>
             /// Key (<c>ContentString3</c>). Not shown in the dialog.
             /// </summary>
             public string ContentString3
@@ -1001,42 +983,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
             {
                 get => GetString("ContentString4");
                 set => SetString("ContentString4", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ChamferContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string ChamferContentString
-            {
-                get => GetString("ChamferContentString");
-                set => SetString("ChamferContentString", value);
-            }
-
-            /// <summary>
-            /// Key (<c>PourContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string PourContentString
-            {
-                get => GetString("PourContentString");
-                set => SetString("PourContentString", value);
-            }
-
-            /// <summary>
-            /// Key (<c>PourBreakContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string PourBreakContentString
-            {
-                get => GetString("PourBreakContentString");
-                set => SetString("PourBreakContentString", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ReferenceObjectContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string ReferenceObjectContentString
-            {
-                get => GetString("ReferenceObjectContentString");
-                set => SetString("ReferenceObjectContentString", value);
             }
 
             /// <summary>

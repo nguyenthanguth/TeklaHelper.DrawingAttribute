@@ -138,7 +138,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
         {
             var view = new ViewProperties();
             view.Marks.PartMark.Content.Font.Font = "Arial";
-            view.Marks.PartMark.Advanced.ContentString1 = "<Mark/>";
+            view.Marks.PartMark.SetString("ContentString1", "<Mark/>");
             var drawing = new AssemblyDrawingAttributeFile();
 
             drawing.Marks.PartMark.CopyFrom(view.Marks.PartMark);

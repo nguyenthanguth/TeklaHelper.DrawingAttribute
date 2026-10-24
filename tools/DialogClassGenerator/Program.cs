@@ -1172,6 +1172,12 @@ namespace DialogClassGenerator
         {
             foreach (object item in container.Items)
             {
+                // A mark content key with a MarkContent property of the page has no string property besides it
+                if (item is Control content && ContentProperties.PropertyFor(CurrentPage, content.Key) != null)
+                {
+                    continue;
+                }
+
                 w.Line();
                 if (item is Container child)
                 {

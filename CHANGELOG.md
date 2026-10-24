@@ -1,6 +1,19 @@
 # Changelog
 
-## 1.5.0 - 2026-10-24
+## 2.0.0 - 2026-10-24
+
+### Breaking changes
+- A mark content key with a `MarkContent` property has no string property besides it: `Advanced.ContentString1` ...
+  `ContentString4`, `PourContentString`, `PourBreakContentString`, `ChamferContentString` and
+  `ReferenceObjectContentString` of the part, bolt and reinforcement mark pages and of the associative note, the four
+  common keys of every mark page, and `Advanced.ContentString` of `ViewLabelMark` are gone. Use the `MarkContent`
+  property (`MainPartElements`, `PourElements`, `Elements`, ...), or `GetString` / `SetString` with the key for the raw
+  text. Tables nobody probed (`ContentString1` ... of the connection, neighbour part, surface treatment, pour and
+  dimension marks, `ContentString3` / `4` of the bolt mark) keep their string properties.
+- `SetMarkContent` (and every `MarkContent` property) writes content without elements as an empty text, as the dialogs
+  store an empty table, instead of `<?xml ...><Mark></Mark>`; a key that already holds such XML keeps it.
+- `CreateDefault()` of view and drawing files writes the part mark table `ContentString1` it sets (the assembly
+  position) in the line layout of the mark dialogs instead of one line; the elements are the same.
 
 ### Mark content
 - `PourElements`, `PourBreakElements`, `EdgeChamferElements` and `ReferenceObjectElements` on every mark page
@@ -15,7 +28,8 @@
 - The table properties of 1.4.0 (`PartMark.MainPartElements` ..., `AssociativeNoteProperties.PartElements` ...) are
   generated now; their names and behaviour are the same.
 - `SetDefaults()` builds the mark content defaults with `MarkContent` and assigns them through these properties instead
-  of XML literals; `CreateDefault()` writes the same bytes as before.
+  of XML literals (`PourElements = new MarkContent(...)...;`, `MainPartElements = new MarkContent();` for an empty
+  table).
 
 ## 1.4.0 - 2026-10-23
 

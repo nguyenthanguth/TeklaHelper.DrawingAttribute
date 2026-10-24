@@ -239,7 +239,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 .Add(MarkElementTypes.PourMark.Material);
             PourBreakElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
                 .AddText("POUR BREAK");
-            Advanced.ReferenceObjectContentString = "";
+            ReferenceObjectElements = new MarkContent();
             Advanced.CurrentContentTableNumber = 0;
             Advanced.ForSubassMain = 1;
             Advanced.ForSubassSecondary = 1;
@@ -1050,78 +1050,6 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             {
                 get => GetInt32("mark_use_part_end");
                 set => SetInt32("mark_use_part_end", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString1</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString1
-            {
-                get => GetString("ContentString1");
-                set => SetString("ContentString1", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString2</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString2
-            {
-                get => GetString("ContentString2");
-                set => SetString("ContentString2", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString3</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString3
-            {
-                get => GetString("ContentString3");
-                set => SetString("ContentString3", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ContentString4</c>). Not shown in the dialog.
-            /// </summary>
-            public string ContentString4
-            {
-                get => GetString("ContentString4");
-                set => SetString("ContentString4", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ChamferContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string ChamferContentString
-            {
-                get => GetString("ChamferContentString");
-                set => SetString("ChamferContentString", value);
-            }
-
-            /// <summary>
-            /// Key (<c>PourContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string PourContentString
-            {
-                get => GetString("PourContentString");
-                set => SetString("PourContentString", value);
-            }
-
-            /// <summary>
-            /// Key (<c>PourBreakContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string PourBreakContentString
-            {
-                get => GetString("PourBreakContentString");
-                set => SetString("PourBreakContentString", value);
-            }
-
-            /// <summary>
-            /// Key (<c>ReferenceObjectContentString</c>). Not shown in the dialog.
-            /// </summary>
-            public string ReferenceObjectContentString
-            {
-                get => GetString("ReferenceObjectContentString");
-                set => SetString("ReferenceObjectContentString", value);
             }
 
             /// <summary>
