@@ -110,8 +110,10 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Advanced.ContentString3 = "";
             Advanced.ContentString4 = "";
             Advanced.ChamferContentString = "";
-            Advanced.PourContentString = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\u000D\u000A<!DOCTYPE Mark><Mark>\u000D\u000A<MarkPart groupid=\"0\">\u000D\u000A<Element name=\"MATERIAL\" value=\"\" subType=\"10\">\u000D\u000A<Format font=\"Arial\" color=\"155\" height=\"2.500\" hidden=\"0\"/>\u000D\u000A</Element>\u000D\u000A</MarkPart>\u000D\u000A</Mark>\u000D\u000A";
-            Advanced.PourBreakContentString = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\u000D\u000A<!DOCTYPE Mark><Mark>\u000D\u000A<MarkPart groupid=\"0\">\u000D\u000A<UserText>\u000D\u000APOUR BREAK\u000D\u000A<Format font=\"Arial\" color=\"155\" height=\"2.500\" hidden=\"0\"/>\u000D\u000A</UserText>\u000D\u000A</MarkPart>\u000D\u000A</Mark>\u000D\u000A";
+            SetMarkContent("PourContentString", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+                .Add(global::TeklaHelper.DrawingAttribute.Marks.MarkElementTypes.PourMark.Material));
+            SetMarkContent("PourBreakContentString", new global::TeklaHelper.DrawingAttribute.Marks.MarkContent(new global::TeklaHelper.DrawingAttribute.Marks.MarkFormat { Font = "Arial", Color = global::TeklaHelper.DrawingAttribute.DrawingColor.NewLine2, Height = 2.5 })
+                .AddText("POUR BREAK"));
             Advanced.ReferenceObjectContentString = "";
             Advanced.LeaderLineType = 0;
             Advanced.MergeDir = 0;

@@ -320,6 +320,9 @@ namespace DialogClassGenerator
             // DrawingObjects folder inside the output (a scratch folder to compare with)
             string output = Path.GetFullPath(args[3]);
             string library = Path.GetDirectoryName(Path.GetDirectoryName(output));
+            MarkContentCode.Load(File.Exists(Path.Combine(library, "Marks", "MarkElementType.cs"))
+                ? library
+                : Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "..", "src", "TeklaHelper.DrawingAttribute")));
             string objectOutput = Path.GetFileName(output) == "Generated" && Path.GetFileName(Path.GetDirectoryName(output)) == "Pages"
                 ? Path.Combine(library, "DrawingObjects", "Generated")
                 : Path.Combine(output, "DrawingObjects");

@@ -157,7 +157,11 @@ Trimble DLLs and load them side by side in other Tekla versions).
   then `.md`→`.gd`, `.wd`/`.cud`→`.ad`), else the dialog file value; `EnvironmentFreeValues` sets layouts, attribute
   files, `StyleName`, titles and descriptions to names every environment has or to empty text. `CreateDefault()` applies
   the table, calls `SetDefaults()` of every page, then `Pages/DefaultSetup` (the library's own choices) and, for drawings,
-  the empty user-defined attribute fields. The pages of the drawing properties only keep the table's values of their
+  the empty user-defined attribute fields. Mark content defaults are built with `MarkContent` in `SetDefaults()`
+  (`tools/DialogClassGenerator/MarkContentCode.cs`: element types from the catalog in `Marks/MarkElementType.cs`, the
+  kind of mark from the table the key is for); the generator writes the code only when the rules of `MarkContent.ToXml`
+  give the default back byte for byte, keeps an element they do not as `MarkXmlElement` (the pull-out picture) and a
+  value laid out otherwise as a literal (none now). The `FileDefaults` table keeps raw file text, XML included. The pages of the drawing properties only keep the table's values of their
   own file type (GA and assembly files do not agree on dimensions; `SetDefaults()` serves every host), so their keys are
   not null in the table. Change values in `tools/DialogClassGenerator/Defaults.cs` or `DefaultSetup`.
 - `DrawingObjects/` — the files of the property dialogs of the drawing editor: `DimensionAttributeFile` (hand-written)

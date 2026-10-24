@@ -295,7 +295,16 @@ namespace DialogClassGenerator
                 }
 
                 keys.Add(control.Key);
-                w.Line($"{path} = {Expression(control, ControlDefault(spec, control, vi, gd, ad))};");
+                string text = ControlDefault(spec, control, vi, gd, ad);
+                List<string> content = MarkContentDefault(spec, control, text);
+                if (content != null)
+                {
+                    // Mark content is built with MarkContent, not written as XML
+                    content.ForEach(w.Line);
+                    continue;
+                }
+
+                w.Line($"{path} = {Expression(control, text)};");
             }
 
             foreach ((string property, _, _, _) in LabelMarkProperties(spec))
@@ -307,6 +316,22 @@ namespace DialogClassGenerator
             w.Line("SetAllEnabled(true);");
             w.Close();
             PageDefaults[spec.Class] = (keys, enableKeys);
+        }
+
+        /// <summary>
+        /// The statement that sets a mark content default (a text holding <c>&lt;?xml ... &lt;Mark&gt;</c>) with MarkContent, as
+        /// lines; null for any other default, or content MarkContent would not write back the same.
+        /// </summary>
+        private static List<string> MarkContentDefault(PageSpec spec, Control control, string text)
+        {
+            AttributeValue value = AttributeValue.Parse(text);
+            if (value.Kind != AttributeValueKind.String || !value.AsString().StartsWith("<?xml", StringComparison.Ordinal))
+            {
+                return null;
+            }
+
+            return MarkContentCode.TryWrite(spec.Class, control.Key, value.AsString(),
+                number => Named("global::TeklaHelper.DrawingAttribute.DrawingColor", number, ColorNames.TryGetValue(number, out string color) ? color : null));
         }
 
         /// <summary>The default of a property of the hand-written part of a page, as a C# expression.</summary>
@@ -557,7 +582,7 @@ namespace DialogClassGenerator
         }
 
         /// <summary>A C# string literal.</summary>
-        private static string Literal(string text)
+        internal static string Literal(string text)
         {
             var builder = new StringBuilder("\"");
             foreach (char c in text)
