@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.0 - 2026-10-24
+## 2.0.0 - 2026-10-25
 
 ### Breaking changes
 - A mark content key with a `MarkContent` property has no string property besides it: `Advanced.ContentString1` ...
