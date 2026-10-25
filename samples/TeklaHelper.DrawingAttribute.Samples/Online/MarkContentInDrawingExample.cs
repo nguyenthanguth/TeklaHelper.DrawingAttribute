@@ -60,16 +60,16 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
 
             ViewProperties properties = templatePath == null ? ViewProperties.CreateDefault() : AttributeFile.FromFile<ViewProperties>(templatePath);
             properties.Attributes.Attributes1.View.Scale = view.Attributes.Scale;
-            properties.Marks.PartMark.MainPartElements = new MarkContent().AddText("MAIN ").Add(MarkElementTypes.PartMark.AssemblyPosition);
-            properties.Marks.PartMark.SecondaryPartElements = new MarkContent().AddText("SECONDARY ").Add(MarkElementTypes.PartMark.PartPosition);
-            properties.Marks.PartMark.SubAssemblyMainPartElements = new MarkContent().AddText("SUB MAIN ").Add(MarkElementTypes.PartMark.AssemblyPosition);
-            properties.Marks.PartMark.SubAssemblySecondaryPartElements = new MarkContent().AddText("SUB SECONDARY ").Add(MarkElementTypes.PartMark.PartPosition);
-            properties.Marks.ReinforcementMark.SingleElements = new MarkContent().AddText("SINGLE ").Add(MarkElementTypes.ReinforcementMark.Diameter);
-            properties.Marks.ReinforcementMark.GroupElements = new MarkContent().AddText("GROUP ").Add(MarkElementTypes.ReinforcementMark.Number)
+            properties.Marks.PartMark.Content.MainPartElements = new MarkContent().AddText("MAIN ").Add(MarkElementTypes.PartMark.AssemblyPosition);
+            properties.Marks.PartMark.Content.SecondaryPartElements = new MarkContent().AddText("SECONDARY ").Add(MarkElementTypes.PartMark.PartPosition);
+            properties.Marks.PartMark.Content.SubAssemblyMainPartElements = new MarkContent().AddText("SUB MAIN ").Add(MarkElementTypes.PartMark.AssemblyPosition);
+            properties.Marks.PartMark.Content.SubAssemblySecondaryPartElements = new MarkContent().AddText("SUB SECONDARY ").Add(MarkElementTypes.PartMark.PartPosition);
+            properties.Marks.ReinforcementMark.Content.SingleElements = new MarkContent().AddText("SINGLE ").Add(MarkElementTypes.ReinforcementMark.Diameter);
+            properties.Marks.ReinforcementMark.Content.GroupElements = new MarkContent().AddText("GROUP ").Add(MarkElementTypes.ReinforcementMark.Number)
                 .AddText("x").Add(MarkElementTypes.ReinforcementMark.Diameter);
-            properties.Marks.ReinforcementMark.MeshElements = new MarkContent().AddText("MESH ").Add(MarkElementTypes.ReinforcementMeshMark.Size);
-            properties.Marks.BoltMark.SiteBoltElements = new MarkContent().AddText("SITE ").Add(MarkElementTypes.BoltMark.Size);
-            properties.Marks.BoltMark.WorkshopBoltElements = new MarkContent().AddText("SHOP ").Add(MarkElementTypes.BoltMark.Size);
+            properties.Marks.ReinforcementMark.Content.MeshElements = new MarkContent().AddText("MESH ").Add(MarkElementTypes.ReinforcementMeshMark.Size);
+            properties.Marks.BoltMark.Content.SiteBoltElements = new MarkContent().AddText("SITE ").Add(MarkElementTypes.BoltMark.Size);
+            properties.Marks.BoltMark.Content.WorkshopBoltElements = new MarkContent().AddText("SHOP ").Add(MarkElementTypes.BoltMark.Size);
 
             if (!context.Confirm($"Write two view files and insert two copies of view '{view.Name}'?"))
             {

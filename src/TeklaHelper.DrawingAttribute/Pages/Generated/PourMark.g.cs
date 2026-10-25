@@ -81,48 +81,6 @@ namespace TeklaHelper.DrawingAttribute.Pages
         public AdvancedGroup Advanced => _advanced ?? (_advanced = new AdvancedGroup(Values, Prefix));
 
         /// <summary>
-        /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
-        /// the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent EdgeChamferElements
-        {
-            get => GetMarkContentOrNull("ChamferContentString");
-            set => SetMarkContent("ChamferContentString", value);
-        }
-
-        /// <summary>
-        /// Mark content of pour objects (<c>PourContentString</c>). The pour mark dialog of the drawing editor edits
-        /// this table (checked in Tekla 2025); on the other mark pages it is named after the key, not probed. Each get
-        /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent PourElements
-        {
-            get => GetMarkContentOrNull("PourContentString");
-            set => SetMarkContent("PourContentString", value);
-        }
-
-        /// <summary>
-        /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get reads
-        /// the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent PourBreakElements
-        {
-            get => GetMarkContentOrNull("PourBreakContentString");
-            set => SetMarkContent("PourBreakContentString", value);
-        }
-
-        /// <summary>
-        /// Mark content of reference objects (<c>ReferenceObjectContentString</c>), named after the key; not probed on
-        /// this page (the associative note shows it for reference models). Each get reads the key and returns a copy,
-        /// to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent ReferenceObjectElements
-        {
-            get => GetMarkContentOrNull("ReferenceObjectContentString");
-            set => SetMarkContent("ReferenceObjectContentString", value);
-        }
-
-        /// <summary>
         /// Sets every property of the page to its default and ticks every check box. A default is the value most files
         /// shipped with Tekla hold (at least three), else the dialog's own default, else the value of a file saved from
         /// the dialog.
@@ -130,15 +88,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
         public void SetDefaults()
         {
             Content.FrameAroundElements.Type = FrameAroundElementsType.Rectangular;
-            Content.FrameAroundElements.Color = DrawingColor.NewLine2;
-            Content.Font.Color = DrawingColor.NewLine2;
+            Content.FrameAroundElements.Color = DrawingColor.DarkGreen;
+            Content.Font.Color = DrawingColor.DarkGreen;
             Content.Font.Height = 2.5;
             Content.Font.Font = "romsim";
             Content.Units.Units = Pages.Units.Automatic;
             Content.Units.Format = UnitsFormat.Automatic;
+            Content.PourElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.DarkGreen, Height = 2.5 })
+                .Add(MarkElementTypes.PourMark.Material);
+
             General.VisibilityOfMark.VisibilityInView = PourMarkVisibilityInView.Always;
             General.FrameAroundMark.Type = FrameAroundMarkType.Rectangular;
-            General.FrameAroundMark.Color = DrawingColor.NewLine2;
+            General.FrameAroundMark.Color = DrawingColor.DarkGreen;
             General.FrameAroundMark.BackgroundMask = Pages.BackgroundMask.Opaque;
             General.LeaderLine.Type = PourMarkLeaderLineType.Value1;
             General.LeaderLine.Arrow = LeaderLineArrow.NoArrow;
@@ -151,6 +112,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             General.Placing.Place.Quarter.Quarter1 = true;
             General.Placing.Place.Quarter.Quarter3 = true;
             General.Placing.Place.Quarter.Quarter2 = true;
+
             Advanced.PartsOutOfViewPlane = true;
             Advanced.MergeMarks = false;
             Advanced.MergedMarks = Pages.MergedMarks.Value0;
@@ -177,11 +139,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.ContentString2 = "";
             Advanced.ContentString3 = "";
             Advanced.ContentString4 = "";
-            EdgeChamferElements = new MarkContent();
-            PourElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
-                .Add(MarkElementTypes.PourMark.Material);
-            PourBreakElements = new MarkContent();
-            ReferenceObjectElements = new MarkContent();
+            Advanced.EdgeChamferElements = new MarkContent();
+            Advanced.PourBreakElements = new MarkContent();
+            Advanced.ReferenceObjectElements = new MarkContent();
             Advanced.CurrentContentTableNumber = 5;
             Advanced.Rotation = 0;
             Advanced.ACustomPresentation = "";
@@ -371,6 +331,17 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// The "Units" group.
             /// </summary>
             public UnitsGroup Units => _units ?? (_units = new UnitsGroup(Values, Prefix));
+
+            /// <summary>
+            /// What pour marks show (<c>PourContentString</c>; the page has one table): the table the pour mark dialog
+            /// of the drawing editor edits (checked in Tekla 2025). Each get reads the key and returns a copy, to be
+            /// assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent PourElements
+            {
+                get => GetMarkContentOrNull("PourContentString");
+                set => SetMarkContent("PourContentString", value);
+            }
 
             /// <summary>
             /// The "Frame around elements" group.
@@ -977,6 +948,37 @@ namespace TeklaHelper.DrawingAttribute.Pages
             {
                 get => GetString("ContentString4");
                 set => SetString("ContentString4", value);
+            }
+
+            /// <summary>
+            /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get
+            /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent EdgeChamferElements
+            {
+                get => GetMarkContentOrNull("ChamferContentString");
+                set => SetMarkContent("ChamferContentString", value);
+            }
+
+            /// <summary>
+            /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get
+            /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent PourBreakElements
+            {
+                get => GetMarkContentOrNull("PourBreakContentString");
+                set => SetMarkContent("PourBreakContentString", value);
+            }
+
+            /// <summary>
+            /// Mark content of reference objects (<c>ReferenceObjectContentString</c>), named after the key; not probed
+            /// on this page (the associative note shows it for reference models). Each get reads the key and returns a
+            /// copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent ReferenceObjectElements
+            {
+                get => GetMarkContentOrNull("ReferenceObjectContentString");
+                set => SetMarkContent("ReferenceObjectContentString", value);
             }
 
             /// <summary>

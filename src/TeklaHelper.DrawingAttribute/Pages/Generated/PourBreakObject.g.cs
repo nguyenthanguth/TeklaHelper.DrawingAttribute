@@ -86,9 +86,10 @@ namespace TeklaHelper.DrawingAttribute.Pages
         {
             Content.Visibility = true;
             Content.HiddenLines = false;
-            Appearance.VisibleLines.Color = DrawingColor.NewLine4;
+
+            Appearance.VisibleLines.Color = DrawingColor.Teal;
             Appearance.VisibleLines.Type = DrawingLineType.Solid;
-            Appearance.HiddenLines.Color = DrawingColor.NewLine6;
+            Appearance.HiddenLines.Color = DrawingColor.Gray;
             Appearance.HiddenLines.Type = DrawingLineType.Dashed;
 
             SetAllEnabled(true);

@@ -116,62 +116,29 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         }
 
         /// <summary>
-        /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
-        /// the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent EdgeChamferElements
-        {
-            get => GetMarkContentOrNull("ChamferContentString");
-            set => SetMarkContent("ChamferContentString", value);
-        }
-
-        /// <summary>
-        /// Mark content of pour objects (<c>PourContentString</c>). The pour mark dialog of the drawing editor edits
-        /// this table (checked in Tekla 2025); on the other mark pages it is named after the key, not probed. Each get
-        /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent PourElements
-        {
-            get => GetMarkContentOrNull("PourContentString");
-            set => SetMarkContent("PourContentString", value);
-        }
-
-        /// <summary>
-        /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get reads
-        /// the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent PourBreakElements
-        {
-            get => GetMarkContentOrNull("PourBreakContentString");
-            set => SetMarkContent("PourBreakContentString", value);
-        }
-
-        /// <summary>
-        /// Mark content of reference objects (<c>ReferenceObjectContentString</c>), named after the key; not probed on
-        /// this page (the associative note shows it for reference models). Each get reads the key and returns a copy,
-        /// to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent ReferenceObjectElements
-        {
-            get => GetMarkContentOrNull("ReferenceObjectContentString");
-            set => SetMarkContent("ReferenceObjectContentString", value);
-        }
-
-        /// <summary>
         /// Sets every property of the page to its default and ticks every check box. A default is the value most files
         /// shipped with Tekla hold (at least three), else the dialog's own default, else the value of a file saved from
         /// the dialog.
         /// </summary>
         public void SetDefaults()
         {
+            PartElements = new MarkContent();
+            BoltElements = new MarkContent();
+            SurfaceTreatmentElements = new MarkContent();
+            ReinforcementElements = new MarkContent();
+
             Placing.Rotation = DimensionMarkRotation.ParallelToDimensionLine;
+
             FrameAroundElements.Type = FrameAroundElementsType.Rectangular;
-            FrameAroundElements.Color = DrawingColor.NewLine2;
-            Font.Color = DrawingColor.NewLine2;
+            FrameAroundElements.Color = DrawingColor.DarkGreen;
+
+            Font.Color = DrawingColor.DarkGreen;
             Font.Height = 2.5;
             Font.Font = "Arial";
+
             Units.Units = Pages.Units.Automatic;
             Units.Format = UnitsFormat.Automatic;
+
             Advanced.Create = 0;
             Advanced.ForMain = 0;
             Advanced.ForSec = 0;
@@ -194,14 +161,10 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Advanced.Content1 = 0;
             Advanced.Flags = 0;
             Advanced.MarkUsePartEnd = 0;
-            PartElements = new MarkContent();
-            BoltElements = new MarkContent();
-            SurfaceTreatmentElements = new MarkContent();
-            ReinforcementElements = new MarkContent();
-            EdgeChamferElements = new MarkContent();
-            PourElements = new MarkContent();
-            PourBreakElements = new MarkContent();
-            ReferenceObjectElements = new MarkContent();
+            Advanced.EdgeChamferElements = new MarkContent();
+            Advanced.PourElements = new MarkContent();
+            Advanced.PourBreakElements = new MarkContent();
+            Advanced.ReferenceObjectElements = new MarkContent();
             Advanced.LeaderLineType = 0;
             Advanced.MergeDir = 0;
             Advanced.MergeMarks = 0;
@@ -703,6 +666,48 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             {
                 get => GetInt32("mark_use_part_end");
                 set => SetInt32("mark_use_part_end", value);
+            }
+
+            /// <summary>
+            /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get
+            /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent EdgeChamferElements
+            {
+                get => GetMarkContentOrNull("ChamferContentString");
+                set => SetMarkContent("ChamferContentString", value);
+            }
+
+            /// <summary>
+            /// Mark content of pour objects (<c>PourContentString</c>). The pour mark dialog of the drawing editor
+            /// edits this table (checked in Tekla 2025); on the other mark pages it is named after the key, not probed.
+            /// Each get reads the key and returns a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent PourElements
+            {
+                get => GetMarkContentOrNull("PourContentString");
+                set => SetMarkContent("PourContentString", value);
+            }
+
+            /// <summary>
+            /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get
+            /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent PourBreakElements
+            {
+                get => GetMarkContentOrNull("PourBreakContentString");
+                set => SetMarkContent("PourBreakContentString", value);
+            }
+
+            /// <summary>
+            /// Mark content of reference objects (<c>ReferenceObjectContentString</c>), named after the key; not probed
+            /// on this page (the associative note shows it for reference models). Each get reads the key and returns a
+            /// copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent ReferenceObjectElements
+            {
+                get => GetMarkContentOrNull("ReferenceObjectContentString");
+                set => SetMarkContent("ReferenceObjectContentString", value);
             }
 
             /// <summary>

@@ -79,11 +79,16 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             TextStyle.Height = 1;
             TextStyle.Font = "Courier New";
             TextStyle.Scale = 0.31;
+
             Frame.LineType = DrawingLineType.Solid;
             Frame.Color = DrawingColor.Black;
+
             Scaling.Type = ForeignObjectScaling.ScaleToFit;
+
             File.Name = "";
+
             Link.Text = "";
+
             Advanced.TextProportion = 0.75;
             Advanced.TextSlant = 0;
             Advanced.TextStyle = 0;

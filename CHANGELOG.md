@@ -1,5 +1,30 @@
 # Changelog
 
+## 3.0.0 - 2026-10-25
+
+### Breaking changes
+- The `MarkContent` properties of the pages moved to where the dialog shows their table: the tables of the "Mark content
+  of" menu and the single tables into the Content tab (`PartMark.Content.MainPartElements`,
+  `ReinforcementMark.Content.SingleElements`, `ConnectionMark.Content.Elements`, `ViewLabelMark.Content.Elements`,
+  `AssociativeNoteProperties.Content.PartElements`, `PourMark.Content.PourElements`, ...), the merged mark into the
+  Merging tab (`ReinforcementMark.Merging.MergedMarkElements`, `NeighborReinforcementMark.Merging.MergedMarkElements`),
+  and the keys the dialog does not show into `Advanced` (`Advanced.PourElements`, `Advanced.PourBreakElements`,
+  `Advanced.EdgeChamferElements`, `Advanced.ReferenceObjectElements`). The dimension marks, which have no tabs, keep
+  their four tables on the page (`DimensionMark.PartElements` ... `ReinforcementElements`); their `PourElements`,
+  `PourBreakElements`, `EdgeChamferElements` and `ReferenceObjectElements` moved to `DimensionMark.Advanced`. The
+  `Elements` of the mark files (`PartMarkAttributeFile.Elements`, ...) stay.
+- `DrawingColor.NewLine1` ... `NewLine6` are named after their colour: `Brown` (154), `DarkGreen` (155), `DarkBlue`
+  (156), `Teal` (157), `Orange` (158), `Gray` (159). The values do not change, so files are written as before. Every
+  member's XML comment gives its RGB (from `TeklaDrawingColor` of Tekla 2025) and, for these six, the Open API's name.
+
+### Changed
+- `SetDefaults()` sets the controls tab after tab, in the order of the dialog (Content, General, ..., Advanced), a blank
+  line between them; a mark content property is set with its tab.
+
+### Fixed
+- `AssociativeNoteProperties.Content.EdgeChamferElements`: the note's menu offers "Edge chamfer", so its table is in the
+  Content tab (it was named after the key with the keys the dialog does not show).
+
 ## 2.0.0 - 2026-10-25
 
 ### Breaking changes

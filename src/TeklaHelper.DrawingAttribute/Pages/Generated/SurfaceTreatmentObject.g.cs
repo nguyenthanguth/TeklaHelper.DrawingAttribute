@@ -83,9 +83,10 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Content.ShowPattern = false;
             Content.HiddenLines = false;
             Content.OwnHiddenLines = false;
-            Appearance.VisibleLines.Color = DrawingColor.NewLine5;
+
+            Appearance.VisibleLines.Color = DrawingColor.Orange;
             Appearance.VisibleLines.Type = DrawingLineType.Solid;
-            Appearance.HiddenLines.Color = DrawingColor.NewLine1;
+            Appearance.HiddenLines.Color = DrawingColor.Brown;
             Appearance.HiddenLines.Type = DrawingLineType.Slashed;
 
             SetAllEnabled(true);

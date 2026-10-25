@@ -160,8 +160,8 @@ Trimble DLLs and load them side by side in other Tekla versions).
   files, `StyleName`, titles and descriptions to names every environment has or to empty text. `CreateDefault()` applies
   the table, calls `SetDefaults()` of every page, then `Pages/DefaultSetup` (the library's own choices) and, for drawings,
   the empty user-defined attribute fields. Mark content defaults are built with `MarkContent` in `SetDefaults()`,
-  assigned through the page's `MarkContent` property (`PourElements = new MarkContent(...)...;`; an empty default is
-  `MainPartElements = new MarkContent();`, which `SetMarkContent` writes as the empty text the dialogs store). The pour
+  assigned through the page's `MarkContent` property (`Content.MainPartElements = new MarkContent();`,
+  `Advanced.PourElements = ...`; an empty default is written as the empty text the dialogs store). The pour
   tables (`PourContentString`, `PourBreakContentString`) of the mark pages and files are empty by the library's choice
   (`EmptyPourTable` in `Defaults.cs`), where the shipped files hold MATERIAL and "POUR BREAK"; the pour mark page and
   `.pom` keep MATERIAL in `PourContentString`, the table their dialog edits
@@ -200,15 +200,19 @@ Trimble DLLs and load them side by side in other Tekla versions).
   `MarkSymbolElement`, `MarkFrameElement`, `MarkTemplateElement`, `MarkXmlElement` for the rest; `MarkFormat`). Each
   element keeps its XML attributes in the order read (`XmlAttributeList`), and the content its layout (a line per tag, or
   one line), line break and way of writing `>`, so content Tekla wrote is written back as it was.
-  `AttributeSection.GetMarkContent` / `SetMarkContent` (no change when the elements are the same), `ViewLabelMark.Elements`,
+  `AttributeSection.GetMarkContent` / `SetMarkContent` (no change when the elements are the same), `ViewLabelMark.Content.Elements`,
   and the content tables as `MarkContent` properties, generated: those of the pages from
   `tools/DialogClassGenerator/ContentProperties.cs` (the tables probed by kind of object, and `PourElements`,
   `PourBreakElements`, `EdgeChamferElements`, `ReferenceObjectElements` on every mark page, named after the key; the
   tables of pages not probed get no property), the `Elements` of the mark files of the drawing editor from
   `ObjectFileSpec.DialogContent` (the key the dialog reads and the keys it writes). A key with a `MarkContent` property
   has no string property (removed in 2.0.0, so that nobody mixes `MainPartElements` and `ContentString1`); the raw text
-  stays reachable with `GetString` / `SetString`. `ViewLabelMark.Elements` is hand-written; `ContentProperties` knows its
-  name only.
+  stays reachable with `GetString` / `SetString`. A property goes where the dialog shows its table (3.0.0): the tables of
+  the "Mark content of" menu and single tables in the container of the elements table (`Content` tab; the page itself
+  for the dimension marks), the merged mark in the container of the merge table (`Merging` tab), keys the dialog does
+  not show where their control was (`Advanced`). The generator marks those containers from the `*selected_elements`
+  tables of the decoded dialogs before it prunes the tables (`Container.ContentTable` / `MergeTable`).
+  `ContentProperties_AreWhereTheDialogShowsTheirTable` pins the result.
 - `Filters/` — `FilterFile` (rows, byte-preserving), `FilterRow`, expression tree (`FilterExpression`, `FilterCondition`,
   `FilterGroup`), `FilterOperator`, typed `FilterProperty` subclasses, `FilterProperties` (generated catalog of
   `Tekla.Structures.Filtering.Categories`), `FilterFileExtensions`, `FilterObjectType` (hand-written: the label keys of
@@ -328,8 +332,8 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   the merged mark set of `Operation.MergeMarks`, whose content the API cannot read. The associative note
   (`Mark.MarkAttributes(object, name)` on a `.note`) has a table per kind of object: every part 1, every bolt 2, every
   reinforcement (single, group, mesh) 4, a reference model `ReferenceObjectContentString`; surface treatment (3 by the
-  files) was not checked. The typed properties: `PartMark.MainPartElements` ..., `BoltMark.SiteBoltElements` ...,
-  `ReinforcementMark.SingleElements` ..., `AssociativeNoteProperties.PartElements` ....
+  files) was not checked. The typed properties: `PartMark.Content.MainPartElements` ..., `BoltMark.Content.SiteBoltElements`
+  ..., `ReinforcementMark.Content.SingleElements` ..., `AssociativeNoteProperties.Content.PartElements` ....
   The other mark pages (TFIL_FILTERNAME=GIRDER with `vnp.np_collect_by 4` (by extreme) for neighbour parts and bars,
   TFIL_SURFACE=1 for a surface treatment added to a slab, all put back): neighbour part mark `vnpm.` main part 1;
   neighbour reinforcement mark `NeighborRebarMark.` single 1, group 2, mesh 4; connection mark and surface treatment mark
@@ -375,7 +379,8 @@ at a time (`View.Attributes.LoadAttributes` + `Modify`), and `Part.PartAttribute
   `singledrawing_attributes` / `wdraw_dial_attributes`; `.cud.more` `cudraw_dial_attributes` / `castunitdrawing_attributes`;
   `.md.more`, `.vi.more`, `.gdp.more` `joint_attributes`. New files use the first; loading adopts the file's. Dates are
   Unix seconds, `-2147483648` = empty.
-- Colours: `DrawingColor` values (153 black ... 165 magenta). Files saved from the dialogs often hold small numbers
+- Colours: `DrawingColor` values (153 black ... 165 magenta; 154–159, the Open API's `NewLine1` ... `NewLine6`, are
+  named after their colour, the RGB of `TeklaDrawingColor` in each XML comment). Files saved from the dialogs often hold small numbers
   (`visible_colour 6`, `line_colour 1`); Tekla uses them unchanged (verified), so they are typed `DrawingColor` too and
   read as unnamed values. `TEST.vi` (saved from the dialog) holds `label_colour 0xFFFFFFFF`: integers are read as
   hexadecimal too, and `AttributeSection.Set` keeps the current value when the new one means the same, so assigning a

@@ -107,6 +107,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
         public void SetDefaults()
         {
             Grid = Pages.Grid.NotVisible;
+
             TextPlacing.TextPlacingTop = true;
             TextPlacing.TextPlacingLeft = true;
             TextPlacing.TextPlacingRight = false;
@@ -116,12 +117,15 @@ namespace TeklaHelper.DrawingAttribute.Pages
             TextPlacing.TextPlacingRadialLineEnd = true;
             TextPlacing.TextPlacingRadialArcStart = true;
             TextPlacing.TextPlacingOffset = 10;
+
             GridLine.Color = DrawingColor.Red;
             GridLine.Type = DrawingLineType.DashDot;
-            Text.Color = DrawingColor.NewLine4;
+
+            Text.Color = DrawingColor.Teal;
             Text.Height = 3;
             Text.Font = "romsim";
             Text.Frame = TextFrame.Round;
+
             Advanced.Grid = DrawingGridOn.NotVisible;
             Advanced.GridObjectGridOn = Pages.GridObjectGridOn.Value0;
             Advanced.TextPlacingOffset2 = 10;

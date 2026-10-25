@@ -113,11 +113,13 @@ namespace TeklaHelper.DrawingAttribute.Pages
             BarContent.Lines.HideLinesBehindOtherRebars = false;
             BarContent.Symbols.SymbolAtStraightEnd = Pages.SymbolAtStraightEnd.NoSymbol;
             BarContent.Symbols.SymbolAtHookedEnd = Pages.SymbolAtHookedEnd.NoHook;
+
             BarAppearance.VisibleLines.Color = DrawingColor.Invisible;
             BarAppearance.VisibleLines.Type = DrawingLineType.Undefined;
             BarAppearance.VisibleLines.FillColor = DrawingColor.Invisible;
             BarAppearance.HiddenLines.Color = DrawingColor.None;
             BarAppearance.HiddenLines.Type = DrawingLineType.Undefined;
+
             MeshContent.ReinforcingBarRepresentation.VisibilityOfAllMeshes = true;
             MeshContent.ReinforcingBarRepresentation.Representation = MeshRepresentation.SingleLine;
             MeshContent.ReinforcingBarRepresentation.VisibilityOfLongitudinalWires = Pages.VisibilityOfReinforcingBarsInGroup.All;
@@ -126,17 +128,20 @@ namespace TeklaHelper.DrawingAttribute.Pages
             MeshContent.Lines.HideLinesBehindOtherRebars = false;
             MeshContent.Symbols.MeshSymbol = 0;
             MeshContent.Symbols.MeshSymbolSize = 0;
+
             MeshAppearance.VisibleLines.Color = DrawingColor.Invisible;
             MeshAppearance.VisibleLines.Type = DrawingLineType.Undefined;
             MeshAppearance.VisibleLines.FillColor = DrawingColor.Invisible;
             MeshAppearance.HiddenLines.Color = DrawingColor.None;
             MeshAppearance.HiddenLines.Type = DrawingLineType.Undefined;
+
             RebarAssembly.ReinforcingBarRepresentation.VisibilityOfRebarAssemblies = true;
             RebarAssembly.ReinforcingBarRepresentation.Representation = RebarAssemblyRepresentation.SubAssembliesAsOutlineHighestLevelAsIndividualRebarObjects;
             RebarAssembly.VisibleLines.Color = DrawingColor.Magenta;
             RebarAssembly.VisibleLines.Type = DrawingLineType.Solid;
             RebarAssembly.Symbols.MeshSymbol = 0;
             RebarAssembly.Symbols.MeshSymbolSize = 0;
+
             Advanced.BarAttrACustomPresentation = "";
             Advanced.MeshAttrACustomPresentation = "";
 

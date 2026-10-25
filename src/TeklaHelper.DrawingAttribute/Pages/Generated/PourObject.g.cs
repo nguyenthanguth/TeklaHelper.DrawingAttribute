@@ -96,16 +96,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Content.HiddenLines.OwnHiddenLines = true;
             Content.AdditionalMarks.EdgeChamfers = false;
             Content.AdditionalMarks.FilletEdges = true;
-            Appearance.VisibleLines.Color = DrawingColor.NewLine1;
+
+            Appearance.VisibleLines.Color = DrawingColor.Brown;
             Appearance.VisibleLines.Type = DrawingLineType.Solid;
-            Appearance.SectionLines.Color = DrawingColor.NewLine1;
+            Appearance.SectionLines.Color = DrawingColor.Brown;
             Appearance.SectionLines.Type = DrawingLineType.Solid;
-            Appearance.HiddenLines.Color = DrawingColor.NewLine1;
+            Appearance.HiddenLines.Color = DrawingColor.Brown;
             Appearance.HiddenLines.Type = DrawingLineType.Slashed;
-            Appearance.OwnHiddenLines.Color = DrawingColor.NewLine1;
+            Appearance.OwnHiddenLines.Color = DrawingColor.Brown;
             Appearance.OwnHiddenLines.Type = DrawingLineType.Slashed;
+
             Fill.PourFaces.Type = "None";
-            Fill.PourFaces.Color = DrawingColor.NewLine2;
+            Fill.PourFaces.Color = DrawingColor.DarkGreen;
             Fill.PourFaces.Background = DrawingColor.None;
             Fill.PourFaces.Scale = HatchScale.Automatic;
             Fill.PourFaces.ScalingInDirectionX = 2;
@@ -113,13 +115,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Fill.PourFaces.KeepRatioOfXAndY = true;
             Fill.PourFaces.Angle = 0;
             Fill.Sections.Type = "Automatic";
-            Fill.Sections.Color = DrawingColor.NewLine2;
+            Fill.Sections.Color = DrawingColor.DarkGreen;
             Fill.Sections.Background = DrawingColor.None;
             Fill.Sections.Scale = HatchScale.Automatic;
             Fill.Sections.ScalingInDirectionX = 2;
             Fill.Sections.ScalingInDirectionY = 1;
             Fill.Sections.KeepRatioOfXAndY = true;
             Fill.Sections.Angle = 0;
+
             Advanced.DrawAs = Representation.Outline;
             Advanced.SymbolOffset = 10;
             Advanced.InnerContours = true;
@@ -140,9 +143,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.OrientationMarks = true;
             Advanced.ConnectingSideMarks = false;
             Advanced.PopMarks = false;
-            Advanced.ReferenceColour = DrawingColor.NewLine1;
+            Advanced.ReferenceColour = DrawingColor.Brown;
             Advanced.ReferenceLinetype = DrawingLineType.Slashed;
-            Advanced.CenterColour = DrawingColor.NewLine1;
+            Advanced.CenterColour = DrawingColor.Brown;
             Advanced.CenterLinetype = DrawingLineType.DashDot;
             Advanced.NeighborParts = NpCollectBy.None;
             Advanced.MainSecondaryParts = NpWhich.MainParts;
@@ -151,7 +154,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Advanced.BoltRepresentation = BoltDrawAs.Value0;
             Advanced.Hole = false;
             Advanced.Axis = false;
-            Advanced.BoltColour = DrawingColor.NewLine1;
+            Advanced.BoltColour = DrawingColor.Brown;
             Advanced.DotNETScriptNames = "";
             Advanced.ACustomPresentation = "";
             Advanced.PartHatchHatchType = 0;

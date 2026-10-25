@@ -96,10 +96,12 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Content.Representation.Representation = WeldRepresentation.Path;
             Content.Representation.HiddenLines = true;
             Content.Representation.OwnHiddenLines = true;
-            Appearance.VisibleLines.Color = DrawingColor.NewLine2;
+
+            Appearance.VisibleLines.Color = DrawingColor.DarkGreen;
             Appearance.VisibleLines.Type = DrawingLineType.Solid;
-            Appearance.HiddenLines.Color = DrawingColor.NewLine2;
+            Appearance.HiddenLines.Color = DrawingColor.DarkGreen;
             Appearance.HiddenLines.Type = DrawingLineType.Dashed;
+
             Advanced.ACustomPresentation = "";
 
             SetAllEnabled(true);

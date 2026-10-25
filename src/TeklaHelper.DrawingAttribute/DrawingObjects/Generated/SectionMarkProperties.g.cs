@@ -146,12 +146,13 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             CuttingLine.Line.WidthOffset1 = 0;
             CuttingLine.Line.WidthOffset2 = 0;
             CuttingLine.Properties.Color = DrawingColor.Yellow;
+
             SectionMark.Text.A1 = "<< Mark >>";
             SectionMark.Text.A2 = "";
             SectionMark.Text.A3 = "";
             SectionMark.Text.A4 = "";
             SectionMark.Text.A5 = "";
-            SectionMark.Symbol.Color = DrawingColor.NewLine5;
+            SectionMark.Symbol.Color = DrawingColor.Orange;
             SectionMark.Symbol.LeftSymbol.Symbol = SectionMarkLeftSymbol.Value184;
             SectionMark.Symbol.LeftSymbol.Size = 5;
             SectionMark.Symbol.LeftSymbol.SectionMarkLeftSymbolPositionX = 0;
@@ -160,19 +161,22 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             SectionMark.Symbol.RightSymbol.Size = 5;
             SectionMark.Symbol.RightSymbol.SectionMarkRightSymbolPositionX = 0;
             SectionMark.Symbol.RightSymbol.SectionMarkRightSymbolPositionY = 0;
+
             ViewLabel.Text.A1 = "<< Mark >>";
             ViewLabel.Text.A2 = "<< Mark >>";
             ViewLabel.Text.A3 = "";
             ViewLabel.Text.A4 = "";
             ViewLabel.Text.A5 = "";
             ViewLabel.ViewLabel.Symbol.Symbol = ViewLabelSymbol.None;
-            ViewLabel.ViewLabel.Symbol.Color = DrawingColor.NewLine5;
+            ViewLabel.ViewLabel.Symbol.Color = DrawingColor.Orange;
             ViewLabel.ViewLabel.Symbol.Size = 5;
             ViewLabel.ViewLabel.Symbol.LineLength = SymbolLineLength.Minimal;
             ViewLabel.ViewLabel.Symbol.LineLengthViewLabelCustomLength = 0;
             ViewLabel.ViewLabel.LabelPosition.Vertical = LabelPositionVertical.Below;
             ViewLabel.ViewLabel.LabelPosition.Horizontal = LabelPositionHorizontal.CenterAlignedToViewFrame;
+
             SectionName = "A";
+
             Advanced.CutLineSide = 3;
             Advanced.TextColour = 165;
             Advanced.FitSymbol = 0;

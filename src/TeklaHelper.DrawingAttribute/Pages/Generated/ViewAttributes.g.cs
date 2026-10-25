@@ -86,6 +86,7 @@ namespace TeklaHelper.DrawingAttribute.Views
             Attributes1.View.ViewExtensionForNeighborParts = 0;
             Attributes1.View.Place = Pages.Place.Free;
             Attributes1.Settings.UseDetailedObjectLevelSettings = false;
+
             Attributes2.CutParts.RepresentationOfDeformedObjects.Unfolded = false;
             Attributes2.CutParts.RepresentationOfDeformedObjects.Undeformed = false;
             Attributes2.CutParts.Shortening.CutParts = Pages.CutParts.BothDirections;
@@ -97,6 +98,7 @@ namespace TeklaHelper.DrawingAttribute.Views
             Attributes2.CutParts.Other.DatumPointForElevations = Pages.DatumPointForElevations.Specified;
             Attributes2.CutParts.Other.DatumLevel = 0;
             Attributes2.CutParts.Other.DimensionCreationMethodInThisView = Pages.DimensionCreationMethodInThisView.Automatically;
+
             Label.ViewLabel.Text.A1 = "<< Mark >>";
             Label.ViewLabel.Text.A2 = "<< Mark >>";
             Label.ViewLabel.Text.A3 = "";
@@ -111,6 +113,7 @@ namespace TeklaHelper.DrawingAttribute.Views
             Label.ViewLabel.LabelPosition.Horizontal = LabelPositionHorizontal.CenterAlignedToViewFrame;
             Label.ViewLabel.ViewDirectionMarks.ShowMarks = Pages.ShowMarks.None;
             Label.ViewLabel.ViewDirectionMarks.Height = 0;
+
             Advanced.LabelHeight = 3;
             Advanced.StyleName = "standard";
             Advanced.ViewLabelMarkSymbolPositionX = 0;

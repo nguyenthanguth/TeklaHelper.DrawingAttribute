@@ -22,7 +22,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
             ViewProperties view = ViewProperties.CreateDefault();
 
             context.Step("View label: the view name in green Tahoma 5, the scale, USER_FIELD_1 on the next line");
-            view.Attributes.LabelMarkA1.Elements = new MarkContent()
+            view.Attributes.LabelMarkA1.Content.Elements = new MarkContent()
                 .Add(MarkElementTypes.ViewLabel.ViewName, new MarkFormat { Font = "Tahoma", Color = DrawingColor.Green, Height = 5 })
                 .AddText(" ")
                 .Add(MarkElementTypes.ViewLabel.Scale)
@@ -31,43 +31,43 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
 
             context.Step("Part marks: one table per kind of part (the \"Mark content of\" menu of the dialog)");
             PartMark partMark = view.Marks.PartMark;
-            partMark.MainPartElements = new MarkContent()                                      // ContentString1
+            partMark.Content.MainPartElements = new MarkContent()                                      // ContentString1
                 .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new MarkContent().Add(MarkElementTypes.PartMark.AssemblyPosition))
                 .AddSpace()
                 .Add(MarkElementTypes.PartMark.Profile);
-            partMark.SecondaryPartElements = new MarkContent()                                 // ContentString2
+            partMark.Content.SecondaryPartElements = new MarkContent()                                 // ContentString2
                 .Add(MarkElementTypes.PartMark.PartPosition)
                 .AddText(" - ")
                 .Add(MarkElementTypes.PartMark.Material);
-            partMark.SubAssemblyMainPartElements = new MarkContent().Add(MarkElementTypes.PartMark.AssemblyPosition);
-            partMark.SubAssemblySecondaryPartElements = new MarkContent().Add(MarkElementTypes.PartMark.PartPosition);
+            partMark.Content.SubAssemblyMainPartElements = new MarkContent().Add(MarkElementTypes.PartMark.AssemblyPosition);
+            partMark.Content.SubAssemblySecondaryPartElements = new MarkContent().Add(MarkElementTypes.PartMark.PartPosition);
 
             context.Step("Bolt marks: site and workshop bolts");
-            view.Marks.BoltMark.SiteBoltElements = new MarkContent()
+            view.Marks.BoltMark.Content.SiteBoltElements = new MarkContent()
                 .Add(MarkElementTypes.BoltMark.NumberOfBolts)
                 .AddText("x")
                 .Add(MarkElementTypes.BoltMark.Size)                                           // written as <SizeElement>
                 .AddText(" SITE");
-            view.Marks.BoltMark.WorkshopBoltElements = new MarkContent()
+            view.Marks.BoltMark.Content.WorkshopBoltElements = new MarkContent()
                 .Add(MarkElementTypes.BoltMark.NumberOfBolts)
                 .AddText("x")
                 .Add(MarkElementTypes.BoltMark.Size);
 
             context.Step("Reinforcement marks: single bars, groups and meshes (the mesh table is ContentString4)");
             ReinforcementMark rebarMark = view.Marks.ReinforcementMark;
-            rebarMark.SingleElements = new MarkContent()
+            rebarMark.Content.SingleElements = new MarkContent()
                 .Add(MarkElementTypes.ReinforcementMark.Position)
                 .AddText(" Ø")
                 .Add(MarkElementTypes.ReinforcementMark.Diameter)
                 .AddText(" L=")
                 .Add(MarkElementTypes.ReinforcementMark.Length);
-            rebarMark.GroupElements = new MarkContent()
+            rebarMark.Content.GroupElements = new MarkContent()
                 .Add(MarkElementTypes.ReinforcementMark.Number)
                 .AddText(" Ø")
                 .Add(MarkElementTypes.ReinforcementMark.Diameter)
                 .AddText(" c/c ")
                 .Add(MarkElementTypes.ReinforcementMark.Cc);
-            rebarMark.MeshElements = new MarkContent()
+            rebarMark.Content.MeshElements = new MarkContent()
                 .Add(MarkElementTypes.ReinforcementMeshMark.Position)
                 .AddSpace()
                 .Add(MarkElementTypes.ReinforcementMeshMark.Size);
@@ -77,15 +77,15 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
 
             context.Step("Read it back: every element of the tables of the saved file");
             var loaded = AttributeFile.FromFile<ViewProperties>(path);
-            Console.WriteLine("    Label:            " + loaded.Attributes.LabelMarkA1.Elements);
-            Console.WriteLine("    Main parts:       " + loaded.Marks.PartMark.MainPartElements);
-            Console.WriteLine("    Secondary parts:  " + loaded.Marks.PartMark.SecondaryPartElements);
-            Console.WriteLine("    Site bolts:       " + loaded.Marks.BoltMark.SiteBoltElements);
-            Console.WriteLine("    Rebar groups:     " + loaded.Marks.ReinforcementMark.GroupElements);
-            Console.WriteLine("    Meshes:           " + loaded.Marks.ReinforcementMark.MeshElements);
+            Console.WriteLine("    Label:            " + loaded.Attributes.LabelMarkA1.Content.Elements);
+            Console.WriteLine("    Main parts:       " + loaded.Marks.PartMark.Content.MainPartElements);
+            Console.WriteLine("    Secondary parts:  " + loaded.Marks.PartMark.Content.SecondaryPartElements);
+            Console.WriteLine("    Site bolts:       " + loaded.Marks.BoltMark.Content.SiteBoltElements);
+            Console.WriteLine("    Rebar groups:     " + loaded.Marks.ReinforcementMark.Content.GroupElements);
+            Console.WriteLine("    Meshes:           " + loaded.Marks.ReinforcementMark.Content.MeshElements);
 
             context.Step("Change content that is already there: get (a copy), change, assign back");
-            MarkContent group = loaded.Marks.ReinforcementMark.GroupElements;
+            MarkContent group = loaded.Marks.ReinforcementMark.Content.GroupElements;
             group.AddLineFeed().Add(MarkElementTypes.ReinforcementMark.Shape);
             foreach (MarkElement element in group)
             {
@@ -95,19 +95,19 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
                 }
             }
 
-            loaded.Marks.ReinforcementMark.GroupElements = group;                              // nothing changes until this line
+            loaded.Marks.ReinforcementMark.Content.GroupElements = group;                              // nothing changes until this line
             loaded.SaveTo(context.OutputDirectory, "sample_mark_tables_changed");
-            Console.WriteLine("    Rebar groups now: " + loaded.Marks.ReinforcementMark.GroupElements);
+            Console.WriteLine("    Rebar groups now: " + loaded.Marks.ReinforcementMark.Content.GroupElements);
 
             context.Step("Associative note (.note): one table per kind of object the note points at");
             AssociativeNoteAttributeFile note = AssociativeNoteAttributeFile.CreateDefault();
-            note.Properties.PartElements = new MarkContent()
+            note.Properties.Content.PartElements = new MarkContent()
                 .Add(MarkElementTypes.PartMark.Name)
                 .AddLineFeed()
                 .Add(MarkElementTypes.PartMark.Profile)
                 .AddUserAttribute("comment", new MarkFormat { Height = 2 });
-            note.Properties.BoltElements = new MarkContent().Add(MarkElementTypes.BoltMark.Standard).AddSpace().Add(MarkElementTypes.BoltMark.Size);
-            note.Properties.ReinforcementElements = new MarkContent().Add(MarkElementTypes.ReinforcementMark.Grade);
+            note.Properties.Content.BoltElements = new MarkContent().Add(MarkElementTypes.BoltMark.Standard).AddSpace().Add(MarkElementTypes.BoltMark.Size);
+            note.Properties.Content.ReinforcementElements = new MarkContent().Add(MarkElementTypes.ReinforcementMark.Grade);
             note.Properties.General.FrameAroundMark.Type = FrameAroundMarkType.Rectangular;
             context.ShowFile(note.SaveTo(context.OutputDirectory, "sample_note"), 8);
 
@@ -117,7 +117,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
             pm.SaveTo(context.OutputDirectory, "sample_part_marks");                           // ContentString1 to 4
             PourMarkAttributeFile pom = PourMarkAttributeFile.CreateDefault();
             pom.Elements = new MarkContent().Add(MarkElementTypes.PourMark.PourNumber);         // PourContentString and ContentString1
-            pom.Properties.PourBreakElements = new MarkContent().AddText("JOINT");
+            pom.Properties.Advanced.PourBreakElements = new MarkContent().AddText("JOINT");
             pom.SaveTo(context.OutputDirectory, "sample_pour_marks");
             Console.WriteLine("    .pm: " + pm.Elements + "; .pom: " + pom.Elements);
 

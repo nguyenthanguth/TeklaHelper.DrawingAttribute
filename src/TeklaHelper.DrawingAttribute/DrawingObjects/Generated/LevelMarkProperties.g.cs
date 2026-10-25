@@ -87,6 +87,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             General.Placing.Place.Quarter.Quarter1 = true;
             General.Placing.Place.Quarter.Quarter3 = true;
             General.Placing.Place.Quarter.Quarter2 = true;
+
             Appearance.Text.Color = (DrawingColor)(3);
             Appearance.Text.Height = 2.5;
             Appearance.Text.Font = "Arial";
@@ -101,8 +102,11 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Appearance.Arrow.Type = LineArrowType.SolidArrow;
             Appearance.Arrow.Height = 2;
             Appearance.Arrow.Width = 2.5;
+
             SymbolSelection.Number = 0;
+
             MaximumDistance = 0;
+
             Advanced.Type = 1;
             Advanced.MarkType = 1;
             Advanced.ACustomPresentation = "";

@@ -128,6 +128,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             LabelHeight = 3;
             LabelPosition = 1;
             LabelColor = DrawingColor.Green;
+
             Attributes.ViewSize.ViewExtensionForNeighborParts = 0;
             Attributes.ViewSize.ReflectedView = false;
             Attributes.ViewSize.ShowOpeningsRecessSymbol = false;
@@ -141,7 +142,9 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             Attributes.RotateCoordinateSystem.AroundX = ViewRotationAroundX.Value0;
             Attributes.RotateCoordinateSystem.AroundY = ViewRotationAroundY.Value0;
             Attributes.RotateCoordinateSystem.AroundZ = 0;
+
             Shortening.CutParts.CutSkewParts = false;
+
             Label.Text.A1 = "<< Mark >>";
             Label.Text.A2 = "";
             Label.Text.A3 = "";
@@ -156,10 +159,12 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             Label.ViewName.TopView = "";
             Label.ViewName.BackView = "";
             Label.ViewName.BottomView = "";
+
             AnchorBoltPlan.ShowAsAnchorBoltPlan = false;
             AnchorBoltPlan.EnlargedPartViewScale = 20;
             AnchorBoltPlan.CreateDetailViews = false;
             AnchorBoltPlan.DetailViewScale = 15;
+
             Advanced.ViewLabelMarkSymbolPositionX = 0;
             Advanced.ViewLabelMarkSymbolPositionY = 0;
             Advanced.RecreateDrawing = 0;

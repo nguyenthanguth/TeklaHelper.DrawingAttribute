@@ -90,7 +90,8 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Revision.Revision.Placing.Place.Quarter.Quarter1 = true;
             Revision.Revision.Placing.Place.Quarter.Quarter3 = true;
             Revision.Revision.Placing.Place.Quarter.Quarter2 = true;
-            Appearance.Text.Color = DrawingColor.NewLine2;
+
+            Appearance.Text.Color = DrawingColor.DarkGreen;
             Appearance.Text.Height = 2.5;
             Appearance.Text.Font = "Arial";
             Appearance.Text.Angle = 0;
@@ -101,9 +102,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Appearance.Arrow.Width = 2.5;
             Appearance.Frame.Type = FrameAroundMarkType.Rectangular;
             Appearance.Frame.LeaderLine = RevisionMarkLeaderLineType.BaseLine;
-            Appearance.Frame.Color = DrawingColor.NewLine2;
+            Appearance.Frame.Color = DrawingColor.DarkGreen;
+
             SymbolSelection.Number = 0;
+
             MaximumDistance = 0;
+
             Advanced.Type = 2;
             Advanced.MarkType = 1;
             Advanced.Extra5 = "";

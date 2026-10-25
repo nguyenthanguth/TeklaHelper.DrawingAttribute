@@ -95,6 +95,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             General.Placing.Place.DirectionPositive = false;
             General.Placing.Place.MinimumDistance = 10;
             General.Placing.Place.DirectionNegative = false;
+
             Appearance.Text.Color = DrawingColor.Red;
             Appearance.Text.BackgroundMask = Pages.BackgroundMask.Opaque;
             Appearance.Text.Height = 2.5;
@@ -105,6 +106,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Appearance.LineArrow.ArrowShape = DimensionArrowShape.LineArrow;
             Appearance.LineArrow.Height = 1;
             Appearance.LineArrow.Width = 2;
+
             Marks.DimensionMarkContents.APrefix = "";
             Marks.DimensionMarkContents.VisibilityOfNumericValue = DimensionValueVisibility.Visible;
             Marks.DimensionMarkContents.Postfix = "";
@@ -120,6 +122,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Marks.Exaggeration.Width = 5;
             Marks.Exaggeration.Position = 5;
             Marks.Exaggeration.Height = 5;
+
             Tags.Tags.ALeftUpperTag = "";
             Tags.Tags.ARightUpperTag = "";
             Tags.Tags.ALeftMiddleTag = "";
@@ -136,12 +139,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Tags.Tags.EnableTagItemCountG = true;
             Tags.Tags.ExcludePartsAccordingToFilter = "";
             Tags.Tags.CurvedDimensionTagType = Pages.CurvedDimensionTagType.Horizontal;
+
             Rebar.DimensionTo = RebarDimensionPointType.AllRebars;
             Rebar.PartEdge = false;
             Rebar.Subgrouping = false;
             Rebar.ExtensionLineToVisibleRebar = false;
             Rebar.TaperedDimensionType = TaperedRebarDimensionType.Straight;
             Rebar.CurvedDimensionType = CurvedRebarDimensionType.Straight;
+
             Advanced.RadiusDimType = 1;
             Advanced.MainType = 1;
             Advanced.EnableTagItemCount = 1;

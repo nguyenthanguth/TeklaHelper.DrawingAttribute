@@ -85,6 +85,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Appearance.VisibleLines.Type = DrawingLineType.Solid;
             Appearance.HiddenLines.Color = DrawingColor.Black;
             Appearance.HiddenLines.Type = DrawingLineType.Slashed;
+
             Advanced.Flags = 0;
 
             SetAllEnabled(true);

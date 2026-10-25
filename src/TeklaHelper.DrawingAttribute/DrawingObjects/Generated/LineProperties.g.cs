@@ -119,21 +119,26 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         public void SetDefaults()
         {
             Line.Type = DrawingLineType.Solid;
-            Line.Color = DrawingColor.NewLine2;
+            Line.Color = DrawingColor.DarkGreen;
             Line.Bulge = 0;
+
             Arrow.Position = ArrowPosition.None;
             Arrow.Type = LineArrowType.NoArrow;
             Arrow.Height = 2;
             Arrow.Width = 3;
+
             FileType = (ForeignObjectFileType)(0);
             FileName = "";
             ExtraInfo = "";
             ScaleInX = 1;
             ScaleInY = 1;
-            TextStyle.Color = DrawingColor.NewLine2;
+
+            TextStyle.Color = DrawingColor.DarkGreen;
             TextStyle.Height = 3;
             TextStyle.Font = "romsim";
+
             Scaling.Type = ForeignObjectScaling.NoScaling;
+
             Advanced.TextProportion = 0.75;
             Advanced.TextSlant = 0;
             Advanced.TextStyle = 0;

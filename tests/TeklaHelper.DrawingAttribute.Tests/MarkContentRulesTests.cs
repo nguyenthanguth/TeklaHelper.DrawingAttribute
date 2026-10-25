@@ -188,16 +188,16 @@ namespace TeklaHelper.DrawingAttribute.Tests
         public void Elements_OfAnEmptyRow_AreNull_AndNullEmptiesARow()
         {
             var view = new ViewProperties();
-            view.Attributes.LabelMarkA1.Elements = view.Attributes.LabelMarkA1.Elements;
+            view.Attributes.LabelMarkA1.Content.Elements = view.Attributes.LabelMarkA1.Content.Elements;
             Assert.False(view.Values.ContainsKey("ViewLabelMarkA1.ContentString"));
 
-            view.Attributes.LabelMarkA1.Elements = new MarkContent().Add(MarkElementTypes.ViewLabel.Scale);
-            view.Attributes.LabelMarkA1.Elements = null;
+            view.Attributes.LabelMarkA1.Content.Elements = new MarkContent().Add(MarkElementTypes.ViewLabel.Scale);
+            view.Attributes.LabelMarkA1.Content.Elements = null;
             Assert.Equal(string.Empty, view.GetString("ViewLabelMarkA1.ContentString"));
 
             // Text that is no mark content is kept: a getter returning null for it must not destroy it
             view.SetString("ViewLabelMarkA1.ContentString", "free text");
-            view.Attributes.LabelMarkA1.Elements = view.Attributes.LabelMarkA1.Elements;
+            view.Attributes.LabelMarkA1.Content.Elements = view.Attributes.LabelMarkA1.Content.Elements;
             Assert.Equal("free text", view.GetString("ViewLabelMarkA1.ContentString"));
         }
 
@@ -205,12 +205,12 @@ namespace TeklaHelper.DrawingAttribute.Tests
         public void SetMarkContent_WritesAChosenLayout()
         {
             var view = new ViewProperties();
-            view.Attributes.LabelMarkA1.Elements = new MarkContent { Layout = MarkContentLayout.Compact }.Add(MarkElementTypes.ViewLabel.Scale);
+            view.Attributes.LabelMarkA1.Content.Elements = new MarkContent { Layout = MarkContentLayout.Compact }.Add(MarkElementTypes.ViewLabel.Scale);
             Assert.DoesNotContain("\n", view.GetString("ViewLabelMarkA1.ContentString"));
 
-            MarkContent content = view.Attributes.LabelMarkA1.Elements;
+            MarkContent content = view.Attributes.LabelMarkA1.Content.Elements;
             content.Layout = MarkContentLayout.Lines;
-            view.Attributes.LabelMarkA1.Elements = content;
+            view.Attributes.LabelMarkA1.Content.Elements = content;
 
             Assert.Contains("\n", view.GetString("ViewLabelMarkA1.ContentString"));
         }
@@ -237,7 +237,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
             var view = new ViewProperties();
             view.SetString("ViewLabelMarkA1.ContentString", xml);
             string before = view.GetString("ViewLabelMarkA1.ContentString");
-            view.Attributes.LabelMarkA1.Elements = view.Attributes.LabelMarkA1.Elements;
+            view.Attributes.LabelMarkA1.Content.Elements = view.Attributes.LabelMarkA1.Content.Elements;
             Assert.Equal(before, view.GetString("ViewLabelMarkA1.ContentString"));
         }
 
@@ -253,7 +253,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
 
             var view = new ViewProperties();
             view.SetString("ViewLabelMarkA1.ContentString", together);
-            view.Attributes.LabelMarkA1.Elements = separate;
+            view.Attributes.LabelMarkA1.Content.Elements = separate;
             Assert.Equal(separate.ToXml(), view.GetString("ViewLabelMarkA1.ContentString").Replace("\r\n", "\n"));
         }
 

@@ -30,7 +30,7 @@ namespace TeklaHelper.DrawingAttribute.Marks
     ///     .Add(MarkElementTypes.ViewLabel.ViewName, new MarkFormat { Font = "Tahoma", Color = DrawingColor.Green, Height = 5 })
     ///     .AddText(" ")
     ///     .Add(MarkElementTypes.ViewLabel.Scale);
-    /// view.Attributes.LabelMarkA1.Elements = label;
+    /// view.Attributes.LabelMarkA1.Content.Elements = label;
     /// </code>
     /// <see cref="Parse"/> reads the content Tekla wrote, keeping what it does not model, and <see cref="ToXml()"/> writes
     /// content Tekla wrote back as it was.

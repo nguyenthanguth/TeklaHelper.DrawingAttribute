@@ -64,92 +64,6 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         public AdvancedGroup Advanced => _advanced ?? (_advanced = new AdvancedGroup(Values, Prefix));
 
         /// <summary>
-        /// What a note on a part shows (<c>ContentString1</c>, "Part"; every part, also of sub-assemblies). Checked in
-        /// Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy, to be
-        /// assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent PartElements
-        {
-            get => GetMarkContentOrNull("ContentString1");
-            set => SetMarkContent("ContentString1", value);
-        }
-
-        /// <summary>
-        /// What a note on a bolt shows (<c>ContentString2</c>, "Bolt"; site and workshop bolts). Checked in Tekla 2025
-        /// with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy, to be assigned
-        /// back after a change; null empties the key.
-        /// </summary>
-        public MarkContent BoltElements
-        {
-            get => GetMarkContentOrNull("ContentString2");
-            set => SetMarkContent("ContentString2", value);
-        }
-
-        /// <summary>
-        /// What a note on a surface treatment shows (<c>ContentString3</c>, "Surface treatment"). Not checked in Tekla
-        /// (the model had no surface treatment): the shipped files hold the name and surfacing name elements here. Each
-        /// get reads the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent SurfaceTreatmentElements
-        {
-            get => GetMarkContentOrNull("ContentString3");
-            set => SetMarkContent("ContentString3", value);
-        }
-
-        /// <summary>
-        /// What a note on reinforcement shows (<c>ContentString4</c>, "Rebar"; single bars, groups and meshes). Checked
-        /// in Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy, to
-        /// be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent ReinforcementElements
-        {
-            get => GetMarkContentOrNull("ContentString4");
-            set => SetMarkContent("ContentString4", value);
-        }
-
-        /// <summary>
-        /// Mark content of edge chamfers (<c>ChamferContentString</c>), named after the key; not probed. Each get reads
-        /// the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent EdgeChamferElements
-        {
-            get => GetMarkContentOrNull("ChamferContentString");
-            set => SetMarkContent("ChamferContentString", value);
-        }
-
-        /// <summary>
-        /// Mark content of pour objects (<c>PourContentString</c>). The pour mark dialog of the drawing editor edits
-        /// this table (checked in Tekla 2025); on the other mark pages it is named after the key, not probed. Each get
-        /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent PourElements
-        {
-            get => GetMarkContentOrNull("PourContentString");
-            set => SetMarkContent("PourContentString", value);
-        }
-
-        /// <summary>
-        /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get reads
-        /// the key and returns a copy, to be assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent PourBreakElements
-        {
-            get => GetMarkContentOrNull("PourBreakContentString");
-            set => SetMarkContent("PourBreakContentString", value);
-        }
-
-        /// <summary>
-        /// What a note on a reference model shows (<c>ReferenceObjectContentString</c>, "Reference object"). Checked in
-        /// Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy, to be
-        /// assigned back after a change; null empties the key.
-        /// </summary>
-        public MarkContent ReferenceObjectElements
-        {
-            get => GetMarkContentOrNull("ReferenceObjectContentString");
-            set => SetMarkContent("ReferenceObjectContentString", value);
-        }
-
-        /// <summary>
         /// Sets every property of the page to its default and ticks every check box. A default is the value most files
         /// shipped with Tekla hold (at least three), else the dialog's own default, else the value of a file saved from
         /// the dialog.
@@ -157,56 +71,20 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         public void SetDefaults()
         {
             Content.FrameAroundElements.Type = FrameAroundElementsType.Rectangular;
-            Content.FrameAroundElements.Color = DrawingColor.NewLine2;
-            Content.Font.Color = DrawingColor.NewLine2;
+            Content.FrameAroundElements.Color = DrawingColor.DarkGreen;
+            Content.Font.Color = DrawingColor.DarkGreen;
             Content.Font.Height = 2.5;
             Content.Font.Font = "Arial";
             Content.Units.Units = Pages.Units.Automatic;
             Content.Units.Format = UnitsFormat.Automatic;
-            General.FrameAroundMark.BackgroundMask = Pages.BackgroundMask.Opaque;
-            General.LeaderLine.Type = NoteLeaderLineType.LeaderLine;
-            General.LeaderLine.Arrow = LeaderLineArrow.NoArrow;
-            General.LeaderLine.ArrowHeight = 2;
-            General.LeaderLine.ArrowLength = 2.5;
-            General.LeaderLine.MergedMarks = Pages.MergedMarks.Value0;
-            General.LeaderLine.UseHiddenLinesForHiddenParts = true;
-            General.Placing.Rotation = 0;
-            General.Placing.Alignment = PlacingAlignment.Center;
-            General.Placing.Place.Placing = TxplTextPlacingMode.Fixed;
-            General.Placing.Place.SearchMargin = 1;
-            General.Placing.Place.MinimumDistance = 2;
-            General.Placing.Place.MaximumDistance = 0;
-            General.Placing.Place.Quarter.Quarter4 = true;
-            General.Placing.Place.Quarter.Quarter1 = true;
-            General.Placing.Place.Quarter.Quarter3 = true;
-            General.Placing.Place.Quarter.Quarter2 = true;
-            General.VisibilityOfMark.VisibilityInView = Pages.VisibilityInView.Distributed;
-            General.VisibilityOfMark.PartsOutOfViewPlane = true;
-            General.VisibilityOfMark.MergeMarks = false;
-            Merging.PreferredDirectionOfMerge = MergeDir.MergeVertical;
-            Appearance.LeaderLine.RebarGroupMark = RebarGroupMarkAttributesLineType.OneLeaderLineToGroup;
-            Advanced.Create = 0;
-            Advanced.ForMain = 1;
-            Advanced.ForSec = 1;
-            Advanced.ForWhichParts = 1;
-            Advanced.TextColour = 155;
-            Advanced.FrameType = 2;
-            Advanced.LineColour = 153;
-            Advanced.Alignment = 0;
-            Advanced.Height = 2.5;
-            Advanced.DefaultSize = 0;
-            Advanced.MarkNsfs = 0;
-            Advanced.Content1 = 1;
-            Advanced.Flags = 0;
-            Advanced.MarkUsePartEnd = 0;
-            PartElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
+            Content.PartElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.DarkGreen, Height = 2.5 })
                 .Add(MarkElementTypes.PartMark.PartPosition)
                 .Add(MarkElementTypes.PartMark.Profile);
-            BoltElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
+            Content.BoltElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.DarkGreen, Height = 2.5 })
                 .Add(MarkElementTypes.BoltMark.Size);
-            SurfaceTreatmentElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
+            Content.SurfaceTreatmentElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.DarkGreen, Height = 2.5 })
                 .Add(MarkElementTypes.SurfaceTreatmentMark.Name);
-            ReinforcementElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine5, Height = 2.5 })
+            Content.ReinforcementElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.Orange, Height = 2.5 })
                 .Add(MarkElementTypes.ReinforcementMark.Number)
                 .AddBackSpace()
                 .Add(MarkElementTypes.ReinforcementMark.Shape)
@@ -231,13 +109,53 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
                 .AddBackSpace()
                 .Add(MarkElementTypes.ReinforcementMark.Cc)
                 .Add(new MarkXmlElement("<PullOut name=\"&lt;&lt; Pullout picture >>\" MarkId=\"0\" Scaling=\"1.0\" pullout=\"&lt;&lt; Pullout picture >>\" subType=\"60\" EndMarks=\"1\" ScalingX=\"0.0\" ScalingY=\"0.0\" RebarGUID=\"\" ScaleType=\"1\" Dimensions=\"1\" BendingAngle=\"0\" Exaggeration=\"1\" RotationAxis=\"0\" BendingRadius=\"0\" UsePlaceHolders=\"0\">\u000A<Format font=\"Arial\" color=\"158\" height=\"2.500\" hidden=\"0\"/>\u000A</PullOut>"));
-            EdgeChamferElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.NewLine2, Height = 2.5 })
+            Content.EdgeChamferElements = new MarkContent(new MarkFormat { Font = "Arial", Color = DrawingColor.DarkGreen, Height = 2.5 })
                 .Add(MarkElementTypes.EdgeChamferMark.Dx)
                 .AddText("x")
                 .Add(MarkElementTypes.EdgeChamferMark.Dy);
-            PourElements = new MarkContent();
-            PourBreakElements = new MarkContent();
-            ReferenceObjectElements = new MarkContent();
+            Content.ReferenceObjectElements = new MarkContent();
+
+            General.FrameAroundMark.BackgroundMask = Pages.BackgroundMask.Opaque;
+            General.LeaderLine.Type = NoteLeaderLineType.LeaderLine;
+            General.LeaderLine.Arrow = LeaderLineArrow.NoArrow;
+            General.LeaderLine.ArrowHeight = 2;
+            General.LeaderLine.ArrowLength = 2.5;
+            General.LeaderLine.MergedMarks = Pages.MergedMarks.Value0;
+            General.LeaderLine.UseHiddenLinesForHiddenParts = true;
+            General.Placing.Rotation = 0;
+            General.Placing.Alignment = PlacingAlignment.Center;
+            General.Placing.Place.Placing = TxplTextPlacingMode.Fixed;
+            General.Placing.Place.SearchMargin = 1;
+            General.Placing.Place.MinimumDistance = 2;
+            General.Placing.Place.MaximumDistance = 0;
+            General.Placing.Place.Quarter.Quarter4 = true;
+            General.Placing.Place.Quarter.Quarter1 = true;
+            General.Placing.Place.Quarter.Quarter3 = true;
+            General.Placing.Place.Quarter.Quarter2 = true;
+            General.VisibilityOfMark.VisibilityInView = Pages.VisibilityInView.Distributed;
+            General.VisibilityOfMark.PartsOutOfViewPlane = true;
+            General.VisibilityOfMark.MergeMarks = false;
+
+            Merging.PreferredDirectionOfMerge = MergeDir.MergeVertical;
+
+            Appearance.LeaderLine.RebarGroupMark = RebarGroupMarkAttributesLineType.OneLeaderLineToGroup;
+
+            Advanced.Create = 0;
+            Advanced.ForMain = 1;
+            Advanced.ForSec = 1;
+            Advanced.ForWhichParts = 1;
+            Advanced.TextColour = 155;
+            Advanced.FrameType = 2;
+            Advanced.LineColour = 153;
+            Advanced.Alignment = 0;
+            Advanced.Height = 2.5;
+            Advanced.DefaultSize = 0;
+            Advanced.MarkNsfs = 0;
+            Advanced.Content1 = 1;
+            Advanced.Flags = 0;
+            Advanced.MarkUsePartEnd = 0;
+            Advanced.PourElements = new MarkContent();
+            Advanced.PourBreakElements = new MarkContent();
             Advanced.CurrentContentTableNumber = 0;
             Advanced.ForSubassMain = 1;
             Advanced.ForSubassSecondary = 1;
@@ -434,6 +352,73 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             /// The "Units" group.
             /// </summary>
             public UnitsGroup Units => _units ?? (_units = new UnitsGroup(Values, Prefix));
+
+            /// <summary>
+            /// What a note on a part shows (<c>ContentString1</c>, "Part"; every part, also of sub-assemblies). Checked
+            /// in Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy,
+            /// to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent PartElements
+            {
+                get => GetMarkContentOrNull("ContentString1");
+                set => SetMarkContent("ContentString1", value);
+            }
+
+            /// <summary>
+            /// What a note on a bolt shows (<c>ContentString2</c>, "Bolt"; site and workshop bolts). Checked in Tekla
+            /// 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns a copy, to be
+            /// assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent BoltElements
+            {
+                get => GetMarkContentOrNull("ContentString2");
+                set => SetMarkContent("ContentString2", value);
+            }
+
+            /// <summary>
+            /// What a note on a surface treatment shows (<c>ContentString3</c>, "Surface treatment"). Not checked in
+            /// Tekla (the model had no surface treatment): the shipped files hold the name and surfacing name elements
+            /// here. Each get reads the key and returns a copy, to be assigned back after a change; null empties the
+            /// key.
+            /// </summary>
+            public MarkContent SurfaceTreatmentElements
+            {
+                get => GetMarkContentOrNull("ContentString3");
+                set => SetMarkContent("ContentString3", value);
+            }
+
+            /// <summary>
+            /// What a note on reinforcement shows (<c>ContentString4</c>, "Rebar"; single bars, groups and meshes).
+            /// Checked in Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns
+            /// a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent ReinforcementElements
+            {
+                get => GetMarkContentOrNull("ContentString4");
+                set => SetMarkContent("ContentString4", value);
+            }
+
+            /// <summary>
+            /// What a note on an edge chamfer shows (<c>ChamferContentString</c>, "Edge chamfer" of the dialog's menu).
+            /// Not checked in Tekla (the model had no edge chamfer): the shipped files hold the chamfer's x and y here.
+            /// Each get reads the key and returns a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent EdgeChamferElements
+            {
+                get => GetMarkContentOrNull("ChamferContentString");
+                set => SetMarkContent("ChamferContentString", value);
+            }
+
+            /// <summary>
+            /// What a note on a reference model shows (<c>ReferenceObjectContentString</c>, "Reference object").
+            /// Checked in Tekla 2025 with <c>Mark.MarkAttributes(object, name)</c>. Each get reads the key and returns
+            /// a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent ReferenceObjectElements
+            {
+                get => GetMarkContentOrNull("ReferenceObjectContentString");
+                set => SetMarkContent("ReferenceObjectContentString", value);
+            }
 
             /// <summary>
             /// The "Frame around elements" group.
@@ -1048,6 +1033,27 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             {
                 get => GetInt32("mark_use_part_end");
                 set => SetInt32("mark_use_part_end", value);
+            }
+
+            /// <summary>
+            /// Mark content of pour objects (<c>PourContentString</c>). The pour mark dialog of the drawing editor
+            /// edits this table (checked in Tekla 2025); on the other mark pages it is named after the key, not probed.
+            /// Each get reads the key and returns a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent PourElements
+            {
+                get => GetMarkContentOrNull("PourContentString");
+                set => SetMarkContent("PourContentString", value);
+            }
+
+            /// <summary>
+            /// Mark content of pour breaks (<c>PourBreakContentString</c>), named after the key; not probed. Each get
+            /// reads the key and returns a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent PourBreakElements
+            {
+                get => GetMarkContentOrNull("PourBreakContentString");
+                set => SetMarkContent("PourBreakContentString", value);
             }
 
             /// <summary>

@@ -19,6 +19,12 @@ namespace DialogClassGenerator
         public string Description { get; set; }
 
         public List<object> Items { get; } = new List<object>();
+
+        /// <summary>The container holds the "Elements in mark" table of the page (its mark content properties go here).</summary>
+        public bool ContentTable { get; set; }
+
+        /// <summary>The container holds the table of the merged mark (Merging tab of the reinforcement marks).</summary>
+        public bool MergeTable { get; set; }
     }
 
     /// <summary>
@@ -51,6 +57,9 @@ namespace DialogClassGenerator
 
         /// <summary>For a control of another dialog with the same keys: that dialog (and panel).</summary>
         public string AidDialog { get; set; }
+
+        /// <summary>The widget name in the .aid file (tables: <c>gr_vrmark_selected_elements</c>, ...).</summary>
+        public string AidName { get; set; }
 
         public double Position { get; set; }
 

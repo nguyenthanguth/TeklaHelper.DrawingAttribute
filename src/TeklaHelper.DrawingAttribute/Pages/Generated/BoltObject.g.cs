@@ -91,7 +91,9 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Content.BoltRepresentation.VisibilityOfBolts.InMainParts = true;
             Content.BoltRepresentation.VisibilityOfBolts.InSecondaryParts = true;
             Content.BoltRepresentation.VisibilityOfBolts.InSubAssemblies = true;
-            Appearance.Color = DrawingColor.NewLine2;
+
+            Appearance.Color = DrawingColor.DarkGreen;
+
             Advanced.ACustomPresentation = "";
 
             SetAllEnabled(true);

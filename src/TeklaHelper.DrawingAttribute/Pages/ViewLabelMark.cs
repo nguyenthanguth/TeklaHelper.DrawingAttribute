@@ -1,5 +1,3 @@
-using TeklaHelper.DrawingAttribute.Marks;
-
 namespace TeklaHelper.DrawingAttribute.Pages
 {
     public sealed partial class ViewLabelMark
@@ -23,27 +21,5 @@ namespace TeklaHelper.DrawingAttribute.Pages
 
         /// <summary>Extension of the file of a detail view label row (matched by key set; only for the dialogs).</summary>
         public const string DetailViewLabelFileExtension = ".detail_view_mark";
-
-        /// <summary>
-        /// The elements of the label row (<c>ContentString</c>): what the row shows, e.g. the view name and the scale
-        /// (<see cref="MarkElementTypes.ViewLabel"/>, <see cref="MarkElementTypes.SectionMark"/>,
-        /// <see cref="MarkElementTypes.DetailMark"/>), texts, symbols and frames; null when the row has none, or text that is
-        /// no mark content (<see cref="AttributeSection.GetMarkContent"/> says why). Null empties the row. Checked in Tekla
-        /// 2025: the Open API read the elements of a view label, a section mark and a detail mark the library wrote.
-        /// <para>
-        /// Each get reads the key afresh and returns a copy: changing it changes nothing in the file until it is assigned
-        /// back.
-        /// </para>
-        /// <code>
-        /// MarkContent elements = view.Attributes.LabelMarkA1.Elements;
-        /// elements.AddText(" (preliminary)");
-        /// view.Attributes.LabelMarkA1.Elements = elements;
-        /// </code>
-        /// </summary>
-        public MarkContent Elements
-        {
-            get => GetMarkContentOrNull("ContentString");
-            set => SetMarkContent("ContentString", value);
-        }
     }
 }

@@ -75,20 +75,22 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Content.Representation.InnerContours = true;
             Content.Representation.PartialProfile.Length = 1000;
             Content.Representation.PartialProfile.OffsetFromMiddlePoint = 0;
+
             Appearance.VisibleLines.Color = DrawingColor.Yellow;
             Appearance.VisibleLines.Type = DrawingLineType.Solid;
             Appearance.HiddenLines.Color = DrawingColor.Black;
             Appearance.HiddenLines.Type = DrawingLineType.Slashed;
-            Appearance.ReferenceLines.Color = DrawingColor.NewLine1;
+            Appearance.ReferenceLines.Color = DrawingColor.Brown;
             Appearance.ReferenceLines.Type = DrawingLineType.Solid;
-            Appearance.SectionLines.Color = DrawingColor.NewLine1;
+            Appearance.SectionLines.Color = DrawingColor.Brown;
             Appearance.SectionLines.Type = DrawingLineType.Solid;
-            Appearance.OwnHiddenLines.Color = DrawingColor.NewLine1;
+            Appearance.OwnHiddenLines.Color = DrawingColor.Brown;
             Appearance.OwnHiddenLines.Type = DrawingLineType.Solid;
-            Appearance.CenterLine.Color = DrawingColor.NewLine1;
+            Appearance.CenterLine.Color = DrawingColor.Brown;
             Appearance.CenterLine.Type = DrawingLineType.Solid;
+
             Fill.PourFaces.Type = "None";
-            Fill.PourFaces.Color = DrawingColor.NewLine2;
+            Fill.PourFaces.Color = DrawingColor.DarkGreen;
             Fill.PourFaces.Background = DrawingColor.None;
             Fill.PourFaces.Scale = HatchScale.Automatic;
             Fill.PourFaces.ScalingInDirectionX = 2;
@@ -96,13 +98,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Fill.PourFaces.KeepRatioOfXAndY = false;
             Fill.PourFaces.Angle = 0;
             Fill.Sections.Type = "Automatic";
-            Fill.Sections.Color = DrawingColor.NewLine2;
+            Fill.Sections.Color = DrawingColor.DarkGreen;
             Fill.Sections.Background = DrawingColor.None;
             Fill.Sections.Scale = HatchScale.Automatic;
             Fill.Sections.ScalingInDirectionX = 2;
             Fill.Sections.ScalingInDirectionY = 1;
             Fill.Sections.KeepRatioOfXAndY = false;
             Fill.Sections.Angle = 0;
+
             Advanced.ACustomPresentation = "";
             Advanced.HatchType = 0;
             Advanced.SectionHatchHatchType = 0;

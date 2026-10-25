@@ -108,6 +108,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Visibility.MainSecondaryParts = NpWhich.MainParts;
             Visibility.SkewParts = false;
             Visibility.Bolts = false;
+
             Content.Representation.Representation = NeighborPartRepresentation.Outline;
             Content.Representation.SymbolOffset = 0;
             Content.Representation.InnerContours = true;
@@ -133,21 +134,23 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Content.Bolts.BoltRepresentation = BoltDrawAs.Value0;
             Content.Bolts.Hole = true;
             Content.Bolts.Axis = true;
+
             Appearance.VisibleLines.Color = DrawingColor.Red;
             Appearance.VisibleLines.Type = DrawingLineType.Solid;
-            Appearance.SectionLines.Color = DrawingColor.NewLine1;
+            Appearance.SectionLines.Color = DrawingColor.Brown;
             Appearance.SectionLines.Type = DrawingLineType.Solid;
             Appearance.HiddenLines.Color = DrawingColor.Red;
             Appearance.HiddenLines.Type = DrawingLineType.Dotted;
-            Appearance.OwnHiddenLines.Color = DrawingColor.NewLine1;
+            Appearance.OwnHiddenLines.Color = DrawingColor.Brown;
             Appearance.OwnHiddenLines.Type = DrawingLineType.Dotted;
             Appearance.ReferenceLines.Color = DrawingColor.Red;
             Appearance.ReferenceLines.Type = DrawingLineType.Dotted;
-            Appearance.CenterLine.Color = DrawingColor.NewLine1;
+            Appearance.CenterLine.Color = DrawingColor.Brown;
             Appearance.CenterLine.Type = DrawingLineType.DashDot;
-            Appearance.Bolts.Color = DrawingColor.NewLine1;
+            Appearance.Bolts.Color = DrawingColor.Brown;
+
             Fill.PartFaces.Type = "None";
-            Fill.PartFaces.Color = DrawingColor.NewLine2;
+            Fill.PartFaces.Color = DrawingColor.DarkGreen;
             Fill.PartFaces.Background = DrawingColor.None;
             Fill.PartFaces.Scale = HatchScale.Automatic;
             Fill.PartFaces.ScalingInDirectionX = 2;
@@ -155,13 +158,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Fill.PartFaces.KeepRatioOfXAndY = true;
             Fill.PartFaces.Angle = 0;
             Fill.Sections.Type = "Automatic";
-            Fill.Sections.Color = DrawingColor.NewLine2;
+            Fill.Sections.Color = DrawingColor.DarkGreen;
             Fill.Sections.Background = DrawingColor.None;
             Fill.Sections.Scale = HatchScale.Automatic;
             Fill.Sections.ScalingInDirectionX = 2;
             Fill.Sections.ScalingInDirectionY = 1;
             Fill.Sections.KeepRatioOfXAndY = true;
             Fill.Sections.Angle = 0;
+
             Advanced.Length = 1000;
             Advanced.OffsetFromMiddlePoint = 0;
             Advanced.DotNETScriptNames = "";

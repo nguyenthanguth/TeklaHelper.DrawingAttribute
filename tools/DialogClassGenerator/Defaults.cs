@@ -299,6 +299,9 @@ namespace DialogClassGenerator
                 keys.Add(key);
                 w.Line($"{property} = {HandWrittenExpression(spec, key, type)};");
             }
+            // The statements by the tab or group they set, written group after group in the order of the page (Content,
+            // General, ..., Advanced): a mark content property follows its tab, not the key's control in Advanced
+            var statements = new List<(string Path, List<string> Lines)>();
             foreach ((string path, Control control) in ControlPaths(page, string.Empty))
             {
                 if (keys.Contains(control.Key))
@@ -313,26 +316,71 @@ namespace DialogClassGenerator
                 {
                     // Mark content is built with MarkContent, not written as XML: through the page's MarkContent property
                     // where it has one
-                    string property = ContentProperties.PropertyFor(spec.Class, control.Key);
+                    string property = ContentPropertyPath(page, path, control);
                     content[0] = (property != null ? property + " = " : $"SetMarkContent({Literal(control.Key)}, ") + content[0];
                     content[content.Count - 1] += property != null ? ";" : ");";
-                    content.ForEach(w.Line);
+                    statements.Add((property ?? path, content));
                     continue;
                 }
 
-                string contentProperty = ContentProperties.PropertyFor(spec.Class, control.Key);
+                string contentProperty = ContentPropertyPath(page, path, control);
                 if (contentProperty != null)
                 {
                     // A mark content key whose default is empty: content without elements, which SetMarkContent writes as
                     // the empty text the dialogs store; any other text no MarkContent gives back is set as text (none now)
                     AttributeValue value = AttributeValue.Parse(text);
-                    w.Line(value.Kind == AttributeValueKind.String && value.AsString().Length == 0
-                        ? $"{contentProperty} = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent();"
-                        : $"SetString({Literal(control.Key)}, {Expression(control, text)});");
+                    statements.Add((contentProperty, new List<string>
+                    {
+                        value.Kind == AttributeValueKind.String && value.AsString().Length == 0
+                            ? $"{contentProperty} = new global::TeklaHelper.DrawingAttribute.Marks.MarkContent();"
+                            : $"SetString({Literal(control.Key)}, {Expression(control, text)});",
+                    }));
                     continue;
                 }
 
-                w.Line($"{path} = {Expression(control, text)};");
+                statements.Add((path, new List<string> { $"{path} = {Expression(control, text)};" }));
+            }
+
+            // The rank of a statement: the position in the page of its tab or group, or of the run of page-level controls its
+            // control belongs to (a run between two tabs stays there); statements on the page itself with no control of their
+            // own (the content properties of the dimension marks, whose table is on the page) come first, groups the page
+            // does not list (Advanced) last
+            var ranks = new Dictionary<string, int>(StringComparer.Ordinal);
+            int run = -1;
+            for (int i = 0; i < page.Items.Count; i++)
+            {
+                switch (page.Items[i])
+                {
+                    case Container child:
+                        ranks[child.PropertyName] = i;
+                        run = -1;
+                        break;
+                    case Control control:
+                        run = run < 0 ? i : run;
+                        ranks[control.PropertyName] = run;
+                        break;
+                }
+            }
+
+            int Rank(string path)
+            {
+                int dot = path.IndexOf('.');
+                return ranks.TryGetValue(dot < 0 ? path : path.Substring(0, dot), out int rank) ? rank : dot < 0 ? -1 : page.Items.Count;
+            }
+
+            bool first = spec.HandWrittenDefaults.Length == 0;
+            foreach (var group in statements.Select((statement, index) => (statement, index)).GroupBy(s => Rank(s.statement.Path)).OrderBy(g => g.Key))
+            {
+                if (!first)
+                {
+                    w.Line();
+                }
+
+                first = false;
+                foreach (var item in group.OrderBy(s => s.index))
+                {
+                    item.statement.Lines.ForEach(w.Line);
+                }
             }
 
             foreach ((string property, _, _, _) in LabelMarkProperties(spec))
@@ -360,6 +408,30 @@ namespace DialogClassGenerator
 
             return MarkContentCode.TryWrite(spec.Class, control.Key, value.AsString(),
                 number => Named("global::TeklaHelper.DrawingAttribute.DrawingColor", number, ColorNames.TryGetValue(number, out string color) ? color : null));
+        }
+
+        /// <summary>
+        /// The path from the page of the MarkContent property of a key (<c>Content.MainPartElements</c>,
+        /// <c>Advanced.PourElements</c>); null when the key has none. <paramref name="path"/> is the path of its control.
+        /// </summary>
+        private static string ContentPropertyPath(Container page, string path, Control control)
+        {
+            // The same entry the page class declared the property from, so that the two always agree
+            var entry = CurrentContent.FirstOrDefault(e => e.Key == control.Key);
+            if (entry.Property == null)
+            {
+                return null;
+            }
+
+            switch (entry.Where)
+            {
+                case ContentProperties.Location.Table:
+                    return ContainerPath(page, CurrentTableHost) + entry.Property;
+                case ContentProperties.Location.Merge:
+                    return ContainerPath(page, CurrentMergeHost) + entry.Property;
+                default:
+                    return path.Substring(0, path.Length - control.PropertyName.Length) + entry.Property;
+            }
         }
 
         /// <summary>The default of a property of the hand-written part of a page, as a C# expression.</summary>
@@ -406,7 +478,7 @@ namespace DialogClassGenerator
         private static readonly Dictionary<int, string> ColorNames = new Dictionary<int, string>
         {
             [0] = "None", [130] = "Gray30", [131] = "Gray50", [132] = "Gray70", [133] = "Gray90", [152] = "Invisible", [153] = "Black",
-            [154] = "NewLine1", [155] = "NewLine2", [156] = "NewLine3", [157] = "NewLine4", [158] = "NewLine5", [159] = "NewLine6",
+            [154] = "Brown", [155] = "DarkGreen", [156] = "DarkBlue", [157] = "Teal", [158] = "Orange", [159] = "Gray",
             [160] = "Red", [161] = "Green", [162] = "Blue", [163] = "Cyan", [164] = "Yellow", [165] = "Magenta",
         };
 

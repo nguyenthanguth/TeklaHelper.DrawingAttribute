@@ -80,12 +80,13 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             SymbolSelection.Placing.Place.Quarter.Quarter1 = true;
             SymbolSelection.Placing.Place.Quarter.Quarter3 = true;
             SymbolSelection.Placing.Place.Quarter.Quarter2 = true;
-            Appearance.Symbol.Color = DrawingColor.NewLine2;
+
+            Appearance.Symbol.Color = DrawingColor.DarkGreen;
             Appearance.Symbol.Height = 2.5;
             Appearance.Symbol.Angle = 0;
             Appearance.Frame.Type = FrameAroundMarkType.Round;
             Appearance.Frame.LeaderLine = SymbolLeaderLineType.NoLeaderLine;
-            Appearance.Frame.Color = DrawingColor.NewLine2;
+            Appearance.Frame.Color = DrawingColor.DarkGreen;
             Appearance.Text.BackgroundMask = Pages.BackgroundMask.Opaque;
             Appearance.Text.Font = "romsim";
             Appearance.Text.Alignment = PlacingAlignment.Left;
@@ -94,6 +95,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Appearance.Arrow.Type = TextArrowType.Value0;
             Appearance.Arrow.Height = 2;
             Appearance.Arrow.Width = 2.5;
+
             General.LevelMarkContent.PrefixForPositiveLevel = PositiveLevelPrefix.Plus;
             General.LevelMarkContent.VisibilityOfNumericValue = DimensionValueVisibility.Visible;
             General.LevelMarkContent.Postfix = "";
@@ -101,7 +103,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             General.LevelMarkFormat.Format = AngleDimensionFormat.NoDecimals;
             General.LevelMarkFormat.UseGrouping = false;
             General.LevelMarkFormat.Units = LevelMarkUnits.Automatic;
+
             MaximumDistance = 0;
+
             Advanced.Type = 3;
             Advanced.MarkType = 0;
             Advanced.ACustomPresentation = "";

@@ -70,10 +70,12 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             Grid.DimensionCreation.OverallDimension = true;
             Grid.DimensionPositioning.Horizontal = GridDimensionHorizontalPosition.Left;
             Grid.DimensionPositioning.Vertical = GridDimensionVerticalPosition.Above;
+
             Parts.OutsideDimensions = 25;
             Parts.InsideDimensions = 25;
             Parts.IncludePartsNotEntirelyInView = false;
             Parts.MaximumNumberOfOutsideDimensions = 3;
+
             Advanced.ObjectGroupDimensioningRules = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!DOCTYPE TSGadim><DimensioningRules/>";
 
             SetAllEnabled(true);

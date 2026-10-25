@@ -62,10 +62,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Content.Lines.HideLinesBehindOtherRebars = false;
             Content.Symbols.MeshSymbol = 1;
             Content.Symbols.MeshSymbolSize = 1;
+
             Appearance.VisibleLines.Color = (DrawingColor)(3);
             Appearance.VisibleLines.Type = DrawingLineType.Solid;
             Appearance.HiddenLines.Color = DrawingColor.Invisible;
             Appearance.HiddenLines.Type = DrawingLineType.Solid;
+
             Advanced.Visibility = 1;
             Advanced.ACustomPresentation = "";
 

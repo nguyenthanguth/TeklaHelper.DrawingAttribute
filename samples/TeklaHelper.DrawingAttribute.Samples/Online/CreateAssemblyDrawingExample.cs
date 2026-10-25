@@ -49,8 +49,8 @@ namespace TeklaHelper.DrawingAttribute.Samples.Online
             context.Step("The view properties of every view of the drawing");
             ViewProperties views = ViewProperties.CreateDefault();
             views.Objects.Part.Content.HiddenLines.HiddenLines = true;
-            views.Marks.PartMark.MainPartElements = new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.AssemblyPosition);
-            views.Marks.PartMark.SecondaryPartElements = new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.PartPosition);
+            views.Marks.PartMark.Content.MainPartElements = new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.AssemblyPosition);
+            views.Marks.PartMark.Content.SecondaryPartElements = new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.PartPosition);
             string viewName = TeklaSession.UniqueName("tda_ad_views");
 
             context.Step("The assembly drawing properties");

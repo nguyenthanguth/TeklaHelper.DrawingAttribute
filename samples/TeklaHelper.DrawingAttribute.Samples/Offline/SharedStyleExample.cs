@@ -27,7 +27,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
             mark.Content.Font.Color = DrawingColor.Blue;
             mark.General.FrameAroundMark.Type = FrameAroundMarkType.Rectangular;
             mark.General.LeaderLine.Arrow = LeaderLineArrow.SolidArrow;
-            mark.MainPartElements = new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.AssemblyPosition);
+            mark.Content.MainPartElements = new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.AssemblyPosition);
             PartObject part = style.Objects.Part;
             part.Content.Representation.Representation = Representation.Exact;
             part.Content.HiddenLines.HiddenLines = true;
@@ -47,7 +47,7 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
                 drawing.Marks.PartMark.CopyFrom(mark);                              // vpm.* -> dpm.*
                 drawing.Objects.Part.CopyFrom(part);                                // vp.* -> dp.*
                 string path = drawing.SaveTo(context.OutputDirectory, "sample_style");
-                Console.WriteLine($"    {path}: dpm.ContentString1 = {drawing.Marks.PartMark.MainPartElements}");
+                Console.WriteLine($"    {path}: dpm.ContentString1 = {drawing.Marks.PartMark.Content.MainPartElements}");
             }
 
             context.Step("The part mark file of the drawing editor (.pm) uses the same page");

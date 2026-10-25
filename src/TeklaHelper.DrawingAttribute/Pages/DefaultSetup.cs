@@ -86,7 +86,7 @@ namespace TeklaHelper.DrawingAttribute.Pages
             PartMark partMark = marks.PartMark;
             partMark.General.VisibilityOfMark.VisibilityInView = VisibilityInView.Always;
             partMark.Advanced.Create = 1;
-            partMark.MainPartElements = new MarkContent().Add(MarkElementTypes.PartMark.AssemblyPosition);
+            partMark.Content.MainPartElements = new MarkContent().Add(MarkElementTypes.PartMark.AssemblyPosition);
 
             marks.BoltMark.General.VisibilityOfBoltMarks.VisibilityInView = VisibilityInView.None;
         }

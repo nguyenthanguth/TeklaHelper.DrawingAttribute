@@ -120,12 +120,14 @@ namespace TeklaHelper.DrawingAttribute.Pages
             Content.Placing.Place.Quarter.Quarter1 = true;
             Content.Placing.Place.Quarter.Quarter3 = true;
             Content.Placing.Place.Quarter.Quarter2 = true;
+
             Appearance.Text.Color = DrawingColor.Yellow;
             Appearance.Text.Height = 2;
             Appearance.Text.Font = "Arial";
             Appearance.Line.Type = WeldMarkLineShape.SingleLine;
             Appearance.Line.Color = DrawingColor.Black;
             Appearance.Line.BackgroundMask = Pages.BackgroundMask.Opaque;
+
             Advanced.VisibleInViews = 0;
             Advanced.InAllViews = 0;
             Advanced.ArrowType = 0;

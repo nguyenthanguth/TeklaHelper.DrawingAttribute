@@ -21,7 +21,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
         {
             var view = new ViewProperties();
 
-            view.Attributes.LabelMarkA1.Elements = new MarkContent()
+            view.Attributes.LabelMarkA1.Content.Elements = new MarkContent()
                 .Add(MarkElementTypes.ViewLabel.ViewName, new MarkFormat { Font = "Tahoma", Color = DrawingColor.Green, Height = 5.158 })
                 .AddText(" - ")
                 .Add(MarkElementTypes.ViewLabel.Scale);
@@ -88,10 +88,10 @@ namespace TeklaHelper.DrawingAttribute.Tests
             const string compact = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!DOCTYPE Mark><Mark><MarkPart groupid=\"0\"><Element name=\"NAME\" value=\"\" subType=\"82\"><Format font=\"Arial\" color=\"155\" height=\"2.500\"/></Element></MarkPart></Mark>";
             view.SetString("ViewLabelMarkA1.ContentString", compact);
 
-            view.Attributes.LabelMarkA1.Elements = view.Attributes.LabelMarkA1.Elements;
+            view.Attributes.LabelMarkA1.Content.Elements = view.Attributes.LabelMarkA1.Content.Elements;
             Assert.Equal(compact, view.GetString("ViewLabelMarkA1.ContentString"));
 
-            view.Attributes.LabelMarkA1.Elements = new MarkContent().Add(MarkElementTypes.ViewLabel.Scale);
+            view.Attributes.LabelMarkA1.Content.Elements = new MarkContent().Add(MarkElementTypes.ViewLabel.Scale);
             Assert.StartsWith("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><!DOCTYPE Mark><Mark><MarkPart", view.GetString("ViewLabelMarkA1.ContentString"), StringComparison.Ordinal);
         }
 

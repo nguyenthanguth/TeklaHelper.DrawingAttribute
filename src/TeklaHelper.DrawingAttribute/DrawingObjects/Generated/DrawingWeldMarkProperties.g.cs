@@ -88,12 +88,14 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Content.Place.Quarter.Quarter1 = true;
             Content.Place.Quarter.Quarter3 = true;
             Content.Place.Quarter.Quarter2 = true;
+
             Appearance.Text.Text.Color = DrawingColor.Green;
             Appearance.Text.Text.BackgroundMask = Pages.BackgroundMask.Opaque;
             Appearance.Text.Text.Height = 2.5;
             Appearance.Text.Text.Font = "Arial";
             Appearance.Text.Line.Color = DrawingColor.Green;
             Appearance.Text.Line.Type = DrawingWeldMarkLineShape.SingleLine;
+
             Advanced.ArrowType = 1;
             Advanced.ArrowHeight = 1;
             Advanced.ArrowWidth = 1;

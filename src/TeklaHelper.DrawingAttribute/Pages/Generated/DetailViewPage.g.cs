@@ -173,24 +173,28 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             ViewLabel.Text.A4 = "";
             ViewLabel.Text.A5 = "";
             ViewLabel.Symbol.Symbol = ViewLabelSymbol.None;
-            ViewLabel.Symbol.Color = DrawingColor.NewLine1;
+            ViewLabel.Symbol.Color = DrawingColor.Brown;
             ViewLabel.Symbol.Size = 0;
             ViewLabel.Symbol.LineLength = SymbolLineLength.Minimal;
             ViewLabel.Symbol.LineLengthViewLabelCustomLength = 0;
             ViewLabel.LabelPosition.Vertical = LabelPositionVertical.Above;
             ViewLabel.LabelPosition.Horizontal = LabelPositionHorizontal.CenterAlignedToViewFrame;
+
             DetailBoundary.Shape.ShapeOfTheBoundary = DetailBoundaryShape.Circle;
-            DetailBoundary.BoundingLine.Color = DrawingColor.NewLine1;
+            DetailBoundary.BoundingLine.Color = DrawingColor.Brown;
             DetailBoundary.BoundingLine.LineType = DrawingLineType.Solid;
+
             DetailMark.Text.A1 = "<< Mark >>";
             DetailMark.Text.A2 = "";
             DetailMark.Text.A3 = "";
             DetailMark.Text.A4 = "";
             DetailMark.Text.A5 = "";
             DetailMark.Symbol.Symbol = DetailMarkSymbol.None;
-            DetailMark.Symbol.Color = DrawingColor.NewLine1;
+            DetailMark.Symbol.Color = DrawingColor.Brown;
             DetailMark.Symbol.SymbolSize = 0;
+
             DetailName = "A";
+
             Advanced.DetailMarkSymbolPositionX = 0;
             Advanced.DetailMarkSymbolPositionY = 0;
             Advanced.ViewLabelMarkSymbolPositionX = 0;

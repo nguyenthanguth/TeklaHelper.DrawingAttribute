@@ -72,17 +72,18 @@ namespace TeklaHelper.DrawingAttribute.Pages
         public void SetDefaults()
         {
             Content.FrameAroundElements.Type = FrameAroundElementsType.Rectangular;
-            Content.FrameAroundElements.Color = DrawingColor.NewLine2;
-            Content.Font.Color = DrawingColor.NewLine2;
+            Content.FrameAroundElements.Color = DrawingColor.DarkGreen;
+            Content.Font.Color = DrawingColor.DarkGreen;
             Content.Font.Height = 2.5;
             Content.Font.Font = "romsim";
+            Content.Elements = new MarkContent();
+
             Position.ShowOn = Pages.ShowOn.BothSides;
             Position.TextPosition = Pages.TextPosition.AboveLine;
             Position.HorizontalOffset = 0;
             Position.VerticalOffset = 0;
             Position.TextRotation = Pages.TextRotation.AlwaysRotate;
             Position.Alignment = PositionAlignment.Center;
-            Elements = new MarkContent();
 
             SetAllEnabled(true);
         }
@@ -161,6 +162,24 @@ namespace TeklaHelper.DrawingAttribute.Pages
             /// The "Font" group.
             /// </summary>
             public FontGroup Font => _font ?? (_font = new FontGroup(Values, Prefix));
+
+            /// <summary>
+            /// The elements of the label row (<c>ContentString</c>): what the row shows, e.g. the view name and the
+            /// scale (<see cref="MarkElementTypes.ViewLabel"/>, <see
+            /// cref="MarkElementTypes.SectionMark"/>, <see
+            /// cref="MarkElementTypes.DetailMark"/>), texts, symbols and
+            /// frames; null when the row has none, or text that is no mark content (<see
+            /// cref="AttributeSection.GetMarkContent"/> says why). Checked in
+            /// Tekla 2025: the Open API read the elements of a view label, a section mark and a detail mark the library
+            /// wrote. To change a row: <c>MarkContent row = view.Attributes.LabelMarkA1.Content.Elements; row.AddText("
+            /// (preliminary)"); view.Attributes.LabelMarkA1.Content.Elements = row;</c> Each get reads the key and
+            /// returns a copy, to be assigned back after a change; null empties the key.
+            /// </summary>
+            public MarkContent Elements
+            {
+                get => GetMarkContentOrNull("ContentString");
+                set => SetMarkContent("ContentString", value);
+            }
 
             /// <summary>
             /// The "Frame around elements" group.

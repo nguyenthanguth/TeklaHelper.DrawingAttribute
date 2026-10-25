@@ -72,11 +72,15 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             TextStyle.Height = 5;
             TextStyle.Font = "Arial";
             TextStyle.Effect = TextEffect.Underlined;
+
             Frame.LineType = DrawingLineType.Solid;
             Frame.Color = DrawingColor.Invisible;
+
             Scaling.Type = ForeignObjectScaling.NoScaling;
+
             Link.Drawing = "";
             Link.Text = "";
+
             Advanced.TextProportion = 0.75;
             Advanced.TextSlant = 0;
             Advanced.TextStyle = 0;

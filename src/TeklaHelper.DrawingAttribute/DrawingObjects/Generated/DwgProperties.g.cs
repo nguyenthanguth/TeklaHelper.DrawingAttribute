@@ -64,9 +64,12 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Scaling.Type = EmbeddedObjectScaling.ScaleXY;
             Scaling.ScaleInX = 1;
             Scaling.ScaleInY = 1;
+
             Frame.LineType = DrawingLineType.Solid;
             Frame.Color = DrawingColor.Green;
+
             File.Name = "";
+
             Link.Text = "";
 
             SetAllEnabled(true);

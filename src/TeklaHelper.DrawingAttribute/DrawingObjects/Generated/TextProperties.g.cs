@@ -84,7 +84,9 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             Appearance.Placing.Place.Quarter.Quarter1 = true;
             Appearance.Placing.Place.Quarter.Quarter3 = true;
             Appearance.Placing.Place.Quarter.Quarter2 = true;
+
             SymbolSelection.Number = 0;
+
             General.LevelMarkContent.PrefixForPositiveLevel = PositiveLevelPrefix.Plus;
             General.LevelMarkContent.VisibilityOfNumericValue = DimensionValueVisibility.Visible;
             General.LevelMarkContent.Postfix = "";
@@ -92,6 +94,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
             General.LevelMarkFormat.Format = AngleDimensionFormat.NoDecimals;
             General.LevelMarkFormat.UseGrouping = false;
             General.LevelMarkFormat.Units = LevelMarkUnits.Automatic;
+
             Advanced.Type = 0;
             Advanced.MarkType = 0;
             Advanced.ACustomPresentation = "";

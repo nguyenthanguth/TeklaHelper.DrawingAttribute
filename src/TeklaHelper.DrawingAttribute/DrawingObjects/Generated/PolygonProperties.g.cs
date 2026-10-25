@@ -135,27 +135,34 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         public void SetDefaults()
         {
             BehindModelObjects = false;
+
             Line.Type = DrawingLineType.Solid;
-            Line.Color = DrawingColor.NewLine2;
+            Line.Color = DrawingColor.DarkGreen;
             Line.BulgeForAllLines = 0;
+
             Fill.Type = "None";
-            Fill.Color = DrawingColor.NewLine2;
+            Fill.Color = DrawingColor.DarkGreen;
             Fill.Background = DrawingColor.None;
+
             ScaleAndRotationOfFill.ScalingInDirectionX = 2;
             ScaleAndRotationOfFill.ScalingInDirectionY = 1;
             ScaleAndRotationOfFill.Angle = 0;
             ScaleAndRotationOfFill.HatchOffsetX = 0;
             ScaleAndRotationOfFill.HatchOffsetY = 0;
             ScaleAndRotationOfFill.KeepRatioOfXAndY = true;
+
             FileType = ForeignObjectFileType.ASCII;
             FileName = "";
             ExtraInfo = "";
             ScaleInX = 0;
             ScaleInY = 0;
+
             TextStyle.Color = DrawingColor.None;
             TextStyle.Height = 0;
             TextStyle.Font = "";
+
             Scaling.Type = ForeignObjectScaling.NoScaling;
+
             Advanced.HatchType = 0;
             Advanced.TextProportion = 0;
             Advanced.TextSlant = 0;

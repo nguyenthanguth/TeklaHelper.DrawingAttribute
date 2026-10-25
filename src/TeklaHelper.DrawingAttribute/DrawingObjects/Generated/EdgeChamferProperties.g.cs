@@ -44,7 +44,7 @@ namespace TeklaHelper.DrawingAttribute.DrawingObjects
         /// </summary>
         public void SetDefaults()
         {
-            VisibleLines.Color = DrawingColor.NewLine1;
+            VisibleLines.Color = DrawingColor.Brown;
             VisibleLines.Type = DrawingLineType.Solid;
 
             SetAllEnabled(true);

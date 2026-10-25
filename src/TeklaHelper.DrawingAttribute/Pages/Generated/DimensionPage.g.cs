@@ -98,6 +98,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             General.Placing.Placing.ShortDimensions = ShortDimensionPlacing.Inside;
             General.Placing.Placing.Place.SearchMargin = 5;
             General.Placing.Placing.Place.MinimumDistance = 10;
+
             Appearance.LineArrow.Color = DrawingColor.Black;
             Appearance.LineArrow.BackgroundMask = Pages.BackgroundMask.Opaque;
             Appearance.LineArrow.ArrowShape = DimensionArrowShape.LineArrow;
@@ -110,12 +111,13 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             Appearance.Text.Font = "Arial";
             Appearance.Text.Frame = DimensionTextFrame.None;
             Appearance.Text.Place = DimensionTextPlacing.AboveDimensionLine;
+
             Advanced.PlateSideMarks.Type = PlateSideMarkType.None;
             Advanced.PlateSideMarks.Offset = 5;
             Advanced.PlateSideMarks.Color = DrawingColor.Black;
             Advanced.PlateSideMarks.Size = 3.5;
-            Advanced.CheckDimensions.LineColor = DrawingColor.NewLine4;
-            Advanced.CheckDimensions.TextColor = DrawingColor.NewLine4;
+            Advanced.CheckDimensions.LineColor = DrawingColor.Teal;
+            Advanced.CheckDimensions.TextColor = DrawingColor.Teal;
             Advanced.CheckDimensions.TextHeight = 2.5;
             Advanced.Exaggeration.Exaggeration = Pages.Exaggeration.None;
             Advanced.Exaggeration.Direction = ExaggerationDirection.LeftDown;
@@ -123,6 +125,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             Advanced.Exaggeration.Width = 5;
             Advanced.Exaggeration.Position = 5;
             Advanced.Exaggeration.Height = 5;
+
             AdvancedGroup.RadiusDimType = 1;
             AdvancedGroup.CurvedRadialDimType = 0;
             AdvancedGroup.MainType = 1;

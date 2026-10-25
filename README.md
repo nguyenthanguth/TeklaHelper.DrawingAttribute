@@ -311,10 +311,11 @@ under [Dimension properties](#dimension-properties).
 
 What a mark or a label row shows — the "Elements in mark" of a mark dialog — is stored as XML in the `ContentString`
 keys (and a few others, such as `aLabelContent`). `MarkContent` builds it from elements; the label rows (`LabelMarkA1` ..., `SectionMarkA1` ..., `DetailMarkA1` ...)
-have it as `Elements`, and any section reads and writes it with `GetMarkContent` / `SetMarkContent`:
+have it as `Content.Elements` (the Content tab of their dialog), and any section reads and writes it with
+`GetMarkContent` / `SetMarkContent`:
 
 ```csharp
-vi.Attributes.LabelMarkA1.Elements = new MarkContent()
+vi.Attributes.LabelMarkA1.Content.Elements = new MarkContent()
     .Add(MarkElementTypes.ViewLabel.ViewName, new MarkFormat { Font = "Tahoma", Color = DrawingColor.Green, Height = 5 })
     .AddText(" ")
     .Add(MarkElementTypes.ViewLabel.Scale)
@@ -326,10 +327,10 @@ mark.Elements = new MarkContent()                                        // the 
     .Add(MarkElementTypes.PartMark.PartPosition)
     .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new MarkContent().Add(MarkElementTypes.PartMark.Profile));
 
-MarkContent read = vi.Attributes.LabelMarkA1.Elements;                  // the elements of an existing file
+MarkContent read = vi.Attributes.LabelMarkA1.Content.Elements;          // the elements of an existing file
 ```
 
-`Elements` and `GetMarkContent` return a copy: change it, then assign it back (`Elements = read`).
+`Elements` and `GetMarkContent` return a copy: change it, then assign it back (`Content.Elements = read`).
 
 - Elements: the properties of each kind of mark (`MarkElementTypes.PartMark`, `BoltMark`, `ConnectionMark`,
   `ReinforcementMark`, `ReinforcementMeshMark`, `SurfaceTreatmentMark`, `EdgeChamferMark`, `PourMark`, `ViewLabel`,
@@ -349,21 +350,26 @@ MarkContent read = vi.Attributes.LabelMarkA1.Elements;                  // the e
   2025: a view loaded with a different text in each table, its marks read through the Open API; model objects added
   for the probe and removed afterwards):
 
-  | Page | `ContentString1` | `ContentString2` | `ContentString3` | `ContentString4` |
+  The properties are where the dialog shows the table: in the Content tab (`page.Content.MainPartElements`), the merged
+  mark in the Merging tab (`page.Merging.MergedMarkElements`), on the page itself for the dimension marks, which have no
+  tabs:
+
+  | Section | `ContentString1` | `ContentString2` | `ContentString3` | `ContentString4` |
   | --- | --- | --- | --- | --- |
-  | `PartMark` | `MainPartElements` | `SecondaryPartElements` | `SubAssemblyMainPartElements` | `SubAssemblySecondaryPartElements` |
-  | `BoltMark` | `SiteBoltElements` | `WorkshopBoltElements` | | |
-  | `ReinforcementMark` | `SingleElements` | `GroupElements` | `MergedMarkElements` (not seen read) | `MeshElements` |
-  | `NeighborPartMark` | `MainPartElements` | `SecondaryPartElements` (not seen read) | | |
-  | `NeighborReinforcementMark` | `SingleElements` | `GroupElements` | `MergedMarkElements` (not seen read) | `MeshElements` |
-  | `ConnectionMark`, `SurfaceTreatmentMark` (one table) | `Elements` | | | |
-  | `AssociativeNoteProperties` (`.note`) | `PartElements` | `BoltElements` | `SurfaceTreatmentElements` (not checked) | `ReinforcementElements` |
+  | `PartMark.Content` | `MainPartElements` | `SecondaryPartElements` | `SubAssemblyMainPartElements` | `SubAssemblySecondaryPartElements` |
+  | `BoltMark.Content` | `SiteBoltElements` | `WorkshopBoltElements` | | |
+  | `ReinforcementMark.Content` / `.Merging` | `SingleElements` | `GroupElements` | `Merging.MergedMarkElements` (not seen read) | `MeshElements` |
+  | `NeighborPartMark.Content` | `MainPartElements` | `SecondaryPartElements` (not seen read) | | |
+  | `NeighborReinforcementMark.Content` / `.Merging` | `SingleElements` | `GroupElements` | `Merging.MergedMarkElements` (not seen read) | `MeshElements` |
+  | `ConnectionMark.Content`, `SurfaceTreatmentMark.Content` (one table) | `Elements` | | | |
+  | `AssociativeNoteProperties.Content` (`.note`) | `PartElements` | `BoltElements` | `SurfaceTreatmentElements` (not checked) | `ReinforcementElements` |
   | `DimensionMark` (the marks of `.dim`; not probed, from the menu and the files) | `PartElements` | `BoltElements` | `SurfaceTreatmentElements` | `ReinforcementElements` |
 
   The associative note has a table per kind of object (every part reads `ContentString1`, every reinforcement
-  `ContentString4`, a reference model `ReferenceObjectElements`); the mark pages a table per kind of part, bolt or bar.
-  Every mark page also has `PourElements`, `PourBreakElements`, `EdgeChamferElements` and `ReferenceObjectElements`
-  (`PourContentString`, ... named after the key; the pour mark dialog edits `PourContentString`). Like `Elements`, each
+  `ContentString4`, an edge chamfer `Content.EdgeChamferElements`, a reference model `Content.ReferenceObjectElements`);
+  the mark pages a table per kind of part, bolt or bar. Every mark page also has `Advanced.PourElements`,
+  `Advanced.PourBreakElements`, `Advanced.EdgeChamferElements` and `Advanced.ReferenceObjectElements` (keys the dialog
+  does not show, named after the key); the pour mark's own table, which its dialog edits, is `PourMark.Content.PourElements`. Like `Elements`, each
   property returns a copy. Keys with such a property have no string property; `GetString` / `SetString` with the key
   give the raw XML. Content without elements is written as an empty text, as the dialogs store an empty table.
 - The mark dialogs of the drawing editor have **one** table, not one per kind of object: the file's `Elements` reads

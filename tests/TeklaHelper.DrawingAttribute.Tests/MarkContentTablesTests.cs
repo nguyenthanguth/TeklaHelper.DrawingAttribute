@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using TeklaHelper.DrawingAttribute.DrawingObjects;
 using TeklaHelper.DrawingAttribute.Marks;
 using TeklaHelper.DrawingAttribute.Pages;
@@ -30,10 +32,10 @@ namespace TeklaHelper.DrawingAttribute.Tests
         {
             PartMark page = new ViewProperties().Marks.PartMark;
 
-            AssertTable(page, "ContentString1", () => page.MainPartElements, c => page.MainPartElements = c);
-            AssertTable(page, "ContentString2", () => page.SecondaryPartElements, c => page.SecondaryPartElements = c);
-            AssertTable(page, "ContentString3", () => page.SubAssemblyMainPartElements, c => page.SubAssemblyMainPartElements = c);
-            AssertTable(page, "ContentString4", () => page.SubAssemblySecondaryPartElements, c => page.SubAssemblySecondaryPartElements = c);
+            AssertTable(page, "ContentString1", () => page.Content.MainPartElements, c => page.Content.MainPartElements = c);
+            AssertTable(page, "ContentString2", () => page.Content.SecondaryPartElements, c => page.Content.SecondaryPartElements = c);
+            AssertTable(page, "ContentString3", () => page.Content.SubAssemblyMainPartElements, c => page.Content.SubAssemblyMainPartElements = c);
+            AssertTable(page, "ContentString4", () => page.Content.SubAssemblySecondaryPartElements, c => page.Content.SubAssemblySecondaryPartElements = c);
         }
 
         [Fact]
@@ -41,8 +43,8 @@ namespace TeklaHelper.DrawingAttribute.Tests
         {
             BoltMark page = new ViewProperties().Marks.BoltMark;
 
-            AssertTable(page, "ContentString1", () => page.SiteBoltElements, c => page.SiteBoltElements = c);
-            AssertTable(page, "ContentString2", () => page.WorkshopBoltElements, c => page.WorkshopBoltElements = c);
+            AssertTable(page, "ContentString1", () => page.Content.SiteBoltElements, c => page.Content.SiteBoltElements = c);
+            AssertTable(page, "ContentString2", () => page.Content.WorkshopBoltElements, c => page.Content.WorkshopBoltElements = c);
         }
 
         [Fact]
@@ -50,10 +52,10 @@ namespace TeklaHelper.DrawingAttribute.Tests
         {
             ReinforcementMark page = new ViewProperties().Marks.ReinforcementMark;
 
-            AssertTable(page, "ContentString1", () => page.SingleElements, c => page.SingleElements = c);
-            AssertTable(page, "ContentString2", () => page.GroupElements, c => page.GroupElements = c);
-            AssertTable(page, "ContentString3", () => page.MergedMarkElements, c => page.MergedMarkElements = c);
-            AssertTable(page, "ContentString4", () => page.MeshElements, c => page.MeshElements = c);
+            AssertTable(page, "ContentString1", () => page.Content.SingleElements, c => page.Content.SingleElements = c);
+            AssertTable(page, "ContentString2", () => page.Content.GroupElements, c => page.Content.GroupElements = c);
+            AssertTable(page, "ContentString3", () => page.Merging.MergedMarkElements, c => page.Merging.MergedMarkElements = c);
+            AssertTable(page, "ContentString4", () => page.Content.MeshElements, c => page.Content.MeshElements = c);
         }
 
         [Fact]
@@ -61,11 +63,11 @@ namespace TeklaHelper.DrawingAttribute.Tests
         {
             AssociativeNoteProperties page = AssociativeNoteAttributeFile.CreateDefault().Properties;
 
-            AssertTable(page, "ContentString1", () => page.PartElements, c => page.PartElements = c);
-            AssertTable(page, "ContentString2", () => page.BoltElements, c => page.BoltElements = c);
-            AssertTable(page, "ContentString3", () => page.SurfaceTreatmentElements, c => page.SurfaceTreatmentElements = c);
-            AssertTable(page, "ContentString4", () => page.ReinforcementElements, c => page.ReinforcementElements = c);
-            AssertTable(page, "ReferenceObjectContentString", () => page.ReferenceObjectElements, c => page.ReferenceObjectElements = c);
+            AssertTable(page, "ContentString1", () => page.Content.PartElements, c => page.Content.PartElements = c);
+            AssertTable(page, "ContentString2", () => page.Content.BoltElements, c => page.Content.BoltElements = c);
+            AssertTable(page, "ContentString3", () => page.Content.SurfaceTreatmentElements, c => page.Content.SurfaceTreatmentElements = c);
+            AssertTable(page, "ContentString4", () => page.Content.ReinforcementElements, c => page.Content.ReinforcementElements = c);
+            AssertTable(page, "ReferenceObjectContentString", () => page.Content.ReferenceObjectElements, c => page.Content.ReferenceObjectElements = c);
         }
 
         [Fact]
@@ -75,18 +77,18 @@ namespace TeklaHelper.DrawingAttribute.Tests
 
             Assert.Equal(
                 new[] { MarkElementTypes.PartMark.PartPosition, MarkElementTypes.PartMark.Profile },
-                note.PartElements.OfType<MarkPropertyElement>().Select(e => e.Type));
-            Assert.True(Assert.Single(note.BoltElements.OfType<MarkPropertyElement>()).Type.IsSizeElement);
-            Assert.Contains(note.ReinforcementElements, e => e is MarkXmlElement x && x.Tag == "PullOut");
-            Assert.Null(note.PourBreakElements);
+                note.Content.PartElements.OfType<MarkPropertyElement>().Select(e => e.Type));
+            Assert.True(Assert.Single(note.Content.BoltElements.OfType<MarkPropertyElement>()).Type.IsSizeElement);
+            Assert.Contains(note.Content.ReinforcementElements, e => e is MarkXmlElement x && x.Tag == "PullOut");
+            Assert.Null(note.Advanced.PourBreakElements);
             Assert.Equal(string.Empty, note.GetString("PourBreakContentString", null));
-            Assert.Null(new ViewProperties().Marks.PartMark.PourElements);
-            Assert.All(note.PartElements.OfType<MarkPropertyElement>(), e => Assert.Equal(DrawingColor.NewLine2, e.Format.Color));
+            Assert.Null(new ViewProperties().Marks.PartMark.Advanced.PourElements);
+            Assert.All(note.Content.PartElements.OfType<MarkPropertyElement>(), e => Assert.Equal(DrawingColor.DarkGreen, e.Format.Color));
 
-            Assert.Null(ViewProperties.CreateDefault().Marks.PartMark.PourElements);
+            Assert.Null(ViewProperties.CreateDefault().Marks.PartMark.Advanced.PourElements);
 
             // The pour mark keeps its own table, which its dialog edits
-            Assert.Equal(MarkElementTypes.PourMark.Material, Assert.IsType<MarkPropertyElement>(Assert.Single(ViewProperties.CreateDefault().Marks.PourMark.PourElements)).Type);
+            Assert.Equal(MarkElementTypes.PourMark.Material, Assert.IsType<MarkPropertyElement>(Assert.Single(ViewProperties.CreateDefault().Marks.PourMark.Content.PourElements)).Type);
             PourMarkAttributeFile pourMark = PourMarkAttributeFile.CreateDefault();
             Assert.Equal(MarkElementTypes.PourMark.Material, Assert.IsType<MarkPropertyElement>(Assert.Single(pourMark.Properties.GetMarkContent("PourContentString"))).Type);
         }
@@ -97,19 +99,19 @@ namespace TeklaHelper.DrawingAttribute.Tests
             var view = new ViewProperties();
 
             NeighborPartMark neighbor = view.Marks.NeighborPartMark;
-            AssertTable(neighbor, "ContentString1", () => neighbor.MainPartElements, c => neighbor.MainPartElements = c);
-            AssertTable(neighbor, "ContentString2", () => neighbor.SecondaryPartElements, c => neighbor.SecondaryPartElements = c);
+            AssertTable(neighbor, "ContentString1", () => neighbor.Content.MainPartElements, c => neighbor.Content.MainPartElements = c);
+            AssertTable(neighbor, "ContentString2", () => neighbor.Content.SecondaryPartElements, c => neighbor.Content.SecondaryPartElements = c);
 
             NeighborReinforcementMark neighborRebar = view.Marks.NeighborReinforcementMark;
-            AssertTable(neighborRebar, "ContentString1", () => neighborRebar.SingleElements, c => neighborRebar.SingleElements = c);
-            AssertTable(neighborRebar, "ContentString2", () => neighborRebar.GroupElements, c => neighborRebar.GroupElements = c);
-            AssertTable(neighborRebar, "ContentString3", () => neighborRebar.MergedMarkElements, c => neighborRebar.MergedMarkElements = c);
-            AssertTable(neighborRebar, "ContentString4", () => neighborRebar.MeshElements, c => neighborRebar.MeshElements = c);
+            AssertTable(neighborRebar, "ContentString1", () => neighborRebar.Content.SingleElements, c => neighborRebar.Content.SingleElements = c);
+            AssertTable(neighborRebar, "ContentString2", () => neighborRebar.Content.GroupElements, c => neighborRebar.Content.GroupElements = c);
+            AssertTable(neighborRebar, "ContentString3", () => neighborRebar.Merging.MergedMarkElements, c => neighborRebar.Merging.MergedMarkElements = c);
+            AssertTable(neighborRebar, "ContentString4", () => neighborRebar.Content.MeshElements, c => neighborRebar.Content.MeshElements = c);
 
             ConnectionMark connection = view.Marks.ConnectionMark;
-            AssertTable(connection, "ContentString1", () => connection.Elements, c => connection.Elements = c);
+            AssertTable(connection, "ContentString1", () => connection.Content.Elements, c => connection.Content.Elements = c);
             SurfaceTreatmentMark surface = view.Marks.SurfaceTreatmentMark;
-            AssertTable(surface, "ContentString1", () => surface.Elements, c => surface.Elements = c);
+            AssertTable(surface, "ContentString1", () => surface.Content.Elements, c => surface.Content.Elements = c);
 
             DimensionMark tag = DimensionAttributeFile.CreateDefault().LeftUpperTagMark;
             AssertTable(tag, "ContentString1", () => tag.PartElements, c => tag.PartElements = c);
@@ -118,13 +120,59 @@ namespace TeklaHelper.DrawingAttribute.Tests
             AssertTable(tag, "ContentString4", () => tag.ReinforcementElements, c => tag.ReinforcementElements = c);
         }
 
+        [Theory]
+        [InlineData(typeof(PartMark.ContentTab), "MainPartElements SecondaryPartElements SubAssemblyMainPartElements SubAssemblySecondaryPartElements")]
+        [InlineData(typeof(BoltMark.ContentTab), "SiteBoltElements WorkshopBoltElements")]
+        [InlineData(typeof(ReinforcementMark.ContentTab), "SingleElements GroupElements MeshElements")]
+        [InlineData(typeof(ReinforcementMark.MergingTab), "MergedMarkElements")]
+        [InlineData(typeof(NeighborPartMark.ContentTab), "MainPartElements SecondaryPartElements")]
+        [InlineData(typeof(NeighborReinforcementMark.ContentTab), "SingleElements GroupElements MeshElements")]
+        [InlineData(typeof(NeighborReinforcementMark.MergingTab), "MergedMarkElements")]
+        [InlineData(typeof(ConnectionMark.ContentTab), "Elements")]
+        [InlineData(typeof(SurfaceTreatmentMark.ContentTab), "Elements")]
+        [InlineData(typeof(PourMark.ContentTab), "PourElements")]
+        [InlineData(typeof(ViewLabelMark.ContentTab), "Elements")]
+        [InlineData(typeof(AssociativeNoteProperties.ContentTab), "PartElements BoltElements SurfaceTreatmentElements ReinforcementElements EdgeChamferElements ReferenceObjectElements")]
+        [InlineData(typeof(DimensionMark), "PartElements BoltElements SurfaceTreatmentElements ReinforcementElements")]
+        [InlineData(typeof(DimensionMark.AdvancedGroup), "PourElements PourBreakElements EdgeChamferElements ReferenceObjectElements")]
+        [InlineData(typeof(PartMark.AdvancedGroup), "PourElements PourBreakElements EdgeChamferElements ReferenceObjectElements")]
+        [InlineData(typeof(PourMark.AdvancedGroup), "PourBreakElements EdgeChamferElements ReferenceObjectElements")]
+        [InlineData(typeof(AssociativeNoteProperties.AdvancedGroup), "PourElements PourBreakElements")]
+        public void ContentProperties_AreWhereTheDialogShowsTheirTable(Type section, string properties)
+        {
+            // The tables of the "Mark content of" menu are in the tab of the dialog's elements table (the merged mark in the
+            // Merging tab); the keys the dialog does not show are in Advanced
+            string[] expected = properties.Split(' ');
+            string[] actual = section.GetProperties().Where(p => p.PropertyType == typeof(MarkContent) && p.DeclaringType == section).Select(p => p.Name).ToArray();
+
+            Assert.Equal(expected.OrderBy(n => n), actual.OrderBy(n => n));
+
+            // Nowhere else in the page: neither on the page nor in another of its tabs or groups
+            Type page = section;
+            while (page.DeclaringType != null)
+            {
+                page = page.DeclaringType;
+            }
+
+            Assert.All(expected, name => Assert.Equal(new[] { section }, Classes(page).Where(c => c.GetProperty(name, BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly) != null)));
+        }
+
+        private static IEnumerable<Type> Classes(Type type)
+        {
+            yield return type;
+            foreach (Type nested in type.GetNestedTypes().SelectMany(Classes))
+            {
+                yield return nested;
+            }
+        }
+
         [Fact]
         public void KeysOfEveryMarkPage_HaveContentProperties()
         {
             var view = new ViewProperties();
             foreach (AttributeSection page in new AttributeSection[] { view.Marks.PartMark, view.Marks.BoltMark, view.Marks.ConnectionMark, view.Marks.ReinforcementMark })
             {
-                dynamic typed = page;
+                dynamic typed = ((dynamic)page).Advanced;
                 AssertTable(page, "PourContentString", () => typed.PourElements, c => typed.PourElements = c);
                 AssertTable(page, "PourBreakContentString", () => typed.PourBreakElements, c => typed.PourBreakElements = c);
                 AssertTable(page, "ChamferContentString", () => typed.EdgeChamferElements, c => typed.EdgeChamferElements = c);
@@ -132,7 +180,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
             }
 
             var drawing = new Drawings.GADrawingAttributeFile();
-            drawing.Marks.PartMark.PourElements = Named("pour");
+            drawing.Marks.PartMark.Advanced.PourElements = Named("pour");
             Assert.Contains("pour", drawing.GetString("dpm.PourContentString"));
         }
 
@@ -147,7 +195,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
             Assert.All(new[] { "ContentString1", "ContentString2", "ContentString3", "ContentString4" }, k => Assert.Equal("mark", Text(pm.Properties, k)));
 
             var rm = new ReinforcementMarkAttributeFile();
-            rm.Properties.MergedMarkElements = Named("merged");
+            rm.Properties.Merging.MergedMarkElements = Named("merged");
             rm.Elements = content;
             Assert.All(new[] { "ContentString1", "ContentString2", "ContentString4" }, k => Assert.Equal("mark", Text(rm.Properties, k)));
             Assert.Equal("merged", Text(rm.Properties, "ContentString3"));
@@ -170,18 +218,18 @@ namespace TeklaHelper.DrawingAttribute.Tests
             var view = new ViewProperties();
             PartMark page = view.Marks.PartMark;
 
-            page.MainPartElements = new MarkContent();
+            page.Content.MainPartElements = new MarkContent();
             Assert.Equal(string.Empty, view.GetString("vpm.ContentString1", null));
 
-            page.MainPartElements = Named("x");
-            page.MainPartElements = new MarkContent();
+            page.Content.MainPartElements = Named("x");
+            page.Content.MainPartElements = new MarkContent();
             Assert.Equal(string.Empty, view.GetString("vpm.ContentString1"));
-            Assert.Null(page.MainPartElements);
+            Assert.Null(page.Content.MainPartElements);
 
             // Content without elements Tekla wrote as XML is kept as it was
             string xml = new MarkContent().ToXml();
             view.SetString("vpm.ContentString2", xml);
-            page.SecondaryPartElements = new MarkContent();
+            page.Content.SecondaryPartElements = new MarkContent();
             Assert.Equal(xml.Replace("\n", Environment.NewLine), view.GetString("vpm.ContentString2"));
         }
 
@@ -204,7 +252,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
         public void Tables_OfAPageInAFile_UseItsPrefix()
         {
             var view = new ViewProperties();
-            view.Marks.ReinforcementMark.MeshElements = Named("mesh");
+            view.Marks.ReinforcementMark.Content.MeshElements = Named("mesh");
 
             Assert.Contains("mesh", view.GetString("vrm.ContentString4"));
         }

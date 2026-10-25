@@ -188,18 +188,20 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             Attributes.CutParts.CutSkewParts = false;
             Attributes.CutParts.MinimumCutPartLength = 400;
             Attributes.CutParts.SpaceBetweenCutParts = 3;
+
             CuttingLine.Line.LineArrowLength = 10;
             CuttingLine.Line.LineArrowWidth = 10;
             CuttingLine.Line.LineLengthOffset = 12.5;
             CuttingLine.Line.LineWidthOffset1 = 15;
             CuttingLine.Line.LineWidthOffset2 = 15;
-            CuttingLine.Properties.Color = DrawingColor.NewLine5;
+            CuttingLine.Properties.Color = DrawingColor.Orange;
+
             SectionMark.Text.A1 = "<< Mark >>";
             SectionMark.Text.A2 = "<< Mark >>";
             SectionMark.Text.A3 = "";
             SectionMark.Text.A4 = "";
             SectionMark.Text.A5 = "";
-            SectionMark.Symbol.Color = DrawingColor.NewLine5;
+            SectionMark.Symbol.Color = DrawingColor.Orange;
             SectionMark.Symbol.LeftSymbol.Symbol = SectionMarkLeftSymbol.Value184;
             SectionMark.Symbol.LeftSymbol.Size = 5;
             SectionMark.Symbol.LeftSymbol.SectionMarkLeftSymbolPositionX = 0;
@@ -209,6 +211,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             SectionMark.Symbol.RightSymbol.SectionMarkRightSymbolPositionX = 0;
             SectionMark.Symbol.RightSymbol.SectionMarkRightSymbolPositionY = 0;
             SectionMark.StartNumberOrLetterOfSectionViewAndSymbolLabel = "A";
+
             ViewLabel.Label.ViewDirectionMarks.SectionViews = ShowMarks.None;
             ViewLabel.Label.ViewDirectionMarks.EndViews = ShowMarks.None;
             ViewLabel.Label.ViewDirectionMarks.Height = 0;
@@ -218,13 +221,15 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             ViewLabel.Text.A4 = "";
             ViewLabel.Text.A5 = "";
             ViewLabel.ViewLabel.Symbol.Symbol = ViewLabelSymbol.None;
-            ViewLabel.ViewLabel.Symbol.Color = DrawingColor.NewLine5;
+            ViewLabel.ViewLabel.Symbol.Color = DrawingColor.Orange;
             ViewLabel.ViewLabel.Symbol.Size = 5;
             ViewLabel.ViewLabel.Symbol.LineLength = SymbolLineLength.Minimal;
             ViewLabel.ViewLabel.Symbol.LineLengthViewLabelCustomLength = 0;
             ViewLabel.ViewLabel.LabelPosition.Vertical = LabelPositionVertical.Above;
             ViewLabel.ViewLabel.LabelPosition.Horizontal = LabelPositionHorizontal.CenterAlignedToViewFrame;
+
             SectionName = "A";
+
             Advanced.CutLineSide = 0;
             Advanced.TextColour = 158;
             Advanced.FitSymbol = 0;

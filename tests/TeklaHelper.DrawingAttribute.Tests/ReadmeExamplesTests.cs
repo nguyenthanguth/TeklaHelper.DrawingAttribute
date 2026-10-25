@@ -156,7 +156,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
         {
             var vi = new ViewProperties();
 
-            vi.Attributes.LabelMarkA1.Elements = new Marks.MarkContent()
+            vi.Attributes.LabelMarkA1.Content.Elements = new Marks.MarkContent()
                 .Add(Marks.MarkElementTypes.ViewLabel.ViewName, new Marks.MarkFormat { Font = "Tahoma", Color = DrawingColor.Green, Height = 5 })
                 .AddText(" ")
                 .Add(Marks.MarkElementTypes.ViewLabel.Scale)
@@ -168,7 +168,7 @@ namespace TeklaHelper.DrawingAttribute.Tests
                 .Add(Marks.MarkElementTypes.PartMark.PartPosition)
                 .AddFrame(FrameAroundElementsType.Rectangular, DrawingColor.Red, new Marks.MarkContent().Add(Marks.MarkElementTypes.PartMark.Profile));
 
-            Marks.MarkContent read = vi.Attributes.LabelMarkA1.Elements;
+            Marks.MarkContent read = vi.Attributes.LabelMarkA1.Content.Elements;
 
             Assert.Equal(5, read.Count);
             Assert.Contains("subType=\"82\"", vi.GetString("ViewLabelMarkA1.ContentString"));

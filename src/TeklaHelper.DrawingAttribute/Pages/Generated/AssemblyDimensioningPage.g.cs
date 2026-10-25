@@ -120,6 +120,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             General.DimensionProperties.LevelDimensions = DimensionArrowShape.FilledArrow;
             General.DimensionProperties.AngleAndRadiusDimensions = "";
             General.DimensionProperties.CheckDimensions = "";
+
             PartDimensions.Internal = PartInternalDimensions.Necessary;
             PartDimensions.MainPartOverallDimensions = Pages.MainPartOverallDimensions.Once;
             PartDimensions.AssemblyPartOverallDimensions = Pages.AssemblyPartOverallDimensions.LengthOnly;
@@ -134,6 +135,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             PartDimensions.FromTheNearestFloorLevelToPart = Pages.FromTheNearestFloorLevelToPart.Off;
             PartDimensions.FromGridToPartCenterline = false;
             PartDimensions.FromGridToPartEnds = Pages.FromGridToPartEnds.Off;
+
             BoltDimensions.MainPartBoltInternalDimensions.MainPartBoltInternalDimensions = Pages.MainPartBoltInternalDimensions.Internal;
             BoltDimensions.MainPartBoltInternalDimensions.SkewedBoltGroup = Pages.SkewedBoltGroup.InBoltGroupDirection;
             BoltDimensions.SecondaryPartBoltInternalDimensions.SecondaryPartBoltInternalDimensions = Pages.SecondaryPartBoltInternalDimensions.Internal;
@@ -143,6 +145,7 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             BoltDimensions.PreferredDimSide = BoltPreferredDimensionSide.View;
             BoltDimensions.CombineBoltDimensions = Pages.CombineDimensions.Off;
             BoltDimensions.MinimumNumberToCombine = 3;
+
             PositionDimensions.PositionBoltsTo = PositionTo.MainPart;
             PositionDimensions.PositionPartsTo = PositionTo.MainPart;
             PositionDimensions.SecondaryPart = SecondaryPartPosition.ByBolt;
@@ -158,14 +161,18 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             PositionDimensions.CombineEqualDimensions = Pages.CombineDimensions.Off;
             PositionDimensions.MinimumNumberToCombine = 3;
             PositionDimensions.EmbeddedObjects = Pages.EmbeddedObjects.AsSecondaryObjects;
+
             SubAssemblies.DimensionPartsInsideSubAssemblies = true;
             SubAssemblies.MeasureSubAssemblyPositionFrom = Pages.MeasureSubAssemblyPositionFrom.Bolt;
+
             DimensionGrouping.AutomaticTagging.DisplayTags = false;
             DimensionGrouping.AutomaticTagging.IncludePartCountInTheTag = false;
             DimensionGrouping.AutomaticTagging.DoNotDisplayMarksForTheGroupedItems = false;
             DimensionGrouping.Updating.UpdateGroupingWhenModelChanges = true;
+
             ReinforcementDimensions.ReinforcingBarGroups.DimensionsForReinforcingBarGroups = false;
             ReinforcementDimensions.ReinforcingBarGroups.DimensionMarkSettings = "";
+
             Advanced.CreateCuts = 1;
             Advanced.ActivatePartGrouping = 0;
             Advanced.ActivateBoltGrouping = 0;
@@ -1140,6 +1147,13 @@ namespace TeklaHelper.DrawingAttribute.Drawings
             /// </summary>
             public AutomaticTaggingGroup AutomaticTagging => _automaticTagging ?? (_automaticTagging = new AutomaticTaggingGroup(Values, Prefix));
 
+            private PARTGroupingPropertiesGroup _pARTGroupingProperties;
+
+            /// <summary>
+            /// The "PART grouping properties" group.
+            /// </summary>
+            public PARTGroupingPropertiesGroup PARTGroupingProperties => _pARTGroupingProperties ?? (_pARTGroupingProperties = new PARTGroupingPropertiesGroup(Values, Prefix));
+
             private UpdatingGroup _updating;
 
             /// <summary>
@@ -1182,6 +1196,17 @@ namespace TeklaHelper.DrawingAttribute.Drawings
                 {
                     get => GetBoolean("DontDisplayMarksForGroupedItems");
                     set => SetBooleanUnlessSame("DontDisplayMarksForGroupedItems", value, 1, 0);
+                }
+            }
+
+            /// <summary>
+            /// The "PART grouping properties" group.
+            /// </summary>
+            public sealed class PARTGroupingPropertiesGroup : AttributeSection
+            {
+                internal PARTGroupingPropertiesGroup(AttributeCollection values, string prefix)
+                    : base(values, prefix)
+                {
                 }
             }
 

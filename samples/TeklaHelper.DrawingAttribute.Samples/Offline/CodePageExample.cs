@@ -32,12 +32,12 @@ namespace TeklaHelper.DrawingAttribute.Samples.Offline
             context.Step("A view label with Japanese text: mark content is UTF-8 even in a 932 file");
             ViewProperties view = ViewProperties.CreateDefault();
             view.CodePage = 932;
-            view.Attributes.LabelMarkA1.Elements = new MarkContent()
+            view.Attributes.LabelMarkA1.Content.Elements = new MarkContent()
                 .AddText("断面 ")
                 .Add(MarkElementTypes.ViewLabel.ViewName);
             string viewPath = view.SaveTo(context.OutputDirectory, "sample_japanese_label");
-            MarkContent label = AttributeFile.FromFile<ViewProperties>(viewPath).Attributes.LabelMarkA1.Elements;
-            Console.WriteLine("    Read back the same: " + label.Equals(view.Attributes.LabelMarkA1.Elements) + " (the console may not show the characters)");
+            MarkContent label = AttributeFile.FromFile<ViewProperties>(viewPath).Attributes.LabelMarkA1.Content.Elements;
+            Console.WriteLine("    Read back the same: " + label.Equals(view.Attributes.LabelMarkA1.Content.Elements) + " (the console may not show the characters)");
 
             context.Step("Korean (949)");
             GADrawingAttributeFile korean = GADrawingAttributeFile.CreateDefault();
